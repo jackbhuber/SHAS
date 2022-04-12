@@ -18,6 +18,14 @@ Unidimensionality is the assumption that the four items measure only one underly
 ## Exploratory Factor Analysis (EFA)
 
 ```{r}
+
+# TEST FOR NUMBER OF FACTORS IN DATA USING PARALLEL ANALYSIS AND VERY SIMPLE STRUCTURE (VSS)
+fa.parallel(items)
+vss(items)
+
+# PRINCIPAL COMPONENTS ANALYSIS
+principal(items)
+
 # PRINCIPAL AXIS FACTORING
 # library(psych)
 # fit <- factor.pa(items, nfactors=3, rotation="varimax")
