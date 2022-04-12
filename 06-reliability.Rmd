@@ -1,0 +1,24 @@
+# Reliability
+
+One important source of evidence for a scale is correlations among the items.  Strong correlations among the items are evidence that the items are measuring the same construct.  The matrix of correlations is presented in the table.
+
+```{r}
+# corrs <- cor(items, method = c("pearson")) # correlation matrix
+# knitr::kable(round(corrs,2), caption = "Correlation Matrix") # fancy kable version of correlation matrix
+```
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt ex ut condimentum vulputate. Sed feugiat mattis lectus vitae mollis. Suspendisse sodales urna id pharetra mattis. Mauris feugiat molestie efficitur. Proin non metus hendrerit elit viverra tincidunt. Integer tristique, nunc nec gravida semper, erat ligula placerat nunc, vitae tincidunt diam odio ut est. Morbi sit amet posuere ante, non tempor leo. Nam fermentum mi urna, ut lacinia metus venenatis sit amet. Morbi mattis lectus sit amet magna ultricies malesuada.
+
+``` {r fig.cap='Correlation Matrix of Well-being Items', out.width='80%', fig.asp=.75, fig.align='center'}
+# library(corrplot)
+# corrplot(cor(items), order = "original", tl.col='black', tl.cex=.75) # visual correlation matrix
+```
+
+The correlations among the items are moderate at best. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt ex ut condimentum vulputate. Sed feugiat mattis lectus vitae mollis. Suspendisse sodales urna id pharetra mattis. Mauris feugiat molestie efficitur. Proin non metus hendrerit elit viverra tincidunt. Integer tristique, nunc nec gravida semper, erat ligula placerat nunc, vitae tincidunt diam odio ut est. Morbi sit amet posuere ante, non tempor leo. Nam fermentum mi urna, ut lacinia metus venenatis sit amet. Morbi mattis lectus sit amet magna ultricies malesuada.
+Figure X reports internal reliability statistics.
+
+```{r}
+# alpha(items)
+#knitr::kable(alpha(items), caption = "Internal Reliability Statistics")
+```
+
