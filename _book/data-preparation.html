@@ -29,15 +29,15 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Jack Huber and Dan Koch" />
 
 
-<meta name="date" content="2022-04-10" />
+<meta name="date" content="2022-04-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="background-of-the-project.html"/>
-<link rel="next" href="dimensionality.html"/>
+<link rel="prev" href="data-collection.html"/>
+<link rel="next" href="item-analysis.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -172,13 +172,26 @@ div.csl-indent {
 <li><a href="background-of-the-project.html#the-spiritual-harm-and-abuse-scale-shas">The Spiritual Harm and Abuse Scale (SHAS)<span></span></a></li>
 <li><a href="background-of-the-project.html#validity-research-for-the-shas">Validity Research for the SHAS<span></span></a></li>
 </ul></li>
+<li><a href="data-collection.html#data-collection">Data Collection<span></span></a></li>
 <li><a href="data-preparation.html#data-preparation">Data Preparation<span></span></a>
 <ul>
 <li><a href="data-preparation.html#load-packages">Load packages<span></span></a></li>
 <li><a href="data-preparation.html#load-data">Load data<span></span></a></li>
 <li><a href="data-preparation.html#select-items-for-analysis">Select items for analysis<span></span></a></li>
-<li><a href="data-preparation.html#summarize-data">Summarize data<span></span></a></li>
-<li><a href="data-preparation.html#missing-data">Missing data<span></span></a></li>
+<li><a href="data-preparation.html#missing-data">Missing data<span></span></a>
+<ul>
+<li><a href="data-preparation.html#a-simple-triggering-study">A Simple Triggering Study<span></span></a></li>
+<li><a href="data-preparation.html#missing-data-methods">Missing data methods<span></span></a></li>
+</ul></li>
+</ul></li>
+<li><a href="item-analysis.html#item-analysis">Item Analysis<span></span></a>
+<ul>
+<li><a href="item-analysis.html#load-packages-and-data">Load packages and data<span></span></a>
+<ul>
+<li><a href="item-analysis.html#skew-and-kurtosis">Skew and Kurtosis<span></span></a></li>
+</ul></li>
+<li><a href="item-analysis.html#item-correlations">Item correlations<span></span></a></li>
+<li><a href="item-analysis.html#internal-consistency-reliability">Internal consistency reliability<span></span></a></li>
 </ul></li>
 <li><a href="dimensionality.html#dimensionality">Dimensionality<span></span></a>
 <ul>
@@ -186,12 +199,12 @@ div.csl-indent {
 <li><a href="dimensionality.html#exploratory-factor-analysis-efa">Exploratory Factor Analysis (EFA)<span></span></a></li>
 <li><a href="dimensionality.html#confirmatory-factor-analysis-cfa">Confirmatory Factor Analysis (CFA)<span></span></a></li>
 </ul></li>
+<li><a href="reliability.html#reliability">Reliability<span></span></a></li>
 <li><a href="scale-analysis.html#scale-analysis">Scale Analysis<span></span></a>
 <ul>
 <li><a href="scale-analysis.html#interpretation-of-examinee-scores">Interpretation of Examinee Scores<span></span></a></li>
 </ul></li>
 <li><a href="discussion.html#discussion">Discussion<span></span></a></li>
-<li><a href="reliability.html#reliability">Reliability<span></span></a></li>
 <li><a href="other-stuff.html#other-stuff">Other Stuff<span></span></a></li>
 <li><a href="references.html#references">References<span></span></a></li>
 <li class="divider"></li>
@@ -219,46 +232,34 @@ div.csl-indent {
 <p>This section describes how we prepare the data for analysis. This includes details on loading the necessary R packages, loading the data in R, and any necessary coding or recoding of variables. Also discussed is how we deal with missing data.</p>
 <div id="load-packages" class="section level2 hasAnchor">
 <h2>Load packages<a href="data-preparation.html#load-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Some R users load all their packages up front while others load them just before using functions, perhaps for instructional reasons. I can see merit in listing all the packages for properly citing them. Here is a code chunk for loading all the packages up front.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="data-preparation.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># LOAD PACKAGES</span></span>
 <span id="cb3-2"><a href="data-preparation.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl) <span class="co"># for reading the source Excel file</span></span>
 <span id="cb3-3"><a href="data-preparation.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven) <span class="co"># for reading an SPSS file</span></span>
-<span id="cb3-4"><a href="data-preparation.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(expss) <span class="co"># for variable and value labels</span></span></code></pre></div>
-<pre><code>## Loading required package: maditr</code></pre>
-<pre><code>## 
-## To modify variables or add new variables:
-##              let(mtcars, new_var = 42, new_var2 = new_var*hp) %&gt;% head()</code></pre>
-<pre><code>## 
-## Attaching package: &#39;expss&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:haven&#39;:
-## 
-##     is.labelled, read_spss</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="data-preparation.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(labelled) <span class="co"># for variable and value labels</span></span></code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;labelled&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:expss&#39;:
-## 
-##     is.labelled</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="data-preparation.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Hmisc) <span class="co"># for variable and value labels</span></span></code></pre></div>
+<span id="cb3-4"><a href="data-preparation.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># library(expss) # for variable and value labels</span></span>
+<span id="cb3-5"><a href="data-preparation.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(labelled) <span class="co"># for variable and value labels</span></span>
+<span id="cb3-6"><a href="data-preparation.html#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Hmisc) <span class="co"># for variable and value labels</span></span></code></pre></div>
 <pre><code>## Loading required package: lattice</code></pre>
 <pre><code>## Loading required package: survival</code></pre>
 <pre><code>## Loading required package: Formula</code></pre>
 <pre><code>## Loading required package: ggplot2</code></pre>
 <pre><code>## 
-## Attaching package: &#39;ggplot2&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:expss&#39;:
-## 
-##     vars</code></pre>
-<pre><code>## Registered S3 methods overwritten by &#39;Hmisc&#39;:
-##   method                 from 
-##   [.labelled             expss
-##   print.labelled         expss
-##   as.data.frame.labelled expss</code></pre>
-<pre><code>## 
 ## Attaching package: &#39;Hmisc&#39;</code></pre>
 <pre><code>## The following objects are masked from &#39;package:base&#39;:
 ## 
 ##     format.pval, units</code></pre>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="data-preparation.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych) <span class="co"># for psychometric analysis</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="data-preparation.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(VIM) <span class="co"># for missing data</span></span></code></pre></div>
+<pre><code>## Loading required package: colorspace</code></pre>
+<pre><code>## Loading required package: grid</code></pre>
+<pre><code>## VIM is ready to use.</code></pre>
+<pre><code>## Suggestions and bug-reports can be submitted at: https://github.com/statistikat/VIM/issues</code></pre>
+<pre><code>## 
+## Attaching package: &#39;VIM&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:datasets&#39;:
+## 
+##     sleep</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="data-preparation.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(naniar) <span class="co"># for missing data</span></span>
+<span id="cb17-2"><a href="data-preparation.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych) <span class="co"># for psychometric analysis</span></span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;psych&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:Hmisc&#39;:
@@ -267,1745 +268,155 @@ div.csl-indent {
 <pre><code>## The following objects are masked from &#39;package:ggplot2&#39;:
 ## 
 ##     %+%, alpha</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="data-preparation.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(eRm) <span class="co"># for Rasch modeling</span></span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="data-preparation.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(eRm) <span class="co"># for Rasch modeling</span></span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;eRm&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:psych&#39;:
 ## 
 ##     sim.rasch</code></pre>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="data-preparation.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot) <span class="co"># for correlation plot</span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="data-preparation.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot) <span class="co"># for correlation plot</span></span></code></pre></div>
 <pre><code>## corrplot 0.92 loaded</code></pre>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="data-preparation.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lavaan) <span class="co"># for confirmatory factor analysis</span></span></code></pre></div>
-<pre><code>## This is lavaan 0.6-11
-## lavaan is FREE software! Please report any bugs.</code></pre>
-<pre><code>## 
-## Attaching package: &#39;lavaan&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:psych&#39;:
-## 
-##     cor2cov</code></pre>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="data-preparation.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr) <span class="co"># how RMarkdown compiles all the code into documents</span></span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="data-preparation.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr) <span class="co"># how RMarkdown compiles all the code into documents</span></span></code></pre></div>
 </div>
 <div id="load-data" class="section level2 hasAnchor">
 <h2>Load data<a href="data-preparation.html#load-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="data-preparation.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># {r describe-tab, tidy=FALSE}</span></span>
-<span id="cb35-2"><a href="data-preparation.html#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-3"><a href="data-preparation.html#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># LOAD DATA</span></span>
-<span id="cb35-4"><a href="data-preparation.html#cb35-4" aria-hidden="true" tabindex="-1"></a>shas <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;/Users/jack_huber/Documents/MY RESEARCH/SHAS Validity/data.xlsx&quot;</span>) <span class="co"># load the original Excel file from my computer</span></span>
-<span id="cb35-5"><a href="data-preparation.html#cb35-5" aria-hidden="true" tabindex="-1"></a>shas<span class="sc">$</span>X <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb35-6"><a href="data-preparation.html#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-7"><a href="data-preparation.html#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="co"># list the variables in mydata</span></span>
-<span id="cb35-8"><a href="data-preparation.html#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(shas)</span></code></pre></div>
-<pre><code>##   [1] &quot;StartDate&quot;             &quot;EndDate&quot;               &quot;Status&quot;               
-##   [4] &quot;Progress&quot;              &quot;Duration__in_seconds_&quot; &quot;Finished&quot;             
-##   [7] &quot;RecordedDate&quot;          &quot;ResponseId&quot;            &quot;UserLanguage&quot;         
-##  [10] &quot;Q4&quot;                    &quot;Q6&quot;                    &quot;Q5&quot;                   
-##  [13] &quot;Q14&quot;                   &quot;Q7&quot;                    &quot;Q10&quot;                  
-##  [16] &quot;Q11&quot;                   &quot;Q16&quot;                   &quot;Q17&quot;                  
-##  [19] &quot;Q18&quot;                   &quot;Q19&quot;                   &quot;Q20&quot;                  
-##  [22] &quot;Q21&quot;                   &quot;Q22&quot;                   &quot;Q23&quot;                  
-##  [25] &quot;Q24&quot;                   &quot;Q25&quot;                   &quot;Q26&quot;                  
-##  [28] &quot;Q27&quot;                   &quot;Q28&quot;                   &quot;Q29&quot;                  
-##  [31] &quot;Q30&quot;                   &quot;Q31&quot;                   &quot;Q32&quot;                  
-##  [34] &quot;Q34&quot;                   &quot;Q35&quot;                   &quot;Q36&quot;                  
-##  [37] &quot;Q37&quot;                   &quot;Q38&quot;                   &quot;Q39&quot;                  
-##  [40] &quot;Q40&quot;                   &quot;Q41&quot;                   &quot;Q42&quot;                  
-##  [43] &quot;Q43&quot;                   &quot;Q44&quot;                   &quot;Q45&quot;                  
-##  [46] &quot;Q46&quot;                   &quot;Q47&quot;                   &quot;Q49&quot;                  
-##  [49] &quot;Q50&quot;                   &quot;Q51&quot;                   &quot;Q52&quot;                  
-##  [52] &quot;Q53&quot;                   &quot;Q54&quot;                   &quot;Q55&quot;                  
-##  [55] &quot;Q56&quot;                   &quot;Q57&quot;                   &quot;Q58&quot;                  
-##  [58] &quot;Q59&quot;                   &quot;Q60&quot;                   &quot;Q61&quot;                  
-##  [61] &quot;Q62&quot;                   &quot;Q63&quot;                   &quot;Q64&quot;                  
-##  [64] &quot;Q65&quot;                   &quot;Q66&quot;                   &quot;Q68&quot;                  
-##  [67] &quot;Q69&quot;                   &quot;Q70&quot;                   &quot;Q71&quot;                  
-##  [70] &quot;Q72&quot;                   &quot;Q73&quot;                   &quot;Q74&quot;                  
-##  [73] &quot;Q76&quot;                   &quot;Q77&quot;                   &quot;Q78&quot;                  
-##  [76] &quot;Q79&quot;                   &quot;Q80&quot;                   &quot;Q81&quot;                  
-##  [79] &quot;Q82&quot;                   &quot;Q84&quot;                   &quot;Q85&quot;                  
-##  [82] &quot;Q86&quot;                   &quot;Q87&quot;                   &quot;Q88&quot;                  
-##  [85] &quot;Q89&quot;                   &quot;Q90&quot;                   &quot;Q91&quot;                  
-##  [88] &quot;Q92&quot;                   &quot;Q95&quot;                   &quot;Q93&quot;                  
-##  [91] &quot;Q97&quot;                   &quot;Q98&quot;                   &quot;Generation&quot;           
-##  [94] &quot;Ext_Avg&quot;               &quot;Int_Avg&quot;               &quot;Global_Avg&quot;           
-##  [97] &quot;Podcast_Usage&quot;         &quot;FAC1_6&quot;                &quot;FAC2_6&quot;               
-## [100] &quot;FAC3_6&quot;                &quot;FAC4_6&quot;                &quot;FAC5_6&quot;               
-## [103] &quot;FAC6_6&quot;                &quot;FAC7_6&quot;                &quot;FAC8_6&quot;               
-## [106] &quot;FAC9_6&quot;                &quot;Avg_33&quot;                &quot;Unable_Group&quot;         
-## [109] &quot;ChristianToday&quot;        &quot;Cons_Lib&quot;              &quot;FAC1_1&quot;               
-## [112] &quot;FAC2_1&quot;                &quot;FAC3_1&quot;                &quot;FAC4_1&quot;               
-## [115] &quot;FAC5_1&quot;                &quot;FAC6_1&quot;                &quot;AOA&quot;                  
-## [118] &quot;PA&quot;                    &quot;VHP&quot;                   &quot;AL&quot;                   
-## [121] &quot;HGI&quot;                   &quot;GD&quot;                    &quot;F27&quot;                  
-## [124] &quot;FAC1_2&quot;                &quot;FAC2_2&quot;                &quot;FAC3_2&quot;               
-## [127] &quot;FAC4_2&quot;                &quot;FAC5_2&quot;                &quot;FAC6_2&quot;               
-## [130] &quot;ConLead&quot;               &quot;FullNew&quot;</code></pre>
+<p>The data are contained in an Excel file, simply named “data.xlsx”, in a folder on Jack’s hard drive for the time being. The important thing is that the data are all kept in the same folder within the larger umbrella folder “SHAS Validity” for this R Project.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="data-preparation.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># LOAD DATA</span></span>
+<span id="cb27-2"><a href="data-preparation.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(readxl) # for reading the source Excel file</span></span>
+<span id="cb27-3"><a href="data-preparation.html#cb27-3" aria-hidden="true" tabindex="-1"></a>shas <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/data.xlsx&quot;</span>) <span class="co"># load the original Excel file from my computer</span></span></code></pre></div>
 </div>
 <div id="select-items-for-analysis" class="section level2 hasAnchor">
 <h2>Select items for analysis<a href="data-preparation.html#select-items-for-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="data-preparation.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SELECT COLUMNS FOR ANALYSIS</span></span>
-<span id="cb37-2"><a href="data-preparation.html#cb37-2" aria-hidden="true" tabindex="-1"></a>allitems <span class="ot">&lt;-</span> shas[,<span class="dv">14</span><span class="sc">:</span><span class="dv">79</span>] <span class="co"># select columns 14-79 which are the items</span></span>
-<span id="cb37-3"><a href="data-preparation.html#cb37-3" aria-hidden="true" tabindex="-1"></a>items <span class="ot">&lt;-</span> allitems[<span class="fu">complete.cases</span>(allitems), ]</span>
-<span id="cb37-4"><a href="data-preparation.html#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-5"><a href="data-preparation.html#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co"># CODE 9 AS MISSING (IF NECEESARY)</span></span>
-<span id="cb37-6"><a href="data-preparation.html#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="co"># pew$qi4a[pew$qi4a==9] &lt;- NA # code 9 as missing</span></span>
-<span id="cb37-7"><a href="data-preparation.html#cb37-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-8"><a href="data-preparation.html#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="co"># REVERSE CODE (IF NECESSARY)</span></span>
-<span id="cb37-9"><a href="data-preparation.html#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="co"># pew$sense.peace &lt;- 6-pew$qi4a # reverse code so that higher value indicates higher frequency</span></span>
-<span id="cb37-10"><a href="data-preparation.html#cb37-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-11"><a href="data-preparation.html#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="co"># RECODES (IF NECESSARY)</span></span>
-<span id="cb37-12"><a href="data-preparation.html#cb37-12" aria-hidden="true" tabindex="-1"></a><span class="co"># pew$sense.peace2[pew$sense.peace == 1] &lt;- 1</span></span>
-<span id="cb37-13"><a href="data-preparation.html#cb37-13" aria-hidden="true" tabindex="-1"></a><span class="co"># pew$sense.peace2[pew$sense.peace == 2] &lt;- 2</span></span>
-<span id="cb37-14"><a href="data-preparation.html#cb37-14" aria-hidden="true" tabindex="-1"></a><span class="co"># pew$sense.peace2[pew$sense.peace == 3] &lt;- 2</span></span>
-<span id="cb37-15"><a href="data-preparation.html#cb37-15" aria-hidden="true" tabindex="-1"></a><span class="co"># pew$sense.peace2[pew$sense.peace == 4] &lt;- 2</span></span>
-<span id="cb37-16"><a href="data-preparation.html#cb37-16" aria-hidden="true" tabindex="-1"></a><span class="co"># pew$sense.peace2[pew$sense.peace == 5] &lt;- 3</span></span>
-<span id="cb37-17"><a href="data-preparation.html#cb37-17" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span></code></pre></div>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="data-preparation.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># APPLY VARIABLE LABLES</span></span>
-<span id="cb38-2"><a href="data-preparation.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(expss)</span>
-<span id="cb38-3"><a href="data-preparation.html#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co"># data(allitems)</span></span>
-<span id="cb38-4"><a href="data-preparation.html#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(shas)</span></code></pre></div>
-<pre><code>## Warning in data(shas): data set &#39;shas&#39; not found</code></pre>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="data-preparation.html#cb40-1" aria-hidden="true" tabindex="-1"></a>shas <span class="ot">=</span> <span class="fu">apply_labels</span>(shas,</span>
-<span id="cb40-2"><a href="data-preparation.html#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-3"><a href="data-preparation.html#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co"># allitems = apply_labels(allitems,</span></span>
-<span id="cb40-4"><a href="data-preparation.html#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-5"><a href="data-preparation.html#cb40-5" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Progressive podcasts</span></span>
-<span id="cb40-6"><a href="data-preparation.html#cb40-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q5 =</span> <span class="st">&quot;Weekly count progressive Christian podcast episodes&quot;</span>,</span>
-<span id="cb40-7"><a href="data-preparation.html#cb40-7" aria-hidden="true" tabindex="-1"></a>          </span>
-<span id="cb40-8"><a href="data-preparation.html#cb40-8" aria-hidden="true" tabindex="-1"></a>      <span class="co"># VARIABLE LABELS: Items for External Events Subscale</span></span>
-<span id="cb40-9"><a href="data-preparation.html#cb40-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q7 =</span> <span class="st">&quot;My pastor/leader explicitly claiming to speak on God&#39;s behalf&quot;</span>,</span>
-<span id="cb40-10"><a href="data-preparation.html#cb40-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q10 =</span> <span class="st">&quot;Being asked to give up personal, vocational, and/or educational goals by a pastor or group leader&quot;</span>,</span>
-<span id="cb40-11"><a href="data-preparation.html#cb40-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q11 =</span> <span class="st">&quot;Seeing that anyone who disagreed with my church/pastor was consequently portrayed as evil&quot;</span>,</span>
-<span id="cb40-12"><a href="data-preparation.html#cb40-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q16 =</span> <span class="st">&quot;My church community abandoning me in a difficult time&quot;</span>,</span>
-<span id="cb40-13"><a href="data-preparation.html#cb40-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q17 =</span> <span class="st">&quot;Being treated as “less than” because of my sexual orientation&quot;</span>,</span>
-<span id="cb40-14"><a href="data-preparation.html#cb40-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q18 =</span> <span class="st">&quot;Discouragement of critical thinking by my church or pastor&quot;</span>,</span>
-<span id="cb40-15"><a href="data-preparation.html#cb40-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q19 =</span> <span class="st">&quot;Behavior being excessively monitored by my pastor or group members&quot;</span>,</span>
-<span id="cb40-16"><a href="data-preparation.html#cb40-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q20 =</span> <span class="st">&quot;Seeing specific members being pressured to give money despite well-known personal financial hardship&quot;</span>,</span>
-<span id="cb40-17"><a href="data-preparation.html#cb40-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q21 =</span> <span class="st">&quot;Being taught that I would be risking Hell if I left my particular church/group&quot;</span>,</span>
-<span id="cb40-18"><a href="data-preparation.html#cb40-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q22 =</span> <span class="st">&quot;Being expected to follow my pastor/leader’s personal rules/advice around dating, marriage, and sex&quot;</span>,</span>
-<span id="cb40-19"><a href="data-preparation.html#cb40-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q23 =</span> <span class="st">&quot;Prayer replacing needed medical interventions&quot;</span>,</span>
-<span id="cb40-20"><a href="data-preparation.html#cb40-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q24 =</span> <span class="st">&quot;Being expected to consult my pastor/leader before making non-religious decisions&quot;</span>,</span>
-<span id="cb40-21"><a href="data-preparation.html#cb40-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q25 =</span> <span class="st">&quot;Feeling unable to raise questions and issues&quot;</span>,</span>
-<span id="cb40-22"><a href="data-preparation.html#cb40-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q26 =</span> <span class="st">&quot;Being pressured to forgive an abuser while the abuse was ongoing&quot;</span>,</span>
-<span id="cb40-23"><a href="data-preparation.html#cb40-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q27 =</span> <span class="st">&quot;Being denied opportunities to serve/volunteer because of my gender&quot;</span>,</span>
-<span id="cb40-24"><a href="data-preparation.html#cb40-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q28 =</span> <span class="st">&quot;Seeing the leadership or group protecting abusive individuals&quot;</span>,</span>
-<span id="cb40-25"><a href="data-preparation.html#cb40-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q29 =</span> <span class="st">&quot;Feeling special when in my pastor/leader’s good graces; feeling ignored when I wasn’t&quot;</span>,</span>
-<span id="cb40-26"><a href="data-preparation.html#cb40-26" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q30 =</span> <span class="st">&quot;Being deterred from seeking mental health treatment, counseling and/or medication&quot;</span>,</span>
-<span id="cb40-27"><a href="data-preparation.html#cb40-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q31 =</span> <span class="st">&quot;Being shunned or ignored by my pastor or church/group&quot;</span>,</span>
-<span id="cb40-28"><a href="data-preparation.html#cb40-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q32 =</span> <span class="st">&quot;Feeling unable to express unhappiness&quot;</span>,</span>
-<span id="cb40-29"><a href="data-preparation.html#cb40-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q34 =</span> <span class="st">&quot;Seeing Scripture used to justify physical punishment or other types of severe discipline&quot;</span>,</span>
-<span id="cb40-30"><a href="data-preparation.html#cb40-30" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q35 =</span> <span class="st">&quot;Being explicitly taught to distrust my emotions&quot;</span>,</span>
-<span id="cb40-31"><a href="data-preparation.html#cb40-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q36 =</span> <span class="st">&quot;Mental or physical problems being interpreted as spiritual/moral weakness&quot;</span>,</span>
-<span id="cb40-32"><a href="data-preparation.html#cb40-32" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q37 =</span> <span class="st">&quot;Being made to feel less spiritually advanced/mature than my pastor/leadership&quot;</span>,</span>
-<span id="cb40-33"><a href="data-preparation.html#cb40-33" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q38 =</span> <span class="st">&quot;Having unrealistic demands placed on my moral or religious behavior&quot;</span>,</span>
-<span id="cb40-34"><a href="data-preparation.html#cb40-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q39 =</span> <span class="st">&quot;Being made to feel shame over naturally occurring sexual desires (not actions)&quot;</span>,</span>
-<span id="cb40-35"><a href="data-preparation.html#cb40-35" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q40 =</span> <span class="st">&quot;Threatening Divine punishment to keep group members in line&quot;</span>,</span>
-<span id="cb40-36"><a href="data-preparation.html#cb40-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q41 =</span> <span class="st">&quot;Being denied opportunities to serve because of my sexual orientation&quot;</span>,</span>
-<span id="cb40-37"><a href="data-preparation.html#cb40-37" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q42 =</span> <span class="st">&quot;Seeing others shamed or shunned by the pastor/leader or group&quot;</span>,</span>
-<span id="cb40-38"><a href="data-preparation.html#cb40-38" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q43 =</span> <span class="st">&quot;Being shamed by my pastor or the group for poor spiritual/moral performance&quot;</span>,</span>
-<span id="cb40-39"><a href="data-preparation.html#cb40-39" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q44 =</span> <span class="st">&quot;Love or acceptance only being offered if spiritual or moral performance was high&quot;</span>,</span>
-<span id="cb40-40"><a href="data-preparation.html#cb40-40" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q45 =</span> <span class="st">&quot;Vivid descriptions of Hell, Satan, or demons being taught to young children that are developmentally inappropriate and/or anxiety-provoking&quot;</span>,</span>
-<span id="cb40-41"><a href="data-preparation.html#cb40-41" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q46 =</span> <span class="st">&quot;Being treated as “less than” because of my skin color&quot;</span>,</span>
-<span id="cb40-42"><a href="data-preparation.html#cb40-42" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q47 =</span> <span class="st">&quot;Medical care being postponed or not given at all for religious reasons&quot;</span>,</span>
-<span id="cb40-43"><a href="data-preparation.html#cb40-43" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q49 =</span> <span class="st">&quot;The leadership or group not only protecting but elevating abusive individuals&quot;</span>,</span>
-<span id="cb40-44"><a href="data-preparation.html#cb40-44" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q50 =</span> <span class="st">&quot;Being treated as “less than” because of my gender&quot;</span>,</span>
-<span id="cb40-45"><a href="data-preparation.html#cb40-45" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q51 =</span> <span class="st">&quot;Experiencing extreme pressure to take on a role of pastor, missionary, or other spiritual leader&quot;</span>,</span>
-<span id="cb40-46"><a href="data-preparation.html#cb40-46" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q52 =</span> <span class="st">&quot;Being blamed for harm that I suffered, rather than blaming those who harmed me&quot;</span>,</span>
-<span id="cb40-47"><a href="data-preparation.html#cb40-47" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q53 =</span> <span class="st">&quot;Seeing Scripture used to justify abusive parent-child behavior&quot;</span>,</span>
-<span id="cb40-48"><a href="data-preparation.html#cb40-48" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q54 =</span> <span class="st">&quot;Being explicitly taught to distrust my intuitions&quot;</span>,</span>
-<span id="cb40-49"><a href="data-preparation.html#cb40-49" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q55 =</span> <span class="st">&quot;Hearing cultural references in sermons that were not commonly known to members of my racial or ethnic subculture&quot;</span>,</span>
-<span id="cb40-50"><a href="data-preparation.html#cb40-50" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q56 =</span> <span class="st">&quot;Being made to feel like I was crazy or weird for having doubts or questions&quot;</span>,</span>
-<span id="cb40-51"><a href="data-preparation.html#cb40-51" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q57 =</span> <span class="st">&quot;Developing mental or physical ailments as a result of stress from conforming to the group/leader’s expectation&quot;</span>,</span>
-<span id="cb40-52"><a href="data-preparation.html#cb40-52" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q58 =</span> <span class="st">&quot;Terror or horror being used to motivate religious decisions&quot;</span>,</span>
-<span id="cb40-53"><a href="data-preparation.html#cb40-53" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q59 =</span> <span class="st">&quot;Seeing the pastor or group blame the victim of abuse for the abuse itself&quot;</span>,</span>
-<span id="cb40-54"><a href="data-preparation.html#cb40-54" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q60 =</span> <span class="st">&quot;Being encouraged to remain in an abusive marriage by religious leaders&quot;</span>,</span>
-<span id="cb40-55"><a href="data-preparation.html#cb40-55" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q61 =</span> <span class="st">&quot;Vivid descriptions of the end of the world being taught to young children that are developmentally inappropriate and/or anxiety-provoking&quot;</span>,</span>
-<span id="cb40-56"><a href="data-preparation.html#cb40-56" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q62 =</span> <span class="st">&quot;Seeing Scripture used to justify physical violence&quot;</span>,</span>
-<span id="cb40-57"><a href="data-preparation.html#cb40-57" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q63 =</span> <span class="st">&quot;Being shamed by my pastor or the group for raising questions or concerns&quot;</span>,</span>
-<span id="cb40-58"><a href="data-preparation.html#cb40-58" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q64 =</span> <span class="st">&quot;Witnessing women being pressured to stay in unfaithful or abusive marriages&quot;</span>,</span>
-<span id="cb40-59"><a href="data-preparation.html#cb40-59" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q65 =</span> <span class="st">&quot;Being “cut off” or shunned by more religious family members&quot;</span>,</span>
-<span id="cb40-60"><a href="data-preparation.html#cb40-60" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q66 =</span> <span class="st">&quot;Seeing others treated as “less than” because of their sexual orientation&quot;</span>,</span>
-<span id="cb40-61"><a href="data-preparation.html#cb40-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-62"><a href="data-preparation.html#cb40-62" aria-hidden="true" tabindex="-1"></a>      <span class="co"># VARIABLE LABELS: Items for Internal States Subscale</span></span>
-<span id="cb40-63"><a href="data-preparation.html#cb40-63" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q68 =</span> <span class="st">&quot;Anxiety attacks triggered by religious stimuli&quot;</span>,</span>
-<span id="cb40-64"><a href="data-preparation.html#cb40-64" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q69 =</span> <span class="st">&quot;A lack of spiritual direction or purpose&quot;</span>,</span>
-<span id="cb40-65"><a href="data-preparation.html#cb40-65" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q70 =</span> <span class="st">&quot;Feeling betrayed by God&quot;</span>,</span>
-<span id="cb40-66"><a href="data-preparation.html#cb40-66" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q71 =</span> <span class="st">&quot;Personally avoiding religious activities or settings to reduce distressing feelings&quot;</span>,</span>
-<span id="cb40-67"><a href="data-preparation.html#cb40-67" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q72 =</span> <span class="st">&quot;Feeling as if God harmed me directly&quot;</span>,</span>
-<span id="cb40-68"><a href="data-preparation.html#cb40-68" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q73 =</span> <span class="st">&quot;Self-hatred or self-loathing&quot;</span>,</span>
-<span id="cb40-69"><a href="data-preparation.html#cb40-69" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q74 =</span> <span class="st">&quot;Sadness over the loss of my faith/religious community&quot;</span>,</span>
-<span id="cb40-70"><a href="data-preparation.html#cb40-70" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q76 =</span> <span class="st">&quot;Feeling that I wasted years of my life in a particular church or set of beliefs&quot;</span>,</span>
-<span id="cb40-71"><a href="data-preparation.html#cb40-71" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q77 =</span> <span class="st">&quot;Anger upon reflecting on negative religious experiences&quot;</span>,</span>
-<span id="cb40-72"><a href="data-preparation.html#cb40-72" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q78 =</span> <span class="st">&quot;A lack of self-worth&quot;</span>,</span>
-<span id="cb40-73"><a href="data-preparation.html#cb40-73" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q79 =</span> <span class="st">&quot;Distrust of God&quot;</span>,</span>
-<span id="cb40-74"><a href="data-preparation.html#cb40-74" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q80 =</span> <span class="st">&quot;Feeling isolated&quot;</span>,</span>
-<span id="cb40-75"><a href="data-preparation.html#cb40-75" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q81 =</span> <span class="st">&quot;Nightmares about my negative religious experiences&quot;</span>,</span>
-<span id="cb40-76"><a href="data-preparation.html#cb40-76" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q82 =</span> <span class="st">&quot;Having trouble navigating life outside my church/community&quot;</span>,</span>
-<span id="cb40-77"><a href="data-preparation.html#cb40-77" aria-hidden="true" tabindex="-1"></a>          </span>
-<span id="cb40-78"><a href="data-preparation.html#cb40-78" aria-hidden="true" tabindex="-1"></a>      <span class="co"># VALUE LABELS: Items for External Events Subscale</span></span>
-<span id="cb40-79"><a href="data-preparation.html#cb40-79" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q7  =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-80"><a href="data-preparation.html#cb40-80" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q10 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-81"><a href="data-preparation.html#cb40-81" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q11 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-82"><a href="data-preparation.html#cb40-82" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q16 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-83"><a href="data-preparation.html#cb40-83" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q17 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-84"><a href="data-preparation.html#cb40-84" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q18 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-85"><a href="data-preparation.html#cb40-85" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q19 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-86"><a href="data-preparation.html#cb40-86" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q20 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-87"><a href="data-preparation.html#cb40-87" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q21 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-88"><a href="data-preparation.html#cb40-88" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q22 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-89"><a href="data-preparation.html#cb40-89" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q23 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-90"><a href="data-preparation.html#cb40-90" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q24 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-91"><a href="data-preparation.html#cb40-91" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q25 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-92"><a href="data-preparation.html#cb40-92" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q26 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-93"><a href="data-preparation.html#cb40-93" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q27 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-94"><a href="data-preparation.html#cb40-94" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q28 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-95"><a href="data-preparation.html#cb40-95" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q29 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-96"><a href="data-preparation.html#cb40-96" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q30 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-97"><a href="data-preparation.html#cb40-97" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q31 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-98"><a href="data-preparation.html#cb40-98" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q32 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-99"><a href="data-preparation.html#cb40-99" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q34 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-100"><a href="data-preparation.html#cb40-100" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q35 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-101"><a href="data-preparation.html#cb40-101" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q36 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-102"><a href="data-preparation.html#cb40-102" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q37 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-103"><a href="data-preparation.html#cb40-103" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q38 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-104"><a href="data-preparation.html#cb40-104" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q39 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-105"><a href="data-preparation.html#cb40-105" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q40 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-106"><a href="data-preparation.html#cb40-106" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q41 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-107"><a href="data-preparation.html#cb40-107" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q42 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-108"><a href="data-preparation.html#cb40-108" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q43 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-109"><a href="data-preparation.html#cb40-109" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q44 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-110"><a href="data-preparation.html#cb40-110" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q45 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-111"><a href="data-preparation.html#cb40-111" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q46 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-112"><a href="data-preparation.html#cb40-112" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q47 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-113"><a href="data-preparation.html#cb40-113" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q49 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-114"><a href="data-preparation.html#cb40-114" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q50 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-115"><a href="data-preparation.html#cb40-115" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q51 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-116"><a href="data-preparation.html#cb40-116" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q52 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-117"><a href="data-preparation.html#cb40-117" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q53 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-118"><a href="data-preparation.html#cb40-118" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q54 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-119"><a href="data-preparation.html#cb40-119" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q55 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-120"><a href="data-preparation.html#cb40-120" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q56 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-121"><a href="data-preparation.html#cb40-121" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q57 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-122"><a href="data-preparation.html#cb40-122" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q58 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-123"><a href="data-preparation.html#cb40-123" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q59 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-124"><a href="data-preparation.html#cb40-124" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q60 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-125"><a href="data-preparation.html#cb40-125" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q61 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-126"><a href="data-preparation.html#cb40-126" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q62 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-127"><a href="data-preparation.html#cb40-127" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q63 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-128"><a href="data-preparation.html#cb40-128" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q64 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-129"><a href="data-preparation.html#cb40-129" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q65 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-130"><a href="data-preparation.html#cb40-130" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q66 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-131"><a href="data-preparation.html#cb40-131" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb40-132"><a href="data-preparation.html#cb40-132" aria-hidden="true" tabindex="-1"></a>      <span class="co"># VALUE LABELS for Internal States Subscale</span></span>
-<span id="cb40-133"><a href="data-preparation.html#cb40-133" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q68 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-134"><a href="data-preparation.html#cb40-134" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q69 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-135"><a href="data-preparation.html#cb40-135" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q70 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-136"><a href="data-preparation.html#cb40-136" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q71 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-137"><a href="data-preparation.html#cb40-137" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q72 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-138"><a href="data-preparation.html#cb40-138" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q73 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-139"><a href="data-preparation.html#cb40-139" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q74 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-140"><a href="data-preparation.html#cb40-140" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q76 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-141"><a href="data-preparation.html#cb40-141" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q77 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-142"><a href="data-preparation.html#cb40-142" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q78 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-143"><a href="data-preparation.html#cb40-143" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q80 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-144"><a href="data-preparation.html#cb40-144" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q81 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-145"><a href="data-preparation.html#cb40-145" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q82 =</span> <span class="fu">c</span>(<span class="st">&quot;Never&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Once or twice&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Sometimes&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Often&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All the time&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-146"><a href="data-preparation.html#cb40-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-147"><a href="data-preparation.html#cb40-147" aria-hidden="true" tabindex="-1"></a>      <span class="co"># VARIABLE LABELS for Demographics</span></span>
-<span id="cb40-148"><a href="data-preparation.html#cb40-148" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q84 =</span> <span class="st">&quot;Age&quot;</span>,</span>
-<span id="cb40-149"><a href="data-preparation.html#cb40-149" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q85 =</span> <span class="st">&quot;Gender&quot;</span>,</span>
-<span id="cb40-150"><a href="data-preparation.html#cb40-150" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q86 =</span> <span class="st">&quot;Sexual orientation&quot;</span>,</span>
-<span id="cb40-151"><a href="data-preparation.html#cb40-151" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q87 =</span> <span class="st">&quot;Race&quot;</span>,</span>
-<span id="cb40-152"><a href="data-preparation.html#cb40-152" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q88 =</span> <span class="st">&quot;Raised in Christian home&quot;</span>,</span>
-<span id="cb40-153"><a href="data-preparation.html#cb40-153" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q89 =</span> <span class="st">&quot;Denomination/group of most negative experience&quot;</span>,</span>
-<span id="cb40-154"><a href="data-preparation.html#cb40-154" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q90 =</span> <span class="st">&quot;Racial makeup of denomination/group of most negative experience&quot;</span>,</span>
-<span id="cb40-155"><a href="data-preparation.html#cb40-155" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q91 =</span> <span class="st">&quot;Race of leadership of denomination/group of most negative experience&quot;</span>,</span>
-<span id="cb40-156"><a href="data-preparation.html#cb40-156" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q92 =</span> <span class="st">&quot;Gender of leadership of denomination/group of most negative experience&quot;</span>,</span>
-<span id="cb40-157"><a href="data-preparation.html#cb40-157" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q95 =</span> <span class="st">&quot;Involvement in denomination/group of most negative experience&quot;</span>,</span>
-<span id="cb40-158"><a href="data-preparation.html#cb40-158" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q93 =</span> <span class="st">&quot;Current religious identification&quot;</span>,</span>
-<span id="cb40-159"><a href="data-preparation.html#cb40-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-160"><a href="data-preparation.html#cb40-160" aria-hidden="true" tabindex="-1"></a>      <span class="co"># VALUE LABELS for Demographics</span></span>
-<span id="cb40-161"><a href="data-preparation.html#cb40-161" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q85 =</span> <span class="fu">c</span>(<span class="st">&quot;Cisgender Male&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Cisgender Female&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Transgender Male&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Transgender Female&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;Other&quot;</span><span class="ot">=</span><span class="dv">5</span>,<span class="st">&quot;Prefer not to say&quot;</span><span class="ot">=</span><span class="dv">6</span>),</span>
-<span id="cb40-162"><a href="data-preparation.html#cb40-162" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q86 =</span> <span class="fu">c</span>(<span class="st">&quot;Straight&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Gay/Lesbian&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Bisexual&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Asexual&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;Queer&quot;</span><span class="ot">=</span><span class="dv">5</span>,<span class="st">&quot;Don&#39;t Know&quot;</span><span class="ot">=</span><span class="dv">6</span>),</span>
-<span id="cb40-163"><a href="data-preparation.html#cb40-163" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q87 =</span> <span class="fu">c</span>(<span class="st">&quot;Ethnically of Hispanic/Latino origin&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Black/African American&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;White/European American&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Asian&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;American Indian/Alaska Native&quot;</span><span class="ot">=</span><span class="dv">5</span>,<span class="st">&quot;Native Hawaiian/Pacific Islander&quot;</span><span class="ot">=</span><span class="dv">6</span>,<span class="st">&quot;Other&quot;</span><span class="ot">=</span><span class="dv">7</span>),</span>
-<span id="cb40-164"><a href="data-preparation.html#cb40-164" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q88 =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;No&quot;</span><span class="ot">=</span><span class="dv">2</span>),</span>
-<span id="cb40-165"><a href="data-preparation.html#cb40-165" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q89 =</span> <span class="fu">c</span>(<span class="st">&quot;Catholic&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Charismatic/Pentecostal&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Baptist&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Mainline (Methodist, Lutheran, Episcopal/Anglican, Presbyterian, United Church of Christ, etc.)&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;Non-denominational&quot;</span><span class="ot">=</span><span class="dv">5</span>,<span class="st">&quot;Orthodox Christian (Greek, Russian, Ethiopian, etc.)&quot;</span><span class="ot">=</span><span class="dv">6</span>,<span class="st">&quot;Mormon&quot;</span><span class="ot">=</span><span class="dv">7</span>,<span class="st">&quot;Christian church other than the above&quot;</span><span class="ot">=</span><span class="dv">8</span>,<span class="st">&quot;Evangelistic/Missions organization (Billy Graham Assoc., YWAM, Fellowship of Christian Athletes, Teen Missions, Africa Inland Mission, Wycliff Bible Translators, Youth for Christ, etc.)&quot;</span><span class="ot">=</span><span class="dv">9</span>,<span class="st">&quot;College Christian organization (Cru/Campus Crusade for Christ, InterVarsity, Navigators, etc.)&quot;</span><span class="ot">=</span><span class="dv">10</span>,<span class="st">&quot;Christian Youth Organization (YoungLife, Awana, Teen Challenge, etc.)&quot;</span><span class="ot">=</span><span class="dv">11</span>,<span class="st">&quot;Christian Media Company (Publisher, Record Label, Focus on the Family, etc.)&quot;</span><span class="ot">=</span><span class="dv">12</span>,<span class="st">&quot;Christian school or university&quot;</span><span class="ot">=</span><span class="dv">13</span>,<span class="st">&quot;Christian political/activist group&quot;</span><span class="ot">=</span><span class="dv">14</span>,<span class="st">&quot;Christian aid/social services group (World Vision, Samaritan&#39;s Purse, Catholic Relief Services, etc.)&quot;</span><span class="ot">=</span><span class="dv">15</span>,<span class="st">&quot;Local Bible study or small group&quot;</span><span class="ot">=</span><span class="dv">16</span>,<span class="st">&quot;Christian group other than the above&quot;</span><span class="ot">=</span><span class="dv">17</span>),</span>
-<span id="cb40-166"><a href="data-preparation.html#cb40-166" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q90 =</span> <span class="fu">c</span>(<span class="st">&quot;Predominantly white&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Mixed race&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Predominantly people of color&quot;</span><span class="ot">=</span><span class="dv">3</span>),</span>
-<span id="cb40-167"><a href="data-preparation.html#cb40-167" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q91 =</span> <span class="fu">c</span>(<span class="st">&quot;Predominantly white&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Mixed race&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Predominantly people of color&quot;</span><span class="ot">=</span><span class="dv">3</span>),</span>
-<span id="cb40-168"><a href="data-preparation.html#cb40-168" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q92 =</span> <span class="fu">c</span>(<span class="st">&quot;All male&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Mostly male&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Mixed gender&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Mostly female&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;All female&quot;</span><span class="ot">=</span><span class="dv">5</span>),</span>
-<span id="cb40-169"><a href="data-preparation.html#cb40-169" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q95 =</span> <span class="fu">c</span>(<span class="st">&quot;Strongly disagree&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;2&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;3&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;4&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;5&quot;</span><span class="ot">=</span><span class="dv">5</span>,<span class="st">&quot;6&quot;</span><span class="ot">=</span><span class="dv">6</span>,<span class="st">&quot;Strongly agree&quot;</span><span class="ot">=</span><span class="dv">7</span>),</span>
-<span id="cb40-170"><a href="data-preparation.html#cb40-170" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q93 =</span> <span class="fu">c</span>(<span class="st">&quot;Protestant&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;Catholic&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;Mormon&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;Orthodox Christian&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;Other religious tradition (Jewish, Muslim, Buddhist, etc.)&quot;</span><span class="ot">=</span><span class="dv">5</span>,<span class="st">&quot;Atheist&quot;</span><span class="ot">=</span><span class="dv">6</span>,<span class="st">&quot;Agnostic&quot;</span><span class="ot">=</span><span class="dv">7</span>,<span class="st">&quot;Nothing in particular&quot;</span><span class="ot">=</span><span class="dv">8</span>),</span>
-<span id="cb40-171"><a href="data-preparation.html#cb40-171" aria-hidden="true" tabindex="-1"></a>                </span>
-<span id="cb40-172"><a href="data-preparation.html#cb40-172" aria-hidden="true" tabindex="-1"></a>      <span class="co"># VARIABLE LABELS for If current = Protestant/Catholic/Mormon/Orthodox Christian</span></span>
-<span id="cb40-173"><a href="data-preparation.html#cb40-173" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q97 =</span> <span class="st">&quot;Current theological self-perception&quot;</span>,</span>
-<span id="cb40-174"><a href="data-preparation.html#cb40-174" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q98 =</span> <span class="st">&quot;Current feelings about the Bible&quot;</span>,</span>
-<span id="cb40-175"><a href="data-preparation.html#cb40-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-176"><a href="data-preparation.html#cb40-176" aria-hidden="true" tabindex="-1"></a>      <span class="co"># VALUE LABELS for If current = Protestant/Catholic/Mormon/Orthodox Christian</span></span>
-<span id="cb40-177"><a href="data-preparation.html#cb40-177" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q97 =</span> <span class="fu">c</span>(<span class="st">&quot;Very Conservative&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;2&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;3&quot;</span><span class="ot">=</span><span class="dv">3</span>,<span class="st">&quot;In the Middle&quot;</span><span class="ot">=</span><span class="dv">4</span>,<span class="st">&quot;5&quot;</span><span class="ot">=</span><span class="dv">5</span>,<span class="st">&quot;6&quot;</span><span class="ot">=</span><span class="dv">6</span>,<span class="st">&quot;Very Liberal&quot;</span><span class="ot">=</span><span class="dv">7</span>),</span>
-<span id="cb40-178"><a href="data-preparation.html#cb40-178" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q98 =</span> <span class="fu">c</span>(<span class="st">&quot;The Bible is the actual word of God and is to be taken literally, word for word&quot;</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">&quot;The Bible is the inspired word of God but not everything should be taken literally, word for word&quot;</span><span class="ot">=</span><span class="dv">2</span>,<span class="st">&quot;The Bible is an ancient book of fables, legends, history and moral precepts recorded by man&quot;</span><span class="ot">=</span><span class="dv">3</span>)</span>
-<span id="cb40-179"><a href="data-preparation.html#cb40-179" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb40-180"><a href="data-preparation.html#cb40-180" aria-hidden="true" tabindex="-1"></a><span class="co"># list the variables</span></span>
-<span id="cb40-181"><a href="data-preparation.html#cb40-181" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(shas)</span></code></pre></div>
-<pre><code>##   [1] &quot;StartDate&quot;             &quot;EndDate&quot;               &quot;Status&quot;               
-##   [4] &quot;Progress&quot;              &quot;Duration__in_seconds_&quot; &quot;Finished&quot;             
-##   [7] &quot;RecordedDate&quot;          &quot;ResponseId&quot;            &quot;UserLanguage&quot;         
-##  [10] &quot;Q4&quot;                    &quot;Q6&quot;                    &quot;Q5&quot;                   
-##  [13] &quot;Q14&quot;                   &quot;Q7&quot;                    &quot;Q10&quot;                  
-##  [16] &quot;Q11&quot;                   &quot;Q16&quot;                   &quot;Q17&quot;                  
-##  [19] &quot;Q18&quot;                   &quot;Q19&quot;                   &quot;Q20&quot;                  
-##  [22] &quot;Q21&quot;                   &quot;Q22&quot;                   &quot;Q23&quot;                  
-##  [25] &quot;Q24&quot;                   &quot;Q25&quot;                   &quot;Q26&quot;                  
-##  [28] &quot;Q27&quot;                   &quot;Q28&quot;                   &quot;Q29&quot;                  
-##  [31] &quot;Q30&quot;                   &quot;Q31&quot;                   &quot;Q32&quot;                  
-##  [34] &quot;Q34&quot;                   &quot;Q35&quot;                   &quot;Q36&quot;                  
-##  [37] &quot;Q37&quot;                   &quot;Q38&quot;                   &quot;Q39&quot;                  
-##  [40] &quot;Q40&quot;                   &quot;Q41&quot;                   &quot;Q42&quot;                  
-##  [43] &quot;Q43&quot;                   &quot;Q44&quot;                   &quot;Q45&quot;                  
-##  [46] &quot;Q46&quot;                   &quot;Q47&quot;                   &quot;Q49&quot;                  
-##  [49] &quot;Q50&quot;                   &quot;Q51&quot;                   &quot;Q52&quot;                  
-##  [52] &quot;Q53&quot;                   &quot;Q54&quot;                   &quot;Q55&quot;                  
-##  [55] &quot;Q56&quot;                   &quot;Q57&quot;                   &quot;Q58&quot;                  
-##  [58] &quot;Q59&quot;                   &quot;Q60&quot;                   &quot;Q61&quot;                  
-##  [61] &quot;Q62&quot;                   &quot;Q63&quot;                   &quot;Q64&quot;                  
-##  [64] &quot;Q65&quot;                   &quot;Q66&quot;                   &quot;Q68&quot;                  
-##  [67] &quot;Q69&quot;                   &quot;Q70&quot;                   &quot;Q71&quot;                  
-##  [70] &quot;Q72&quot;                   &quot;Q73&quot;                   &quot;Q74&quot;                  
-##  [73] &quot;Q76&quot;                   &quot;Q77&quot;                   &quot;Q78&quot;                  
-##  [76] &quot;Q79&quot;                   &quot;Q80&quot;                   &quot;Q81&quot;                  
-##  [79] &quot;Q82&quot;                   &quot;Q84&quot;                   &quot;Q85&quot;                  
-##  [82] &quot;Q86&quot;                   &quot;Q87&quot;                   &quot;Q88&quot;                  
-##  [85] &quot;Q89&quot;                   &quot;Q90&quot;                   &quot;Q91&quot;                  
-##  [88] &quot;Q92&quot;                   &quot;Q95&quot;                   &quot;Q93&quot;                  
-##  [91] &quot;Q97&quot;                   &quot;Q98&quot;                   &quot;Generation&quot;           
-##  [94] &quot;Ext_Avg&quot;               &quot;Int_Avg&quot;               &quot;Global_Avg&quot;           
-##  [97] &quot;Podcast_Usage&quot;         &quot;FAC1_6&quot;                &quot;FAC2_6&quot;               
-## [100] &quot;FAC3_6&quot;                &quot;FAC4_6&quot;                &quot;FAC5_6&quot;               
-## [103] &quot;FAC6_6&quot;                &quot;FAC7_6&quot;                &quot;FAC8_6&quot;               
-## [106] &quot;FAC9_6&quot;                &quot;Avg_33&quot;                &quot;Unable_Group&quot;         
-## [109] &quot;ChristianToday&quot;        &quot;Cons_Lib&quot;              &quot;FAC1_1&quot;               
-## [112] &quot;FAC2_1&quot;                &quot;FAC3_1&quot;                &quot;FAC4_1&quot;               
-## [115] &quot;FAC5_1&quot;                &quot;FAC6_1&quot;                &quot;AOA&quot;                  
-## [118] &quot;PA&quot;                    &quot;VHP&quot;                   &quot;AL&quot;                   
-## [121] &quot;HGI&quot;                   &quot;GD&quot;                    &quot;F27&quot;                  
-## [124] &quot;FAC1_2&quot;                &quot;FAC2_2&quot;                &quot;FAC3_2&quot;               
-## [127] &quot;FAC4_2&quot;                &quot;FAC5_2&quot;                &quot;FAC6_2&quot;               
-## [130] &quot;ConLead&quot;               &quot;FullNew&quot;</code></pre>
-</div>
-<div id="summarize-data" class="section level2 hasAnchor">
-<h2>Summarize data<a href="data-preparation.html#summarize-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>A good way to begin the analysis is to explore the data. The <code>describe</code> function from <code>psych</code> library provides a nice tool for presenting the descriptive statistics for a set of items. In R there are different ways to present a table, but here in R Markdown I’m passing the <code>describe</code> function into an object called “stats”, then calling the <code>kable</code> function (from the <code>knitr</code> package) to render the table.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="data-preparation.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SUMMARIZE DATA</span></span>
-<span id="cb42-2"><a href="data-preparation.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(shas)</span></code></pre></div>
-<pre><code>## Warning in FUN(newX[, i], ...): no non-missing arguments to min; returning Inf
-
-## Warning in FUN(newX[, i], ...): no non-missing arguments to min; returning Inf
-
-## Warning in FUN(newX[, i], ...): no non-missing arguments to min; returning Inf</code></pre>
-<pre><code>## Warning in FUN(newX[, i], ...): no non-missing arguments to max; returning -Inf
-
-## Warning in FUN(newX[, i], ...): no non-missing arguments to max; returning -Inf
-
-## Warning in FUN(newX[, i], ...): no non-missing arguments to max; returning -Inf</code></pre>
-<pre><code>##                       vars    n    mean       sd  median trimmed     mad    min
-## StartDate                1 3222     NaN       NA      NA     NaN      NA    Inf
-## EndDate                  2 3222     NaN       NA      NA     NaN      NA    Inf
-## Status                   3 3222    4.00     0.00    4.00    4.00    0.00   4.00
-## Progress                 4 3222   98.46     6.89  100.00  100.00    0.00  67.00
-## Duration__in_seconds_    5 3222 2924.96 20524.80  719.00  789.60  289.11 117.00
-## Finished                 6 3222    0.95     0.22    1.00    1.00    0.00   0.00
-## RecordedDate             7 3222     NaN       NA      NA     NaN      NA    Inf
-## ResponseId*              8 3222 1611.50   930.26 1611.50 1611.50 1194.23   1.00
-## UserLanguage*            9 3221    1.00     0.00    1.00    1.00    0.00   1.00
-## Q4                      10 3221    1.00     0.00    1.00    1.00    0.00   1.00
-## Q6                      11 3221    1.00     0.00    1.00    1.00    0.00   1.00
-## Q5                      12 3176    1.49     2.32    1.00    1.02    1.48   0.00
-## Q14                     13 3221    1.00     0.00    1.00    1.00    0.00   1.00
-## Q7                      14 3215    2.54     1.43    2.00    2.42    1.48   1.00
-## Q10                     15 3220    1.83     1.18    1.00    1.61    0.00   1.00
-## Q11                     16 3216    2.52     1.35    2.00    2.40    1.48   1.00
-## Q16                     17 3217    2.13     1.27    2.00    1.96    1.48   1.00
-## Q17                     18 3208    1.34     0.97    1.00    1.03    0.00   1.00
-## Q18                     19 3220    2.75     1.37    3.00    2.68    1.48   1.00
-## Q19                     20 3219    2.32     1.33    2.00    2.18    1.48   1.00
-## Q20                     21 3217    2.16     1.39    2.00    1.95    1.48   1.00
-## Q21                     22 3218    2.20     1.47    1.00    2.00    0.00   1.00
-## Q22                     23 3218    3.33     1.49    4.00    3.41    1.48   1.00
-## Q23                     24 3219    1.92     1.13    1.00    1.73    0.00   1.00
-## Q24                     25 3221    1.89     1.18    1.00    1.68    0.00   1.00
-## Q25                     26 3217    3.18     1.32    3.00    3.23    1.48   1.00
-## Q26                     27 3212    1.87     1.27    1.00    1.63    0.00   1.00
-## Q27                     28 3217    1.94     1.35    1.00    1.69    0.00   1.00
-## Q28                     29 3216    2.26     1.25    2.00    2.13    1.48   1.00
-## Q29                     30 3213    2.47     1.34    2.00    2.35    1.48   1.00
-## Q30                     31 3219    2.04     1.25    2.00    1.87    1.48   1.00
-## Q31                     32 3217    2.03     1.19    2.00    1.86    1.48   1.00
-## Q32                     33 3219    2.79     1.32    3.00    2.73    1.48   1.00
-## Q34                     34 3219    2.46     1.33    2.00    2.34    1.48   1.00
-## Q35                     35 3217    3.12     1.39    3.00    3.15    1.48   1.00
-## Q36                     36 3216    2.78     1.34    3.00    2.72    1.48   1.00
-## Q37                     37 3221    2.94     1.38    3.00    2.92    1.48   1.00
-## Q38                     38 3217    2.95     1.40    3.00    2.94    1.48   1.00
-## Q39                     39 3219    3.05     1.48    3.00    3.07    1.48   1.00
-## Q40                     40 3220    2.28     1.39    2.00    2.10    1.48   1.00
-## Q41                     41 3211    1.27     0.88    1.00    1.01    0.00   1.00
-## Q42                     42 3215    2.60     1.25    3.00    2.52    1.48   1.00
-## Q43                     43 3217    2.04     1.18    2.00    1.88    1.48   1.00
-## Q44                     44 3217    2.61     1.35    3.00    2.52    1.48   1.00
-## Q45                     45 3219    2.76     1.45    3.00    2.70    1.48   1.00
-## Q46                     46 3211    1.11     0.48    1.00    1.00    0.00   1.00
-## Q47                     47 3218    1.48     0.86    1.00    1.29    0.00   1.00
-## Q49                     48 3213    2.12     1.23    2.00    1.96    1.48   1.00
-## Q50                     49 3219    2.23     1.47    1.00    2.04    0.00   1.00
-## Q51                     50 3216    2.33     1.38    2.00    2.17    1.48   1.00
-## Q52                     51 3217    2.08     1.26    2.00    1.90    1.48   1.00
-## Q53                     52 3218    2.36     1.35    2.00    2.21    1.48   1.00
-## Q54                     53 3217    2.92     1.40    3.00    2.90    1.48   1.00
-## Q55                     54 3205    1.58     0.95    1.00    1.38    0.00   1.00
-## Q56                     55 3217    2.72     1.37    3.00    2.65    1.48   1.00
-## Q57                     56 3219    2.15     1.33    2.00    1.97    1.48   1.00
-## Q58                     57 3220    2.53     1.34    2.00    2.42    1.48   1.00
-## Q59                     58 3217    2.16     1.23    2.00    2.02    1.48   1.00
-## Q60                     59 3214    1.49     0.99    1.00    1.24    0.00   1.00
-## Q61                     60 3219    2.78     1.47    3.00    2.73    1.48   1.00
-## Q62                     61 3220    2.16     1.24    2.00    2.02    1.48   1.00
-## Q63                     62 3217    2.30     1.25    2.00    2.17    1.48   1.00
-## Q64                     63 3220    2.26     1.27    2.00    2.11    1.48   1.00
-## Q65                     64 3220    1.82     1.18    1.00    1.60    0.00   1.00
-## Q66                     65 3216    3.27     1.41    3.00    3.33    1.48   1.00
-## Q68                     66 3073    2.06     1.23    2.00    1.89    1.48   1.00
-## Q69                     67 3071    3.01     1.20    3.00    3.02    1.48   1.00
-## Q70                     68 3069    2.11     1.18    2.00    1.96    1.48   1.00
-## Q71                     69 3074    3.01     1.36    3.00    3.01    1.48   1.00
-## Q72                     70 3070    1.64     0.99    1.00    1.44    0.00   1.00
-## Q73                     71 3072    2.50     1.31    2.00    2.39    1.48   1.00
-## Q74                     72 3071    2.79     1.29    3.00    2.74    1.48   1.00
-## Q76                     73 3072    2.83     1.48    3.00    2.78    1.48   1.00
-## Q77                     74 3075    3.08     1.28    3.00    3.10    1.48   1.00
-## Q78                     75 3071    2.77     1.30    3.00    2.72    1.48   1.00
-## Q79                     76 3068    2.40     1.27    2.00    2.27    1.48   1.00
-## Q80                     77 3070    3.07     1.23    3.00    3.09    1.48   1.00
-## Q81                     78 3073    1.77     1.04    1.00    1.59    0.00   1.00
-## Q82                     79 3071    2.24     1.21    2.00    2.10    1.48   1.00
-## Q84                     80 3056   38.57    12.27   36.00   37.21   10.38  16.00
-## Q85                     81 3060    1.67     0.82    2.00    1.59    0.00   1.00
-## Q86                     82 3064    1.36     1.01    1.00    1.07    0.00   1.00
-## Q87                     83 3060    3.08     0.79    3.00    3.00    0.00   1.00
-## Q88                     84 3061    1.09     0.28    1.00    1.00    0.00   1.00
-## Q89                     85 3047    5.19     3.33    5.00    4.69    2.97   1.00
-## Q90                     86 3042    1.15     0.41    1.00    1.04    0.00   1.00
-## Q91                     87 3044    1.10     0.35    1.00    1.00    0.00   1.00
-## Q92                     88 3048    1.82     0.79    2.00    1.76    1.48   1.00
-## Q95                     89 3054    5.54     1.99    7.00    5.92    0.00   1.00
-## Q93                     90 3057    3.24     2.96    1.00    2.92    0.00   1.00
-## Q97                     91 2030    4.49     1.55    5.00    4.54    1.48   1.00
-## Q98                     92 3054    2.23     0.54    2.00    2.23    0.00   1.00
-## Generation              93 3056    2.43     0.79    2.00    2.35    0.00   1.00
-## Ext_Avg                 94 3222    2.31     0.87    2.23    2.26    1.05   1.00
-## Int_Avg                 95 3075    2.52     0.91    2.50    2.49    1.06   1.00
-## Global_Avg              96 3222    2.40     0.86    2.37    2.37    1.02   1.00
-## Podcast_Usage           97 3060    1.60     0.63    2.00    1.53    1.48   1.00
-## FAC1_6                  98 2979    0.00     1.00   -0.17   -0.06    0.90  -2.89
-## FAC2_6                  99 2979    0.00     1.00    0.00   -0.02    1.09  -2.97
-## FAC3_6                 100 2979    0.00     1.00   -0.06   -0.04    1.08  -3.18
-## FAC4_6                 101 2979    0.00     1.00   -0.11   -0.07    0.84  -2.69
-## FAC5_6                 102 2979    0.00     1.00   -0.10   -0.05    0.88  -3.37
-## FAC6_6                 103 2979    0.00     1.00   -0.25   -0.06    0.89  -2.69
-## FAC7_6                 104 2979    0.00     1.00   -0.09   -0.06    0.78  -3.13
-## FAC8_6                 105 2979    0.00     1.00   -0.21   -0.19    0.45  -1.66
-## FAC9_6                 106 2979    0.00     1.00   -0.30   -0.17    0.42  -1.55
-## Avg_33                 107 3222    2.33     0.86    2.24    2.28    1.03   1.00
-## Unable_Group           108 3217    1.45     0.50    1.00    1.44    0.00   1.00
-## ChristianToday         109 3057    0.67     0.47    1.00    0.71    0.00   0.00
-## Cons_Lib               110  822    1.70     0.46    2.00    1.75    0.00   1.00
-## FAC1_1                 111 2985    0.00     0.97   -0.28   -0.12    0.91  -1.53
-## FAC2_1                 112 2985    0.00     0.97    0.09    0.02    1.12  -1.93
-## FAC3_1                 113 2985    0.00     0.97   -0.04   -0.04    1.22  -1.68
-## FAC4_1                 114 2985    0.00     0.96   -0.08   -0.04    1.17  -1.65
-## FAC5_1                 115 2985    0.00     0.90   -0.20   -0.08    0.80  -2.33
-## FAC6_1                 116 2985    0.00     0.95   -0.33   -0.10    0.88  -1.50
-## AOA                    117 3222   10.35     5.09    9.00    9.70    4.45   1.00
-## PA                     118 3075   22.45     7.92   23.00   22.48    8.90   4.00
-## VHP                    119 3222    9.83     4.53    9.00    9.53    5.93   1.00
-## AL                     120 3222   10.89     5.05   10.00   10.36    5.93   2.00
-## HGI                    121 3073    6.14     3.02    5.00    5.74    2.97   2.00
-## GD                     122 3220    4.17     2.66    3.00    3.76    1.48   1.00
-## F27                    123 3222   62.51    23.77   61.00   61.52   26.69   4.00
-## FAC1_2                 124 2985    0.00     0.97   -0.28   -0.12    0.91  -1.53
-## FAC2_2                 125 2985    0.00     0.97    0.09    0.02    1.12  -1.93
-## FAC3_2                 126 2985    0.00     0.97   -0.04   -0.04    1.22  -1.68
-## FAC4_2                 127 2985    0.00     0.96   -0.08   -0.04    1.17  -1.65
-## FAC5_2                 128 2985    0.00     0.90   -0.20   -0.08    0.80  -2.33
-## FAC6_2                 129 2985    0.00     0.95   -0.33   -0.10    0.88  -1.50
-## ConLead                130 3222   12.33     5.25   12.00   12.03    5.93   1.00
-## FullNew                131 3222   63.92    24.04   63.00   63.06   28.17   3.00
-##                             max     range  skew kurtosis     se
-## StartDate                  -Inf      -Inf    NA       NA     NA
-## EndDate                    -Inf      -Inf    NA       NA     NA
-## Status                     4.00      0.00   NaN      NaN   0.00
-## Progress                 100.00     33.00 -4.30    16.58   0.12
-## Duration__in_seconds_ 430932.00 430815.00 15.18   255.14 361.59
-## Finished                   1.00      1.00 -4.10    14.81   0.00
-## RecordedDate               -Inf      -Inf    NA       NA     NA
-## ResponseId*             3222.00   3221.00  0.00    -1.20  16.39
-## UserLanguage*              1.00      0.00   NaN      NaN   0.00
-## Q4                         1.00      0.00   NaN      NaN   0.00
-## Q6                         1.00      0.00   NaN      NaN   0.00
-## Q5                        30.00     30.00  3.56    22.97   0.04
-## Q14                        1.00      0.00   NaN      NaN   0.00
-## Q7                         5.00      4.00  0.39    -1.21   0.03
-## Q10                        5.00      4.00  1.25     0.44   0.02
-## Q11                        5.00      4.00  0.38    -1.12   0.02
-## Q16                        5.00      4.00  0.83    -0.50   0.02
-## Q17                        5.00      4.00  2.87     6.96   0.02
-## Q18                        5.00      4.00  0.14    -1.21   0.02
-## Q19                        5.00      4.00  0.56    -0.96   0.02
-## Q20                        5.00      4.00  0.82    -0.71   0.02
-## Q21                        5.00      4.00  0.81    -0.83   0.03
-## Q22                        5.00      4.00 -0.39    -1.28   0.03
-## Q23                        5.00      4.00  1.02     0.02   0.02
-## Q24                        5.00      4.00  1.10     0.07   0.02
-## Q25                        5.00      4.00 -0.26    -1.04   0.02
-## Q26                        5.00      4.00  1.24     0.21   0.02
-## Q27                        5.00      4.00  1.14    -0.13   0.02
-## Q28                        5.00      4.00  0.63    -0.73   0.02
-## Q29                        5.00      4.00  0.40    -1.08   0.02
-## Q30                        5.00      4.00  0.88    -0.46   0.02
-## Q31                        5.00      4.00  0.92    -0.20   0.02
-## Q32                        5.00      4.00  0.05    -1.14   0.02
-## Q34                        5.00      4.00  0.42    -1.05   0.02
-## Q35                        5.00      4.00 -0.18    -1.20   0.02
-## Q36                        5.00      4.00  0.11    -1.17   0.02
-## Q37                        5.00      4.00 -0.01    -1.22   0.02
-## Q38                        5.00      4.00 -0.01    -1.26   0.02
-## Q39                        5.00      4.00 -0.12    -1.37   0.03
-## Q40                        5.00      4.00  0.67    -0.88   0.02
-## Q41                        5.00      4.00  3.30     9.87   0.02
-## Q42                        5.00      4.00  0.28    -0.96   0.02
-## Q43                        5.00      4.00  0.86    -0.31   0.02
-## Q44                        5.00      4.00  0.24    -1.20   0.02
-## Q45                        5.00      4.00  0.18    -1.33   0.03
-## Q46                        5.00      4.00  5.15    28.93   0.01
-## Q47                        5.00      4.00  1.93     3.40   0.02
-## Q49                        5.00      4.00  0.79    -0.50   0.02
-## Q50                        5.00      4.00  0.70    -1.04   0.03
-## Q51                        5.00      4.00  0.59    -0.98   0.02
-## Q52                        5.00      4.00  0.85    -0.52   0.02
-## Q53                        5.00      4.00  0.55    -0.97   0.02
-## Q54                        5.00      4.00  0.01    -1.26   0.02
-## Q55                        5.00      4.00  1.66     2.12   0.02
-## Q56                        5.00      4.00  0.14    -1.24   0.02
-## Q57                        5.00      4.00  0.78    -0.70   0.02
-## Q58                        5.00      4.00  0.34    -1.09   0.02
-## Q59                        5.00      4.00  0.70    -0.65   0.02
-## Q60                        5.00      4.00  2.05     3.22   0.02
-## Q61                        5.00      4.00  0.14    -1.37   0.03
-## Q62                        5.00      4.00  0.69    -0.67   0.02
-## Q63                        5.00      4.00  0.58    -0.77   0.02
-## Q64                        5.00      4.00  0.67    -0.70   0.02
-## Q65                        5.00      4.00  1.27     0.48   0.02
-## Q66                        5.00      4.00 -0.34    -1.15   0.02
-## Q68                        5.00      4.00  0.83    -0.51   0.02
-## Q69                        5.00      4.00 -0.06    -0.83   0.02
-## Q70                        5.00      4.00  0.79    -0.36   0.02
-## Q71                        5.00      4.00 -0.06    -1.19   0.02
-## Q72                        5.00      4.00  1.52     1.55   0.02
-## Q73                        5.00      4.00  0.38    -1.00   0.02
-## Q74                        5.00      4.00  0.07    -1.08   0.02
-## Q76                        5.00      4.00  0.12    -1.39   0.03
-## Q77                        5.00      4.00 -0.16    -1.02   0.02
-## Q78                        5.00      4.00  0.10    -1.09   0.02
-## Q79                        5.00      4.00  0.50    -0.81   0.02
-## Q80                        5.00      4.00 -0.17    -0.91   0.02
-## Q81                        5.00      4.00  1.23     0.66   0.02
-## Q82                        5.00      4.00  0.62    -0.62   0.02
-## Q84                       88.00     72.00  0.98     0.59   0.22
-## Q85                        6.00      5.00  2.67    10.78   0.01
-## Q86                        6.00      5.00  3.08     9.04   0.02
-## Q87                        7.00      6.00  3.33    16.84   0.01
-## Q88                        2.00      1.00  2.93     6.60   0.01
-## Q89                       17.00     16.00  1.47     2.20   0.06
-## Q90                        3.00      2.00  2.69     6.85   0.01
-## Q91                        3.00      2.00  3.90    15.41   0.01
-## Q92                        5.00      4.00  0.48    -0.78   0.01
-## Q95                        7.00      6.00 -1.26     0.24   0.04
-## Q93                        8.00      7.00  0.70    -1.36   0.05
-## Q97                        7.00      6.00 -0.30    -0.57   0.03
-## Q98                        3.00      2.00  0.11    -0.24   0.01
-## Generation                 5.00      4.00  0.76     0.22   0.01
-## Ext_Avg                    4.83      3.83  0.43    -0.71   0.02
-## Int_Avg                    5.00      4.00  0.20    -0.78   0.02
-## Global_Avg                 4.88      3.88  0.25    -0.81   0.02
-## Podcast_Usage              3.00      2.00  0.56    -0.63   0.01
-## FAC1_6                     4.78      7.66  0.61     0.50   0.02
-## FAC2_6                     3.60      6.57  0.18    -0.42   0.02
-## FAC3_6                     3.64      6.81  0.36    -0.06   0.02
-## FAC4_6                     4.62      7.30  0.66     0.65   0.02
-## FAC5_6                     4.57      7.94  0.48     0.58   0.02
-## FAC6_6                     3.45      6.14  0.59    -0.04   0.02
-## FAC7_6                     4.32      7.45  0.69     1.25   0.02
-## FAC8_6                     4.91      6.57  2.35     6.15   0.02
-## FAC9_6                     7.96      9.51  3.19    14.48   0.02
-## Avg_33                     4.94      3.94  0.40    -0.68   0.02
-## Unable_Group               2.00      1.00  0.19    -1.96   0.01
-## ChristianToday             1.00      1.00 -0.70    -1.51   0.01
-## Cons_Lib                   2.00      1.00 -0.87    -1.25   0.02
-## FAC1_1                     3.33      4.85  0.91     0.01   0.02
-## FAC2_1                     2.30      4.23 -0.15    -0.96   0.02
-## FAC3_1                     2.37      4.04  0.25    -0.96   0.02
-## FAC4_1                     2.50      4.15  0.27    -0.93   0.02
-## FAC5_1                     3.72      6.05  0.87     0.54   0.02
-## FAC6_1                     2.49      3.99  0.73    -0.68   0.02
-## AOA                       25.00     24.00  0.89    -0.18   0.09
-## PA                        40.00     36.00 -0.04    -0.89   0.14
-## VHP                       20.00     19.00  0.38    -0.94   0.08
-## AL                        25.00     23.00  0.71    -0.43   0.09
-## HGI                       15.00     13.00  0.90     0.12   0.05
-## GD                        10.00      9.00  0.90    -0.58   0.05
-## F27                      133.00    129.00  0.32    -0.65   0.42
-## FAC1_2                     3.33      4.85  0.91     0.01   0.02
-## FAC2_2                     2.30      4.23 -0.15    -0.96   0.02
-## FAC3_2                     2.37      4.04  0.25    -0.96   0.02
-## FAC4_2                     2.50      4.15  0.27    -0.93   0.02
-## FAC5_2                     3.72      6.05  0.87     0.54   0.02
-## FAC6_2                     2.49      3.99  0.73    -0.68   0.02
-## ConLead                   25.00     24.00  0.40    -0.78   0.09
-## FullNew                  133.00    130.00  0.27    -0.71   0.42</code></pre>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="data-preparation.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(shas)</span></span>
-<span id="cb46-2"><a href="data-preparation.html#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-3"><a href="data-preparation.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co"># describe(allitems)</span></span>
-<span id="cb46-4"><a href="data-preparation.html#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(allitems)</span></span>
-<span id="cb46-5"><a href="data-preparation.html#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits=</span><span class="dv">2</span>)</span>
-<span id="cb46-6"><a href="data-preparation.html#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="co">#knitr::kable(</span></span>
-<span id="cb46-7"><a href="data-preparation.html#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="co">#  table1, caption = &#39;Descriptive Statistics&#39;,</span></span>
-<span id="cb46-8"><a href="data-preparation.html#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="co">#  booktabs = TRUE)</span></span></code></pre></div>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="data-preparation.html#cb47-1" aria-hidden="true" tabindex="-1"></a>stats <span class="ot">&lt;-</span> psych<span class="sc">::</span><span class="fu">describe</span>(allitems)</span>
-<span id="cb47-2"><a href="data-preparation.html#cb47-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(stats, <span class="at">caption =</span> <span class="st">&quot;Descriptive Statistics for the Well-Being Items&quot;</span>, <span class="at">digits=</span><span class="dv">2</span>)</span></code></pre></div>
-<table style="width:100%;">
-<caption><span id="tab:unnamed-chunk-9">Table 1: </span>Descriptive Statistics for the Well-Being Items</caption>
-<colgroup>
-<col width="5%" />
-<col width="6%" />
-<col width="6%" />
-<col width="6%" />
-<col width="6%" />
-<col width="9%" />
-<col width="10%" />
-<col width="5%" />
-<col width="5%" />
-<col width="5%" />
-<col width="7%" />
-<col width="7%" />
-<col width="11%" />
-<col width="6%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="right">vars</th>
-<th align="right">n</th>
-<th align="right">mean</th>
-<th align="right">sd</th>
-<th align="right">median</th>
-<th align="right">trimmed</th>
-<th align="right">mad</th>
-<th align="right">min</th>
-<th align="right">max</th>
-<th align="right">range</th>
-<th align="right">skew</th>
-<th align="right">kurtosis</th>
-<th align="right">se</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Q7</td>
-<td align="right">1</td>
-<td align="right">3215</td>
-<td align="right">2.5</td>
-<td align="right">1.43</td>
-<td align="right">2</td>
-<td align="right">2.4</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.39</td>
-<td align="right">-1.21</td>
-<td align="right">0.03</td>
-</tr>
-<tr class="even">
-<td align="left">Q10</td>
-<td align="right">2</td>
-<td align="right">3220</td>
-<td align="right">1.8</td>
-<td align="right">1.18</td>
-<td align="right">1</td>
-<td align="right">1.6</td>
-<td align="right">0.0</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">1.25</td>
-<td align="right">0.44</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="odd">
-<td align="left">Q11</td>
-<td align="right">3</td>
-<td align="right">3216</td>
-<td align="right">2.5</td>
-<td align="right">1.35</td>
-<td align="right">2</td>
-<td align="right">2.4</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.38</td>
-<td align="right">-1.12</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="even">
-<td align="left">Q16</td>
-<td align="right">4</td>
-<td align="right">3217</td>
-<td align="right">2.1</td>
-<td align="right">1.27</td>
-<td align="right">2</td>
-<td align="right">2.0</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.83</td>
-<td align="right">-0.50</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="odd">
-<td align="left">Q17</td>
-<td align="right">5</td>
-<td align="right">3208</td>
-<td align="right">1.3</td>
-<td align="right">0.97</td>
-<td align="right">1</td>
-<td align="right">1.0</td>
-<td align="right">0.0</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">2.87</td>
-<td align="right">6.96</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="even">
-<td align="left">Q18</td>
-<td align="right">6</td>
-<td align="right">3220</td>
-<td align="right">2.8</td>
-<td align="right">1.37</td>
-<td align="right">3</td>
-<td align="right">2.7</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.14</td>
-<td align="right">-1.21</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="odd">
-<td align="left">Q19</td>
-<td align="right">7</td>
-<td align="right">3219</td>
-<td align="right">2.3</td>
-<td align="right">1.33</td>
-<td align="right">2</td>
-<td align="right">2.2</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.56</td>
-<td align="right">-0.96</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="even">
-<td align="left">Q20</td>
-<td align="right">8</td>
-<td align="right">3217</td>
-<td align="right">2.2</td>
-<td align="right">1.39</td>
-<td align="right">2</td>
-<td align="right">1.9</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.82</td>
-<td align="right">-0.71</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="odd">
-<td align="left">Q21</td>
-<td align="right">9</td>
-<td align="right">3218</td>
-<td align="right">2.2</td>
-<td align="right">1.47</td>
-<td align="right">1</td>
-<td align="right">2.0</td>
-<td align="right">0.0</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.81</td>
-<td align="right">-0.83</td>
-<td align="right">0.03</td>
-</tr>
-<tr class="even">
-<td align="left">Q22</td>
-<td align="right">10</td>
-<td align="right">3218</td>
-<td align="right">3.3</td>
-<td align="right">1.49</td>
-<td align="right">4</td>
-<td align="right">3.4</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">-0.39</td>
-<td align="right">-1.28</td>
-<td align="right">0.03</td>
-</tr>
-<tr class="odd">
-<td align="left">Q23</td>
-<td align="right">11</td>
-<td align="right">3219</td>
-<td align="right">1.9</td>
-<td align="right">1.13</td>
-<td align="right">1</td>
-<td align="right">1.7</td>
-<td align="right">0.0</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">1.02</td>
-<td align="right">0.02</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="even">
-<td align="left">Q24</td>
-<td align="right">12</td>
-<td align="right">3221</td>
-<td align="right">1.9</td>
-<td align="right">1.18</td>
-<td align="right">1</td>
-<td align="right">1.7</td>
-<td align="right">0.0</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">1.10</td>
-<td align="right">0.07</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="odd">
-<td align="left">Q25</td>
-<td align="right">13</td>
-<td align="right">3217</td>
-<td align="right">3.2</td>
-<td align="right">1.32</td>
-<td align="right">3</td>
-<td align="right">3.2</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">-0.26</td>
-<td align="right">-1.04</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="even">
-<td align="left">Q26</td>
-<td align="right">14</td>
-<td align="right">3212</td>
-<td align="right">1.9</td>
-<td align="right">1.27</td>
-<td align="right">1</td>
-<td align="right">1.6</td>
-<td align="right">0.0</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">1.24</td>
-<td align="right">0.21</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="odd">
-<td align="left">Q27</td>
-<td align="right">15</td>
-<td align="right">3217</td>
-<td align="right">1.9</td>
-<td align="right">1.35</td>
-<td align="right">1</td>
-<td align="right">1.7</td>
-<td align="right">0.0</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">1.14</td>
-<td align="right">-0.13</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="even">
-<td align="left">Q28</td>
-<td align="right">16</td>
-<td align="right">3216</td>
-<td align="right">2.3</td>
-<td align="right">1.25</td>
-<td align="right">2</td>
-<td align="right">2.1</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.63</td>
-<td align="right">-0.73</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="odd">
-<td align="left">Q29</td>
-<td align="right">17</td>
-<td align="right">3213</td>
-<td align="right">2.5</td>
-<td align="right">1.34</td>
-<td align="right">2</td>
-<td align="right">2.4</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.40</td>
-<td align="right">-1.08</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="even">
-<td align="left">Q30</td>
-<td align="right">18</td>
-<td align="right">3219</td>
-<td align="right">2.0</td>
-<td align="right">1.25</td>
-<td align="right">2</td>
-<td align="right">1.9</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.88</td>
-<td align="right">-0.46</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="odd">
-<td align="left">Q31</td>
-<td align="right">19</td>
-<td align="right">3217</td>
-<td align="right">2.0</td>
-<td align="right">1.19</td>
-<td align="right">2</td>
-<td align="right">1.9</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.92</td>
-<td align="right">-0.20</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="even">
-<td align="left">Q32</td>
-<td align="right">20</td>
-<td align="right">3219</td>
-<td align="right">2.8</td>
-<td align="right">1.32</td>
-<td align="right">3</td>
-<td align="right">2.7</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.05</td>
-<td align="right">-1.14</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="odd">
-<td align="left">Q34</td>
-<td align="right">21</td>
-<td align="right">3219</td>
-<td align="right">2.5</td>
-<td align="right">1.33</td>
-<td align="right">2</td>
-<td align="right">2.3</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.42</td>
-<td align="right">-1.05</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="even">
-<td align="left">Q35</td>
-<td align="right">22</td>
-<td align="right">3217</td>
-<td align="right">3.1</td>
-<td align="right">1.39</td>
-<td align="right">3</td>
-<td align="right">3.1</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">-0.18</td>
-<td align="right">-1.20</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="odd">
-<td align="left">Q36</td>
-<td align="right">23</td>
-<td align="right">3216</td>
-<td align="right">2.8</td>
-<td align="right">1.34</td>
-<td align="right">3</td>
-<td align="right">2.7</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.11</td>
-<td align="right">-1.17</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="even">
-<td align="left">Q37</td>
-<td align="right">24</td>
-<td align="right">3221</td>
-<td align="right">2.9</td>
-<td align="right">1.38</td>
-<td align="right">3</td>
-<td align="right">2.9</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">-0.01</td>
-<td align="right">-1.22</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="odd">
-<td align="left">Q38</td>
-<td align="right">25</td>
-<td align="right">3217</td>
-<td align="right">3.0</td>
-<td align="right">1.40</td>
-<td align="right">3</td>
-<td align="right">2.9</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">-0.01</td>
-<td align="right">-1.26</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="even">
-<td align="left">Q39</td>
-<td align="right">26</td>
-<td align="right">3219</td>
-<td align="right">3.0</td>
-<td align="right">1.48</td>
-<td align="right">3</td>
-<td align="right">3.1</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">-0.12</td>
-<td align="right">-1.37</td>
-<td align="right">0.03</td>
-</tr>
-<tr class="odd">
-<td align="left">Q40</td>
-<td align="right">27</td>
-<td align="right">3220</td>
-<td align="right">2.3</td>
-<td align="right">1.39</td>
-<td align="right">2</td>
-<td align="right">2.1</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.67</td>
-<td align="right">-0.88</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="even">
-<td align="left">Q41</td>
-<td align="right">28</td>
-<td align="right">3211</td>
-<td align="right">1.3</td>
-<td align="right">0.88</td>
-<td align="right">1</td>
-<td align="right">1.0</td>
-<td align="right">0.0</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">3.30</td>
-<td align="right">9.87</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="odd">
-<td align="left">Q42</td>
-<td align="right">29</td>
-<td align="right">3215</td>
-<td align="right">2.6</td>
-<td align="right">1.25</td>
-<td align="right">3</td>
-<td align="right">2.5</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.28</td>
-<td align="right">-0.96</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="even">
-<td align="left">Q43</td>
-<td align="right">30</td>
-<td align="right">3217</td>
-<td align="right">2.0</td>
-<td align="right">1.18</td>
-<td align="right">2</td>
-<td align="right">1.9</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.86</td>
-<td align="right">-0.31</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="odd">
-<td align="left">Q44</td>
-<td align="right">31</td>
-<td align="right">3217</td>
-<td align="right">2.6</td>
-<td align="right">1.35</td>
-<td align="right">3</td>
-<td align="right">2.5</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.24</td>
-<td align="right">-1.20</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="even">
-<td align="left">Q45</td>
-<td align="right">32</td>
-<td align="right">3219</td>
-<td align="right">2.8</td>
-<td align="right">1.45</td>
-<td align="right">3</td>
-<td align="right">2.7</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.18</td>
-<td align="right">-1.33</td>
-<td align="right">0.03</td>
-</tr>
-<tr class="odd">
-<td align="left">Q46</td>
-<td align="right">33</td>
-<td align="right">3211</td>
-<td align="right">1.1</td>
-<td align="right">0.48</td>
-<td align="right">1</td>
-<td align="right">1.0</td>
-<td align="right">0.0</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">5.15</td>
-<td align="right">28.93</td>
-<td align="right">0.01</td>
-</tr>
-<tr class="even">
-<td align="left">Q47</td>
-<td align="right">34</td>
-<td align="right">3218</td>
-<td align="right">1.5</td>
-<td align="right">0.86</td>
-<td align="right">1</td>
-<td align="right">1.3</td>
-<td align="right">0.0</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">1.93</td>
-<td align="right">3.40</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="odd">
-<td align="left">Q49</td>
-<td align="right">35</td>
-<td align="right">3213</td>
-<td align="right">2.1</td>
-<td align="right">1.23</td>
-<td align="right">2</td>
-<td align="right">2.0</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.79</td>
-<td align="right">-0.50</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="even">
-<td align="left">Q50</td>
-<td align="right">36</td>
-<td align="right">3219</td>
-<td align="right">2.2</td>
-<td align="right">1.47</td>
-<td align="right">1</td>
-<td align="right">2.0</td>
-<td align="right">0.0</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.70</td>
-<td align="right">-1.04</td>
-<td align="right">0.03</td>
-</tr>
-<tr class="odd">
-<td align="left">Q51</td>
-<td align="right">37</td>
-<td align="right">3216</td>
-<td align="right">2.3</td>
-<td align="right">1.38</td>
-<td align="right">2</td>
-<td align="right">2.2</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.59</td>
-<td align="right">-0.98</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="even">
-<td align="left">Q52</td>
-<td align="right">38</td>
-<td align="right">3217</td>
-<td align="right">2.1</td>
-<td align="right">1.26</td>
-<td align="right">2</td>
-<td align="right">1.9</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.85</td>
-<td align="right">-0.52</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="odd">
-<td align="left">Q53</td>
-<td align="right">39</td>
-<td align="right">3218</td>
-<td align="right">2.4</td>
-<td align="right">1.35</td>
-<td align="right">2</td>
-<td align="right">2.2</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.55</td>
-<td align="right">-0.97</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="even">
-<td align="left">Q54</td>
-<td align="right">40</td>
-<td align="right">3217</td>
-<td align="right">2.9</td>
-<td align="right">1.40</td>
-<td align="right">3</td>
-<td align="right">2.9</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.01</td>
-<td align="right">-1.26</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="odd">
-<td align="left">Q55</td>
-<td align="right">41</td>
-<td align="right">3205</td>
-<td align="right">1.6</td>
-<td align="right">0.95</td>
-<td align="right">1</td>
-<td align="right">1.4</td>
-<td align="right">0.0</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">1.66</td>
-<td align="right">2.12</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="even">
-<td align="left">Q56</td>
-<td align="right">42</td>
-<td align="right">3217</td>
-<td align="right">2.7</td>
-<td align="right">1.37</td>
-<td align="right">3</td>
-<td align="right">2.6</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.14</td>
-<td align="right">-1.24</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="odd">
-<td align="left">Q57</td>
-<td align="right">43</td>
-<td align="right">3219</td>
-<td align="right">2.1</td>
-<td align="right">1.33</td>
-<td align="right">2</td>
-<td align="right">2.0</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.78</td>
-<td align="right">-0.70</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="even">
-<td align="left">Q58</td>
-<td align="right">44</td>
-<td align="right">3220</td>
-<td align="right">2.5</td>
-<td align="right">1.34</td>
-<td align="right">2</td>
-<td align="right">2.4</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.34</td>
-<td align="right">-1.09</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="odd">
-<td align="left">Q59</td>
-<td align="right">45</td>
-<td align="right">3217</td>
-<td align="right">2.2</td>
-<td align="right">1.23</td>
-<td align="right">2</td>
-<td align="right">2.0</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.70</td>
-<td align="right">-0.65</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="even">
-<td align="left">Q60</td>
-<td align="right">46</td>
-<td align="right">3214</td>
-<td align="right">1.5</td>
-<td align="right">0.99</td>
-<td align="right">1</td>
-<td align="right">1.2</td>
-<td align="right">0.0</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">2.05</td>
-<td align="right">3.22</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="odd">
-<td align="left">Q61</td>
-<td align="right">47</td>
-<td align="right">3219</td>
-<td align="right">2.8</td>
-<td align="right">1.47</td>
-<td align="right">3</td>
-<td align="right">2.7</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.14</td>
-<td align="right">-1.37</td>
-<td align="right">0.03</td>
-</tr>
-<tr class="even">
-<td align="left">Q62</td>
-<td align="right">48</td>
-<td align="right">3220</td>
-<td align="right">2.2</td>
-<td align="right">1.24</td>
-<td align="right">2</td>
-<td align="right">2.0</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.69</td>
-<td align="right">-0.67</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="odd">
-<td align="left">Q63</td>
-<td align="right">49</td>
-<td align="right">3217</td>
-<td align="right">2.3</td>
-<td align="right">1.25</td>
-<td align="right">2</td>
-<td align="right">2.2</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.58</td>
-<td align="right">-0.77</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="even">
-<td align="left">Q64</td>
-<td align="right">50</td>
-<td align="right">3220</td>
-<td align="right">2.3</td>
-<td align="right">1.27</td>
-<td align="right">2</td>
-<td align="right">2.1</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.67</td>
-<td align="right">-0.70</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="odd">
-<td align="left">Q65</td>
-<td align="right">51</td>
-<td align="right">3220</td>
-<td align="right">1.8</td>
-<td align="right">1.18</td>
-<td align="right">1</td>
-<td align="right">1.6</td>
-<td align="right">0.0</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">1.27</td>
-<td align="right">0.48</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="even">
-<td align="left">Q66</td>
-<td align="right">52</td>
-<td align="right">3216</td>
-<td align="right">3.3</td>
-<td align="right">1.41</td>
-<td align="right">3</td>
-<td align="right">3.3</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">-0.34</td>
-<td align="right">-1.15</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="odd">
-<td align="left">Q68</td>
-<td align="right">53</td>
-<td align="right">3073</td>
-<td align="right">2.1</td>
-<td align="right">1.23</td>
-<td align="right">2</td>
-<td align="right">1.9</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.83</td>
-<td align="right">-0.51</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="even">
-<td align="left">Q69</td>
-<td align="right">54</td>
-<td align="right">3071</td>
-<td align="right">3.0</td>
-<td align="right">1.20</td>
-<td align="right">3</td>
-<td align="right">3.0</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">-0.06</td>
-<td align="right">-0.83</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="odd">
-<td align="left">Q70</td>
-<td align="right">55</td>
-<td align="right">3069</td>
-<td align="right">2.1</td>
-<td align="right">1.18</td>
-<td align="right">2</td>
-<td align="right">2.0</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.79</td>
-<td align="right">-0.36</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="even">
-<td align="left">Q71</td>
-<td align="right">56</td>
-<td align="right">3074</td>
-<td align="right">3.0</td>
-<td align="right">1.36</td>
-<td align="right">3</td>
-<td align="right">3.0</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">-0.06</td>
-<td align="right">-1.19</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="odd">
-<td align="left">Q72</td>
-<td align="right">57</td>
-<td align="right">3070</td>
-<td align="right">1.6</td>
-<td align="right">0.99</td>
-<td align="right">1</td>
-<td align="right">1.4</td>
-<td align="right">0.0</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">1.52</td>
-<td align="right">1.55</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="even">
-<td align="left">Q73</td>
-<td align="right">58</td>
-<td align="right">3072</td>
-<td align="right">2.5</td>
-<td align="right">1.31</td>
-<td align="right">2</td>
-<td align="right">2.4</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.38</td>
-<td align="right">-1.00</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="odd">
-<td align="left">Q74</td>
-<td align="right">59</td>
-<td align="right">3071</td>
-<td align="right">2.8</td>
-<td align="right">1.29</td>
-<td align="right">3</td>
-<td align="right">2.7</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.07</td>
-<td align="right">-1.08</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="even">
-<td align="left">Q76</td>
-<td align="right">60</td>
-<td align="right">3072</td>
-<td align="right">2.8</td>
-<td align="right">1.48</td>
-<td align="right">3</td>
-<td align="right">2.8</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.12</td>
-<td align="right">-1.39</td>
-<td align="right">0.03</td>
-</tr>
-<tr class="odd">
-<td align="left">Q77</td>
-<td align="right">61</td>
-<td align="right">3075</td>
-<td align="right">3.1</td>
-<td align="right">1.28</td>
-<td align="right">3</td>
-<td align="right">3.1</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">-0.16</td>
-<td align="right">-1.02</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="even">
-<td align="left">Q78</td>
-<td align="right">62</td>
-<td align="right">3071</td>
-<td align="right">2.8</td>
-<td align="right">1.30</td>
-<td align="right">3</td>
-<td align="right">2.7</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.10</td>
-<td align="right">-1.09</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="odd">
-<td align="left">Q79</td>
-<td align="right">63</td>
-<td align="right">3068</td>
-<td align="right">2.4</td>
-<td align="right">1.27</td>
-<td align="right">2</td>
-<td align="right">2.3</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.50</td>
-<td align="right">-0.81</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="even">
-<td align="left">Q80</td>
-<td align="right">64</td>
-<td align="right">3070</td>
-<td align="right">3.1</td>
-<td align="right">1.23</td>
-<td align="right">3</td>
-<td align="right">3.1</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">-0.17</td>
-<td align="right">-0.91</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="odd">
-<td align="left">Q81</td>
-<td align="right">65</td>
-<td align="right">3073</td>
-<td align="right">1.8</td>
-<td align="right">1.04</td>
-<td align="right">1</td>
-<td align="right">1.6</td>
-<td align="right">0.0</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">1.23</td>
-<td align="right">0.66</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="even">
-<td align="left">Q82</td>
-<td align="right">66</td>
-<td align="right">3071</td>
-<td align="right">2.2</td>
-<td align="right">1.21</td>
-<td align="right">2</td>
-<td align="right">2.1</td>
-<td align="right">1.5</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">0.62</td>
-<td align="right">-0.62</td>
-<td align="right">0.02</td>
-</tr>
-</tbody>
-</table>
-<p>The item for gratitude is definitely skewed, based on the skew and kurtosis statistics in the table.</p>
-<p>I will supplement this table with a set of plots to visualize the data. Here I pass the ‘table’ function into an object for each item. Then I pass these objects into plots of uniform size and labeling.</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="data-preparation.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># FREQUENCIES</span></span>
-<span id="cb48-2"><a href="data-preparation.html#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="co"># peacecounts &lt;- table(items$sense.peace)</span></span>
-<span id="cb48-3"><a href="data-preparation.html#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="co"># wondercounts &lt;- table(items$sense.wonder)</span></span>
-<span id="cb48-4"><a href="data-preparation.html#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co"># gratitudecounts &lt;- table(items$sense.gratitude)</span></span>
-<span id="cb48-5"><a href="data-preparation.html#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="co"># purposecounts &lt;- table(items$sense.purpose)</span></span>
-<span id="cb48-6"><a href="data-preparation.html#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="co"># labs &lt;- c(&quot;1 Never&quot;, &quot;2 Seldom&quot;, &quot;3 Several times a year&quot;, &quot;4 Once or twice a month&quot;, &quot;5 At least once a week&quot;)</span></span>
-<span id="cb48-7"><a href="data-preparation.html#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="co"># par(mfrow=c(2,2))</span></span>
-<span id="cb48-8"><a href="data-preparation.html#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot(peacecounts, main=&quot;Deep Sense of Peace&quot;, horiz=FALSE, col=&#39;red&#39;, ylim = c(0,8000),</span></span>
-<span id="cb48-9"><a href="data-preparation.html#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="co">#         names.arg=labs)</span></span>
-<span id="cb48-10"><a href="data-preparation.html#cb48-10" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot(wondercounts, main=&quot;Deep Sense of Wonder&quot;, horiz=FALSE, col=&#39;blue&#39;, ylim = c(0,8000),</span></span>
-<span id="cb48-11"><a href="data-preparation.html#cb48-11" aria-hidden="true" tabindex="-1"></a><span class="co">#         names.arg=labs)</span></span>
-<span id="cb48-12"><a href="data-preparation.html#cb48-12" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot(gratitudecounts, main=&quot;Strong Sense of Gratitude&quot;, horiz=FALSE, col=&#39;purple&#39;, ylim = c(0,8000),</span></span>
-<span id="cb48-13"><a href="data-preparation.html#cb48-13" aria-hidden="true" tabindex="-1"></a><span class="co">#         names.arg=labs)</span></span>
-<span id="cb48-14"><a href="data-preparation.html#cb48-14" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot(purposecounts, main=&quot;Wonder about Meaning and Purpose&quot;, horiz=FALSE, col=&#39;green&#39;, ylim = c(0,8000),</span></span>
-<span id="cb48-15"><a href="data-preparation.html#cb48-15" aria-hidden="true" tabindex="-1"></a><span class="co">#         names.arg=labs)</span></span></code></pre></div>
-<p>The striking thing about these data is their negative skew: the vast majority of respondents report frequently feeling peace, wonder, gratitude, and wonder about the meaning of life. This skew poses some challenges. One is less variance. If the vast majority of Catholics past and present report frequent feelings of well-being, there is not much to explain. The other challenge is that classical statistics are based the assumption that the data are normally distributed.</p>
+<p>Here I extract from the original data file three smaller datasets for just the Likert items:
+* items - all the Likert items
+* ext_items - the 52 Likert items for measuring abusive external events
+* int_items - the 14 Likert items for measuring internal states</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="data-preparation.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SELECT DATASETS FOR ANALYSIS</span></span>
+<span id="cb28-2"><a href="data-preparation.html#cb28-2" aria-hidden="true" tabindex="-1"></a>all       <span class="ot">&lt;-</span> shas[ ,<span class="dv">14</span><span class="sc">:</span><span class="dv">98</span>] <span class="co"># select Likert items from columns 14-79 plus demographics</span></span>
+<span id="cb28-3"><a href="data-preparation.html#cb28-3" aria-hidden="true" tabindex="-1"></a>items     <span class="ot">&lt;-</span> shas[ ,<span class="dv">14</span><span class="sc">:</span><span class="dv">79</span>] <span class="co"># select Likert items from columns 14-79</span></span>
+<span id="cb28-4"><a href="data-preparation.html#cb28-4" aria-hidden="true" tabindex="-1"></a>ext_items <span class="ot">&lt;-</span> shas[ ,<span class="dv">14</span><span class="sc">:</span><span class="dv">35</span>] <span class="co"># items for external events</span></span>
+<span id="cb28-5"><a href="data-preparation.html#cb28-5" aria-hidden="true" tabindex="-1"></a>int_items <span class="ot">&lt;-</span> shas[ ,<span class="dv">66</span><span class="sc">:</span><span class="dv">79</span>] <span class="co"># items for internal states</span></span>
+<span id="cb28-6"><a href="data-preparation.html#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="data-preparation.html#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co"># WRITE THESE DATASETS TO THE DATA FOLDER FOR FUTURE USE</span></span>
+<span id="cb28-8"><a href="data-preparation.html#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(all,<span class="st">&quot;data/all.csv&quot;</span>)</span>
+<span id="cb28-9"><a href="data-preparation.html#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(items,<span class="st">&quot;data/items.csv&quot;</span>)</span>
+<span id="cb28-10"><a href="data-preparation.html#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(ext_items,<span class="st">&quot;data/ext_items.csv&quot;</span>)</span>
+<span id="cb28-11"><a href="data-preparation.html#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(int_items,<span class="st">&quot;data/int_items.csv&quot;</span>)</span></code></pre></div>
 </div>
 <div id="missing-data" class="section level2 hasAnchor">
 <h2>Missing data<a href="data-preparation.html#missing-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="data-preparation.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># TO DO A LISTWISE DELETION OF CASES</span></span>
-<span id="cb49-2"><a href="data-preparation.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="co">#items &lt;- allitems[complete.cases(allitems), ]</span></span>
-<span id="cb49-3"><a href="data-preparation.html#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-4"><a href="data-preparation.html#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="co"># library(VIM)</span></span>
-<span id="cb49-5"><a href="data-preparation.html#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="co"># data(allitems)</span></span>
-<span id="cb49-6"><a href="data-preparation.html#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="co"># a &lt;- aggr(allitems, plot = FALSE)</span></span>
-<span id="cb49-7"><a href="data-preparation.html#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(a, numbers = TRUE, prop = FALSE)</span></span>
-<span id="cb49-8"><a href="data-preparation.html#cb49-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-9"><a href="data-preparation.html#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="co"># library(naniar)</span></span>
-<span id="cb49-10"><a href="data-preparation.html#cb49-10" aria-hidden="true" tabindex="-1"></a><span class="co"># vis_miss(allitems)</span></span></code></pre></div>
+<p>Here we size up the problem of missing data. The first step is to get a feel for how much data are missing. The more data are missing, the more formidable a barrier this poses to the intended analysis of the data.</p>
+<p>There are numerous R packages for dealing with missing data. The VIM package includes a host of tools for revealing, exploring, and dealing with missing data.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="data-preparation.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># VISUALIZE AND QUANTIFY MISSING DATA</span></span>
+<span id="cb29-2"><a href="data-preparation.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(VIM)</span></span>
+<span id="cb29-3"><a href="data-preparation.html#cb29-3" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> VIM<span class="sc">::</span><span class="fu">aggr</span>(items, <span class="at">plot =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb29-4"><a href="data-preparation.html#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(a, <span class="at">numbers =</span> <span class="cn">TRUE</span>, <span class="at">prop =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## Warning in plot.aggr(a, numbers = TRUE, prop = FALSE): not enough vertical space
+## to display frequencies (too many combinations)</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="data-preparation.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(naniar)</span></span>
+<span id="cb31-2"><a href="data-preparation.html#cb31-2" aria-hidden="true" tabindex="-1"></a>naniar<span class="sc">::</span><span class="fu">vis_miss</span>(items)</span></code></pre></div>
+<pre><code>## Warning: `gather_()` was deprecated in tidyr 1.2.0.
+## Please use `gather()` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-8-2.png" width="672" />
+These plots reveal considerable missing data in the items toward the end of the dataset: those intended to measure internal states.</p>
+<p>The important question with missing data is whether the missingness is random or systematic.</p>
+<p>The fact that most of the missing data are toward the end is a pattern. After thoughtfully responding to the 52 preceding items about abusive external events, at least some examinees were tired of answering questions. The sensitive nature of the internal states items may have been especially triggering to some examinees. One way to investigate this possibility is to examine the association between the external states items and whether examinees responded to the internal states items.</p>
+<div id="a-simple-triggering-study" class="section level3 hasAnchor">
+<h3>A Simple Triggering Study<a href="data-preparation.html#a-simple-triggering-study" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The following code chunk conceives and executes a simple test of the triggering hypothesis. The items measuring external events are summed into a total score such that a higher value indicates more exposure to abusive external events. The items measuring internal states are coded so that 1=missing and and</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="data-preparation.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. MAKE A COPY OF ALL THE ITEMS JUST FOR THIS ANALYSIS</span></span>
+<span id="cb33-2"><a href="data-preparation.html#cb33-2" aria-hidden="true" tabindex="-1"></a>miss_set <span class="ot">&lt;-</span> items</span>
+<span id="cb33-3"><a href="data-preparation.html#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="data-preparation.html#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co"># writexl::write_xlsx(miss_set,&quot;/Users/jack_huber/Documents/MY RESEARCH/SHAS Validity/miss_set.xlsx&quot;) # save as Excel to explore visually</span></span>
+<span id="cb33-5"><a href="data-preparation.html#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="data-preparation.html#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. RECODE INTERNAL STATES ITEMS AS DICHOTOMOUS (1=MISSING, 0=ENDORSED)</span></span>
+<span id="cb33-7"><a href="data-preparation.html#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Surely there is a better way to do this</span></span>
+<span id="cb33-8"><a href="data-preparation.html#cb33-8" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q68[miss_set<span class="sc">$</span>Q68 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb33-9"><a href="data-preparation.html#cb33-9" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q68[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q68)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb33-10"><a href="data-preparation.html#cb33-10" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q69[miss_set<span class="sc">$</span>Q69 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb33-11"><a href="data-preparation.html#cb33-11" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q69[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q69)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb33-12"><a href="data-preparation.html#cb33-12" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q70[miss_set<span class="sc">$</span>Q70 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb33-13"><a href="data-preparation.html#cb33-13" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q70[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q70)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb33-14"><a href="data-preparation.html#cb33-14" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q71[miss_set<span class="sc">$</span>Q71 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb33-15"><a href="data-preparation.html#cb33-15" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q71[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q71)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb33-16"><a href="data-preparation.html#cb33-16" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q72[miss_set<span class="sc">$</span>Q72 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb33-17"><a href="data-preparation.html#cb33-17" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q72[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q72)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb33-18"><a href="data-preparation.html#cb33-18" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q73[miss_set<span class="sc">$</span>Q73 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb33-19"><a href="data-preparation.html#cb33-19" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q73[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q73)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb33-20"><a href="data-preparation.html#cb33-20" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q74[miss_set<span class="sc">$</span>Q74 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb33-21"><a href="data-preparation.html#cb33-21" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q74[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q74)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb33-22"><a href="data-preparation.html#cb33-22" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q76[miss_set<span class="sc">$</span>Q76 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb33-23"><a href="data-preparation.html#cb33-23" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q76[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q76)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb33-24"><a href="data-preparation.html#cb33-24" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q77[miss_set<span class="sc">$</span>Q77 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb33-25"><a href="data-preparation.html#cb33-25" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q77[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q77)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb33-26"><a href="data-preparation.html#cb33-26" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q78[miss_set<span class="sc">$</span>Q78 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb33-27"><a href="data-preparation.html#cb33-27" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q78[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q78)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb33-28"><a href="data-preparation.html#cb33-28" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q79[miss_set<span class="sc">$</span>Q79 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb33-29"><a href="data-preparation.html#cb33-29" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q79[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q79)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb33-30"><a href="data-preparation.html#cb33-30" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q80[miss_set<span class="sc">$</span>Q80 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb33-31"><a href="data-preparation.html#cb33-31" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q80[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q80)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb33-32"><a href="data-preparation.html#cb33-32" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q81[miss_set<span class="sc">$</span>Q81 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb33-33"><a href="data-preparation.html#cb33-33" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q81[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q81)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb33-34"><a href="data-preparation.html#cb33-34" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q82[miss_set<span class="sc">$</span>Q82 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb33-35"><a href="data-preparation.html#cb33-35" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q82[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q82)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb33-36"><a href="data-preparation.html#cb33-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-37"><a href="data-preparation.html#cb33-37" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. OBTAIN TOTAL SCORE ON EXTERNAL EVENTS ITEMS</span></span>
+<span id="cb33-38"><a href="data-preparation.html#cb33-38" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>total_ext <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(miss_set[ , <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">52</span>)], <span class="at">na.rm=</span><span class="cn">FALSE</span>) <span class="co"># a total score of exposure to abusive external events</span></span>
+<span id="cb33-39"><a href="data-preparation.html#cb33-39" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>total_int <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(miss_set[ , <span class="fu">c</span>(<span class="dv">53</span><span class="sc">:</span><span class="dv">66</span>)]) <span class="co"># a total score of internal states missingness</span></span>
+<span id="cb33-40"><a href="data-preparation.html#cb33-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-41"><a href="data-preparation.html#cb33-41" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. RUN CORRELATION BETWEEN TOTAL SCORE AND DICHOTOMOUS ITEMS</span></span>
+<span id="cb33-42"><a href="data-preparation.html#cb33-42" aria-hidden="true" tabindex="-1"></a>miss_set <span class="ot">&lt;-</span> miss_set[ , <span class="fu">c</span>(<span class="dv">53</span><span class="sc">:</span><span class="dv">68</span>)] <span class="co"># delete all but the internal states and total scores</span></span>
+<span id="cb33-43"><a href="data-preparation.html#cb33-43" aria-hidden="true" tabindex="-1"></a>miss_r <span class="ot">&lt;-</span> <span class="fu">lowerCor</span>(miss_set) <span class="co"># the correlation matrix, rounded to 2 decimals</span></span></code></pre></div>
+<pre><code>## Warning in cor(x, use = use, method = method): the standard deviation is zero</code></pre>
+<pre><code>##           Q68   Q69   Q70   Q71   Q72   Q73   Q74   Q76   Q77   Q78   Q79  
+## Q68        1.00                                                            
+## Q69        0.99  1.00                                                      
+## Q70        0.99  0.99  1.00                                                
+## Q71        1.00  0.99  0.98  1.00                                          
+## Q72        0.99  0.99  0.99  0.99  1.00                                    
+## Q73          NA    NA    NA    NA    NA    NA                              
+## Q74        0.99  0.98  0.97  0.99  0.98    NA  1.00                        
+## Q76        0.99  0.99  0.98  0.99  0.99    NA  0.98  1.00                  
+## Q77        0.99  0.99  0.98  1.00  0.98    NA  0.99  0.99  1.00            
+## Q78        0.99  0.99  0.98  0.99  0.98    NA  0.98  0.98  0.99  1.00      
+## Q79        0.98  0.98  0.97  0.98  0.97    NA  0.97  0.97  0.98  0.98  1.00
+## Q80        0.98  0.98  0.98  0.99  0.98    NA  0.98  0.99  0.98  0.98  0.97
+## Q81        1.00  0.99  0.99  1.00  0.99    NA  0.99  0.99  0.99  0.99  0.98
+## Q82        0.99  0.99  0.98  0.99  0.98    NA  0.98  0.99  0.99  0.98  0.97
+## total_ext -0.07 -0.07 -0.07 -0.07 -0.07    NA -0.07 -0.07 -0.07 -0.07 -0.07
+## total_int  1.00  1.00  0.99  1.00  0.99    NA  0.99  0.99  0.99  0.99  0.98
+##           Q80   Q81   Q82   ttl_x ttl_n
+## Q80        1.00                        
+## Q81        0.98  1.00                  
+## Q82        0.98  0.99  1.00            
+## total_ext -0.07 -0.07 -0.07  1.00      
+## total_int  0.99  1.00  0.99 -0.07  1.00</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="data-preparation.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corPlot</span>(miss_r, <span class="at">stars=</span> <span class="cn">TRUE</span>, <span class="at">upper =</span> <span class="cn">FALSE</span>) <span class="co"># examine the many options for this function</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+This plot illustrates the correlations among the internal states items (dichotomized according to their missingness (1=missing, 0=all others)), the total score from the external states (total_ext), and the total score of internal item missingness (total_int). The correlation of total_ext with all the other items is nearly zero, suggesting that more exposure to abusive external states did not predict nonresponse to the internal states items.</p>
+</div>
+<div id="missing-data-methods" class="section level3 hasAnchor">
+<h3>Missing data methods<a href="data-preparation.html#missing-data-methods" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There are different ways to handle missing data. A common method is to <em>delete all cases missing any data</em>. This is called <em>listwise deletion</em> of data. Its primary advantage is that it enables analysis based on complete information. However, listwise also disposes of information offered by examinees who responded to some items but not others. Listwise deletion also diminishes the size of the data set, and with it, statistical power. The code for selecting a dataset from listwise deletion is as follows:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="data-preparation.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># LISTWISE DELETION OF MISSING DATA</span></span>
+<span id="cb37-2"><a href="data-preparation.html#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="data-preparation.html#cb37-3" aria-hidden="true" tabindex="-1"></a>all_l       <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(all) <span class="co">#  Likert items from columns 14-79 plus demographics post listwise</span></span>
+<span id="cb37-4"><a href="data-preparation.html#cb37-4" aria-hidden="true" tabindex="-1"></a>items_l     <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(items) <span class="co"># Likert items from columns 14-79 post listwise</span></span>
+<span id="cb37-5"><a href="data-preparation.html#cb37-5" aria-hidden="true" tabindex="-1"></a>ext_items_l <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(ext_items) <span class="co"># Likert items for external events post listwise</span></span>
+<span id="cb37-6"><a href="data-preparation.html#cb37-6" aria-hidden="true" tabindex="-1"></a>int_items_l <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(int_items) <span class="co"># Likert items for internal states post listwise</span></span>
+<span id="cb37-7"><a href="data-preparation.html#cb37-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-8"><a href="data-preparation.html#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Write these datasets to the project data folder</span></span>
+<span id="cb37-9"><a href="data-preparation.html#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(all_l,<span class="st">&quot;data/all_l.csv&quot;</span>)</span>
+<span id="cb37-10"><a href="data-preparation.html#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(items_l,<span class="st">&quot;data/items_l.csv&quot;</span>)</span>
+<span id="cb37-11"><a href="data-preparation.html#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(ext_items_l,<span class="st">&quot;data/ext_items_l.csv&quot;</span>)</span>
+<span id="cb37-12"><a href="data-preparation.html#cb37-12" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(int_items_l,<span class="st">&quot;data/int_items_l.csv&quot;</span>)</span>
+<span id="cb37-13"><a href="data-preparation.html#cb37-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-14"><a href="data-preparation.html#cb37-14" aria-hidden="true" tabindex="-1"></a><span class="co"># items &lt;- items[complete.cases(items), ] # create new dataset without missing data</span></span></code></pre></div>
 
+</div>
 </div>
 </div>
             </section>
@@ -2013,8 +424,8 @@ div.csl-indent {
           </div>
         </div>
       </div>
-<a href="background-of-the-project.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="dimensionality.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="data-collection.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="item-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -2045,7 +456,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-data_prep.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/03-prep.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -2062,7 +473,7 @@ gitbook.start({
 "options": null
 },
 "toc": {
-"collapse": "subsection"
+"collapse": "section"
 }
 });
 });

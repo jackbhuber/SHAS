@@ -31,7 +31,7 @@ The data are contained in an Excel file, simply named "data.xlsx", in a folder o
 
 # LOAD DATA
 # library(readxl) # for reading the source Excel file
-shas <- read_excel("/Users/jack_huber/Documents/MY RESEARCH/SHAS Validity/data/data.xlsx") # load the original Excel file from my computer
+shas <- read_excel("data/data.xlsx") # load the original Excel file from my computer
 
 ```
 
@@ -51,10 +51,10 @@ ext_items <- shas[ ,14:35] # items for external events
 int_items <- shas[ ,66:79] # items for internal states
 
 # WRITE THESE DATASETS TO THE DATA FOLDER FOR FUTURE USE
-write.csv(all,"Users/jack_huber/Documents/MY RESEARCH/SHAS Validity/data/all.csv")
-write.csv(all,"Users/jack_huber/Documents/MY RESEARCH/SHAS Validity/data/items.csv")
-write.csv(all,"Users/jack_huber/Documents/MY RESEARCH/SHAS Validity/data/ext_items.csv")
-write.csv(all,"Users/jack_huber/Documents/MY RESEARCH/SHAS Validity/data/int_items.csv")
+write.csv(all,"data/all.csv")
+write.csv(items,"data/items.csv")
+write.csv(ext_items,"data/ext_items.csv")
+write.csv(int_items,"data/int_items.csv")
 
 ```
 
@@ -75,8 +75,7 @@ There are numerous R packages for dealing with missing data. The VIM package inc
 
 # VISUALIZE AND QUANTIFY MISSING DATA
 # library(VIM)
-data(items)
-a <- vim::aggr(items, plot = FALSE)
+a <- VIM::aggr(items, plot = FALSE)
 plot(a, numbers = TRUE, prop = FALSE)
 
 # library(naniar)
@@ -96,9 +95,7 @@ The following code chunk conceives and executes a simple test of the triggering 
 ```{r}
 
 # 1. MAKE A COPY OF ALL THE ITEMS JUST FOR THIS ANALYSIS
-rm(miss_set)
 miss_set <- items
-as.data.frame(miss_set)
 
 # writexl::write_xlsx(miss_set,"/Users/jack_huber/Documents/MY RESEARCH/SHAS Validity/miss_set.xlsx") # save as Excel to explore visually
 
@@ -159,10 +156,10 @@ ext_items_l <- na.omit(ext_items) # Likert items for external events post listwi
 int_items_l <- na.omit(int_items) # Likert items for internal states post listwise
 
 # Write these datasets to the project data folder
-write.csv(all_l,"/Users/jack_huber/Documents/MY RESEARCH/SHAS Validity/data/all_l.csv")
-write.csv(items_l,"/Users/jack_huber/Documents/MY RESEARCH/SHAS Validity/data/items_l.csv")
-write.csv(ext_items_l,"/Users/jack_huber/Documents/MY RESEARCH/SHAS Validity/data/ext_items_l.csv")
-write.csv(int_items_l,"/Users/jack_huber/Documents/MY RESEARCH/SHAS Validity/data/int_items_l.csv")
+write.csv(all_l,"data/all_l.csv")
+write.csv(items_l,"data/items_l.csv")
+write.csv(ext_items_l,"data/ext_items_l.csv")
+write.csv(int_items_l,"data/int_items_l.csv")
 
 # items <- items[complete.cases(items), ] # create new dataset without missing data
 

@@ -5,7 +5,7 @@ bookdown::gitbook:
   css: style.css
   config:
     toc:
-      collapse: subsection
+      collapse: section
       before: |
         <li><a href="./">Validity of SHAS</a></li>
       after: |

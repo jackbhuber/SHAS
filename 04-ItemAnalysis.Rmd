@@ -15,15 +15,15 @@ library(knitr) # how RMarkdown compiles all the code into documents
 
 # LOAD DATA
 # Datasets straight off the Excel file
-all         <- read_csv("/Users/jack_huber/Documents/MY RESEARCH/SHAS Validity/data/all.csv")
-items       <- read.csv("/Users/jack_huber/Documents/MY RESEARCH/SHAS Validity/data/items.csv")
-ext_items   <- read.csv("/Users/jack_huber/Documents/MY RESEARCH/SHAS Validity/data/ext_items.csv")
-int_items   <- read.csv("/Users/jack_huber/Documents/MY RESEARCH/SHAS Validity/data/int_items.csv")
+all         <- read.csv("data/all.csv")
+items       <- read.csv("data/items.csv")
+ext_items   <- read.csv("data/ext_items.csv")
+int_items   <- read.csv("data/int_items.csv")
 # Datasets with listwise deletion
-all_l       <- read_csv("/Users/jack_huber/Documents/MY RESEARCH/SHAS Validity/data/all_l.csv")
-items_l     <- read.csv("/Users/jack_huber/Documents/MY RESEARCH/SHAS Validity/data/items_l.csv")
-ext_items_l <- read.csv("/Users/jack_huber/Documents/MY RESEARCH/SHAS Validity/data/ext_items_l.csv")
-int_items_l <- read.csv("/Users/jack_huber/Documents/MY RESEARCH/SHAS Validity/data/int_items_l.csv")
+all_l       <- read.csv("data/all_l.csv")
+items_l     <- read.csv("data/items_l.csv")
+ext_items_l <- read.csv("data/ext_items_l.csv")
+int_items_l <- read.csv("data/int_items_l.csv")
 
 ```
 

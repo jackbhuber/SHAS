@@ -29,15 +29,15 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Jack Huber and Dan Koch" />
 
 
-<meta name="date" content="2022-04-10" />
+<meta name="date" content="2022-04-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="discussion.html"/>
-<link rel="next" href="other-stuff.html"/>
+<link rel="prev" href="dimensionality.html"/>
+<link rel="next" href="scale-analysis.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -172,13 +172,26 @@ div.csl-indent {
 <li><a href="background-of-the-project.html#the-spiritual-harm-and-abuse-scale-shas">The Spiritual Harm and Abuse Scale (SHAS)<span></span></a></li>
 <li><a href="background-of-the-project.html#validity-research-for-the-shas">Validity Research for the SHAS<span></span></a></li>
 </ul></li>
+<li><a href="data-collection.html#data-collection">Data Collection<span></span></a></li>
 <li><a href="data-preparation.html#data-preparation">Data Preparation<span></span></a>
 <ul>
 <li><a href="data-preparation.html#load-packages">Load packages<span></span></a></li>
 <li><a href="data-preparation.html#load-data">Load data<span></span></a></li>
 <li><a href="data-preparation.html#select-items-for-analysis">Select items for analysis<span></span></a></li>
-<li><a href="data-preparation.html#summarize-data">Summarize data<span></span></a></li>
-<li><a href="data-preparation.html#missing-data">Missing data<span></span></a></li>
+<li><a href="data-preparation.html#missing-data">Missing data<span></span></a>
+<ul>
+<li><a href="data-preparation.html#a-simple-triggering-study">A Simple Triggering Study<span></span></a></li>
+<li><a href="data-preparation.html#missing-data-methods">Missing data methods<span></span></a></li>
+</ul></li>
+</ul></li>
+<li><a href="item-analysis.html#item-analysis">Item Analysis<span></span></a>
+<ul>
+<li><a href="item-analysis.html#load-packages-and-data">Load packages and data<span></span></a>
+<ul>
+<li><a href="item-analysis.html#skew-and-kurtosis">Skew and Kurtosis<span></span></a></li>
+</ul></li>
+<li><a href="item-analysis.html#item-correlations">Item correlations<span></span></a></li>
+<li><a href="item-analysis.html#internal-consistency-reliability">Internal consistency reliability<span></span></a></li>
 </ul></li>
 <li><a href="dimensionality.html#dimensionality">Dimensionality<span></span></a>
 <ul>
@@ -186,12 +199,12 @@ div.csl-indent {
 <li><a href="dimensionality.html#exploratory-factor-analysis-efa">Exploratory Factor Analysis (EFA)<span></span></a></li>
 <li><a href="dimensionality.html#confirmatory-factor-analysis-cfa">Confirmatory Factor Analysis (CFA)<span></span></a></li>
 </ul></li>
+<li><a href="reliability.html#reliability">Reliability<span></span></a></li>
 <li><a href="scale-analysis.html#scale-analysis">Scale Analysis<span></span></a>
 <ul>
 <li><a href="scale-analysis.html#interpretation-of-examinee-scores">Interpretation of Examinee Scores<span></span></a></li>
 </ul></li>
 <li><a href="discussion.html#discussion">Discussion<span></span></a></li>
-<li><a href="reliability.html#reliability">Reliability<span></span></a></li>
 <li><a href="other-stuff.html#other-stuff">Other Stuff<span></span></a></li>
 <li><a href="references.html#references">References<span></span></a></li>
 <li class="divider"></li>
@@ -217,15 +230,15 @@ div.csl-indent {
 <div id="reliability" class="section level1 hasAnchor">
 <h1>Reliability<a href="reliability.html#reliability" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>One important source of evidence for a scale is correlations among the items. Strong correlations among the items are evidence that the items are measuring the same construct. The matrix of correlations is presented in the table.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="reliability.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># corrs &lt;- cor(items, method = c(&quot;pearson&quot;)) # correlation matrix</span></span>
-<span id="cb55-2"><a href="reliability.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="co"># knitr::kable(round(corrs,2), caption = &quot;Correlation Matrix&quot;) # fancy kable version of correlation matrix</span></span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="reliability.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># corrs &lt;- cor(items, method = c(&quot;pearson&quot;)) # correlation matrix</span></span>
+<span id="cb76-2"><a href="reliability.html#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="co"># knitr::kable(round(corrs,2), caption = &quot;Correlation Matrix&quot;) # fancy kable version of correlation matrix</span></span></code></pre></div>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt ex ut condimentum vulputate. Sed feugiat mattis lectus vitae mollis. Suspendisse sodales urna id pharetra mattis. Mauris feugiat molestie efficitur. Proin non metus hendrerit elit viverra tincidunt. Integer tristique, nunc nec gravida semper, erat ligula placerat nunc, vitae tincidunt diam odio ut est. Morbi sit amet posuere ante, non tempor leo. Nam fermentum mi urna, ut lacinia metus venenatis sit amet. Morbi mattis lectus sit amet magna ultricies malesuada.</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="reliability.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(corrplot)</span></span>
-<span id="cb56-2"><a href="reliability.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="co"># corrplot(cor(items), order = &quot;original&quot;, tl.col=&#39;black&#39;, tl.cex=.75) # visual correlation matrix</span></span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="reliability.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(corrplot)</span></span>
+<span id="cb77-2"><a href="reliability.html#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="co"># corrplot(cor(items), order = &quot;original&quot;, tl.col=&#39;black&#39;, tl.cex=.75) # visual correlation matrix</span></span></code></pre></div>
 <p>The correlations among the items are moderate at best. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt ex ut condimentum vulputate. Sed feugiat mattis lectus vitae mollis. Suspendisse sodales urna id pharetra mattis. Mauris feugiat molestie efficitur. Proin non metus hendrerit elit viverra tincidunt. Integer tristique, nunc nec gravida semper, erat ligula placerat nunc, vitae tincidunt diam odio ut est. Morbi sit amet posuere ante, non tempor leo. Nam fermentum mi urna, ut lacinia metus venenatis sit amet. Morbi mattis lectus sit amet magna ultricies malesuada.
 Figure X reports internal reliability statistics.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="reliability.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># alpha(items)</span></span>
-<span id="cb57-2"><a href="reliability.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="co">#knitr::kable(alpha(items), caption = &quot;Internal Reliability Statistics&quot;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="reliability.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># alpha(items)</span></span>
+<span id="cb78-2"><a href="reliability.html#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="co">#knitr::kable(alpha(items), caption = &quot;Internal Reliability Statistics&quot;)</span></span></code></pre></div>
 
 </div>
             </section>
@@ -233,8 +246,8 @@ Figure X reports internal reliability statistics.</p>
           </div>
         </div>
       </div>
-<a href="discussion.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="other-stuff.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="dimensionality.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="scale-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -282,7 +295,7 @@ gitbook.start({
 "options": null
 },
 "toc": {
-"collapse": "subsection"
+"collapse": "section"
 }
 });
 });

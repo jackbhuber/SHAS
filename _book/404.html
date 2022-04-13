@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Jack Huber and Dan Koch" />
 
 
-<meta name="date" content="2022-04-12" />
+<meta name="date" content="2022-04-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -164,13 +164,15 @@ div.csl-indent {
 <li><a href="./">Validity of SHAS</a></li>
 
 <li class="divider"></li>
-<li><a href="index.html#url-your-book-url-like-httpsbookdown.orgyihuibookdown">url: your book url like <span>https://bookdown.org/yihui/bookdown</span><span></span></a></li>
+<li><a href="index.html#about-this-project">About this project<span></span></a></li>
+<li><a href="about-this-format.html#about-this-format">About this format<span></span></a></li>
 <li><a href="background-of-the-project.html#background-of-the-project">Background of the Project<span></span></a>
 <ul>
 <li><a href="background-of-the-project.html#spiritual-harm-and-abuse">Spiritual Harm and Abuse<span></span></a></li>
 <li><a href="background-of-the-project.html#the-spiritual-harm-and-abuse-scale-shas">The Spiritual Harm and Abuse Scale (SHAS)<span></span></a></li>
 <li><a href="background-of-the-project.html#validity-research-for-the-shas">Validity Research for the SHAS<span></span></a></li>
 </ul></li>
+<li><a href="data-collection.html#data-collection">Data Collection<span></span></a></li>
 <li><a href="data-preparation.html#data-preparation">Data Preparation<span></span></a>
 <ul>
 <li><a href="data-preparation.html#load-packages">Load packages<span></span></a></li>
@@ -182,18 +184,27 @@ div.csl-indent {
 <li><a href="data-preparation.html#missing-data-methods">Missing data methods<span></span></a></li>
 </ul></li>
 </ul></li>
+<li><a href="item-analysis.html#item-analysis">Item Analysis<span></span></a>
+<ul>
+<li><a href="item-analysis.html#load-packages-and-data">Load packages and data<span></span></a>
+<ul>
+<li><a href="item-analysis.html#skew-and-kurtosis">Skew and Kurtosis<span></span></a></li>
+</ul></li>
+<li><a href="item-analysis.html#item-correlations">Item correlations<span></span></a></li>
+<li><a href="item-analysis.html#internal-consistency-reliability">Internal consistency reliability<span></span></a></li>
+</ul></li>
 <li><a href="dimensionality.html#dimensionality">Dimensionality<span></span></a>
 <ul>
 <li><a href="dimensionality.html#about-dimensionality">About Dimensionality<span></span></a></li>
 <li><a href="dimensionality.html#exploratory-factor-analysis-efa">Exploratory Factor Analysis (EFA)<span></span></a></li>
 <li><a href="dimensionality.html#confirmatory-factor-analysis-cfa">Confirmatory Factor Analysis (CFA)<span></span></a></li>
 </ul></li>
+<li><a href="reliability.html#reliability">Reliability<span></span></a></li>
 <li><a href="scale-analysis.html#scale-analysis">Scale Analysis<span></span></a>
 <ul>
 <li><a href="scale-analysis.html#interpretation-of-examinee-scores">Interpretation of Examinee Scores<span></span></a></li>
 </ul></li>
 <li><a href="discussion.html#discussion">Discussion<span></span></a></li>
-<li><a href="reliability.html#reliability">Reliability<span></span></a></li>
 <li><a href="other-stuff.html#other-stuff">Other Stuff<span></span></a></li>
 <li><a href="references.html#references">References<span></span></a></li>
 <li class="divider"></li>
@@ -276,12 +287,26 @@ gitbook.start({
 "options": null
 },
 "toc": {
-"collapse": "subsection"
+"collapse": "section"
 }
 });
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
