@@ -1,4 +1,88 @@
 # APPLY VARIABLE LABELS
+
+var.labels <- c(
+  Q7 = "My pastor/leader explicitly claiming to speak on God's behalf",
+  Q10 = "Being asked to give up personal, vocational, and/or educational goals by a pastor or group leader",
+  Q11 = "Seeing that anyone who disagreed with my church/pastor was consequently portrayed as evil",
+  Q16 = "My church community abandoning me in a difficult time",
+  Q17 = "Being treated as “less than” because of my sexual orientation",
+  Q18 = "Discouragement of critical thinking by my church or pastor",
+  Q19 = "Behavior being excessively monitored by my pastor or group members",
+  Q20 = "Seeing specific members being pressured to give money despite well-known personal financial hardship",
+  Q21 = "Being taught that I would be risking Hell if I left my particular church/group",
+  Q22 = "Being expected to follow my pastor/leader’s personal rules/advice around dating, marriage, and sex",
+  Q23 = "Prayer replacing needed medical interventions",
+  Q24 = "Being expected to consult my pastor/leader before making non-religious decisions",
+  Q25 = "Feeling unable to raise questions and issues",
+  Q26 = "Being pressured to forgive an abuser while the abuse was ongoing",
+  Q27 = "Being denied opportunities to serve/volunteer because of my gender",
+  Q28 = "Seeing the leadership or group protecting abusive individuals",
+  Q29 = "Feeling special when in my pastor/leader’s good graces; feeling ignored when I wasn’t",
+  Q30 = "Being deterred from seeking mental health treatment, counseling and/or medication",
+  Q31 = "Being shunned or ignored by my pastor or church/group",
+  Q32 = "Feeling unable to express unhappiness",
+  Q34 = "Seeing Scripture used to justify physical punishment or other types of severe discipline",
+  Q35 = "Being explicitly taught to distrust my emotions",
+  Q36 = "Mental or physical problems being interpreted as spiritual/moral weakness",
+  Q37 = "Being made to feel less spiritually advanced/mature than my pastor/leadership",
+  Q38 = "Having unrealistic demands placed on my moral or religious behavior",
+  Q39 = "Being made to feel shame over naturally occurring sexual desires (not actions)",
+  Q40 = "Threatening Divine punishment to keep group members in line",
+  Q41 = "Being denied opportunities to serve because of my sexual orientation",
+  Q42 = "Seeing others shamed or shunned by the pastor/leader or group",
+  Q43 = "Being shamed by my pastor or the group for poor spiritual/moral performance",
+  Q44 = "Love or acceptance only being offered if spiritual or moral performance was high",
+  Q45 = "Vivid descriptions of Hell, Satan, or demons being taught to young children that are developmentally inappropriate and/or anxiety-provoking",
+  Q46 = "Being treated as “less than” because of my skin color",
+  Q47 = "Medical care being postponed or not given at all for religious reasons",
+  Q49 = "The leadership or group not only protecting but elevating abusive individuals",
+  Q50 = "Being treated as “less than” because of my gender",
+  Q51 = "Experiencing extreme pressure to take on a role of pastor, missionary, or other spiritual leader",
+  Q52 = "Being blamed for harm that I suffered, rather than blaming those who harmed me",
+  Q53 = "Seeing Scripture used to justify abusive parent-child behavior",
+  Q54 = "Being explicitly taught to distrust my intuitions",
+  Q55 = "Hearing cultural references in sermons that were not commonly known to members of my racial or ethnic subculture",
+  Q56 = "Being made to feel like I was crazy or weird for having doubts or questions",
+  Q57 = "Developing mental or physical ailments as a result of stress from conforming to the group/leader’s expectation",
+  Q58 = "Terror or horror being used to motivate religious decisions",
+  Q59 = "Seeing the pastor or group blame the victim of abuse for the abuse itself",
+  Q60 = "Being encouraged to remain in an abusive marriage by religious leaders",
+  Q61 = "Vivid descriptions of the end of the world being taught to young children that are developmentally inappropriate and/or anxiety-provoking",
+  Q62 = "Seeing Scripture used to justify physical violence",
+  Q63 = "Being shamed by my pastor or the group for raising questions or concerns",
+  Q64 = "Witnessing women being pressured to stay in unfaithful or abusive marriages",
+  Q65 = "Being “cut off” or shunned by more religious family members",
+  Q66 = "Seeing others treated as “less than” because of their sexual orientation",
+  
+  # VARIABLE LABELS: Items for Internal States Subscale
+  Q68 = "Anxiety attacks triggered by religious stimuli",
+  Q69 = "A lack of spiritual direction or purpose",
+  Q70 = "Feeling betrayed by God",
+  Q71 = "Personally avoiding religious activities or settings to reduce distressing feelings",
+  Q72 = "Feeling as if God harmed me directly",
+  Q73 = "Self-hatred or self-loathing",
+  Q74 = "Sadness over the loss of my faith/religious community",
+  Q76 = "Feeling that I wasted years of my life in a particular church or set of beliefs",
+  Q77 = "Anger upon reflecting on negative religious experiences",
+  Q78 = "A lack of self-worth",
+  Q79 = "Distrust of God",
+  Q80 = "Feeling isolated",
+  Q81 = "Nightmares about my negative religious experiences",
+  Q82 = "Having trouble navigating life outside my church/community")
+
+
+
+library(labelled)
+
+all <- labelled::set_variable_labels(all, .labels = var.labels)
+
+
+
+
+
+
+
+
 library(expss)
 # data(allitems)
 data(shas)

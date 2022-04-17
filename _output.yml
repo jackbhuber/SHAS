@@ -1,8 +1,9 @@
 bookdown::gitbook:
+  highlight: tango
   split_bib: TRUE
   number_sections: FALSE
   fig_caption: TRUE
-  css: style.css
+  css: assets/style.css
   config:
     toc:
       collapse: section

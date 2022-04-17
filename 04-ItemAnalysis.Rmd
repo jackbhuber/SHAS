@@ -2,7 +2,7 @@
 
 ## Load packages and data
 
-```{r, echo = TRUE}
+```{r}
 
 # LOAD PACKAGES
 library(psych) # for psychometric analysis
@@ -31,20 +31,21 @@ A good way to begin the analysis is to get a feel for our items with descriptive
 
 ```{r}
 
-# SUMMARIZE DATA
-options(digits=2)
-knitr::kable(stats, caption = "Items Statistics", booktabs = TRUE, digits=2)
+# DESCRIBE DATA
+# options(digits=2)
+itm_stats <- describe(all)
+knitr::kable(itm_stats, caption = "Items Statistics", booktabs = TRUE, digits=2)
 
-# summary(shas)
-# describe(allitems)
-# summary(allitems)
-
-# library(pastecs)
-item_stats <- pastecs::stat.desc(items) # use the stat.desc() to render data frame of item stats
+library(pastecs)
+item_stats <- pastecs::stat.desc(all) # use the stat.desc() to render data frame of item stats
 item_stats <- t(item_stats) # transpose the data frame
 item_stats <- data.frame(item_stats)
 item_stats[order(item_stats$mean), ] # order by mean
-item_stats
+item_stats[order(item_stats$nbr.val), ] # order by N cases
+
+# A POSSIBLE BAR PLOT OF ITEM STATISTICS
+# barplot(item_stats$nbr.val, main="Complete Cases", horiz=TRUE, col='red')
+# barplot(item_stats$nbr.val, main="Complete Cases", horiz=FALSE, col='red', ylim = c(0,8000),names.arg=labs)
 
 # OUTLIERS
 # psych::outlier(items)
@@ -63,7 +64,9 @@ The item for gratitude is definitely skewed, based on the skew and kurtosis stat
 
 I will supplement this table with a set of plots to visualize the data. Here I pass the 'table' function into an object for each item. Then I pass these objects into plots of uniform size and labeling.
 
-```{r fig.width=10, fig.height=7, fig.cap="Frequencies of Well-Being Items", fig.align='center'}
+```{r}
+
+#{r fig.width=10, fig.height=7, fig.cap="Frequencies of Well-Being Items", # fig.align='center'}
 
 # FREQUENCIES
 # peacecounts <- table(items$sense.peace)
@@ -88,11 +91,11 @@ The striking thing about these data is their negative skew: the vast majority of
 
 ```{r}
 # CORRELATION MATRIX (LOWER HALF)
-r <- lowerCor(items) # the correlation matrix, rounded to 2 decimals
+# r <- lowerCor(items) # the correlation matrix, rounded to 2 decimals
 
 # HEATMAP OF CORRELATIONS
-corPlot(r) #examine the many options for this function.
-corr.test(items)
+# corPlot(r) #examine the many options for this function.
+# corr.test(items)
 
 # POINT BISERIAL CORRELATIONS
 # ltm::biserial.cor(x, y, use = c("all.obs", "complete.obs"), level = 1)
