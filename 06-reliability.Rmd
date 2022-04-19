@@ -1,5 +1,32 @@
 # Reliability
 
+## Item correlations
+
+```{r}
+# CORRELATION MATRIX (LOWER HALF)
+# r <- lowerCor(items) # the correlation matrix, rounded to 2 decimals
+
+# HEATMAP OF CORRELATIONS
+# corPlot(r) #examine the many options for this function.
+# corr.test(items)
+
+# POINT BISERIAL CORRELATIONS
+# ltm::biserial.cor(x, y, use = c("all.obs", "complete.obs"), level = 1)
+
+```
+
+## Internal consistency reliability
+
+```{r}
+
+# RELIABILITY
+# reliability(items, itemal = TRUE, NA.Delete = TRUE, ml = TRUE)
+
+```
+
+
+
+
 One important source of evidence for a scale is correlations among the items.  Strong correlations among the items are evidence that the items are measuring the same construct.  The matrix of correlations is presented in the table.
 
 ```{r}

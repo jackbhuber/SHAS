@@ -180,20 +180,18 @@ div.csl-indent {
 <li><a href="data-preparation.html#preliminary-work">Preliminary work<span></span></a></li>
 <li><a href="data-preparation.html#missing-data">Missing data<span></span></a></li>
 </ul></li>
-<li><a href="item-analysis.html#item-analysis">Item Analysis<span></span></a>
-<ul>
-<li><a href="item-analysis.html#load-packages-and-data">Load packages and data<span></span></a></li>
-<li><a href="item-analysis.html#skew-and-kurtosis">Skew and Kurtosis<span></span></a></li>
-<li><a href="item-analysis.html#item-correlations">Item correlations<span></span></a></li>
-<li><a href="item-analysis.html#internal-consistency-reliability">Internal consistency reliability<span></span></a></li>
-</ul></li>
+<li><a href="item-analysis.html#item-analysis">Item Analysis<span></span></a></li>
 <li><a href="dimensionality.html#dimensionality">Dimensionality<span></span></a>
 <ul>
 <li><a href="dimensionality.html#about-dimensionality">About Dimensionality<span></span></a></li>
 <li><a href="dimensionality.html#exploratory-factor-analysis-efa">Exploratory Factor Analysis (EFA)<span></span></a></li>
 <li><a href="dimensionality.html#confirmatory-factor-analysis-cfa">Confirmatory Factor Analysis (CFA)<span></span></a></li>
 </ul></li>
-<li><a href="reliability.html#reliability">Reliability<span></span></a></li>
+<li><a href="reliability.html#reliability">Reliability<span></span></a>
+<ul>
+<li><a href="reliability.html#item-correlations">Item correlations<span></span></a></li>
+<li><a href="reliability.html#internal-consistency-reliability">Internal consistency reliability<span></span></a></li>
+</ul></li>
 <li><a href="scale-analysis.html#scale-analysis">Scale Analysis<span></span></a>
 <ul>
 <li><a href="scale-analysis.html#interpretation-of-examinee-scores">Interpretation of Examinee Scores<span></span></a></li>
@@ -223,34 +221,39 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="item-analysis" class="section level1 hasAnchor">
 <h1>Item Analysis<a href="item-analysis.html#item-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="load-packages-and-data" class="section level2 hasAnchor">
-<h2>Load packages and data<a href="item-analysis.html#load-packages-and-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This chapter documents our item analysis. This includes investigation of:</p>
+<ul>
+<li>Item difficulty</li>
+<li>Item discrimination</li>
+<li>Item-total correlations</li>
+</ul>
+<p><strong>Load packages</strong>. This code chunk outlines the R packages we use and the data. There are several helpful packages for classical test theory (CTT).</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="item-analysis.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># LOAD PACKAGES</span></span>
 <span id="cb11-2"><a href="item-analysis.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)  <span class="co"># for psychometric analysis</span></span>
 <span id="cb11-3"><a href="item-analysis.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psychTools)  <span class="co"># for psychometric analysis</span></span>
 <span id="cb11-4"><a href="item-analysis.html#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(CTT)  <span class="co"># for classical test theory stats</span></span>
 <span id="cb11-5"><a href="item-analysis.html#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pastecs)  <span class="co"># for item statistics</span></span>
-<span id="cb11-6"><a href="item-analysis.html#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ltm)  <span class="co"># for point biserial correlations</span></span>
+<span id="cb11-6"><a href="item-analysis.html#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ltm)  <span class="co"># for point-biserial correlations</span></span>
 <span id="cb11-7"><a href="item-analysis.html#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)  <span class="co"># for correlation plot</span></span>
-<span id="cb11-8"><a href="item-analysis.html#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)  <span class="co"># how RMarkdown compiles all the code into documents</span></span>
-<span id="cb11-9"><a href="item-analysis.html#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-10"><a href="item-analysis.html#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co"># LOAD DATA Datasets straight off the Excel file</span></span>
-<span id="cb11-11"><a href="item-analysis.html#cb11-11" aria-hidden="true" tabindex="-1"></a>all <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/all.csv&quot;</span>)</span>
-<span id="cb11-12"><a href="item-analysis.html#cb11-12" aria-hidden="true" tabindex="-1"></a>items <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/items.csv&quot;</span>)</span>
-<span id="cb11-13"><a href="item-analysis.html#cb11-13" aria-hidden="true" tabindex="-1"></a>ext_items <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/ext_items.csv&quot;</span>)</span>
-<span id="cb11-14"><a href="item-analysis.html#cb11-14" aria-hidden="true" tabindex="-1"></a>int_items <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/int_items.csv&quot;</span>)</span>
-<span id="cb11-15"><a href="item-analysis.html#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Datasets with listwise deletion</span></span>
-<span id="cb11-16"><a href="item-analysis.html#cb11-16" aria-hidden="true" tabindex="-1"></a>all_l <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/all_l.csv&quot;</span>)</span>
-<span id="cb11-17"><a href="item-analysis.html#cb11-17" aria-hidden="true" tabindex="-1"></a>items_l <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/items_l.csv&quot;</span>)</span>
-<span id="cb11-18"><a href="item-analysis.html#cb11-18" aria-hidden="true" tabindex="-1"></a>ext_items_l <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/ext_items_l.csv&quot;</span>)</span>
-<span id="cb11-19"><a href="item-analysis.html#cb11-19" aria-hidden="true" tabindex="-1"></a>int_items_l <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/int_items_l.csv&quot;</span>)</span></code></pre></div>
-<p>A good way to begin the analysis is to get a feel for our items with descriptive statistics.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="item-analysis.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># DESCRIBE DATA options(digits=2)</span></span>
-<span id="cb12-2"><a href="item-analysis.html#cb12-2" aria-hidden="true" tabindex="-1"></a>itm_stats <span class="ot">&lt;-</span> <span class="fu">describe</span>(all)</span>
-<span id="cb12-3"><a href="item-analysis.html#cb12-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(itm_stats, <span class="at">caption =</span> <span class="st">&quot;Items Statistics&quot;</span>, <span class="at">booktabs =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb12-4"><a href="item-analysis.html#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
+<span id="cb11-8"><a href="item-analysis.html#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)  <span class="co"># how RMarkdown compiles all the code into documents</span></span></code></pre></div>
+<p><strong>Load data</strong>. This code chunk outlines the R packages we use and the data. There are several helpful packages for classical test theory (CTT).</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="item-analysis.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># LOAD DATA Datasets straight off the Excel file</span></span>
+<span id="cb12-2"><a href="item-analysis.html#cb12-2" aria-hidden="true" tabindex="-1"></a>all <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/all.csv&quot;</span>)</span>
+<span id="cb12-3"><a href="item-analysis.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># items &lt;- read.csv(&#39;data/items.csv&#39;) ext_items &lt;-</span></span>
+<span id="cb12-4"><a href="item-analysis.html#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># read.csv(&#39;data/ext_items.csv&#39;) int_items &lt;-</span></span>
+<span id="cb12-5"><a href="item-analysis.html#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># read.csv(&#39;data/int_items.csv&#39;) Datasets with listwise</span></span>
+<span id="cb12-6"><a href="item-analysis.html#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># deletion</span></span>
+<span id="cb12-7"><a href="item-analysis.html#cb12-7" aria-hidden="true" tabindex="-1"></a>all_l <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/all_l.csv&quot;</span>)</span>
+<span id="cb12-8"><a href="item-analysis.html#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># items_l &lt;- read.csv(&#39;data/items_l.csv&#39;) ext_items_l &lt;-</span></span>
+<span id="cb12-9"><a href="item-analysis.html#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># read.csv(&#39;data/ext_items_l.csv&#39;) int_items_l &lt;-</span></span>
+<span id="cb12-10"><a href="item-analysis.html#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co"># read.csv(&#39;data/int_items_l.csv&#39;)</span></span></code></pre></div>
+<p><strong>Describe data</strong>. A good way to begin the analysis is to get a feel for our items with descriptive statistics.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="item-analysis.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># DESCRIBE DATA options(digits=2)</span></span>
+<span id="cb13-2"><a href="item-analysis.html#cb13-2" aria-hidden="true" tabindex="-1"></a>itm_stats <span class="ot">&lt;-</span> <span class="fu">describe</span>(all)</span>
+<span id="cb13-3"><a href="item-analysis.html#cb13-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(itm_stats, <span class="at">caption =</span> <span class="st">&quot;Items Statistics&quot;</span>, <span class="at">booktabs =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-4"><a href="item-analysis.html#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
 <table style="width:100%;">
-<caption><span id="tab:unnamed-chunk-7">Table 1: </span>Items Statistics</caption>
+<caption><span id="tab:describe">Table 1: </span>Items Statistics</caption>
 <colgroup>
 <col width="14%" />
 <col width="5%" />
@@ -1600,11 +1603,21 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="item-analysis.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pastecs)</span>
-<span id="cb13-2"><a href="item-analysis.html#cb13-2" aria-hidden="true" tabindex="-1"></a>item_stats <span class="ot">&lt;-</span> pastecs<span class="sc">::</span><span class="fu">stat.desc</span>(all)  <span class="co"># use the stat.desc() to render data frame of item stats</span></span>
-<span id="cb13-3"><a href="item-analysis.html#cb13-3" aria-hidden="true" tabindex="-1"></a>item_stats <span class="ot">&lt;-</span> <span class="fu">t</span>(item_stats)  <span class="co"># transpose the data frame</span></span>
-<span id="cb13-4"><a href="item-analysis.html#cb13-4" aria-hidden="true" tabindex="-1"></a>item_stats <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(item_stats)</span>
-<span id="cb13-5"><a href="item-analysis.html#cb13-5" aria-hidden="true" tabindex="-1"></a>item_stats[<span class="fu">order</span>(item_stats<span class="sc">$</span>mean), ]  <span class="co"># order by mean</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="item-analysis.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A POSSIBLE BAR PLOT OF ITEM STATISTICS</span></span>
+<span id="cb14-2"><a href="item-analysis.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot(item_stats$nbr.val, main=&#39;Complete Cases&#39;,</span></span>
+<span id="cb14-3"><a href="item-analysis.html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># horiz=TRUE, col=&#39;red&#39;) barplot(item_stats$nbr.val,</span></span>
+<span id="cb14-4"><a href="item-analysis.html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># main=&#39;Complete Cases&#39;, horiz=FALSE, col=&#39;red&#39;, ylim =</span></span>
+<span id="cb14-5"><a href="item-analysis.html#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># c(0,8000),names.arg=labs)</span></span></code></pre></div>
+<p><strong>Classical Item Analysis</strong>.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="item-analysis.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CLASSICAL ITEM ANALYSIS CTT::itemAnalysis(items,</span></span>
+<span id="cb15-2"><a href="item-analysis.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># itemReport=TRUE, NA.Delete=TRUE, rBisML=FALSE, hardFlag,</span></span>
+<span id="cb15-3"><a href="item-analysis.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># easyFlag, pBisFlag, bisFlag, flagStyle = c(&#39;X&#39;,&#39;&#39;))</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="item-analysis.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MORE ITEM STATISTICS</span></span>
+<span id="cb16-2"><a href="item-analysis.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pastecs)</span>
+<span id="cb16-3"><a href="item-analysis.html#cb16-3" aria-hidden="true" tabindex="-1"></a>item_stats <span class="ot">&lt;-</span> pastecs<span class="sc">::</span><span class="fu">stat.desc</span>(all)  <span class="co"># use the stat.desc() to render data frame of item stats</span></span>
+<span id="cb16-4"><a href="item-analysis.html#cb16-4" aria-hidden="true" tabindex="-1"></a>item_stats <span class="ot">&lt;-</span> <span class="fu">t</span>(item_stats)  <span class="co"># transpose the data frame</span></span>
+<span id="cb16-5"><a href="item-analysis.html#cb16-5" aria-hidden="true" tabindex="-1"></a>item_stats <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(item_stats)</span>
+<span id="cb16-6"><a href="item-analysis.html#cb16-6" aria-hidden="true" tabindex="-1"></a>item_stats[<span class="fu">order</span>(item_stats<span class="sc">$</span>mean), ]  <span class="co"># order by mean</span></span></code></pre></div>
 <pre><code>              nbr.val nbr.null nbr.na min  max range     sum median        mean
 Q88              3061        0    161   1    2     1    3327    1.0    1.086900
 Q91              3044        0    178   1    3     2    3334    1.0    1.095269
@@ -1771,7 +1784,7 @@ Q89            0.060334343  0.118300147 1.109179e+01   3.3304339 0.6411317
 Q95            0.035980836  0.070549111 3.953771e+00   1.9884092 0.3589857
 Q84            0.221939991  0.435166796 1.505305e+02  12.2690868 0.3181314
 X             16.388512237 32.132968367 8.653755e+05 930.2556100 0.5772607</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="item-analysis.html#cb15-1" aria-hidden="true" tabindex="-1"></a>item_stats[<span class="fu">order</span>(item_stats<span class="sc">$</span>nbr.val), ]  <span class="co"># order by N cases</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="item-analysis.html#cb18-1" aria-hidden="true" tabindex="-1"></a>item_stats[<span class="fu">order</span>(item_stats<span class="sc">$</span>nbr.val), ]  <span class="co"># order by N cases</span></span></code></pre></div>
 <pre><code>              nbr.val nbr.null nbr.na min  max range     sum median        mean
 Q97              2030        0   1192   1    7     6    9109    5.0    4.487192
 Q90              3042        0    180   1    3     2    3506    1.0    1.152531
@@ -1938,61 +1951,12 @@ Q65            0.020744262  0.040673300 1.385645e+00   1.1771341 0.6459393
 Q24            0.020727511  0.040640450 1.383837e+00   1.1763661 0.6238188
 Q37            0.024280108  0.047606033 1.898856e+00   1.3779897 0.4687406
 X             16.388512237 32.132968367 8.653755e+05 930.2556100 0.5772607</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="item-analysis.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A POSSIBLE BAR PLOT OF ITEM STATISTICS</span></span>
-<span id="cb17-2"><a href="item-analysis.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot(item_stats$nbr.val, main=&#39;Complete Cases&#39;,</span></span>
-<span id="cb17-3"><a href="item-analysis.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># horiz=TRUE, col=&#39;red&#39;) barplot(item_stats$nbr.val,</span></span>
-<span id="cb17-4"><a href="item-analysis.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># main=&#39;Complete Cases&#39;, horiz=FALSE, col=&#39;red&#39;, ylim =</span></span>
-<span id="cb17-5"><a href="item-analysis.html#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># c(0,8000),names.arg=labs)</span></span>
-<span id="cb17-6"><a href="item-analysis.html#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="item-analysis.html#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># OUTLIERS psych::outlier(items)</span></span>
-<span id="cb17-8"><a href="item-analysis.html#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-9"><a href="item-analysis.html#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co"># CLASSICAL ITEM ANALYSIS CTT::itemAnalysis(items,</span></span>
-<span id="cb17-10"><a href="item-analysis.html#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co"># itemReport=TRUE, NA.Delete=TRUE, rBisML=FALSE, hardFlag,</span></span>
-<span id="cb17-11"><a href="item-analysis.html#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="co"># easyFlag, pBisFlag, bisFlag, flagStyle = c(&#39;X&#39;,&#39;&#39;))</span></span>
-<span id="cb17-12"><a href="item-analysis.html#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-13"><a href="item-analysis.html#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="co"># DISTRACTOR ANALYSIS CTT::distractorAnalysis</span></span></code></pre></div>
-</div>
-<div id="skew-and-kurtosis" class="section level2 hasAnchor">
-<h2>Skew and Kurtosis<a href="item-analysis.html#skew-and-kurtosis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The item for gratitude is definitely skewed, based on the skew and kurtosis statistics in the table.</p>
-<p>I will supplement this table with a set of plots to visualize the data. Here I pass the ‘table’ function into an object for each item. Then I pass these objects into plots of uniform size and labeling.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="item-analysis.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># {r fig.width=10, fig.height=7, fig.cap=&#39;Frequencies of</span></span>
-<span id="cb18-2"><a href="item-analysis.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Well-Being Items&#39;, # fig.align=&#39;center&#39;}</span></span>
-<span id="cb18-3"><a href="item-analysis.html#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="item-analysis.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># FREQUENCIES peacecounts &lt;- table(items$sense.peace)</span></span>
-<span id="cb18-5"><a href="item-analysis.html#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># wondercounts &lt;- table(items$sense.wonder) gratitudecounts</span></span>
-<span id="cb18-6"><a href="item-analysis.html#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co"># &lt;- table(items$sense.gratitude) purposecounts &lt;-</span></span>
-<span id="cb18-7"><a href="item-analysis.html#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># table(items$sense.purpose) labs &lt;- c(&#39;1 Never&#39;, &#39;2</span></span>
-<span id="cb18-8"><a href="item-analysis.html#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Seldom&#39;, &#39;3 Several times a year&#39;, &#39;4 Once or twice a</span></span>
-<span id="cb18-9"><a href="item-analysis.html#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co"># month&#39;, &#39;5 At least once a week&#39;) par(mfrow=c(2,2))</span></span>
-<span id="cb18-10"><a href="item-analysis.html#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot(peacecounts, main=&#39;Deep Sense of Peace&#39;,</span></span>
-<span id="cb18-11"><a href="item-analysis.html#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co"># horiz=FALSE, col=&#39;red&#39;, ylim = c(0,8000), names.arg=labs)</span></span>
-<span id="cb18-12"><a href="item-analysis.html#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot(wondercounts, main=&#39;Deep Sense of Wonder&#39;,</span></span>
-<span id="cb18-13"><a href="item-analysis.html#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="co"># horiz=FALSE, col=&#39;blue&#39;, ylim = c(0,8000),</span></span>
-<span id="cb18-14"><a href="item-analysis.html#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="co"># names.arg=labs) barplot(gratitudecounts, main=&#39;Strong</span></span>
-<span id="cb18-15"><a href="item-analysis.html#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Sense of Gratitude&#39;, horiz=FALSE, col=&#39;purple&#39;, ylim =</span></span>
-<span id="cb18-16"><a href="item-analysis.html#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="co"># c(0,8000), names.arg=labs) barplot(purposecounts,</span></span>
-<span id="cb18-17"><a href="item-analysis.html#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="co"># main=&#39;Wonder about Meaning and Purpose&#39;, horiz=FALSE,</span></span>
-<span id="cb18-18"><a href="item-analysis.html#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="co"># col=&#39;green&#39;, ylim = c(0,8000), names.arg=labs)</span></span></code></pre></div>
-<p>The striking thing about these data is their negative skew: the vast majority of respondents report frequently feeling peace, wonder, gratitude, and wonder about the meaning of life. This skew poses some challenges. One is less variance. If the vast majority of Catholics past and present report frequent feelings of well-being, there is not much to explain. The other challenge is that classical statistics are based the assumption that the data are normally distributed.</p>
-</div>
-<div id="item-correlations" class="section level2 hasAnchor">
-<h2>Item correlations<a href="item-analysis.html#item-correlations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="item-analysis.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CORRELATION MATRIX (LOWER HALF) r &lt;- lowerCor(items) #</span></span>
-<span id="cb19-2"><a href="item-analysis.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the correlation matrix, rounded to 2 decimals</span></span>
-<span id="cb19-3"><a href="item-analysis.html#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="item-analysis.html#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># HEATMAP OF CORRELATIONS corPlot(r) #examine the many</span></span>
-<span id="cb19-5"><a href="item-analysis.html#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># options for this function.  corr.test(items)</span></span>
-<span id="cb19-6"><a href="item-analysis.html#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-7"><a href="item-analysis.html#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># POINT BISERIAL CORRELATIONS ltm::biserial.cor(x, y, use =</span></span>
-<span id="cb19-8"><a href="item-analysis.html#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co"># c(&#39;all.obs&#39;, &#39;complete.obs&#39;), level = 1)</span></span></code></pre></div>
-</div>
-<div id="internal-consistency-reliability" class="section level2 hasAnchor">
-<h2>Internal consistency reliability<a href="item-analysis.html#internal-consistency-reliability" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="item-analysis.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># RELIABILITY reliability(items, itemal = TRUE, NA.Delete =</span></span>
-<span id="cb20-2"><a href="item-analysis.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># TRUE, ml = TRUE)</span></span></code></pre></div>
+<p><strong>Distractor Analysis</strong>.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="item-analysis.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># DISTRACTOR ANALYSIS CTT::distractorAnalysis</span></span></code></pre></div>
+<p><strong>Outlier Analysis</strong>.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="item-analysis.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># OUTLIERS psych::outlier(items)</span></span></code></pre></div>
+<p><strong>Skew and Kurtosis</strong>.</p>
 
-</div>
 </div>
             </section>
 

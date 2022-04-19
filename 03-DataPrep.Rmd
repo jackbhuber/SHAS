@@ -2,6 +2,7 @@
 This chapter documents our decisions surrounding how to prepare the data for analysis. These decisions include details on loading the necessary R packages, loading the data in R, coding or recoding of variables. Also discussed is how we deal with missing data.
 
 ## Preliminary work
+
 **Load R packages**. Some R users load all their packages up front. Others, perhaps for instructional reasons, load them just before calling functions, perhaps for instructional reasons. I can see merit in listing all the packages for properly citing them. Here is a code chunk for loading all the packages up front:
 
 ```{r include=TRUE, message=FALSE}
@@ -9,8 +10,6 @@ This chapter documents our decisions surrounding how to prepare the data for ana
 library(Hmisc) # for variable and value labels
 library(VIM) # for missing data
 library(naniar) # for missing data
-library(psych) # for psychometric analysis
-library(eRm) # for Rasch modeling
 library(corrplot) # for correlation plot
 library(knitr) # how RMarkdown compiles code into documents
 ```
@@ -28,23 +27,18 @@ shas <- read_excel("data/data.xlsx") # load Excel file
 ```{r}
 # SELECT DATASETS FOR ANALYSIS
 all <- shas[ ,14:97] # select items, dems from columns 14-79
+items <- shas[ ,14:79] # all Likert items
+ext_items <- shas[ ,14:35] # External Events items
+int_items <- shas[ ,66:79] # Internal States items
 
 # REMOVE SELECTED COLUMNS
-all <- subset (all, select = -c(Ext_Avg:Global_Avg))
-write.csv(all,"data/items.csv") # save data for later use
-
-# CLEAN DATA BY CODING ANY RESPONSES > 5 AS NA
-# all <- scrub(all, max=5) #e.g., change anything great than 5 to NA
+all <- subset(all, select = -c(Ext_Avg:Global_Avg)) # remove columns for now
 
 # OTHER POSSIBLE DATASETS
-# items     <- shas[ ,14:79] # all Likert items
-# ext_items <- shas[ ,14:35] # External Events items
-# int_items <- shas[ ,66:79] # Internal States items
-
-# write.csv(items,"data/items.csv")
-# write.csv(ext_items,"data/ext_items.csv")
-# write.csv(int_items,"data/int_items.csv")
-
+write.csv(all,"data/all.csv") # save data for later use
+write.csv(items,"data/items.csv")
+write.csv(ext_items,"data/ext_items.csv")
+write.csv(int_items,"data/int_items.csv")
 ```
 
 **Labeling**. This is probably the appropriate place to deal with the labeling of variables and their values. These things should be appropriately labeled to their content, wording, etc. **But I have yet to figure this part out so I will come back to it**.
@@ -69,7 +63,7 @@ The second plot in Figure \@ref(fig:vim-plots) illustrates the different combina
 # naniar::vis_miss(all)
 ```
 
-**Mechanism of missing data**. @McKnightEtAl2007 outline a variety of approaches for investigating the mechanisms of missing data. An appropriate first step is to test whether the data are Missing Completely At Random (MCAR) with the use of Little's test @Little1988. 
+**Mechanism of missing data**. @McKnightEtAl2007 outline a variety of approaches for investigating the mechanisms of missing data. An appropriate first step is to test whether the data are Missing Completely At Random (MCAR) with the use of Little's test @Little1988.
 
 ```{r mcar, fig.cap="Little's Test for Missing Completely At Random (MCAR)"}
 library(naniar)
@@ -123,12 +117,12 @@ miss_set$total_ext <- rowSums(miss_set[ , c(1:52)]) # total score of exposure to
 miss_set$total_int <- rowSums(miss_set[ , c(53:66)]) # a total score of internal states missingness
 
 # 4. RUN CORRELATION BETWEEN TOTAL SCORE AND DICHOTOMOUS ITEMS
-miss_set <- miss_set[ , c(53:68)] # delete all but the internal states and total scores
-miss_r <- lowerCor(miss_set) # the correlation matrix, rounded to 2 decimals
+library(psych)
+miss_set2 <- miss_set[ , c(53:68)] # delete all but the internal states and total scores
+miss_r <- lowerCor(miss_set2) # the correlation matrix, rounded to 2 decimals
 corPlot(miss_r, stars= TRUE, upper = FALSE) # examine the many options for this function
 
 ```
-
 Figure \@ref(fig:trigger) illustrates the correlations among the Internal States items (dichotomized according to their missingness (1=missing, 0=all others)), the total score from the external states (total_ext), and the total score of internal item missingness (total_int). The correlation of total_ext with all the other items is nearly zero, suggesting that more exposure to abusive external states did **_not_** predict nonresponse to the Internal States items. This finding is consistent with the finding from Figure \@ref(fig:mcar) that the missing data appear to missing completely at random.
 
 **Missing data methods**. There are several different ways to handle missing data. A common method is to _delete all cases missing any data_. This is called **listwise** deletion of data. Its primary advantages are simplicity, expedience, and analysis based on complete information. The disadvantages of listwise are (1) disposal of the information offered by those examinees who responded to some items but not others, and (2) diminishment of the dataset, and with it, a reduction in statistical power. The "all" data file of all Likert items and demographics items derived earlier reports data from 3,222 examinees. The following code chunk creates a subset of complete data. This smaller dataset has 1,841 examinees.
@@ -140,6 +134,7 @@ all_l <- na.omit(all) #  Likert items from columns 14-79 plus demographics post 
 write.csv(all_l,"data/all_l.csv") # save data
 
 # OTHER POSSIBLE LISTWISE DATASETS
+
 # items <- items[complete.cases(items), ] # create new dataset without missing data
 # items_l <- na.omit(items) # Likert items from columns 14-79 post listwise
 # ext_items_l <- na.omit(ext_items) # Likert items for external events post listwise
