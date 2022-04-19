@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Jack Huber and Dan Koch" />
 
 
-<meta name="date" content="2022-04-17" />
+<meta name="date" content="2022-04-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -177,18 +177,12 @@ div.csl-indent {
 <li><a href="data-preparation.html#data-preparation">Data Preparation<span></span></a>
 <ul>
 <li><a href="data-preparation.html#preliminary-work">Preliminary work<span></span></a></li>
-<li><a href="data-preparation.html#missing-data">Missing data<span></span></a>
-<ul>
-<li><a href="data-preparation.html#mechanism-of-missing-data">Mechanism of missing data<span></span></a></li>
-<li><a href="data-preparation.html#missing-data-methods">Missing data methods<span></span></a></li>
-</ul></li>
+<li><a href="data-preparation.html#missing-data">Missing data<span></span></a></li>
 </ul></li>
 <li><a href="item-analysis.html#item-analysis">Item Analysis<span></span></a>
 <ul>
-<li><a href="item-analysis.html#load-packages-and-data">Load packages and data<span></span></a>
-<ul>
+<li><a href="item-analysis.html#load-packages-and-data">Load packages and data<span></span></a></li>
 <li><a href="item-analysis.html#skew-and-kurtosis">Skew and Kurtosis<span></span></a></li>
-</ul></li>
 <li><a href="item-analysis.html#item-correlations">Item correlations<span></span></a></li>
 <li><a href="item-analysis.html#internal-consistency-reliability">Internal consistency reliability<span></span></a></li>
 </ul></li>
@@ -249,7 +243,7 @@ div.csl-indent {
 <span id="cb3-2"><a href="data-preparation.html#cb3-2" aria-hidden="true" tabindex="-1"></a>all <span class="ot">&lt;-</span> shas[, <span class="dv">14</span><span class="sc">:</span><span class="dv">97</span>]  <span class="co"># select items, dems from columns 14-79</span></span>
 <span id="cb3-3"><a href="data-preparation.html#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="data-preparation.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># REMOVE SELECTED COLUMNS</span></span>
-<span id="cb3-5"><a href="data-preparation.html#cb3-5" aria-hidden="true" tabindex="-1"></a>all <span class="ot">&lt;-</span> <span class="fu">subset</span>(all, <span class="at">select =</span> <span class="sc">-</span><span class="fu">c</span>(Ext_Avg<span class="sc">:</span>Global_Avg))  <span class="co"># nix these columns for now</span></span>
+<span id="cb3-5"><a href="data-preparation.html#cb3-5" aria-hidden="true" tabindex="-1"></a>all <span class="ot">&lt;-</span> <span class="fu">subset</span>(all, <span class="at">select =</span> <span class="sc">-</span><span class="fu">c</span>(Ext_Avg<span class="sc">:</span>Global_Avg))</span>
 <span id="cb3-6"><a href="data-preparation.html#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(all, <span class="st">&quot;data/items.csv&quot;</span>)  <span class="co"># save data for later use</span></span>
 <span id="cb3-7"><a href="data-preparation.html#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-8"><a href="data-preparation.html#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># CLEAN DATA BY CODING ANY RESPONSES &gt; 5 AS NA all &lt;-</span></span>
@@ -269,7 +263,7 @@ div.csl-indent {
 <h2>Missing data<a href="data-preparation.html#missing-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Missing data is an important problem, and it can be thorny. The problem has two parts:</p>
 <ol style="list-style-type: decimal">
-<li><p>How many data are missing? Obviously the more data are missing, the larger the barrier more this problem poses to analysis.</p></li>
+<li><p>How many data are missing? Obviously the more data are missing, the larger the barrier this problem poses to analysis.</p></li>
 <li><p>Are the missing data random, or is there a pattern to the missing data - like a problematic item, or a distinct group of examinees who chose not to respond?</p></li>
 </ol>
 <p>The VIM package offers helpful tools for visualizing and quantifying missing data.</p>
@@ -278,9 +272,9 @@ div.csl-indent {
 <span id="cb4-3"><a href="data-preparation.html#cb4-3" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> VIM<span class="sc">::</span><span class="fu">aggr</span>(all, <span class="at">plot =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb4-4"><a href="data-preparation.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(a, <span class="at">numbers =</span> <span class="cn">TRUE</span>, <span class="at">prop =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:vim-plots"></span>
-<img src="_main_files/figure-html/vim-plots-1.png" alt="Missing Data 1" width="672" />
+<img src="_main_files/figure-html/vim-plots-1.png" alt="Missing Data" width="672" />
 <p class="caption">
-Figure 1: Missing Data 1
+Figure 1: Missing Data
 </p>
 </div>
 <p>Figure <a href="data-preparation.html#fig:vim-plots">1</a> presents two plots from the VIM package for missing data. The first is a frequency distribution of the number of missing data entries for each item. This plot reveals very few missing data for the first set of External Events items, but nearly 200 missing entries for the second set of Internal States items and demographics. The raises two questions:</p>
@@ -289,17 +283,15 @@ Figure 1: Missing Data 1
 <li><p>What do we do with the information they actually did provide?</p></li>
 </ol>
 <p>The second plot illustrates the different combinations of missing entries. The blue squares represent cases with complete responses, and the red indicates missing data. The rows represent combinations of complete and missing responses. The bottom row of entirely blue squares represents complete data – examinees who responded to all of the items. The barplot on the right axis indicates that these were the most frequent combinations. The second most frequent combination was examinees who completed all of the External Events items and then quit the survey.</p>
-<div id="mechanism-of-missing-data" class="section level3 hasAnchor">
-<h3>Mechanism of missing data<a href="data-preparation.html#mechanism-of-missing-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The important question with missing data is whether the missingness is random or systematic. The appropriate first step is therefore to test whether the data are Missing Completely At Random (MCAR) <span class="citation">(<a href="#ref-McKnightEtAl2007" role="doc-biblioref">McKnight et al. 2007</a>)</span>.</p>
+<p><strong>Mechanism of missing data</strong>. One important question with missing data is whether the mechanism is random or systematic. An appropriate first step is to test whether the data are Missing Completely At Random (MCAR) <span class="citation">(<a href="#ref-McKnightEtAl2007" role="doc-biblioref">McKnight et al. 2007</a>)</span>.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="data-preparation.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(naniar)</span>
 <span id="cb5-2"><a href="data-preparation.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mcar_test</span>(all)</span></code></pre></div>
 <pre><code># A tibble: 1 × 4
   statistic    df p.value missing.patterns
       &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;            &lt;int&gt;
 1     2089.  8663       1              117</code></pre>
-<p>The fact that most of the missing data are toward the <em>end</em> is a pattern. After thoughtfully responding to the 52 preceding items about abusive external events, at least some examinees were tired of answering questions. The sensitive nature of the internal states items may have been especially triggering to some examinees. One way to investigate this possibility is to examine the association between the external states items and whether examinees responded to the internal states items.</p>
-<p>The following code chunk conceives and executes a simple test of the triggering hypothesis. The items measuring external events are summed into a total score such that a higher value indicates more exposure to abusive external events. The items measuring internal states are coded so that 1=missing and 0=all others response.</p>
+<p>Table <a href="#fig:mcar"><strong>??</strong></a> presents the results Little’s Test of Missing Completely At Random (MCAR). The chi-square is not significant which means the observed pattern of missing data do not diverge significantly from what would be expected if the data were missing completely at random.</p>
+<p><strong>Were examinees triggered?</strong> The following code chunk conceives and executes a simple test of the triggering hypothesis. The items measuring external events are summed into a total score such that a higher value indicates more exposure to abusive external events. The items measuring internal states are coded so that 1=missing and 0=all others response.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="data-preparation.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. MAKE A COPY OF ALL THE ITEMS JUST FOR THIS ANALYSIS</span></span>
 <span id="cb7-2"><a href="data-preparation.html#cb7-2" aria-hidden="true" tabindex="-1"></a>miss_set <span class="ot">&lt;-</span> all</span>
 <span id="cb7-3"><a href="data-preparation.html#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -370,12 +362,14 @@ Q82  0.98  0.99  1.00
 Q84 -0.02  0.01 -0.01  1.00      
 Q85  0.05  0.01  0.05  0.06  1.00</code></pre>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="data-preparation.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corPlot</span>(miss_r, <span class="at">stars =</span> <span class="cn">TRUE</span>, <span class="at">upper =</span> <span class="cn">FALSE</span>)  <span class="co"># examine the many options for this function</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
-<p>This plot illustrates the correlations among the internal states items (dichotomized according to their missingness (1=missing, 0=all others)), the total score from the external states (total_ext), and the total score of internal item missingness (total_int). The correlation of total_ext with all the other items is nearly zero, suggesting that more exposure to abusive external states did not predict nonresponse to the internal states items.</p>
+<div class="figure"><span style="display:block;" id="fig:trigger"></span>
+<img src="_main_files/figure-html/trigger-1.png" alt="Trigger Hypothesis" width="672" />
+<p class="caption">
+Figure 2: Trigger Hypothesis
+</p>
 </div>
-<div id="missing-data-methods" class="section level3 hasAnchor">
-<h3>Missing data methods<a href="data-preparation.html#missing-data-methods" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>There are several different ways to handle missing data. A common method is to <strong>delete all cases missing any data</strong>. This is called <em>listwise deletion</em> of data. Its primary advantages are simplicity, expedience, and analysis based on complete information. The disadvantages of listwise, however, are (1) disposal of the information offered by those examinees who responded to some items but not others, and (2) diminishment of the dataset, and with it, a reduction in statistical power.</p>
+<p>Figure <a href="data-preparation.html#fig:trigger">2</a> illustrates the correlations among the internal states items (dichotomized according to their missingness (1=missing, 0=all others)), the total score from the external states (total_ext), and the total score of internal item missingness (total_int). The correlation of total_ext with all the other items is nearly zero, suggesting that more exposure to abusive external states did <em>not</em> predict nonresponse to the internal states items. This finding is consistent with the finding from Figure <a href="#fig:mcar"><strong>??</strong></a> that the missing data appear to missing completely at random.</p>
+<p><strong>Missing data methods</strong>. There are several different ways to handle missing data. A common method is to <strong>delete all cases missing any data</strong>. This is called <em>listwise deletion</em> of data. Its primary advantages are simplicity, expedience, and analysis based on complete information. The disadvantages of listwise, however, are (1) disposal of the information offered by those examinees who responded to some items but not others, and (2) diminishment of the dataset, and with it, a reduction in statistical power.</p>
 <p>The original SHAS data file reports data from 3,222 examinees. A subset based on complete data (listwise deletion of all examinees missing any data) would be only 746 examinees – a reduction of 76%. In the following code chunk I select several datasets from listwise deletion.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="data-preparation.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># LISTWISE DELETION OF MISSING DATA</span></span>
 <span id="cb10-2"><a href="data-preparation.html#cb10-2" aria-hidden="true" tabindex="-1"></a>all_l <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(all)  <span class="co">#  Likert items from columns 14-79 plus demographics post listwise</span></span>
@@ -394,7 +388,6 @@ Q85  0.05  0.01  0.05  0.06  1.00</code></pre>
 <span id="cb10-15"><a href="data-preparation.html#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co"># items &lt;- items[complete.cases(items), ] # create new</span></span>
 <span id="cb10-16"><a href="data-preparation.html#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co"># dataset without missing data</span></span></code></pre></div>
 
-</div>
 </div>
 </div>
 <h3>References</h3>

@@ -30,7 +30,7 @@ shas <- read_excel("data/data.xlsx") # load Excel file
 all <- shas[ ,14:97] # select items, dems from columns 14-79
 
 # REMOVE SELECTED COLUMNS
-all <- subset (all, select = -c(Ext_Avg:Global_Avg)) # nix these columns for now
+all <- subset (all, select = -c(Ext_Avg:Global_Avg))
 write.csv(all,"data/items.csv") # save data for later use
 
 # CLEAN DATA BY CODING ANY RESPONSES > 5 AS NA
@@ -52,13 +52,13 @@ write.csv(all,"data/items.csv") # save data for later use
 ## Missing data
 Missing data is an important problem, and it can be thorny. The problem has two parts:
 
-1. How many data are missing? Obviously the more data are missing, the larger the barrier more this problem poses to analysis.
+1. How many data are missing? Obviously the more data are missing, the larger the barrier this problem poses to analysis.
 
 2. Are the missing data random, or is there a pattern to the missing data - like a problematic item, or a distinct group of examinees who chose not to respond?
 
 The VIM package offers helpful tools for visualizing and quantifying missing data.
 
-```{r vim-plots, fig.cap='Missing Data 1'}
+```{r vim-plots, fig.cap='Missing Data'}
 # VISUALIZE AND QUANTIFY MISSING DATA
 library(VIM)
 a <- VIM::aggr(all, plot = FALSE)
@@ -78,19 +78,18 @@ The second plot illustrates the different combinations of missing entries. The b
 # naniar::vis_miss(all)
 ```
 
-### Mechanism of missing data
-The important question with missing data is whether the missingness is random or systematic. The appropriate first step is therefore to test whether the data are Missing Completely At Random (MCAR) [@McKnightEtAl2007]. 
+**Mechanism of missing data**. One important question with missing data is whether the mechanism is random or systematic. An appropriate first step is to test whether the data are Missing Completely At Random (MCAR) [@McKnightEtAl2007]. 
 
-```{r mcar}
+```{r mcar, fig.cap="Little's Test for Missing Completely At Random (MCAR)"}
 library(naniar)
 mcar_test(all)
 ```
 
-The fact that most of the missing data are toward the _end_ is a pattern. After thoughtfully responding to the 52 preceding items about abusive external events, at least some examinees were tired of answering questions. The sensitive nature of the internal states items may have been especially triggering to some examinees. One way to investigate this possibility is to examine the association between the external states items and whether examinees responded to the internal states items.
+Table \@ref(fig:mcar) presents the results Little's Test of Missing Completely At Random (MCAR). The chi-square is not significant which means the observed pattern of missing data do not diverge significantly from what would be expected if the data were missing completely at random.
 
-The following code chunk conceives and executes a simple test of the triggering hypothesis. The items measuring external events are summed into a total score such that a higher value indicates more exposure to abusive external events. The items measuring internal states are coded so that 1=missing and 0=all others response.
+**Were examinees triggered?** The following code chunk conceives and executes a simple test of the triggering hypothesis. The items measuring external events are summed into a total score such that a higher value indicates more exposure to abusive external events. The items measuring internal states are coded so that 1=missing and 0=all others response.
 
-```{r}
+```{r trigger, fig.cap='Trigger Hypothesis'}
 
 # 1. MAKE A COPY OF ALL THE ITEMS JUST FOR THIS ANALYSIS
 miss_set <- all
@@ -139,10 +138,9 @@ corPlot(miss_r, stars= TRUE, upper = FALSE) # examine the many options for this 
 
 ```
 
-This plot illustrates the correlations among the internal states items (dichotomized according to their missingness (1=missing, 0=all others)), the total score from the external states (total_ext), and the total score of internal item missingness (total_int). The correlation of total_ext with all the other items is nearly zero, suggesting that more exposure to abusive external states did not predict nonresponse to the internal states items.
+Figure \@ref(fig:trigger) illustrates the correlations among the internal states items (dichotomized according to their missingness (1=missing, 0=all others)), the total score from the external states (total_ext), and the total score of internal item missingness (total_int). The correlation of total_ext with all the other items is nearly zero, suggesting that more exposure to abusive external states did _not_ predict nonresponse to the internal states items. This finding is consistent with the finding from Figure \@ref(fig:mcar) that the missing data appear to missing completely at random.
 
-### Missing data methods
-There are several different ways to handle missing data. A common method is to **delete all cases missing any data**. This is called _listwise deletion_ of data. Its primary advantages are simplicity, expedience, and analysis based on complete information. The disadvantages of listwise, however, are (1) disposal of the information offered by those examinees who responded to some items but not others, and (2) diminishment of the dataset, and with it, a reduction in statistical power.
+**Missing data methods**. There are several different ways to handle missing data. A common method is to **delete all cases missing any data**. This is called _listwise deletion_ of data. Its primary advantages are simplicity, expedience, and analysis based on complete information. The disadvantages of listwise, however, are (1) disposal of the information offered by those examinees who responded to some items but not others, and (2) diminishment of the dataset, and with it, a reduction in statistical power.
 
 The original SHAS data file reports data from 3,222 examinees. A subset based on complete data (listwise deletion of all examinees missing any data) would be only 746 examinees -- a reduction of 76%. In the following code chunk I select several datasets from listwise deletion.
 

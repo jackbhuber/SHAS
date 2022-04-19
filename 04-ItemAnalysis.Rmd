@@ -58,7 +58,7 @@ item_stats[order(item_stats$nbr.val), ] # order by N cases
 
 ```
 
-### Skew and Kurtosis
+## Skew and Kurtosis
 
 The item for gratitude is definitely skewed, based on the skew and kurtosis statistics in the table.  
 
