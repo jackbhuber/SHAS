@@ -1,7 +1,3 @@
 fig:vim-plots
-<<<<<<< HEAD
 fig:trigger
 tab:unnamed-chunk-7
-=======
-tab:unnamed-chunk-9
->>>>>>> e9d05f26b0cfdab177dfeed7c84de0f338530436

@@ -29,11 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Jack Huber and Dan Koch" />
 
 
-<<<<<<< HEAD
-<meta name="date" content="2022-04-18" />
-=======
-<meta name="date" content="2022-04-17" />
->>>>>>> e9d05f26b0cfdab177dfeed7c84de0f338530436
+<meta name="date" content="2022-04-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -181,27 +177,12 @@ div.csl-indent {
 <li><a href="data-preparation.html#data-preparation">Data Preparation<span></span></a>
 <ul>
 <li><a href="data-preparation.html#preliminary-work">Preliminary work<span></span></a></li>
-<<<<<<< HEAD
 <li><a href="data-preparation.html#missing-data">Missing data<span></span></a></li>
 </ul></li>
 <li><a href="item-analysis.html#item-analysis">Item Analysis<span></span></a>
 <ul>
 <li><a href="item-analysis.html#load-packages-and-data">Load packages and data<span></span></a></li>
 <li><a href="item-analysis.html#skew-and-kurtosis">Skew and Kurtosis<span></span></a></li>
-=======
-<li><a href="data-preparation.html#missing-data">Missing data<span></span></a>
-<ul>
-<li><a href="data-preparation.html#mechanism-of-missing-data">Mechanism of missing data<span></span></a></li>
-<li><a href="data-preparation.html#missing-data-methods">Missing data methods<span></span></a></li>
-</ul></li>
-</ul></li>
-<li><a href="item-analysis.html#item-analysis">Item Analysis<span></span></a>
-<ul>
-<li><a href="item-analysis.html#load-packages-and-data">Load packages and data<span></span></a>
-<ul>
-<li><a href="item-analysis.html#skew-and-kurtosis">Skew and Kurtosis<span></span></a></li>
-</ul></li>
->>>>>>> e9d05f26b0cfdab177dfeed7c84de0f338530436
 <li><a href="item-analysis.html#item-correlations">Item correlations<span></span></a></li>
 <li><a href="item-analysis.html#internal-consistency-reliability">Internal consistency reliability<span></span></a></li>
 </ul></li>
@@ -268,11 +249,7 @@ div.csl-indent {
 <span id="cb12-3"><a href="item-analysis.html#cb12-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(itm_stats, <span class="at">caption =</span> <span class="st">&quot;Items Statistics&quot;</span>, <span class="at">booktabs =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb12-4"><a href="item-analysis.html#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
 <table style="width:100%;">
-<<<<<<< HEAD
 <caption><span id="tab:unnamed-chunk-7">Table 1: </span>Items Statistics</caption>
-=======
-<caption><span id="tab:unnamed-chunk-9">Table 1: </span>Items Statistics</caption>
->>>>>>> e9d05f26b0cfdab177dfeed7c84de0f338530436
 <colgroup>
 <col width="14%" />
 <col width="5%" />
@@ -1973,14 +1950,9 @@ X             16.388512237 32.132968367 8.653755e+05 930.2556100 0.5772607</code
 <span id="cb17-11"><a href="item-analysis.html#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="co"># easyFlag, pBisFlag, bisFlag, flagStyle = c(&#39;X&#39;,&#39;&#39;))</span></span>
 <span id="cb17-12"><a href="item-analysis.html#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-13"><a href="item-analysis.html#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="co"># DISTRACTOR ANALYSIS CTT::distractorAnalysis</span></span></code></pre></div>
-<<<<<<< HEAD
 </div>
 <div id="skew-and-kurtosis" class="section level2 hasAnchor">
 <h2>Skew and Kurtosis<a href="item-analysis.html#skew-and-kurtosis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-=======
-<div id="skew-and-kurtosis" class="section level3 hasAnchor">
-<h3>Skew and Kurtosis<a href="item-analysis.html#skew-and-kurtosis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
->>>>>>> e9d05f26b0cfdab177dfeed7c84de0f338530436
 <p>The item for gratitude is definitely skewed, based on the skew and kurtosis statistics in the table.</p>
 <p>I will supplement this table with a set of plots to visualize the data. Here I pass the ‘table’ function into an object for each item. Then I pass these objects into plots of uniform size and labeling.</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="item-analysis.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># {r fig.width=10, fig.height=7, fig.cap=&#39;Frequencies of</span></span>
@@ -2003,10 +1975,6 @@ X             16.388512237 32.132968367 8.653755e+05 930.2556100 0.5772607</code
 <span id="cb18-18"><a href="item-analysis.html#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="co"># col=&#39;green&#39;, ylim = c(0,8000), names.arg=labs)</span></span></code></pre></div>
 <p>The striking thing about these data is their negative skew: the vast majority of respondents report frequently feeling peace, wonder, gratitude, and wonder about the meaning of life. This skew poses some challenges. One is less variance. If the vast majority of Catholics past and present report frequent feelings of well-being, there is not much to explain. The other challenge is that classical statistics are based the assumption that the data are normally distributed.</p>
 </div>
-<<<<<<< HEAD
-=======
-</div>
->>>>>>> e9d05f26b0cfdab177dfeed7c84de0f338530436
 <div id="item-correlations" class="section level2 hasAnchor">
 <h2>Item correlations<a href="item-analysis.html#item-correlations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="item-analysis.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CORRELATION MATRIX (LOWER HALF) r &lt;- lowerCor(items) #</span></span>
