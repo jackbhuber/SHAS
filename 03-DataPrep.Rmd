@@ -26,7 +26,7 @@ shas <- read_excel("data/data.xlsx") # load Excel file
 **Select items for analysis**. Which items should we include for analysis? The first 13 columns in the original data file report data from several screening items that were placed at the beginning of the questionnaire. But because they are constant and not variable, they don't seem to have a place in scale development. Therefore it seems the important columns range from columns 14 to 97. The first set of items measure the **External Events** scale. These 52 items range from columns 14 to 35. The second set of items measure the **Internal States** scale, and these 14 items range from columns 66 to 79. The last set of items capture **demographic** variables, and these range from columns 80 to 97.
 
 ```{r}
-# SELECT DATASET FOR ANALYSIS
+# SELECT DATASETS FOR ANALYSIS
 all <- shas[ ,14:97] # select items, dems from columns 14-79
 
 # REMOVE SELECTED COLUMNS
@@ -50,13 +50,7 @@ write.csv(all,"data/items.csv") # save data for later use
 **Labeling**. This is probably the appropriate place to deal with the labeling of variables and their values. These things should be appropriately labeled to their content, wording, etc. **But I have yet to figure this part out so I will come back to it**.
 
 ## Missing data
-Missing data is an important problem, and it can be thorny. The problem has two parts:
-
-1. How many data are missing? Obviously the more data are missing, the larger the barrier this problem poses to analysis.
-
-2. Are the missing data random, or is there a pattern to the missing data - like a problematic item, or a distinct group of examinees who chose not to respond?
-
-The VIM package offers helpful tools for visualizing and quantifying missing data.
+Missing data can be an important problem. The problem has two parts. The first is how many data are missing. Obviously the more data are missing, the larger the barrier this problem poses to analysis. The second is the mechanism of missing data. Are the missing data randomly, or is there a pattern to the missing data - like a problematic item, or a distinct group of examinees who chose not to respond? Figure \@ref(fig:vim-plots) presents two plots from the VIM package for missing data. 
 
 ```{r vim-plots, fig.cap='Missing Data'}
 # VISUALIZE AND QUANTIFY MISSING DATA
@@ -64,13 +58,10 @@ library(VIM)
 a <- VIM::aggr(all, plot = FALSE)
 plot(a, numbers = TRUE, prop = FALSE)
 ```
-Figure \@ref(fig:vim-plots) presents two plots from the VIM package for missing data. The first is a frequency distribution of the number of missing data entries for each item. This plot reveals very few missing data for the first set of External Events items, but nearly 200 missing entries for the second set of Internal States items and demographics. The raises two questions:
 
-1. Who were those examinees? We know that they responded to the first 52 items, then apparently quit the survey. Why? Was it just fatigue, or is there more to know about them?
+The first plot in Figure \@ref(fig:vim-plots) is a frequency distribution of the number of missing data entries for each item. This plot reveals very few missing data for the first set of External Events items, but nearly 200 missing entries for the second set of Internal States items and demographics. The raises two questions. The first is: Who were those examinees? We know that they responded to the first 52 items, then apparently quit the survey. Why? Was it just fatigue, or is there more to know about them? The second question is what to do with the information they actually did provide.
 
-2. What do we do with the information they actually did provide?
-
-The second plot illustrates the different combinations of missing entries. The blue squares represent cases with complete responses, and the red indicates missing data. The rows represent combinations of complete and missing responses. The bottom row of entirely blue squares represents complete data -- examinees who responded to all of the items. The barplot on the right axis indicates that these were the most frequent combinations. The second most frequent combination was examinees who completed all of the External Events items and then quit the survey.
+The second plot in Figure \@ref(fig:vim-plots) illustrates the different combinations of missing entries. The blue squares represent cases with complete responses, and the red indicates missing data. The rows represent combinations of complete and missing responses. The bottom row of entirely blue squares represents complete data -- examinees who responded to all of the items. The barplot on the right axis indicates that these were the most frequent combinations. The second most frequent combination was examinees who completed all of the External Events items and then quit the survey. Beyond that, there is no apparent order or pattern to the missing data.
 
 ```{r eval=FALSE, include=FALSE}
 # VISUALIZE AND QUANTIFY MISSING DATA
@@ -78,16 +69,16 @@ The second plot illustrates the different combinations of missing entries. The b
 # naniar::vis_miss(all)
 ```
 
-**Mechanism of missing data**. One important question with missing data is whether the mechanism is random or systematic. An appropriate first step is to test whether the data are Missing Completely At Random (MCAR) [@McKnightEtAl2007]. 
+**Mechanism of missing data**. @McKnightEtAl2007 outline a variety of approaches for investigating the mechanisms of missing data. An appropriate first step is to test whether the data are Missing Completely At Random (MCAR) with the use of Little's test @Little1988. 
 
 ```{r mcar, fig.cap="Little's Test for Missing Completely At Random (MCAR)"}
 library(naniar)
 mcar_test(all)
 ```
 
-Table \@ref(fig:mcar) presents the results Little's Test of Missing Completely At Random (MCAR). The chi-square is not significant which means the observed pattern of missing data do not diverge significantly from what would be expected if the data were missing completely at random.
+This test is fairly conclusive. The p-value for the chi-square is 1, which means observed pattern of missing data do not diverge significantly from what would be expected if the data were missing completely at random.
 
-**Were examinees triggered?** The following code chunk conceives and executes a simple test of the triggering hypothesis. The items measuring external events are summed into a total score such that a higher value indicates more exposure to abusive external events. The items measuring internal states are coded so that 1=missing and 0=all others response.
+**Were examinees triggered?** As mentioned above, a possible explanation of the missing data in the Internal States items is that examinees were triggered. As after responding to the preceding 52 items calling to mind imagery of abusive external events, these examinees were **done** with the survey. A possible test of this hypothesis is an examination of the relationship between a total score of responses to the External Events items and a score of total missingness on the Internal States items. The empirical work to test this hypothesis is laid out in the following code chunk. The items measuring external events are summed into a total score such that a higher value indicates more exposure to abusive external events. The items measuring internal states are coded so that 1=missing and 0=all others response, and these items are summed into a score of total missingness.
 
 ```{r trigger, fig.cap='Trigger Hypothesis'}
 
@@ -138,29 +129,27 @@ corPlot(miss_r, stars= TRUE, upper = FALSE) # examine the many options for this 
 
 ```
 
-Figure \@ref(fig:trigger) illustrates the correlations among the internal states items (dichotomized according to their missingness (1=missing, 0=all others)), the total score from the external states (total_ext), and the total score of internal item missingness (total_int). The correlation of total_ext with all the other items is nearly zero, suggesting that more exposure to abusive external states did _not_ predict nonresponse to the internal states items. This finding is consistent with the finding from Figure \@ref(fig:mcar) that the missing data appear to missing completely at random.
+Figure \@ref(fig:trigger) illustrates the correlations among the Internal States items (dichotomized according to their missingness (1=missing, 0=all others)), the total score from the external states (total_ext), and the total score of internal item missingness (total_int). The correlation of total_ext with all the other items is nearly zero, suggesting that more exposure to abusive external states did **_not_** predict nonresponse to the Internal States items. This finding is consistent with the finding from Figure \@ref(fig:mcar) that the missing data appear to missing completely at random.
 
-**Missing data methods**. There are several different ways to handle missing data. A common method is to **delete all cases missing any data**. This is called _listwise deletion_ of data. Its primary advantages are simplicity, expedience, and analysis based on complete information. The disadvantages of listwise, however, are (1) disposal of the information offered by those examinees who responded to some items but not others, and (2) diminishment of the dataset, and with it, a reduction in statistical power.
+**Missing data methods**. There are several different ways to handle missing data. A common method is to _delete all cases missing any data_. This is called **listwise** deletion of data. Its primary advantages are simplicity, expedience, and analysis based on complete information. The disadvantages of listwise are (1) disposal of the information offered by those examinees who responded to some items but not others, and (2) diminishment of the dataset, and with it, a reduction in statistical power. The "all" data file of all Likert items and demographics items derived earlier reports data from 3,222 examinees. The following code chunk creates a subset of complete data. This smaller dataset has 1,841 examinees.
 
-The original SHAS data file reports data from 3,222 examinees. A subset based on complete data (listwise deletion of all examinees missing any data) would be only 746 examinees -- a reduction of 76%. In the following code chunk I select several datasets from listwise deletion.
-
-```{r}
+```{r listwise, include=TRUE, warning=FALSE, tidy=TRUE}
 
 # LISTWISE DELETION OF MISSING DATA
-all_l       <- na.omit(all) #  Likert items from columns 14-79 plus demographics post listwise
-# items_l     <- na.omit(items) # Likert items from columns 14-79 post listwise
+all_l <- na.omit(all) #  Likert items from columns 14-79 plus demographics post listwise
+write.csv(all_l,"data/all_l.csv") # save data
+
+# OTHER POSSIBLE LISTWISE DATASETS
+# items <- items[complete.cases(items), ] # create new dataset without missing data
+# items_l <- na.omit(items) # Likert items from columns 14-79 post listwise
 # ext_items_l <- na.omit(ext_items) # Likert items for external events post listwise
 # int_items_l <- na.omit(int_items) # Likert items for internal states post listwise
-
-# Write these datasets to the project data folder
-write.csv(all_l,"data/all_l.csv")
 # write.csv(items_l,"data/items_l.csv")
 # write.csv(ext_items_l,"data/ext_items_l.csv")
 # write.csv(int_items_l,"data/int_items_l.csv")
-
-# items <- items[complete.cases(items), ] # create new dataset without missing data
-
 ```
 
+Analysis can proceed with these two datasets:
 
-
+1. the "all" dataset of all Likert and demographic items (N=3,222)
+2. the "all_l" dataset of 1,841 examinees who reported complete data
