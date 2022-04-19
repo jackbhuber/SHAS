@@ -274,7 +274,7 @@ Figure 1: Missing Data
 </div>
 <p>The first plot in Figure <a href="data-preparation.html#fig:vim-plots">1</a> is a frequency distribution of the number of missing data entries for each item. This plot reveals very few missing data for the first set of External Events items, but nearly 200 missing entries for the second set of Internal States items and demographics. The raises two questions. The first is: Who were those examinees? We know that they responded to the first 52 items, then apparently quit the survey. Why? Was it just fatigue, or is there more to know about them? The second question is what to do with the information they actually did provide.</p>
 <p>The second plot in Figure <a href="data-preparation.html#fig:vim-plots">1</a> illustrates the different combinations of missing entries. The blue squares represent cases with complete responses, and the red indicates missing data. The rows represent combinations of complete and missing responses. The bottom row of entirely blue squares represents complete data – examinees who responded to all of the items. The barplot on the right axis indicates that these were the most frequent combinations. The second most frequent combination was examinees who completed all of the External Events items and then quit the survey. Beyond that, there is no apparent order or pattern to the missing data.</p>
-<p><strong>Mechanism of missing data</strong>. <span class="citation">McKnight et al. (<a href="#ref-McKnightEtAl2007" role="doc-biblioref">2007</a>)</span> outline a variety of approaches for investigating the mechanisms of missing data. An appropriate first step is to test whether the data are Missing Completely At Random (MCAR) with the use of Little’s test <span class="citation">(<a href="#ref-Little1988" role="doc-biblioref"><strong>Little1988?</strong></a>)</span>.</p>
+<p><strong>Mechanism of missing data</strong>. <span class="citation">McKnight et al. (<a href="#ref-McKnightEtAl2007" role="doc-biblioref">2007</a>)</span> outline a variety of approaches for investigating the mechanisms of missing data. An appropriate first step is to test whether the data are Missing Completely At Random (MCAR) with the use of Little’s test <span class="citation">Little (<a href="#ref-Little1988" role="doc-biblioref">1988</a>)</span>.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="data-preparation.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(naniar)</span>
 <span id="cb5-2"><a href="data-preparation.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mcar_test</span>(all)</span></code></pre></div>
 <pre><code># A tibble: 1 × 4
@@ -385,6 +385,9 @@ Figure 2: Trigger Hypothesis
 </div>
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Little1988" class="csl-entry">
+Little, R. J. A. 1988. <span>“A Test of Missing Completely at Random for Multivariate Data with Missing Values.”</span> <em>Journal of the American Statistical Association</em> 83: 1198–1202.
+</div>
 <div id="ref-McKnightEtAl2007" class="csl-entry">
 McKnight, Patrick E., Katherine M. McKnight, Souraya Sidani, and Aurelio Jose Figueredo. 2007. <em>Missing Data: A Gentle Introduction</em>. New York, New York: The Guilford Press.
 </div>
