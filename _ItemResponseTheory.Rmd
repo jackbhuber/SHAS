@@ -17,14 +17,15 @@ We begin by loading the `mirt` library and estimating the Partial Credit Model (
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE, include=TRUE}
 library(mirt)
-items_l <- read.csv("data/items_l.csv")
+items <- read.csv("data/items.csv")
 model.pcm <- 'PCM = 1-5'
-results.pcm <- mirt(data=items_l, model=model.pcm, itemtype="Rasch", verbose=FALSE)
+results.pcm <- mirt(data=items, model=model.pcm, itemtype="Rasch", verbose=FALSE)
 coef.pcm <- coef(results.pcm, IRTpars=TRUE, simplify=TRUE)
-items.pcm <- as.data.frame(coef.pcm$items_l)
+items.pcm <- as.data.frame(coef.pcm$items)
 print(results.pcm)
 knitr::kable(round(items.pcm,2), caption = "Partial Credit Model (PCM) - Item Parameters")
-itemplot(results.pcm, 1, type='infotrace')
+# itemplot(results.pcm, 1, type='infotrace')
+itemplot(results.pcm, type='infotrace')
 ```
 
 In the output, we see a data frame of the estimated item parameters. The first column shows the discrimination parameter, which is equal to “1” for all items because the Partial Credit Model, similar to the Rasch model, constrains the discrimination parameter to be “1”. In the following columns (b1 to b4) are the estimated thresholds or step parameters. Because the well-being items all have five response categories, the Partial Credit Model estimates four threshold parameters (b1 to b4) for each item.  The question here is the spread of the parameters across the range of the trait.  In the PCM, "the property of ordered threshold parameters is not a requirement in the partial credit or genearlized partial credit models" [@EmbretsonReise2000].
@@ -160,8 +161,6 @@ knitr::kable(round(corrs2,2), caption = "Correlation Matrix")
 
 
 
-## Reliability
 
-Wright and Masters (1982) developed reliability measures based on the Rasch measurement model, which have a different concept from classical test theory (e.g., Cronbach’s alpha). Reliability is estimated both for persons and items, by means of Person Separation Reliability (PSR). This is an estimate of how well this instrument can distinguish respondents on the measured variable. In parallel, Item Separation Reliability (ISR) is an indication of how well items are separated by the persons taking the test (Wright & Stone, 1999). The cutoff of separation reliabilities is > 0.80 (Bond & Fox, 2015).
 
-The PSR of the Indonesian version of MUDRAS was 0.92, and the ISR was 0.99. The PSR and ISR were higher than the predefined criteria. We also computed Cronbach’s alpha, which was 0.93, which is higher than the Cronbach’s alpha of the original version (alpha = 0.89) (see Olufadi, 2017). Both alphas exceed the 0.70 cutoff value (Nunnally, 1978), indicating that the Indonesian version of the MUDRAS has excellent internal consistency.
+## Summary 

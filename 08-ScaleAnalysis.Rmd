@@ -2,6 +2,55 @@
 
 ## Interpretation of Examinee Scores
 
-## The Wright Map
+## The Item-Person Map
+The item-person map (also known as the Wright map) is a way of visualizing the results of the calibration of examinees and items onto the same scale. Bulut @BulutMap explains the contribution of the item-person map as follows:
 
+_"The Partial Credit Model (PCM), which is an extension of the Rasch model for polytomous item responses, can be used for survey development and validation (Green & Frantom, 2002). We can analyze survey items using PCM and obtain item thresholds for each item. These thresholds indicate the magnitude of the latent trait required to select a particular response option (e.g., selecting disagree over strongly disagree). Using an item-person map, we can see thresholds for the items as well as the distribution of the latent trait for the respondents. This plot is quite useful for analyzing the alignment (or match) between the items and respondents answering the items."_
+
+```{r wright-all, fig.cap='Item-Person Map: All Likert Items'}
+
+# ITEM-PERSON MAP #1: FOR ALL THE SHAS ITEMS
+source("code/itempersonmap.R")
+library("mirt")
+items <- read.csv("data/items.csv")
+mod <- mirt(items, 1, itemtype = "Rasch", 
+            technical = list(removeEmptyRows=TRUE),
+            verbose = FALSE) # estimate the Partial Credit Model
+itempersonmap(mod) # create the item-person map
+
+```
+
+Figure \@ref(fig:wright-all) is an item-person map of all of the Likert SHAS items against all of the examinees. In the plot, red points indicate item thresholds for each item (three thresholds separating four response categories) and the asterisk indicates the average value of the thresholds for each item. The higher these thresholds, the more spiritual abuse the examinee has experienced. On the left-hand side of the plot, we also see the distribution of the latent trait (i.e., the construct of spiritual abuse).
+
+```{r wright-ext, fig.cap='Item-Person Map: External Events Items'}
+
+# ITEM-PERSON MAP #2: EXTERNAL EVENTS ITEMS
+source("code/itempersonmap.R")
+library("mirt")
+ext_items <- read.csv("data/ext_items.csv")
+ext_mod <- mirt(ext_items, 1, itemtype = "Rasch", 
+            technical = list(removeEmptyRows=TRUE),
+            verbose = FALSE) # estimate the Partial Credit Model
+itempersonmap(ext_mod) # create the item-person map
+
+```
+
+Figure \@ref(fig:wright-ext) is an item-person map of the External Events items against all of the examinees.
+
+```{r wright-int, fig.cap='Item-Person Map: Internal States Items'}
+
+# ITEM-PERSON MAP #3: INTERNAL STATES ITEMS
+source("code/itempersonmap.R")
+library("mirt")
+int_items <- read.csv("data/int_items.csv")
+int_mod <- mirt(int_items, 1, itemtype = "Rasch", 
+            technical = list(removeEmptyRows=TRUE),
+            verbose = FALSE) # estimate the Partial Credit Model
+itempersonmap(int_mod) # create the item-person map
+
+```
+
+Finally, Figure \@ref(fig:wright-int) is an item-person map of the Internal States items against all of the examinees.
+
+## Summary
 

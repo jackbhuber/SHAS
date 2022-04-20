@@ -97,19 +97,13 @@ item_stats[order(item_stats$nbr.val), ] # order by N cases
 
 ## Item response theory
 
-This ltm package "provides a flexible framework for Item Response Theory analyses for dichotomous
-and polytomous data under a Marginal Maximum Likelihood approach. The fitting algorithms
-provide valid inferences under Missing At Random missing data mechanisms" [@ltm].
+This ltm package "provides a flexible framework for Item Response Theory analyses for dichotomous and polytomous data under a Marginal Maximum Likelihood approach. The fitting algorithms provide valid inferences under Missing At Random missing data mechanisms" [@ltm].
 
 ```{r ext-pbis, fig.cap='Item Total Correlations for External Events Items'}
 # DESCRIPTIVES
 ltm::descript(items)
 ```
 
-
-
-
-
-
 **Skew and Kurtosis**.
 
+## Summary

@@ -1,6 +1,10 @@
 # Reliability
+This chapter addresses the topic of reliability, "". Since these are cross-sectional data taken at one point in time, our work is limited to internal consistency reliability which focuses on the relationships between the items. We begin by defining reliability. Then we report the results of our reliability analyses from both the classical test theory (CTT) and item response theory (IRT) frameworks.
 
-## Item correlations
+## About reliability
+
+
+## Reliability in Classical Test Theory (CTT)
 
 ```{r}
 # CORRELATION MATRIX (LOWER HALF)
@@ -15,7 +19,6 @@
 
 ```
 
-## Internal consistency reliability
 
 ```{r}
 
@@ -23,9 +26,6 @@
 # reliability(items, itemal = TRUE, NA.Delete = TRUE, ml = TRUE)
 
 ```
-
-
-
 
 One important source of evidence for a scale is correlations among the items.  Strong correlations among the items are evidence that the items are measuring the same construct.  The matrix of correlations is presented in the table.
 
@@ -44,8 +44,18 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt 
 The correlations among the items are moderate at best. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt ex ut condimentum vulputate. Sed feugiat mattis lectus vitae mollis. Suspendisse sodales urna id pharetra mattis. Mauris feugiat molestie efficitur. Proin non metus hendrerit elit viverra tincidunt. Integer tristique, nunc nec gravida semper, erat ligula placerat nunc, vitae tincidunt diam odio ut est. Morbi sit amet posuere ante, non tempor leo. Nam fermentum mi urna, ut lacinia metus venenatis sit amet. Morbi mattis lectus sit amet magna ultricies malesuada.
 Figure X reports internal reliability statistics.
 
+**Cronbach's coefficient alpha**.
+
 ```{r}
 # alpha(items)
 #knitr::kable(alpha(items), caption = "Internal Reliability Statistics")
 ```
+
+## Reliability in Item Response Theory (IRT)
+
+Wright and Masters (1982) developed reliability measures based on the Rasch measurement model, which have a different concept from classical test theory (e.g., Cronbach’s alpha). Reliability is estimated both for persons and items, by means of Person Separation Reliability (PSR). This is an estimate of how well this instrument can distinguish respondents on the measured variable. In parallel, Item Separation Reliability (ISR) is an indication of how well items are separated by the persons taking the test (Wright & Stone, 1999). The cutoff of separation reliabilities is > 0.80 (Bond & Fox, 2015).
+
+The PSR of the Indonesian version of MUDRAS was 0.92, and the ISR was 0.99. The PSR and ISR were higher than the predefined criteria. We also computed Cronbach’s alpha, which was 0.93, which is higher than the Cronbach’s alpha of the original version (alpha = 0.89) (see Olufadi, 2017). Both alphas exceed the 0.70 cutoff value (Nunnally, 1978), indicating that the Indonesian version of the MUDRAS has excellent internal consistency.
+
+## Summary
 
