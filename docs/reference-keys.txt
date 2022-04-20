@@ -1,3 +1,2 @@
 fig:vim-plots
 fig:trigger
-tab:describe

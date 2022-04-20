@@ -134,7 +134,7 @@ label(items) = as.list(var.labels[match(names(items), names(var.labels))])
 ```
 
 ## Missing data
-Missing data can be an important problem. The problem has two parts. The first is how many data are missing. Obviously the more data are missing, the larger the barrier this problem poses to analysis. The second is the mechanism of missing data. Are the missing data randomly, or is there a pattern to the missing data - like a problematic item, or a distinct group of examinees who chose not to respond? Figure \@ref(fig:vim-plots) presents two plots from the VIM package for missing data. 
+Missing data can be an important problem. The problem has two parts. The first is how many data are missing. Obviously the more data are missing, the larger the barrier this problem poses to analysis. The second is the mechanism of missing data. Are the missing data randomly, or is there a pattern to the missing data - like a problematic item, or a distinct group of examinees who chose not to respond? Figure \@ref(fig:vim-plots) presents two plots from the VIM package for missing data [@VIM]. 
 
 ```{r vim-plots, fig.cap='Missing Data'}
 # VISUALIZE AND QUANTIFY MISSING DATA

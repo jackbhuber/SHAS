@@ -85,7 +85,7 @@ principal(items)
 ## Confirmatory Factor Analysis (CFA)
 
 ```{r}
-ltm::factor.scores(items) # Computation of factor scores for grm, ltm, rasch and tpm models
+# ltm::factor.scores(items) # Computation of factor scores for grm, ltm, rasch and tpm models
 ```
 
 

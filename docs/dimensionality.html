@@ -181,7 +181,11 @@ div.csl-indent {
 <li><a href="data-preparation.html#preliminary-work">Preliminary work<span></span></a></li>
 <li><a href="data-preparation.html#missing-data">Missing data<span></span></a></li>
 </ul></li>
-<li><a href="item-analysis.html#item-analysis">Item Analysis<span></span></a></li>
+<li><a href="item-analysis.html#item-analysis">Item Analysis<span></span></a>
+<ul>
+<li><a href="item-analysis.html#preliminary-work-1">Preliminary work<span></span></a></li>
+<li><a href="item-analysis.html#item-response-theory">Item response theory<span></span></a></li>
+</ul></li>
 <li><a href="reliability.html#reliability">Reliability<span></span></a>
 <ul>
 <li><a href="reliability.html#item-correlations">Item correlations<span></span></a></li>
@@ -196,6 +200,7 @@ div.csl-indent {
 <li><a href="scale-analysis.html#scale-analysis">Scale Analysis<span></span></a>
 <ul>
 <li><a href="scale-analysis.html#interpretation-of-examinee-scores">Interpretation of Examinee Scores<span></span></a></li>
+<li><a href="scale-analysis.html#the-wright-map">The Wright Map<span></span></a></li>
 </ul></li>
 <li><a href="discussion.html#discussion">Discussion<span></span></a></li>
 <li><a href="references.html#references">References<span></span></a></li>
@@ -221,24 +226,31 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="dimensionality" class="section level1 hasAnchor">
 <h1>Dimensionality<a href="dimensionality.html#dimensionality" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This is where I introduce and discuss dimensionality – what this means, why it is important, and how to do it.</p>
+<p>This chapter deals with the topic of dimensionality. It begins with a definition of dimensionality and explains how it is important. It outlines how to investigate it and suggests what counts as good evidence. Then it reports our study of the dimensionality of the SHAS.</p>
 <div id="about-dimensionality" class="section level2 hasAnchor">
 <h2>About Dimensionality<a href="dimensionality.html#about-dimensionality" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Unidimensionality is the assumption that the four items measure only one underlying dimension. This is important to the extent that we want to analyze and report scores. To assess the dimensionality of these items we use exploratory factor analysis and confirmatory factor analysis (CFA) and PCAR.</p>
-<p><span class="citation">Embretson and Reise (<a href="#ref-EmbretsonReise2000" role="doc-biblioref">2000</a>)</span> suggest that dimensionality is an important part of the validation process for psychological measures.</p>
-<p><span class="citation">Brown (<a href="#ref-Brown2006" role="doc-biblioref">2006</a>)</span> is a book I need to cite.</p>
-<p><span class="citation">Wilson (<a href="#ref-Wilson2005" role="doc-biblioref">2005</a>)</span> is a book I need to cite.</p>
-<p><span class="citation">Bond and Fox (<a href="#ref-BondFox2015" role="doc-biblioref">2015</a>)</span> is another book I need to cite.</p>
+<p>Dimensionality is the study of the dimensions (also known as “factors”, “components”, and “latent traits”) that the items are designed and assembled to collectively measure. This study tends to take two forms. One is exploration of what dimensions a set of items apparently measure, regardless of what they intended to measure. The other is what evidence exist to confirm that a set of items actually measure the dimension they are intended to measure.</p>
+<p>Dimensionality is important for the reporting of scores. Scores, as summary measures of a set of items, are only meaningful to the extent that they enjoy evidence that they measure the dimension(s) they are designed to measure. Scores, in turn, are important to the extent that they support decisions that have consequences in the real world. Scores are needed to decide who gets to practice medicine, or fly an airplane.</p>
+<p>Dimensionality is an important part of the validation process for psychological measures <span class="citation">(<a href="#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>)</span>.</p>
+<p>To assess the dimensionality of these items we use exploratory factor analysis and confirmatory factor analysis (CFA) and PCAR.</p>
 </div>
 <div id="exploratory-factor-analysis-efa" class="section level2 hasAnchor">
 <h2>Exploratory Factor Analysis (EFA)<a href="dimensionality.html#exploratory-factor-analysis-efa" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="dimensionality.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TEST</span><span class="co"> FOR NUMBER OF FACTORS IN DATA USING PARALLEL</span></span>
-<span id="cb27-2"><a href="dimensionality.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ANALYSIS AND VERY SIMPLE STRUCTURE (VSS)</span></span>
-<span id="cb27-3"><a href="dimensionality.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">fa.parallel</span>(items)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="dimensionality.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># LOAD PACKAGES</span></span>
+<span id="cb30-2"><a href="dimensionality.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lavaan)</span>
+<span id="cb30-3"><a href="dimensionality.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb30-4"><a href="dimensionality.html#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psychTools)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="dimensionality.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># LOAD DATA all &lt;- read.csv(&#39;data/all.csv&#39;)</span></span>
+<span id="cb31-2"><a href="dimensionality.html#cb31-2" aria-hidden="true" tabindex="-1"></a>items <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/items.csv&quot;</span>)</span>
+<span id="cb31-3"><a href="dimensionality.html#cb31-3" aria-hidden="true" tabindex="-1"></a>ext_items <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/ext_items.csv&quot;</span>)</span>
+<span id="cb31-4"><a href="dimensionality.html#cb31-4" aria-hidden="true" tabindex="-1"></a>int_items <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/int_items.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="dimensionality.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TEST</span><span class="co"> FOR NUMBER OF FACTORS IN DATA USING PARALLEL</span></span>
+<span id="cb32-2"><a href="dimensionality.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ANALYSIS AND VERY SIMPLE STRUCTURE (VSS)</span></span>
+<span id="cb32-3"><a href="dimensionality.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">fa.parallel</span>(items)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <pre><code>Parallel analysis suggests that the number of factors =  16  and the number of components =  6 </code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="dimensionality.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vss</span>(items)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-14-2.png" width="672" /></p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="dimensionality.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vss</span>(items)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-17-2.png" width="672" /></p>
 <pre><code>
 Very Simple Structure
 Call: vss(x = items)
@@ -246,144 +258,147 @@ VSS complexity 1 achieves a maximimum of 0.96  with  1  factors
 VSS complexity 2 achieves a maximimum of 0.97  with  2  factors
 
 The Velicer MAP achieves a minimum of 0.01  with  6  factors 
-BIC achieves a minimum of  -788.85  with  8  factors
-Sample Size adjusted BIC achieves a minimum of  4438.02  with  8  factors
+BIC achieves a minimum of  -1067.81  with  8  factors
+Sample Size adjusted BIC achieves a minimum of  4343.36  with  8  factors
 
 Statistics by number of factors 
   vss1 vss2    map  dof chisq prob sqresid  fit RMSEA   BIC SABIC complex
-1 0.96 0.00 0.0091 2079 37231    0      33 0.96 0.072 20438 27044     1.0
-2 0.50 0.97 0.0068 2014 29480    0      26 0.97 0.065 13211 19611     1.6
-3 0.35 0.81 0.0058 1950 24035    0      23 0.98 0.059  8283 14479     2.1
-4 0.29 0.67 0.0056 1887 20947    0      20 0.98 0.056  5704 11700     2.5
-5 0.29 0.62 0.0055 1825 17804    0      18 0.98 0.052  3062  8861     2.7
-6 0.25 0.60 0.0052 1764 15824    0      16 0.98 0.050  1575  7180     2.8
-7 0.23 0.58 0.0056 1704 13729    0      15 0.98 0.047   -35  5379     2.9
-8 0.21 0.54 0.0055 1645 12499    0      14 0.98 0.045  -789  4438     3.0
+1 0.96 0.00 0.0090 2144 37822    0      35 0.96 0.072 20503 27316     1.0
+2 0.50 0.97 0.0067 2078 29910    0      27 0.97 0.064 13124 19727     1.6
+3 0.35 0.82 0.0057 2013 24412    0      23 0.98 0.059  8151 14547     2.1
+4 0.33 0.72 0.0055 1949 21186    0      21 0.98 0.055  5442 11635     2.4
+5 0.33 0.71 0.0053 1886 17979    0      19 0.98 0.051  2745  8737     2.5
+6 0.32 0.71 0.0051 1824 16012    0      17 0.98 0.049  1278  7074     2.5
+7 0.27 0.64 0.0053 1763 13893    0      16 0.98 0.046  -348  5254     2.9
+8 0.22 0.55 0.0053 1703 12689    0      15 0.98 0.045 -1068  4343     3.0
   eChisq  SRMR eCRMS  eBIC
-1  37967 0.052 0.053 21173
-2  23187 0.041 0.042  6918
-3  16097 0.034 0.036   345
-4  12506 0.030 0.032 -2737
-5   9591 0.026 0.029 -5151
-6   7329 0.023 0.025 -6921
-7   5949 0.021 0.023 -7815
-8   5053 0.019 0.022 -8235</code></pre>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="dimensionality.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PRINCIPAL COMPONENTS ANALYSIS</span></span>
-<span id="cb31-2"><a href="dimensionality.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">principal</span>(items)</span></code></pre></div>
+1  39805 0.053 0.054 22486
+2  24173 0.041 0.042  7388
+3  16452 0.034 0.036   192
+4  12733 0.030 0.032 -3010
+5   9789 0.026 0.028 -5445
+6   7555 0.023 0.025 -7179
+7   6093 0.021 0.023 -8148
+8   5192 0.019 0.022 -8565</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="dimensionality.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PRINCIPAL COMPONENTS ANALYSIS</span></span>
+<span id="cb36-2"><a href="dimensionality.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">principal</span>(items)</span></code></pre></div>
 <pre><code>Principal Components Analysis
 Call: principal(r = items)
 Standardized loadings (pattern matrix) based upon correlation matrix
-     PC1    h2   u2 com
-Q7  0.67 0.451 0.55   1
-Q10 0.64 0.404 0.60   1
-Q11 0.77 0.598 0.40   1
-Q16 0.69 0.481 0.52   1
-Q17 0.33 0.112 0.89   1
-Q18 0.78 0.604 0.40   1
-Q19 0.75 0.569 0.43   1
-Q20 0.68 0.466 0.53   1
-Q21 0.68 0.467 0.53   1
-Q22 0.70 0.488 0.51   1
-Q23 0.64 0.406 0.59   1
-Q24 0.66 0.440 0.56   1
-Q25 0.76 0.583 0.42   1
-Q26 0.66 0.430 0.57   1
-Q27 0.47 0.222 0.78   1
-Q28 0.73 0.529 0.47   1
-Q29 0.69 0.474 0.53   1
-Q30 0.70 0.496 0.50   1
-Q31 0.65 0.417 0.58   1
-Q32 0.73 0.539 0.46   1
-Q34 0.65 0.428 0.57   1
-Q35 0.74 0.542 0.46   1
-Q36 0.77 0.590 0.41   1
-Q37 0.76 0.572 0.43   1
-Q38 0.80 0.647 0.35   1
-Q39 0.72 0.515 0.48   1
-Q40 0.75 0.564 0.44   1
-Q41 0.30 0.089 0.91   1
-Q42 0.77 0.594 0.41   1
-Q43 0.74 0.542 0.46   1
-Q44 0.80 0.642 0.36   1
-Q45 0.72 0.516 0.48   1
-Q46 0.15 0.021 0.98   1
-Q47 0.52 0.269 0.73   1
-Q49 0.72 0.520 0.48   1
-Q50 0.53 0.281 0.72   1
-Q51 0.62 0.380 0.62   1
-Q52 0.76 0.577 0.42   1
-Q53 0.73 0.535 0.46   1
-Q54 0.75 0.568 0.43   1
-Q55 0.27 0.075 0.93   1
-Q56 0.82 0.670 0.33   1
-Q57 0.72 0.521 0.48   1
-Q58 0.73 0.533 0.47   1
-Q59 0.76 0.579 0.42   1
-Q60 0.47 0.224 0.78   1
-Q61 0.72 0.511 0.49   1
-Q62 0.65 0.424 0.58   1
-Q63 0.77 0.590 0.41   1
-Q64 0.71 0.503 0.50   1
-Q65 0.61 0.373 0.63   1
-Q66 0.71 0.498 0.50   1
-Q68 0.68 0.459 0.54   1
-Q69 0.57 0.323 0.68   1
-Q70 0.56 0.309 0.69   1
-Q71 0.74 0.544 0.46   1
-Q72 0.54 0.294 0.71   1
-Q73 0.64 0.405 0.59   1
-Q74 0.60 0.359 0.64   1
-Q76 0.74 0.544 0.46   1
-Q77 0.77 0.598 0.40   1
-Q78 0.66 0.442 0.56   1
-Q79 0.60 0.365 0.64   1
-Q80 0.68 0.466 0.53   1
-Q81 0.65 0.419 0.58   1
-Q82 0.61 0.368 0.63   1
+      PC1    h2   u2 com
+X   -0.16 0.024 0.98   1
+Q7   0.67 0.451 0.55   1
+Q10  0.64 0.404 0.60   1
+Q11  0.77 0.598 0.40   1
+Q16  0.69 0.481 0.52   1
+Q17  0.33 0.111 0.89   1
+Q18  0.78 0.604 0.40   1
+Q19  0.75 0.569 0.43   1
+Q20  0.68 0.466 0.53   1
+Q21  0.68 0.467 0.53   1
+Q22  0.70 0.488 0.51   1
+Q23  0.64 0.406 0.59   1
+Q24  0.66 0.440 0.56   1
+Q25  0.76 0.584 0.42   1
+Q26  0.66 0.429 0.57   1
+Q27  0.47 0.221 0.78   1
+Q28  0.73 0.528 0.47   1
+Q29  0.69 0.474 0.53   1
+Q30  0.70 0.496 0.50   1
+Q31  0.65 0.417 0.58   1
+Q32  0.73 0.540 0.46   1
+Q34  0.65 0.428 0.57   1
+Q35  0.74 0.543 0.46   1
+Q36  0.77 0.590 0.41   1
+Q37  0.76 0.572 0.43   1
+Q38  0.80 0.647 0.35   1
+Q39  0.72 0.516 0.48   1
+Q40  0.75 0.563 0.44   1
+Q41  0.30 0.089 0.91   1
+Q42  0.77 0.593 0.41   1
+Q43  0.74 0.541 0.46   1
+Q44  0.80 0.642 0.36   1
+Q45  0.72 0.517 0.48   1
+Q46  0.15 0.021 0.98   1
+Q47  0.52 0.269 0.73   1
+Q49  0.72 0.520 0.48   1
+Q50  0.53 0.280 0.72   1
+Q51  0.62 0.380 0.62   1
+Q52  0.76 0.577 0.42   1
+Q53  0.73 0.535 0.47   1
+Q54  0.75 0.569 0.43   1
+Q55  0.27 0.075 0.93   1
+Q56  0.82 0.670 0.33   1
+Q57  0.72 0.520 0.48   1
+Q58  0.73 0.533 0.47   1
+Q59  0.76 0.579 0.42   1
+Q60  0.47 0.223 0.78   1
+Q61  0.72 0.512 0.49   1
+Q62  0.65 0.424 0.58   1
+Q63  0.77 0.590 0.41   1
+Q64  0.71 0.503 0.50   1
+Q65  0.61 0.372 0.63   1
+Q66  0.71 0.499 0.50   1
+Q68  0.68 0.459 0.54   1
+Q69  0.57 0.324 0.68   1
+Q70  0.56 0.309 0.69   1
+Q71  0.74 0.544 0.46   1
+Q72  0.54 0.293 0.71   1
+Q73  0.64 0.405 0.59   1
+Q74  0.60 0.360 0.64   1
+Q76  0.74 0.544 0.46   1
+Q77  0.77 0.599 0.40   1
+Q78  0.66 0.442 0.56   1
+Q79  0.60 0.365 0.64   1
+Q80  0.68 0.467 0.53   1
+Q81  0.65 0.419 0.58   1
+Q82  0.61 0.368 0.63   1
 
                  PC1
-SS loadings    29.96
+SS loadings    29.99
 Proportion Var  0.45
 
 Mean item complexity =  1
 Test of the hypothesis that 1 component is sufficient.
 
 The root mean square of the residuals (RMSR) is  0.05 
- with the empirical chi square  38864.3  with prob &lt;  0 
+ with the empirical chi square  40704.94  with prob &lt;  0 
 
 Fit based upon off diagonal values = 0.99</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="dimensionality.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PRINCIPAL AXIS FACTORING library(psych) fit &lt;-</span></span>
-<span id="cb33-2"><a href="dimensionality.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># factor.pa(items, nfactors=3, rotation=&#39;varimax&#39;) fit #</span></span>
-<span id="cb33-3"><a href="dimensionality.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># print results</span></span></code></pre></div>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="dimensionality.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PRINCIPAL COMPONENTS ANALYSIS entering raw data and</span></span>
-<span id="cb34-2"><a href="dimensionality.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># extracting PCs from the correlation matrix fit &lt;-</span></span>
-<span id="cb34-3"><a href="dimensionality.html#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># princomp(items, cor=TRUE) summary(fit) # print variance</span></span>
-<span id="cb34-4"><a href="dimensionality.html#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># accounted for loadings(fit) # pc loadings</span></span>
-<span id="cb34-5"><a href="dimensionality.html#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(fit,type=&#39;lines&#39;) # scree plot fit$scores # the</span></span>
-<span id="cb34-6"><a href="dimensionality.html#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="co"># principal components biplot(fit)</span></span></code></pre></div>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="dimensionality.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine Number of Factors to Extract library(nFactors)</span></span>
-<span id="cb35-2"><a href="dimensionality.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ev &lt;- eigen(cor(items)) # get eigenvalues ap &lt;-</span></span>
-<span id="cb35-3"><a href="dimensionality.html#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># parallel(subject=nrow(items),var=ncol(items),</span></span>
-<span id="cb35-4"><a href="dimensionality.html#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co"># rep=100,cent=.05) nS &lt;- nScree(x=ev$values,</span></span>
-<span id="cb35-5"><a href="dimensionality.html#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co"># aparallel=ap$eigen$qevpea) plotnScree(nS)</span></span></code></pre></div>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="dimensionality.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MAXIMUM LIKELIHOOD FACTOR ANALYSIS entering raw data and</span></span>
-<span id="cb36-2"><a href="dimensionality.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># extracting 3 factors, with varimax rotation fit &lt;-</span></span>
-<span id="cb36-3"><a href="dimensionality.html#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co"># factanal(items, 3, rotation=&#39;varimax&#39;) print(fit,</span></span>
-<span id="cb36-4"><a href="dimensionality.html#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># digits=2, cutoff=.3, sort=TRUE) # plot factor 1 by factor</span></span>
-<span id="cb36-5"><a href="dimensionality.html#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 2 load &lt;- fit$loadings[,1:2] plot(load,type=&#39;n&#39;) # set up</span></span>
-<span id="cb36-6"><a href="dimensionality.html#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="co"># plot text(load,labels=names(items),cex=.7) # add variable</span></span>
-<span id="cb36-7"><a href="dimensionality.html#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="co"># names</span></span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="dimensionality.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PRINCIPAL AXIS FACTORING library(psych) fit &lt;-</span></span>
+<span id="cb38-2"><a href="dimensionality.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co"># factor.pa(items, nfactors=3, rotation=&#39;varimax&#39;) fit #</span></span>
+<span id="cb38-3"><a href="dimensionality.html#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co"># print results</span></span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="dimensionality.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PRINCIPAL COMPONENTS ANALYSIS entering raw data and</span></span>
+<span id="cb39-2"><a href="dimensionality.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co"># extracting PCs from the correlation matrix fit &lt;-</span></span>
+<span id="cb39-3"><a href="dimensionality.html#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># princomp(items, cor=TRUE) summary(fit) # print variance</span></span>
+<span id="cb39-4"><a href="dimensionality.html#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># accounted for loadings(fit) # pc loadings</span></span>
+<span id="cb39-5"><a href="dimensionality.html#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(fit,type=&#39;lines&#39;) # scree plot fit$scores # the</span></span>
+<span id="cb39-6"><a href="dimensionality.html#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="co"># principal components biplot(fit)</span></span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="dimensionality.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># DETERMINE NUMBER OF FACTORS TO EXTRACT library(nFactors)</span></span>
+<span id="cb40-2"><a href="dimensionality.html#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ev &lt;- eigen(cor(items)) # get eigenvalues ap &lt;-</span></span>
+<span id="cb40-3"><a href="dimensionality.html#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co"># parallel(subject=nrow(items),var=ncol(items),</span></span>
+<span id="cb40-4"><a href="dimensionality.html#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># rep=100,cent=.05) nS &lt;- nScree(x=ev$values,</span></span>
+<span id="cb40-5"><a href="dimensionality.html#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="co"># aparallel=ap$eigen$qevpea) plotnScree(nS)</span></span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="dimensionality.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MAXIMUM LIKELIHOOD FACTOR ANALYSIS entering raw data and</span></span>
+<span id="cb41-2"><a href="dimensionality.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co"># extracting 3 factors, with varimax rotation fit &lt;-</span></span>
+<span id="cb41-3"><a href="dimensionality.html#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># factanal(items, 3, rotation=&#39;varimax&#39;) print(fit,</span></span>
+<span id="cb41-4"><a href="dimensionality.html#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co"># digits=2, cutoff=.3, sort=TRUE) # plot factor 1 by factor</span></span>
+<span id="cb41-5"><a href="dimensionality.html#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 2 load &lt;- fit$loadings[,1:2] plot(load,type=&#39;n&#39;) # set up</span></span>
+<span id="cb41-6"><a href="dimensionality.html#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="co"># plot text(load,labels=names(items),cex=.7) # add variable</span></span>
+<span id="cb41-7"><a href="dimensionality.html#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="co"># names</span></span></code></pre></div>
 </div>
 <div id="confirmatory-factor-analysis-cfa" class="section level2 hasAnchor">
 <h2>Confirmatory Factor Analysis (CFA)<a href="dimensionality.html#confirmatory-factor-analysis-cfa" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Factor analysis is commonly used to investigate whether item responses are unidimensional. In my use of CFA I used several statistics and fit indices:</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="dimensionality.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ltm::factor.scores(items) # Computation of factor scores</span></span>
+<span id="cb42-2"><a href="dimensionality.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co"># for grm, ltm, rasch and tpm models</span></span></code></pre></div>
+<p>Factor analysis is commonly used to investigate whether item responses are unidimensional. In our use of CFA we used several statistics and fit indices:</p>
 <ul>
 <li>Root Mean Square Error of Approximation (RMSEA)</li>
 <li>Comparative Fit Index (CFI)</li>
 <li>Tucker–Lewis Index (TLI), and</li>
 <li>Standardized Root-Mean-Square Residual (SRMR)</li>
 </ul>
-<p>Based on published criteria (Hu &amp; Bentler, 1999; Wang &amp; Wang, 2019), I used the following standards for good fit:</p>
+<p>Based on published criteria (Hu &amp; Bentler, 1999; Wang &amp; Wang, 2019), we used the following standards for good fit:</p>
 <ul>
 <li>CFI &gt; 0.95</li>
 <li>TLI &gt; 0.95</li>
@@ -392,47 +407,41 @@ Fit based upon off diagonal values = 0.99</code></pre>
 </ul>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt ex ut condimentum vulputate. Sed feugiat mattis lectus vitae mollis. Suspendisse sodales urna id pharetra mattis. Mauris feugiat molestie efficitur. Proin non metus hendrerit elit viverra tincidunt. Integer tristique, nunc nec gravida semper, erat ligula placerat nunc, vitae tincidunt diam odio ut est. Morbi sit amet posuere ante, non tempor leo. Nam fermentum mi urna, ut lacinia metus venenatis sit amet. Morbi mattis lectus sit amet magna ultricies malesuada.</p>
 <p>I use the MLM estimator <span class="citation">(<a href="#ref-Brown2006" role="doc-biblioref">Brown 2006</a>)</span>.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="dimensionality.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(lavaan) MODEL WITH ONE COMMON FACTOR</span></span>
-<span id="cb37-2"><a href="dimensionality.html#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-3"><a href="dimensionality.html#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># wb_1factor &lt;- &#39; #start of model</span></span>
-<span id="cb37-4"><a href="dimensionality.html#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-5"><a href="dimensionality.html#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co"># latent variable definitions (common factors) wellbeing =~</span></span>
-<span id="cb37-6"><a href="dimensionality.html#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="co"># NA*sense.peace + NA*sense.wonder + NA*sense.gratitude +</span></span>
-<span id="cb37-7"><a href="dimensionality.html#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="co"># NA*sense.purpose</span></span>
-<span id="cb37-8"><a href="dimensionality.html#cb37-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-9"><a href="dimensionality.html#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="co"># latent variable variances wellbeing ~~ 1*wellbeing</span></span>
-<span id="cb37-10"><a href="dimensionality.html#cb37-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-11"><a href="dimensionality.html#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="co"># latent variable covariances latent variable means</span></span>
-<span id="cb37-12"><a href="dimensionality.html#cb37-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-13"><a href="dimensionality.html#cb37-13" aria-hidden="true" tabindex="-1"></a><span class="co"># manifest variable variances (uniquenesses) sense.peace ~~</span></span>
-<span id="cb37-14"><a href="dimensionality.html#cb37-14" aria-hidden="true" tabindex="-1"></a><span class="co"># sense.peace sense.wonder ~~ sense.wonder sense.gratitude</span></span>
-<span id="cb37-15"><a href="dimensionality.html#cb37-15" aria-hidden="true" tabindex="-1"></a><span class="co"># ~~ sense.gratitude sense.purpose ~~ sense.purpose</span></span>
-<span id="cb37-16"><a href="dimensionality.html#cb37-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-17"><a href="dimensionality.html#cb37-17" aria-hidden="true" tabindex="-1"></a><span class="co"># manifest variable covariances (uniquenesses)</span></span>
-<span id="cb37-18"><a href="dimensionality.html#cb37-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-19"><a href="dimensionality.html#cb37-19" aria-hidden="true" tabindex="-1"></a><span class="co"># manifest variable means sense.peace ~ 1 sense.wonder ~ 1</span></span>
-<span id="cb37-20"><a href="dimensionality.html#cb37-20" aria-hidden="true" tabindex="-1"></a><span class="co"># sense.gratitude ~ 1 sense.purpose ~ 1 end of model</span></span>
-<span id="cb37-21"><a href="dimensionality.html#cb37-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-22"><a href="dimensionality.html#cb37-22" aria-hidden="true" tabindex="-1"></a><span class="co"># CFA1 &lt;- lavaan(wb_1factor, data=items, estimator = &#39;MLM&#39;)</span></span>
-<span id="cb37-23"><a href="dimensionality.html#cb37-23" aria-hidden="true" tabindex="-1"></a><span class="co"># # estimate model summary(CFA1, standardized=TRUE,</span></span>
-<span id="cb37-24"><a href="dimensionality.html#cb37-24" aria-hidden="true" tabindex="-1"></a><span class="co"># fit.measures=TRUE)</span></span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="dimensionality.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(lavaan) MODEL WITH ONE COMMON FACTOR</span></span>
+<span id="cb43-2"><a href="dimensionality.html#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="dimensionality.html#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co"># wb_1factor &lt;- &#39; #start of model</span></span>
+<span id="cb43-4"><a href="dimensionality.html#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-5"><a href="dimensionality.html#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co"># latent variable definitions (common factors) wellbeing =~</span></span>
+<span id="cb43-6"><a href="dimensionality.html#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="co"># NA*sense.peace + NA*sense.wonder + NA*sense.gratitude +</span></span>
+<span id="cb43-7"><a href="dimensionality.html#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="co"># NA*sense.purpose</span></span>
+<span id="cb43-8"><a href="dimensionality.html#cb43-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-9"><a href="dimensionality.html#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="co"># latent variable variances wellbeing ~~ 1*wellbeing</span></span>
+<span id="cb43-10"><a href="dimensionality.html#cb43-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-11"><a href="dimensionality.html#cb43-11" aria-hidden="true" tabindex="-1"></a><span class="co"># latent variable covariances latent variable means</span></span>
+<span id="cb43-12"><a href="dimensionality.html#cb43-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-13"><a href="dimensionality.html#cb43-13" aria-hidden="true" tabindex="-1"></a><span class="co"># manifest variable variances (uniquenesses) sense.peace ~~</span></span>
+<span id="cb43-14"><a href="dimensionality.html#cb43-14" aria-hidden="true" tabindex="-1"></a><span class="co"># sense.peace sense.wonder ~~ sense.wonder sense.gratitude</span></span>
+<span id="cb43-15"><a href="dimensionality.html#cb43-15" aria-hidden="true" tabindex="-1"></a><span class="co"># ~~ sense.gratitude sense.purpose ~~ sense.purpose</span></span>
+<span id="cb43-16"><a href="dimensionality.html#cb43-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-17"><a href="dimensionality.html#cb43-17" aria-hidden="true" tabindex="-1"></a><span class="co"># manifest variable covariances (uniquenesses)</span></span>
+<span id="cb43-18"><a href="dimensionality.html#cb43-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-19"><a href="dimensionality.html#cb43-19" aria-hidden="true" tabindex="-1"></a><span class="co"># manifest variable means sense.peace ~ 1 sense.wonder ~ 1</span></span>
+<span id="cb43-20"><a href="dimensionality.html#cb43-20" aria-hidden="true" tabindex="-1"></a><span class="co"># sense.gratitude ~ 1 sense.purpose ~ 1 end of model</span></span>
+<span id="cb43-21"><a href="dimensionality.html#cb43-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-22"><a href="dimensionality.html#cb43-22" aria-hidden="true" tabindex="-1"></a><span class="co"># CFA1 &lt;- lavaan(wb_1factor, data=items, estimator = &#39;MLM&#39;)</span></span>
+<span id="cb43-23"><a href="dimensionality.html#cb43-23" aria-hidden="true" tabindex="-1"></a><span class="co"># # estimate model summary(CFA1, standardized=TRUE,</span></span>
+<span id="cb43-24"><a href="dimensionality.html#cb43-24" aria-hidden="true" tabindex="-1"></a><span class="co"># fit.measures=TRUE)</span></span></code></pre></div>
 <p>The results of CFA, using MLR estimation, confirmed the second order factor model, in line with the original structure of the scale (see Olufadi, 2017), because the values of the indices were above the acceptable threshold [χ2 (167) = 284.032, p &lt; 0.001; RMSEA = 0.030 (90% CI = 0.024-0.036), CFI = 0.983, TLI = 0.981, SRMR = 0.023], compared to the unidimensional model [χ2 (170) = 316.949, p &lt; 0.001; RMSEA = 0.034 (90% CI = 0.028-0.039), CFI = 0.978, TLI = 0.976, SRMR = 0.023] and a 3-uncorrelated-factors model [χ2 (170) = 2427.628, p &lt; 0.001; RMSEA = 0.132 (90% CI = 0.127-0.136), CFI = 0.669, TLI = 0.631, SRMR = 0.345]. Based on RMSEA, CFI, TLI, and SRMR, the results indicated that the model provided satisfactory representations of the underlying structure of the psychological well-being construct. All items loaded significantly (ranging from 0.535 to 0.817) in relation to each first order factor, at a p &lt; 0.01 significance level. These results of the CFA offer evidence that the four items measure one dimension of well-being.</p>
 
 </div>
 </div>
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-BondFox2015" class="csl-entry">
-Bond, Trevor G., and Christine M. Fox. 2015. <em>Applying the Rasch Model: Fundamental Measurement in the Human Sciences</em>. New York, New York: Routledge.
-</div>
 <div id="ref-Brown2006" class="csl-entry">
 Brown, Timothy A. 2006. <em>Confirmatory Factor Analysis for Applied Research</em>. New York, New York: The Guilford Press.
 </div>
 <div id="ref-EmbretsonReise2000" class="csl-entry">
 Embretson, Susan E., and Steven P. Reise. 2000. <em>Item Response Theory for Psychologists</em>. Mahwah, New Jerey: Lawrence Erlbaum Associates.
-</div>
-<div id="ref-Wilson2005" class="csl-entry">
-Wilson, Mark. 2005. <em>Constructing Measures: An Item Response Modeling Approach</em>. Mahwah, New Jersey: Lawrence Erlbaum Associates.
 </div>
 </div>
             </section>
