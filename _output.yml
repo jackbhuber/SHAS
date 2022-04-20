@@ -1,5 +1,5 @@
 bookdown::gitbook:
-  split_bib: TRUE
+  split_bib: FALSE
   number_sections: FALSE
   fig_caption: TRUE
   css: assets/style.css
