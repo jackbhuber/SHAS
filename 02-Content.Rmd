@@ -1,0 +1,3 @@
+# Content Validity
+
+Content validity is the realm of validity that has to do with the content. The overarching question is what is the domain of content from which to design blueprints for forms and items?

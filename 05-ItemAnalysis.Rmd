@@ -1,14 +1,22 @@
 # Item Analysis
-This chapter documents our item analysis. This includes investigation of:
-
+This chapter documents our item analysis. This includes investigation of the following statistics from classical test theory:
 - Item difficulty
 - Item discrimination
 - Item-total correlations
 
+We also examine item statistics from item response theory (IRT) including:
+- Item location parameters
+- Item characteristic curves (ICCs)
+
+The goal of this information with which to improve items. One outcome of this analysis is insight into whether items have too many response categories.
+
+## Preliminary work
+
 **Load packages**. This code chunk outlines the R packages we use and the data. There are several helpful packages for classical test theory (CTT).
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 # LOAD PACKAGES
+library(Hmisc) # for item statistics
 library(psych) # for psychometric analysis
 library(psychTools) # for psychometric analysis
 library(CTT) # for classical test theory stats
@@ -22,11 +30,13 @@ library(knitr) # how RMarkdown compiles all the code into documents
 
 ```{r}
 # LOAD DATA
+
 # Datasets straight off the Excel file
 all         <- read.csv("data/all.csv")
-# items       <- read.csv("data/items.csv")
-# ext_items   <- read.csv("data/ext_items.csv")
-# int_items   <- read.csv("data/int_items.csv")
+items       <- read.csv("data/items.csv")
+ext_items   <- read.csv("data/ext_items.csv")
+int_items   <- read.csv("data/int_items.csv")
+
 # Datasets with listwise deletion
 all_l       <- read.csv("data/all_l.csv")
 # items_l     <- read.csv("data/items_l.csv")
@@ -34,13 +44,16 @@ all_l       <- read.csv("data/all_l.csv")
 # int_items_l <- read.csv("data/int_items_l.csv")
 ```
 
-**Describe data**. A good way to begin the analysis is to get a feel for our items with descriptive statistics.
+##Classical Item Analysis
 
-```{r describe}
+
+```{r describe, fig.cap='Item Statistics'}
 # DESCRIBE DATA
 # options(digits=2)
-itm_stats <- describe(all)
-knitr::kable(itm_stats, caption = "Items Statistics", booktabs = TRUE, digits=2)
+# describe(items)
+
+# this doesn't work
+# knitr::kable(itm_stats, caption = "Items Statistics", booktabs = TRUE, digits=2)
 
 # A POSSIBLE BAR PLOT OF ITEM STATISTICS
 # barplot(item_stats$nbr.val, main="Complete Cases", horiz=TRUE, col='red')
@@ -48,18 +61,19 @@ knitr::kable(itm_stats, caption = "Items Statistics", booktabs = TRUE, digits=2)
 
 ```
 
-**Classical Item Analysis**.
 
 ```{r item-analysis}
 # CLASSICAL ITEM ANALYSIS
-# CTT::itemAnalysis(items, itemReport=TRUE, NA.Delete=TRUE, rBisML=FALSE, hardFlag, easyFlag, pBisFlag, bisFlag, flagStyle = c("X",""))
-```
 
+# CTT::itemAnalysis(items, itemReport=TRUE, NA.Delete=TRUE, rBisML=FALSE, hardFlag, easyFlag, pBisFlag, bisFlag, flagStyle = c("X",""))
+
+CTT::itemAnalysis(items, itemReport=TRUE, NA.Delete=TRUE, rBisML=FALSE, flagStyle = c("X",""))
+```
 
 ```{r}
 # MORE ITEM STATISTICS
 library(pastecs)
-item_stats <- pastecs::stat.desc(all) # use the stat.desc() to render data frame of item stats
+item_stats <- pastecs::stat.desc(items) # use the stat.desc() to render data frame of item stats
 item_stats <- t(item_stats) # transpose the data frame
 item_stats <- data.frame(item_stats)
 item_stats[order(item_stats$mean), ] # order by mean
@@ -79,6 +93,23 @@ item_stats[order(item_stats$nbr.val), ] # order by N cases
 # OUTLIERS
 # psych::outlier(items)
 ```
+
+
+## Item response theory
+
+This ltm package "provides a flexible framework for Item Response Theory analyses for dichotomous
+and polytomous data under a Marginal Maximum Likelihood approach. The fitting algorithms
+provide valid inferences under Missing At Random missing data mechanisms" [@ltm].
+
+```{r ext-pbis, fig.cap='Item Total Correlations for External Events Items'}
+# DESCRIPTIVES
+ltm::descript(items)
+```
+
+
+
+
+
 
 **Skew and Kurtosis**.
 

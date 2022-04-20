@@ -1,5 +1,5 @@
 # APPLY VARIABLE LABELS
-
+library(Hmisc)
 var.labels <- c(
   Q7 = "My pastor/leader explicitly claiming to speak on God's behalf",
   Q10 = "Being asked to give up personal, vocational, and/or educational goals by a pastor or group leader",
@@ -70,18 +70,8 @@ var.labels <- c(
   Q81 = "Nightmares about my negative religious experiences",
   Q82 = "Having trouble navigating life outside my church/community")
 
-
-
 library(labelled)
-
 all <- labelled::set_variable_labels(all, .labels = var.labels)
-
-
-
-
-
-
-
 
 library(expss)
 # data(allitems)

@@ -1,0 +1,10 @@
+# Wright Map
+
+This needs a matrix or vectors of parameters, not raw data
+
+```{r wright, fig.cap='Wright Map'}
+# WRIGHT MAP
+items <- read.csv(items,"data/items.csv")
+library(WrightMap)
+
+

@@ -16,7 +16,7 @@ set in the _output.yml file.</p>" />
   <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
-  <meta name="github-repo" content="rstudio/bookdown-demo" />
+  
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Reliability | Validity Evidence for the Spiritual Harm and Abuse Scale (SHAS)" />
@@ -36,8 +36,8 @@ set in the _output.yml file.</p>" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="dimensionality.html"/>
-<link rel="next" href="scale-analysis.html"/>
+<link rel="prev" href="item-analysis.html"/>
+<link rel="next" href="dimensionality.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -174,6 +174,7 @@ div.csl-indent {
 <li><a href="background-of-the-project.html#the-spiritual-harm-and-abuse-scale-shas">The Spiritual Harm and Abuse Scale (SHAS)<span></span></a></li>
 <li><a href="background-of-the-project.html#validity-research-for-the-shas">Validity Research for the SHAS<span></span></a></li>
 </ul></li>
+<li><a href="content-validity.html#content-validity">Content Validity<span></span></a></li>
 <li><a href="data-collection.html#data-collection">Data Collection<span></span></a></li>
 <li><a href="data-preparation.html#data-preparation">Data Preparation<span></span></a>
 <ul>
@@ -181,23 +182,22 @@ div.csl-indent {
 <li><a href="data-preparation.html#missing-data">Missing data<span></span></a></li>
 </ul></li>
 <li><a href="item-analysis.html#item-analysis">Item Analysis<span></span></a></li>
+<li><a href="reliability.html#reliability">Reliability<span></span></a>
+<ul>
+<li><a href="reliability.html#item-correlations">Item correlations<span></span></a></li>
+<li><a href="reliability.html#internal-consistency-reliability">Internal consistency reliability<span></span></a></li>
+</ul></li>
 <li><a href="dimensionality.html#dimensionality">Dimensionality<span></span></a>
 <ul>
 <li><a href="dimensionality.html#about-dimensionality">About Dimensionality<span></span></a></li>
 <li><a href="dimensionality.html#exploratory-factor-analysis-efa">Exploratory Factor Analysis (EFA)<span></span></a></li>
 <li><a href="dimensionality.html#confirmatory-factor-analysis-cfa">Confirmatory Factor Analysis (CFA)<span></span></a></li>
 </ul></li>
-<li><a href="reliability.html#reliability">Reliability<span></span></a>
-<ul>
-<li><a href="reliability.html#item-correlations">Item correlations<span></span></a></li>
-<li><a href="reliability.html#internal-consistency-reliability">Internal consistency reliability<span></span></a></li>
-</ul></li>
 <li><a href="scale-analysis.html#scale-analysis">Scale Analysis<span></span></a>
 <ul>
 <li><a href="scale-analysis.html#interpretation-of-examinee-scores">Interpretation of Examinee Scores<span></span></a></li>
 </ul></li>
 <li><a href="discussion.html#discussion">Discussion<span></span></a></li>
-<li><a href="other-stuff.html#other-stuff">Other Stuff<span></span></a></li>
 <li><a href="references.html#references">References<span></span></a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -223,32 +223,32 @@ div.csl-indent {
 <h1>Reliability<a href="reliability.html#reliability" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="item-correlations" class="section level2 hasAnchor">
 <h2>Item correlations<a href="reliability.html#item-correlations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="reliability.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CORRELATION MATRIX (LOWER HALF) r &lt;- lowerCor(items) #</span></span>
-<span id="cb33-2"><a href="reliability.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the correlation matrix, rounded to 2 decimals</span></span>
-<span id="cb33-3"><a href="reliability.html#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-4"><a href="reliability.html#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co"># HEATMAP OF CORRELATIONS corPlot(r) #examine the many</span></span>
-<span id="cb33-5"><a href="reliability.html#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co"># options for this function.  corr.test(items)</span></span>
-<span id="cb33-6"><a href="reliability.html#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-7"><a href="reliability.html#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="co"># POINT BISERIAL CORRELATIONS ltm::biserial.cor(x, y, use =</span></span>
-<span id="cb33-8"><a href="reliability.html#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="co"># c(&#39;all.obs&#39;, &#39;complete.obs&#39;), level = 1)</span></span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="reliability.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CORRELATION MATRIX (LOWER HALF) r &lt;- lowerCor(items) #</span></span>
+<span id="cb22-2"><a href="reliability.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the correlation matrix, rounded to 2 decimals</span></span>
+<span id="cb22-3"><a href="reliability.html#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="reliability.html#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># HEATMAP OF CORRELATIONS corPlot(r) #examine the many</span></span>
+<span id="cb22-5"><a href="reliability.html#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co"># options for this function.  corr.test(items)</span></span>
+<span id="cb22-6"><a href="reliability.html#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="reliability.html#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co"># POINT BISERIAL CORRELATIONS ltm::biserial.cor(x, y, use =</span></span>
+<span id="cb22-8"><a href="reliability.html#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co"># c(&#39;all.obs&#39;, &#39;complete.obs&#39;), level = 1)</span></span></code></pre></div>
 </div>
 <div id="internal-consistency-reliability" class="section level2 hasAnchor">
 <h2>Internal consistency reliability<a href="reliability.html#internal-consistency-reliability" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="reliability.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># RELIABILITY reliability(items, itemal = TRUE, NA.Delete =</span></span>
-<span id="cb34-2"><a href="reliability.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># TRUE, ml = TRUE)</span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="reliability.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># RELIABILITY reliability(items, itemal = TRUE, NA.Delete =</span></span>
+<span id="cb23-2"><a href="reliability.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># TRUE, ml = TRUE)</span></span></code></pre></div>
 <p>One important source of evidence for a scale is correlations among the items. Strong correlations among the items are evidence that the items are measuring the same construct. The matrix of correlations is presented in the table.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="reliability.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># corrs &lt;- cor(items, method = c(&#39;pearson&#39;)) # correlation</span></span>
-<span id="cb35-2"><a href="reliability.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co"># matrix knitr::kable(round(corrs,2), caption =</span></span>
-<span id="cb35-3"><a href="reliability.html#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;Correlation Matrix&#39;) # fancy kable version of</span></span>
-<span id="cb35-4"><a href="reliability.html#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co"># correlation matrix</span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="reliability.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># corrs &lt;- cor(items, method = c(&#39;pearson&#39;)) # correlation</span></span>
+<span id="cb24-2"><a href="reliability.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># matrix knitr::kable(round(corrs,2), caption =</span></span>
+<span id="cb24-3"><a href="reliability.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;Correlation Matrix&#39;) # fancy kable version of</span></span>
+<span id="cb24-4"><a href="reliability.html#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># correlation matrix</span></span></code></pre></div>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt ex ut condimentum vulputate. Sed feugiat mattis lectus vitae mollis. Suspendisse sodales urna id pharetra mattis. Mauris feugiat molestie efficitur. Proin non metus hendrerit elit viverra tincidunt. Integer tristique, nunc nec gravida semper, erat ligula placerat nunc, vitae tincidunt diam odio ut est. Morbi sit amet posuere ante, non tempor leo. Nam fermentum mi urna, ut lacinia metus venenatis sit amet. Morbi mattis lectus sit amet magna ultricies malesuada.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="reliability.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(corrplot) corrplot(cor(items), order =</span></span>
-<span id="cb36-2"><a href="reliability.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;original&#39;, tl.col=&#39;black&#39;, tl.cex=.75) # visual</span></span>
-<span id="cb36-3"><a href="reliability.html#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co"># correlation matrix</span></span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="reliability.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(corrplot) corrplot(cor(items), order =</span></span>
+<span id="cb25-2"><a href="reliability.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;original&#39;, tl.col=&#39;black&#39;, tl.cex=.75) # visual</span></span>
+<span id="cb25-3"><a href="reliability.html#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># correlation matrix</span></span></code></pre></div>
 <p>The correlations among the items are moderate at best. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt ex ut condimentum vulputate. Sed feugiat mattis lectus vitae mollis. Suspendisse sodales urna id pharetra mattis. Mauris feugiat molestie efficitur. Proin non metus hendrerit elit viverra tincidunt. Integer tristique, nunc nec gravida semper, erat ligula placerat nunc, vitae tincidunt diam odio ut est. Morbi sit amet posuere ante, non tempor leo. Nam fermentum mi urna, ut lacinia metus venenatis sit amet. Morbi mattis lectus sit amet magna ultricies malesuada.
 Figure X reports internal reliability statistics.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="reliability.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># alpha(items) knitr::kable(alpha(items), caption =</span></span>
-<span id="cb37-2"><a href="reliability.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;Internal Reliability Statistics&#39;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="reliability.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># alpha(items) knitr::kable(alpha(items), caption =</span></span>
+<span id="cb26-2"><a href="reliability.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;Internal Reliability Statistics&#39;)</span></span></code></pre></div>
 
 </div>
 </div>
@@ -257,8 +257,8 @@ Figure X reports internal reliability statistics.</p>
           </div>
         </div>
       </div>
-<a href="dimensionality.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="scale-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="item-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="dimensionality.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
