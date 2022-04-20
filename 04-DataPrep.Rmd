@@ -35,10 +35,10 @@ int_items <- shas[ ,66:79] # Internal States items
 all <- subset(all, select = -c(Ext_Avg:Global_Avg)) # remove columns for now
 
 # OTHER POSSIBLE DATASETS
-write.csv(all,"data/all.csv") # save data for later use
-write.csv(items,"data/items.csv")
-write.csv(ext_items,"data/ext_items.csv")
-write.csv(int_items,"data/int_items.csv")
+write.csv(all,"data/all.csv", row.names=FALSE) # save data for later use
+write.csv(items,"data/items.csv", row.names=FALSE)
+write.csv(ext_items,"data/ext_items.csv", row.names=FALSE)
+write.csv(int_items,"data/int_items.csv", row.names=FALSE)
 ```
 
 **Labeling**. This is probably the appropriate place to deal with the labeling of variables and their values. These things should be appropriately labeled to their content, wording, etc. **But I have yet to figure this part out so I will come back to it**.
@@ -220,7 +220,7 @@ Figure \@ref(fig:trigger) illustrates the correlations among the Internal States
 
 # LISTWISE DELETION OF MISSING DATA
 all_l <- na.omit(all) #  Likert items from columns 14-79 plus demographics post listwise
-write.csv(all_l,"data/all_l.csv") # save data
+write.csv(all_l,"data/all_l.csv", row.names=FALSE) # save data
 
 # OTHER POSSIBLE LISTWISE DATASETS
 
@@ -228,9 +228,9 @@ write.csv(all_l,"data/all_l.csv") # save data
 # items_l <- na.omit(items) # Likert items from columns 14-79 post listwise
 # ext_items_l <- na.omit(ext_items) # Likert items for external events post listwise
 # int_items_l <- na.omit(int_items) # Likert items for internal states post listwise
-# write.csv(items_l,"data/items_l.csv")
-# write.csv(ext_items_l,"data/ext_items_l.csv")
-# write.csv(int_items_l,"data/int_items_l.csv")
+# write.csv(items_l,"data/items_l.csv", row.names=FALSE)
+# write.csv(ext_items_l,"data/ext_items_l.csv", row.names=FALSE)
+# write.csv(int_items_l,"data/int_items_l.csv", row.names=FALSE)
 ```
 
 Analysis can proceed with these two datasets:
