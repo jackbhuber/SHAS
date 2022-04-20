@@ -15,13 +15,13 @@ The Rasch model makes two assumptions of the data: (1) unidimensionality of the 
 
 We begin by loading the `mirt` library and estimating the Partial Credit Model (PCM) on the data from the SHAS items.  This model constrains the slopes to 1 and freely estimates the variance parameters.
 
-```{r include=TRUE, warning=FALSE, message=FALSE, echo=FALSE}
+```{r echo=TRUE, message=FALSE, warning=FALSE, include=TRUE}
 library(mirt)
 items_l <- read.csv("data/items_l.csv")
 model.pcm <- 'PCM = 1-5'
 results.pcm <- mirt(data=items_l, model=model.pcm, itemtype="Rasch", verbose=FALSE)
 coef.pcm <- coef(results.pcm, IRTpars=TRUE, simplify=TRUE)
-items.pcm <- as.data.frame(coef.pcm$items)
+items.pcm <- as.data.frame(coef.pcm$items_l)
 print(results.pcm)
 knitr::kable(round(items.pcm,2), caption = "Partial Credit Model (PCM) - Item Parameters")
 itemplot(results.pcm, 1, type='infotrace')
