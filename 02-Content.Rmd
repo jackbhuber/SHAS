@@ -1,3 +1,19 @@
 # Content Validity
+In this chapter, we consider the content validity of the Spiritual Harm and Abuse Scale (SHAS). We begin by defining content validity and discussing its importance. Then we document the work we did to map the domain of spiritual abuse for the purpose of developing items for piloting and operational use. We conclude by considering what scope exists for more work in this area that would improve future development of SHAS instrumentation.
 
+## About Content Validity
 Content validity is the realm of validity that has to do with the content. The overarching question is what is the domain of content from which to design blueprints for forms and items?
+
+## Domain Mapping
+
+### External Events
+One domain of spiritual abuse is external abuse _events_. The focus is on something that happened, or a pattern of recurring behavior on the part of someone in a place of spiritual authority that was experienced by the examinee as abusive. The first 52 items of the SHAS were drawn from this domain of possible abuse events. A summative score of these items thus represents evidence that the examinee has experienced a _wide range of abusive events_.
+
+### Internal States
+
+### Additional Domains
+
+@ReiseWaller2009 make some interesting points about the nature of the traits addressed in clinical settings which provoke thought about the trait of spiritual abuse.
+
+## Summary
+

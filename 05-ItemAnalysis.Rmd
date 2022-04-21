@@ -1,20 +1,11 @@
 # Item Analysis
-This chapter documents our item analysis. This includes investigation of the following statistics from classical test theory:
-- Item difficulty
-- Item discrimination
-- Item-total correlations
+In this chapter, we examine the technical quality of the 66 items that Dan piloted for the SHAS. We begin by defining item analysis and discussing its importance. Then document our item analyses from both classical test theory (CTT) and item response theory (IRT) frameworks. We conclude by summarizing what we learn from these analyses to help us refine these items and develop better ones in the future.
 
-We also examine item statistics from item response theory (IRT) including:
-- Item location parameters
-- Item characteristic curves (ICCs)
+## About Item Analysis
 
-The goal of this information with which to improve items. One outcome of this analysis is insight into whether items have too many response categories.
-
-## Preliminary work
-
-**Load packages**. This code chunk outlines the R packages we use and the data. There are several helpful packages for classical test theory (CTT).
 
 ```{r, message=FALSE, warning=FALSE}
+
 # LOAD PACKAGES
 library(Hmisc) # for item statistics
 library(psych) # for psychometric analysis
@@ -24,28 +15,22 @@ library(pastecs) # for item statistics
 library(ltm) # for point-biserial correlations
 library(corrplot) # for correlation plot
 library(knitr) # how RMarkdown compiles all the code into documents
-```
 
-**Load data**. This code chunk outlines the R packages we use and the data. There are several helpful packages for classical test theory (CTT).
-
-```{r}
 # LOAD DATA
-
-# Datasets straight off the Excel file
 all         <- read.csv("data/all.csv")
 items       <- read.csv("data/items.csv")
 ext_items   <- read.csv("data/ext_items.csv")
 int_items   <- read.csv("data/int_items.csv")
-
 # Datasets with listwise deletion
 all_l       <- read.csv("data/all_l.csv")
 # items_l     <- read.csv("data/items_l.csv")
 # ext_items_l <- read.csv("data/ext_items_l.csv")
 # int_items_l <- read.csv("data/int_items_l.csv")
+
+
 ```
 
-##Classical Item Analysis
-
+## Classical Item Analysis
 
 ```{r describe, fig.cap='Item Statistics'}
 # DESCRIBE DATA
@@ -94,8 +79,11 @@ item_stats[order(item_stats$nbr.val), ] # order by N cases
 # psych::outlier(items)
 ```
 
+**Skew and Kurtosis**.
 
-## Item response theory
+## Item analyses in item response theory (IRT) framework
+
+One outcome of this analysis is insight into whether items have too many response categories.
 
 This ltm package "provides a flexible framework for Item Response Theory analyses for dichotomous and polytomous data under a Marginal Maximum Likelihood approach. The fitting algorithms provide valid inferences under Missing At Random missing data mechanisms" [@ltm].
 
@@ -104,6 +92,11 @@ This ltm package "provides a flexible framework for Item Response Theory analyse
 ltm::descript(items)
 ```
 
-**Skew and Kurtosis**.
+### Item thresholds
+
+### Item characteristic curves
+
+
+### Differential item functioning (DIF)
 
 ## Summary
