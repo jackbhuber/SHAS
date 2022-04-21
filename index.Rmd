@@ -15,17 +15,19 @@ link-citations: yes
 # github-repo: rstudio/bookdown-demo
 ---
 # About this Project
-This is a reproducible research project for validation of the nascent Spiritual Harm and Abuse Scale (SHAS), developed by Dan Koch. It aims to function as an evolving technical report to conceptualize and document various validity studies -- and, by extension, validity evidence -- for this scale. We hope some of these validity studies amount to meaningful publishable contributions to the nascent research literature in spiritual abuse and/or the literature in religion, counseling psychology, and/or psychological measurement.
+This is a reproducible research project for validation of the nascent Spiritual Harm and Abuse Scale (SHAS), developed by Dan Koch. It aims to function as an evolving technical report to conceptualize and document various validity studies -- and, by extension, validity evidence -- for this scale. We hope some of these validity considerations and empirical studies amount to meaningful publishable contributions to the nascent research literature in spiritual abuse and/or the literature in religion, counseling psychology, and/or psychological measurement.
+
+The project is open source, for collaboraion. It is built in R using the R Studio IDE. No Excel, no SPSS, no Word. It is built in bookdown and hosted at https://github.com/jackbhuber/SHAS as a public repository. It is served out over Github Pages as a website for collaboration between Jack and Dan at https://jackhuber.org/SHAS/. 
 
 ## Research Questions
 
-Validation can be an ongoing agenda for research into the meanings and uses of scores from instruments. Following is an initial set of questions to guide research and scale improvement of the SHAS:
+Validation is research into the meanings and uses of scores from instruments. It can be an ongoing research agenda. Following is an initial set of questions to guide research and scale improvement of the SHAS:
 
 * **Item analysis and refinement** - Do some items have too many response categories?
 * **Data reduction** - As written and executed, which items appear to be critical (best performing) and which appear to be redundant or noisy? What might a shorter, streamlined instrument look like?
 * **Person fit** - How well does the current scale fit the population of examinees? Are there ceiling or floor effects? To what extent might the existing items under-represent the full range of abuse?
 * **Scale invariance** - Do the scales mean the same thing to different groups of examinees? To what extent do these scales (abuse constructs) vary by age, gender, and/or sexuality?
-* **Developmental pathway** - Beyond the current conceptualization of scales composed of redundant items, what an incremental scale of abuse with diagnostic items look like?
+* **Developmental pathway** - Beyond the current conceptualization of scales composed of redundant items, what might an incremental scale of abuse with diagnostic items look like?
 
 ```{r, include=FALSE}
 

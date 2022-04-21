@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.4.7)  20 APR 2022 21:29
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.4.7)  21 APR 2022 12:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -821,83 +821,83 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 Chapter 1.
 [3
 
-]
+] [4]
 Chapter 2.
 
-Underfull \hbox (badness 4303) in paragraph at lines 185--185
+Underfull \hbox (badness 4303) in paragraph at lines 187--187
 []\TU/lmr/bx/n/14.4 The Spiritual Harm and Abuse Scale
  []
 
-[4
+[5
 
 ]
 Chapter 3.
-[5
+[6
 
-] [6] [7]
+] [7] [8]
 Chapter 4.
-[8
+[9
 
 ]
 Chapter 5.
-[9
+[10
 
-] [10]
-Underfull \vbox (badness 10000) detected at line 420
+] [11]
+Underfull \vbox (badness 10000) detected at line 422
  []
 
 
-Underfull \vbox (badness 10000) detected at line 420
+Underfull \vbox (badness 10000) detected at line 422
  []
 
-[11]
+[12]
 
-Package natbib Warning: Citation `VIM' on page 12 undefined on input line 425.
+Package natbib Warning: Citation `VIM' on page 13 undefined on input line 427.
 
 File: _main_files/figure-latex/vim-plots-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/vim-plots-1.pdf>
-[12] [13]
-Underfull \vbox (badness 10000) detected at line 515
+[13] [14]
+Underfull \vbox (badness 10000) detected at line 517
  []
 
-[14]
-Overfull \hbox (6.75pt too wide) in paragraph at lines 541--541
+[15]
+Overfull \hbox (6.75pt too wide) in paragraph at lines 543--543
 []    \TU/lmtt/m/n/10 Q68   Q69   Q70   Q71   Q72   Q73   Q74   Q76   Q77   Q78
    Q79[] 
  []
 
 
-Overfull \hbox (17.25pt too wide) in paragraph at lines 541--541
+Overfull \hbox (17.25pt too wide) in paragraph at lines 543--543
 []\TU/lmtt/m/n/10 Q79  0.98  0.98  0.97  0.98  0.97  0.98  0.97  0.97  0.98  0.
 98  1.00[] 
  []
 
 
-Overfull \hbox (17.25pt too wide) in paragraph at lines 541--541
+Overfull \hbox (17.25pt too wide) in paragraph at lines 543--543
 []\TU/lmtt/m/n/10 Q80  0.98  0.98  0.98  0.99  0.98  0.98  0.98  0.99  0.98  0.
 98  0.97[] 
  []
 
 
-Overfull \hbox (17.25pt too wide) in paragraph at lines 541--541
+Overfull \hbox (17.25pt too wide) in paragraph at lines 543--543
 []\TU/lmtt/m/n/10 Q81  1.00  0.99  0.99  1.00  0.99  1.00  0.99  0.99  0.99  0.
 99  0.98[] 
  []
 
 
-Overfull \hbox (17.25pt too wide) in paragraph at lines 541--541
+Overfull \hbox (17.25pt too wide) in paragraph at lines 543--543
 []\TU/lmtt/m/n/10 Q82  0.99  0.99  0.98  0.99  0.98  0.98  0.98  0.99  0.99  0.
 98  0.97[] 
  []
 
 
-Overfull \hbox (17.25pt too wide) in paragraph at lines 541--541
+Overfull \hbox (17.25pt too wide) in paragraph at lines 543--543
 []\TU/lmtt/m/n/10 Q84  0.01  0.00  0.00  0.00  0.03  0.03  0.02  0.02    NA  0.
 01  0.01[] 
  []
 
 
-Overfull \hbox (17.25pt too wide) in paragraph at lines 541--541
+Overfull \hbox (17.25pt too wide) in paragraph at lines 543--543
 []\TU/lmtt/m/n/10 Q85  0.01  0.04  0.03  0.01  0.03  0.01 -0.01  0.04    NA  0.
 06 -0.01[] 
  []
@@ -905,1258 +905,229 @@ Overfull \hbox (17.25pt too wide) in paragraph at lines 541--541
 File: _main_files/figure-latex/trigger-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/trigger-1.pdf>
 
-LaTeX Warning: Reference `fig:trigger' on page 15 undefined on input line 550.
+LaTeX Warning: Reference `fig:trigger' on page 16 undefined on input line 552.
 
 
-LaTeX Warning: Reference `fig:mcar' on page 15 undefined on input line 550.
+LaTeX Warning: Reference `fig:mcar' on page 16 undefined on input line 552.
 
-[15]
-Underfull \vbox (badness 10000) detected at line 571
+[16]
+Underfull \vbox (badness 10000) detected at line 573
  []
 
-[16] [17]
+[17] [18]
 Chapter 6.
-[18
+[19
 
 ]
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]    \TU/lmtt/m/n/10 nbr.val nbr.null nbr.na min max range   sum median     me
-an     SE.mean[] 
- []
 
+Package natbib Warning: Citation `Bulut2020' on page 20 undefined on input line
+ 620.
 
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q46    3211        0     11   1   5     4  3560      1 1.1086
-89 0.008490661[] 
- []
 
+Package natbib Warning: Citation `EmbretsonResise2000' on page 20 undefined on 
+input line 627.
 
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q41    3211        0     11   1   5     4  4091      1 1.2740
-58 0.015489036[] 
- []
 
+Package natbib Warning: Citation `Masters1982' on page 20 undefined on input li
+ne 635.
 
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q17    3208        0     14   1   5     4  4288      1 1.3366
-58 0.017179617[] 
- []
 
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q47    3218        0      4   1   5     4  4758      1 1.4785
-58 0.015127455[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q60    3214        0      8   1   5     4  4784      1 1.4884
-88 0.017484938[] 
- []
-
-[19]
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q55    3205        0     17   1   5     4  5067      1 1.5809
-67 0.016718556[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q72    3070        0    152   1   5     4  5027      1 1.6374
-59 0.017919686[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q81    3073        0    149   1   5     4  5435      1 1.7686
-30 0.018681107[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q65    3220        0      2   1   5     4  5868      1 1.8223
-60 0.020744262[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q10    3220        0      2   1   5     4  5887      1 1.8282
-61 0.020808433[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q26    3212        0     10   1   5     4  6005      1 1.8695
-52 0.022437462[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q24    3221        0      1   1   5     4  6074      1 1.8857
-50 0.020727511[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q23    3219        0      3   1   5     4  6170      1 1.9167
-44 0.019956972[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q27    3217        0      5   1   5     4  6236      1 1.9384
-52 0.023790856[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q31    3217        0      5   1   5     4  6531      2 2.0301
-52 0.020911316[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q30    3219        0      3   1   5     4  6581      2 2.0444
-24 0.022072319[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q43    3217        0      5   1   5     4  6577      2 2.0444
-51 0.020824627[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q68    3073        0    149   1   5     4  6316      2 2.0553
-21 0.022266844[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q52    3217        0      5   1   5     4  6683      2 2.0774
-01 0.022288789[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q70    3069        0    153   1   5     4  6477      2 2.1104
-59 0.021364098[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q49    3213        0      9   1   5     4  6822      2 2.1232
-49 0.021761390[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q16    3217        0      5   1   5     4  6851      2 2.1296
-24 0.022434067[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q57    3219        0      3   1   5     4  6931      2 2.1531
-53 0.023485372[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q20    3217        0      5   1   5     4  6939      2 2.1569
-79 0.024428124[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q62    3220        0      2   1   5     4  6961      2 2.1618
-01 0.021779530[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q59    3217        0      5   1   5     4  6962      2 2.1641
-28 0.021672305[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q21    3218        0      4   1   5     4  7081      1 2.2004
-35 0.025831450[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q50    3219        0      3   1   5     4  7181      1 2.2308
-17 0.025990704[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q82    3071        0    151   1   5     4  6870      2 2.2370
-56 0.021826439[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q64    3220        0      2   1   5     4  7263      2 2.2555
-90 0.022468413[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q28    3216        0      6   1   5     4  7276      2 2.2624
-38 0.022075077[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q40    3220        0      2   1   5     4  7334      2 2.2776
-40 0.024425246[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q63    3217        0      5   1   5     4  7396      2 2.2990
-36 0.021966859[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q19    3219        0      3   1   5     4  7460      2 2.3174
-90 0.023452526[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q51    3216        0      6   1   5     4  7508      2 2.3345
-77 0.024281404[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q53    3218        0      4   1   5     4  7596      2 2.3604
-72 0.023856535[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q79    3068        0    154   1   5     4  7350      2 2.3956
-98 0.022911965[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q34    3219        0      3   1   5     4  7919      2 2.4600
-81 0.023465067[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q29    3213        0      9   1   5     4  7941      2 2.4715
-22 0.023642519[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q73    3072        0    150   1   5     4  7672      2 2.4973
-96 0.023590018[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q11    3216        0      6   1   5     4  8090      2 2.5155
-47 0.023890349[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q58    3220        0      2   1   5     4  8161      2 2.5344
-72 0.023641218[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q7     3215        0      7   1   5     4  8151      2 2.5353
-03 0.025218942[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q42    3215        0      7   1   5     4  8344      3 2.5953
-34 0.022038135[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q44    3217        0      5   1   5     4  8404      3 2.6123
-72 0.023883741[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q56    3217        0      5   1   5     4  8760      3 2.7230
-34 0.024094459[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q18    3220        0      2   1   5     4  8841      3 2.7456
-52 0.024196861[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q45    3219        0      3   1   5     4  8883      3 2.7595
-53 0.025541840[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q78    3071        0    151   1   5     4  8521      3 2.7746
-66 0.023426479[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q36    3216        0      6   1   5     4  8934      3 2.7779
-85 0.023564784[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q61    3219        0      3   1   5     4  8950      3 2.7803
-67 0.025864513[] 
- []
+Package natbib Warning: Citation `Masters1982' on page 20 undefined on input li
+ne 635.
 
 [20]
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q32    3219        0      3   1   5     4  8970      3 2.7865
-80 0.023280773[] 
- []
 
+LaTeX Warning: Float too large for page by 310.29959pt on input line 800.
 
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q74    3071        0    151   1   5     4  8569      3 2.7902
-96 0.023365007[] 
- []
+[21] [22] [23]
 
+LaTeX Warning: Reference `(' on page 24 undefined on input line 884.
 
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q76    3072        0    150   1   5     4  8686      3 2.8274
-74 0.026741805[] 
- []
+[24]
+File: _main_files/figure-latex/pcm-occs-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/pcm-occs-1.pdf>
 
+LaTeX Warning: Reference `(' on page 25 undefined on input line 899.
 
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q54    3217        0      5   1   5     4  9383      3 2.9166
-93 0.024734726[] 
- []
+File: _main_files/figure-latex/pcm-model-fit-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/pcm-model-fit-1.pdf>
+[25]
+File: _main_files/figure-latex/pcm-model-fit-2.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/pcm-model-fit-2.pdf>
+File: _main_files/figure-latex/pcm-model-fit-3.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/pcm-model-fit-3.pdf>
+[26] [27] [28]
 
+LaTeX Warning: Float too large for page by 310.29959pt on input line 1152.
 
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q37    3221        0      1   1   5     4  9469      3 2.9397
-70 0.024280108[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q38    3217        0      5   1   5     4  9488      3 2.9493
-32 0.024725087[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q71    3074        0    148   1   5     4  9240      3 3.0058
-56 0.024589907[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q69    3071        0    151   1   5     4  9255      3 3.0136
-76 0.021621379[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q39    3219        0      3   1   5     4  9826      3 3.0525
-01 0.026028978[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q80    3070        0    152   1   5     4  9423      3 3.0693
-81 0.022153977[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q77    3075        0    147   1   5     4  9479      3 3.0826
-02 0.023042783[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q35    3217        0      5   1   5     4 10049      3 3.1237
-18 0.024544640[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q25    3217        0      5   1   5     4 10243      3 3.1840
-22 0.023217693[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q66    3216        0      6   1   5     4 10510      3 3.2680
-35 0.024787878[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 805--805
-[]\TU/lmtt/m/n/10 Q22    3218        0      4   1   5     4 10713      4 3.3290
-86 0.026288815[] 
- []
-
-[21]
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]    \TU/lmtt/m/n/10 nbr.val nbr.null nbr.na min max range   sum median     me
-an     SE.mean[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q79    3068        0    154   1   5     4  7350      2 2.3956
-98 0.022911965[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q70    3069        0    153   1   5     4  6477      2 2.1104
-59 0.021364098[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q72    3070        0    152   1   5     4  5027      1 1.6374
-59 0.017919686[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q80    3070        0    152   1   5     4  9423      3 3.0693
-81 0.022153977[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q69    3071        0    151   1   5     4  9255      3 3.0136
-76 0.021621379[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q74    3071        0    151   1   5     4  8569      3 2.7902
-96 0.023365007[] 
- []
-
-[22]
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q78    3071        0    151   1   5     4  8521      3 2.7746
-66 0.023426479[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q82    3071        0    151   1   5     4  6870      2 2.2370
-56 0.021826439[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q73    3072        0    150   1   5     4  7672      2 2.4973
-96 0.023590018[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q76    3072        0    150   1   5     4  8686      3 2.8274
-74 0.026741805[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q68    3073        0    149   1   5     4  6316      2 2.0553
-21 0.022266844[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q81    3073        0    149   1   5     4  5435      1 1.7686
-30 0.018681107[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q71    3074        0    148   1   5     4  9240      3 3.0058
-56 0.024589907[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q77    3075        0    147   1   5     4  9479      3 3.0826
-02 0.023042783[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q55    3205        0     17   1   5     4  5067      1 1.5809
-67 0.016718556[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q17    3208        0     14   1   5     4  4288      1 1.3366
-58 0.017179617[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q41    3211        0     11   1   5     4  4091      1 1.2740
-58 0.015489036[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q46    3211        0     11   1   5     4  3560      1 1.1086
-89 0.008490661[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q26    3212        0     10   1   5     4  6005      1 1.8695
-52 0.022437462[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q29    3213        0      9   1   5     4  7941      2 2.4715
-22 0.023642519[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q49    3213        0      9   1   5     4  6822      2 2.1232
-49 0.021761390[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q60    3214        0      8   1   5     4  4784      1 1.4884
-88 0.017484938[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q7     3215        0      7   1   5     4  8151      2 2.5353
-03 0.025218942[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q42    3215        0      7   1   5     4  8344      3 2.5953
-34 0.022038135[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q11    3216        0      6   1   5     4  8090      2 2.5155
-47 0.023890349[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q28    3216        0      6   1   5     4  7276      2 2.2624
-38 0.022075077[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q36    3216        0      6   1   5     4  8934      3 2.7779
-85 0.023564784[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q51    3216        0      6   1   5     4  7508      2 2.3345
-77 0.024281404[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q66    3216        0      6   1   5     4 10510      3 3.2680
-35 0.024787878[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q16    3217        0      5   1   5     4  6851      2 2.1296
-24 0.022434067[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q20    3217        0      5   1   5     4  6939      2 2.1569
-79 0.024428124[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q25    3217        0      5   1   5     4 10243      3 3.1840
-22 0.023217693[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q27    3217        0      5   1   5     4  6236      1 1.9384
-52 0.023790856[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q31    3217        0      5   1   5     4  6531      2 2.0301
-52 0.020911316[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q35    3217        0      5   1   5     4 10049      3 3.1237
-18 0.024544640[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q38    3217        0      5   1   5     4  9488      3 2.9493
-32 0.024725087[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q43    3217        0      5   1   5     4  6577      2 2.0444
-51 0.020824627[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q44    3217        0      5   1   5     4  8404      3 2.6123
-72 0.023883741[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q52    3217        0      5   1   5     4  6683      2 2.0774
-01 0.022288789[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q54    3217        0      5   1   5     4  9383      3 2.9166
-93 0.024734726[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q56    3217        0      5   1   5     4  8760      3 2.7230
-34 0.024094459[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q59    3217        0      5   1   5     4  6962      2 2.1641
-28 0.021672305[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q63    3217        0      5   1   5     4  7396      2 2.2990
-36 0.021966859[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q21    3218        0      4   1   5     4  7081      1 2.2004
-35 0.025831450[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q22    3218        0      4   1   5     4 10713      4 3.3290
-86 0.026288815[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q47    3218        0      4   1   5     4  4758      1 1.4785
-58 0.015127455[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q53    3218        0      4   1   5     4  7596      2 2.3604
-72 0.023856535[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q19    3219        0      3   1   5     4  7460      2 2.3174
-90 0.023452526[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q23    3219        0      3   1   5     4  6170      1 1.9167
-44 0.019956972[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q30    3219        0      3   1   5     4  6581      2 2.0444
-24 0.022072319[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q32    3219        0      3   1   5     4  8970      3 2.7865
-80 0.023280773[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q34    3219        0      3   1   5     4  7919      2 2.4600
-81 0.023465067[] 
- []
-
-[23]
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q39    3219        0      3   1   5     4  9826      3 3.0525
-01 0.026028978[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q45    3219        0      3   1   5     4  8883      3 2.7595
-53 0.025541840[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q50    3219        0      3   1   5     4  7181      1 2.2308
-17 0.025990704[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q57    3219        0      3   1   5     4  6931      2 2.1531
-53 0.023485372[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q61    3219        0      3   1   5     4  8950      3 2.7803
-67 0.025864513[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q10    3220        0      2   1   5     4  5887      1 1.8282
-61 0.020808433[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q18    3220        0      2   1   5     4  8841      3 2.7456
-52 0.024196861[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q40    3220        0      2   1   5     4  7334      2 2.2776
-40 0.024425246[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q58    3220        0      2   1   5     4  8161      2 2.5344
-72 0.023641218[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q62    3220        0      2   1   5     4  6961      2 2.1618
-01 0.021779530[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q64    3220        0      2   1   5     4  7263      2 2.2555
-90 0.022468413[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q65    3220        0      2   1   5     4  5868      1 1.8223
-60 0.020744262[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q24    3221        0      1   1   5     4  6074      1 1.8857
-50 0.020727511[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 948--948
-[]\TU/lmtt/m/n/10 Q37    3221        0      1   1   5     4  9469      3 2.9397
-70 0.024280108[] 
- []
-
-[24] [25]
-
-Package natbib Warning: Citation `ltm' on page 26 undefined on input line 982.
-
-[26] [27]
-Overfull \hbox (48.75pt too wide) in paragraph at lines 1206--1206
-[]         \TU/lmtt/m/n/10 Q7    Q10    Q11    Q16     Q17    Q18    Q19    Q20
-    Q21    Q22[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 1206--1206
-[]\TU/lmtt/m/n/10 Freq 7.0000 2.0000 6.0000 5.0000 14.0000 2.0000 3.0000 5.0000
- 4.0000 4.0000[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 1206--1206
-[]\TU/lmtt/m/n/10 (%)  0.2173 0.0621 0.1862 0.1552  0.4345 0.0621 0.0931 0.1552
- 0.1241 0.1241[] 
- []
-
-
-Overfull \hbox (43.5pt too wide) in paragraph at lines 1206--1206
-[]        \TU/lmtt/m/n/10 Q23   Q24    Q25     Q26    Q27    Q28    Q29    Q30 
-   Q31    Q32[] 
- []
-
-
-Overfull \hbox (43.5pt too wide) in paragraph at lines 1206--1206
-[]\TU/lmtt/m/n/10 Freq 3.0000 1.000 5.0000 10.0000 5.0000 6.0000 9.0000 3.0000 
-5.0000 3.0000[] 
- []
-
-
-Overfull \hbox (43.5pt too wide) in paragraph at lines 1206--1206
-[]\TU/lmtt/m/n/10 (%)  0.0931 0.031 0.1552  0.3104 0.1552 0.1862 0.2793 0.0931 
-0.1552 0.0931[] 
- []
-
-
-Overfull \hbox (43.5pt too wide) in paragraph at lines 1206--1206
-[]        \TU/lmtt/m/n/10 Q34    Q35    Q36   Q37    Q38    Q39    Q40     Q41 
-   Q42    Q43[] 
- []
-
-
-Overfull \hbox (43.5pt too wide) in paragraph at lines 1206--1206
-[]\TU/lmtt/m/n/10 Freq 3.0000 5.0000 6.0000 1.000 5.0000 3.0000 2.0000 11.0000 
-7.0000 5.0000[] 
- []
-
-
-Overfull \hbox (43.5pt too wide) in paragraph at lines 1206--1206
-[]\TU/lmtt/m/n/10 (%)  0.0931 0.1552 0.1862 0.031 0.1552 0.0931 0.0621  0.3414 
-0.2173 0.1552[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 1206--1206
-[]        \TU/lmtt/m/n/10 Q44    Q45     Q46    Q47    Q49    Q50    Q51    Q52
-    Q53    Q54[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 1206--1206
-[]\TU/lmtt/m/n/10 Freq 5.0000 3.0000 11.0000 4.0000 9.0000 3.0000 6.0000 5.0000
- 4.0000 5.0000[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 1206--1206
-[]\TU/lmtt/m/n/10 (%)  0.1552 0.0931  0.3414 0.1241 0.2793 0.0931 0.1862 0.1552
- 0.1241 0.1552[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 1206--1206
-[]         \TU/lmtt/m/n/10 Q55    Q56    Q57    Q58    Q59    Q60    Q61    Q62
-    Q63    Q64[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 1206--1206
-[]\TU/lmtt/m/n/10 Freq 17.0000 5.0000 3.0000 2.0000 5.0000 8.0000 3.0000 2.0000
- 5.0000 2.0000[] 
- []
-
-
-Overfull \hbox (48.75pt too wide) in paragraph at lines 1206--1206
-[]\TU/lmtt/m/n/10 (%)   0.5276 0.1552 0.0931 0.0621 0.1552 0.2483 0.0931 0.0621
- 0.1552 0.0621[] 
- []
-
-
-Overfull \hbox (33.0pt too wide) in paragraph at lines 1206--1206
-[]        \TU/lmtt/m/n/10 Q65    Q66      Q68      Q69      Q70      Q71      Q
-72      Q73[] 
- []
-
-
-Overfull \hbox (33.0pt too wide) in paragraph at lines 1206--1206
-[]\TU/lmtt/m/n/10 Freq 2.0000 6.0000 149.0000 151.0000 153.0000 148.0000 152.00
-00 150.0000[] 
- []
-
-
-Overfull \hbox (33.0pt too wide) in paragraph at lines 1206--1206
-[]\TU/lmtt/m/n/10 (%)  0.0621 0.1862   4.6245   4.6865   4.7486   4.5934   4.71
-76   4.6555[] 
- []
-
-
-Overfull \hbox (54.0pt too wide) in paragraph at lines 1206--1206
-[]          \TU/lmtt/m/n/10 Q74      Q76      Q77      Q78      Q79      Q80   
-   Q81      Q82[] 
- []
-
-
-Overfull \hbox (54.0pt too wide) in paragraph at lines 1206--1206
-[]\TU/lmtt/m/n/10 Freq 151.0000 150.0000 147.0000 151.0000 154.0000 152.0000 14
-9.0000 151.0000[] 
- []
-
-
-Overfull \hbox (54.0pt too wide) in paragraph at lines 1206--1206
-[]\TU/lmtt/m/n/10 (%)    4.6865   4.6555   4.5624   4.6865   4.7796   4.7176   
-4.6245   4.6865[] 
- []
-
-
-Overfull \hbox (69.75pt too wide) in paragraph at lines 1206--1206
-[]     \TU/lmtt/m/n/10 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84
- 85 86 87 88 89 90[] 
- []
-
-
-Overfull \hbox (69.75pt too wide) in paragraph at lines 1206--1206
-[]\TU/lmtt/m/n/10 Freq 30 12 14 21 17 25 16 17 13 18 22 14 15 20 20 15 30 16 12
- 16 20 18 24 24 17[] 
- []
-
-
-Overfull \hbox (69.75pt too wide) in paragraph at lines 1206--1206
-[]     \TU/lmtt/m/n/10 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 1
-07 108 109 110 111[] 
- []
-
-
-Overfull \hbox (69.75pt too wide) in paragraph at lines 1206--1206
-[]\TU/lmtt/m/n/10 Freq 22 34 17 25 20 24 13 25 16  16  18  21  15  17  23  23  
-23  21  17  18  17[] 
- []
-
-
-Overfull \hbox (54.0pt too wide) in paragraph at lines 1206--1206
-[]     \TU/lmtt/m/n/10 112 113 114 115 116 117 118 119 120 121 122 123 124 125 
-126 127 128 129[] 
- []
-
-
-Overfull \hbox (54.0pt too wide) in paragraph at lines 1206--1206
-[]\TU/lmtt/m/n/10 Freq  20  16  15  21  21  16  17  21  18  22  20  19  24  13 
- 14  19  17  14[] 
- []
-
-
-Overfull \hbox (54.0pt too wide) in paragraph at lines 1206--1206
-[]     \TU/lmtt/m/n/10 130 131 132 133 134 135 136 137 138 139 140 141 142 143 
-144 145 146 147[] 
- []
-
-
-Overfull \hbox (54.0pt too wide) in paragraph at lines 1206--1206
-[]\TU/lmtt/m/n/10 Freq  16  19  17  12  16  18  19  23  13  18  15  18  19  16 
- 21  14  26  17[] 
- []
-
-
-Overfull \hbox (54.0pt too wide) in paragraph at lines 1206--1206
-[]     \TU/lmtt/m/n/10 148 149 150 151 152 153 154 155 156 157 158 159 160 161 
-162 163 164 165[] 
- []
-
-
-Overfull \hbox (54.0pt too wide) in paragraph at lines 1206--1206
-[]\TU/lmtt/m/n/10 Freq  19  17  16  16  14  27  18  15  27  19  23  28   9  11 
- 30  27  16  14[] 
- []
-
-
-Overfull \hbox (54.0pt too wide) in paragraph at lines 1206--1206
-[]     \TU/lmtt/m/n/10 166 167 168 169 170 171 172 173 174 175 176 177 178 179 
-180 181 182 183[] 
- []
-
-
-Overfull \hbox (54.0pt too wide) in paragraph at lines 1206--1206
-[]\TU/lmtt/m/n/10 Freq  26  15  23  10  17  16  11  16  14  18  13  13  18  14 
- 14  18  21  16[] 
- []
-
-
-Overfull \hbox (54.0pt too wide) in paragraph at lines 1206--1206
-[]     \TU/lmtt/m/n/10 184 185 186 187 188 189 190 191 192 193 194 195 196 197 
-198 199 200 201[] 
- []
-
-
-Overfull \hbox (54.0pt too wide) in paragraph at lines 1206--1206
-[]\TU/lmtt/m/n/10 Freq  17  17  10  13  16  17  17  13  13  19  22  17  18  12 
- 13   9  15  25[] 
- []
-
-
-Overfull \hbox (54.0pt too wide) in paragraph at lines 1206--1206
-[]     \TU/lmtt/m/n/10 202 203 204 205 206 207 208 209 210 211 212 213 214 215 
-216 217 218 219[] 
- []
-
-
-Overfull \hbox (54.0pt too wide) in paragraph at lines 1206--1206
-[]\TU/lmtt/m/n/10 Freq  15  16  14  14  14  12  22  10  13  20  19  18  17   7 
- 12  10  17   8[] 
- []
-
-
-Overfull \hbox (54.0pt too wide) in paragraph at lines 1206--1206
-[]     \TU/lmtt/m/n/10 220 221 222 223 224 225 226 227 228 229 230 231 232 233 
-234 235 236 237[] 
- []
-
-
-Overfull \hbox (54.0pt too wide) in paragraph at lines 1206--1206
-[]\TU/lmtt/m/n/10 Freq  12   7  18  14  15  13   7  11  14  11   8  11   9  14 
- 13   8  11   7[] 
- []
-
-
-Overfull \hbox (54.0pt too wide) in paragraph at lines 1206--1206
-[]     \TU/lmtt/m/n/10 238 239 240 241 242 243 244 245 246 247 248 249 250 251 
-252 253 254 255[] 
- []
-
-
-Overfull \hbox (54.0pt too wide) in paragraph at lines 1206--1206
-[]\TU/lmtt/m/n/10 Freq   8   8   6   9   6   8  10   7   8   7   3   9   6   7 
-  5   8   7   7[] 
- []
-
-
-Overfull \hbox (54.0pt too wide) in paragraph at lines 1206--1206
-[]     \TU/lmtt/m/n/10 256 257 258 259 260 261 262 263 264 265 266 267 268 269 
-270 271 272 273[] 
- []
-
-
-Overfull \hbox (54.0pt too wide) in paragraph at lines 1206--1206
-[]\TU/lmtt/m/n/10 Freq   4   3   5   6   7   5   8   2   3  11   4   3   4   7 
-  1   3   5   4[] 
- []
-
-[28]
-Overfull \hbox (54.0pt too wide) in paragraph at lines 1206--1206
-[]     \TU/lmtt/m/n/10 274 275 276 277 278 279 280 281 282 283 284 285 286 287 
-288 289 290 291[] 
- []
-
-
-Overfull \hbox (54.0pt too wide) in paragraph at lines 1206--1206
-[]\TU/lmtt/m/n/10 Freq   1   2   3   3   3   3   3   2   2   2   1   0   2   2 
-  3   2   3   1[] 
- []
-
-
-Overfull \hbox (54.0pt too wide) in paragraph at lines 1206--1206
-[]     \TU/lmtt/m/n/10 292 293 294 295 296 297 298 299 300 301 302 303 304 305 
-306 307 308 309[] 
- []
-
-
-Overfull \hbox (54.0pt too wide) in paragraph at lines 1206--1206
-[]\TU/lmtt/m/n/10 Freq   0   2   1   1   1   2   2   1   0   1   2   0   0   0 
-  0   0   0   0[] 
- []
-
-
-Overfull \hbox (54.0pt too wide) in paragraph at lines 1206--1206
-[]     \TU/lmtt/m/n/10 310 311 312 313 314 315 316 317 318 319 320 321 322 323 
-324 325 326 327[] 
- []
-
-
-Overfull \hbox (54.0pt too wide) in paragraph at lines 1206--1206
-[]\TU/lmtt/m/n/10 Freq   2   0   0   2   0   0   0   0   0   0   1   0   0   0 
-  0   0   0   0[] 
- []
-
+File: _main_files/figure-latex/pcm-model-fit-4.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/pcm-model-fit-4.pdf>
 [29] [30] [31]
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1273--1273
+[]\TU/lmtt/m/n/10 mirt(data = items, model = model.gpcm, itemtype = "gpcm", ver
+bose = FALSE)[] 
+ []
+
+[32]
+
+LaTeX Warning: Float too large for page by 310.29959pt on input line 1423.
+
+File: _main_files/figure-latex/gpcm-occs-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/gpcm-occs-1.pdf>
+[33] [34] [35] [36] [37] [38]
+
+LaTeX Warning: Float too large for page by 310.29959pt on input line 1823.
+
+File: _main_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-8-1.pdf>
+[39] [40]
+File: _main_files/figure-latex/unnamed-chunk-8-2.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-8-2.pdf>
+[41] [42] [43] [44] [45] [46]
+
+LaTeX Warning: Float too large for page by 310.29959pt on input line 2236.
+
+File: _main_files/figure-latex/unnamed-chunk-9-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-9-1.pdf>
+File: _main_files/figure-latex/unnamed-chunk-9-2.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-9-2.pdf>
+[47] [48] [49]
 Chapter 7.
-[32
+[50
 
 ]
 File: _main_files/figure-latex/corrmtrx-ext-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/corrmtrx-ext-1.pdf>
 File: _main_files/figure-latex/corrmtrx-int-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/corrmtrx-int-1.pdf>
-[33]
+[51]
 File: _main_files/figure-latex/corrmtrx-all-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/corrmtrx-all-1.pdf>
-[34] [35] [36]
+[52] [53] [54]
 Chapter 8.
-[37
+[55
 
 ]
-File: _main_files/figure-latex/unnamed-chunk-11-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-11-1.pdf>
+File: _main_files/figure-latex/unnamed-chunk-13-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-13-1.pdf>
 
-Overfull \hbox (148.5pt too wide) in paragraph at lines 1375--1375
+Overfull \hbox (148.5pt too wide) in paragraph at lines 2445--2445
 []\TU/lmtt/m/n/10 Parallel analysis suggests that the number of factors =  16  
 and the number of components =  6[] 
  []
 
-File: _main_files/figure-latex/unnamed-chunk-11-2.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-11-2.pdf>
-[38]
-Overfull \hbox (38.25pt too wide) in paragraph at lines 1414--1414
+File: _main_files/figure-latex/unnamed-chunk-13-2.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-13-2.pdf>
+[56]
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2484--2484
 []\TU/lmtt/m/n/10 Sample Size adjusted BIC achieves a minimum of  4438.02  with
   8  factors[] 
  []
 
 
-Overfull \hbox (38.25pt too wide) in paragraph at lines 1414--1414
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2484--2484
 []  \TU/lmtt/m/n/10 vss1 vss2    map  dof chisq prob sqresid  fit RMSEA   BIC S
 ABIC complex[] 
  []
 
 
-Overfull \hbox (38.25pt too wide) in paragraph at lines 1414--1414
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2484--2484
 []\TU/lmtt/m/n/10 1 0.96 0.00 0.0091 2079 37231    0      33 0.96 0.072 20438 2
 7044     1.0[] 
  []
 
 
-Overfull \hbox (38.25pt too wide) in paragraph at lines 1414--1414
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2484--2484
 []\TU/lmtt/m/n/10 2 0.50 0.97 0.0068 2014 29480    0      26 0.97 0.065 13211 1
 9611     1.6[] 
  []
 
 
-Overfull \hbox (38.25pt too wide) in paragraph at lines 1414--1414
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2484--2484
 []\TU/lmtt/m/n/10 3 0.35 0.81 0.0058 1950 24035    0      23 0.98 0.059  8283 1
 4479     2.1[] 
  []
 
 
-Overfull \hbox (38.25pt too wide) in paragraph at lines 1414--1414
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2484--2484
 []\TU/lmtt/m/n/10 4 0.29 0.67 0.0056 1887 20947    0      20 0.98 0.056  5704 1
 1700     2.5[] 
  []
 
 
-Overfull \hbox (38.25pt too wide) in paragraph at lines 1414--1414
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2484--2484
 []\TU/lmtt/m/n/10 5 0.29 0.62 0.0055 1825 17804    0      18 0.98 0.052  3062  
 8861     2.7[] 
  []
 
 
-Overfull \hbox (38.25pt too wide) in paragraph at lines 1414--1414
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2484--2484
 []\TU/lmtt/m/n/10 6 0.25 0.60 0.0052 1764 15824    0      16 0.98 0.050  1575  
 7180     2.8[] 
  []
 
 
-Overfull \hbox (38.25pt too wide) in paragraph at lines 1414--1414
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2484--2484
 []\TU/lmtt/m/n/10 7 0.23 0.58 0.0056 1704 13729    0      15 0.98 0.047   -35  
 5379     2.9[] 
  []
 
 
-Overfull \hbox (38.25pt too wide) in paragraph at lines 1414--1414
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2484--2484
 []\TU/lmtt/m/n/10 8 0.21 0.54 0.0055 1645 12499    0      14 0.98 0.045  -789  
 4438     3.0[] 
  []
 
-[39]
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1506--1506
+[57]
+Overfull \hbox (12.0pt too wide) in paragraph at lines 2576--2576
 []\TU/lmtt/m/n/10 Standardized loadings (pattern matrix) based upon correlation
  matrix[] 
  []
 
-[40] [41] [42]
+[58] [59] [60]
 Missing character: There is no χ in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no χ in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no χ in font [lmroman10-regular]:mapping=tex-text;!
-[43]
+[61]
 Chapter 9.
 
-Overfull \vbox (0.78438pt too high) detected at line 1647
+Overfull \vbox (0.78438pt too high) detected at line 2717
  []
 
-[44
+[62
 
 ]
 File: _main_files/figure-latex/wright-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/wright-1.pdf>
-[45] [46]
+[63] [64]
 Chapter 10.
-[47
+[65
 
-] (./_main.bbl [48
+] (./_main.bbl [66
 
 ])
 
 Package natbib Warning: There were undefined citations.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1686.
-[49
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2756.
+[67
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1686.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2756.
 (./_main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1686.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1686.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 2756.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 2756.
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 19219 strings out of 479418
- 340503 string characters out of 5884586
- 790290 words of memory out of 5000000
- 36447 multiletter control sequences out of 15000+600000
- 538805 words of font info for 79 fonts, out of 8000000 for 9000
+ 19302 strings out of 479418
+ 343709 string characters out of 5884586
+ 800791 words of memory out of 5000000
+ 36514 multiletter control sequences out of 15000+600000
+ 538829 words of font info for 82 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 58i,6n,118p,1120b,508s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 58i,8n,118p,1305b,511s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on _main.pdf (50 pages).
+Output written on _main.pdf (68 pages).

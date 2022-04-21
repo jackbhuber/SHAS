@@ -48,7 +48,7 @@ IRT makes two assumptions of the data. The first is unidimensionality of the lat
 The second assumption is local independence [@EmbretsonResise2000]. This means that any set of items should not share any meaningful correlation once the latent variable has been accounted for (Edwards, Houts, & Cai, 2018). 
 To check the assumption of local independence, we used the Q3 statistic (Yen, 1984). The Q3 statistic index criteria are that the raw residual correlation between pairs of items should never exceed 0.10 (Marais & Andrich, 2008).
 
-```{r q3, eval=false, include=false}
+```{r q3, eval=FALSE, include = FALSE}
 
 ```
 
@@ -63,7 +63,7 @@ The first model we examine is the Partial Credit Model (PCM) [@Masters1982]. Thi
 # ESTIMATE MIRT MODEL
 library(mirt)
 items <- read.csv("data/items.csv")
-model.pcm <- 'SPIRITUAL ABUSE (PCM) = 1-66'
+model.pcm <- 'SPIRITUAL ABUSE = 1-66'
 results.pcm <- mirt(data=items, model=model.pcm, itemtype="Rasch", verbose=FALSE)
 ```
 
@@ -118,7 +118,7 @@ In the PCM, "the property of ordered threshold parameters is not a requirement i
 
 ```{r gpcm-mod}
 # GENERALIZED PCM ESTIMATION
-model.gpcm <- 'SPIRITUAL ABUSE (GPCM) = 1-66'
+model.gpcm <- 'SPIRITUAL ABUSE GPCM = 1-66'
 results.gpcm <- mirt(data=items, model=model.gpcm, itemtype="gpcm", verbose=FALSE)
 coef.gpcm <- coef(results.gpcm, IRTpars=TRUE, simplify=TRUE)
 items.gpcm <- as.data.frame(coef.gpcm$items)
