@@ -8,7 +8,7 @@ Dimensionality is important for the reporting of scores. Scores, as summary meas
 
 Dimensionality is an important part of the validation process for psychological measures [@EmbretsonReise2000].
 
-Factor analysis is commonly used to investigate whether item responses are unidimensional. To assess the dimensionality of these 66 piloted SHAS items we use exploratory factor analysis and confirmatory factor analysis (CFA) and PCAR.
+The methodology commonly used to investigate dimensionality is factor analysis. To assess the dimensionality of these 66 piloted SHAS items we use exploratory factor analysis and confirmatory factor analysis (CFA) and PCAR.
 
 ## Exploratory Factor Analysis (EFA)
 

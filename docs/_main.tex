@@ -140,7 +140,7 @@
 
 \title{Validity Evidence for the Spiritual Harm and Abuse Scale (SHAS)}
 \author{Jack Huber and Dan Koch}
-\date{2022-04-19}
+\date{2022-04-20}
 
 \begin{document}
 \maketitle
@@ -191,6 +191,77 @@ This might be where Dan presents the case for a clinical measure of spiritual ha
 
 This might be where I discuss what it means to conduct validity research on any instrument, and in particular the SHAS.
 
+\hypertarget{content-validity}{%
+\chapter{Content Validity}\label{content-validity}}
+
+In this chapter, we consider the content validity of the Spiritual Harm and Abuse Scale (SHAS). We begin by defining content validity and discussing its importance. Then we document the work we did to map the domain of spiritual abuse for the purpose of developing items for piloting and operational use. We conclude by considering what scope exists for more work in this area that would improve future development of SHAS instrumentation.
+
+\hypertarget{about-content-validity}{%
+\section{About Content Validity}\label{about-content-validity}}
+
+The focus of content validity is ``the relationship between the content of a test and the construct it is intended to measure'' \citep{Standards}. Do they match? Does the instrument contain content that is not part of the construct? Are there parts of the content unmeasured, such that a high score still underrepresents an examinee's true level of a trait?
+
+Content validity in this case concerns the relationship between the concept of spiritual abuse and the content of the 66 items that were piloted to form the SHAS. What is spiritual abuse? What are its important parts? What counts as evidence of it? Is there more to spiritual abuse than was captured by the 66 items?
+
+\hypertarget{content-specification}{%
+\section{Content Specification}\label{content-specification}}
+
+``Test developers often work from a specification of the content domain. The content specification carefully describes the content in detail, often with a classification of areas of content and types of items'' \citep{Standards}. For the purpose of piloting items, the domain of spiritual abuse included two constructs: external (abusive) events and internal states (of emotional harm).
+
+\hypertarget{external-events}{%
+\subsection{External Events}\label{external-events}}
+
+One domain of spiritual abuse is external abuse \emph{events}. The focus is on something that happened, or a pattern of recurring behavior on the part of someone in a place of spiritual authority that was experienced by the examinee as abusive. The first 52 items of the SHAS were drawn from this domain of possible abusive events. To each item, an examinee was offered five response categories:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Never
+\item
+  Once or twice
+\item
+  Sometimes
+\item
+  Often
+\item
+  Always
+\end{enumerate}
+
+To sum each examinee's vector of responses to these items is to accumulate evidence of abuse. In the aggregate, scores for this collection of items could range from 52 to 260. An examinee who \emph{never} experienced \emph{any} of these events would score 52. At the other extreme, an examinee who scored 260 had \emph{always} experienced \emph{all} of these events.
+
+\hypertarget{internal-states}{%
+\subsection{Internal States}\label{internal-states}}
+
+Another important domain of spiritual abuse is \emph{internal states}. The focus is on the subjective experience of an examinee ``as a result of negative experiences in church or Christian group settings.'' The questionnaire included 14 items asking examinees about their emotions in response to events. To each item, an examinee was offered the same five response categories as before:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Never
+\item
+  Once or twice
+\item
+  Sometimes
+\item
+  Often
+\item
+  Always
+\end{enumerate}
+
+To sum each examinee's vector of responses to these items is to accumulate evidence of internal emotional \emph{harm}. Total scores for these items could range from 14 to 70. Examinees who \emph{never} experienced \emph{any} of these unpleasant emotions would score 14, while examinees who scored 70 had \emph{always} experienced \emph{all} of the difficult emotions.
+
+\hypertarget{additional-domains}{%
+\subsection{Additional Domains}\label{additional-domains}}
+
+\citet{ReiseWaller2009} make some interesting points about the nature of the traits addressed in clinical settings which provoke thought about the trait of spiritual abuse.
+
+\hypertarget{summary}{%
+\section{Summary}\label{summary}}
+
+What counts as spiritual abuse? What counts as evidence of it?
+
 \hypertarget{data-collection}{%
 \chapter{Data Collection}\label{data-collection}}
 
@@ -198,7 +269,7 @@ The data were collected online from January 28, 2021 to February 27, 2021.
 
 A final total of 3,222 people responded to the survey at some level. Depending on how much data are missing, this is an impressively large sample size which will provide lots of power for most simple statistics and should for the most part satisfy the large-sample requirements of the advanced statistical procedures associated with measurement work (i.e., factor analysis, IRT).
 
-However, the data come from a convenience sample which raises some challenge of sampling bias. Dan sent the link out to {[}lots of people{]}, and (if memory serves) encouraged them to send it to people \emph{they} knew. This would seem to bias responses toward people demographically similar to Dan: white, west coast American, middle class, highly educated, primarily Protestant and Catholic Christian, etc. This will be more apparent upon closer inspection of the demographics of the sample.
+However, the data come from a convenience sample which raises some challenge of sampling bias. Dan sent the link out to {[}lots of people{]}, and (if memory serves) encouraged them to send it to people \emph{they} knew. This would seem to bias responses toward people demographically similar to Dan: white, Millennial, west coast American, middle class, highly educated, primarily Protestant and Catholic Christian, etc. This will be more apparent upon closer inspection of the demographics of the sample.
 
 One source of examinees was people who listen to progressive Christians podcasts such as \emph{You Have Permission} which Dan produced at the time of data collection. This is a known source of bias toward people who have some interest in Christianity along with at least some level of rejection of conservative/orthodox Christianity and/or political conservatism. However, this would be an appropriate group from which to invite participation if the target population is people who have experienced spiritual abuse.
 
@@ -247,19 +318,111 @@ This chapter documents our decisions surrounding how to prepare the data for ana
 \NormalTok{all }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(all, }\AttributeTok{select =} \SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(Ext\_Avg}\SpecialCharTok{:}\NormalTok{Global\_Avg))  }\CommentTok{\# remove columns for now}
 
 \CommentTok{\# OTHER POSSIBLE DATASETS}
-\FunctionTok{write.csv}\NormalTok{(all, }\StringTok{"data/all.csv"}\NormalTok{)  }\CommentTok{\# save data for later use}
-\FunctionTok{write.csv}\NormalTok{(items, }\StringTok{"data/items.csv"}\NormalTok{)}
-\FunctionTok{write.csv}\NormalTok{(ext\_items, }\StringTok{"data/ext\_items.csv"}\NormalTok{)}
-\FunctionTok{write.csv}\NormalTok{(int\_items, }\StringTok{"data/int\_items.csv"}\NormalTok{)}
+\FunctionTok{write.csv}\NormalTok{(all, }\StringTok{"data/all.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)  }\CommentTok{\# save data for later use}
+\FunctionTok{write.csv}\NormalTok{(items, }\StringTok{"data/items.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{write.csv}\NormalTok{(ext\_items, }\StringTok{"data/ext\_items.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{write.csv}\NormalTok{(int\_items, }\StringTok{"data/int\_items.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \textbf{Labeling}. This is probably the appropriate place to deal with the labeling of variables and their values. These things should be appropriately labeled to their content, wording, etc. \textbf{But I have yet to figure this part out so I will come back to it}.
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(Hmisc)}
+\NormalTok{var.labels }\OtherTok{=} \FunctionTok{c}\NormalTok{(}
+\CommentTok{\# VARIABLE LABELS: Items for External Events Subscale}
+\AttributeTok{Q7 =} \StringTok{"My pastor/leader explicitly claiming to speak on God\textquotesingle{}s behalf"}\NormalTok{,}
+\AttributeTok{Q10 =} \StringTok{"Being asked to give up personal, vocational, and/or educational goals by a pastor or group leader"}\NormalTok{,}
+\AttributeTok{Q11 =} \StringTok{"Seeing that anyone who disagreed with my church/pastor was consequently portrayed as evil"}\NormalTok{,}
+\AttributeTok{Q16 =} \StringTok{"My church community abandoning me in a difficult time"}\NormalTok{,}
+\AttributeTok{Q17 =} \StringTok{"Being treated as “less than” because of my sexual orientation"}\NormalTok{,}
+\AttributeTok{Q18 =} \StringTok{"Discouragement of critical thinking by my church or pastor"}\NormalTok{,}
+\AttributeTok{Q19 =} \StringTok{"Behavior being excessively monitored by my pastor or group members"}\NormalTok{,}
+\AttributeTok{Q20 =} \StringTok{"Seeing specific members being pressured to give money despite well{-}known personal financial hardship"}\NormalTok{,}
+\AttributeTok{Q21 =} \StringTok{"Being taught that I would be risking Hell if I left my particular church/group"}\NormalTok{,}
+\AttributeTok{Q22 =} \StringTok{"Being expected to follow my pastor/leader’s personal rules/advice around dating, marriage, and sex"}\NormalTok{,}
+\AttributeTok{Q23 =} \StringTok{"Prayer replacing needed medical interventions"}\NormalTok{,}
+\AttributeTok{Q24 =} \StringTok{"Being expected to consult my pastor/leader before making non{-}religious decisions"}\NormalTok{,}
+\AttributeTok{Q25 =} \StringTok{"Feeling unable to raise questions and issues"}\NormalTok{,}
+\AttributeTok{Q26 =} \StringTok{"Being pressured to forgive an abuser while the abuse was ongoing"}\NormalTok{,}
+\AttributeTok{Q27 =} \StringTok{"Being denied opportunities to serve/volunteer because of my gender"}\NormalTok{,}
+\AttributeTok{Q28 =} \StringTok{"Seeing the leadership or group protecting abusive individuals"}\NormalTok{,}
+\AttributeTok{Q29 =} \StringTok{"Feeling special when in my pastor/leader’s good graces; feeling ignored when I wasn’t"}\NormalTok{,}
+\AttributeTok{Q30 =} \StringTok{"Being deterred from seeking mental health treatment, counseling and/or medication"}\NormalTok{,}
+\AttributeTok{Q31 =} \StringTok{"Being shunned or ignored by my pastor or church/group"}\NormalTok{,}
+\AttributeTok{Q32 =} \StringTok{"Feeling unable to express unhappiness"}\NormalTok{,}
+\AttributeTok{Q34 =} \StringTok{"Seeing Scripture used to justify physical punishment or other types of severe discipline"}\NormalTok{,}
+\AttributeTok{Q35 =} \StringTok{"Being explicitly taught to distrust my emotions"}\NormalTok{,}
+\AttributeTok{Q36 =} \StringTok{"Mental or physical problems being interpreted as spiritual/moral weakness"}\NormalTok{,}
+\AttributeTok{Q37 =} \StringTok{"Being made to feel less spiritually advanced/mature than my pastor/leadership"}\NormalTok{,}
+\AttributeTok{Q38 =} \StringTok{"Having unrealistic demands placed on my moral or religious behavior"}\NormalTok{,}
+\AttributeTok{Q39 =} \StringTok{"Being made to feel shame over naturally occurring sexual desires (not actions)"}\NormalTok{,}
+\AttributeTok{Q40 =} \StringTok{"Threatening Divine punishment to keep group members in line"}\NormalTok{,}
+\AttributeTok{Q41 =} \StringTok{"Being denied opportunities to serve because of my sexual orientation"}\NormalTok{,}
+\AttributeTok{Q42 =} \StringTok{"Seeing others shamed or shunned by the pastor/leader or group"}\NormalTok{,}
+\AttributeTok{Q43 =} \StringTok{"Being shamed by my pastor or the group for poor spiritual/moral performance"}\NormalTok{,}
+\AttributeTok{Q44 =} \StringTok{"Love or acceptance only being offered if spiritual or moral performance was high"}\NormalTok{,}
+\AttributeTok{Q45 =} \StringTok{"Vivid descriptions of Hell, Satan, or demons being taught to young children that are developmentally inappropriate and/or anxiety{-}provoking"}\NormalTok{,}
+\AttributeTok{Q46 =} \StringTok{"Being treated as “less than” because of my skin color"}\NormalTok{,}
+\AttributeTok{Q47 =} \StringTok{"Medical care being postponed or not given at all for religious reasons"}\NormalTok{,}
+\AttributeTok{Q49 =} \StringTok{"The leadership or group not only protecting but elevating abusive individuals"}\NormalTok{,}
+\AttributeTok{Q50 =} \StringTok{"Being treated as “less than” because of my gender"}\NormalTok{,}
+\AttributeTok{Q51 =} \StringTok{"Experiencing extreme pressure to take on a role of pastor, missionary, or other spiritual leader"}\NormalTok{,}
+\AttributeTok{Q52 =} \StringTok{"Being blamed for harm that I suffered, rather than blaming those who harmed me"}\NormalTok{,}
+\AttributeTok{Q53 =} \StringTok{"Seeing Scripture used to justify abusive parent{-}child behavior"}\NormalTok{,}
+\AttributeTok{Q54 =} \StringTok{"Being explicitly taught to distrust my intuitions"}\NormalTok{,}
+\AttributeTok{Q55 =} \StringTok{"Hearing cultural references in sermons that were not commonly known to members of my racial or ethnic subculture"}\NormalTok{,}
+\AttributeTok{Q56 =} \StringTok{"Being made to feel like I was crazy or weird for having doubts or questions"}\NormalTok{,}
+\AttributeTok{Q57 =} \StringTok{"Developing mental or physical ailments as a result of stress from conforming to the group/leader’s expectation"}\NormalTok{,}
+\AttributeTok{Q58 =} \StringTok{"Terror or horror being used to motivate religious decisions"}\NormalTok{,}
+\AttributeTok{Q59 =} \StringTok{"Seeing the pastor or group blame the victim of abuse for the abuse itself"}\NormalTok{,}
+\AttributeTok{Q60 =} \StringTok{"Being encouraged to remain in an abusive marriage by religious leaders"}\NormalTok{,}
+\AttributeTok{Q61 =} \StringTok{"Vivid descriptions of the end of the world being taught to young children that are developmentally inappropriate and/or anxiety{-}provoking"}\NormalTok{,}
+\AttributeTok{Q62 =} \StringTok{"Seeing Scripture used to justify physical violence"}\NormalTok{,}
+\AttributeTok{Q63 =} \StringTok{"Being shamed by my pastor or the group for raising questions or concerns"}\NormalTok{,}
+\AttributeTok{Q64 =} \StringTok{"Witnessing women being pressured to stay in unfaithful or abusive marriages"}\NormalTok{,}
+\AttributeTok{Q65 =} \StringTok{"Being “cut off” or shunned by more religious family members"}\NormalTok{,}
+\AttributeTok{Q66 =} \StringTok{"Seeing others treated as “less than” because of their sexual orientation"}\NormalTok{,}
+                    
+\CommentTok{\# VARIABLE LABELS: Items for Internal States Subscale}
+\AttributeTok{Q68 =} \StringTok{"Anxiety attacks triggered by religious stimuli"}\NormalTok{,}
+\AttributeTok{Q69 =} \StringTok{"A lack of spiritual direction or purpose"}\NormalTok{,}
+\AttributeTok{Q70 =} \StringTok{"Feeling betrayed by God"}\NormalTok{,}
+\AttributeTok{Q71 =} \StringTok{"Personally avoiding religious activities or settings to reduce distressing feelings"}\NormalTok{,}
+\AttributeTok{Q72 =} \StringTok{"Feeling as if God harmed me directly"}\NormalTok{,}
+\AttributeTok{Q73 =} \StringTok{"Self{-}hatred or self{-}loathing"}\NormalTok{,}
+\AttributeTok{Q74 =} \StringTok{"Sadness over the loss of my faith/religious community"}\NormalTok{,}
+\AttributeTok{Q76 =} \StringTok{"Feeling that I wasted years of my life in a particular church or set of beliefs"}\NormalTok{,}
+\AttributeTok{Q77 =} \StringTok{"Anger upon reflecting on negative religious experiences"}\NormalTok{,}
+\AttributeTok{Q78 =} \StringTok{"A lack of self{-}worth"}\NormalTok{,}
+\AttributeTok{Q79 =} \StringTok{"Distrust of God"}\NormalTok{,}
+\AttributeTok{Q80 =} \StringTok{"Feeling isolated"}\NormalTok{,}
+\AttributeTok{Q81 =} \StringTok{"Nightmares about my negative religious experiences"}\NormalTok{,}
+\AttributeTok{Q82 =} \StringTok{"Having trouble navigating life outside my church/community"}\NormalTok{,}
+
+\CommentTok{\# VARIABLE LABELS for Demographics}
+\AttributeTok{Q84 =} \StringTok{"Age"}\NormalTok{,}
+\AttributeTok{Q85 =} \StringTok{"Gender"}\NormalTok{,}
+\AttributeTok{Q86 =} \StringTok{"Sexual orientation"}\NormalTok{,}
+\AttributeTok{Q87 =} \StringTok{"Race"}\NormalTok{,}
+\AttributeTok{Q88 =} \StringTok{"Raised in Christian home"}\NormalTok{,}
+\AttributeTok{Q89 =} \StringTok{"Denomination/group of most negative experience"}\NormalTok{,}
+\AttributeTok{Q90 =} \StringTok{"Racial makeup of denomination/group of most negative experience"}\NormalTok{,}
+\AttributeTok{Q91 =} \StringTok{"Race of leadership of denomination/group of most negative experience"}\NormalTok{,}
+\AttributeTok{Q92 =} \StringTok{"Gender of leadership of denomination/group of most negative experience"}\NormalTok{,}
+\AttributeTok{Q95 =} \StringTok{"Involvement in denomination/group of most negative experience"}\NormalTok{,}
+\AttributeTok{Q93 =} \StringTok{"Current religious identification"}
+\NormalTok{)}
+
+\FunctionTok{label}\NormalTok{(items) }\OtherTok{=} \FunctionTok{as.list}\NormalTok{(var.labels[}\FunctionTok{match}\NormalTok{(}\FunctionTok{names}\NormalTok{(items), }\FunctionTok{names}\NormalTok{(var.labels))])}
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{missing-data}{%
 \section{Missing data}\label{missing-data}}
 
-Missing data can be an important problem. The problem has two parts. The first is how many data are missing. Obviously the more data are missing, the larger the barrier this problem poses to analysis. The second is the mechanism of missing data. Are the missing data randomly, or is there a pattern to the missing data - like a problematic item, or a distinct group of examinees who chose not to respond? Figure \ref{fig:vim-plots} presents two plots from the VIM package for missing data.
+Missing data can be an important problem. The problem has two parts. The first is how many data are missing. Obviously the more data are missing, the larger the barrier this problem poses to analysis. The second is the mechanism of missing data. Are the missing data randomly, or is there a pattern to the missing data - like a problematic item, or a distinct group of examinees who chose not to respond? Figure \ref{fig:vim-plots} presents two plots from the VIM package for missing data \citep{VIM}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -309,35 +472,34 @@ This test is fairly conclusive. The p-value for the chi-square is 1, which means
 \CommentTok{\# to explore visually}
 
 \CommentTok{\# 2. RECODE INTERNAL STATES ITEMS AS DICHOTOMOUS}
-\CommentTok{\# (1=MISSING, 0=ENDORSED) Surely there is a better way to}
-\CommentTok{\# do this}
+\CommentTok{\# (1=MISSING, 0=ENDORSED)}
 \NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q68[miss\_set}\SpecialCharTok{$}\NormalTok{Q68 }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{0}
-\NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q68[}\FunctionTok{is.na}\NormalTok{(miss\_set}\SpecialCharTok{$}\NormalTok{Q68)] }\OtherTok{\textless{}{-}} \DecValTok{1}
 \NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q69[miss\_set}\SpecialCharTok{$}\NormalTok{Q69 }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{0}
-\NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q69[}\FunctionTok{is.na}\NormalTok{(miss\_set}\SpecialCharTok{$}\NormalTok{Q69)] }\OtherTok{\textless{}{-}} \DecValTok{1}
 \NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q70[miss\_set}\SpecialCharTok{$}\NormalTok{Q70 }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{0}
-\NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q70[}\FunctionTok{is.na}\NormalTok{(miss\_set}\SpecialCharTok{$}\NormalTok{Q70)] }\OtherTok{\textless{}{-}} \DecValTok{1}
 \NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q71[miss\_set}\SpecialCharTok{$}\NormalTok{Q71 }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{0}
-\NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q71[}\FunctionTok{is.na}\NormalTok{(miss\_set}\SpecialCharTok{$}\NormalTok{Q71)] }\OtherTok{\textless{}{-}} \DecValTok{1}
 \NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q72[miss\_set}\SpecialCharTok{$}\NormalTok{Q72 }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{0}
-\NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q72[}\FunctionTok{is.na}\NormalTok{(miss\_set}\SpecialCharTok{$}\NormalTok{Q72)] }\OtherTok{\textless{}{-}} \DecValTok{1}
-\NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q73[miss\_set}\SpecialCharTok{$}\NormalTok{Q73 }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1}
-\NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q73[}\FunctionTok{is.na}\NormalTok{(miss\_set}\SpecialCharTok{$}\NormalTok{Q73)] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q73[miss\_set}\SpecialCharTok{$}\NormalTok{Q73 }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{0}
 \NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q74[miss\_set}\SpecialCharTok{$}\NormalTok{Q74 }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{0}
-\NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q74[}\FunctionTok{is.na}\NormalTok{(miss\_set}\SpecialCharTok{$}\NormalTok{Q74)] }\OtherTok{\textless{}{-}} \DecValTok{1}
 \NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q76[miss\_set}\SpecialCharTok{$}\NormalTok{Q76 }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{0}
-\NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q76[}\FunctionTok{is.na}\NormalTok{(miss\_set}\SpecialCharTok{$}\NormalTok{Q76)] }\OtherTok{\textless{}{-}} \DecValTok{1}
 \NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q77[miss\_set}\SpecialCharTok{$}\NormalTok{Q77 }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{0}
-\NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q77[}\FunctionTok{is.na}\NormalTok{(miss\_set}\SpecialCharTok{$}\NormalTok{Q77)] }\OtherTok{\textless{}{-}} \DecValTok{1}
 \NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q78[miss\_set}\SpecialCharTok{$}\NormalTok{Q78 }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{0}
-\NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q78[}\FunctionTok{is.na}\NormalTok{(miss\_set}\SpecialCharTok{$}\NormalTok{Q78)] }\OtherTok{\textless{}{-}} \DecValTok{1}
 \NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q79[miss\_set}\SpecialCharTok{$}\NormalTok{Q79 }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{0}
-\NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q79[}\FunctionTok{is.na}\NormalTok{(miss\_set}\SpecialCharTok{$}\NormalTok{Q79)] }\OtherTok{\textless{}{-}} \DecValTok{1}
 \NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q80[miss\_set}\SpecialCharTok{$}\NormalTok{Q80 }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{0}
-\NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q80[}\FunctionTok{is.na}\NormalTok{(miss\_set}\SpecialCharTok{$}\NormalTok{Q80)] }\OtherTok{\textless{}{-}} \DecValTok{1}
 \NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q81[miss\_set}\SpecialCharTok{$}\NormalTok{Q81 }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{0}
-\NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q81[}\FunctionTok{is.na}\NormalTok{(miss\_set}\SpecialCharTok{$}\NormalTok{Q81)] }\OtherTok{\textless{}{-}} \DecValTok{1}
 \NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q82[miss\_set}\SpecialCharTok{$}\NormalTok{Q82 }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{0}
+\NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q68[}\FunctionTok{is.na}\NormalTok{(miss\_set}\SpecialCharTok{$}\NormalTok{Q68)] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q69[}\FunctionTok{is.na}\NormalTok{(miss\_set}\SpecialCharTok{$}\NormalTok{Q69)] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q70[}\FunctionTok{is.na}\NormalTok{(miss\_set}\SpecialCharTok{$}\NormalTok{Q70)] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q71[}\FunctionTok{is.na}\NormalTok{(miss\_set}\SpecialCharTok{$}\NormalTok{Q71)] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q72[}\FunctionTok{is.na}\NormalTok{(miss\_set}\SpecialCharTok{$}\NormalTok{Q72)] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q73[}\FunctionTok{is.na}\NormalTok{(miss\_set}\SpecialCharTok{$}\NormalTok{Q73)] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q74[}\FunctionTok{is.na}\NormalTok{(miss\_set}\SpecialCharTok{$}\NormalTok{Q74)] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q76[}\FunctionTok{is.na}\NormalTok{(miss\_set}\SpecialCharTok{$}\NormalTok{Q76)] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q77[}\FunctionTok{is.na}\NormalTok{(miss\_set}\SpecialCharTok{$}\NormalTok{Q77)] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q78[}\FunctionTok{is.na}\NormalTok{(miss\_set}\SpecialCharTok{$}\NormalTok{Q78)] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q79[}\FunctionTok{is.na}\NormalTok{(miss\_set}\SpecialCharTok{$}\NormalTok{Q79)] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q80[}\FunctionTok{is.na}\NormalTok{(miss\_set}\SpecialCharTok{$}\NormalTok{Q80)] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q81[}\FunctionTok{is.na}\NormalTok{(miss\_set}\SpecialCharTok{$}\NormalTok{Q81)] }\OtherTok{\textless{}{-}} \DecValTok{1}
 \NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q82[}\FunctionTok{is.na}\NormalTok{(miss\_set}\SpecialCharTok{$}\NormalTok{Q82)] }\OtherTok{\textless{}{-}} \DecValTok{1}
 
 \CommentTok{\# 3. OBTAIN TOTAL SCORE ON EXTERNAL EVENTS ITEMS}
@@ -359,17 +521,17 @@ Q69  0.99  1.00
 Q70  0.99  0.99  1.00                                                
 Q71  1.00  0.99  0.98  1.00                                          
 Q72  0.99  0.99  0.99  0.99  1.00                                    
-Q73    NA    NA    NA    NA    NA    NA                              
-Q74  0.99  0.98  0.97  0.99  0.98    NA  1.00                        
-Q76  0.99  0.99  0.98  0.99  0.99    NA  0.98  1.00                  
-Q77  0.99  0.99  0.98  1.00  0.98    NA  0.99  0.99  1.00            
-Q78  0.99  0.99  0.98  0.99  0.98    NA  0.98  0.98  0.99  1.00      
-Q79  0.98  0.98  0.97  0.98  0.97    NA  0.97  0.97  0.98  0.98  1.00
-Q80  0.98  0.98  0.98  0.99  0.98    NA  0.98  0.99  0.98  0.98  0.97
-Q81  1.00  0.99  0.99  1.00  0.99    NA  0.99  0.99  0.99  0.99  0.98
-Q82  0.99  0.99  0.98  0.99  0.98    NA  0.98  0.99  0.99  0.98  0.97
-Q84  0.01  0.00  0.00  0.00  0.03    NA  0.02  0.02    NA  0.01  0.01
-Q85  0.01  0.04  0.03  0.01  0.03    NA -0.01  0.04    NA  0.06 -0.01
+Q73  1.00  0.99  0.98  0.99  0.99  1.00                              
+Q74  0.99  0.98  0.97  0.99  0.98  0.98  1.00                        
+Q76  0.99  0.99  0.98  0.99  0.99  0.99  0.98  1.00                  
+Q77  0.99  0.99  0.98  1.00  0.98  0.99  0.99  0.99  1.00            
+Q78  0.99  0.99  0.98  0.99  0.98  0.99  0.98  0.98  0.99  1.00      
+Q79  0.98  0.98  0.97  0.98  0.97  0.98  0.97  0.97  0.98  0.98  1.00
+Q80  0.98  0.98  0.98  0.99  0.98  0.98  0.98  0.99  0.98  0.98  0.97
+Q81  1.00  0.99  0.99  1.00  0.99  1.00  0.99  0.99  0.99  0.99  0.98
+Q82  0.99  0.99  0.98  0.99  0.98  0.98  0.98  0.99  0.99  0.98  0.97
+Q84  0.01  0.00  0.00  0.00  0.03  0.03  0.02  0.02    NA  0.01  0.01
+Q85  0.01  0.04  0.03  0.01  0.03  0.01 -0.01  0.04    NA  0.06 -0.01
     Q80   Q81   Q82   Q84   Q85  
 Q80  1.00                        
 Q81  0.98  1.00                  
@@ -393,19 +555,18 @@ Figure \ref{fig:trigger} illustrates the correlations among the Internal States 
 \begin{Highlighting}[]
 \CommentTok{\# LISTWISE DELETION OF MISSING DATA}
 \NormalTok{all\_l }\OtherTok{\textless{}{-}} \FunctionTok{na.omit}\NormalTok{(all)  }\CommentTok{\#  Likert items from columns 14{-}79 plus demographics post listwise}
-\FunctionTok{write.csv}\NormalTok{(all\_l, }\StringTok{"data/all\_l.csv"}\NormalTok{)  }\CommentTok{\# save data}
+\FunctionTok{write.csv}\NormalTok{(all\_l, }\StringTok{"data/all\_l.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)  }\CommentTok{\# save data}
 
 \CommentTok{\# OTHER POSSIBLE LISTWISE DATASETS}
 
 \CommentTok{\# items \textless{}{-} items[complete.cases(items), ] \# create new}
-\CommentTok{\# dataset without missing data items\_l \textless{}{-} na.omit(items) \#}
-\CommentTok{\# Likert items from columns 14{-}79 post listwise ext\_items\_l}
-\CommentTok{\# \textless{}{-} na.omit(ext\_items) \# Likert items for external events}
-\CommentTok{\# post listwise int\_items\_l \textless{}{-} na.omit(int\_items) \# Likert}
-\CommentTok{\# items for internal states post listwise}
-\CommentTok{\# write.csv(items\_l,\textquotesingle{}data/items\_l.csv\textquotesingle{})}
-\CommentTok{\# write.csv(ext\_items\_l,\textquotesingle{}data/ext\_items\_l.csv\textquotesingle{})}
-\CommentTok{\# write.csv(int\_items\_l,\textquotesingle{}data/int\_items\_l.csv\textquotesingle{})}
+\CommentTok{\# dataset without missing data}
+\NormalTok{items\_l }\OtherTok{\textless{}{-}} \FunctionTok{na.omit}\NormalTok{(items)  }\CommentTok{\# Likert items from columns 14{-}79 post listwise}
+\NormalTok{ext\_items\_l }\OtherTok{\textless{}{-}} \FunctionTok{na.omit}\NormalTok{(ext\_items)  }\CommentTok{\# Likert items for external events post listwise}
+\NormalTok{int\_items\_l }\OtherTok{\textless{}{-}} \FunctionTok{na.omit}\NormalTok{(int\_items)  }\CommentTok{\# Likert items for internal states post listwise}
+\FunctionTok{write.csv}\NormalTok{(items\_l, }\StringTok{"data/items\_l.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{write.csv}\NormalTok{(ext\_items\_l, }\StringTok{"data/ext\_items\_l.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{write.csv}\NormalTok{(int\_items\_l, }\StringTok{"data/int\_items\_l.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -423,23 +584,15 @@ Analysis can proceed with these two datasets:
 \hypertarget{item-analysis}{%
 \chapter{Item Analysis}\label{item-analysis}}
 
-This chapter documents our item analysis. This includes investigation of:
+In this chapter, we examine the technical quality of the 66 items that Dan piloted for the SHAS. We begin by defining item analysis and discussing its importance. Then document our item analyses from both classical test theory (CTT) and item response theory (IRT) frameworks. We conclude by summarizing what we learn from these analyses to help us refine these items and develop better ones in the future.
 
-\begin{itemize}
-\tightlist
-\item
-  Item difficulty
-\item
-  Item discrimination
-\item
-  Item-total correlations
-\end{itemize}
-
-\textbf{Load packages}. This code chunk outlines the R packages we use and the data. There are several helpful packages for classical test theory (CTT).
+\hypertarget{about-item-analysis}{%
+\section{About Item Analysis}\label{about-item-analysis}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# LOAD PACKAGES}
+\FunctionTok{library}\NormalTok{(Hmisc)  }\CommentTok{\# for item statistics}
 \FunctionTok{library}\NormalTok{(psych)  }\CommentTok{\# for psychometric analysis}
 \FunctionTok{library}\NormalTok{(psychTools)  }\CommentTok{\# for psychometric analysis}
 \FunctionTok{library}\NormalTok{(CTT)  }\CommentTok{\# for classical test theory stats}
@@ -447,19 +600,13 @@ This chapter documents our item analysis. This includes investigation of:
 \FunctionTok{library}\NormalTok{(ltm)  }\CommentTok{\# for point{-}biserial correlations}
 \FunctionTok{library}\NormalTok{(corrplot)  }\CommentTok{\# for correlation plot}
 \FunctionTok{library}\NormalTok{(knitr)  }\CommentTok{\# how RMarkdown compiles all the code into documents}
-\end{Highlighting}
-\end{Shaded}
 
-\textbf{Load data}. This code chunk outlines the R packages we use and the data. There are several helpful packages for classical test theory (CTT).
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# LOAD DATA Datasets straight off the Excel file}
+\CommentTok{\# LOAD DATA}
 \NormalTok{all }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/all.csv"}\NormalTok{)}
-\CommentTok{\# items \textless{}{-} read.csv(\textquotesingle{}data/items.csv\textquotesingle{}) ext\_items \textless{}{-}}
-\CommentTok{\# read.csv(\textquotesingle{}data/ext\_items.csv\textquotesingle{}) int\_items \textless{}{-}}
-\CommentTok{\# read.csv(\textquotesingle{}data/int\_items.csv\textquotesingle{}) Datasets with listwise}
-\CommentTok{\# deletion}
+\NormalTok{items }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/items.csv"}\NormalTok{)}
+\NormalTok{ext\_items }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/ext\_items.csv"}\NormalTok{)}
+\NormalTok{int\_items }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/int\_items.csv"}\NormalTok{)}
+\CommentTok{\# Datasets with listwise deletion}
 \NormalTok{all\_l }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/all\_l.csv"}\NormalTok{)}
 \CommentTok{\# items\_l \textless{}{-} read.csv(\textquotesingle{}data/items\_l.csv\textquotesingle{}) ext\_items\_l \textless{}{-}}
 \CommentTok{\# read.csv(\textquotesingle{}data/ext\_items\_l.csv\textquotesingle{}) int\_items\_l \textless{}{-}}
@@ -467,129 +614,16 @@ This chapter documents our item analysis. This includes investigation of:
 \end{Highlighting}
 \end{Shaded}
 
-\textbf{Describe data}. A good way to begin the analysis is to get a feel for our items with descriptive statistics.
+\hypertarget{classical-item-analysis}{%
+\section{Classical Item Analysis}\label{classical-item-analysis}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# DESCRIBE DATA options(digits=2)}
-\NormalTok{itm\_stats }\OtherTok{\textless{}{-}} \FunctionTok{describe}\NormalTok{(all)}
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(itm\_stats, }\AttributeTok{caption =} \StringTok{"Items Statistics"}\NormalTok{, }\AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{,}
-    \AttributeTok{digits =} \DecValTok{2}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+\CommentTok{\# DESCRIBE DATA options(digits=2) describe(items)}
 
-\begin{table}
+\CommentTok{\# this doesn\textquotesingle{}t work knitr::kable(itm\_stats, caption =}
+\CommentTok{\# \textquotesingle{}Items Statistics\textquotesingle{}, booktabs = TRUE, digits=2)}
 
-\caption{\label{tab:describe}Items Statistics}
-\centering
-\begin{tabular}[t]{lrrrrrrrrrrrrr}
-\toprule
-  & vars & n & mean & sd & median & trimmed & mad & min & max & range & skew & kurtosis & se\\
-\midrule
-X & 1 & 3222 & 1611.50 & 930.26 & 1611.5 & 1611.50 & 1194.23 & 1 & 3222 & 3221 & 0.00 & -1.20 & 16.39\\
-Q7 & 2 & 3215 & 2.54 & 1.43 & 2.0 & 2.42 & 1.48 & 1 & 5 & 4 & 0.39 & -1.21 & 0.03\\
-Q10 & 3 & 3220 & 1.83 & 1.18 & 1.0 & 1.61 & 0.00 & 1 & 5 & 4 & 1.25 & 0.44 & 0.02\\
-Q11 & 4 & 3216 & 2.52 & 1.35 & 2.0 & 2.40 & 1.48 & 1 & 5 & 4 & 0.38 & -1.12 & 0.02\\
-Q16 & 5 & 3217 & 2.13 & 1.27 & 2.0 & 1.96 & 1.48 & 1 & 5 & 4 & 0.83 & -0.50 & 0.02\\
-\addlinespace
-Q17 & 6 & 3208 & 1.34 & 0.97 & 1.0 & 1.03 & 0.00 & 1 & 5 & 4 & 2.87 & 6.96 & 0.02\\
-Q18 & 7 & 3220 & 2.75 & 1.37 & 3.0 & 2.68 & 1.48 & 1 & 5 & 4 & 0.14 & -1.21 & 0.02\\
-Q19 & 8 & 3219 & 2.32 & 1.33 & 2.0 & 2.18 & 1.48 & 1 & 5 & 4 & 0.56 & -0.96 & 0.02\\
-Q20 & 9 & 3217 & 2.16 & 1.39 & 2.0 & 1.95 & 1.48 & 1 & 5 & 4 & 0.82 & -0.71 & 0.02\\
-Q21 & 10 & 3218 & 2.20 & 1.47 & 1.0 & 2.00 & 0.00 & 1 & 5 & 4 & 0.81 & -0.83 & 0.03\\
-\addlinespace
-Q22 & 11 & 3218 & 3.33 & 1.49 & 4.0 & 3.41 & 1.48 & 1 & 5 & 4 & -0.39 & -1.28 & 0.03\\
-Q23 & 12 & 3219 & 1.92 & 1.13 & 1.0 & 1.73 & 0.00 & 1 & 5 & 4 & 1.02 & 0.02 & 0.02\\
-Q24 & 13 & 3221 & 1.89 & 1.18 & 1.0 & 1.68 & 0.00 & 1 & 5 & 4 & 1.10 & 0.07 & 0.02\\
-Q25 & 14 & 3217 & 3.18 & 1.32 & 3.0 & 3.23 & 1.48 & 1 & 5 & 4 & -0.26 & -1.04 & 0.02\\
-Q26 & 15 & 3212 & 1.87 & 1.27 & 1.0 & 1.63 & 0.00 & 1 & 5 & 4 & 1.24 & 0.21 & 0.02\\
-\addlinespace
-Q27 & 16 & 3217 & 1.94 & 1.35 & 1.0 & 1.69 & 0.00 & 1 & 5 & 4 & 1.14 & -0.13 & 0.02\\
-Q28 & 17 & 3216 & 2.26 & 1.25 & 2.0 & 2.13 & 1.48 & 1 & 5 & 4 & 0.63 & -0.73 & 0.02\\
-Q29 & 18 & 3213 & 2.47 & 1.34 & 2.0 & 2.35 & 1.48 & 1 & 5 & 4 & 0.40 & -1.08 & 0.02\\
-Q30 & 19 & 3219 & 2.04 & 1.25 & 2.0 & 1.87 & 1.48 & 1 & 5 & 4 & 0.88 & -0.46 & 0.02\\
-Q31 & 20 & 3217 & 2.03 & 1.19 & 2.0 & 1.86 & 1.48 & 1 & 5 & 4 & 0.92 & -0.20 & 0.02\\
-\addlinespace
-Q32 & 21 & 3219 & 2.79 & 1.32 & 3.0 & 2.73 & 1.48 & 1 & 5 & 4 & 0.05 & -1.14 & 0.02\\
-Q34 & 22 & 3219 & 2.46 & 1.33 & 2.0 & 2.34 & 1.48 & 1 & 5 & 4 & 0.42 & -1.05 & 0.02\\
-Q35 & 23 & 3217 & 3.12 & 1.39 & 3.0 & 3.15 & 1.48 & 1 & 5 & 4 & -0.18 & -1.20 & 0.02\\
-Q36 & 24 & 3216 & 2.78 & 1.34 & 3.0 & 2.72 & 1.48 & 1 & 5 & 4 & 0.11 & -1.17 & 0.02\\
-Q37 & 25 & 3221 & 2.94 & 1.38 & 3.0 & 2.92 & 1.48 & 1 & 5 & 4 & -0.01 & -1.22 & 0.02\\
-\addlinespace
-Q38 & 26 & 3217 & 2.95 & 1.40 & 3.0 & 2.94 & 1.48 & 1 & 5 & 4 & -0.01 & -1.26 & 0.02\\
-Q39 & 27 & 3219 & 3.05 & 1.48 & 3.0 & 3.07 & 1.48 & 1 & 5 & 4 & -0.12 & -1.37 & 0.03\\
-Q40 & 28 & 3220 & 2.28 & 1.39 & 2.0 & 2.10 & 1.48 & 1 & 5 & 4 & 0.67 & -0.88 & 0.02\\
-Q41 & 29 & 3211 & 1.27 & 0.88 & 1.0 & 1.01 & 0.00 & 1 & 5 & 4 & 3.30 & 9.87 & 0.02\\
-Q42 & 30 & 3215 & 2.60 & 1.25 & 3.0 & 2.52 & 1.48 & 1 & 5 & 4 & 0.28 & -0.96 & 0.02\\
-\addlinespace
-Q43 & 31 & 3217 & 2.04 & 1.18 & 2.0 & 1.88 & 1.48 & 1 & 5 & 4 & 0.86 & -0.31 & 0.02\\
-Q44 & 32 & 3217 & 2.61 & 1.35 & 3.0 & 2.52 & 1.48 & 1 & 5 & 4 & 0.24 & -1.20 & 0.02\\
-Q45 & 33 & 3219 & 2.76 & 1.45 & 3.0 & 2.70 & 1.48 & 1 & 5 & 4 & 0.18 & -1.33 & 0.03\\
-Q46 & 34 & 3211 & 1.11 & 0.48 & 1.0 & 1.00 & 0.00 & 1 & 5 & 4 & 5.15 & 28.93 & 0.01\\
-Q47 & 35 & 3218 & 1.48 & 0.86 & 1.0 & 1.29 & 0.00 & 1 & 5 & 4 & 1.93 & 3.40 & 0.02\\
-\addlinespace
-Q49 & 36 & 3213 & 2.12 & 1.23 & 2.0 & 1.96 & 1.48 & 1 & 5 & 4 & 0.79 & -0.50 & 0.02\\
-Q50 & 37 & 3219 & 2.23 & 1.47 & 1.0 & 2.04 & 0.00 & 1 & 5 & 4 & 0.70 & -1.04 & 0.03\\
-Q51 & 38 & 3216 & 2.33 & 1.38 & 2.0 & 2.17 & 1.48 & 1 & 5 & 4 & 0.59 & -0.98 & 0.02\\
-Q52 & 39 & 3217 & 2.08 & 1.26 & 2.0 & 1.90 & 1.48 & 1 & 5 & 4 & 0.85 & -0.52 & 0.02\\
-Q53 & 40 & 3218 & 2.36 & 1.35 & 2.0 & 2.21 & 1.48 & 1 & 5 & 4 & 0.55 & -0.97 & 0.02\\
-\addlinespace
-Q54 & 41 & 3217 & 2.92 & 1.40 & 3.0 & 2.90 & 1.48 & 1 & 5 & 4 & 0.01 & -1.26 & 0.02\\
-Q55 & 42 & 3205 & 1.58 & 0.95 & 1.0 & 1.38 & 0.00 & 1 & 5 & 4 & 1.66 & 2.12 & 0.02\\
-Q56 & 43 & 3217 & 2.72 & 1.37 & 3.0 & 2.65 & 1.48 & 1 & 5 & 4 & 0.14 & -1.24 & 0.02\\
-Q57 & 44 & 3219 & 2.15 & 1.33 & 2.0 & 1.97 & 1.48 & 1 & 5 & 4 & 0.78 & -0.70 & 0.02\\
-Q58 & 45 & 3220 & 2.53 & 1.34 & 2.0 & 2.42 & 1.48 & 1 & 5 & 4 & 0.34 & -1.09 & 0.02\\
-\addlinespace
-Q59 & 46 & 3217 & 2.16 & 1.23 & 2.0 & 2.02 & 1.48 & 1 & 5 & 4 & 0.70 & -0.65 & 0.02\\
-Q60 & 47 & 3214 & 1.49 & 0.99 & 1.0 & 1.24 & 0.00 & 1 & 5 & 4 & 2.05 & 3.22 & 0.02\\
-Q61 & 48 & 3219 & 2.78 & 1.47 & 3.0 & 2.73 & 1.48 & 1 & 5 & 4 & 0.14 & -1.37 & 0.03\\
-Q62 & 49 & 3220 & 2.16 & 1.24 & 2.0 & 2.02 & 1.48 & 1 & 5 & 4 & 0.69 & -0.67 & 0.02\\
-Q63 & 50 & 3217 & 2.30 & 1.25 & 2.0 & 2.17 & 1.48 & 1 & 5 & 4 & 0.58 & -0.77 & 0.02\\
-\addlinespace
-Q64 & 51 & 3220 & 2.26 & 1.27 & 2.0 & 2.11 & 1.48 & 1 & 5 & 4 & 0.67 & -0.70 & 0.02\\
-Q65 & 52 & 3220 & 1.82 & 1.18 & 1.0 & 1.60 & 0.00 & 1 & 5 & 4 & 1.27 & 0.48 & 0.02\\
-Q66 & 53 & 3216 & 3.27 & 1.41 & 3.0 & 3.33 & 1.48 & 1 & 5 & 4 & -0.34 & -1.15 & 0.02\\
-Q68 & 54 & 3073 & 2.06 & 1.23 & 2.0 & 1.89 & 1.48 & 1 & 5 & 4 & 0.83 & -0.51 & 0.02\\
-Q69 & 55 & 3071 & 3.01 & 1.20 & 3.0 & 3.02 & 1.48 & 1 & 5 & 4 & -0.06 & -0.83 & 0.02\\
-\addlinespace
-Q70 & 56 & 3069 & 2.11 & 1.18 & 2.0 & 1.96 & 1.48 & 1 & 5 & 4 & 0.79 & -0.36 & 0.02\\
-Q71 & 57 & 3074 & 3.01 & 1.36 & 3.0 & 3.01 & 1.48 & 1 & 5 & 4 & -0.06 & -1.19 & 0.02\\
-Q72 & 58 & 3070 & 1.64 & 0.99 & 1.0 & 1.44 & 0.00 & 1 & 5 & 4 & 1.52 & 1.55 & 0.02\\
-Q73 & 59 & 3072 & 2.50 & 1.31 & 2.0 & 2.39 & 1.48 & 1 & 5 & 4 & 0.38 & -1.00 & 0.02\\
-Q74 & 60 & 3071 & 2.79 & 1.29 & 3.0 & 2.74 & 1.48 & 1 & 5 & 4 & 0.07 & -1.08 & 0.02\\
-\addlinespace
-Q76 & 61 & 3072 & 2.83 & 1.48 & 3.0 & 2.78 & 1.48 & 1 & 5 & 4 & 0.12 & -1.39 & 0.03\\
-Q77 & 62 & 3075 & 3.08 & 1.28 & 3.0 & 3.10 & 1.48 & 1 & 5 & 4 & -0.16 & -1.02 & 0.02\\
-Q78 & 63 & 3071 & 2.77 & 1.30 & 3.0 & 2.72 & 1.48 & 1 & 5 & 4 & 0.10 & -1.09 & 0.02\\
-Q79 & 64 & 3068 & 2.40 & 1.27 & 2.0 & 2.27 & 1.48 & 1 & 5 & 4 & 0.50 & -0.81 & 0.02\\
-Q80 & 65 & 3070 & 3.07 & 1.23 & 3.0 & 3.09 & 1.48 & 1 & 5 & 4 & -0.17 & -0.91 & 0.02\\
-\addlinespace
-Q81 & 66 & 3073 & 1.77 & 1.04 & 1.0 & 1.59 & 0.00 & 1 & 5 & 4 & 1.23 & 0.66 & 0.02\\
-Q82 & 67 & 3071 & 2.24 & 1.21 & 2.0 & 2.10 & 1.48 & 1 & 5 & 4 & 0.62 & -0.62 & 0.02\\
-Q84 & 68 & 3056 & 38.57 & 12.27 & 36.0 & 37.21 & 10.38 & 16 & 88 & 72 & 0.98 & 0.59 & 0.22\\
-Q85 & 69 & 3060 & 1.67 & 0.82 & 2.0 & 1.59 & 0.00 & 1 & 6 & 5 & 2.67 & 10.78 & 0.01\\
-Q86 & 70 & 3064 & 1.36 & 1.01 & 1.0 & 1.07 & 0.00 & 1 & 6 & 5 & 3.08 & 9.04 & 0.02\\
-\addlinespace
-Q87 & 71 & 3060 & 3.08 & 0.79 & 3.0 & 3.00 & 0.00 & 1 & 7 & 6 & 3.33 & 16.84 & 0.01\\
-Q88 & 72 & 3061 & 1.09 & 0.28 & 1.0 & 1.00 & 0.00 & 1 & 2 & 1 & 2.93 & 6.60 & 0.01\\
-Q89 & 73 & 3047 & 5.19 & 3.33 & 5.0 & 4.69 & 2.97 & 1 & 17 & 16 & 1.47 & 2.20 & 0.06\\
-Q90 & 74 & 3042 & 1.15 & 0.41 & 1.0 & 1.04 & 0.00 & 1 & 3 & 2 & 2.69 & 6.85 & 0.01\\
-Q91 & 75 & 3044 & 1.10 & 0.35 & 1.0 & 1.00 & 0.00 & 1 & 3 & 2 & 3.90 & 15.41 & 0.01\\
-\addlinespace
-Q92 & 76 & 3048 & 1.82 & 0.79 & 2.0 & 1.76 & 1.48 & 1 & 5 & 4 & 0.48 & -0.78 & 0.01\\
-Q95 & 77 & 3054 & 5.54 & 1.99 & 7.0 & 5.92 & 0.00 & 1 & 7 & 6 & -1.26 & 0.24 & 0.04\\
-Q93 & 78 & 3057 & 3.24 & 2.96 & 1.0 & 2.92 & 0.00 & 1 & 8 & 7 & 0.70 & -1.36 & 0.05\\
-Q97 & 79 & 2030 & 4.49 & 1.55 & 5.0 & 4.54 & 1.48 & 1 & 7 & 6 & -0.30 & -0.57 & 0.03\\
-Q98 & 80 & 3054 & 2.23 & 0.54 & 2.0 & 2.23 & 0.00 & 1 & 3 & 2 & 0.11 & -0.24 & 0.01\\
-\addlinespace
-Generation & 81 & 3056 & 2.43 & 0.79 & 2.0 & 2.35 & 0.00 & 1 & 5 & 4 & 0.76 & 0.22 & 0.01\\
-Podcast\_Usage & 82 & 3060 & 1.60 & 0.63 & 2.0 & 1.53 & 1.48 & 1 & 3 & 2 & 0.56 & -0.63 & 0.01\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \CommentTok{\# A POSSIBLE BAR PLOT OF ITEM STATISTICS}
 \CommentTok{\# barplot(item\_stats$nbr.val, main=\textquotesingle{}Complete Cases\textquotesingle{},}
 \CommentTok{\# horiz=TRUE, col=\textquotesingle{}red\textquotesingle{}) barplot(item\_stats$nbr.val,}
@@ -598,21 +632,35 @@ Podcast\_Usage & 82 & 3060 & 1.60 & 0.63 & 2.0 & 1.53 & 1.48 & 1 & 3 & 2 & 0.56 
 \end{Highlighting}
 \end{Shaded}
 
-\textbf{Classical Item Analysis}.
-
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# CLASSICAL ITEM ANALYSIS CTT::itemAnalysis(items,}
-\CommentTok{\# itemReport=TRUE, NA.Delete=TRUE, rBisML=FALSE, hardFlag,}
-\CommentTok{\# easyFlag, pBisFlag, bisFlag, flagStyle = c(\textquotesingle{}X\textquotesingle{},\textquotesingle{}\textquotesingle{}))}
+\CommentTok{\# CLASSICAL ITEM ANALYSIS}
+
+\CommentTok{\# CTT::itemAnalysis(items, itemReport=TRUE, NA.Delete=TRUE,}
+\CommentTok{\# rBisML=FALSE, hardFlag, easyFlag, pBisFlag, bisFlag,}
+\CommentTok{\# flagStyle = c(\textquotesingle{}X\textquotesingle{},\textquotesingle{}\textquotesingle{}))}
+
+\NormalTok{CTT}\SpecialCharTok{::}\FunctionTok{itemAnalysis}\NormalTok{(items, }\AttributeTok{itemReport =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{NA.Delete =} \ConstantTok{TRUE}\NormalTok{,}
+    \AttributeTok{rBisML =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{flagStyle =} \FunctionTok{c}\NormalTok{(}\StringTok{"X"}\NormalTok{, }\StringTok{""}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+ Number of Items 
+ 66 
+
+ Number of Examinees 
+ 2979 
+
+ Coefficient Alpha 
+ 0.981 
+\end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# MORE ITEM STATISTICS}
 \FunctionTok{library}\NormalTok{(pastecs)}
-\NormalTok{item\_stats }\OtherTok{\textless{}{-}}\NormalTok{ pastecs}\SpecialCharTok{::}\FunctionTok{stat.desc}\NormalTok{(all)  }\CommentTok{\# use the stat.desc() to render data frame of item stats}
+\NormalTok{item\_stats }\OtherTok{\textless{}{-}}\NormalTok{ pastecs}\SpecialCharTok{::}\FunctionTok{stat.desc}\NormalTok{(items)  }\CommentTok{\# use the stat.desc() to render data frame of item stats}
 \NormalTok{item\_stats }\OtherTok{\textless{}{-}} \FunctionTok{t}\NormalTok{(item\_stats)  }\CommentTok{\# transpose the data frame}
 \NormalTok{item\_stats }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(item\_stats)}
 \NormalTok{item\_stats[}\FunctionTok{order}\NormalTok{(item\_stats}\SpecialCharTok{$}\NormalTok{mean), ]  }\CommentTok{\# order by mean}
@@ -620,172 +668,140 @@ Podcast\_Usage & 82 & 3060 & 1.60 & 0.63 & 2.0 & 1.53 & 1.48 & 1 & 3 & 2 & 0.56 
 \end{Shaded}
 
 \begin{verbatim}
-              nbr.val nbr.null nbr.na min  max range     sum median        mean
-Q88              3061        0    161   1    2     1    3327    1.0    1.086900
-Q91              3044        0    178   1    3     2    3334    1.0    1.095269
-Q46              3211        0     11   1    5     4    3560    1.0    1.108689
-Q90              3042        0    180   1    3     2    3506    1.0    1.152531
-Q41              3211        0     11   1    5     4    4091    1.0    1.274058
-Q17              3208        0     14   1    5     4    4288    1.0    1.336658
-Q86              3064        0    158   1    6     5    4169    1.0    1.360640
-Q47              3218        0      4   1    5     4    4758    1.0    1.478558
-Q60              3214        0      8   1    5     4    4784    1.0    1.488488
-Q55              3205        0     17   1    5     4    5067    1.0    1.580967
-Podcast_Usage    3060        0    162   1    3     2    4911    2.0    1.604902
-Q72              3070        0    152   1    5     4    5027    1.0    1.637459
-Q85              3060        0    162   1    6     5    5123    2.0    1.674183
-Q81              3073        0    149   1    5     4    5435    1.0    1.768630
-Q92              3048        0    174   1    5     4    5539    2.0    1.817257
-Q65              3220        0      2   1    5     4    5868    1.0    1.822360
-Q10              3220        0      2   1    5     4    5887    1.0    1.828261
-Q26              3212        0     10   1    5     4    6005    1.0    1.869552
-Q24              3221        0      1   1    5     4    6074    1.0    1.885750
-Q23              3219        0      3   1    5     4    6170    1.0    1.916744
-Q27              3217        0      5   1    5     4    6236    1.0    1.938452
-Q31              3217        0      5   1    5     4    6531    2.0    2.030152
-Q30              3219        0      3   1    5     4    6581    2.0    2.044424
-Q43              3217        0      5   1    5     4    6577    2.0    2.044451
-Q68              3073        0    149   1    5     4    6316    2.0    2.055321
-Q52              3217        0      5   1    5     4    6683    2.0    2.077401
-Q70              3069        0    153   1    5     4    6477    2.0    2.110459
-Q49              3213        0      9   1    5     4    6822    2.0    2.123249
-Q16              3217        0      5   1    5     4    6851    2.0    2.129624
-Q57              3219        0      3   1    5     4    6931    2.0    2.153153
-Q20              3217        0      5   1    5     4    6939    2.0    2.156979
-Q62              3220        0      2   1    5     4    6961    2.0    2.161801
-Q59              3217        0      5   1    5     4    6962    2.0    2.164128
-Q21              3218        0      4   1    5     4    7081    1.0    2.200435
-Q98              3054        0    168   1    3     2    6804    2.0    2.227898
-Q50              3219        0      3   1    5     4    7181    1.0    2.230817
-Q82              3071        0    151   1    5     4    6870    2.0    2.237056
-Q64              3220        0      2   1    5     4    7263    2.0    2.255590
-Q28              3216        0      6   1    5     4    7276    2.0    2.262438
-Q40              3220        0      2   1    5     4    7334    2.0    2.277640
-Q63              3217        0      5   1    5     4    7396    2.0    2.299036
-Q19              3219        0      3   1    5     4    7460    2.0    2.317490
-Q51              3216        0      6   1    5     4    7508    2.0    2.334577
-Q53              3218        0      4   1    5     4    7596    2.0    2.360472
-Q79              3068        0    154   1    5     4    7350    2.0    2.395698
-Generation       3056        0    166   1    5     4    7415    2.0    2.426374
-Q34              3219        0      3   1    5     4    7919    2.0    2.460081
-Q29              3213        0      9   1    5     4    7941    2.0    2.471522
-Q73              3072        0    150   1    5     4    7672    2.0    2.497396
-Q11              3216        0      6   1    5     4    8090    2.0    2.515547
-Q58              3220        0      2   1    5     4    8161    2.0    2.534472
-Q7               3215        0      7   1    5     4    8151    2.0    2.535303
-Q42              3215        0      7   1    5     4    8344    3.0    2.595334
-Q44              3217        0      5   1    5     4    8404    3.0    2.612372
-Q56              3217        0      5   1    5     4    8760    3.0    2.723034
-Q18              3220        0      2   1    5     4    8841    3.0    2.745652
-Q45              3219        0      3   1    5     4    8883    3.0    2.759553
-Q78              3071        0    151   1    5     4    8521    3.0    2.774666
-Q36              3216        0      6   1    5     4    8934    3.0    2.777985
-Q61              3219        0      3   1    5     4    8950    3.0    2.780367
-Q32              3219        0      3   1    5     4    8970    3.0    2.786580
-Q74              3071        0    151   1    5     4    8569    3.0    2.790296
-Q76              3072        0    150   1    5     4    8686    3.0    2.827474
-Q54              3217        0      5   1    5     4    9383    3.0    2.916693
-Q37              3221        0      1   1    5     4    9469    3.0    2.939770
-Q38              3217        0      5   1    5     4    9488    3.0    2.949332
-Q71              3074        0    148   1    5     4    9240    3.0    3.005856
-Q69              3071        0    151   1    5     4    9255    3.0    3.013676
-Q39              3219        0      3   1    5     4    9826    3.0    3.052501
-Q80              3070        0    152   1    5     4    9423    3.0    3.069381
-Q87              3060        0    162   1    7     6    9424    3.0    3.079739
-Q77              3075        0    147   1    5     4    9479    3.0    3.082602
-Q35              3217        0      5   1    5     4   10049    3.0    3.123718
-Q25              3217        0      5   1    5     4   10243    3.0    3.184022
-Q93              3057        0    165   1    8     7    9894    1.0    3.236506
-Q66              3216        0      6   1    5     4   10510    3.0    3.268035
-Q22              3218        0      4   1    5     4   10713    4.0    3.329086
-Q97              2030        0   1192   1    7     6    9109    5.0    4.487192
-Q89              3047        0    175   1   17    16   15828    5.0    5.194618
-Q95              3054        0    168   1    7     6   16916    7.0    5.538965
-Q84              3056        0    166  16   88    72  117858   36.0   38.566099
-X                3222        0      0   1 3222  3221 5192253 1611.5 1611.500000
-                   SE.mean CI.mean.0.95          var     std.dev  coef.var
-Q88            0.005092226  0.009984529 7.937408e-02   0.2817341 0.2592089
-Q91            0.006306232  0.012364905 1.210555e-01   0.3479303 0.3176664
-Q46            0.008490661  0.016647666 2.314852e-01   0.4811291 0.4339622
-Q90            0.007360864  0.014432772 1.648226e-01   0.4059835 0.3522538
-Q41            0.015489036  0.030369403 7.703517e-01   0.8776968 0.6888987
-Q17            0.017179617  0.033684143 9.468067e-01   0.9730399 0.7279646
-Q86            0.018298660  0.035878892 1.025953e+00   1.0128932 0.7444243
-Q47            0.015127455  0.029660426 7.364067e-01   0.8581415 0.5803907
-Q60            0.017484938  0.034282762 9.825939e-01   0.9912587 0.6659502
-Q55            0.016718556  0.032780150 8.958299e-01   0.9464829 0.5986733
-Podcast_Usage  0.011478591  0.022506530 4.031796e-01   0.6349643 0.3956405
-Q72            0.017919686  0.035135795 9.858235e-01   0.9928864 0.6063579
-Q85            0.014864204  0.029144837 6.760904e-01   0.8222471 0.4911334
-Q81            0.018681107  0.036628728 1.072427e+00   1.0355805 0.5855270
-Q92            0.014352841  0.028142230 6.279003e-01   0.7924016 0.4360426
-Q65            0.020744262  0.040673300 1.385645e+00   1.1771341 0.6459393
-Q10            0.020808433  0.040799119 1.394231e+00   1.1807754 0.6458462
-Q26            0.022437462  0.043993200 1.617048e+00   1.2716321 0.6801803
-Q24            0.020727511  0.040640450 1.383837e+00   1.1763661 0.6238188
-Q23            0.019956972  0.039129665 1.282066e+00   1.1322834 0.5907326
-Q27            0.023790856  0.046646777 1.820838e+00   1.3493841 0.6961143
-Q31            0.020911316  0.041000856 1.406740e+00   1.1860606 0.5842225
-Q30            0.022072319  0.043277229 1.568256e+00   1.2523002 0.6125444
-Q43            0.020824627  0.040830886 1.395101e+00   1.1811438 0.5777314
-Q68            0.022266844  0.043659414 1.523631e+00   1.2343546 0.6005655
-Q52            0.022288789  0.043701672 1.598174e+00   1.2641890 0.6085435
-Q70            0.021364098  0.041889388 1.400767e+00   1.1835402 0.5607974
-Q49            0.021761390  0.042667618 1.521542e+00   1.2335081 0.5809530
-Q16            0.022434067  0.043986519 1.619076e+00   1.2724290 0.5974900
-Q57            0.023485372  0.046047802 1.775480e+00   1.3324715 0.6188466
-Q20            0.024428124  0.047896270 1.919691e+00   1.3855291 0.6423472
-Q62            0.021779530  0.042703151 1.527400e+00   1.2358804 0.5716901
-Q59            0.021672305  0.042492930 1.510989e+00   1.2292229 0.5679991
-Q21            0.025831450  0.050647768 2.147255e+00   1.4653515 0.6659372
-Q98            0.009744683  0.019106802 2.900043e-01   0.5385205 0.2417169
-Q50            0.025990704  0.050960010 2.174488e+00   1.4746146 0.6610200
-Q82            0.021826439  0.042795906 1.463004e+00   1.2095471 0.5406869
-Q64            0.022468413  0.044053844 1.625551e+00   1.2749711 0.5652495
-Q28            0.022075077  0.043282651 1.567186e+00   1.2518729 0.5533292
-Q40            0.024425246  0.047890609 1.921028e+00   1.3860116 0.6085298
-Q63            0.021966859  0.043070462 1.552340e+00   1.2459296 0.5419356
-Q19            0.023452526  0.045983401 1.770518e+00   1.3306079 0.5741591
-Q51            0.024281404  0.047608600 1.896110e+00   1.3769933 0.5898256
-Q53            0.023856535  0.046775548 1.831474e+00   1.3533196 0.5733258
-Q79            0.022911965  0.044924356 1.610572e+00   1.2690830 0.5297342
-Generation     0.014316092  0.028070146 6.263287e-01   0.7914093 0.3261695
-Q34            0.023465067  0.046007991 1.772412e+00   1.3313195 0.5411690
-Q29            0.023642519  0.046355954 1.795966e+00   1.3401367 0.5422314
-Q73            0.023590018  0.046253816 1.709534e+00   1.3074915 0.5235420
-Q11            0.023890349  0.046841858 1.835528e+00   1.3548166 0.5385773
-Q58            0.023641218  0.046353365 1.799681e+00   1.3415220 0.5293102
-Q7             0.025218942  0.049446839 2.044724e+00   1.4299385 0.5640108
-Q42            0.022038135  0.043210223 1.561459e+00   1.2495836 0.4814731
-Q44            0.023883741  0.046828896 1.835083e+00   1.3546524 0.5185527
-Q56            0.024094459  0.047242052 1.867607e+00   1.3666041 0.5018682
-Q18            0.024196861  0.047442814 1.885272e+00   1.3730519 0.5000822
-Q45            0.025541840  0.050079922 2.100029e+00   1.4491477 0.5251386
-Q78            0.023426479  0.045933164 1.685365e+00   1.2982159 0.4678818
-Q36            0.023564784  0.046203523 1.785842e+00   1.3363539 0.4810515
-Q61            0.025864513  0.050712588 2.153424e+00   1.4674550 0.5277919
-Q32            0.023280773  0.045646646 1.744680e+00   1.3208634 0.4740088
-Q74            0.023365007  0.045812634 1.676531e+00   1.2948093 0.4640401
-Q76            0.026741805  0.052433640 2.196861e+00   1.4821813 0.5242069
-Q54            0.024734726  0.048497425 1.968182e+00   1.4029191 0.4809966
-Q37            0.024280108  0.047606033 1.898856e+00   1.3779897 0.4687406
-Q38            0.024725087  0.048478525 1.966648e+00   1.4023724 0.4754882
-Q71            0.024589907  0.048214322 1.858736e+00   1.3633546 0.4535662
-Q69            0.021621379  0.042393839 1.435644e+00   1.1981834 0.3975820
-Q39            0.026028978  0.051035055 2.180897e+00   1.4767861 0.4837955
-Q80            0.022153977  0.043438128 1.506752e+00   1.2274983 0.3999172
-Q87            0.014271609  0.027982912 6.232572e-01   0.7894664 0.2563420
-Q77            0.023042783  0.045180815 1.632732e+00   1.2777841 0.4145148
-Q35            0.024544640  0.048124722 1.938047e+00   1.3921377 0.4456669
-Q25            0.023217693  0.045522974 1.734160e+00   1.3168751 0.4135885
-Q93            0.053572296  0.105041373 8.773562e+00   2.9620199 0.9151905
-Q66            0.024787878  0.048601645 1.976035e+00   1.4057153 0.4301409
-Q22            0.026288815  0.051544525 2.223966e+00   1.4912966 0.4479597
-Q97            0.034354310  0.067373400 2.395844e+00   1.5478513 0.3449488
-Q89            0.060334343  0.118300147 1.109179e+01   3.3304339 0.6411317
-Q95            0.035980836  0.070549111 3.953771e+00   1.9884092 0.3589857
-Q84            0.221939991  0.435166796 1.505305e+02  12.2690868 0.3181314
-X             16.388512237 32.132968367 8.653755e+05 930.2556100 0.5772607
+    nbr.val nbr.null nbr.na min max range   sum median     mean     SE.mean
+Q46    3211        0     11   1   5     4  3560      1 1.108689 0.008490661
+Q41    3211        0     11   1   5     4  4091      1 1.274058 0.015489036
+Q17    3208        0     14   1   5     4  4288      1 1.336658 0.017179617
+Q47    3218        0      4   1   5     4  4758      1 1.478558 0.015127455
+Q60    3214        0      8   1   5     4  4784      1 1.488488 0.017484938
+Q55    3205        0     17   1   5     4  5067      1 1.580967 0.016718556
+Q72    3070        0    152   1   5     4  5027      1 1.637459 0.017919686
+Q81    3073        0    149   1   5     4  5435      1 1.768630 0.018681107
+Q65    3220        0      2   1   5     4  5868      1 1.822360 0.020744262
+Q10    3220        0      2   1   5     4  5887      1 1.828261 0.020808433
+Q26    3212        0     10   1   5     4  6005      1 1.869552 0.022437462
+Q24    3221        0      1   1   5     4  6074      1 1.885750 0.020727511
+Q23    3219        0      3   1   5     4  6170      1 1.916744 0.019956972
+Q27    3217        0      5   1   5     4  6236      1 1.938452 0.023790856
+Q31    3217        0      5   1   5     4  6531      2 2.030152 0.020911316
+Q30    3219        0      3   1   5     4  6581      2 2.044424 0.022072319
+Q43    3217        0      5   1   5     4  6577      2 2.044451 0.020824627
+Q68    3073        0    149   1   5     4  6316      2 2.055321 0.022266844
+Q52    3217        0      5   1   5     4  6683      2 2.077401 0.022288789
+Q70    3069        0    153   1   5     4  6477      2 2.110459 0.021364098
+Q49    3213        0      9   1   5     4  6822      2 2.123249 0.021761390
+Q16    3217        0      5   1   5     4  6851      2 2.129624 0.022434067
+Q57    3219        0      3   1   5     4  6931      2 2.153153 0.023485372
+Q20    3217        0      5   1   5     4  6939      2 2.156979 0.024428124
+Q62    3220        0      2   1   5     4  6961      2 2.161801 0.021779530
+Q59    3217        0      5   1   5     4  6962      2 2.164128 0.021672305
+Q21    3218        0      4   1   5     4  7081      1 2.200435 0.025831450
+Q50    3219        0      3   1   5     4  7181      1 2.230817 0.025990704
+Q82    3071        0    151   1   5     4  6870      2 2.237056 0.021826439
+Q64    3220        0      2   1   5     4  7263      2 2.255590 0.022468413
+Q28    3216        0      6   1   5     4  7276      2 2.262438 0.022075077
+Q40    3220        0      2   1   5     4  7334      2 2.277640 0.024425246
+Q63    3217        0      5   1   5     4  7396      2 2.299036 0.021966859
+Q19    3219        0      3   1   5     4  7460      2 2.317490 0.023452526
+Q51    3216        0      6   1   5     4  7508      2 2.334577 0.024281404
+Q53    3218        0      4   1   5     4  7596      2 2.360472 0.023856535
+Q79    3068        0    154   1   5     4  7350      2 2.395698 0.022911965
+Q34    3219        0      3   1   5     4  7919      2 2.460081 0.023465067
+Q29    3213        0      9   1   5     4  7941      2 2.471522 0.023642519
+Q73    3072        0    150   1   5     4  7672      2 2.497396 0.023590018
+Q11    3216        0      6   1   5     4  8090      2 2.515547 0.023890349
+Q58    3220        0      2   1   5     4  8161      2 2.534472 0.023641218
+Q7     3215        0      7   1   5     4  8151      2 2.535303 0.025218942
+Q42    3215        0      7   1   5     4  8344      3 2.595334 0.022038135
+Q44    3217        0      5   1   5     4  8404      3 2.612372 0.023883741
+Q56    3217        0      5   1   5     4  8760      3 2.723034 0.024094459
+Q18    3220        0      2   1   5     4  8841      3 2.745652 0.024196861
+Q45    3219        0      3   1   5     4  8883      3 2.759553 0.025541840
+Q78    3071        0    151   1   5     4  8521      3 2.774666 0.023426479
+Q36    3216        0      6   1   5     4  8934      3 2.777985 0.023564784
+Q61    3219        0      3   1   5     4  8950      3 2.780367 0.025864513
+Q32    3219        0      3   1   5     4  8970      3 2.786580 0.023280773
+Q74    3071        0    151   1   5     4  8569      3 2.790296 0.023365007
+Q76    3072        0    150   1   5     4  8686      3 2.827474 0.026741805
+Q54    3217        0      5   1   5     4  9383      3 2.916693 0.024734726
+Q37    3221        0      1   1   5     4  9469      3 2.939770 0.024280108
+Q38    3217        0      5   1   5     4  9488      3 2.949332 0.024725087
+Q71    3074        0    148   1   5     4  9240      3 3.005856 0.024589907
+Q69    3071        0    151   1   5     4  9255      3 3.013676 0.021621379
+Q39    3219        0      3   1   5     4  9826      3 3.052501 0.026028978
+Q80    3070        0    152   1   5     4  9423      3 3.069381 0.022153977
+Q77    3075        0    147   1   5     4  9479      3 3.082602 0.023042783
+Q35    3217        0      5   1   5     4 10049      3 3.123718 0.024544640
+Q25    3217        0      5   1   5     4 10243      3 3.184022 0.023217693
+Q66    3216        0      6   1   5     4 10510      3 3.268035 0.024787878
+Q22    3218        0      4   1   5     4 10713      4 3.329086 0.026288815
+    CI.mean.0.95       var   std.dev  coef.var
+Q46   0.01664767 0.2314852 0.4811291 0.4339622
+Q41   0.03036940 0.7703517 0.8776968 0.6888987
+Q17   0.03368414 0.9468067 0.9730399 0.7279646
+Q47   0.02966043 0.7364067 0.8581415 0.5803907
+Q60   0.03428276 0.9825939 0.9912587 0.6659502
+Q55   0.03278015 0.8958299 0.9464829 0.5986733
+Q72   0.03513580 0.9858235 0.9928864 0.6063579
+Q81   0.03662873 1.0724271 1.0355805 0.5855270
+Q65   0.04067330 1.3856446 1.1771341 0.6459393
+Q10   0.04079912 1.3942306 1.1807754 0.6458462
+Q26   0.04399320 1.6170483 1.2716321 0.6801803
+Q24   0.04064045 1.3838372 1.1763661 0.6238188
+Q23   0.03912966 1.2820657 1.1322834 0.5907326
+Q27   0.04664678 1.8208375 1.3493841 0.6961143
+Q31   0.04100086 1.4067398 1.1860606 0.5842225
+Q30   0.04327723 1.5682559 1.2523002 0.6125444
+Q43   0.04083089 1.3951006 1.1811438 0.5777314
+Q68   0.04365941 1.5236314 1.2343546 0.6005655
+Q52   0.04370167 1.5981738 1.2641890 0.6085435
+Q70   0.04188939 1.4007674 1.1835402 0.5607974
+Q49   0.04266762 1.5215421 1.2335081 0.5809530
+Q16   0.04398652 1.6190755 1.2724290 0.5974900
+Q57   0.04604780 1.7754803 1.3324715 0.6188466
+Q20   0.04789627 1.9196909 1.3855291 0.6423472
+Q62   0.04270315 1.5274003 1.2358804 0.5716901
+Q59   0.04249293 1.5109889 1.2292229 0.5679991
+Q21   0.05064777 2.1472550 1.4653515 0.6659372
+Q50   0.05096001 2.1744882 1.4746146 0.6610200
+Q82   0.04279591 1.4630042 1.2095471 0.5406869
+Q64   0.04405384 1.6255512 1.2749711 0.5652495
+Q28   0.04328265 1.5671858 1.2518729 0.5533292
+Q40   0.04789061 1.9210283 1.3860116 0.6085298
+Q63   0.04307046 1.5523405 1.2459296 0.5419356
+Q19   0.04598340 1.7705175 1.3306079 0.5741591
+Q51   0.04760860 1.8961104 1.3769933 0.5898256
+Q53   0.04677555 1.8314741 1.3533196 0.5733258
+Q79   0.04492436 1.6105716 1.2690830 0.5297342
+Q34   0.04600799 1.7724116 1.3313195 0.5411690
+Q29   0.04635595 1.7959665 1.3401367 0.5422314
+Q73   0.04625382 1.7095341 1.3074915 0.5235420
+Q11   0.04684186 1.8355280 1.3548166 0.5385773
+Q58   0.04635336 1.7996811 1.3415220 0.5293102
+Q7    0.04944684 2.0447240 1.4299385 0.5640108
+Q42   0.04321022 1.5614592 1.2495836 0.4814731
+Q44   0.04682890 1.8350832 1.3546524 0.5185527
+Q56   0.04724205 1.8676067 1.3666041 0.5018682
+Q18   0.04744281 1.8852716 1.3730519 0.5000822
+Q45   0.05007992 2.1000291 1.4491477 0.5251386
+Q78   0.04593316 1.6853645 1.2982159 0.4678818
+Q36   0.04620352 1.7858418 1.3363539 0.4810515
+Q61   0.05071259 2.1534242 1.4674550 0.5277919
+Q32   0.04564665 1.7446800 1.3208634 0.4740088
+Q74   0.04581263 1.6765312 1.2948093 0.4640401
+Q76   0.05243364 2.1968613 1.4821813 0.5242069
+Q54   0.04849742 1.9681821 1.4029191 0.4809966
+Q37   0.04760603 1.8988557 1.3779897 0.4687406
+Q38   0.04847852 1.9666483 1.4023724 0.4754882
+Q71   0.04821432 1.8587356 1.3633546 0.4535662
+Q69   0.04239384 1.4356435 1.1981834 0.3975820
+Q39   0.05103505 2.1808973 1.4767861 0.4837955
+Q80   0.04343813 1.5067520 1.2274983 0.3999172
+Q77   0.04518081 1.6327323 1.2777841 0.4145148
+Q35   0.04812472 1.9380474 1.3921377 0.4456669
+Q25   0.04552297 1.7341601 1.3168751 0.4135885
+Q66   0.04860164 1.9760355 1.4057153 0.4301409
+Q22   0.05154452 2.2239657 1.4912966 0.4479597
 \end{verbatim}
 
 \begin{Shaded}
@@ -795,173 +811,150 @@ X             16.388512237 32.132968367 8.653755e+05 930.2556100 0.5772607
 \end{Shaded}
 
 \begin{verbatim}
-              nbr.val nbr.null nbr.na min  max range     sum median        mean
-Q97              2030        0   1192   1    7     6    9109    5.0    4.487192
-Q90              3042        0    180   1    3     2    3506    1.0    1.152531
-Q91              3044        0    178   1    3     2    3334    1.0    1.095269
-Q89              3047        0    175   1   17    16   15828    5.0    5.194618
-Q92              3048        0    174   1    5     4    5539    2.0    1.817257
-Q95              3054        0    168   1    7     6   16916    7.0    5.538965
-Q98              3054        0    168   1    3     2    6804    2.0    2.227898
-Q84              3056        0    166  16   88    72  117858   36.0   38.566099
-Generation       3056        0    166   1    5     4    7415    2.0    2.426374
-Q93              3057        0    165   1    8     7    9894    1.0    3.236506
-Q85              3060        0    162   1    6     5    5123    2.0    1.674183
-Q87              3060        0    162   1    7     6    9424    3.0    3.079739
-Podcast_Usage    3060        0    162   1    3     2    4911    2.0    1.604902
-Q88              3061        0    161   1    2     1    3327    1.0    1.086900
-Q86              3064        0    158   1    6     5    4169    1.0    1.360640
-Q79              3068        0    154   1    5     4    7350    2.0    2.395698
-Q70              3069        0    153   1    5     4    6477    2.0    2.110459
-Q72              3070        0    152   1    5     4    5027    1.0    1.637459
-Q80              3070        0    152   1    5     4    9423    3.0    3.069381
-Q69              3071        0    151   1    5     4    9255    3.0    3.013676
-Q74              3071        0    151   1    5     4    8569    3.0    2.790296
-Q78              3071        0    151   1    5     4    8521    3.0    2.774666
-Q82              3071        0    151   1    5     4    6870    2.0    2.237056
-Q73              3072        0    150   1    5     4    7672    2.0    2.497396
-Q76              3072        0    150   1    5     4    8686    3.0    2.827474
-Q68              3073        0    149   1    5     4    6316    2.0    2.055321
-Q81              3073        0    149   1    5     4    5435    1.0    1.768630
-Q71              3074        0    148   1    5     4    9240    3.0    3.005856
-Q77              3075        0    147   1    5     4    9479    3.0    3.082602
-Q55              3205        0     17   1    5     4    5067    1.0    1.580967
-Q17              3208        0     14   1    5     4    4288    1.0    1.336658
-Q41              3211        0     11   1    5     4    4091    1.0    1.274058
-Q46              3211        0     11   1    5     4    3560    1.0    1.108689
-Q26              3212        0     10   1    5     4    6005    1.0    1.869552
-Q29              3213        0      9   1    5     4    7941    2.0    2.471522
-Q49              3213        0      9   1    5     4    6822    2.0    2.123249
-Q60              3214        0      8   1    5     4    4784    1.0    1.488488
-Q7               3215        0      7   1    5     4    8151    2.0    2.535303
-Q42              3215        0      7   1    5     4    8344    3.0    2.595334
-Q11              3216        0      6   1    5     4    8090    2.0    2.515547
-Q28              3216        0      6   1    5     4    7276    2.0    2.262438
-Q36              3216        0      6   1    5     4    8934    3.0    2.777985
-Q51              3216        0      6   1    5     4    7508    2.0    2.334577
-Q66              3216        0      6   1    5     4   10510    3.0    3.268035
-Q16              3217        0      5   1    5     4    6851    2.0    2.129624
-Q20              3217        0      5   1    5     4    6939    2.0    2.156979
-Q25              3217        0      5   1    5     4   10243    3.0    3.184022
-Q27              3217        0      5   1    5     4    6236    1.0    1.938452
-Q31              3217        0      5   1    5     4    6531    2.0    2.030152
-Q35              3217        0      5   1    5     4   10049    3.0    3.123718
-Q38              3217        0      5   1    5     4    9488    3.0    2.949332
-Q43              3217        0      5   1    5     4    6577    2.0    2.044451
-Q44              3217        0      5   1    5     4    8404    3.0    2.612372
-Q52              3217        0      5   1    5     4    6683    2.0    2.077401
-Q54              3217        0      5   1    5     4    9383    3.0    2.916693
-Q56              3217        0      5   1    5     4    8760    3.0    2.723034
-Q59              3217        0      5   1    5     4    6962    2.0    2.164128
-Q63              3217        0      5   1    5     4    7396    2.0    2.299036
-Q21              3218        0      4   1    5     4    7081    1.0    2.200435
-Q22              3218        0      4   1    5     4   10713    4.0    3.329086
-Q47              3218        0      4   1    5     4    4758    1.0    1.478558
-Q53              3218        0      4   1    5     4    7596    2.0    2.360472
-Q19              3219        0      3   1    5     4    7460    2.0    2.317490
-Q23              3219        0      3   1    5     4    6170    1.0    1.916744
-Q30              3219        0      3   1    5     4    6581    2.0    2.044424
-Q32              3219        0      3   1    5     4    8970    3.0    2.786580
-Q34              3219        0      3   1    5     4    7919    2.0    2.460081
-Q39              3219        0      3   1    5     4    9826    3.0    3.052501
-Q45              3219        0      3   1    5     4    8883    3.0    2.759553
-Q50              3219        0      3   1    5     4    7181    1.0    2.230817
-Q57              3219        0      3   1    5     4    6931    2.0    2.153153
-Q61              3219        0      3   1    5     4    8950    3.0    2.780367
-Q10              3220        0      2   1    5     4    5887    1.0    1.828261
-Q18              3220        0      2   1    5     4    8841    3.0    2.745652
-Q40              3220        0      2   1    5     4    7334    2.0    2.277640
-Q58              3220        0      2   1    5     4    8161    2.0    2.534472
-Q62              3220        0      2   1    5     4    6961    2.0    2.161801
-Q64              3220        0      2   1    5     4    7263    2.0    2.255590
-Q65              3220        0      2   1    5     4    5868    1.0    1.822360
-Q24              3221        0      1   1    5     4    6074    1.0    1.885750
-Q37              3221        0      1   1    5     4    9469    3.0    2.939770
-X                3222        0      0   1 3222  3221 5192253 1611.5 1611.500000
-                   SE.mean CI.mean.0.95          var     std.dev  coef.var
-Q97            0.034354310  0.067373400 2.395844e+00   1.5478513 0.3449488
-Q90            0.007360864  0.014432772 1.648226e-01   0.4059835 0.3522538
-Q91            0.006306232  0.012364905 1.210555e-01   0.3479303 0.3176664
-Q89            0.060334343  0.118300147 1.109179e+01   3.3304339 0.6411317
-Q92            0.014352841  0.028142230 6.279003e-01   0.7924016 0.4360426
-Q95            0.035980836  0.070549111 3.953771e+00   1.9884092 0.3589857
-Q98            0.009744683  0.019106802 2.900043e-01   0.5385205 0.2417169
-Q84            0.221939991  0.435166796 1.505305e+02  12.2690868 0.3181314
-Generation     0.014316092  0.028070146 6.263287e-01   0.7914093 0.3261695
-Q93            0.053572296  0.105041373 8.773562e+00   2.9620199 0.9151905
-Q85            0.014864204  0.029144837 6.760904e-01   0.8222471 0.4911334
-Q87            0.014271609  0.027982912 6.232572e-01   0.7894664 0.2563420
-Podcast_Usage  0.011478591  0.022506530 4.031796e-01   0.6349643 0.3956405
-Q88            0.005092226  0.009984529 7.937408e-02   0.2817341 0.2592089
-Q86            0.018298660  0.035878892 1.025953e+00   1.0128932 0.7444243
-Q79            0.022911965  0.044924356 1.610572e+00   1.2690830 0.5297342
-Q70            0.021364098  0.041889388 1.400767e+00   1.1835402 0.5607974
-Q72            0.017919686  0.035135795 9.858235e-01   0.9928864 0.6063579
-Q80            0.022153977  0.043438128 1.506752e+00   1.2274983 0.3999172
-Q69            0.021621379  0.042393839 1.435644e+00   1.1981834 0.3975820
-Q74            0.023365007  0.045812634 1.676531e+00   1.2948093 0.4640401
-Q78            0.023426479  0.045933164 1.685365e+00   1.2982159 0.4678818
-Q82            0.021826439  0.042795906 1.463004e+00   1.2095471 0.5406869
-Q73            0.023590018  0.046253816 1.709534e+00   1.3074915 0.5235420
-Q76            0.026741805  0.052433640 2.196861e+00   1.4821813 0.5242069
-Q68            0.022266844  0.043659414 1.523631e+00   1.2343546 0.6005655
-Q81            0.018681107  0.036628728 1.072427e+00   1.0355805 0.5855270
-Q71            0.024589907  0.048214322 1.858736e+00   1.3633546 0.4535662
-Q77            0.023042783  0.045180815 1.632732e+00   1.2777841 0.4145148
-Q55            0.016718556  0.032780150 8.958299e-01   0.9464829 0.5986733
-Q17            0.017179617  0.033684143 9.468067e-01   0.9730399 0.7279646
-Q41            0.015489036  0.030369403 7.703517e-01   0.8776968 0.6888987
-Q46            0.008490661  0.016647666 2.314852e-01   0.4811291 0.4339622
-Q26            0.022437462  0.043993200 1.617048e+00   1.2716321 0.6801803
-Q29            0.023642519  0.046355954 1.795966e+00   1.3401367 0.5422314
-Q49            0.021761390  0.042667618 1.521542e+00   1.2335081 0.5809530
-Q60            0.017484938  0.034282762 9.825939e-01   0.9912587 0.6659502
-Q7             0.025218942  0.049446839 2.044724e+00   1.4299385 0.5640108
-Q42            0.022038135  0.043210223 1.561459e+00   1.2495836 0.4814731
-Q11            0.023890349  0.046841858 1.835528e+00   1.3548166 0.5385773
-Q28            0.022075077  0.043282651 1.567186e+00   1.2518729 0.5533292
-Q36            0.023564784  0.046203523 1.785842e+00   1.3363539 0.4810515
-Q51            0.024281404  0.047608600 1.896110e+00   1.3769933 0.5898256
-Q66            0.024787878  0.048601645 1.976035e+00   1.4057153 0.4301409
-Q16            0.022434067  0.043986519 1.619076e+00   1.2724290 0.5974900
-Q20            0.024428124  0.047896270 1.919691e+00   1.3855291 0.6423472
-Q25            0.023217693  0.045522974 1.734160e+00   1.3168751 0.4135885
-Q27            0.023790856  0.046646777 1.820838e+00   1.3493841 0.6961143
-Q31            0.020911316  0.041000856 1.406740e+00   1.1860606 0.5842225
-Q35            0.024544640  0.048124722 1.938047e+00   1.3921377 0.4456669
-Q38            0.024725087  0.048478525 1.966648e+00   1.4023724 0.4754882
-Q43            0.020824627  0.040830886 1.395101e+00   1.1811438 0.5777314
-Q44            0.023883741  0.046828896 1.835083e+00   1.3546524 0.5185527
-Q52            0.022288789  0.043701672 1.598174e+00   1.2641890 0.6085435
-Q54            0.024734726  0.048497425 1.968182e+00   1.4029191 0.4809966
-Q56            0.024094459  0.047242052 1.867607e+00   1.3666041 0.5018682
-Q59            0.021672305  0.042492930 1.510989e+00   1.2292229 0.5679991
-Q63            0.021966859  0.043070462 1.552340e+00   1.2459296 0.5419356
-Q21            0.025831450  0.050647768 2.147255e+00   1.4653515 0.6659372
-Q22            0.026288815  0.051544525 2.223966e+00   1.4912966 0.4479597
-Q47            0.015127455  0.029660426 7.364067e-01   0.8581415 0.5803907
-Q53            0.023856535  0.046775548 1.831474e+00   1.3533196 0.5733258
-Q19            0.023452526  0.045983401 1.770518e+00   1.3306079 0.5741591
-Q23            0.019956972  0.039129665 1.282066e+00   1.1322834 0.5907326
-Q30            0.022072319  0.043277229 1.568256e+00   1.2523002 0.6125444
-Q32            0.023280773  0.045646646 1.744680e+00   1.3208634 0.4740088
-Q34            0.023465067  0.046007991 1.772412e+00   1.3313195 0.5411690
-Q39            0.026028978  0.051035055 2.180897e+00   1.4767861 0.4837955
-Q45            0.025541840  0.050079922 2.100029e+00   1.4491477 0.5251386
-Q50            0.025990704  0.050960010 2.174488e+00   1.4746146 0.6610200
-Q57            0.023485372  0.046047802 1.775480e+00   1.3324715 0.6188466
-Q61            0.025864513  0.050712588 2.153424e+00   1.4674550 0.5277919
-Q10            0.020808433  0.040799119 1.394231e+00   1.1807754 0.6458462
-Q18            0.024196861  0.047442814 1.885272e+00   1.3730519 0.5000822
-Q40            0.024425246  0.047890609 1.921028e+00   1.3860116 0.6085298
-Q58            0.023641218  0.046353365 1.799681e+00   1.3415220 0.5293102
-Q62            0.021779530  0.042703151 1.527400e+00   1.2358804 0.5716901
-Q64            0.022468413  0.044053844 1.625551e+00   1.2749711 0.5652495
-Q65            0.020744262  0.040673300 1.385645e+00   1.1771341 0.6459393
-Q24            0.020727511  0.040640450 1.383837e+00   1.1763661 0.6238188
-Q37            0.024280108  0.047606033 1.898856e+00   1.3779897 0.4687406
-X             16.388512237 32.132968367 8.653755e+05 930.2556100 0.5772607
+    nbr.val nbr.null nbr.na min max range   sum median     mean     SE.mean
+Q79    3068        0    154   1   5     4  7350      2 2.395698 0.022911965
+Q70    3069        0    153   1   5     4  6477      2 2.110459 0.021364098
+Q72    3070        0    152   1   5     4  5027      1 1.637459 0.017919686
+Q80    3070        0    152   1   5     4  9423      3 3.069381 0.022153977
+Q69    3071        0    151   1   5     4  9255      3 3.013676 0.021621379
+Q74    3071        0    151   1   5     4  8569      3 2.790296 0.023365007
+Q78    3071        0    151   1   5     4  8521      3 2.774666 0.023426479
+Q82    3071        0    151   1   5     4  6870      2 2.237056 0.021826439
+Q73    3072        0    150   1   5     4  7672      2 2.497396 0.023590018
+Q76    3072        0    150   1   5     4  8686      3 2.827474 0.026741805
+Q68    3073        0    149   1   5     4  6316      2 2.055321 0.022266844
+Q81    3073        0    149   1   5     4  5435      1 1.768630 0.018681107
+Q71    3074        0    148   1   5     4  9240      3 3.005856 0.024589907
+Q77    3075        0    147   1   5     4  9479      3 3.082602 0.023042783
+Q55    3205        0     17   1   5     4  5067      1 1.580967 0.016718556
+Q17    3208        0     14   1   5     4  4288      1 1.336658 0.017179617
+Q41    3211        0     11   1   5     4  4091      1 1.274058 0.015489036
+Q46    3211        0     11   1   5     4  3560      1 1.108689 0.008490661
+Q26    3212        0     10   1   5     4  6005      1 1.869552 0.022437462
+Q29    3213        0      9   1   5     4  7941      2 2.471522 0.023642519
+Q49    3213        0      9   1   5     4  6822      2 2.123249 0.021761390
+Q60    3214        0      8   1   5     4  4784      1 1.488488 0.017484938
+Q7     3215        0      7   1   5     4  8151      2 2.535303 0.025218942
+Q42    3215        0      7   1   5     4  8344      3 2.595334 0.022038135
+Q11    3216        0      6   1   5     4  8090      2 2.515547 0.023890349
+Q28    3216        0      6   1   5     4  7276      2 2.262438 0.022075077
+Q36    3216        0      6   1   5     4  8934      3 2.777985 0.023564784
+Q51    3216        0      6   1   5     4  7508      2 2.334577 0.024281404
+Q66    3216        0      6   1   5     4 10510      3 3.268035 0.024787878
+Q16    3217        0      5   1   5     4  6851      2 2.129624 0.022434067
+Q20    3217        0      5   1   5     4  6939      2 2.156979 0.024428124
+Q25    3217        0      5   1   5     4 10243      3 3.184022 0.023217693
+Q27    3217        0      5   1   5     4  6236      1 1.938452 0.023790856
+Q31    3217        0      5   1   5     4  6531      2 2.030152 0.020911316
+Q35    3217        0      5   1   5     4 10049      3 3.123718 0.024544640
+Q38    3217        0      5   1   5     4  9488      3 2.949332 0.024725087
+Q43    3217        0      5   1   5     4  6577      2 2.044451 0.020824627
+Q44    3217        0      5   1   5     4  8404      3 2.612372 0.023883741
+Q52    3217        0      5   1   5     4  6683      2 2.077401 0.022288789
+Q54    3217        0      5   1   5     4  9383      3 2.916693 0.024734726
+Q56    3217        0      5   1   5     4  8760      3 2.723034 0.024094459
+Q59    3217        0      5   1   5     4  6962      2 2.164128 0.021672305
+Q63    3217        0      5   1   5     4  7396      2 2.299036 0.021966859
+Q21    3218        0      4   1   5     4  7081      1 2.200435 0.025831450
+Q22    3218        0      4   1   5     4 10713      4 3.329086 0.026288815
+Q47    3218        0      4   1   5     4  4758      1 1.478558 0.015127455
+Q53    3218        0      4   1   5     4  7596      2 2.360472 0.023856535
+Q19    3219        0      3   1   5     4  7460      2 2.317490 0.023452526
+Q23    3219        0      3   1   5     4  6170      1 1.916744 0.019956972
+Q30    3219        0      3   1   5     4  6581      2 2.044424 0.022072319
+Q32    3219        0      3   1   5     4  8970      3 2.786580 0.023280773
+Q34    3219        0      3   1   5     4  7919      2 2.460081 0.023465067
+Q39    3219        0      3   1   5     4  9826      3 3.052501 0.026028978
+Q45    3219        0      3   1   5     4  8883      3 2.759553 0.025541840
+Q50    3219        0      3   1   5     4  7181      1 2.230817 0.025990704
+Q57    3219        0      3   1   5     4  6931      2 2.153153 0.023485372
+Q61    3219        0      3   1   5     4  8950      3 2.780367 0.025864513
+Q10    3220        0      2   1   5     4  5887      1 1.828261 0.020808433
+Q18    3220        0      2   1   5     4  8841      3 2.745652 0.024196861
+Q40    3220        0      2   1   5     4  7334      2 2.277640 0.024425246
+Q58    3220        0      2   1   5     4  8161      2 2.534472 0.023641218
+Q62    3220        0      2   1   5     4  6961      2 2.161801 0.021779530
+Q64    3220        0      2   1   5     4  7263      2 2.255590 0.022468413
+Q65    3220        0      2   1   5     4  5868      1 1.822360 0.020744262
+Q24    3221        0      1   1   5     4  6074      1 1.885750 0.020727511
+Q37    3221        0      1   1   5     4  9469      3 2.939770 0.024280108
+    CI.mean.0.95       var   std.dev  coef.var
+Q79   0.04492436 1.6105716 1.2690830 0.5297342
+Q70   0.04188939 1.4007674 1.1835402 0.5607974
+Q72   0.03513580 0.9858235 0.9928864 0.6063579
+Q80   0.04343813 1.5067520 1.2274983 0.3999172
+Q69   0.04239384 1.4356435 1.1981834 0.3975820
+Q74   0.04581263 1.6765312 1.2948093 0.4640401
+Q78   0.04593316 1.6853645 1.2982159 0.4678818
+Q82   0.04279591 1.4630042 1.2095471 0.5406869
+Q73   0.04625382 1.7095341 1.3074915 0.5235420
+Q76   0.05243364 2.1968613 1.4821813 0.5242069
+Q68   0.04365941 1.5236314 1.2343546 0.6005655
+Q81   0.03662873 1.0724271 1.0355805 0.5855270
+Q71   0.04821432 1.8587356 1.3633546 0.4535662
+Q77   0.04518081 1.6327323 1.2777841 0.4145148
+Q55   0.03278015 0.8958299 0.9464829 0.5986733
+Q17   0.03368414 0.9468067 0.9730399 0.7279646
+Q41   0.03036940 0.7703517 0.8776968 0.6888987
+Q46   0.01664767 0.2314852 0.4811291 0.4339622
+Q26   0.04399320 1.6170483 1.2716321 0.6801803
+Q29   0.04635595 1.7959665 1.3401367 0.5422314
+Q49   0.04266762 1.5215421 1.2335081 0.5809530
+Q60   0.03428276 0.9825939 0.9912587 0.6659502
+Q7    0.04944684 2.0447240 1.4299385 0.5640108
+Q42   0.04321022 1.5614592 1.2495836 0.4814731
+Q11   0.04684186 1.8355280 1.3548166 0.5385773
+Q28   0.04328265 1.5671858 1.2518729 0.5533292
+Q36   0.04620352 1.7858418 1.3363539 0.4810515
+Q51   0.04760860 1.8961104 1.3769933 0.5898256
+Q66   0.04860164 1.9760355 1.4057153 0.4301409
+Q16   0.04398652 1.6190755 1.2724290 0.5974900
+Q20   0.04789627 1.9196909 1.3855291 0.6423472
+Q25   0.04552297 1.7341601 1.3168751 0.4135885
+Q27   0.04664678 1.8208375 1.3493841 0.6961143
+Q31   0.04100086 1.4067398 1.1860606 0.5842225
+Q35   0.04812472 1.9380474 1.3921377 0.4456669
+Q38   0.04847852 1.9666483 1.4023724 0.4754882
+Q43   0.04083089 1.3951006 1.1811438 0.5777314
+Q44   0.04682890 1.8350832 1.3546524 0.5185527
+Q52   0.04370167 1.5981738 1.2641890 0.6085435
+Q54   0.04849742 1.9681821 1.4029191 0.4809966
+Q56   0.04724205 1.8676067 1.3666041 0.5018682
+Q59   0.04249293 1.5109889 1.2292229 0.5679991
+Q63   0.04307046 1.5523405 1.2459296 0.5419356
+Q21   0.05064777 2.1472550 1.4653515 0.6659372
+Q22   0.05154452 2.2239657 1.4912966 0.4479597
+Q47   0.02966043 0.7364067 0.8581415 0.5803907
+Q53   0.04677555 1.8314741 1.3533196 0.5733258
+Q19   0.04598340 1.7705175 1.3306079 0.5741591
+Q23   0.03912966 1.2820657 1.1322834 0.5907326
+Q30   0.04327723 1.5682559 1.2523002 0.6125444
+Q32   0.04564665 1.7446800 1.3208634 0.4740088
+Q34   0.04600799 1.7724116 1.3313195 0.5411690
+Q39   0.05103505 2.1808973 1.4767861 0.4837955
+Q45   0.05007992 2.1000291 1.4491477 0.5251386
+Q50   0.05096001 2.1744882 1.4746146 0.6610200
+Q57   0.04604780 1.7754803 1.3324715 0.6188466
+Q61   0.05071259 2.1534242 1.4674550 0.5277919
+Q10   0.04079912 1.3942306 1.1807754 0.6458462
+Q18   0.04744281 1.8852716 1.3730519 0.5000822
+Q40   0.04789061 1.9210283 1.3860116 0.6085298
+Q58   0.04635336 1.7996811 1.3415220 0.5293102
+Q62   0.04270315 1.5274003 1.2358804 0.5716901
+Q64   0.04405384 1.6255512 1.2749711 0.5652495
+Q65   0.04067330 1.3856446 1.1771341 0.6459393
+Q24   0.04064045 1.3838372 1.1763661 0.6238188
+Q37   0.04760603 1.8988557 1.3779897 0.4687406
 \end{verbatim}
+
+\textbf{Item-Total Correlations}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# POINT BISERIAL CORRELATIONS ltm::biserial.cor(x, y, use =}
+\CommentTok{\# c(\textquotesingle{}all.obs\textquotesingle{}, \textquotesingle{}complete.obs\textquotesingle{}), level = 1)}
+\end{Highlighting}
+\end{Shaded}
 
 \textbf{Distractor Analysis}.
 
@@ -981,26 +974,391 @@ X             16.388512237 32.132968367 8.653755e+05 930.2556100 0.5772607
 
 \textbf{Skew and Kurtosis}.
 
+\hypertarget{item-analyses-in-item-response-theory-irt-framework}{%
+\section{Item analyses in item response theory (IRT) framework}\label{item-analyses-in-item-response-theory-irt-framework}}
+
+One outcome of this analysis is insight into whether items have too many response categories.
+
+This ltm package ``provides a flexible framework for Item Response Theory analyses for dichotomous and polytomous data under a Marginal Maximum Likelihood approach. The fitting algorithms provide valid inferences under Missing At Random missing data mechanisms'' \citep{ltm}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# DESCRIPTIVES}
+\NormalTok{ltm}\SpecialCharTok{::}\FunctionTok{descript}\NormalTok{(items)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Descriptive statistics for the 'items' data-set
+
+Sample:
+ 66 items and 3222 sample units; 2373 missing values
+
+Proportions for each level of response:
+         1      2      3      4      5
+Q7  0.3521 0.1760 0.1863 0.1555 0.1300
+Q10 0.5894 0.1568 0.1339 0.0758 0.0441
+Q11 0.3234 0.2086 0.1953 0.1744 0.0983
+Q16 0.4492 0.2111 0.1654 0.1097 0.0647
+Q17 0.8756 0.0218 0.0324 0.0305 0.0396
+Q18 0.2693 0.1655 0.2441 0.1925 0.1286
+Q19 0.3995 0.1839 0.1929 0.1469 0.0767
+Q20 0.4974 0.1498 0.1458 0.1125 0.0945
+Q21 0.5103 0.1346 0.1271 0.1007 0.1274
+Q22 0.1961 0.1140 0.1535 0.2374 0.2989
+Q23 0.5107 0.2057 0.1712 0.0811 0.0314
+Q24 0.5567 0.1608 0.1614 0.0823 0.0388
+Q25 0.1532 0.1470 0.2471 0.2676 0.1850
+Q26 0.6043 0.1370 0.1062 0.0900 0.0626
+Q27 0.6049 0.1066 0.1166 0.0889 0.0830
+Q28 0.3741 0.2422 0.1906 0.1334 0.0597
+Q29 0.3402 0.1911 0.2157 0.1631 0.0899
+Q30 0.4995 0.1687 0.1705 0.1103 0.0509
+Q31 0.4629 0.2247 0.1769 0.0905 0.0451
+Q32 0.2423 0.1637 0.2700 0.2131 0.1109
+Q34 0.3395 0.1948 0.2199 0.1575 0.0882
+Q35 0.1878 0.1442 0.2316 0.2294 0.2070
+Q36 0.2385 0.1931 0.2400 0.2086 0.1197
+Q37 0.2155 0.1704 0.2372 0.2127 0.1642
+Q38 0.2238 0.1607 0.2353 0.2027 0.1775
+Q39 0.2377 0.1280 0.2029 0.2072 0.2243
+Q40 0.4382 0.1661 0.1770 0.1171 0.1016
+Q41 0.8938 0.0240 0.0287 0.0215 0.0321
+Q42 0.2470 0.2439 0.2560 0.1733 0.0799
+Q43 0.4563 0.2216 0.1843 0.0967 0.0410
+Q44 0.3028 0.1769 0.2266 0.1927 0.1010
+Q45 0.2870 0.1730 0.1979 0.1774 0.1646
+Q46 0.9396 0.0271 0.0224 0.0069 0.0040
+Q47 0.7026 0.1659 0.0942 0.0249 0.0124
+Q49 0.4367 0.2210 0.1771 0.1130 0.0523
+Q50 0.5228 0.0845 0.1460 0.1323 0.1143
+Q51 0.4070 0.1853 0.1692 0.1430 0.0955
+Q52 0.4815 0.1871 0.1579 0.1194 0.0541
+Q53 0.3875 0.1858 0.1967 0.1386 0.0914
+Q54 0.2331 0.1595 0.2350 0.2024 0.1700
+Q55 0.6559 0.1807 0.1061 0.0415 0.0159
+Q56 0.2729 0.1747 0.2257 0.2098 0.1169
+Q57 0.4772 0.1631 0.1640 0.1208 0.0749
+Q58 0.3193 0.1845 0.2373 0.1606 0.0984
+Q59 0.4200 0.2148 0.1943 0.1231 0.0479
+Q60 0.7570 0.0949 0.0741 0.0507 0.0233
+Q61 0.2961 0.1528 0.1951 0.1867 0.1693
+Q62 0.4317 0.1891 0.2146 0.1149 0.0497
+Q63 0.3593 0.2338 0.2157 0.1309 0.0603
+Q64 0.3879 0.2286 0.1932 0.1208 0.0696
+Q65 0.5891 0.1640 0.1258 0.0776 0.0435
+Q66 0.1760 0.1191 0.2083 0.2540 0.2425
+Q68 0.4878 0.1705 0.1865 0.1090 0.0462
+Q69 0.1309 0.1960 0.3237 0.2273 0.1221
+Q70 0.4190 0.2369 0.2053 0.0922 0.0466
+Q71 0.1932 0.1724 0.2437 0.2167 0.1740
+Q72 0.6375 0.1700 0.1300 0.0427 0.0199
+Q73 0.3118 0.2083 0.2386 0.1530 0.0882
+Q74 0.2234 0.1869 0.2735 0.2084 0.1078
+Q76 0.2839 0.1589 0.1921 0.1764 0.1888
+Q77 0.1502 0.1782 0.2595 0.2628 0.1493
+Q78 0.2263 0.1941 0.2657 0.2064 0.1075
+Q79 0.3286 0.2262 0.2441 0.1232 0.0779
+Q80 0.1391 0.1762 0.2883 0.2691 0.1274
+Q81 0.5600 0.2089 0.1542 0.0560 0.0208
+Q82 0.3751 0.2250 0.2410 0.1055 0.0534
+
+Missing responses:
+         Q7    Q10    Q11    Q16     Q17    Q18    Q19    Q20    Q21    Q22
+Freq 7.0000 2.0000 6.0000 5.0000 14.0000 2.0000 3.0000 5.0000 4.0000 4.0000
+(%)  0.2173 0.0621 0.1862 0.1552  0.4345 0.0621 0.0931 0.1552 0.1241 0.1241
+        Q23   Q24    Q25     Q26    Q27    Q28    Q29    Q30    Q31    Q32
+Freq 3.0000 1.000 5.0000 10.0000 5.0000 6.0000 9.0000 3.0000 5.0000 3.0000
+(%)  0.0931 0.031 0.1552  0.3104 0.1552 0.1862 0.2793 0.0931 0.1552 0.0931
+        Q34    Q35    Q36   Q37    Q38    Q39    Q40     Q41    Q42    Q43
+Freq 3.0000 5.0000 6.0000 1.000 5.0000 3.0000 2.0000 11.0000 7.0000 5.0000
+(%)  0.0931 0.1552 0.1862 0.031 0.1552 0.0931 0.0621  0.3414 0.2173 0.1552
+        Q44    Q45     Q46    Q47    Q49    Q50    Q51    Q52    Q53    Q54
+Freq 5.0000 3.0000 11.0000 4.0000 9.0000 3.0000 6.0000 5.0000 4.0000 5.0000
+(%)  0.1552 0.0931  0.3414 0.1241 0.2793 0.0931 0.1862 0.1552 0.1241 0.1552
+         Q55    Q56    Q57    Q58    Q59    Q60    Q61    Q62    Q63    Q64
+Freq 17.0000 5.0000 3.0000 2.0000 5.0000 8.0000 3.0000 2.0000 5.0000 2.0000
+(%)   0.5276 0.1552 0.0931 0.0621 0.1552 0.2483 0.0931 0.0621 0.1552 0.0621
+        Q65    Q66      Q68      Q69      Q70      Q71      Q72      Q73
+Freq 2.0000 6.0000 149.0000 151.0000 153.0000 148.0000 152.0000 150.0000
+(%)  0.0621 0.1862   4.6245   4.6865   4.7486   4.5934   4.7176   4.6555
+          Q74      Q76      Q77      Q78      Q79      Q80      Q81      Q82
+Freq 151.0000 150.0000 147.0000 151.0000 154.0000 152.0000 149.0000 151.0000
+(%)    4.6865   4.6555   4.5624   4.6865   4.7796   4.7176   4.6245   4.6865
+
+
+Frequencies of total scores:
+     66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90
+Freq 30 12 14 21 17 25 16 17 13 18 22 14 15 20 20 15 30 16 12 16 20 18 24 24 17
+     91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111
+Freq 22 34 17 25 20 24 13 25 16  16  18  21  15  17  23  23  23  21  17  18  17
+     112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129
+Freq  20  16  15  21  21  16  17  21  18  22  20  19  24  13  14  19  17  14
+     130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147
+Freq  16  19  17  12  16  18  19  23  13  18  15  18  19  16  21  14  26  17
+     148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165
+Freq  19  17  16  16  14  27  18  15  27  19  23  28   9  11  30  27  16  14
+     166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183
+Freq  26  15  23  10  17  16  11  16  14  18  13  13  18  14  14  18  21  16
+     184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201
+Freq  17  17  10  13  16  17  17  13  13  19  22  17  18  12  13   9  15  25
+     202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219
+Freq  15  16  14  14  14  12  22  10  13  20  19  18  17   7  12  10  17   8
+     220 221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237
+Freq  12   7  18  14  15  13   7  11  14  11   8  11   9  14  13   8  11   7
+     238 239 240 241 242 243 244 245 246 247 248 249 250 251 252 253 254 255
+Freq   8   8   6   9   6   8  10   7   8   7   3   9   6   7   5   8   7   7
+     256 257 258 259 260 261 262 263 264 265 266 267 268 269 270 271 272 273
+Freq   4   3   5   6   7   5   8   2   3  11   4   3   4   7   1   3   5   4
+     274 275 276 277 278 279 280 281 282 283 284 285 286 287 288 289 290 291
+Freq   1   2   3   3   3   3   3   2   2   2   1   0   2   2   3   2   3   1
+     292 293 294 295 296 297 298 299 300 301 302 303 304 305 306 307 308 309
+Freq   0   2   1   1   1   2   2   1   0   1   2   0   0   0   0   0   0   0
+     310 311 312 313 314 315 316 317 318 319 320 321 322 323 324 325 326 327
+Freq   2   0   0   2   0   0   0   0   0   0   1   0   0   0   0   0   0   0
+     328 329 330
+Freq   0   0   0
+
+
+Cronbach's alpha:
+               value
+All Items     0.9807
+Excluding Q7  0.9804
+Excluding Q10 0.9805
+Excluding Q11 0.9802
+Excluding Q16 0.9804
+Excluding Q17 0.9808
+Excluding Q18 0.9802
+Excluding Q19 0.9803
+Excluding Q20 0.9804
+Excluding Q21 0.9804
+Excluding Q22 0.9804
+Excluding Q23 0.9805
+Excluding Q24 0.9804
+Excluding Q25 0.9803
+Excluding Q26 0.9805
+Excluding Q27 0.9807
+Excluding Q28 0.9803
+Excluding Q29 0.9804
+Excluding Q30 0.9804
+Excluding Q31 0.9804
+Excluding Q32 0.9803
+Excluding Q34 0.9805
+Excluding Q35 0.9803
+Excluding Q36 0.9803
+Excluding Q37 0.9803
+Excluding Q38 0.9802
+Excluding Q39 0.9803
+Excluding Q40 0.9803
+Excluding Q41 0.9809
+Excluding Q42 0.9803
+Excluding Q43 0.9803
+Excluding Q44 0.9802
+Excluding Q45 0.9803
+Excluding Q46 0.9810
+Excluding Q47 0.9806
+Excluding Q49 0.9803
+Excluding Q50 0.9807
+Excluding Q51 0.9805
+Excluding Q52 0.9803
+Excluding Q53 0.9803
+Excluding Q54 0.9802
+Excluding Q55 0.9809
+Excluding Q56 0.9802
+Excluding Q57 0.9803
+Excluding Q58 0.9803
+Excluding Q59 0.9803
+Excluding Q60 0.9807
+Excluding Q61 0.9803
+Excluding Q62 0.9804
+Excluding Q63 0.9803
+Excluding Q64 0.9804
+Excluding Q65 0.9805
+Excluding Q66 0.9804
+Excluding Q68 0.9804
+Excluding Q69 0.9806
+Excluding Q70 0.9806
+Excluding Q71 0.9803
+Excluding Q72 0.9806
+Excluding Q73 0.9805
+Excluding Q74 0.9805
+Excluding Q76 0.9803
+Excluding Q77 0.9802
+Excluding Q78 0.9804
+Excluding Q79 0.9805
+Excluding Q80 0.9804
+Excluding Q81 0.9805
+Excluding Q82 0.9805
+
+
+Pairwise Associations:
+   Item i Item j p.value
+1      33     62   0.125
+2      33     54   0.033
+3      33     63   0.027
+4      33     60   0.020
+5      22     33   0.019
+6      33     48   0.019
+7       6     33   0.016
+8      33     34   0.015
+9      33     53   0.015
+10     33     58   0.013
+\end{verbatim}
+
+\hypertarget{item-thresholds}{%
+\subsection{Item thresholds}\label{item-thresholds}}
+
+\hypertarget{item-characteristic-curves}{%
+\subsection{Item characteristic curves}\label{item-characteristic-curves}}
+
+\hypertarget{differential-item-functioning-dif}{%
+\subsection{Differential item functioning (DIF)}\label{differential-item-functioning-dif}}
+
+\hypertarget{summary-1}{%
+\section{Summary}\label{summary-1}}
+
+\hypertarget{reliability}{%
+\chapter{Reliability}\label{reliability}}
+
+In this chapter, we addresses the reliability of the SHAS based on the 66 piloted items. We begin by defining reliability and discussing its importance. Then we report the results of our analyses of the reliability of the piloted SHAS items from both classical test theory (CTT) and item response theory (IRT) frameworks. Since these are cross-sectional data taken at one point in time, our work is limited to \emph{internal consistency} reliability which focuses on the relationships between the items at one point in time rather than relationships between items or scores between two or more time points. We conclude by considering what this information contributes to improved SHAS instrumentation.
+
+\hypertarget{about-reliability}{%
+\section{About reliability}\label{about-reliability}}
+
+Reliability is the extent to which items and their scores are consistently measuring the trait of interest. It is evidence that two examinees who provide the same responses to the same items, and by extension receive the same total scores, truly have the same level or amount of, or exposure to, the trait.
+
+\hypertarget{reliability-in-classical-test-theory-ctt}{%
+\section{Reliability in Classical Test Theory (CTT)}\label{reliability-in-classical-test-theory-ctt}}
+
+One way to think about reliability in classical test theory is the ratio of signal to noise in the observed data. Do the various item responses and scores provide a true sort of examinees on the trait, or is all this variation merely noise?
+
+The foundation of internal consistency reliability in CTT is relationships between item responses: correlations. Strong correlations among the items are evidence that the items are measuring the same construct. Thus we begin by examining correlation matrices.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# HEATMAP OF CORRELATIONS}
+\NormalTok{psych}\SpecialCharTok{::}\FunctionTok{corPlot}\NormalTok{(ext\_items\_l, }\AttributeTok{upper =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics{_main_files/figure-latex/corrmtrx-ext-1} 
+
+}
+
+\caption{Correlation Matrix of External Events Items}\label{fig:corrmtrx-ext}
+\end{figure}
+
+Figure \ref{fig:corrmtrx-ext} is a correlation matrix of the External Events items for the \emph{3,174} examinees who responded to all of these items. Each cell reports the correlation coefficient between scores of the two items. All of the cells are color coded to the scale of correlations which range from 0 (indicating no relationship) to 1 (indicating a perfect linear relationship). The cells along the diagonal are all 1.0 because they represent the correlation of the item with itself. Only one half of the matrix is necessary to report all the correlations among all the items.
+
+The plot offers several interesting pieces of information. The first is that Q17--``Being treated as `less than' because of my sexual orientation--does not quite fit. Responses to this item correlate weakly with responses to all the other items. It is possible that so few examinees experience this event that the responses vary very little, which would attenuate any correlation. Or it may be measuring something different than what the other items in this set. Similar could be said of Q27--''Being denied opportunities to serve/volunteer because of my gender.''
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# HEATMAP OF CORRELATIONS}
+\NormalTok{psych}\SpecialCharTok{::}\FunctionTok{corPlot}\NormalTok{(int\_items\_l, }\AttributeTok{upper =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics{_main_files/figure-latex/corrmtrx-int-1} 
+
+}
+
+\caption{Correlation Matrix of Internal States Items}\label{fig:corrmtrx-int}
+\end{figure}
+
+Figure \ref{fig:corrmtrx-int} is a correlation matrix of the Internal States items for the \emph{3,051} examinees who responded to all of these items. This plot is interesting in that most of the correlations are in the moderate (0.50) range. They are sorting examinees in a similar way, but together they do not measure exactly the same thing.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# HEATMAP OF CORRELATIONS}
+\NormalTok{psych}\SpecialCharTok{::}\FunctionTok{corPlot}\NormalTok{(items\_l, }\AttributeTok{upper =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics{_main_files/figure-latex/corrmtrx-all-1} 
+
+}
+
+\caption{Correlation Matrix of All 66 Likert SHAS Items}\label{fig:corrmtrx-all}
+\end{figure}
+
+This final matrix, Figure \ref{fig:corrmtrx-all}, reports the correlations among all of the Likert items among the \emph{2,979} examinees who responded to all 66 items. Note that missing data are a challenge here, as these plots require complete data.
+
+This plot offers several interesting insights. First, the preponderance of blue indicates that everything is positively correlated. This makes some sense because the items were worded and all the response categories were coded in the same direction.
+
+Second, in this plot there are too many items and correlation coefficients in one place to be distinguishable, but with the colors it is possible to see an overall pattern. This plot orders the items by their order on the questionnaire so we can see how the External Events items correlate with the Internal Events items: moderately. It is possible that these are not two different scales.
+
+Finally, we see at a glance a handful of items that correlate very weakly with all the other items. These items should be scrutinized for refinement and possible omission from the analysis.
+
+\textbf{Cronbach's coefficient alpha}.
+Arguably the most well-known statistic for estimating internal consistency reliability is Cronbach's coefficient alpha (citation). This is a measure of the average inter-item correlation (?). It is also a measure of the ratio of signal to noise (X = T + e). A ballpark cutoff value is 0.70 \citep{Nunnally1994}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# CRONBACH\textquotesingle{}S ALPHA}
+\FunctionTok{reliability}\NormalTok{(items)  }\CommentTok{\# , itemal = TRUE, NA.Delete = TRUE, ml = TRUE)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ Number of Items 
+ 66 
+
+ Number of Examinees 
+ 2979 
+
+ Coefficient Alpha 
+ 0.981 
+\end{verbatim}
+
+This output is not pretty, but it does report a Cronbach's alpha of 0.98. This is a high level of internal consistency reliability.
+
+\hypertarget{reliability-in-item-response-theory-irt}{%
+\section{Reliability in Item Response Theory (IRT)}\label{reliability-in-item-response-theory-irt}}
+
+Wright and Masters (1982) developed reliability measures based on the Rasch measurement model, which have a different concept from classical test theory (e.g., Cronbach's alpha). Reliability is estimated both for persons and items, by means of Person Separation Reliability (PSR). This is an estimate of how well this instrument can distinguish respondents on the measured variable. In parallel, Item Separation Reliability (ISR) is an indication of how well items are separated by the persons taking the test (Wright \& Stone, 1999). The cutoff of separation reliabilities is \textgreater{} 0.80 (Bond \& Fox, 2015).
+
+\hypertarget{summary-2}{%
+\section{Summary}\label{summary-2}}
+
 \hypertarget{dimensionality}{%
 \chapter{Dimensionality}\label{dimensionality}}
 
-This is where I introduce and discuss dimensionality -- what this means, why it is important, and how to do it.
+This chapter deals with the topic of dimensionality. It begins with a definition of dimensionality and explains how it is important. It outlines how to investigate it and suggests what counts as good evidence. Then it reports our study of the dimensionality of the SHAS.
 
 \hypertarget{about-dimensionality}{%
 \section{About Dimensionality}\label{about-dimensionality}}
 
-Unidimensionality is the assumption that the four items measure only one underlying dimension. This is important to the extent that we want to analyze and report scores. To assess the dimensionality of these items we use exploratory factor analysis and confirmatory factor analysis (CFA) and PCAR.
+Dimensionality is the study of the dimensions (also known as ``factors'', ``components'', and ``latent traits'') that the items are designed and assembled to collectively measure. This study tends to take two forms. One is exploration of what dimensions a set of items apparently measure, regardless of what they intended to measure. The other is what evidence exist to confirm that a set of items actually measure the dimension they are intended to measure.
 
-\citet{EmbretsonReise2000} suggest that dimensionality is an important part of the validation process for psychological measures.
+Dimensionality is important for the reporting of scores. Scores, as summary measures of a set of items, are only meaningful to the extent that they enjoy evidence that they measure the dimension(s) they are designed to measure. Scores, in turn, are important to the extent that they support decisions that have consequences in the real world. Scores are needed to decide who gets to practice medicine, or fly an airplane.
 
-\citet{Brown2006} is a book I need to cite.
+Dimensionality is an important part of the validation process for psychological measures \citep{EmbretsonReise2000}.
 
-\citet{Wilson2005} is a book I need to cite.
-
-\citet{BondFox2015} is another book I need to cite.
+The methodology commonly used to investigate dimensionality is factor analysis. To assess the dimensionality of these 66 piloted SHAS items we use exploratory factor analysis and confirmatory factor analysis (CFA) and PCAR.
 
 \hypertarget{exploratory-factor-analysis-efa}{%
 \section{Exploratory Factor Analysis (EFA)}\label{exploratory-factor-analysis-efa}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# LOAD PACKAGES}
+\FunctionTok{library}\NormalTok{(lavaan)}
+\FunctionTok{library}\NormalTok{(psych)}
+\FunctionTok{library}\NormalTok{(psychTools)}
+
+\CommentTok{\# LOAD DATA all \textless{}{-} read.csv(\textquotesingle{}data/all.csv\textquotesingle{})}
+\NormalTok{items }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/items.csv"}\NormalTok{)}
+\NormalTok{ext\_items }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/ext\_items.csv"}\NormalTok{)}
+\NormalTok{int\_items }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/int\_items.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1010,7 +1368,7 @@ Unidimensionality is the assumption that the four items measure only one underly
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-9-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-11-1.pdf}
 
 \begin{verbatim}
 Parallel analysis suggests that the number of factors =  16  and the number of components =  6 
@@ -1022,7 +1380,7 @@ Parallel analysis suggests that the number of factors =  16  and the number of c
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-9-2.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-11-2.pdf}
 
 \begin{verbatim}
 Very Simple Structure
@@ -1168,7 +1526,7 @@ Fit based upon off diagonal values = 0.99
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Determine Number of Factors to Extract library(nFactors)}
+\CommentTok{\# DETERMINE NUMBER OF FACTORS TO EXTRACT library(nFactors)}
 \CommentTok{\# ev \textless{}{-} eigen(cor(items)) \# get eigenvalues ap \textless{}{-}}
 \CommentTok{\# parallel(subject=nrow(items),var=ncol(items),}
 \CommentTok{\# rep=100,cent=.05) nS \textless{}{-} nScree(x=ev$values,}
@@ -1191,7 +1549,9 @@ Fit based upon off diagonal values = 0.99
 \hypertarget{confirmatory-factor-analysis-cfa}{%
 \section{Confirmatory Factor Analysis (CFA)}\label{confirmatory-factor-analysis-cfa}}
 
-Factor analysis is commonly used to investigate whether item responses are unidimensional. In my use of CFA I used several statistics and fit indices:
+The purpose of confirmatory factor analysis is, as the name implies, to confirm that items measure the factor(s) or trait(s) for which the items were designed and intended to measure.
+
+In our use of CFA we used several statistics and fit indices:
 
 \begin{itemize}
 \tightlist
@@ -1205,7 +1565,7 @@ Factor analysis is commonly used to investigate whether item responses are unidi
   Standardized Root-Mean-Square Residual (SRMR)
 \end{itemize}
 
-Based on published criteria (Hu \& Bentler, 1999; Wang \& Wang, 2019), I used the following standards for good fit:
+Based on published criteria (Hu \& Bentler, 1999; Wang \& Wang, 2019), we used the following standards for good fit:
 
 \begin{itemize}
 \tightlist
@@ -1219,9 +1579,14 @@ Based on published criteria (Hu \& Bentler, 1999; Wang \& Wang, 2019), I used th
   SRMR \textless{} 0.08
 \end{itemize}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt ex ut condimentum vulputate. Sed feugiat mattis lectus vitae mollis. Suspendisse sodales urna id pharetra mattis. Mauris feugiat molestie efficitur. Proin non metus hendrerit elit viverra tincidunt. Integer tristique, nunc nec gravida semper, erat ligula placerat nunc, vitae tincidunt diam odio ut est. Morbi sit amet posuere ante, non tempor leo. Nam fermentum mi urna, ut lacinia metus venenatis sit amet. Morbi mattis lectus sit amet magna ultricies malesuada.
+We use the MLM estimator \citep{Brown2006}.
 
-I use the MLM estimator \citep{Brown2006}.
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# ltm::factor.scores(items) \# Computation of factor scores}
+\CommentTok{\# for grm, ltm, rasch and tpm models}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1254,77 +1619,59 @@ I use the MLM estimator \citep{Brown2006}.
 
 The results of CFA, using MLR estimation, confirmed the second order factor model, in line with the original structure of the scale (see Olufadi, 2017), because the values of the indices were above the acceptable threshold {[}χ2 (167) = 284.032, p \textless{} 0.001; RMSEA = 0.030 (90\% CI = 0.024-0.036), CFI = 0.983, TLI = 0.981, SRMR = 0.023{]}, compared to the unidimensional model {[}χ2 (170) = 316.949, p \textless{} 0.001; RMSEA = 0.034 (90\% CI = 0.028-0.039), CFI = 0.978, TLI = 0.976, SRMR = 0.023{]} and a 3-uncorrelated-factors model {[}χ2 (170) = 2427.628, p \textless{} 0.001; RMSEA = 0.132 (90\% CI = 0.127-0.136), CFI = 0.669, TLI = 0.631, SRMR = 0.345{]}. Based on RMSEA, CFI, TLI, and SRMR, the results indicated that the model provided satisfactory representations of the underlying structure of the psychological well-being construct. All items loaded significantly (ranging from 0.535 to 0.817) in relation to each first order factor, at a p \textless{} 0.01 significance level. These results of the CFA offer evidence that the four items measure one dimension of well-being.
 
-\hypertarget{reliability}{%
-\chapter{Reliability}\label{reliability}}
-
-\hypertarget{item-correlations}{%
-\section{Item correlations}\label{item-correlations}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# CORRELATION MATRIX (LOWER HALF) r \textless{}{-} lowerCor(items) \#}
-\CommentTok{\# the correlation matrix, rounded to 2 decimals}
-
-\CommentTok{\# HEATMAP OF CORRELATIONS corPlot(r) \#examine the many}
-\CommentTok{\# options for this function.  corr.test(items)}
-
-\CommentTok{\# POINT BISERIAL CORRELATIONS ltm::biserial.cor(x, y, use =}
-\CommentTok{\# c(\textquotesingle{}all.obs\textquotesingle{}, \textquotesingle{}complete.obs\textquotesingle{}), level = 1)}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{internal-consistency-reliability}{%
-\section{Internal consistency reliability}\label{internal-consistency-reliability}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# RELIABILITY reliability(items, itemal = TRUE, NA.Delete =}
-\CommentTok{\# TRUE, ml = TRUE)}
-\end{Highlighting}
-\end{Shaded}
-
-One important source of evidence for a scale is correlations among the items. Strong correlations among the items are evidence that the items are measuring the same construct. The matrix of correlations is presented in the table.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# corrs \textless{}{-} cor(items, method = c(\textquotesingle{}pearson\textquotesingle{})) \# correlation}
-\CommentTok{\# matrix knitr::kable(round(corrs,2), caption =}
-\CommentTok{\# \textquotesingle{}Correlation Matrix\textquotesingle{}) \# fancy kable version of}
-\CommentTok{\# correlation matrix}
-\end{Highlighting}
-\end{Shaded}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt ex ut condimentum vulputate. Sed feugiat mattis lectus vitae mollis. Suspendisse sodales urna id pharetra mattis. Mauris feugiat molestie efficitur. Proin non metus hendrerit elit viverra tincidunt. Integer tristique, nunc nec gravida semper, erat ligula placerat nunc, vitae tincidunt diam odio ut est. Morbi sit amet posuere ante, non tempor leo. Nam fermentum mi urna, ut lacinia metus venenatis sit amet. Morbi mattis lectus sit amet magna ultricies malesuada.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# library(corrplot) corrplot(cor(items), order =}
-\CommentTok{\# \textquotesingle{}original\textquotesingle{}, tl.col=\textquotesingle{}black\textquotesingle{}, tl.cex=.75) \# visual}
-\CommentTok{\# correlation matrix}
-\end{Highlighting}
-\end{Shaded}
-
-The correlations among the items are moderate at best. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt ex ut condimentum vulputate. Sed feugiat mattis lectus vitae mollis. Suspendisse sodales urna id pharetra mattis. Mauris feugiat molestie efficitur. Proin non metus hendrerit elit viverra tincidunt. Integer tristique, nunc nec gravida semper, erat ligula placerat nunc, vitae tincidunt diam odio ut est. Morbi sit amet posuere ante, non tempor leo. Nam fermentum mi urna, ut lacinia metus venenatis sit amet. Morbi mattis lectus sit amet magna ultricies malesuada.
-Figure X reports internal reliability statistics.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# alpha(items) knitr::kable(alpha(items), caption =}
-\CommentTok{\# \textquotesingle{}Internal Reliability Statistics\textquotesingle{})}
-\end{Highlighting}
-\end{Shaded}
+\hypertarget{summary-3}{%
+\section{Summary}\label{summary-3}}
 
 \hypertarget{scale-analysis}{%
 \chapter{Scale Analysis}\label{scale-analysis}}
 
-\hypertarget{interpretation-of-examinee-scores}{%
-\section{Interpretation of Examinee Scores}\label{interpretation-of-examinee-scores}}
+In this chapter, we examine the technical quality of the scales derived from the SHAS piloted items. We begin by defining scaling and discussing the importance of scale analysis. We report the results of our scale analysis from within the item response theory (IRT) framework. We conclude by considering what this information contributes to improved SHAS instrumentation.
+
+\hypertarget{the-item-person-map}{%
+\section{The Item-Person Map}\label{the-item-person-map}}
+
+The item-person map (also known as the Wright map) is a tool for visualizing the results of a calibration of items and persons. The Wright map was originally developed for use in test development but it also helps illuminate the results of surveys \citep{bulut20215}. As \citet{bulut20215} explains:
+
+\emph{``The Partial Credit Model (PCM), which is an extension of the Rasch model for polytomous item responses, can be used for survey development and validation (Green \& Frantom, 2002). We can analyze survey items using PCM and obtain item thresholds for each item. These thresholds indicate the magnitude of the latent trait required to select a particular response option (e.g., selecting disagree over strongly disagree). Using an item-person map, we can see thresholds for the items as well as the distribution of the latent trait for the respondents. This plot is quite useful for analyzing the alignment (or match) between the items and respondents answering the items.''}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# ITEM{-}PERSON MAP \#1: FOR ALL THE SHAS ITEMS}
+\FunctionTok{source}\NormalTok{(}\StringTok{"code/itempersonmap.R"}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(}\StringTok{"mirt"}\NormalTok{)}
+\NormalTok{items }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/items.csv"}\NormalTok{)}
+\NormalTok{mod }\OtherTok{\textless{}{-}} \FunctionTok{mirt}\NormalTok{(items, }\DecValTok{1}\NormalTok{, }\AttributeTok{itemtype =} \StringTok{"Rasch"}\NormalTok{, }\AttributeTok{technical =} \FunctionTok{list}\NormalTok{(}\AttributeTok{removeEmptyRows =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{verbose =} \ConstantTok{FALSE}\NormalTok{)  }\CommentTok{\# estimate the Partial Credit Model}
+\FunctionTok{itempersonmap}\NormalTok{(mod)  }\CommentTok{\# create the item{-}person map}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{_main_files/figure-latex/wright-1.pdf}
+\caption{\label{fig:wright}Item-Person Map: All Likert Items}
+\end{figure}
+
+Figure \ref{fig:wright} is an item-person map of all 66 Likert SHAS items against all of the examinees. In the plot, red points indicate item thresholds for each item (three thresholds separating four response categories) and the asterisk indicates the average value of the thresholds for each item. The higher these thresholds, the more spiritual abuse the examinee has experienced. On the left-hand side of the plot, we also see the distribution of examinees along the latent trait (i.e., the construct of spiritual abuse).
+
+This plot offers several insights at a general level. First, the plot of examinees on the left suggests that the latent trait of spiritual abuse is normally distributed, with a slight negative skew. Very few examinees reported very low or very high levels of exposure to spiritual abuse; most reported a moderate to slightly higher than average level of spiritual abuse. Second, with this plot it is difficult to distinguish individual items but it does show that they tend to clusteraround this ``slightly higher than average'' level of spiritual abuse, with none capturing a very low level of abuse and just a handful of items measuring much higher than average levels of spiritual abuse. Three items had response categories that captured very high levels of spiritual abuse.
+
+\hypertarget{information-curves}{%
+\section{Information curves}\label{information-curves}}
+
+These provide important information about where along the scale of the latent trait the item or set of items provides the most reliable information. If there are too few ``easy'' or ``difficult'' items, then these extreme scores for examinees are less reliable.
+
+\hypertarget{person-separation-reliability}{%
+\section{Person Separation Reliability}\label{person-separation-reliability}}
+
+\hypertarget{item-separation}{%
+\section{Item Separation}\label{item-separation}}
+
+\hypertarget{summary-4}{%
+\section{Summary}\label{summary-4}}
 
 \hypertarget{discussion}{%
 \chapter{Discussion}\label{discussion}}
-
-\hypertarget{other-stuff}{%
-\chapter{Other Stuff}\label{other-stuff}}
 
 \hypertarget{references}{%
 \chapter*{References}\label{references}}

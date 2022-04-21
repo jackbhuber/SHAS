@@ -21,41 +21,46 @@ int_items <- read.csv("data/int_items.csv")
 ```
 
 
-```{r corrmtrx, fig.cap='Correlation Matrix', out.width='80%', fig.asp=.75, fig.align='center'}
-
-# OPTIONS FOR CORRELATION MATRICES
-
-# CORRELATION MATRIX (LOWER HALF)
-r <- lowerCor(items) # the correlation matrix, rounded to 2 decimals
-
+```{r corrmtrx-ext, fig.cap='Correlation Matrix of External Events Items', fig.align='center'}
 # HEATMAP OF CORRELATIONS
-corPlot(r) #examine the many options for this function.
-# corr.test(items)
-
-# corrs <- cor(items, method = c("pearson")) # correlation matrix
-# knitr::kable(round(corrs,2), caption = "Correlation Matrix") # fancy kable version of correlation matrix
-
-# library(corrplot)
-# corrplot(cor(items), order = "original", tl.col='black', tl.cex=.75) # visual correlation matrix
-
+psych::corPlot(ext_items_l, upper = FALSE)
 ```
 
-Figure @ref(fig:corrmtrx) is a correlation matrix of the items.
+Figure \@ref(fig:corrmtrx-ext) is a correlation matrix of the External Events items for the *3,174* examinees who responded to all of these items. Each cell reports the correlation coefficient between scores of the two items. All of the cells are color coded to the scale of correlations which range from 0 (indicating no relationship) to 1 (indicating a perfect linear relationship). The cells along the diagonal are all 1.0 because they represent the correlation of the item with itself. Only one half of the matrix is necessary to report all the correlations among all the items.
 
+The plot offers several interesting pieces of information. The first is that Q17--"Being treated as 'less than' because of my sexual orientation--does not quite fit. Responses to this item correlate weakly with responses to all the other items. It is possible that so few examinees experience this event that the responses vary very little, which would attenuate any correlation. Or it may be measuring something different than what the other items in this set. Similar could be said of Q27--"Being denied opportunities to serve/volunteer because of my gender."
+
+```{r corrmtrx-int, fig.cap='Correlation Matrix of Internal States Items', fig.align='center'}
+# HEATMAP OF CORRELATIONS
+psych::corPlot(int_items_l, upper = FALSE)
+```
+
+Figure \@ref(fig:corrmtrx-int) is a correlation matrix of the Internal States items for the *3,051* examinees who responded to all of these items. This plot is interesting in that most of the correlations are in the moderate (0.50) range. They are sorting examinees in a similar way, but together they do not measure exactly the same thing.
+
+```{r corrmtrx-all, fig.cap='Correlation Matrix of All 66 Likert SHAS Items', fig.align='center'}
+# HEATMAP OF CORRELATIONS
+psych::corPlot(items_l, upper = FALSE)
+```
+This final matrix, Figure \@ref(fig:corrmtrx-all), reports the correlations among all of the Likert items among the *2,979* examinees who responded to all 66 items. Note that missing data are a challenge here, as these plots require complete data.
+
+This plot offers several interesting insights. First, the preponderance of blue indicates that everything is positively correlated. This makes some sense because the items were worded and all the response categories were coded in the same direction.
+
+Second, in this plot there are too many items and correlation coefficients in one place to be distinguishable, but with the colors it is possible to see an overall pattern. This plot orders the items by their order on the questionnaire so we can see how the External Events items correlate with the Internal Events items: moderately. It is possible that these are not two different scales.
+
+Finally, we see at a glance a handful of items that correlate very weakly with all the other items. These items should be scrutinized for refinement and possible omission from the analysis.
 
 **Cronbach's coefficient alpha**.
+Arguably the most well-known statistic for estimating internal consistency reliability is Cronbach's coefficient alpha (citation). This is a measure of the average inter-item correlation (?). It is also a measure of the ratio of signal to noise (X = T + e). A ballpark cutoff value is 0.70 [@Nunnally1994].
 
-```{r}
-# RELIABILITY
-# reliability(items, itemal = TRUE, NA.Delete = TRUE, ml = TRUE)
-# alpha(items)
-# knitr::kable(alpha(items), caption = "Internal Reliability Statistics")
+```{r alpha}
+# CRONBACH'S ALPHA
+reliability(items) # , itemal = TRUE, NA.Delete = TRUE, ml = TRUE)
 ```
+
+This output is not pretty, but it does report a Cronbach's alpha of 0.98. This is a high level of internal consistency reliability.
 
 ## Reliability in Item Response Theory (IRT)
 Wright and Masters (1982) developed reliability measures based on the Rasch measurement model, which have a different concept from classical test theory (e.g., Cronbach’s alpha). Reliability is estimated both for persons and items, by means of Person Separation Reliability (PSR). This is an estimate of how well this instrument can distinguish respondents on the measured variable. In parallel, Item Separation Reliability (ISR) is an indication of how well items are separated by the persons taking the test (Wright & Stone, 1999). The cutoff of separation reliabilities is > 0.80 (Bond & Fox, 2015).
-
-The PSR of the Indonesian version of MUDRAS was 0.92, and the ISR was 0.99. The PSR and ISR were higher than the predefined criteria. We also computed Cronbach’s alpha, which was 0.93, which is higher than the Cronbach’s alpha of the original version (alpha = 0.89) (see Olufadi, 2017). Both alphas exceed the 0.70 cutoff value (Nunnally, 1978), indicating that the Indonesian version of the MUDRAS has excellent internal consistency.
 
 ## Summary
 

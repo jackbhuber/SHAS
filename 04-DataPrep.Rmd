@@ -225,12 +225,12 @@ write.csv(all_l,"data/all_l.csv", row.names=FALSE) # save data
 # OTHER POSSIBLE LISTWISE DATASETS
 
 # items <- items[complete.cases(items), ] # create new dataset without missing data
-# items_l <- na.omit(items) # Likert items from columns 14-79 post listwise
-# ext_items_l <- na.omit(ext_items) # Likert items for external events post listwise
-# int_items_l <- na.omit(int_items) # Likert items for internal states post listwise
-# write.csv(items_l,"data/items_l.csv", row.names=FALSE)
-# write.csv(ext_items_l,"data/ext_items_l.csv", row.names=FALSE)
-# write.csv(int_items_l,"data/int_items_l.csv", row.names=FALSE)
+items_l <- na.omit(items) # Likert items from columns 14-79 post listwise
+ext_items_l <- na.omit(ext_items) # Likert items for external events post listwise
+int_items_l <- na.omit(int_items) # Likert items for internal states post listwise
+write.csv(items_l,"data/items_l.csv", row.names=FALSE)
+write.csv(ext_items_l,"data/ext_items_l.csv", row.names=FALSE)
+write.csv(int_items_l,"data/int_items_l.csv", row.names=FALSE)
 ```
 
 Analysis can proceed with these two datasets:
