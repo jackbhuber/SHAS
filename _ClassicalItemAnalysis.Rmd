@@ -1,0 +1,63 @@
+# Classical Item Analysis
+
+```{r describe, fig.cap='Item Statistics'}
+# DESCRIBE DATA
+# options(digits=2)
+# describe(items)
+
+# this doesn't work
+# knitr::kable(itm_stats, caption = "Items Statistics", booktabs = TRUE, digits=2)
+
+# A POSSIBLE BAR PLOT OF ITEM STATISTICS
+# barplot(item_stats$nbr.val, main="Complete Cases", horiz=TRUE, col='red')
+# barplot(item_stats$nbr.val, main="Complete Cases", horiz=FALSE, col='red', ylim = c(0,8000),names.arg=labs)
+
+```
+
+
+```{r ext-pbis, fig.cap='Item Total Correlations for External Events Items'}
+# DESCRIPTIVES
+ltm::descript(items)
+```
+
+
+
+```{r item-analysis}
+# CLASSICAL ITEM ANALYSIS
+
+# CTT::itemAnalysis(items, itemReport=TRUE, NA.Delete=TRUE, rBisML=FALSE, hardFlag, easyFlag, pBisFlag, bisFlag, flagStyle = c("X",""))
+
+CTT::itemAnalysis(items, itemReport=TRUE, NA.Delete=TRUE, rBisML=FALSE, flagStyle = c("X",""))
+```
+
+```{r}
+# MORE ITEM STATISTICS
+library(pastecs)
+item_stats <- pastecs::stat.desc(items) # use the stat.desc() to render data frame of item stats
+item_stats <- t(item_stats) # transpose the data frame
+item_stats <- data.frame(item_stats)
+item_stats[order(item_stats$mean), ] # order by mean
+item_stats[order(item_stats$nbr.val), ] # order by N cases
+```
+
+**Item-Total Correlations**.
+```{r pbis, fig.cap='Item-Total Correlations'}
+
+# POINT BISERIAL CORRELATIONS
+# ltm::biserial.cor(x, y, use = c("all.obs", "complete.obs"), level = 1)
+
+```
+
+**Distractor Analysis**.
+```{r distractor}
+# DISTRACTOR ANALYSIS
+# CTT::distractorAnalysis
+```
+
+**Outlier Analysis**.
+```{r outliers}
+# OUTLIERS
+# psych::outlier(items)
+```
+
+**Skew and Kurtosis**.
