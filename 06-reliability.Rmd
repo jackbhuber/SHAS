@@ -1,58 +1,58 @@
 # Reliability
-This chapter addresses the topic of reliability, "". Since these are cross-sectional data taken at one point in time, our work is limited to internal consistency reliability which focuses on the relationships between the items. We begin by defining reliability. Then we report the results of our reliability analyses from both the classical test theory (CTT) and item response theory (IRT) frameworks.
+In this chapter, we addresses the reliability of the SHAS based on the 66 piloted items. We begin by defining reliability and discussing its importance. Then we report the results of our analyses of the reliability of the piloted SHAS items from both classical test theory (CTT) and item response theory (IRT) frameworks. Since these are cross-sectional data taken at one point in time, our work is limited to _internal consistency_ reliability which focuses on the relationships between the items at one point in time rather than relationships between items or scores between two or more time points. We conclude by considering what this information contributes to improved SHAS instrumentation.
 
 ## About reliability
-
+Reliability is the extent to which items and their scores are consistently measuring the trait of interest. It is evidence that two examinees who provide the same responses to the same items, and by extension receive the same total scores, truly have the same level or amount of, or exposure to, the trait.
 
 ## Reliability in Classical Test Theory (CTT)
+One way to think about reliability in classical test theory is the ratio of signal to noise in the observed data. Do the various item responses and scores provide a true sort of examinees on the trait, or is all this variation merely noise?
 
-```{r}
+The foundation of internal consistency reliability in CTT is relationships between item responses: correlations. Strong correlations among the items are evidence that the items are measuring the same construct. Thus we begin by examining correlation matrices.
+
+```{r warning=FALSE, echo=FALSE, message=FALSE}
+# LOAD PACKAGES AND DATA
+library(CTT)
+library(psych)
+library(Hmisc)
+library(corrplot)
+items <- read.csv("data/items.csv")
+ext_items <- read.csv("data/ext_items.csv")
+int_items <- read.csv("data/int_items.csv")
+```
+
+
+```{r corrmtrx, fig.cap='Correlation Matrix', out.width='80%', fig.asp=.75, fig.align='center'}
+
+# OPTIONS FOR CORRELATION MATRICES
+
 # CORRELATION MATRIX (LOWER HALF)
-# r <- lowerCor(items) # the correlation matrix, rounded to 2 decimals
+r <- lowerCor(items) # the correlation matrix, rounded to 2 decimals
 
 # HEATMAP OF CORRELATIONS
-# corPlot(r) #examine the many options for this function.
+corPlot(r) #examine the many options for this function.
 # corr.test(items)
 
-# POINT BISERIAL CORRELATIONS
-# ltm::biserial.cor(x, y, use = c("all.obs", "complete.obs"), level = 1)
-
-```
-
-
-```{r}
-
-# RELIABILITY
-# reliability(items, itemal = TRUE, NA.Delete = TRUE, ml = TRUE)
-
-```
-
-One important source of evidence for a scale is correlations among the items.  Strong correlations among the items are evidence that the items are measuring the same construct.  The matrix of correlations is presented in the table.
-
-```{r}
 # corrs <- cor(items, method = c("pearson")) # correlation matrix
 # knitr::kable(round(corrs,2), caption = "Correlation Matrix") # fancy kable version of correlation matrix
-```
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt ex ut condimentum vulputate. Sed feugiat mattis lectus vitae mollis. Suspendisse sodales urna id pharetra mattis. Mauris feugiat molestie efficitur. Proin non metus hendrerit elit viverra tincidunt. Integer tristique, nunc nec gravida semper, erat ligula placerat nunc, vitae tincidunt diam odio ut est. Morbi sit amet posuere ante, non tempor leo. Nam fermentum mi urna, ut lacinia metus venenatis sit amet. Morbi mattis lectus sit amet magna ultricies malesuada.
-
-``` {r fig.cap='Correlation Matrix of Well-being Items', out.width='80%', fig.asp=.75, fig.align='center'}
 # library(corrplot)
 # corrplot(cor(items), order = "original", tl.col='black', tl.cex=.75) # visual correlation matrix
+
 ```
 
-The correlations among the items are moderate at best. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt ex ut condimentum vulputate. Sed feugiat mattis lectus vitae mollis. Suspendisse sodales urna id pharetra mattis. Mauris feugiat molestie efficitur. Proin non metus hendrerit elit viverra tincidunt. Integer tristique, nunc nec gravida semper, erat ligula placerat nunc, vitae tincidunt diam odio ut est. Morbi sit amet posuere ante, non tempor leo. Nam fermentum mi urna, ut lacinia metus venenatis sit amet. Morbi mattis lectus sit amet magna ultricies malesuada.
-Figure X reports internal reliability statistics.
+Figure @ref(fig:corrmtrx) is a correlation matrix of the items.
+
 
 **Cronbach's coefficient alpha**.
 
 ```{r}
+# RELIABILITY
+# reliability(items, itemal = TRUE, NA.Delete = TRUE, ml = TRUE)
 # alpha(items)
-#knitr::kable(alpha(items), caption = "Internal Reliability Statistics")
+# knitr::kable(alpha(items), caption = "Internal Reliability Statistics")
 ```
 
 ## Reliability in Item Response Theory (IRT)
-
 Wright and Masters (1982) developed reliability measures based on the Rasch measurement model, which have a different concept from classical test theory (e.g., Cronbach’s alpha). Reliability is estimated both for persons and items, by means of Person Separation Reliability (PSR). This is an estimate of how well this instrument can distinguish respondents on the measured variable. In parallel, Item Separation Reliability (ISR) is an indication of how well items are separated by the persons taking the test (Wright & Stone, 1999). The cutoff of separation reliabilities is > 0.80 (Bond & Fox, 2015).
 
 The PSR of the Indonesian version of MUDRAS was 0.92, and the ISR was 0.99. The PSR and ISR were higher than the predefined criteria. We also computed Cronbach’s alpha, which was 0.93, which is higher than the Cronbach’s alpha of the original version (alpha = 0.89) (see Olufadi, 2017). Both alphas exceed the 0.70 cutoff value (Nunnally, 1978), indicating that the Indonesian version of the MUDRAS has excellent internal consistency.

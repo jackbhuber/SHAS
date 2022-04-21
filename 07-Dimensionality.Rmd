@@ -8,7 +8,7 @@ Dimensionality is important for the reporting of scores. Scores, as summary meas
 
 Dimensionality is an important part of the validation process for psychological measures [@EmbretsonReise2000].
 
-To assess the dimensionality of these items we use exploratory factor analysis and confirmatory factor analysis (CFA) and PCAR.
+Factor analysis is commonly used to investigate whether item responses are unidimensional. To assess the dimensionality of these 66 piloted SHAS items we use exploratory factor analysis and confirmatory factor analysis (CFA) and PCAR.
 
 ## Exploratory Factor Analysis (EFA)
 
@@ -17,14 +17,13 @@ To assess the dimensionality of these items we use exploratory factor analysis a
 library(lavaan)
 library(psych)
 library(psychTools)
-```
 
-```{r}
 # LOAD DATA
 # all         <- read.csv("data/all.csv")
 items       <- read.csv("data/items.csv")
 ext_items   <- read.csv("data/ext_items.csv")
 int_items   <- read.csv("data/int_items.csv")
+
 ```
 
 ```{r}
@@ -33,12 +32,10 @@ fa.parallel(items)
 vss(items)
 ```
 
-
 ```{r}
 # PRINCIPAL COMPONENTS ANALYSIS
 principal(items)
 ```
-
 
 ```{r}
 # PRINCIPAL AXIS FACTORING
@@ -83,13 +80,9 @@ principal(items)
 ```
 
 ## Confirmatory Factor Analysis (CFA)
+The purpose of confirmatory factor analysis is, as the name implies, to confirm that items measure the factor(s) or trait(s) for which the items were designed and intended to measure.
 
-```{r}
-# ltm::factor.scores(items) # Computation of factor scores for grm, ltm, rasch and tpm models
-```
-
-
-Factor analysis is commonly used to investigate whether item responses are unidimensional. In our use of CFA we used several statistics and fit indices:
+In our use of CFA we used several statistics and fit indices:
 
 - Root Mean Square Error of Approximation (RMSEA)
 - Comparative Fit Index (CFI)
@@ -103,9 +96,11 @@ Based on published criteria (Hu & Bentler, 1999; Wang & Wang, 2019), we used the
 - RMSEA < 0.05
 - SRMR < 0.08
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt ex ut condimentum vulputate. Sed feugiat mattis lectus vitae mollis. Suspendisse sodales urna id pharetra mattis. Mauris feugiat molestie efficitur. Proin non metus hendrerit elit viverra tincidunt. Integer tristique, nunc nec gravida semper, erat ligula placerat nunc, vitae tincidunt diam odio ut est. Morbi sit amet posuere ante, non tempor leo. Nam fermentum mi urna, ut lacinia metus venenatis sit amet. Morbi mattis lectus sit amet magna ultricies malesuada.
+We use the MLM estimator [@Brown2006].
 
-I use the MLM estimator [@Brown2006].
+```{r}
+# ltm::factor.scores(items) # Computation of factor scores for grm, ltm, rasch and tpm models
+```
 
 ```{r}
 # library(lavaan)
@@ -145,3 +140,5 @@ I use the MLM estimator [@Brown2006].
 ```
 
 The results of CFA, using MLR estimation, confirmed the second order factor model, in line with the original structure of the scale (see Olufadi, 2017), because the values of the indices were above the acceptable threshold [χ2 (167) = 284.032, p < 0.001; RMSEA = 0.030 (90% CI = 0.024-0.036), CFI = 0.983, TLI = 0.981, SRMR = 0.023], compared to the unidimensional model [χ2 (170) = 316.949, p < 0.001; RMSEA = 0.034 (90% CI = 0.028-0.039), CFI = 0.978, TLI = 0.976, SRMR = 0.023] and a 3-uncorrelated-factors model [χ2 (170) = 2427.628, p < 0.001; RMSEA = 0.132 (90% CI = 0.127-0.136), CFI = 0.669, TLI = 0.631, SRMR = 0.345]. Based on RMSEA, CFI, TLI, and SRMR, the results indicated that the model provided satisfactory representations of the underlying structure of the psychological well-being construct. All items loaded significantly (ranging from 0.535 to 0.817) in relation to each first order factor, at a p < 0.01 significance level.  These results of the CFA offer evidence that the four items measure one dimension of well-being.
+
+## Summary

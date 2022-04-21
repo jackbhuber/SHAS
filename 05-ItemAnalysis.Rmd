@@ -65,8 +65,15 @@ item_stats[order(item_stats$mean), ] # order by mean
 item_stats[order(item_stats$nbr.val), ] # order by N cases
 ```
 
-**Distractor Analysis**.
+**Item-Total Correlations**.
+```{r pbis, fig.cap='Item-Total Correlations'}
 
+# POINT BISERIAL CORRELATIONS
+# ltm::biserial.cor(x, y, use = c("all.obs", "complete.obs"), level = 1)
+
+```
+
+**Distractor Analysis**.
 ```{r distractor}
 # DISTRACTOR ANALYSIS
 # CTT::distractorAnalysis
