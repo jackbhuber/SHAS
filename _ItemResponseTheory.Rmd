@@ -2,75 +2,73 @@
 This chapter reports our empirical work on the SHAS scale within the framework of item response theory (IRT). We begin with a brief introduction to IRT. Then we document our efforts to fit several IRT models to the polytomous items that comprise the SHAS. We compare the fit of these models to determine the best way to estimate the trait of spiritual abuse. I credit Okan Bulut [-@Bulut2020] for his tutorial illustrating how to do IRT analyses in R using the `mirt` package. We conclude with a summary of the contributions of these analyses to improved SHAS instrumentation.
 
 ## About Item Response Theory
-Item response theory (IRT) is an established framework for empirically evaluating what items measure [@EmbretsonReise2000; @WrightMasters1982]. IRT methods complement methods derived from classical test theory in several ways. IRT does not assume that items are redundant; instead it investigates whether items make different contributions to the measurement of the latent trait. IRT performs a calibration that yields an equal-interval scale which includes items as well as persons. One advantage of this is that we can see how items themselves, as well as persons, fall along a continuum.  
+Item response theory (IRT) is an established framework for empirically evaluating what items measure [@EmbretsonReise2000; @WrightMasters1982]. IRT methods complement methods derived from classical test theory in several ways. IRT does not assume that items are redundant; instead it investigates whether items make different contributions to the measurement of the latent trait. IRT performs a calibration that yields an equal-interval scale which includes items as well as persons. One advantage of this is that we can see how items themselves, as well as persons, fall along a continuum.`^[This is very technical.]`
 
 The Rasch model allows measurement of persons and items on the same scale with equal interval properties of the _logit_ scale and resulting linear measures (Wright & Stone, 1999). With this model, we can estimate item parameters independently of the characteristics of the calibrating sample, and we can estimate person parameters apart from the difficulties of the items taken (Masters, 1982; Rasch, 1966). Rasch models compute the probability of a certain response to each item given the level of the latent construct the individual possesses (i.e., spiritual abuse) and the relevant item’s difficulty of endorsement.
 
 ## Partial Credit Model (PCM)
 The first model we examine is the Partial Credit Model (PCM) [@Masters1982]. This is a polytomous item response model belonging to the Rasch family. The PCM assumes that items use ordered response categories as they exist in questionnaires, such as unidimensional rating scales. The number of response categories in each item may vary [@EmbretsonReise2000]. It follows that the PCM contains m (m + 1 being the number of response categories) threshold parameters. Each threshold parameter marks a category intersection [@Masters1982]. Threshold sometimes refers to “step difficulty” or “step parameter” and illustrates the point on the latent trait continuum (e.g., spiritual abuse) where a response in category k becomes more likely than a response in category k – 1 (de Ayala, 2009). The PCM provides scores for items, persons, and step parameters on a logit scale.
 
-The Rasch model makes two assumptions of the data: (1) unidimensionality of the latent trait, and (2) local independence [@EmbretsonReise2000]. To check the unidimensionality assumption, we first confirm the factor structure of the SHAS. To do this we used confirmatory factor anlysis (CFA) and Rasch Principal Component Analysis of Residuals (PCAR; Smith, 2002). To check the assumption of local independence, I used the Q3 statistic (Yen, 1984). After the assumptions were fulfilled, I performed a PCM analysis.
+**Model Assumptions**. The Rasch model makes two assumptions of the data: (1) unidimensionality of the latent trait, and (2) local independence [@EmbretsonReise2000]. To check the unidimensionality assumption, we first confirm the factor structure of the SHAS. To do this we used confirmatory factor analysis (CFA) and Rasch Principal Component Analysis of Residuals (PCAR; Smith, 2002). To check the assumption of local independence, I used the Q3 statistic (Yen, 1984). After the assumptions were fulfilled, I performed a PCM analysis.
 
-**Local Independence**. The Rasch model assumption of local independence requires that any set of items should not share any meaningful correlation once the latent variable has been accounted for (Edwards, Houts, & Cai, 2018). We tested this using the Q3 statistic (Yen, 1984). The Q3 statistic index criteria are that the raw residual correlation between pairs of items should never exceed 0.10 (Marais & Andrich, 2008). Using these criteria, we found no items having local dependence. (The items that had the highest raw residual correlations had negative signs and no positive residual correlation.) In other words, the assumption of local independence in this study was met.
+The Rasch model assumption of local independence requires that any set of items should not share any meaningful correlation once the latent variable has been accounted for (Edwards, Houts, & Cai, 2018). We tested this using the Q3 statistic (Yen, 1984). The Q3 statistic index criteria are that the raw residual correlation between pairs of items should never exceed 0.10 (Marais & Andrich, 2008). Using these criteria, we found no items having local dependence. (The items that had the highest raw residual correlations had negative signs and no positive residual correlation.) In other words, the assumption of local independence in this study was met.
 
-We begin by loading the `mirt` library and estimating the Partial Credit Model (PCM) on the data from the SHAS items.  This model constrains the slopes to 1 and freely estimates the variance parameters.
+**Model Estimation**. We begin by loading the `mirt` library and estimating the model on the data from the 66 piloted SHAS items. This model constrains the slopes to 1 and freely estimates the variance parameters.
 
-```{r echo=TRUE, message=FALSE, warning=FALSE, include=TRUE}
+```{r mirtmod, echo=TRUE, message=FALSE, warning=FALSE, include=TRUE}
+# ESTIMATE MIRT MODEL
 library(mirt)
 items <- read.csv("data/items.csv")
-model.pcm <- 'PCM = 1-5'
+model.pcm <- 'Spiritual Abuse = 1-66'
 results.pcm <- mirt(data=items, model=model.pcm, itemtype="Rasch", verbose=FALSE)
+```
+
+```{r mirt-items}
 coef.pcm <- coef(results.pcm, IRTpars=TRUE, simplify=TRUE)
 items.pcm <- as.data.frame(coef.pcm$items)
-print(results.pcm)
+# print(results.pcm)
 knitr::kable(round(items.pcm,2), caption = "Partial Credit Model (PCM) - Item Parameters")
+```
+**Item parameters**. Table \@ref(tab:mirt-items) shows a data frame of the estimated item parameters. The first column shows the discrimination parameter, which is equal to “1” for all items because the Partial Credit Model, similar to the Rasch model, constrains the discrimination parameter to be “1”. In the following columns (b1 to b4) are the estimated thresholds or step parameters. Because the SHAS items all have five response categories, the Partial Credit Model estimates four threshold parameters (b1 to b4) for each item.  The question here is the spread of the parameters across the range of the trait.  In the PCM, "the property of ordered threshold parameters is not a requirement in the partial credit or generalized partial credit models" [@EmbretsonReise2000].
+
+Consider the first item: Q7. The thresholds are as follows: b1=0.23, b2=0.08, b3=0.74, b4=1.11. The threshold for b1 is higher than b2. This means examinees who experienced more spiritual abuse overall were more likely to choose "Never" than " " on this item.
+
+**Item fit**. Two fit statistics assess the fit of an item to the PCM: the infit mean square (MNSQ) and the outfit mean square (MNSQ). The infit statistic places greater emphasis on unexpected responses that are close to the examinees and item location. The outfit is sensitive to unexpected responses that are far from the location [@BondFox2015]. The infit and outfit values identify potential unexpected response patterns. The expected value of infit or outfit for each item is 1.0, with a range of acceptable values ranging from 0.5 to 1.5. Values outside this boundary indicate a lack of fit between items and models.
+
+```{r pcm-item-fit}
+itemfit(results.pcm, na.rm=TRUE, 'infit')
+```
+As seen in the \ref(tab:pcm-item-fit), XX items had infit and outfit statistics within an acceptable value (0.5 - 1.5). XX misfitting items were found and this means that XX items fit within the Rasch PCM. ^[and this is important because...]
+
+**Item plots**. We can use also examine these item statistics visually. The following curves are called category response curves because they represent "the probability of an examinee (or survey respondent) responding in a particular category conditional on trait level" [@EmbretsonReise2000].  In general, "the higher the slope parameters, the steeper the operating characteristic curves and the more narrow and peaked the category response curves, indicating that the response categories differentiate among trait levels fairly well" [@EmbretsonReise2000].  Polytomous IRT models such as the Partial Credit Model have option characteristic curves (OCCs) which can be considered as an extension of item characteristic curves (ICCs) for polytomous items. Because the items have more than two response categories, OCCs have multiple curves in the same plot. Each curve represents the probability of selecting a particular response option as a function of the latent trait.
+
+```{r pcm-occs}
+# PCM ITEM PLOTS
 # itemplot(results.pcm, 1, type='infotrace')
-itemplot(results.pcm, type='infotrace')
-```
-
-In the output, we see a data frame of the estimated item parameters. The first column shows the discrimination parameter, which is equal to “1” for all items because the Partial Credit Model, similar to the Rasch model, constrains the discrimination parameter to be “1”. In the following columns (b1 to b4) are the estimated thresholds or step parameters. Because the well-being items all have five response categories, the Partial Credit Model estimates four threshold parameters (b1 to b4) for each item.  The question here is the spread of the parameters across the range of the trait.  In the PCM, "the property of ordered threshold parameters is not a requirement in the partial credit or genearlized partial credit models" [@EmbretsonReise2000].
-
-Two fit statistics can be use to assess the fit of an item to the PCM: the infit mean square (MNSQ) and the outfit mean square (MNSQ). The infit statistic places greater emphasis on unexpected responses that are close to the people and item location. The outfit is sensitive to unexpected responses that are far from the location (Bond & Fox, 2015). The infit and outfit values identify potential unexpected response patterns. The expected value of infit or outfit for each item is 1.0, with a range of acceptable values ranging from 0.5 to 1.5. Values outside this boundary indicate a lack of fit between items and models.
-
-```{r}
-itemfit(results.pcm, 'infit')
-```
-As seen in the table, all four items had infit and outfit statistics within an acceptable value (0.5 - 1.5). No misfitting items were found and this means that the four items fit within the Rasch PCM.
-
-We can use the plot function in the `mirt` package to examine the items visually. The curves are called category response curves because they represent "the probability of an examinee (or survey respondent) responding in a particular category conditional on trait level" [@EmbretsonReise2000].  In general, "the higher the slope parameters, the steeper the operating characteristic curves and the more narrow and peaked the category response curves, indicating that the response categories differentiate among trait levels fairly well" [@EmbretsonReise2000].  Polytomous IRT models such as the Partial Credit Model have option characteristic curves (OCCs) which can be considered as an extension of item characteristic curves (ICCs) for polytomous items. Because the items have more than two response categories, OCCs have multiple curves in the same plot. Each curve represents the probability of selecting a particular response option as a function of the latent trait.
-
-```{r}
-plot(results.pcm, type = 'trace', which.items = c(1,2,3,4),
+plot(results.pcm, type = 'trace', which.items = c(1,2,3,4,5,6,7,8,9,10,11,12),
      main = "", par.settings = simpleTheme(lty=1:4,lwd=2),
      auto.key=list(points=FALSE,lines=TRUE, columns=4)) # option curves
 ```
+In Figure \ref(fig:pcm-occs), each item has four OCCs representing the four response options. The response categories are labeled as “P1” to “P4”. For all four items, the OCCs follow the same order as the response categories. The OCC for the first response option (P1) is on the very left side of the plot, whereas the last response option (P4) is located on the right side of the plot.  There are two questions to ask of OCCs: (1) Are they in the correct order? and (2) Does each response category meaningfully represent the responses of respondents at a given trait level?  In this case, the OCCs are in the correct order, but the middle categories do not seem to capture distinct respondents.
 
-In the figure, each item has four OCCs representing the four response options. The response categories are labeled as “P1” to “P4”. For all four items, the OCCs follow the same order as the response categories. The OCC for the first response option (P1) is on the very left side of the plot, whereas the last response option (P4) is located on the right side of the plot.  There are two questions to ask of OCCs: (1) Are they in the correct order? and (2) Does each response category meaningfully represent the responses of respondents at a given trait level?  In this case, the OCCs are in the correct order, but the middle categories do not seem to capture distinct respondents.
+**Model fit**. One way to evaluate the fit of the Partial Credit Model is to evaluate how well it fits the data from the item responses.  The following table presents this information.
 
-One way to evaluate the fit of the Partial Credit Model is to evaluate how well it fits the data from the item responses.  The following table presents this information.
-
-```{r}
+```{r pcm-model-fit}
 itemplot(results.pcm, 1, type = 'score')
-empirical_plot(items2, c(1,2,3,4), main = 'Empirical Plots')
-pcmfit <- as.data.frame(itemfit(results.pcm))
+empirical_plot(items, c(1,2,3,4), main = 'Empirical Plots') # multiple items
+empirical_plot(items, 1, main = 'Empirical Plots') # one item
+pcmfit <- as.data.frame(itemfit(results.pcm, na.rm=TRUE))
+print(pcmfit, caption = 'Partial Credit Model (PCM) - Item Fit Statistics')
 knitr::kable(pcmfit, caption = 'Partial Credit Model (PCM) - Item Fit Statistics')
 itemfit(results.pcm, empirical.plot=1)
-itemfit(results.pcm, 'infit')
+itemfit(results.pcm, 'infit', na.rm=TRUE)
 ```
+Table X "contains estimation results and the fit index model from each item of the SHAS." The estimates of item difficulty were between -X.XX TO X.XX (ie., -1.36 to 1.51) on the logit scale. Based on the item discrimination index (PTBIS; point-biserial correlation), which is analogous to classical test theory (item to-total-correlation), X SHAS items have high discrimination values in a positive direction, with no values below 0.30 or negative values. This indicates that XX items function well to distinguish persons with high versus low levels of spiritual abuse. For each item, we examined the step parameter of category endorsements, and the statistics of each response for the items. X items, except item X, followed the step ordering requirement. We found Item X (Step 1 = -0.XX, Step 2 = -0.XX, Step 3 = 0.XX) experienced threshold disordering as the thresholds were not ordered from lowest to highest. However, none of the infit and outfit statistics for response categories were greater than 2. This finding indicated that collapsing categories was not necessary because the disordered threshold still fit and did not violate the Rasch model (Linacre, 2010; 2018). Based on this information, we concluded that, in general, the SHAS items (fit)/(did not fit) the Rasch PCM model.
 
-This model blows.
-
-PCM Results: Item Measure, Fit Statistics, and Step Parameter
-
-Table 1 contains estimation results and the fit index model from each item of the Indonesian version of the MUDRAS. 
-
-The estimates of item difficulty were between -1.36 to 1.51 on the logit scale. Based on the item discrimination index (PTBIS; point-biserial correlation), which is analogous to classical test theory (item to-total-correlation), all the MUDRAS items have high discrimination values in a positive direction, with no values below 0.30 or negative values. This indicates that all items function well to distinguish persons with high versus low levels of religiosity. For each item, we examined the step parameter of category endorsements, and the statistics of each response for the items. All items, except item 8, followed the step ordering requirement. We found Item 8 (Step 1 = -0.33, Step 2 = -0.65, Step 3 = 0.98) experienced threshold disordering as the thresholds were not ordered from lowest to highest. However, none of the infit and outfit statistics for response categories were greater than 2. This finding indicated that collapsing categories was not necessary because the disordered threshold still fit and did not violate the Rasch model (Linacre, 2010; 2018). Based on this information, we concluded that, in general, the MUDRAS items fit the Rasch PCM model.
-
-
-
-#### Generalized Partial Credit Model (GPCM)
+## Generalized Partial Credit Model (GPCM)
 
 ```{r}
+# ESTIMATE GENERALIZED PARTIAL 
 model.gpcm <- 'GPCM = 1-4'
 results.gpcm <- mirt(data=items, model=model.gpcm, itemtype="gpcm", verbose=FALSE)
 coef.gpcm <- coef(results.gpcm, IRTpars=TRUE, simplify=TRUE)
@@ -80,16 +78,19 @@ print(results.gpcm)
 knitr::kable(round(items.gpcm,2), caption = "Generalized Partial Credit Model (GPCM) - Item Parameters")
 ```
 
-In the PCM, "the property of ordered threshold parameters is not a requirement in the partial credit or genearlized partial credit models" [@EmbretsonReise2000].
+In the PCM, "the property of ordered threshold parameters is not a requirement in the partial credit or generalized partial credit models" [@EmbretsonReise2000].
 
 ```{r}
+# OPTION CHARACTERISTIC CURVES
 plot(results.gpcm, type = 'trace', which.items = c(1,2,3,4),
      main = "", par.settings = simpleTheme(lty=1:4,lwd=2),
      auto.key=list(points=FALSE,lines=TRUE, columns=4)) # option curves
 ```
 
 
-#### Rating Scale Model (RSM)
+
+
+## Rating Scale Model (RSM)
 
 ```{r}
 model.rsm <- 'RSM = 1-4'
@@ -163,4 +164,5 @@ knitr::kable(round(corrs2,2), caption = "Correlation Matrix")
 
 
 
-## Summary 
+## Summary
+

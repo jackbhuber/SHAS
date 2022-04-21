@@ -1,0 +1,11 @@
+fig:vim-plots
+fig:trigger
+tab:mirt-items
+tab:pcm-model-fit
+tab:unnamed-chunk-9
+tab:unnamed-chunk-11
+tab:unnamed-chunk-12
+fig:corrmtrx-ext
+fig:corrmtrx-int
+fig:corrmtrx-all
+fig:wright
