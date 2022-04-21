@@ -1,5 +1,17 @@
 # Scale Analysis
-In this chapter, we examine the technical quality of the scales derived from the SHAS piloted items. We begin by defining scaling and discussing the importance of scale analysis. We report the results of our scale analysis from within the item response theory (IRT) framework. We conclude by considering what this information contributes to improved SHAS instrumentation.
+In this chapter, we examine the technical quality of the scales derived from the SHAS piloted items. Here we address questions like the following:
+
+- **Person fit** - How well does the current scale fit the population of examinees? Are there ceiling or floor effects? To what extent might the existing items under-represent the full range of abuse?
+
+- **Scale invariance** - Do the scales mean the same thing to different groups of examinees? To what extent do these scales (abuse constructs) vary by age, gender, and/or sexuality?
+
+- **Developmental pathway** - Beyond total scores, what might an incremental scale of in terms of items look like? What items might represent the most severe or most frequent forms of spiritual abuse?
+
+We begin by defining scaling and discussing the importance of scale analysis. We report the results of our scale analysis from within the item response theory (IRT) framework. We conclude by considering what this information contributes to improved SHAS instrumentation.
+
+## Person Fit
+
+## Scale Invariance
 
 ## The Item-Person Map
 The item-person map (also known as the Wright map) is a tool for visualizing the results of a calibration of items and persons. The Wright map was originally developed for use in test development but it also helps illuminate the results of surveys [@bulut20215]. As @bulut20215 explains:
