@@ -83,7 +83,7 @@ Consider the first item: Q7. The thresholds are as follows: b1=0.23, b2=0.08, b3
 itemfit(results.pcm, na.rm=TRUE, 'infit')
 ```
 
-As seen in the \ref(tab:pcm-item-fit), XX items had infit and outfit statistics within an acceptable value (0.5 - 1.5). XX misfitting items were found and this means that XX items fit within the Rasch PCM. ^[and this is important because...]
+As seen in the \@ref(tab:pcm-item-fit), XX items had infit and outfit statistics within an acceptable value (0.5 - 1.5). XX misfitting items were found and this means that XX items fit within the Rasch PCM. ^[and this is important because...]
 
 **Item plots**. We can use also examine these item statistics visually. The following curves are called category response curves because they represent "the probability of an examinee (or survey respondent) responding in a particular category conditional on trait level" [@EmbretsonReise2000].  In general, "the higher the slope parameters, the steeper the operating characteristic curves and the more narrow and peaked the category response curves, indicating that the response categories differentiate among trait levels fairly well" [@EmbretsonReise2000].  Polytomous IRT models such as the Partial Credit Model have option characteristic curves (OCCs) which can be considered as an extension of item characteristic curves (ICCs) for polytomous items. Because the items have more than two response categories, OCCs have multiple curves in the same plot. Each curve represents the probability of selecting a particular response option as a function of the latent trait.
 
@@ -95,7 +95,7 @@ plot(results.pcm, type = 'trace', which.items = c(1,2,3,4,5,6,7,8,9,10,11,12),
      auto.key=list(points=FALSE,lines=TRUE, columns=4)) # option curves
 ```
 
-In Figure \ref(fig:pcm-occs), each item has four OCCs representing the four response options. The response categories are labeled as “P1” to “P4”. For all four items, the OCCs follow the same order as the response categories. The OCC for the first response option (P1) is on the very left side of the plot, whereas the last response option (P4) is located on the right side of the plot.  There are two questions to ask of OCCs: (1) Are they in the correct order? and (2) Does each response category meaningfully represent the responses of respondents at a given trait level?  In this case, the OCCs are in the correct order, but the middle categories do not seem to capture distinct respondents.
+In Figure \@ref(fig:pcm-occs), each item has four OCCs representing the four response options. The response categories are labeled as “P1” to “P4”. For all four items, the OCCs follow the same order as the response categories. The OCC for the first response option (P1) is on the very left side of the plot, whereas the last response option (P4) is located on the right side of the plot.  There are two questions to ask of OCCs: (1) Are they in the correct order? and (2) Does each response category meaningfully represent the responses of respondents at a given trait level?  In this case, the OCCs are in the correct order, but the middle categories do not seem to capture distinct respondents.
 
 **Model fit**. One way to evaluate the fit of the Partial Credit Model is to evaluate how well it fits the data from the item responses.  The following table presents this information.
 
@@ -142,15 +142,17 @@ plot(results.gpcm, type = 'trace', which.items = c(1,2,3,4),
 
 ### Rating Scale Model (RSM)
 
-```{r}
-model.rsm <- 'RSM = 1-4'
+```{r rsm-est}
+model.rsm <- 'SPIRITUAL ABUSE RSM = 1-66'
 results.rsm <- mirt(data=items, model=model.rsm, itemtype="rsm", verbose=FALSE)
 coef.rsm <- coef(results.rsm, simplify=TRUE)
 items.rsm <- as.data.frame(coef.rsm$items)
 print(summary(results.rsm))
 #print(items.rsm)
 knitr::kable(round(items.rsm,2), caption = "Rating Scale Model (RSM) - Item Parameters")
+```
 
+```{r rsm-plots}
 plot(results.rsm, type = 'trace', which.items = c(1,2,3,4),
      main = "", par.settings = simpleTheme(lty=1:4,lwd=2),
      auto.key=list(points=FALSE,lines=TRUE, columns=4)) # option curves
@@ -166,7 +168,7 @@ plot(results.rsm, type = 'itemscore', theta_lim = c(-4,4), lwd=2, facet_items = 
 ### Graded Response Model (GRM)
 
 ```{r}
-model.grm <- 'GRM = 1-4'
+model.grm <- 'SPIRITUAL ABUSE GRM = 1-66'
 results.grm <- mirt(data=items, model=model.grm, itemtype="graded", verbose=FALSE)
 coef.grm <- coef(results.grm, simplify=TRUE)
 items.grm <- as.data.frame(coef.grm$items)
@@ -187,24 +189,5 @@ plot(results.grm, type = 'itemscore', theta_lim = c(-4,4), lwd=2, facet_items = 
 ```
 
 In the Graded Response Model, between category threshold parameters are ordered.
-
-### Trait scores
-
-```{r}
-# attach factor scores
-# pcmscores <- fscores(results.pcm)
-# gpcmscores <- fscores(results.gpcm)
-# rsmscores <- fscores(results.rsm)
-# grmscores <- fscores(results.grm)
-# pew <- cbind(pew, pcmscores)
-# pew <- cbind(pew, gpcmscores)
-# pew <- cbind(pew, rsmscores)
-# pew <- cbind(pew, grmscores)
-# head(items)
-# 
-# scores <- pew[ ,5:9]
-# corrs2 <- cor(scores, method = c("pearson"))
-# knitr::kable(round(corrs2,2), caption = "Correlation Matrix")
-```
 
 ## Summary
