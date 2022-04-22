@@ -8,7 +8,6 @@ This chapter documents our decisions surrounding how to prepare the data for ana
 ```{r include=TRUE, message=FALSE}
 # LOAD PACKAGES
 library(Hmisc) # for variable and value labels
-library(VIM) # for missing data
 library(naniar) # for missing data
 library(corrplot) # for correlation plot
 library(knitr) # how RMarkdown compiles code into documents
@@ -16,121 +15,99 @@ library(knitr) # how RMarkdown compiles code into documents
 
 **Load data**. The data are contained in an Excel file, simply named "data.xlsx", in the "data" folder of this project. The important thing is to keep all the data in the same folder within the larger "SHAS Validity" project folder.
 
-```{r} 
-# LOAD DATA
-library(readxl) # for reading the source Excel file
-shas <- read_excel("data/data.xlsx") # load Excel file
-```
-
 **Select items for analysis**. Which items should we include for analysis? The first 13 columns in the original data file report data from several screening items that were placed at the beginning of the questionnaire. But because they are constant and not variable, they don't seem to have a place in scale development. Therefore it seems the important columns range from columns 14 to 97. The first set of items measure the **External Events** scale. These 52 items range from columns 14 to 35. The second set of items measure the **Internal States** scale, and these 14 items range from columns 66 to 79. The last set of items capture **demographic** variables, and these range from columns 80 to 97.
 
 ```{r}
+# LOAD ORIGINAL DATA
+library(readxl) # for reading the source Excel file
+shas <- read_excel("data/data.xlsx") # load Excel file
+
 # SELECT DATASETS FOR ANALYSIS
 all <- shas[ ,14:97] # select items, dems from columns 14-79
-items <- shas[ ,14:79] # all Likert items
-ext_items <- shas[ ,14:35] # External Events items
-int_items <- shas[ ,66:79] # Internal States items
-
-# REMOVE SELECTED COLUMNS
 all <- subset(all, select = -c(Ext_Avg:Global_Avg)) # remove columns for now
+items <- all[ ,1:66]
 
-# OTHER POSSIBLE DATASETS
+# VARIABLE LABELS
+names(items) <- c(
+  # EXTERNAL EVENTS ITEMS
+  Q7  = "EQ7 - Pastor speaking on God's behalf",
+  Q10 = "EQ10 - Asked to give up personal goals by pastor",
+  Q11 = "EQ11 - Disagree w/pastor portrayed as evil",
+  Q16 = "EQ16 - Church/community abandoning me in difficult time",
+  Q17 = "EQ17 - Treated as less than b/c my sexual orientation",
+  Q18 = "EQ18 - Church/pastor discourage critical thinking",
+  Q19 = "EQ19 - Behavior excessively monitored by pastor/group",
+  Q20 = "EQ20 - Members pressured to give money despite financial hardship",
+  Q21 = "EQ21 - Taught I would risk Hell if left my church/group",
+  Q22 = "EQ22 - Expected to follow pastor/leader rules re: dating/marriage/sex",
+  Q23 = "EQ23 - Prayer replacing needed medical interventions",
+  Q24 = "EQ24 - Expected to consult pastor/leader before making non-religious decisions",
+  Q25 = "EQ25 - Feeling unable to raise questions and issues",
+  Q26 = "EQ26 - Pressured to forgive abuser while abuse was ongoing",
+  Q27 = "EQ27 - Denied opportunities to serve b/c of my gender",
+  Q28 = "EQ28 - Leadershi/group protecting abusive individuals",
+  Q29 = "EQ29 - Feeling special when in pastor’s good graces; otherwise ignored",
+  Q30 = "EQ30 - Deterred from seeking mental health treatment/counseling/medication",
+  Q31 = "EQ31 - Shunned/ignored by pastor/church/group",
+  Q32 = "EQ32 - Feeling unable to express unhappiness",
+  Q34 = "EQ34 - Scripture used to justify physical punishment/severe discipline",
+  Q35 = "EQ35 - Taught to distrust my emotions",
+  Q36 = "EQ36 - Mental/physical problems interpreted as spiritual/moral weakness",
+  Q37 = "EQ37 - Made to feel less spiritually mature than pastor/leadership",
+  Q38 = "EQ38 - Unrealistic demands placed on my moral/religious behavior",
+  Q39 = "EQ39 - Made to feel shame over natural sexual desires (not actions)",
+  Q40 = "EQ40 - Threatening Divine punishment to keep group members in line",
+  Q41 = "EQ41 - Denied opportunities to serve because of my sexual orientation",
+  Q42 = "EQ42 - Seeing others shamed/shunned by pastor/leader/group",
+  Q43 = "EQ43 - Shamed by pastor/group for poor spiritual/moral performance",
+  Q44 = "EQ44 - Love/acceptance offered only for high spiritual/moral performance",
+  Q45 = "EQ45 - Developmentally-inappropriate/anxious Hell/Satan/demons taught to young children",
+  Q46 = "EQ46 - Treated as less than because of my skin color",
+  Q47 = "EQ47 - Medical care being postponed/withheld for religious reasons",
+  Q49 = "EQ49 - Leadership/group protecting and elevating abusive individuals",
+  Q50 = "EQ50 - Treated as less than because of my gender",
+  Q51 = "EQ51 - Extreme pressure to be pastor/missionary/spiritual leader",
+  Q52 = "EQ52 - Blamed for harm I suffered rather than blaming who harmed me",
+  Q53 = "EQ53 - Scripture used to justify abusive parent-child behavior",
+  Q54 = "EQ54 - Being explicitly taught to distrust my intuitions",
+  Q55 = "EQ55 - Hearing cultural references in sermons unfamiliar to my race/eth. subculture",
+  Q56 = "EQ56 - Being made to feel I was crazy/weird for doubts/questions",
+  Q57 = "EQ57 - Developing mental/physical ailments from conforming to group/leader’s expectation",
+  Q58 = "EQ58 - Terror/horror used to motivate religious decisions",
+  Q59 = "EQ59 - Pastor/group blame victim for their abuse",
+  Q60 = "EQ60 - Encouraged by leader to stay in abusive marriage",
+  Q61 = "EQ61 - Developmentally-inappropriate/anxious end times taught to young children",
+  Q62 = "EQ62 - Scripture used to justify physical violence",
+  Q63 = "EQ63 - Shamed by pastor/group for raising questions or concerns",
+  Q64 = "EQ64 - Witnessing women pressured to stay in unfaithful/abusive marriages",
+  Q65 = "EQ65 - Cut off/shunned by more religious family members",
+  Q66 = "EQ66 - Others treated as less than due to their sexual orientation",
+  
+  # VARIABLE LABELS: INTERNAL STATES ITEMS
+  Q68 = "IQ68 - Anxiety attacks triggered by religious stimuli",
+  Q69 = "IQ69 - Lack of spiritual direction/purpose",
+  Q70 = "IQ70 - Feeling betrayed by God",
+  Q71 = "IQ71 - Avoiding religious activities/settings to reduce distressing feelings",
+  Q72 = "IQ72 - Feeling as if God harmed me directly",
+  Q73 = "IQ73 - Self-hatred or self-loathing",
+  Q74 = "IQ74 - Sadness over the loss of my faith/religious community",
+  Q76 = "IQ76 - Feeling I wasted years of my life in a church/set of beliefs",
+  Q77 = "IQ77 - Anger upon reflecting on negative religious experiences",
+  Q78 = "IQ78 - A lack of self-worth",
+  Q79 = "IQ79 - Distrust of God",
+  Q80 = "IQ80 - Feeling isolated",
+  Q81 = "IQ81 - Nightmares about my negative religious experiences",
+  Q82 = "IQ82 - Having trouble navigating life outside my church/community")
+
+# SELECT ITEMS
+ext_items <- items[ ,1:52]
+int_items <- items[ ,52:66]
+
+# SAVE DATA FILES
 write.csv(all,"data/all.csv", row.names=FALSE) # save data for later use
 write.csv(items,"data/items.csv", row.names=FALSE)
 write.csv(ext_items,"data/ext_items.csv", row.names=FALSE)
 write.csv(int_items,"data/int_items.csv", row.names=FALSE)
-```
-
-**Labeling**. This is probably the appropriate place to deal with the labeling of variables and their values. These things should be appropriately labeled to their content, wording, etc. **But I have yet to figure this part out so I will come back to it**.
-
-```{r}
-library(Hmisc)
-var.labels = c(
-# VARIABLE LABELS: Items for External Events Subscale
-Q7 = "My pastor/leader explicitly claiming to speak on God's behalf",
-Q10 = "Being asked to give up personal, vocational, and/or educational goals by a pastor or group leader",
-Q11 = "Seeing that anyone who disagreed with my church/pastor was consequently portrayed as evil",
-Q16 = "My church community abandoning me in a difficult time",
-Q17 = "Being treated as “less than” because of my sexual orientation",
-Q18 = "Discouragement of critical thinking by my church or pastor",
-Q19 = "Behavior being excessively monitored by my pastor or group members",
-Q20 = "Seeing specific members being pressured to give money despite well-known personal financial hardship",
-Q21 = "Being taught that I would be risking Hell if I left my particular church/group",
-Q22 = "Being expected to follow my pastor/leader’s personal rules/advice around dating, marriage, and sex",
-Q23 = "Prayer replacing needed medical interventions",
-Q24 = "Being expected to consult my pastor/leader before making non-religious decisions",
-Q25 = "Feeling unable to raise questions and issues",
-Q26 = "Being pressured to forgive an abuser while the abuse was ongoing",
-Q27 = "Being denied opportunities to serve/volunteer because of my gender",
-Q28 = "Seeing the leadership or group protecting abusive individuals",
-Q29 = "Feeling special when in my pastor/leader’s good graces; feeling ignored when I wasn’t",
-Q30 = "Being deterred from seeking mental health treatment, counseling and/or medication",
-Q31 = "Being shunned or ignored by my pastor or church/group",
-Q32 = "Feeling unable to express unhappiness",
-Q34 = "Seeing Scripture used to justify physical punishment or other types of severe discipline",
-Q35 = "Being explicitly taught to distrust my emotions",
-Q36 = "Mental or physical problems being interpreted as spiritual/moral weakness",
-Q37 = "Being made to feel less spiritually advanced/mature than my pastor/leadership",
-Q38 = "Having unrealistic demands placed on my moral or religious behavior",
-Q39 = "Being made to feel shame over naturally occurring sexual desires (not actions)",
-Q40 = "Threatening Divine punishment to keep group members in line",
-Q41 = "Being denied opportunities to serve because of my sexual orientation",
-Q42 = "Seeing others shamed or shunned by the pastor/leader or group",
-Q43 = "Being shamed by my pastor or the group for poor spiritual/moral performance",
-Q44 = "Love or acceptance only being offered if spiritual or moral performance was high",
-Q45 = "Vivid descriptions of Hell, Satan, or demons being taught to young children that are developmentally inappropriate and/or anxiety-provoking",
-Q46 = "Being treated as “less than” because of my skin color",
-Q47 = "Medical care being postponed or not given at all for religious reasons",
-Q49 = "The leadership or group not only protecting but elevating abusive individuals",
-Q50 = "Being treated as “less than” because of my gender",
-Q51 = "Experiencing extreme pressure to take on a role of pastor, missionary, or other spiritual leader",
-Q52 = "Being blamed for harm that I suffered, rather than blaming those who harmed me",
-Q53 = "Seeing Scripture used to justify abusive parent-child behavior",
-Q54 = "Being explicitly taught to distrust my intuitions",
-Q55 = "Hearing cultural references in sermons that were not commonly known to members of my racial or ethnic subculture",
-Q56 = "Being made to feel like I was crazy or weird for having doubts or questions",
-Q57 = "Developing mental or physical ailments as a result of stress from conforming to the group/leader’s expectation",
-Q58 = "Terror or horror being used to motivate religious decisions",
-Q59 = "Seeing the pastor or group blame the victim of abuse for the abuse itself",
-Q60 = "Being encouraged to remain in an abusive marriage by religious leaders",
-Q61 = "Vivid descriptions of the end of the world being taught to young children that are developmentally inappropriate and/or anxiety-provoking",
-Q62 = "Seeing Scripture used to justify physical violence",
-Q63 = "Being shamed by my pastor or the group for raising questions or concerns",
-Q64 = "Witnessing women being pressured to stay in unfaithful or abusive marriages",
-Q65 = "Being “cut off” or shunned by more religious family members",
-Q66 = "Seeing others treated as “less than” because of their sexual orientation",
-                    
-# VARIABLE LABELS: Items for Internal States Subscale
-Q68 = "Anxiety attacks triggered by religious stimuli",
-Q69 = "A lack of spiritual direction or purpose",
-Q70 = "Feeling betrayed by God",
-Q71 = "Personally avoiding religious activities or settings to reduce distressing feelings",
-Q72 = "Feeling as if God harmed me directly",
-Q73 = "Self-hatred or self-loathing",
-Q74 = "Sadness over the loss of my faith/religious community",
-Q76 = "Feeling that I wasted years of my life in a particular church or set of beliefs",
-Q77 = "Anger upon reflecting on negative religious experiences",
-Q78 = "A lack of self-worth",
-Q79 = "Distrust of God",
-Q80 = "Feeling isolated",
-Q81 = "Nightmares about my negative religious experiences",
-Q82 = "Having trouble navigating life outside my church/community",
-
-# VARIABLE LABELS for Demographics
-Q84 = "Age",
-Q85 = "Gender",
-Q86 = "Sexual orientation",
-Q87 = "Race",
-Q88 = "Raised in Christian home",
-Q89 = "Denomination/group of most negative experience",
-Q90 = "Racial makeup of denomination/group of most negative experience",
-Q91 = "Race of leadership of denomination/group of most negative experience",
-Q92 = "Gender of leadership of denomination/group of most negative experience",
-Q95 = "Involvement in denomination/group of most negative experience",
-Q93 = "Current religious identification"
-)
-
-label(items) = as.list(var.labels[match(names(items), names(var.labels))])
 ```
 
 ## Missing data

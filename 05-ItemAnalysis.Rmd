@@ -45,7 +45,7 @@ In what follows, we conduct item analyses through a comparison of several differ
 ### IRT Model Assumptions
 IRT makes two assumptions of the data. The first is unidimensionality of the latent trait. Is the trait one dimension? This is important for the SHAS because the questionnaire explicitly distinguished between items measuring external events and internal states. To check this assumption we first confirm the factor structure using confirmatory factor analysis (CFA) and Rasch Principal Component Analysis of Residuals (PCAR; Smith, 2002). 
 
-The second assumption is local independence [@EmbretsonResise2000]. This means that any set of items should not share any meaningful correlation once the latent variable has been accounted for (Edwards, Houts, & Cai, 2018).
+The second assumption is local independence [@EmbretsonReise2000]. This means that any set of items should not share any meaningful correlation once the latent variable has been accounted for (Edwards, Houts, & Cai, 2018).
 
 To check the assumption of local independence, we used the Q3 statistic (Yen, 1984). The Q3 statistic index criteria are that the raw residual correlation between pairs of items should never exceed 0.10 (Marais & Andrich, 2008).
 
