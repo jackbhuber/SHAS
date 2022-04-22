@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.4.7)  21 APR 2022 22:14
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.4.7)  22 APR 2022 15:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -842,62 +842,66 @@ Chapter 4.
 Chapter 5.
 [10
 
-] [11]
-Underfull \vbox (badness 10000) detected at line 422
+]
+Underfull \vbox (badness 10000) detected at line 410
+ []
+
+[11]
+Underfull \vbox (badness 10000) detected at line 410
  []
 
 
-Underfull \vbox (badness 10000) detected at line 422
+Underfull \vbox (badness 10000) detected at line 410
  []
 
 [12]
 
-Package natbib Warning: Citation `VIM' on page 13 undefined on input line 427.
+Package natbib Warning: Citation `VIM' on page 13 undefined on input line 415.
 
 File: _main_files/figure-latex/vim-plots-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/vim-plots-1.pdf>
 [13] [14]
-Underfull \vbox (badness 10000) detected at line 517
+Underfull \vbox (badness 10000) detected at line 505
  []
 
 [15]
-Overfull \hbox (6.75pt too wide) in paragraph at lines 543--543
+Overfull \hbox (6.75pt too wide) in paragraph at lines 531--531
 []    \TU/lmtt/m/n/10 Q68   Q69   Q70   Q71   Q72   Q73   Q74   Q76   Q77   Q78
    Q79[] 
  []
 
 
-Overfull \hbox (17.25pt too wide) in paragraph at lines 543--543
+Overfull \hbox (17.25pt too wide) in paragraph at lines 531--531
 []\TU/lmtt/m/n/10 Q79  0.98  0.98  0.97  0.98  0.97  0.98  0.97  0.97  0.98  0.
 98  1.00[] 
  []
 
 
-Overfull \hbox (17.25pt too wide) in paragraph at lines 543--543
+Overfull \hbox (17.25pt too wide) in paragraph at lines 531--531
 []\TU/lmtt/m/n/10 Q80  0.98  0.98  0.98  0.99  0.98  0.98  0.98  0.99  0.98  0.
 98  0.97[] 
  []
 
 
-Overfull \hbox (17.25pt too wide) in paragraph at lines 543--543
+Overfull \hbox (17.25pt too wide) in paragraph at lines 531--531
 []\TU/lmtt/m/n/10 Q81  1.00  0.99  0.99  1.00  0.99  1.00  0.99  0.99  0.99  0.
 99  0.98[] 
  []
 
 
-Overfull \hbox (17.25pt too wide) in paragraph at lines 543--543
+Overfull \hbox (17.25pt too wide) in paragraph at lines 531--531
 []\TU/lmtt/m/n/10 Q82  0.99  0.99  0.98  0.99  0.98  0.98  0.98  0.99  0.99  0.
 98  0.97[] 
  []
 
 
-Overfull \hbox (17.25pt too wide) in paragraph at lines 543--543
+Overfull \hbox (17.25pt too wide) in paragraph at lines 531--531
 []\TU/lmtt/m/n/10 Q84  0.01  0.00  0.00  0.00  0.03  0.03  0.02  0.02    NA  0.
 01  0.01[] 
  []
 
 
-Overfull \hbox (17.25pt too wide) in paragraph at lines 543--543
+Overfull \hbox (17.25pt too wide) in paragraph at lines 531--531
 []\TU/lmtt/m/n/10 Q85  0.01  0.04  0.03  0.01  0.03  0.01 -0.01  0.04    NA  0.
 06 -0.01[] 
  []
@@ -905,13 +909,13 @@ Overfull \hbox (17.25pt too wide) in paragraph at lines 543--543
 File: _main_files/figure-latex/trigger-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/trigger-1.pdf>
 
-LaTeX Warning: Reference `fig:trigger' on page 16 undefined on input line 552.
+LaTeX Warning: Reference `fig:trigger' on page 16 undefined on input line 540.
 
 
-LaTeX Warning: Reference `fig:mcar' on page 16 undefined on input line 552.
+LaTeX Warning: Reference `fig:mcar' on page 16 undefined on input line 540.
 
 [16]
-Underfull \vbox (badness 10000) detected at line 573
+Underfull \vbox (badness 10000) detected at line 561
  []
 
 [17] [18]
@@ -921,34 +925,30 @@ Chapter 6.
 ]
 
 Package natbib Warning: Citation `Bulut2020' on page 20 undefined on input line
- 620.
-
-
-Package natbib Warning: Citation `EmbretsonResise2000' on page 20 undefined on 
-input line 627.
+ 608.
 
 
 Package natbib Warning: Citation `Masters1982' on page 20 undefined on input li
-ne 636.
+ne 624.
 
 
 Package natbib Warning: Citation `Masters1982' on page 20 undefined on input li
-ne 636.
+ne 624.
 
 [20]
 
-LaTeX Warning: Float too large for page by 310.29959pt on input line 801.
+LaTeX Warning: Float too large for page by 310.29959pt on input line 789.
 
 [21] [22] [23]
 
 LaTeX Warning: Reference `tab:pcm-item-fit' on page 24 undefined on input line 
-885.
+873.
 
 [24]
 File: _main_files/figure-latex/pcm-occs-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/pcm-occs-1.pdf>
 
-LaTeX Warning: Reference `fig:pcm-occs' on page 25 undefined on input line 900.
+LaTeX Warning: Reference `fig:pcm-occs' on page 25 undefined on input line 888.
 
 
 File: _main_files/figure-latex/pcm-model-fit-1.pdf Graphic file (type pdf)
@@ -960,25 +960,25 @@ File: _main_files/figure-latex/pcm-model-fit-3.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/pcm-model-fit-3.pdf>
 [26] [27] [28]
 
-LaTeX Warning: Float too large for page by 310.29959pt on input line 1153.
+LaTeX Warning: Float too large for page by 310.29959pt on input line 1141.
 
 File: _main_files/figure-latex/pcm-model-fit-4.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/pcm-model-fit-4.pdf>
 [29] [30] [31]
-Overfull \hbox (43.5pt too wide) in paragraph at lines 1274--1274
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1262--1262
 []\TU/lmtt/m/n/10 mirt(data = items, model = model.gpcm, itemtype = "gpcm", ver
 bose = FALSE)[] 
  []
 
 [32]
 
-LaTeX Warning: Float too large for page by 310.29959pt on input line 1424.
+LaTeX Warning: Float too large for page by 310.29959pt on input line 1412.
 
 File: _main_files/figure-latex/gpcm-occs-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/gpcm-occs-1.pdf>
 [33] [34] [35] [36] [37] [38]
 
-LaTeX Warning: Float too large for page by 310.29959pt on input line 1824.
+LaTeX Warning: Float too large for page by 310.29959pt on input line 1812.
 
 File: _main_files/figure-latex/rsm-plots-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/rsm-plots-1.pdf>
@@ -987,12 +987,12 @@ File: _main_files/figure-latex/rsm-plots-2.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/rsm-plots-2.pdf>
 [41] [42] [43] [44] [45] [46]
 
-LaTeX Warning: Float too large for page by 310.29959pt on input line 2237.
+LaTeX Warning: Float too large for page by 310.29959pt on input line 2225.
 
-File: _main_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-8-1.pdf>
-File: _main_files/figure-latex/unnamed-chunk-8-2.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-8-2.pdf>
+File: _main_files/figure-latex/unnamed-chunk-6-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-6-1.pdf>
+File: _main_files/figure-latex/unnamed-chunk-6-2.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-6-2.pdf>
 [47] [48] [49]
 Chapter 7.
 [50
@@ -1022,14 +1022,14 @@ Chapter 9.
 
 Package natbib Warning: There were undefined citations.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2462.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2450.
 [60
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2462.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2450.
 (./_main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 2462.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 2462.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 2450.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 2450.
 
 LaTeX Warning: There were undefined references.
 

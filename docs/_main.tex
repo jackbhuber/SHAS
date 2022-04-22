@@ -140,7 +140,7 @@
 
 \title{Validity Evidence for the Spiritual Harm and Abuse Scale (SHAS)}
 \author{Jack Huber and Dan Koch}
-\date{2022-04-21}
+\date{2022-04-22}
 
 \begin{document}
 \maketitle
@@ -289,7 +289,6 @@ This chapter documents our decisions surrounding how to prepare the data for ana
 \begin{Highlighting}[]
 \CommentTok{\# LOAD PACKAGES}
 \FunctionTok{library}\NormalTok{(Hmisc)  }\CommentTok{\# for variable and value labels}
-\FunctionTok{library}\NormalTok{(VIM)  }\CommentTok{\# for missing data}
 \FunctionTok{library}\NormalTok{(naniar)  }\CommentTok{\# for missing data}
 \FunctionTok{library}\NormalTok{(corrplot)  }\CommentTok{\# for correlation plot}
 \FunctionTok{library}\NormalTok{(knitr)  }\CommentTok{\# how RMarkdown compiles code into documents}
@@ -298,126 +297,115 @@ This chapter documents our decisions surrounding how to prepare the data for ana
 
 \textbf{Load data}. The data are contained in an Excel file, simply named ``data.xlsx'', in the ``data'' folder of this project. The important thing is to keep all the data in the same folder within the larger ``SHAS Validity'' project folder.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# LOAD DATA}
-\FunctionTok{library}\NormalTok{(readxl)  }\CommentTok{\# for reading the source Excel file}
-\NormalTok{shas }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"data/data.xlsx"}\NormalTok{)  }\CommentTok{\# load Excel file}
-\end{Highlighting}
-\end{Shaded}
-
 \textbf{Select items for analysis}. Which items should we include for analysis? The first 13 columns in the original data file report data from several screening items that were placed at the beginning of the questionnaire. But because they are constant and not variable, they don't seem to have a place in scale development. Therefore it seems the important columns range from columns 14 to 97. The first set of items measure the \textbf{External Events} scale. These 52 items range from columns 14 to 35. The second set of items measure the \textbf{Internal States} scale, and these 14 items range from columns 66 to 79. The last set of items capture \textbf{demographic} variables, and these range from columns 80 to 97.
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{\# LOAD ORIGINAL DATA}
+\FunctionTok{library}\NormalTok{(readxl)  }\CommentTok{\# for reading the source Excel file}
+\NormalTok{shas }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"data/data.xlsx"}\NormalTok{)  }\CommentTok{\# load Excel file}
+
 \CommentTok{\# SELECT DATASETS FOR ANALYSIS}
 \NormalTok{all }\OtherTok{\textless{}{-}}\NormalTok{ shas[, }\DecValTok{14}\SpecialCharTok{:}\DecValTok{97}\NormalTok{]  }\CommentTok{\# select items, dems from columns 14{-}79}
-\NormalTok{items }\OtherTok{\textless{}{-}}\NormalTok{ shas[, }\DecValTok{14}\SpecialCharTok{:}\DecValTok{79}\NormalTok{]  }\CommentTok{\# all Likert items}
-\NormalTok{ext\_items }\OtherTok{\textless{}{-}}\NormalTok{ shas[, }\DecValTok{14}\SpecialCharTok{:}\DecValTok{35}\NormalTok{]  }\CommentTok{\# External Events items}
-\NormalTok{int\_items }\OtherTok{\textless{}{-}}\NormalTok{ shas[, }\DecValTok{66}\SpecialCharTok{:}\DecValTok{79}\NormalTok{]  }\CommentTok{\# Internal States items}
-
-\CommentTok{\# REMOVE SELECTED COLUMNS}
 \NormalTok{all }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(all, }\AttributeTok{select =} \SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(Ext\_Avg}\SpecialCharTok{:}\NormalTok{Global\_Avg))  }\CommentTok{\# remove columns for now}
+\NormalTok{items }\OtherTok{\textless{}{-}}\NormalTok{ all[, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{66}\NormalTok{]}
 
-\CommentTok{\# OTHER POSSIBLE DATASETS}
+\CommentTok{\# VARIABLE LABELS names(items) \textless{}{-} c( \# EXTERNAL EVENTS}
+\CommentTok{\# ITEMS Q7 = \textquotesingle{}EQ7 {-} Pastor speaking on God\textquotesingle{}s behalf\textquotesingle{}, Q10 =}
+\CommentTok{\# \textquotesingle{}EQ10 {-} Asked to give up personal goals by pastor\textquotesingle{}, Q11 =}
+\CommentTok{\# \textquotesingle{}EQ11 {-} Disagree w/pastor portrayed as evil\textquotesingle{}, Q16 = \textquotesingle{}EQ16}
+\CommentTok{\# {-} Church/community abandoning me in difficult time\textquotesingle{}, Q17}
+\CommentTok{\# = \textquotesingle{}EQ17 {-} Treated as less than b/c my sexual}
+\CommentTok{\# orientation\textquotesingle{}, Q18 = \textquotesingle{}EQ18 {-} Church/pastor discourage}
+\CommentTok{\# critical thinking\textquotesingle{}, Q19 = \textquotesingle{}EQ19 {-} Behavior excessively}
+\CommentTok{\# monitored by pastor/group\textquotesingle{}, Q20 = \textquotesingle{}EQ20 {-} Members}
+\CommentTok{\# pressured to give money despite financial hardship\textquotesingle{}, Q21}
+\CommentTok{\# = \textquotesingle{}EQ21 {-} Taught I would risk Hell if left my}
+\CommentTok{\# church/group\textquotesingle{}, Q22 = \textquotesingle{}EQ22 {-} Expected to follow}
+\CommentTok{\# pastor/leader rules re: dating/marriage/sex\textquotesingle{}, Q23 = \textquotesingle{}EQ23}
+\CommentTok{\# {-} Prayer replacing needed medical interventions\textquotesingle{}, Q24 =}
+\CommentTok{\# \textquotesingle{}EQ24 {-} Expected to consult pastor/leader before making}
+\CommentTok{\# non{-}religious decisions\textquotesingle{}, Q25 = \textquotesingle{}EQ25 {-} Feeling unable to}
+\CommentTok{\# raise questions and issues\textquotesingle{}, Q26 = \textquotesingle{}EQ26 {-} Pressured to}
+\CommentTok{\# forgive abuser while abuse was ongoing\textquotesingle{}, Q27 = \textquotesingle{}EQ27 {-}}
+\CommentTok{\# Denied opportunities to serve b/c of my gender\textquotesingle{}, Q28 =}
+\CommentTok{\# \textquotesingle{}EQ28 {-} Leadershi/group protecting abusive individuals\textquotesingle{},}
+\CommentTok{\# Q29 = \textquotesingle{}EQ29 {-} Feeling special when in pastor’s good}
+\CommentTok{\# graces; otherwise ignored\textquotesingle{}, Q30 = \textquotesingle{}EQ30 {-} Deterred from}
+\CommentTok{\# seeking mental health treatment/counseling/medication\textquotesingle{},}
+\CommentTok{\# Q31 = \textquotesingle{}EQ31 {-} Shunned/ignored by pastor/church/group\textquotesingle{},}
+\CommentTok{\# Q32 = \textquotesingle{}EQ32 {-} Feeling unable to express unhappiness\textquotesingle{}, Q34}
+\CommentTok{\# = \textquotesingle{}EQ34 {-} Scripture used to justify physical}
+\CommentTok{\# punishment/severe discipline\textquotesingle{}, Q35 = \textquotesingle{}EQ35 {-} Taught to}
+\CommentTok{\# distrust my emotions\textquotesingle{}, Q36 = \textquotesingle{}EQ36 {-} Mental/physical}
+\CommentTok{\# problems interpreted as spiritual/moral weakness\textquotesingle{}, Q37 =}
+\CommentTok{\# \textquotesingle{}EQ37 {-} Made to feel less spiritually mature than}
+\CommentTok{\# pastor/leadership\textquotesingle{}, Q38 = \textquotesingle{}EQ38 {-} Unrealistic demands}
+\CommentTok{\# placed on my moral/religious behavior\textquotesingle{}, Q39 = \textquotesingle{}EQ39 {-}}
+\CommentTok{\# Made to feel shame over natural sexual desires (not}
+\CommentTok{\# actions)\textquotesingle{}, Q40 = \textquotesingle{}EQ40 {-} Threatening Divine punishment to}
+\CommentTok{\# keep group members in line\textquotesingle{}, Q41 = \textquotesingle{}EQ41 {-} Denied}
+\CommentTok{\# opportunities to serve because of my sexual orientation\textquotesingle{},}
+\CommentTok{\# Q42 = \textquotesingle{}EQ42 {-} Seeing others shamed/shunned by}
+\CommentTok{\# pastor/leader/group\textquotesingle{}, Q43 = \textquotesingle{}EQ43 {-} Shamed by}
+\CommentTok{\# pastor/group for poor spiritual/moral performance\textquotesingle{}, Q44 =}
+\CommentTok{\# \textquotesingle{}EQ44 {-} Love/acceptance offered only for high}
+\CommentTok{\# spiritual/moral performance\textquotesingle{}, Q45 = \textquotesingle{}EQ45 {-}}
+\CommentTok{\# Developmentally{-}inappropriate/anxious Hell/Satan/demons}
+\CommentTok{\# taught to young children\textquotesingle{}, Q46 = \textquotesingle{}EQ46 {-} Treated as less}
+\CommentTok{\# than because of my skin color\textquotesingle{}, Q47 = \textquotesingle{}EQ47 {-} Medical}
+\CommentTok{\# care being postponed/withheld for religious reasons\textquotesingle{}, Q49}
+\CommentTok{\# = \textquotesingle{}EQ49 {-} Leadership/group protecting and elevating}
+\CommentTok{\# abusive individuals\textquotesingle{}, Q50 = \textquotesingle{}EQ50 {-} Treated as less than}
+\CommentTok{\# because of my gender\textquotesingle{}, Q51 = \textquotesingle{}EQ51 {-} Extreme pressure to}
+\CommentTok{\# be pastor/missionary/spiritual leader\textquotesingle{}, Q52 = \textquotesingle{}EQ52 {-}}
+\CommentTok{\# Blamed for harm I suffered rather than blaming who harmed}
+\CommentTok{\# me\textquotesingle{}, Q53 = \textquotesingle{}EQ53 {-} Scripture used to justify abusive}
+\CommentTok{\# parent{-}child behavior\textquotesingle{}, Q54 = \textquotesingle{}EQ54 {-} Being explicitly}
+\CommentTok{\# taught to distrust my intuitions\textquotesingle{}, Q55 = \textquotesingle{}EQ55 {-} Hearing}
+\CommentTok{\# cultural references in sermons unfamiliar to my race/eth.}
+\CommentTok{\# subculture\textquotesingle{}, Q56 = \textquotesingle{}EQ56 {-} Being made to feel I was}
+\CommentTok{\# crazy/weird for doubts/questions\textquotesingle{}, Q57 = \textquotesingle{}EQ57 {-}}
+\CommentTok{\# Developing mental/physical ailments from conforming to}
+\CommentTok{\# group/leader’s expectation\textquotesingle{}, Q58 = \textquotesingle{}EQ58 {-} Terror/horror}
+\CommentTok{\# used to motivate religious decisions\textquotesingle{}, Q59 = \textquotesingle{}EQ59 {-}}
+\CommentTok{\# Pastor/group blame victim for their abuse\textquotesingle{}, Q60 = \textquotesingle{}EQ60 {-}}
+\CommentTok{\# Encouraged by leader to stay in abusive marriage\textquotesingle{}, Q61 =}
+\CommentTok{\# \textquotesingle{}EQ61 {-} Developmentally{-}inappropriate/anxious end times}
+\CommentTok{\# taught to young children\textquotesingle{}, Q62 = \textquotesingle{}EQ62 {-} Scripture used}
+\CommentTok{\# to justify physical violence\textquotesingle{}, Q63 = \textquotesingle{}EQ63 {-} Shamed by}
+\CommentTok{\# pastor/group for raising questions or concerns\textquotesingle{}, Q64 =}
+\CommentTok{\# \textquotesingle{}EQ64 {-} Witnessing women pressured to stay in}
+\CommentTok{\# unfaithful/abusive marriages\textquotesingle{}, Q65 = \textquotesingle{}EQ65 {-} Cut}
+\CommentTok{\# off/shunned by more religious family members\textquotesingle{}, Q66 =}
+\CommentTok{\# \textquotesingle{}EQ66 {-} Others treated as less than due to their sexual}
+\CommentTok{\# orientation\textquotesingle{}, \# VARIABLE LABELS: INTERNAL STATES ITEMS}
+\CommentTok{\# Q68 = \textquotesingle{}IQ68 {-} Anxiety attacks triggered by religious}
+\CommentTok{\# stimuli\textquotesingle{}, Q69 = \textquotesingle{}IQ69 {-} Lack of spiritual}
+\CommentTok{\# direction/purpose\textquotesingle{}, Q70 = \textquotesingle{}IQ70 {-} Feeling betrayed by}
+\CommentTok{\# God\textquotesingle{}, Q71 = \textquotesingle{}IQ71 {-} Avoiding religious}
+\CommentTok{\# activities/settings to reduce distressing feelings\textquotesingle{}, Q72}
+\CommentTok{\# = \textquotesingle{}IQ72 {-} Feeling as if God harmed me directly\textquotesingle{}, Q73 =}
+\CommentTok{\# \textquotesingle{}IQ73 {-} Self{-}hatred or self{-}loathing\textquotesingle{}, Q74 = \textquotesingle{}IQ74 {-}}
+\CommentTok{\# Sadness over the loss of my faith/religious community\textquotesingle{},}
+\CommentTok{\# Q76 = \textquotesingle{}IQ76 {-} Feeling I wasted years of my life in a}
+\CommentTok{\# church/set of beliefs\textquotesingle{}, Q77 = \textquotesingle{}IQ77 {-} Anger upon}
+\CommentTok{\# reflecting on negative religious experiences\textquotesingle{}, Q78 =}
+\CommentTok{\# \textquotesingle{}IQ78 {-} A lack of self{-}worth\textquotesingle{}, Q79 = \textquotesingle{}IQ79 {-} Distrust of}
+\CommentTok{\# God\textquotesingle{}, Q80 = \textquotesingle{}IQ80 {-} Feeling isolated\textquotesingle{}, Q81 = \textquotesingle{}IQ81 {-}}
+\CommentTok{\# Nightmares about my negative religious experiences\textquotesingle{}, Q82}
+\CommentTok{\# = \textquotesingle{}IQ82 {-} Having trouble navigating life outside my}
+\CommentTok{\# church/community\textquotesingle{})}
+
+\CommentTok{\# SELECT ITEMS}
+\NormalTok{ext\_items }\OtherTok{\textless{}{-}}\NormalTok{ items[, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{52}\NormalTok{]}
+\NormalTok{int\_items }\OtherTok{\textless{}{-}}\NormalTok{ items[, }\DecValTok{52}\SpecialCharTok{:}\DecValTok{66}\NormalTok{]}
+
+\CommentTok{\# SAVE DATA FILES}
 \FunctionTok{write.csv}\NormalTok{(all, }\StringTok{"data/all.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)  }\CommentTok{\# save data for later use}
 \FunctionTok{write.csv}\NormalTok{(items, }\StringTok{"data/items.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
 \FunctionTok{write.csv}\NormalTok{(ext\_items, }\StringTok{"data/ext\_items.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
 \FunctionTok{write.csv}\NormalTok{(int\_items, }\StringTok{"data/int\_items.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\textbf{Labeling}. This is probably the appropriate place to deal with the labeling of variables and their values. These things should be appropriately labeled to their content, wording, etc. \textbf{But I have yet to figure this part out so I will come back to it}.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(Hmisc)}
-\NormalTok{var.labels }\OtherTok{=} \FunctionTok{c}\NormalTok{(}
-\CommentTok{\# VARIABLE LABELS: Items for External Events Subscale}
-\AttributeTok{Q7 =} \StringTok{"My pastor/leader explicitly claiming to speak on God\textquotesingle{}s behalf"}\NormalTok{,}
-\AttributeTok{Q10 =} \StringTok{"Being asked to give up personal, vocational, and/or educational goals by a pastor or group leader"}\NormalTok{,}
-\AttributeTok{Q11 =} \StringTok{"Seeing that anyone who disagreed with my church/pastor was consequently portrayed as evil"}\NormalTok{,}
-\AttributeTok{Q16 =} \StringTok{"My church community abandoning me in a difficult time"}\NormalTok{,}
-\AttributeTok{Q17 =} \StringTok{"Being treated as “less than” because of my sexual orientation"}\NormalTok{,}
-\AttributeTok{Q18 =} \StringTok{"Discouragement of critical thinking by my church or pastor"}\NormalTok{,}
-\AttributeTok{Q19 =} \StringTok{"Behavior being excessively monitored by my pastor or group members"}\NormalTok{,}
-\AttributeTok{Q20 =} \StringTok{"Seeing specific members being pressured to give money despite well{-}known personal financial hardship"}\NormalTok{,}
-\AttributeTok{Q21 =} \StringTok{"Being taught that I would be risking Hell if I left my particular church/group"}\NormalTok{,}
-\AttributeTok{Q22 =} \StringTok{"Being expected to follow my pastor/leader’s personal rules/advice around dating, marriage, and sex"}\NormalTok{,}
-\AttributeTok{Q23 =} \StringTok{"Prayer replacing needed medical interventions"}\NormalTok{,}
-\AttributeTok{Q24 =} \StringTok{"Being expected to consult my pastor/leader before making non{-}religious decisions"}\NormalTok{,}
-\AttributeTok{Q25 =} \StringTok{"Feeling unable to raise questions and issues"}\NormalTok{,}
-\AttributeTok{Q26 =} \StringTok{"Being pressured to forgive an abuser while the abuse was ongoing"}\NormalTok{,}
-\AttributeTok{Q27 =} \StringTok{"Being denied opportunities to serve/volunteer because of my gender"}\NormalTok{,}
-\AttributeTok{Q28 =} \StringTok{"Seeing the leadership or group protecting abusive individuals"}\NormalTok{,}
-\AttributeTok{Q29 =} \StringTok{"Feeling special when in my pastor/leader’s good graces; feeling ignored when I wasn’t"}\NormalTok{,}
-\AttributeTok{Q30 =} \StringTok{"Being deterred from seeking mental health treatment, counseling and/or medication"}\NormalTok{,}
-\AttributeTok{Q31 =} \StringTok{"Being shunned or ignored by my pastor or church/group"}\NormalTok{,}
-\AttributeTok{Q32 =} \StringTok{"Feeling unable to express unhappiness"}\NormalTok{,}
-\AttributeTok{Q34 =} \StringTok{"Seeing Scripture used to justify physical punishment or other types of severe discipline"}\NormalTok{,}
-\AttributeTok{Q35 =} \StringTok{"Being explicitly taught to distrust my emotions"}\NormalTok{,}
-\AttributeTok{Q36 =} \StringTok{"Mental or physical problems being interpreted as spiritual/moral weakness"}\NormalTok{,}
-\AttributeTok{Q37 =} \StringTok{"Being made to feel less spiritually advanced/mature than my pastor/leadership"}\NormalTok{,}
-\AttributeTok{Q38 =} \StringTok{"Having unrealistic demands placed on my moral or religious behavior"}\NormalTok{,}
-\AttributeTok{Q39 =} \StringTok{"Being made to feel shame over naturally occurring sexual desires (not actions)"}\NormalTok{,}
-\AttributeTok{Q40 =} \StringTok{"Threatening Divine punishment to keep group members in line"}\NormalTok{,}
-\AttributeTok{Q41 =} \StringTok{"Being denied opportunities to serve because of my sexual orientation"}\NormalTok{,}
-\AttributeTok{Q42 =} \StringTok{"Seeing others shamed or shunned by the pastor/leader or group"}\NormalTok{,}
-\AttributeTok{Q43 =} \StringTok{"Being shamed by my pastor or the group for poor spiritual/moral performance"}\NormalTok{,}
-\AttributeTok{Q44 =} \StringTok{"Love or acceptance only being offered if spiritual or moral performance was high"}\NormalTok{,}
-\AttributeTok{Q45 =} \StringTok{"Vivid descriptions of Hell, Satan, or demons being taught to young children that are developmentally inappropriate and/or anxiety{-}provoking"}\NormalTok{,}
-\AttributeTok{Q46 =} \StringTok{"Being treated as “less than” because of my skin color"}\NormalTok{,}
-\AttributeTok{Q47 =} \StringTok{"Medical care being postponed or not given at all for religious reasons"}\NormalTok{,}
-\AttributeTok{Q49 =} \StringTok{"The leadership or group not only protecting but elevating abusive individuals"}\NormalTok{,}
-\AttributeTok{Q50 =} \StringTok{"Being treated as “less than” because of my gender"}\NormalTok{,}
-\AttributeTok{Q51 =} \StringTok{"Experiencing extreme pressure to take on a role of pastor, missionary, or other spiritual leader"}\NormalTok{,}
-\AttributeTok{Q52 =} \StringTok{"Being blamed for harm that I suffered, rather than blaming those who harmed me"}\NormalTok{,}
-\AttributeTok{Q53 =} \StringTok{"Seeing Scripture used to justify abusive parent{-}child behavior"}\NormalTok{,}
-\AttributeTok{Q54 =} \StringTok{"Being explicitly taught to distrust my intuitions"}\NormalTok{,}
-\AttributeTok{Q55 =} \StringTok{"Hearing cultural references in sermons that were not commonly known to members of my racial or ethnic subculture"}\NormalTok{,}
-\AttributeTok{Q56 =} \StringTok{"Being made to feel like I was crazy or weird for having doubts or questions"}\NormalTok{,}
-\AttributeTok{Q57 =} \StringTok{"Developing mental or physical ailments as a result of stress from conforming to the group/leader’s expectation"}\NormalTok{,}
-\AttributeTok{Q58 =} \StringTok{"Terror or horror being used to motivate religious decisions"}\NormalTok{,}
-\AttributeTok{Q59 =} \StringTok{"Seeing the pastor or group blame the victim of abuse for the abuse itself"}\NormalTok{,}
-\AttributeTok{Q60 =} \StringTok{"Being encouraged to remain in an abusive marriage by religious leaders"}\NormalTok{,}
-\AttributeTok{Q61 =} \StringTok{"Vivid descriptions of the end of the world being taught to young children that are developmentally inappropriate and/or anxiety{-}provoking"}\NormalTok{,}
-\AttributeTok{Q62 =} \StringTok{"Seeing Scripture used to justify physical violence"}\NormalTok{,}
-\AttributeTok{Q63 =} \StringTok{"Being shamed by my pastor or the group for raising questions or concerns"}\NormalTok{,}
-\AttributeTok{Q64 =} \StringTok{"Witnessing women being pressured to stay in unfaithful or abusive marriages"}\NormalTok{,}
-\AttributeTok{Q65 =} \StringTok{"Being “cut off” or shunned by more religious family members"}\NormalTok{,}
-\AttributeTok{Q66 =} \StringTok{"Seeing others treated as “less than” because of their sexual orientation"}\NormalTok{,}
-                    
-\CommentTok{\# VARIABLE LABELS: Items for Internal States Subscale}
-\AttributeTok{Q68 =} \StringTok{"Anxiety attacks triggered by religious stimuli"}\NormalTok{,}
-\AttributeTok{Q69 =} \StringTok{"A lack of spiritual direction or purpose"}\NormalTok{,}
-\AttributeTok{Q70 =} \StringTok{"Feeling betrayed by God"}\NormalTok{,}
-\AttributeTok{Q71 =} \StringTok{"Personally avoiding religious activities or settings to reduce distressing feelings"}\NormalTok{,}
-\AttributeTok{Q72 =} \StringTok{"Feeling as if God harmed me directly"}\NormalTok{,}
-\AttributeTok{Q73 =} \StringTok{"Self{-}hatred or self{-}loathing"}\NormalTok{,}
-\AttributeTok{Q74 =} \StringTok{"Sadness over the loss of my faith/religious community"}\NormalTok{,}
-\AttributeTok{Q76 =} \StringTok{"Feeling that I wasted years of my life in a particular church or set of beliefs"}\NormalTok{,}
-\AttributeTok{Q77 =} \StringTok{"Anger upon reflecting on negative religious experiences"}\NormalTok{,}
-\AttributeTok{Q78 =} \StringTok{"A lack of self{-}worth"}\NormalTok{,}
-\AttributeTok{Q79 =} \StringTok{"Distrust of God"}\NormalTok{,}
-\AttributeTok{Q80 =} \StringTok{"Feeling isolated"}\NormalTok{,}
-\AttributeTok{Q81 =} \StringTok{"Nightmares about my negative religious experiences"}\NormalTok{,}
-\AttributeTok{Q82 =} \StringTok{"Having trouble navigating life outside my church/community"}\NormalTok{,}
-
-\CommentTok{\# VARIABLE LABELS for Demographics}
-\AttributeTok{Q84 =} \StringTok{"Age"}\NormalTok{,}
-\AttributeTok{Q85 =} \StringTok{"Gender"}\NormalTok{,}
-\AttributeTok{Q86 =} \StringTok{"Sexual orientation"}\NormalTok{,}
-\AttributeTok{Q87 =} \StringTok{"Race"}\NormalTok{,}
-\AttributeTok{Q88 =} \StringTok{"Raised in Christian home"}\NormalTok{,}
-\AttributeTok{Q89 =} \StringTok{"Denomination/group of most negative experience"}\NormalTok{,}
-\AttributeTok{Q90 =} \StringTok{"Racial makeup of denomination/group of most negative experience"}\NormalTok{,}
-\AttributeTok{Q91 =} \StringTok{"Race of leadership of denomination/group of most negative experience"}\NormalTok{,}
-\AttributeTok{Q92 =} \StringTok{"Gender of leadership of denomination/group of most negative experience"}\NormalTok{,}
-\AttributeTok{Q95 =} \StringTok{"Involvement in denomination/group of most negative experience"}\NormalTok{,}
-\AttributeTok{Q93 =} \StringTok{"Current religious identification"}
-\NormalTok{)}
-
-\FunctionTok{label}\NormalTok{(items) }\OtherTok{=} \FunctionTok{as.list}\NormalTok{(var.labels[}\FunctionTok{match}\NormalTok{(}\FunctionTok{names}\NormalTok{(items), }\FunctionTok{names}\NormalTok{(var.labels))])}
 \end{Highlighting}
 \end{Shaded}
 
@@ -624,7 +612,7 @@ In what follows, we conduct item analyses through a comparison of several differ
 
 IRT makes two assumptions of the data. The first is unidimensionality of the latent trait. Is the trait one dimension? This is important for the SHAS because the questionnaire explicitly distinguished between items measuring external events and internal states. To check this assumption we first confirm the factor structure using confirmatory factor analysis (CFA) and Rasch Principal Component Analysis of Residuals (PCAR; Smith, 2002).
 
-The second assumption is local independence \citep{EmbretsonResise2000}. This means that any set of items should not share any meaningful correlation once the latent variable has been accounted for (Edwards, Houts, \& Cai, 2018).
+The second assumption is local independence \citep{EmbretsonReise2000}. This means that any set of items should not share any meaningful correlation once the latent variable has been accounted for (Edwards, Houts, \& Cai, 2018).
 
 To check the assumption of local independence, we used the Q3 statistic (Yen, 1984). The Q3 statistic index criteria are that the raw residual correlation between pairs of items should never exceed 0.10 (Marais \& Andrich, 2008).
 
@@ -2095,7 +2083,7 @@ SPIRITUALABUSEGRM                 1
 
 \begin{table}
 
-\caption{\label{tab:unnamed-chunk-8}Graded Response Model (GRM) - Item Parameters}
+\caption{\label{tab:unnamed-chunk-6}Graded Response Model (GRM) - Item Parameters}
 \centering
 \begin{tabular}[t]{l|r|r|r|r|r}
 \hline
@@ -2244,7 +2232,7 @@ Q82 & 1.50 & 0.68 & -0.61 & -2.27 & -3.69\\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-8-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-6-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2253,7 +2241,7 @@ Q82 & 1.50 & 0.68 & -0.61 & -2.27 & -3.69\\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-8-2.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-6-2.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
