@@ -200,7 +200,6 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="item-analysis.html"><a href="item-analysis.html#generalized-partial-credit-model-gpcm"><i class="fa fa-check"></i>Generalized Partial Credit Model (GPCM)</a></li>
 <li class="chapter" data-level="" data-path="item-analysis.html"><a href="item-analysis.html#rating-scale-model-rsm"><i class="fa fa-check"></i>Rating Scale Model (RSM)</a></li>
 <li class="chapter" data-level="" data-path="item-analysis.html"><a href="item-analysis.html#graded-response-model-grm"><i class="fa fa-check"></i>Graded Response Model (GRM)</a></li>
-<li class="chapter" data-level="" data-path="item-analysis.html"><a href="item-analysis.html#trait-scores"><i class="fa fa-check"></i>Trait scores</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="item-analysis.html"><a href="item-analysis.html#summary-1"><i class="fa fa-check"></i>Summary</a></li>
 </ul></li>
@@ -211,13 +210,6 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="reliability.html"><a href="reliability.html#reliability-in-item-response-theory-irt"><i class="fa fa-check"></i>Reliability in Item Response Theory (IRT)</a></li>
 <li class="chapter" data-level="" data-path="reliability.html"><a href="reliability.html#summary-2"><i class="fa fa-check"></i>Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="dimensionality.html"><a href="dimensionality.html"><i class="fa fa-check"></i>Dimensionality</a>
-<ul>
-<li class="chapter" data-level="" data-path="dimensionality.html"><a href="dimensionality.html#about-dimensionality"><i class="fa fa-check"></i>About Dimensionality</a></li>
-<li class="chapter" data-level="" data-path="dimensionality.html"><a href="dimensionality.html#exploratory-factor-analysis-efa"><i class="fa fa-check"></i>Exploratory Factor Analysis (EFA)</a></li>
-<li class="chapter" data-level="" data-path="dimensionality.html"><a href="dimensionality.html#confirmatory-factor-analysis-cfa"><i class="fa fa-check"></i>Confirmatory Factor Analysis (CFA)</a></li>
-<li class="chapter" data-level="" data-path="dimensionality.html"><a href="dimensionality.html#summary-3"><i class="fa fa-check"></i>Summary</a></li>
-</ul></li>
 <li class="chapter" data-level="" data-path="scale-analysis.html"><a href="scale-analysis.html"><i class="fa fa-check"></i>Scale Analysis</a>
 <ul>
 <li class="chapter" data-level="" data-path="scale-analysis.html"><a href="scale-analysis.html#person-fit"><i class="fa fa-check"></i>Person Fit</a></li>
@@ -226,7 +218,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="scale-analysis.html"><a href="scale-analysis.html#information-curves"><i class="fa fa-check"></i>Information curves</a></li>
 <li class="chapter" data-level="" data-path="scale-analysis.html"><a href="scale-analysis.html#person-separation-reliability"><i class="fa fa-check"></i>Person Separation Reliability</a></li>
 <li class="chapter" data-level="" data-path="scale-analysis.html"><a href="scale-analysis.html#item-separation"><i class="fa fa-check"></i>Item Separation</a></li>
-<li class="chapter" data-level="" data-path="scale-analysis.html"><a href="scale-analysis.html#summary-4"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="scale-analysis.html"><a href="scale-analysis.html#summary-3"><i class="fa fa-check"></i>Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i>Discussion</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -272,8 +264,8 @@ div.csl-indent {
 <div id="irt-model-assumptions" class="section level3 hasAnchor">
 <h3>IRT Model Assumptions<a href="item-analysis.html#irt-model-assumptions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>IRT makes two assumptions of the data. The first is unidimensionality of the latent trait. Is the trait one dimension? This is important for the SHAS because the questionnaire explicitly distinguished between items measuring external events and internal states. To check this assumption we first confirm the factor structure using confirmatory factor analysis (CFA) and Rasch Principal Component Analysis of Residuals (PCAR; Smith, 2002).</p>
-<p>The second assumption is local independence <span class="citation">(<a href="#ref-EmbretsonResise2000" role="doc-biblioref"><strong>EmbretsonResise2000?</strong></a>)</span>. This means that any set of items should not share any meaningful correlation once the latent variable has been accounted for (Edwards, Houts, &amp; Cai, 2018).
-To check the assumption of local independence, we used the Q3 statistic (Yen, 1984). The Q3 statistic index criteria are that the raw residual correlation between pairs of items should never exceed 0.10 (Marais &amp; Andrich, 2008).</p>
+<p>The second assumption is local independence <span class="citation">(<a href="#ref-EmbretsonResise2000" role="doc-biblioref"><strong>EmbretsonResise2000?</strong></a>)</span>. This means that any set of items should not share any meaningful correlation once the latent variable has been accounted for (Edwards, Houts, &amp; Cai, 2018).</p>
+<p>To check the assumption of local independence, we used the Q3 statistic (Yen, 1984). The Q3 statistic index criteria are that the raw residual correlation between pairs of items should never exceed 0.10 (Marais &amp; Andrich, 2008).</p>
 <p>Using these criteria, we found XX items having local dependence. The items that had the highest raw residual correlations had negative signs and no positive residual correlation. In other words, the assumption of local independence in this study was met.</p>
 </div>
 <div id="partial-credit-model-pcm" class="section level3 hasAnchor">
@@ -904,14 +896,14 @@ To check the assumption of local independence, we used the Q3 statistic (Yen, 19
 64  Q80  0.938   -2.471 0.946  -2.227
 65  Q81  0.812   -4.346 0.909  -3.187
 66  Q82  1.069    2.012 1.127   4.750</code></pre>
-<p>As seen in the (tab:pcm-item-fit), XX items had infit and outfit statistics within an acceptable value (0.5 - 1.5). XX misfitting items were found and this means that XX items fit within the Rasch PCM. <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>As seen in the <a href="#tab:pcm-item-fit"><strong>??</strong></a>, XX items had infit and outfit statistics within an acceptable value (0.5 - 1.5). XX misfitting items were found and this means that XX items fit within the Rasch PCM. <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 <p><strong>Item plots</strong>. We can use also examine these item statistics visually. The following curves are called category response curves because they represent “the probability of an examinee (or survey respondent) responding in a particular category conditional on trait level” <span class="citation">(<a href="references.html#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>)</span>. In general, “the higher the slope parameters, the steeper the operating characteristic curves and the more narrow and peaked the category response curves, indicating that the response categories differentiate among trait levels fairly well” <span class="citation">(<a href="references.html#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>)</span>. Polytomous IRT models such as the Partial Credit Model have option characteristic curves (OCCs) which can be considered as an extension of item characteristic curves (ICCs) for polytomous items. Because the items have more than two response categories, OCCs have multiple curves in the same plot. Each curve represents the probability of selecting a particular response option as a function of the latent trait.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="item-analysis.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PCM ITEM PLOTS itemplot(results.pcm, 1, type=&#39;infotrace&#39;)</span></span>
 <span id="cb16-2"><a href="item-analysis.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(results.pcm, <span class="at">type =</span> <span class="st">&quot;trace&quot;</span>, <span class="at">which.items =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>,</span>
 <span id="cb16-3"><a href="item-analysis.html#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>), <span class="at">main =</span> <span class="st">&quot;&quot;</span>, <span class="at">par.settings =</span> <span class="fu">simpleTheme</span>(<span class="at">lty =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
 <span id="cb16-4"><a href="item-analysis.html#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">lwd =</span> <span class="dv">2</span>), <span class="at">auto.key =</span> <span class="fu">list</span>(<span class="at">points =</span> <span class="cn">FALSE</span>, <span class="at">lines =</span> <span class="cn">TRUE</span>, <span class="at">columns =</span> <span class="dv">4</span>))  <span class="co"># option curves</span></span></code></pre></div>
 <p><img src="_main_files/figure-html/pcm-occs-1.png" width="672" /></p>
-<p>In Figure (fig:pcm-occs), each item has four OCCs representing the four response options. The response categories are labeled as “P1” to “P4”. For all four items, the OCCs follow the same order as the response categories. The OCC for the first response option (P1) is on the very left side of the plot, whereas the last response option (P4) is located on the right side of the plot. There are two questions to ask of OCCs: (1) Are they in the correct order? and (2) Does each response category meaningfully represent the responses of respondents at a given trait level? In this case, the OCCs are in the correct order, but the middle categories do not seem to capture distinct respondents.</p>
+<p>In Figure <a href="#fig:pcm-occs"><strong>??</strong></a>, each item has four OCCs representing the four response options. The response categories are labeled as “P1” to “P4”. For all four items, the OCCs follow the same order as the response categories. The OCC for the first response option (P1) is on the very left side of the plot, whereas the last response option (P4) is located on the right side of the plot. There are two questions to ask of OCCs: (1) Are they in the correct order? and (2) Does each response category meaningfully represent the responses of respondents at a given trait level? In this case, the OCCs are in the correct order, but the middle categories do not seem to capture distinct respondents.</p>
 <p><strong>Model fit</strong>. One way to evaluate the fit of the Partial Credit Model is to evaluate how well it fits the data from the item responses. The following table presents this information.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="item-analysis.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PCM MODEL FIT</span></span>
 <span id="cb17-2"><a href="item-analysis.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">itemplot</span>(results.pcm, <span class="dv">1</span>, <span class="at">type =</span> <span class="st">&quot;score&quot;</span>)</span></code></pre></div>
@@ -2120,155 +2112,155 @@ BIC = 471205; SABIC = 470156.4</code></pre>
 </div>
 <div id="rating-scale-model-rsm" class="section level3 hasAnchor">
 <h3>Rating Scale Model (RSM)<a href="item-analysis.html#rating-scale-model-rsm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="item-analysis.html#cb30-1" aria-hidden="true" tabindex="-1"></a>model.rsm <span class="ot">&lt;-</span> <span class="st">&quot;RSM = 1-4&quot;</span></span>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="item-analysis.html#cb30-1" aria-hidden="true" tabindex="-1"></a>model.rsm <span class="ot">&lt;-</span> <span class="st">&quot;SPIRITUAL ABUSE RSM = 1-66&quot;</span></span>
 <span id="cb30-2"><a href="item-analysis.html#cb30-2" aria-hidden="true" tabindex="-1"></a>results.rsm <span class="ot">&lt;-</span> <span class="fu">mirt</span>(<span class="at">data =</span> items, <span class="at">model =</span> model.rsm, <span class="at">itemtype =</span> <span class="st">&quot;rsm&quot;</span>,</span>
 <span id="cb30-3"><a href="item-analysis.html#cb30-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb30-4"><a href="item-analysis.html#cb30-4" aria-hidden="true" tabindex="-1"></a>coef.rsm <span class="ot">&lt;-</span> <span class="fu">coef</span>(results.rsm, <span class="at">simplify =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb30-5"><a href="item-analysis.html#cb30-5" aria-hidden="true" tabindex="-1"></a>items.rsm <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(coef.rsm<span class="sc">$</span>items)</span>
 <span id="cb30-6"><a href="item-analysis.html#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">summary</span>(results.rsm))</span></code></pre></div>
-<pre><code>      RSM    h2
-Q7  0.526 0.277
-Q10 0.526 0.277
-Q11 0.526 0.277
-Q16 0.526 0.277
-Q17 0.526 0.277
-Q18 0.526 0.277
-Q19 0.526 0.277
-Q20 0.526 0.277
-Q21 0.526 0.277
-Q22 0.526 0.277
-Q23 0.526 0.277
-Q24 0.526 0.277
-Q25 0.526 0.277
-Q26 0.526 0.277
-Q27 0.526 0.277
-Q28 0.526 0.277
-Q29 0.526 0.277
-Q30 0.526 0.277
-Q31 0.526 0.277
-Q32 0.526 0.277
-Q34 0.526 0.277
-Q35 0.526 0.277
-Q36 0.526 0.277
-Q37 0.526 0.277
-Q38 0.526 0.277
-Q39 0.526 0.277
-Q40 0.526 0.277
-Q41 0.526 0.277
-Q42 0.526 0.277
-Q43 0.526 0.277
-Q44 0.526 0.277
-Q45 0.526 0.277
-Q46 0.526 0.277
-Q47 0.526 0.277
-Q49 0.526 0.277
-Q50 0.526 0.277
-Q51 0.526 0.277
-Q52 0.526 0.277
-Q53 0.526 0.277
-Q54 0.526 0.277
-Q55 0.526 0.277
-Q56 0.526 0.277
-Q57 0.526 0.277
-Q58 0.526 0.277
-Q59 0.526 0.277
-Q60 0.526 0.277
-Q61 0.526 0.277
-Q62 0.526 0.277
-Q63 0.526 0.277
-Q64 0.526 0.277
-Q65 0.526 0.277
-Q66 0.526 0.277
-Q68 0.526 0.277
-Q69 0.526 0.277
-Q70 0.526 0.277
-Q71 0.526 0.277
-Q72 0.526 0.277
-Q73 0.526 0.277
-Q74 0.526 0.277
-Q76 0.526 0.277
-Q77 0.526 0.277
-Q78 0.526 0.277
-Q79 0.526 0.277
-Q80 0.526 0.277
-Q81 0.526 0.277
-Q82 0.526 0.277
+<pre><code>    SPIRITUALABUSERSM    h2
+Q7              0.526 0.277
+Q10             0.526 0.277
+Q11             0.526 0.277
+Q16             0.526 0.277
+Q17             0.526 0.277
+Q18             0.526 0.277
+Q19             0.526 0.277
+Q20             0.526 0.277
+Q21             0.526 0.277
+Q22             0.526 0.277
+Q23             0.526 0.277
+Q24             0.526 0.277
+Q25             0.526 0.277
+Q26             0.526 0.277
+Q27             0.526 0.277
+Q28             0.526 0.277
+Q29             0.526 0.277
+Q30             0.526 0.277
+Q31             0.526 0.277
+Q32             0.526 0.277
+Q34             0.526 0.277
+Q35             0.526 0.277
+Q36             0.526 0.277
+Q37             0.526 0.277
+Q38             0.526 0.277
+Q39             0.526 0.277
+Q40             0.526 0.277
+Q41             0.526 0.277
+Q42             0.526 0.277
+Q43             0.526 0.277
+Q44             0.526 0.277
+Q45             0.526 0.277
+Q46             0.526 0.277
+Q47             0.526 0.277
+Q49             0.526 0.277
+Q50             0.526 0.277
+Q51             0.526 0.277
+Q52             0.526 0.277
+Q53             0.526 0.277
+Q54             0.526 0.277
+Q55             0.526 0.277
+Q56             0.526 0.277
+Q57             0.526 0.277
+Q58             0.526 0.277
+Q59             0.526 0.277
+Q60             0.526 0.277
+Q61             0.526 0.277
+Q62             0.526 0.277
+Q63             0.526 0.277
+Q64             0.526 0.277
+Q65             0.526 0.277
+Q66             0.526 0.277
+Q68             0.526 0.277
+Q69             0.526 0.277
+Q70             0.526 0.277
+Q71             0.526 0.277
+Q72             0.526 0.277
+Q73             0.526 0.277
+Q74             0.526 0.277
+Q76             0.526 0.277
+Q77             0.526 0.277
+Q78             0.526 0.277
+Q79             0.526 0.277
+Q80             0.526 0.277
+Q81             0.526 0.277
+Q82             0.526 0.277
 
 SS loadings:  18.287 
 Proportion Var:  0.277 
 
 Factor correlations: 
 
-    RSM
-RSM   1
+                  SPIRITUALABUSERSM
+SPIRITUALABUSERSM                 1
 $rotF
-         RSM
-Q7  0.526374
-Q10 0.526374
-Q11 0.526374
-Q16 0.526374
-Q17 0.526374
-Q18 0.526374
-Q19 0.526374
-Q20 0.526374
-Q21 0.526374
-Q22 0.526374
-Q23 0.526374
-Q24 0.526374
-Q25 0.526374
-Q26 0.526374
-Q27 0.526374
-Q28 0.526374
-Q29 0.526374
-Q30 0.526374
-Q31 0.526374
-Q32 0.526374
-Q34 0.526374
-Q35 0.526374
-Q36 0.526374
-Q37 0.526374
-Q38 0.526374
-Q39 0.526374
-Q40 0.526374
-Q41 0.526374
-Q42 0.526374
-Q43 0.526374
-Q44 0.526374
-Q45 0.526374
-Q46 0.526374
-Q47 0.526374
-Q49 0.526374
-Q50 0.526374
-Q51 0.526374
-Q52 0.526374
-Q53 0.526374
-Q54 0.526374
-Q55 0.526374
-Q56 0.526374
-Q57 0.526374
-Q58 0.526374
-Q59 0.526374
-Q60 0.526374
-Q61 0.526374
-Q62 0.526374
-Q63 0.526374
-Q64 0.526374
-Q65 0.526374
-Q66 0.526374
-Q68 0.526374
-Q69 0.526374
-Q70 0.526374
-Q71 0.526374
-Q72 0.526374
-Q73 0.526374
-Q74 0.526374
-Q76 0.526374
-Q77 0.526374
-Q78 0.526374
-Q79 0.526374
-Q80 0.526374
-Q81 0.526374
-Q82 0.526374
+    SPIRITUALABUSERSM
+Q7           0.526374
+Q10          0.526374
+Q11          0.526374
+Q16          0.526374
+Q17          0.526374
+Q18          0.526374
+Q19          0.526374
+Q20          0.526374
+Q21          0.526374
+Q22          0.526374
+Q23          0.526374
+Q24          0.526374
+Q25          0.526374
+Q26          0.526374
+Q27          0.526374
+Q28          0.526374
+Q29          0.526374
+Q30          0.526374
+Q31          0.526374
+Q32          0.526374
+Q34          0.526374
+Q35          0.526374
+Q36          0.526374
+Q37          0.526374
+Q38          0.526374
+Q39          0.526374
+Q40          0.526374
+Q41          0.526374
+Q42          0.526374
+Q43          0.526374
+Q44          0.526374
+Q45          0.526374
+Q46          0.526374
+Q47          0.526374
+Q49          0.526374
+Q50          0.526374
+Q51          0.526374
+Q52          0.526374
+Q53          0.526374
+Q54          0.526374
+Q55          0.526374
+Q56          0.526374
+Q57          0.526374
+Q58          0.526374
+Q59          0.526374
+Q60          0.526374
+Q61          0.526374
+Q62          0.526374
+Q63          0.526374
+Q64          0.526374
+Q65          0.526374
+Q66          0.526374
+Q68          0.526374
+Q69          0.526374
+Q70          0.526374
+Q71          0.526374
+Q72          0.526374
+Q73          0.526374
+Q74          0.526374
+Q76          0.526374
+Q77          0.526374
+Q78          0.526374
+Q79          0.526374
+Q80          0.526374
+Q81          0.526374
+Q82          0.526374
 
 $h2
            h2
@@ -2340,12 +2332,12 @@ Q81 0.2770696
 Q82 0.2770696
 
 $fcor
-    RSM
-RSM   1</code></pre>
+                  SPIRITUALABUSERSM
+SPIRITUALABUSERSM                 1</code></pre>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="item-analysis.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print(items.rsm)</span></span>
 <span id="cb32-2"><a href="item-analysis.html#cb32-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">round</span>(items.rsm, <span class="dv">2</span>), <span class="at">caption =</span> <span class="st">&quot;Rating Scale Model (RSM) - Item Parameters&quot;</span>)</span></code></pre></div>
 <table>
-<caption><span id="tab:unnamed-chunk-8">Table 4: </span>Rating Scale Model (RSM) - Item Parameters</caption>
+<caption><span id="tab:rsm-est">Table 4: </span>Rating Scale Model (RSM) - Item Parameters</caption>
 <thead>
 <tr class="header">
 <th align="left"></th>
@@ -2957,10 +2949,10 @@ RSM   1</code></pre>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="item-analysis.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(results.rsm, <span class="at">type =</span> <span class="st">&quot;trace&quot;</span>, <span class="at">which.items =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>),</span>
 <span id="cb33-2"><a href="item-analysis.html#cb33-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> <span class="st">&quot;&quot;</span>, <span class="at">par.settings =</span> <span class="fu">simpleTheme</span>(<span class="at">lty =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">lwd =</span> <span class="dv">2</span>),</span>
 <span id="cb33-3"><a href="item-analysis.html#cb33-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">auto.key =</span> <span class="fu">list</span>(<span class="at">points =</span> <span class="cn">FALSE</span>, <span class="at">lines =</span> <span class="cn">TRUE</span>, <span class="at">columns =</span> <span class="dv">4</span>))  <span class="co"># option curves</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/rsm-plots-1.png" width="672" /></p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="item-analysis.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(results.rsm, <span class="at">type =</span> <span class="st">&quot;itemscore&quot;</span>, <span class="at">theta_lim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">4</span>), <span class="at">lwd =</span> <span class="dv">2</span>,</span>
 <span id="cb34-2"><a href="item-analysis.html#cb34-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">facet_items =</span> <span class="cn">FALSE</span>)  <span class="co"># item scoring traceline</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-8-2.png" width="672" /></p>
+<p><img src="_main_files/figure-html/rsm-plots-2.png" width="672" /></p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="item-analysis.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(results.rsm, type = &#39;infotrace&#39;, which.items =</span></span>
 <span id="cb35-2"><a href="item-analysis.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co"># c(1,2,3,4), main = &#39;&#39;, par.settings = simpleTheme(lwd=2))</span></span>
 <span id="cb35-3"><a href="item-analysis.html#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># # item information functions (IIF) plot(results.rsm, type</span></span>
@@ -2970,232 +2962,232 @@ RSM   1</code></pre>
 </div>
 <div id="graded-response-model-grm" class="section level3 hasAnchor">
 <h3>Graded Response Model (GRM)<a href="item-analysis.html#graded-response-model-grm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="item-analysis.html#cb36-1" aria-hidden="true" tabindex="-1"></a>model.grm <span class="ot">&lt;-</span> <span class="st">&quot;GRM = 1-4&quot;</span></span>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="item-analysis.html#cb36-1" aria-hidden="true" tabindex="-1"></a>model.grm <span class="ot">&lt;-</span> <span class="st">&quot;SPIRITUAL ABUSE GRM = 1-66&quot;</span></span>
 <span id="cb36-2"><a href="item-analysis.html#cb36-2" aria-hidden="true" tabindex="-1"></a>results.grm <span class="ot">&lt;-</span> <span class="fu">mirt</span>(<span class="at">data =</span> items, <span class="at">model =</span> model.grm, <span class="at">itemtype =</span> <span class="st">&quot;graded&quot;</span>,</span>
 <span id="cb36-3"><a href="item-analysis.html#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb36-4"><a href="item-analysis.html#cb36-4" aria-hidden="true" tabindex="-1"></a>coef.grm <span class="ot">&lt;-</span> <span class="fu">coef</span>(results.grm, <span class="at">simplify =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb36-5"><a href="item-analysis.html#cb36-5" aria-hidden="true" tabindex="-1"></a>items.grm <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(coef.grm<span class="sc">$</span>items)</span>
 <span id="cb36-6"><a href="item-analysis.html#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">summary</span>(results.grm))</span></code></pre></div>
-<pre><code>      GRM    h2
-Q7  0.764 0.584
-Q10 0.736 0.542
-Q11 0.843 0.711
-Q16 0.691 0.478
-Q17 0.000 0.000
-Q18 0.000 0.000
-Q19 0.000 0.000
-Q20 0.000 0.000
-Q21 0.000 0.000
-Q22 0.000 0.000
-Q23 0.000 0.000
-Q24 0.000 0.000
-Q25 0.000 0.000
-Q26 0.000 0.000
-Q27 0.000 0.000
-Q28 0.000 0.000
-Q29 0.000 0.000
-Q30 0.000 0.000
-Q31 0.000 0.000
-Q32 0.000 0.000
-Q34 0.000 0.000
-Q35 0.000 0.000
-Q36 0.000 0.000
-Q37 0.000 0.000
-Q38 0.000 0.000
-Q39 0.000 0.000
-Q40 0.000 0.000
-Q41 0.000 0.000
-Q42 0.000 0.000
-Q43 0.000 0.000
-Q44 0.000 0.000
-Q45 0.000 0.000
-Q46 0.000 0.000
-Q47 0.000 0.000
-Q49 0.000 0.000
-Q50 0.000 0.000
-Q51 0.000 0.000
-Q52 0.000 0.000
-Q53 0.000 0.000
-Q54 0.000 0.000
-Q55 0.000 0.000
-Q56 0.000 0.000
-Q57 0.000 0.000
-Q58 0.000 0.000
-Q59 0.000 0.000
-Q60 0.000 0.000
-Q61 0.000 0.000
-Q62 0.000 0.000
-Q63 0.000 0.000
-Q64 0.000 0.000
-Q65 0.000 0.000
-Q66 0.000 0.000
-Q68 0.000 0.000
-Q69 0.000 0.000
-Q70 0.000 0.000
-Q71 0.000 0.000
-Q72 0.000 0.000
-Q73 0.000 0.000
-Q74 0.000 0.000
-Q76 0.000 0.000
-Q77 0.000 0.000
-Q78 0.000 0.000
-Q79 0.000 0.000
-Q80 0.000 0.000
-Q81 0.000 0.000
-Q82 0.000 0.000
+<pre><code>    SPIRITUALABUSEGRM     h2
+Q7              0.727 0.5290
+Q10             0.739 0.5465
+Q11             0.820 0.6723
+Q16             0.742 0.5499
+Q17             0.535 0.2867
+Q18             0.830 0.6894
+Q19             0.817 0.6671
+Q20             0.752 0.5659
+Q21             0.761 0.5795
+Q22             0.761 0.5796
+Q23             0.715 0.5116
+Q24             0.757 0.5738
+Q25             0.816 0.6666
+Q26             0.758 0.5741
+Q27             0.528 0.2793
+Q28             0.778 0.6060
+Q29             0.732 0.5362
+Q30             0.780 0.6078
+Q31             0.699 0.4892
+Q32             0.785 0.6166
+Q34             0.707 0.4999
+Q35             0.786 0.6180
+Q36             0.811 0.6581
+Q37             0.801 0.6412
+Q38             0.851 0.7238
+Q39             0.776 0.6028
+Q40             0.819 0.6703
+Q41             0.488 0.2377
+Q42             0.817 0.6676
+Q43             0.803 0.6453
+Q44             0.847 0.7175
+Q45             0.770 0.5924
+Q46             0.329 0.1080
+Q47             0.657 0.4319
+Q49             0.786 0.6182
+Q50             0.579 0.3352
+Q51             0.679 0.4606
+Q52             0.825 0.6805
+Q53             0.784 0.6148
+Q54             0.803 0.6441
+Q55             0.307 0.0944
+Q56             0.866 0.7497
+Q57             0.790 0.6237
+Q58             0.781 0.6097
+Q59             0.821 0.6742
+Q60             0.606 0.3670
+Q61             0.770 0.5927
+Q62             0.715 0.5105
+Q63             0.823 0.6766
+Q64             0.760 0.5778
+Q65             0.699 0.4889
+Q66             0.773 0.5970
+Q68             0.755 0.5698
+Q69             0.629 0.3955
+Q70             0.606 0.3675
+Q71             0.779 0.6075
+Q72             0.655 0.4288
+Q73             0.679 0.4605
+Q74             0.651 0.4233
+Q76             0.787 0.6195
+Q77             0.823 0.6774
+Q78             0.710 0.5043
+Q79             0.645 0.4165
+Q80             0.738 0.5444
+Q81             0.752 0.5660
+Q82             0.662 0.4385
 
-SS loadings:  2.316 
-Proportion Var:  0.035 
+SS loadings:  35.877 
+Proportion Var:  0.544 
 
 Factor correlations: 
 
-    GRM
-GRM   1
+                  SPIRITUALABUSEGRM
+SPIRITUALABUSEGRM                 1
 $rotF
-          GRM
-Q7  0.7644889
-Q10 0.7362822
-Q11 0.8434104
-Q16 0.6913146
-Q17 0.0000000
-Q18 0.0000000
-Q19 0.0000000
-Q20 0.0000000
-Q21 0.0000000
-Q22 0.0000000
-Q23 0.0000000
-Q24 0.0000000
-Q25 0.0000000
-Q26 0.0000000
-Q27 0.0000000
-Q28 0.0000000
-Q29 0.0000000
-Q30 0.0000000
-Q31 0.0000000
-Q32 0.0000000
-Q34 0.0000000
-Q35 0.0000000
-Q36 0.0000000
-Q37 0.0000000
-Q38 0.0000000
-Q39 0.0000000
-Q40 0.0000000
-Q41 0.0000000
-Q42 0.0000000
-Q43 0.0000000
-Q44 0.0000000
-Q45 0.0000000
-Q46 0.0000000
-Q47 0.0000000
-Q49 0.0000000
-Q50 0.0000000
-Q51 0.0000000
-Q52 0.0000000
-Q53 0.0000000
-Q54 0.0000000
-Q55 0.0000000
-Q56 0.0000000
-Q57 0.0000000
-Q58 0.0000000
-Q59 0.0000000
-Q60 0.0000000
-Q61 0.0000000
-Q62 0.0000000
-Q63 0.0000000
-Q64 0.0000000
-Q65 0.0000000
-Q66 0.0000000
-Q68 0.0000000
-Q69 0.0000000
-Q70 0.0000000
-Q71 0.0000000
-Q72 0.0000000
-Q73 0.0000000
-Q74 0.0000000
-Q76 0.0000000
-Q77 0.0000000
-Q78 0.0000000
-Q79 0.0000000
-Q80 0.0000000
-Q81 0.0000000
-Q82 0.0000000
+    SPIRITUALABUSEGRM
+Q7          0.7273447
+Q10         0.7392654
+Q11         0.8199105
+Q16         0.7415796
+Q17         0.5354169
+Q18         0.8302895
+Q19         0.8167810
+Q20         0.7522586
+Q21         0.7612588
+Q22         0.7613129
+Q23         0.7152675
+Q24         0.7574735
+Q25         0.8164676
+Q26         0.7577021
+Q27         0.5284502
+Q28         0.7784905
+Q29         0.7322242
+Q30         0.7796425
+Q31         0.6994070
+Q32         0.7852474
+Q34         0.7070087
+Q35         0.7861148
+Q36         0.8112530
+Q37         0.8007379
+Q38         0.8507415
+Q39         0.7764261
+Q40         0.8187023
+Q41         0.4875086
+Q42         0.8170742
+Q43         0.8032980
+Q44         0.8470270
+Q45         0.7696765
+Q46         0.3286257
+Q47         0.6572126
+Q49         0.7862305
+Q50         0.5789845
+Q51         0.6786928
+Q52         0.8249420
+Q53         0.7841150
+Q54         0.8025781
+Q55         0.3073124
+Q56         0.8658399
+Q57         0.7897445
+Q58         0.7808479
+Q59         0.8210990
+Q60         0.6057677
+Q61         0.7698478
+Q62         0.7145275
+Q63         0.8225350
+Q64         0.7601200
+Q65         0.6991821
+Q66         0.7726298
+Q68         0.7548566
+Q69         0.6289129
+Q70         0.6062136
+Q71         0.7794003
+Q72         0.6548466
+Q73         0.6785923
+Q74         0.6506270
+Q76         0.7871014
+Q77         0.8230311
+Q78         0.7101742
+Q79         0.6453957
+Q80         0.7378229
+Q81         0.7523344
+Q82         0.6621952
 
 $h2
-           h2
-Q7  0.5844433
-Q10 0.5421115
-Q11 0.7113411
-Q16 0.4779159
-Q17 0.0000000
-Q18 0.0000000
-Q19 0.0000000
-Q20 0.0000000
-Q21 0.0000000
-Q22 0.0000000
-Q23 0.0000000
-Q24 0.0000000
-Q25 0.0000000
-Q26 0.0000000
-Q27 0.0000000
-Q28 0.0000000
-Q29 0.0000000
-Q30 0.0000000
-Q31 0.0000000
-Q32 0.0000000
-Q34 0.0000000
-Q35 0.0000000
-Q36 0.0000000
-Q37 0.0000000
-Q38 0.0000000
-Q39 0.0000000
-Q40 0.0000000
-Q41 0.0000000
-Q42 0.0000000
-Q43 0.0000000
-Q44 0.0000000
-Q45 0.0000000
-Q46 0.0000000
-Q47 0.0000000
-Q49 0.0000000
-Q50 0.0000000
-Q51 0.0000000
-Q52 0.0000000
-Q53 0.0000000
-Q54 0.0000000
-Q55 0.0000000
-Q56 0.0000000
-Q57 0.0000000
-Q58 0.0000000
-Q59 0.0000000
-Q60 0.0000000
-Q61 0.0000000
-Q62 0.0000000
-Q63 0.0000000
-Q64 0.0000000
-Q65 0.0000000
-Q66 0.0000000
-Q68 0.0000000
-Q69 0.0000000
-Q70 0.0000000
-Q71 0.0000000
-Q72 0.0000000
-Q73 0.0000000
-Q74 0.0000000
-Q76 0.0000000
-Q77 0.0000000
-Q78 0.0000000
-Q79 0.0000000
-Q80 0.0000000
-Q81 0.0000000
-Q82 0.0000000
+            h2
+Q7  0.52903026
+Q10 0.54651327
+Q11 0.67225315
+Q16 0.54994032
+Q17 0.28667123
+Q18 0.68938069
+Q19 0.66713127
+Q20 0.56589296
+Q21 0.57951499
+Q22 0.57959735
+Q23 0.51160755
+Q24 0.57376617
+Q25 0.66661936
+Q26 0.57411254
+Q27 0.27925964
+Q28 0.60604748
+Q29 0.53615222
+Q30 0.60784237
+Q31 0.48917014
+Q32 0.61661355
+Q34 0.49986135
+Q35 0.61797647
+Q36 0.65813139
+Q37 0.64118125
+Q38 0.72376112
+Q39 0.60283750
+Q40 0.67027346
+Q41 0.23766463
+Q42 0.66761017
+Q43 0.64528775
+Q44 0.71745468
+Q45 0.59240198
+Q46 0.10799484
+Q47 0.43192841
+Q49 0.61815847
+Q50 0.33522304
+Q51 0.46062394
+Q52 0.68052935
+Q53 0.61483632
+Q54 0.64413157
+Q55 0.09444091
+Q56 0.74967866
+Q57 0.62369635
+Q58 0.60972338
+Q59 0.67420354
+Q60 0.36695451
+Q61 0.59266565
+Q62 0.51054950
+Q63 0.67656376
+Q64 0.57778236
+Q65 0.48885564
+Q66 0.59695684
+Q68 0.56980842
+Q69 0.39553148
+Q70 0.36749487
+Q71 0.60746490
+Q72 0.42882404
+Q73 0.46048752
+Q74 0.42331555
+Q76 0.61952855
+Q77 0.67738024
+Q78 0.50434733
+Q79 0.41653555
+Q80 0.54438258
+Q81 0.56600712
+Q82 0.43850244
 
 $fcor
-    GRM
-GRM   1</code></pre>
+                  SPIRITUALABUSEGRM
+SPIRITUALABUSEGRM                 1</code></pre>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="item-analysis.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print(items.grm)</span></span>
 <span id="cb38-2"><a href="item-analysis.html#cb38-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">round</span>(items.grm, <span class="dv">2</span>), <span class="at">caption =</span> <span class="st">&quot;Graded Response Model (GRM) - Item Parameters&quot;</span>)</span></code></pre></div>
 <table>
-<caption><span id="tab:unnamed-chunk-9">Table 5: </span>Graded Response Model (GRM) - Item Parameters</caption>
+<caption><span id="tab:unnamed-chunk-8">Table 5: </span>Graded Response Model (GRM) - Item Parameters</caption>
 <thead>
 <tr class="header">
 <th align="left"></th>
@@ -3209,541 +3201,541 @@ GRM   1</code></pre>
 <tbody>
 <tr class="odd">
 <td align="left">Q7</td>
-<td align="right">2.02</td>
-<td align="right">1.01</td>
-<td align="right">-0.17</td>
-<td align="right">-1.47</td>
-<td align="right">-3.01</td>
+<td align="right">1.80</td>
+<td align="right">0.91</td>
+<td align="right">-0.19</td>
+<td align="right">-1.39</td>
+<td align="right">-2.78</td>
 </tr>
 <tr class="even">
 <td align="left">Q10</td>
-<td align="right">1.85</td>
-<td align="right">-0.53</td>
-<td align="right">-1.62</td>
-<td align="right">-2.96</td>
-<td align="right">-4.42</td>
+<td align="right">1.87</td>
+<td align="right">-0.58</td>
+<td align="right">-1.65</td>
+<td align="right">-2.94</td>
+<td align="right">-4.34</td>
 </tr>
 <tr class="odd">
 <td align="left">Q11</td>
-<td align="right">2.67</td>
-<td align="right">1.46</td>
-<td align="right">-0.26</td>
-<td align="right">-1.93</td>
-<td align="right">-4.15</td>
+<td align="right">2.44</td>
+<td align="right">1.33</td>
+<td align="right">-0.28</td>
+<td align="right">-1.83</td>
+<td align="right">-3.82</td>
 </tr>
 <tr class="even">
 <td align="left">Q16</td>
-<td align="right">1.63</td>
+<td align="right">1.88</td>
 <td align="right">0.32</td>
-<td align="right">-0.95</td>
-<td align="right">-2.22</td>
-<td align="right">-3.67</td>
+<td align="right">-1.04</td>
+<td align="right">-2.39</td>
+<td align="right">-3.88</td>
 </tr>
 <tr class="odd">
 <td align="left">Q17</td>
-<td align="right">0.00</td>
-<td align="right">-1.95</td>
-<td align="right">-2.17</td>
-<td align="right">-2.58</td>
-<td align="right">-3.19</td>
+<td align="right">1.08</td>
+<td align="right">-2.31</td>
+<td align="right">-2.55</td>
+<td align="right">-3.00</td>
+<td align="right">-3.65</td>
 </tr>
 <tr class="even">
 <td align="left">Q18</td>
-<td align="right">0.00</td>
-<td align="right">1.00</td>
-<td align="right">0.26</td>
-<td align="right">-0.75</td>
-<td align="right">-1.91</td>
+<td align="right">2.54</td>
+<td align="right">1.85</td>
+<td align="right">0.43</td>
+<td align="right">-1.52</td>
+<td align="right">-3.46</td>
 </tr>
 <tr class="odd">
 <td align="left">Q19</td>
-<td align="right">0.00</td>
-<td align="right">0.41</td>
-<td align="right">-0.34</td>
-<td align="right">-1.24</td>
-<td align="right">-2.49</td>
+<td align="right">2.41</td>
+<td align="right">0.69</td>
+<td align="right">-0.68</td>
+<td align="right">-2.26</td>
+<td align="right">-4.17</td>
 </tr>
 <tr class="even">
 <td align="left">Q20</td>
+<td align="right">1.94</td>
 <td align="right">0.00</td>
-<td align="right">0.01</td>
-<td align="right">-0.61</td>
-<td align="right">-1.34</td>
-<td align="right">-2.26</td>
+<td align="right">-0.98</td>
+<td align="right">-2.11</td>
+<td align="right">-3.39</td>
 </tr>
 <tr class="odd">
 <td align="left">Q21</td>
-<td align="right">0.00</td>
-<td align="right">-0.04</td>
-<td align="right">-0.60</td>
-<td align="right">-1.22</td>
-<td align="right">-1.92</td>
+<td align="right">2.00</td>
+<td align="right">-0.10</td>
+<td align="right">-1.00</td>
+<td align="right">-1.98</td>
+<td align="right">-3.00</td>
 </tr>
 <tr class="even">
 <td align="left">Q22</td>
-<td align="right">0.00</td>
-<td align="right">1.41</td>
-<td align="right">0.80</td>
-<td align="right">0.15</td>
-<td align="right">-0.85</td>
+<td align="right">2.00</td>
+<td align="right">2.23</td>
+<td align="right">1.25</td>
+<td align="right">0.17</td>
+<td align="right">-1.44</td>
 </tr>
 <tr class="odd">
 <td align="left">Q23</td>
-<td align="right">0.00</td>
-<td align="right">-0.04</td>
-<td align="right">-0.93</td>
-<td align="right">-2.07</td>
-<td align="right">-3.43</td>
+<td align="right">1.74</td>
+<td align="right">-0.08</td>
+<td align="right">-1.39</td>
+<td align="right">-2.94</td>
+<td align="right">-4.57</td>
 </tr>
 <tr class="even">
 <td align="left">Q24</td>
-<td align="right">0.00</td>
-<td align="right">-0.23</td>
-<td align="right">-0.93</td>
-<td align="right">-1.98</td>
-<td align="right">-3.21</td>
+<td align="right">1.97</td>
+<td align="right">-0.41</td>
+<td align="right">-1.51</td>
+<td align="right">-3.01</td>
+<td align="right">-4.59</td>
 </tr>
 <tr class="odd">
 <td align="left">Q25</td>
-<td align="right">0.00</td>
-<td align="right">1.71</td>
-<td align="right">0.85</td>
-<td align="right">-0.19</td>
-<td align="right">-1.48</td>
+<td align="right">2.41</td>
+<td align="right">3.06</td>
+<td align="right">1.47</td>
+<td align="right">-0.49</td>
+<td align="right">-2.68</td>
 </tr>
 <tr class="even">
 <td align="left">Q26</td>
-<td align="right">0.00</td>
-<td align="right">-0.42</td>
-<td align="right">-1.05</td>
-<td align="right">-1.71</td>
-<td align="right">-2.71</td>
+<td align="right">1.98</td>
+<td align="right">-0.69</td>
+<td align="right">-1.65</td>
+<td align="right">-2.63</td>
+<td align="right">-3.99</td>
 </tr>
 <tr class="odd">
 <td align="left">Q27</td>
-<td align="right">0.00</td>
-<td align="right">-0.43</td>
-<td align="right">-0.90</td>
-<td align="right">-1.57</td>
-<td align="right">-2.40</td>
+<td align="right">1.06</td>
+<td align="right">-0.50</td>
+<td align="right">-1.06</td>
+<td align="right">-1.85</td>
+<td align="right">-2.80</td>
 </tr>
 <tr class="even">
 <td align="left">Q28</td>
-<td align="right">0.00</td>
-<td align="right">0.51</td>
-<td align="right">-0.47</td>
-<td align="right">-1.43</td>
-<td align="right">-2.76</td>
+<td align="right">2.11</td>
+<td align="right">0.85</td>
+<td align="right">-0.79</td>
+<td align="right">-2.32</td>
+<td align="right">-4.22</td>
 </tr>
 <tr class="odd">
 <td align="left">Q29</td>
-<td align="right">0.00</td>
-<td align="right">0.66</td>
-<td align="right">-0.13</td>
-<td align="right">-1.08</td>
-<td align="right">-2.31</td>
+<td align="right">1.83</td>
+<td align="right">1.03</td>
+<td align="right">-0.18</td>
+<td align="right">-1.65</td>
+<td align="right">-3.34</td>
 </tr>
 <tr class="even">
 <td align="left">Q30</td>
-<td align="right">0.00</td>
-<td align="right">0.00</td>
-<td align="right">-0.70</td>
-<td align="right">-1.65</td>
-<td align="right">-2.92</td>
+<td align="right">2.12</td>
+<td align="right">-0.04</td>
+<td align="right">-1.19</td>
+<td align="right">-2.66</td>
+<td align="right">-4.43</td>
 </tr>
 <tr class="odd">
 <td align="left">Q31</td>
-<td align="right">0.00</td>
-<td align="right">0.15</td>
-<td align="right">-0.79</td>
-<td align="right">-1.85</td>
-<td align="right">-3.05</td>
+<td align="right">1.67</td>
+<td align="right">0.21</td>
+<td align="right">-1.14</td>
+<td align="right">-2.62</td>
+<td align="right">-4.10</td>
 </tr>
 <tr class="even">
 <td align="left">Q32</td>
-<td align="right">0.00</td>
-<td align="right">1.14</td>
-<td align="right">0.38</td>
-<td align="right">-0.74</td>
-<td align="right">-2.08</td>
+<td align="right">2.16</td>
+<td align="right">1.91</td>
+<td align="right">0.61</td>
+<td align="right">-1.29</td>
+<td align="right">-3.35</td>
 </tr>
 <tr class="odd">
 <td align="left">Q34</td>
-<td align="right">0.00</td>
-<td align="right">0.67</td>
-<td align="right">-0.14</td>
-<td align="right">-1.12</td>
-<td align="right">-2.34</td>
+<td align="right">1.70</td>
+<td align="right">0.96</td>
+<td align="right">-0.23</td>
+<td align="right">-1.63</td>
+<td align="right">-3.24</td>
 </tr>
 <tr class="even">
 <td align="left">Q35</td>
-<td align="right">0.00</td>
-<td align="right">1.46</td>
-<td align="right">0.70</td>
-<td align="right">-0.26</td>
-<td align="right">-1.34</td>
+<td align="right">2.16</td>
+<td align="right">2.41</td>
+<td align="right">1.13</td>
+<td align="right">-0.51</td>
+<td align="right">-2.28</td>
 </tr>
 <tr class="odd">
 <td align="left">Q36</td>
-<td align="right">0.00</td>
-<td align="right">1.16</td>
-<td align="right">0.28</td>
-<td align="right">-0.72</td>
-<td align="right">-2.00</td>
+<td align="right">2.36</td>
+<td align="right">2.06</td>
+<td align="right">0.49</td>
+<td align="right">-1.34</td>
+<td align="right">-3.43</td>
 </tr>
 <tr class="even">
 <td align="left">Q37</td>
-<td align="right">0.00</td>
-<td align="right">1.29</td>
-<td align="right">0.46</td>
-<td align="right">-0.50</td>
-<td align="right">-1.63</td>
+<td align="right">2.28</td>
+<td align="right">2.24</td>
+<td align="right">0.80</td>
+<td align="right">-0.95</td>
+<td align="right">-2.81</td>
 </tr>
 <tr class="odd">
 <td align="left">Q38</td>
-<td align="right">0.00</td>
-<td align="right">1.24</td>
-<td align="right">0.47</td>
-<td align="right">-0.49</td>
-<td align="right">-1.53</td>
+<td align="right">2.75</td>
+<td align="right">2.42</td>
+<td align="right">0.86</td>
+<td align="right">-1.11</td>
+<td align="right">-3.04</td>
 </tr>
 <tr class="even">
 <td align="left">Q39</td>
-<td align="right">0.00</td>
-<td align="right">1.17</td>
-<td align="right">0.55</td>
-<td align="right">-0.28</td>
-<td align="right">-1.24</td>
+<td align="right">2.10</td>
+<td align="right">1.94</td>
+<td align="right">0.90</td>
+<td align="right">-0.52</td>
+<td align="right">-2.07</td>
 </tr>
 <tr class="odd">
 <td align="left">Q40</td>
-<td align="right">0.00</td>
-<td align="right">0.25</td>
-<td align="right">-0.42</td>
-<td align="right">-1.27</td>
-<td align="right">-2.18</td>
+<td align="right">2.43</td>
+<td align="right">0.40</td>
+<td align="right">-0.83</td>
+<td align="right">-2.32</td>
+<td align="right">-3.74</td>
 </tr>
 <tr class="even">
 <td align="left">Q41</td>
-<td align="right">0.00</td>
-<td align="right">-2.13</td>
-<td align="right">-2.41</td>
-<td align="right">-2.87</td>
-<td align="right">-3.41</td>
+<td align="right">0.95</td>
+<td align="right">-2.43</td>
+<td align="right">-2.73</td>
+<td align="right">-3.23</td>
+<td align="right">-3.79</td>
 </tr>
 <tr class="odd">
 <td align="left">Q42</td>
-<td align="right">0.00</td>
-<td align="right">1.11</td>
-<td align="right">0.04</td>
-<td align="right">-1.08</td>
-<td align="right">-2.44</td>
-</tr>
-<tr class="even">
-<td align="left">Q43</td>
-<td align="right">0.00</td>
-<td align="right">0.18</td>
-<td align="right">-0.74</td>
-<td align="right">-1.83</td>
-<td align="right">-3.15</td>
-</tr>
-<tr class="odd">
-<td align="left">Q44</td>
-<td align="right">0.00</td>
-<td align="right">0.83</td>
-<td align="right">0.08</td>
-<td align="right">-0.88</td>
-<td align="right">-2.19</td>
-</tr>
-<tr class="even">
-<td align="left">Q45</td>
-<td align="right">0.00</td>
-<td align="right">0.91</td>
-<td align="right">0.16</td>
-<td align="right">-0.65</td>
-<td align="right">-1.62</td>
-</tr>
-<tr class="odd">
-<td align="left">Q46</td>
-<td align="right">0.00</td>
-<td align="right">-2.74</td>
-<td align="right">-3.37</td>
-<td align="right">-4.50</td>
-<td align="right">-5.49</td>
-</tr>
-<tr class="even">
-<td align="left">Q47</td>
-<td align="right">0.00</td>
-<td align="right">-0.86</td>
-<td align="right">-1.89</td>
-<td align="right">-3.25</td>
-<td align="right">-4.38</td>
-</tr>
-<tr class="odd">
-<td align="left">Q49</td>
-<td align="right">0.00</td>
-<td align="right">0.25</td>
-<td align="right">-0.65</td>
-<td align="right">-1.62</td>
-<td align="right">-2.90</td>
-</tr>
-<tr class="even">
-<td align="left">Q50</td>
-<td align="right">0.00</td>
-<td align="right">-0.09</td>
-<td align="right">-0.44</td>
-<td align="right">-1.12</td>
-<td align="right">-2.05</td>
-</tr>
-<tr class="odd">
-<td align="left">Q51</td>
-<td align="right">0.00</td>
-<td align="right">0.38</td>
-<td align="right">-0.37</td>
-<td align="right">-1.16</td>
-<td align="right">-2.25</td>
-</tr>
-<tr class="even">
-<td align="left">Q52</td>
-<td align="right">0.00</td>
-<td align="right">0.07</td>
-<td align="right">-0.70</td>
-<td align="right">-1.56</td>
-<td align="right">-2.86</td>
-</tr>
-<tr class="odd">
-<td align="left">Q53</td>
-<td align="right">0.00</td>
-<td align="right">0.46</td>
-<td align="right">-0.30</td>
-<td align="right">-1.21</td>
-<td align="right">-2.30</td>
-</tr>
-<tr class="even">
-<td align="left">Q54</td>
-<td align="right">0.00</td>
-<td align="right">1.19</td>
-<td align="right">0.44</td>
-<td align="right">-0.52</td>
-<td align="right">-1.59</td>
-</tr>
-<tr class="odd">
-<td align="left">Q55</td>
-<td align="right">0.00</td>
-<td align="right">-0.64</td>
-<td align="right">-1.63</td>
-<td align="right">-2.80</td>
+<td align="right">2.41</td>
+<td align="right">2.01</td>
+<td align="right">0.03</td>
+<td align="right">-1.98</td>
 <td align="right">-4.12</td>
 </tr>
 <tr class="even">
-<td align="left">Q56</td>
-<td align="right">0.00</td>
-<td align="right">0.98</td>
-<td align="right">0.21</td>
-<td align="right">-0.72</td>
-<td align="right">-2.02</td>
-</tr>
-<tr class="odd">
-<td align="left">Q57</td>
-<td align="right">0.00</td>
-<td align="right">0.09</td>
-<td align="right">-0.58</td>
-<td align="right">-1.41</td>
-<td align="right">-2.51</td>
-</tr>
-<tr class="even">
-<td align="left">Q58</td>
-<td align="right">0.00</td>
-<td align="right">0.76</td>
-<td align="right">-0.01</td>
-<td align="right">-1.05</td>
-<td align="right">-2.21</td>
-</tr>
-<tr class="odd">
-<td align="left">Q59</td>
-<td align="right">0.00</td>
-<td align="right">0.32</td>
-<td align="right">-0.55</td>
-<td align="right">-1.58</td>
-<td align="right">-2.99</td>
-</tr>
-<tr class="even">
-<td align="left">Q60</td>
-<td align="right">0.00</td>
-<td align="right">-1.14</td>
-<td align="right">-1.75</td>
-<td align="right">-2.53</td>
-<td align="right">-3.73</td>
-</tr>
-<tr class="odd">
-<td align="left">Q61</td>
-<td align="right">0.00</td>
-<td align="right">0.87</td>
-<td align="right">0.21</td>
-<td align="right">-0.59</td>
-<td align="right">-1.59</td>
-</tr>
-<tr class="even">
-<td align="left">Q62</td>
-<td align="right">0.00</td>
+<td align="left">Q43</td>
+<td align="right">2.30</td>
 <td align="right">0.28</td>
-<td align="right">-0.49</td>
-<td align="right">-1.62</td>
-<td align="right">-2.95</td>
+<td align="right">-1.32</td>
+<td align="right">-3.10</td>
+<td align="right">-4.95</td>
 </tr>
 <tr class="odd">
-<td align="left">Q63</td>
-<td align="right">0.00</td>
-<td align="right">0.58</td>
-<td align="right">-0.38</td>
-<td align="right">-1.44</td>
-<td align="right">-2.75</td>
+<td align="left">Q44</td>
+<td align="right">2.71</td>
+<td align="right">1.59</td>
+<td align="right">0.07</td>
+<td align="right">-1.83</td>
+<td align="right">-4.07</td>
 </tr>
 <tr class="even">
-<td align="left">Q64</td>
-<td align="right">0.00</td>
-<td align="right">0.46</td>
-<td align="right">-0.47</td>
-<td align="right">-1.45</td>
+<td align="left">Q45</td>
+<td align="right">2.05</td>
+<td align="right">1.49</td>
+<td align="right">0.24</td>
+<td align="right">-1.10</td>
 <td align="right">-2.59</td>
 </tr>
 <tr class="odd">
-<td align="left">Q65</td>
-<td align="right">0.00</td>
-<td align="right">-0.36</td>
-<td align="right">-1.12</td>
-<td align="right">-1.98</td>
-<td align="right">-3.09</td>
+<td align="left">Q46</td>
+<td align="right">0.59</td>
+<td align="right">-2.89</td>
+<td align="right">-3.52</td>
+<td align="right">-4.67</td>
+<td align="right">-5.67</td>
 </tr>
 <tr class="even">
-<td align="left">Q66</td>
-<td align="right">0.00</td>
-<td align="right">1.54</td>
-<td align="right">0.87</td>
-<td align="right">-0.01</td>
-<td align="right">-1.14</td>
+<td align="left">Q47</td>
+<td align="right">1.48</td>
+<td align="right">-1.18</td>
+<td align="right">-2.47</td>
+<td align="right">-4.08</td>
+<td align="right">-5.32</td>
 </tr>
 <tr class="odd">
-<td align="left">Q68</td>
-<td align="right">0.00</td>
-<td align="right">0.05</td>
-<td align="right">-0.66</td>
-<td align="right">-1.69</td>
-<td align="right">-3.03</td>
+<td align="left">Q49</td>
+<td align="right">2.17</td>
+<td align="right">0.41</td>
+<td align="right">-1.10</td>
+<td align="right">-2.65</td>
+<td align="right">-4.46</td>
 </tr>
 <tr class="even">
-<td align="left">Q69</td>
-<td align="right">0.00</td>
-<td align="right">1.89</td>
-<td align="right">0.72</td>
-<td align="right">-0.62</td>
-<td align="right">-1.97</td>
+<td align="left">Q50</td>
+<td align="right">1.21</td>
+<td align="right">-0.05</td>
+<td align="right">-0.47</td>
+<td align="right">-1.33</td>
+<td align="right">-2.48</td>
 </tr>
 <tr class="odd">
-<td align="left">Q70</td>
-<td align="right">0.00</td>
-<td align="right">0.33</td>
-<td align="right">-0.65</td>
-<td align="right">-1.83</td>
+<td align="left">Q51</td>
+<td align="right">1.57</td>
+<td align="right">0.54</td>
+<td align="right">-0.51</td>
+<td align="right">-1.61</td>
 <td align="right">-3.02</td>
 </tr>
 <tr class="even">
-<td align="left">Q71</td>
-<td align="right">0.00</td>
-<td align="right">1.43</td>
+<td align="left">Q52</td>
+<td align="right">2.48</td>
+<td align="right">0.11</td>
+<td align="right">-1.31</td>
+<td align="right">-2.84</td>
+<td align="right">-4.82</td>
+</tr>
+<tr class="odd">
+<td align="left">Q53</td>
+<td align="right">2.15</td>
+<td align="right">0.75</td>
+<td align="right">-0.52</td>
+<td align="right">-2.03</td>
+<td align="right">-3.63</td>
+</tr>
+<tr class="even">
+<td align="left">Q54</td>
+<td align="right">2.29</td>
+<td align="right">2.03</td>
+<td align="right">0.69</td>
+<td align="right">-1.01</td>
+<td align="right">-2.75</td>
+</tr>
+<tr class="odd">
+<td align="left">Q55</td>
 <td align="right">0.55</td>
-<td align="right">-0.44</td>
-<td align="right">-1.56</td>
+<td align="right">-0.68</td>
+<td align="right">-1.70</td>
+<td align="right">-2.91</td>
+<td align="right">-4.26</td>
+</tr>
+<tr class="even">
+<td align="left">Q56</td>
+<td align="right">2.95</td>
+<td align="right">2.00</td>
+<td align="right">0.34</td>
+<td align="right">-1.64</td>
+<td align="right">-4.03</td>
+</tr>
+<tr class="odd">
+<td align="left">Q57</td>
+<td align="right">2.19</td>
+<td align="right">0.13</td>
+<td align="right">-1.03</td>
+<td align="right">-2.39</td>
+<td align="right">-3.97</td>
+</tr>
+<tr class="even">
+<td align="left">Q58</td>
+<td align="right">2.13</td>
+<td align="right">1.24</td>
+<td align="right">-0.06</td>
+<td align="right">-1.78</td>
+<td align="right">-3.51</td>
+</tr>
+<tr class="odd">
+<td align="left">Q59</td>
+<td align="right">2.45</td>
+<td align="right">0.57</td>
+<td align="right">-1.03</td>
+<td align="right">-2.81</td>
+<td align="right">-4.91</td>
+</tr>
+<tr class="even">
+<td align="left">Q60</td>
+<td align="right">1.30</td>
+<td align="right">-1.43</td>
+<td align="right">-2.15</td>
+<td align="right">-3.06</td>
+<td align="right">-4.42</td>
+</tr>
+<tr class="odd">
+<td align="left">Q61</td>
+<td align="right">2.05</td>
+<td align="right">1.41</td>
+<td align="right">0.31</td>
+<td align="right">-1.01</td>
+<td align="right">-2.55</td>
+</tr>
+<tr class="even">
+<td align="left">Q62</td>
+<td align="right">1.74</td>
+<td align="right">0.40</td>
+<td align="right">-0.74</td>
+<td align="right">-2.35</td>
+<td align="right">-4.03</td>
+</tr>
+<tr class="odd">
+<td align="left">Q63</td>
+<td align="right">2.46</td>
+<td align="right">1.03</td>
+<td align="right">-0.76</td>
+<td align="right">-2.64</td>
+<td align="right">-4.60</td>
+</tr>
+<tr class="even">
+<td align="left">Q64</td>
+<td align="right">1.99</td>
+<td align="right">0.72</td>
+<td align="right">-0.77</td>
+<td align="right">-2.27</td>
+<td align="right">-3.87</td>
+</tr>
+<tr class="odd">
+<td align="left">Q65</td>
+<td align="right">1.66</td>
+<td align="right">-0.53</td>
+<td align="right">-1.58</td>
+<td align="right">-2.75</td>
+<td align="right">-4.12</td>
+</tr>
+<tr class="even">
+<td align="left">Q66</td>
+<td align="right">2.07</td>
+<td align="right">2.52</td>
+<td align="right">1.42</td>
+<td align="right">-0.08</td>
+<td align="right">-1.90</td>
+</tr>
+<tr class="odd">
+<td align="left">Q68</td>
+<td align="right">1.96</td>
+<td align="right">-0.01</td>
+<td align="right">-1.12</td>
+<td align="right">-2.65</td>
+<td align="right">-4.38</td>
+</tr>
+<tr class="even">
+<td align="left">Q69</td>
+<td align="right">1.38</td>
+<td align="right">2.47</td>
+<td align="right">0.91</td>
+<td align="right">-0.89</td>
+<td align="right">-2.54</td>
+</tr>
+<tr class="odd">
+<td align="left">Q70</td>
+<td align="right">1.30</td>
+<td align="right">0.43</td>
+<td align="right">-0.82</td>
+<td align="right">-2.28</td>
+<td align="right">-3.66</td>
+</tr>
+<tr class="even">
+<td align="left">Q71</td>
+<td align="right">2.12</td>
+<td align="right">2.31</td>
+<td align="right">0.83</td>
+<td align="right">-0.88</td>
+<td align="right">-2.60</td>
 </tr>
 <tr class="odd">
 <td align="left">Q72</td>
-<td align="right">0.00</td>
-<td align="right">-0.56</td>
-<td align="right">-1.43</td>
-<td align="right">-2.71</td>
-<td align="right">-3.90</td>
+<td align="right">1.47</td>
+<td align="right">-0.81</td>
+<td align="right">-1.93</td>
+<td align="right">-3.46</td>
+<td align="right">-4.81</td>
 </tr>
 <tr class="even">
 <td align="left">Q73</td>
-<td align="right">0.00</td>
-<td align="right">0.79</td>
-<td align="right">-0.08</td>
-<td align="right">-1.15</td>
-<td align="right">-2.34</td>
+<td align="right">1.57</td>
+<td align="right">1.08</td>
+<td align="right">-0.18</td>
+<td align="right">-1.65</td>
+<td align="right">-3.14</td>
 </tr>
 <tr class="odd">
 <td align="left">Q74</td>
-<td align="right">0.00</td>
-<td align="right">1.25</td>
-<td align="right">0.36</td>
-<td align="right">-0.77</td>
-<td align="right">-2.11</td>
+<td align="right">1.46</td>
+<td align="right">1.69</td>
+<td align="right">0.44</td>
+<td align="right">-1.12</td>
+<td align="right">-2.76</td>
 </tr>
 <tr class="even">
 <td align="left">Q76</td>
-<td align="right">0.00</td>
-<td align="right">0.93</td>
-<td align="right">0.23</td>
-<td align="right">-0.55</td>
-<td align="right">-1.46</td>
+<td align="right">2.17</td>
+<td align="right">1.50</td>
+<td align="right">0.27</td>
+<td align="right">-1.08</td>
+<td align="right">-2.49</td>
 </tr>
 <tr class="odd">
 <td align="left">Q77</td>
-<td align="right">0.00</td>
-<td align="right">1.73</td>
-<td align="right">0.72</td>
-<td align="right">-0.36</td>
-<td align="right">-1.74</td>
+<td align="right">2.47</td>
+<td align="right">3.09</td>
+<td align="right">1.22</td>
+<td align="right">-0.83</td>
+<td align="right">-3.16</td>
 </tr>
 <tr class="even">
 <td align="left">Q78</td>
-<td align="right">0.00</td>
-<td align="right">1.23</td>
-<td align="right">0.32</td>
-<td align="right">-0.78</td>
-<td align="right">-2.12</td>
+<td align="right">1.72</td>
+<td align="right">1.78</td>
+<td align="right">0.42</td>
+<td align="right">-1.21</td>
+<td align="right">-2.99</td>
 </tr>
 <tr class="odd">
 <td align="left">Q79</td>
-<td align="right">0.00</td>
-<td align="right">0.71</td>
-<td align="right">-0.22</td>
-<td align="right">-1.38</td>
-<td align="right">-2.47</td>
+<td align="right">1.44</td>
+<td align="right">0.96</td>
+<td align="right">-0.30</td>
+<td align="right">-1.84</td>
+<td align="right">-3.18</td>
 </tr>
 <tr class="even">
 <td align="left">Q80</td>
-<td align="right">0.00</td>
-<td align="right">1.82</td>
-<td align="right">0.78</td>
-<td align="right">-0.42</td>
-<td align="right">-1.92</td>
+<td align="right">1.86</td>
+<td align="right">2.74</td>
+<td align="right">1.12</td>
+<td align="right">-0.75</td>
+<td align="right">-2.87</td>
 </tr>
 <tr class="odd">
 <td align="left">Q81</td>
-<td align="right">0.00</td>
-<td align="right">-0.24</td>
-<td align="right">-1.20</td>
-<td align="right">-2.49</td>
-<td align="right">-3.85</td>
+<td align="right">1.94</td>
+<td align="right">-0.47</td>
+<td align="right">-1.94</td>
+<td align="right">-3.68</td>
+<td align="right">-5.33</td>
 </tr>
 <tr class="even">
 <td align="left">Q82</td>
-<td align="right">0.00</td>
-<td align="right">0.51</td>
-<td align="right">-0.41</td>
-<td align="right">-1.67</td>
-<td align="right">-2.88</td>
+<td align="right">1.50</td>
+<td align="right">0.68</td>
+<td align="right">-0.61</td>
+<td align="right">-2.27</td>
+<td align="right">-3.69</td>
 </tr>
 </tbody>
 </table>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="item-analysis.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(results.grm, <span class="at">type =</span> <span class="st">&quot;trace&quot;</span>, <span class="at">which.items =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>),</span>
 <span id="cb39-2"><a href="item-analysis.html#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> <span class="st">&quot;&quot;</span>, <span class="at">par.settings =</span> <span class="fu">simpleTheme</span>(<span class="at">lty =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">lwd =</span> <span class="dv">2</span>),</span>
 <span id="cb39-3"><a href="item-analysis.html#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">auto.key =</span> <span class="fu">list</span>(<span class="at">points =</span> <span class="cn">FALSE</span>, <span class="at">lines =</span> <span class="cn">TRUE</span>, <span class="at">columns =</span> <span class="dv">4</span>))  <span class="co"># option curves</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="item-analysis.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(results.grm, <span class="at">type =</span> <span class="st">&quot;itemscore&quot;</span>, <span class="at">theta_lim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">4</span>), <span class="at">lwd =</span> <span class="dv">2</span>,</span>
 <span id="cb40-2"><a href="item-analysis.html#cb40-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">facet_items =</span> <span class="cn">FALSE</span>)  <span class="co"># item scoring traceline</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-9-2.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-8-2.png" width="672" /></p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="item-analysis.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(results.rsm, type = &#39;infotrace&#39;, which.items =</span></span>
 <span id="cb41-2"><a href="item-analysis.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co"># c(1,2,3,4), main = &#39;&#39;, par.settings = simpleTheme(lwd=2))</span></span>
 <span id="cb41-3"><a href="item-analysis.html#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># # item information functions (IIF) plot(results.rsm, type</span></span>
@@ -3751,18 +3743,6 @@ GRM   1</code></pre>
 <span id="cb41-5"><a href="item-analysis.html#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="co"># curve plot(results.rsm, type = &#39;SE&#39;, theta_lim = c(-4,4),</span></span>
 <span id="cb41-6"><a href="item-analysis.html#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="co"># lwd=2) # test standard errors</span></span></code></pre></div>
 <p>In the Graded Response Model, between category threshold parameters are ordered.</p>
-</div>
-<div id="trait-scores" class="section level3 hasAnchor">
-<h3>Trait scores<a href="item-analysis.html#trait-scores" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="item-analysis.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># attach factor scores pcmscores &lt;- fscores(results.pcm)</span></span>
-<span id="cb42-2"><a href="item-analysis.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co"># gpcmscores &lt;- fscores(results.gpcm) rsmscores &lt;-</span></span>
-<span id="cb42-3"><a href="item-analysis.html#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co"># fscores(results.rsm) grmscores &lt;- fscores(results.grm)</span></span>
-<span id="cb42-4"><a href="item-analysis.html#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co"># pew &lt;- cbind(pew, pcmscores) pew &lt;- cbind(pew,</span></span>
-<span id="cb42-5"><a href="item-analysis.html#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="co"># gpcmscores) pew &lt;- cbind(pew, rsmscores) pew &lt;-</span></span>
-<span id="cb42-6"><a href="item-analysis.html#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="co"># cbind(pew, grmscores) head(items) scores &lt;- pew[ ,5:9]</span></span>
-<span id="cb42-7"><a href="item-analysis.html#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="co"># corrs2 &lt;- cor(scores, method = c(&#39;pearson&#39;))</span></span>
-<span id="cb42-8"><a href="item-analysis.html#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="co"># knitr::kable(round(corrs2,2), caption = &#39;Correlation</span></span>
-<span id="cb42-9"><a href="item-analysis.html#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrix&#39;)</span></span></code></pre></div>
 </div>
 </div>
 <div id="summary-1" class="section level2 hasAnchor">

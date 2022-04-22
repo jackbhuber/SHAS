@@ -154,12 +154,12 @@
 
 This is a reproducible research project for validation of the nascent Spiritual Harm and Abuse Scale (SHAS), developed by Dan Koch. It aims to function as an evolving technical report to conceptualize and document various validity studies -- and, by extension, validity evidence -- for this scale. We hope some of these validity considerations and empirical studies amount to meaningful publishable contributions to the nascent research literature in spiritual abuse and/or the literature in religion, counseling psychology, and/or psychological measurement.
 
-The project is built in R using the R Studio IDE. It is built in bookdown and hosted at \url{https://github.com/jackbhuber/SHAS} as a public repository. It is served out over Github Pages as a website for collaboration between Jack and Dan at \url{https://jackhuber.org/SHAS/}.
+The project is open source, for collaboraion. It is built in R using the R Studio IDE. No Excel, no SPSS, no Word. It is built in bookdown and hosted at \url{https://github.com/jackbhuber/SHAS} as a public repository. It is served out over Github Pages as a website for collaboration between Jack and Dan at \url{https://jackhuber.org/SHAS/}.
 
 \hypertarget{research-questions}{%
 \section{Research Questions}\label{research-questions}}
 
-Validation can be an ongoing agenda for research into the meanings and uses of scores from instruments. Following is an initial set of questions to guide research and scale improvement of the SHAS:
+Validation is research into the meanings and uses of scores from instruments. It can be an ongoing research agenda. Following is an initial set of questions to guide research and scale improvement of the SHAS:
 
 \begin{itemize}
 \tightlist
@@ -625,6 +625,7 @@ In what follows, we conduct item analyses through a comparison of several differ
 IRT makes two assumptions of the data. The first is unidimensionality of the latent trait. Is the trait one dimension? This is important for the SHAS because the questionnaire explicitly distinguished between items measuring external events and internal states. To check this assumption we first confirm the factor structure using confirmatory factor analysis (CFA) and Rasch Principal Component Analysis of Residuals (PCAR; Smith, 2002).
 
 The second assumption is local independence \citep{EmbretsonResise2000}. This means that any set of items should not share any meaningful correlation once the latent variable has been accounted for (Edwards, Houts, \& Cai, 2018).
+
 To check the assumption of local independence, we used the Q3 statistic (Yen, 1984). The Q3 statistic index criteria are that the raw residual correlation between pairs of items should never exceed 0.10 (Marais \& Andrich, 2008).
 
 Using these criteria, we found XX items having local dependence. The items that had the highest raw residual correlations had negative signs and no positive residual correlation. In other words, the assumption of local independence in this study was met.
@@ -881,7 +882,7 @@ Consider the first item: Q7. The thresholds are as follows: b1=0.23, b2=0.08, b3
 66  Q82  1.069    2.012 1.127   4.750
 \end{verbatim}
 
-As seen in the \ref(tab:pcm-item-fit), XX items had infit and outfit statistics within an acceptable value (0.5 - 1.5). XX misfitting items were found and this means that XX items fit within the Rasch PCM. \footnote{and this is important because\ldots{}}
+As seen in the \ref{tab:pcm-item-fit}, XX items had infit and outfit statistics within an acceptable value (0.5 - 1.5). XX misfitting items were found and this means that XX items fit within the Rasch PCM. \footnote{and this is important because\ldots{}}
 
 \textbf{Item plots}. We can use also examine these item statistics visually. The following curves are called category response curves because they represent ``the probability of an examinee (or survey respondent) responding in a particular category conditional on trait level'' \citep{EmbretsonReise2000}. In general, ``the higher the slope parameters, the steeper the operating characteristic curves and the more narrow and peaked the category response curves, indicating that the response categories differentiate among trait levels fairly well'' \citep{EmbretsonReise2000}. Polytomous IRT models such as the Partial Credit Model have option characteristic curves (OCCs) which can be considered as an extension of item characteristic curves (ICCs) for polytomous items. Because the items have more than two response categories, OCCs have multiple curves in the same plot. Each curve represents the probability of selecting a particular response option as a function of the latent trait.
 
@@ -896,7 +897,7 @@ As seen in the \ref(tab:pcm-item-fit), XX items had infit and outfit statistics 
 
 \includegraphics{_main_files/figure-latex/pcm-occs-1.pdf}
 
-In Figure \ref(fig:pcm-occs), each item has four OCCs representing the four response options. The response categories are labeled as ``P1'' to ``P4''. For all four items, the OCCs follow the same order as the response categories. The OCC for the first response option (P1) is on the very left side of the plot, whereas the last response option (P4) is located on the right side of the plot. There are two questions to ask of OCCs: (1) Are they in the correct order? and (2) Does each response category meaningfully represent the responses of respondents at a given trait level? In this case, the OCCs are in the correct order, but the middle categories do not seem to capture distinct respondents.
+In Figure \ref{fig:pcm-occs}, each item has four OCCs representing the four response options. The response categories are labeled as ``P1'' to ``P4''. For all four items, the OCCs follow the same order as the response categories. The OCC for the first response option (P1) is on the very left side of the plot, whereas the last response option (P4) is located on the right side of the plot. There are two questions to ask of OCCs: (1) Are they in the correct order? and (2) Does each response category meaningfully represent the responses of respondents at a given trait level? In this case, the OCCs are in the correct order, but the middle categories do not seem to capture distinct respondents.
 
 \textbf{Model fit}. One way to evaluate the fit of the Partial Credit Model is to evaluate how well it fits the data from the item responses. The following table presents this information.
 
@@ -1444,7 +1445,7 @@ Q82 & 0.86 & 0.29 & 0.13 & 1.57 & 1.77\\
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{model.rsm }\OtherTok{\textless{}{-}} \StringTok{"RSM = 1{-}4"}
+\NormalTok{model.rsm }\OtherTok{\textless{}{-}} \StringTok{"SPIRITUAL ABUSE RSM = 1{-}66"}
 \NormalTok{results.rsm }\OtherTok{\textless{}{-}} \FunctionTok{mirt}\NormalTok{(}\AttributeTok{data =}\NormalTok{ items, }\AttributeTok{model =}\NormalTok{ model.rsm, }\AttributeTok{itemtype =} \StringTok{"rsm"}\NormalTok{,}
     \AttributeTok{verbose =} \ConstantTok{FALSE}\NormalTok{)}
 \NormalTok{coef.rsm }\OtherTok{\textless{}{-}} \FunctionTok{coef}\NormalTok{(results.rsm, }\AttributeTok{simplify =} \ConstantTok{TRUE}\NormalTok{)}
@@ -1454,149 +1455,149 @@ Q82 & 0.86 & 0.29 & 0.13 & 1.57 & 1.77\\
 \end{Shaded}
 
 \begin{verbatim}
-      RSM    h2
-Q7  0.526 0.277
-Q10 0.526 0.277
-Q11 0.526 0.277
-Q16 0.526 0.277
-Q17 0.526 0.277
-Q18 0.526 0.277
-Q19 0.526 0.277
-Q20 0.526 0.277
-Q21 0.526 0.277
-Q22 0.526 0.277
-Q23 0.526 0.277
-Q24 0.526 0.277
-Q25 0.526 0.277
-Q26 0.526 0.277
-Q27 0.526 0.277
-Q28 0.526 0.277
-Q29 0.526 0.277
-Q30 0.526 0.277
-Q31 0.526 0.277
-Q32 0.526 0.277
-Q34 0.526 0.277
-Q35 0.526 0.277
-Q36 0.526 0.277
-Q37 0.526 0.277
-Q38 0.526 0.277
-Q39 0.526 0.277
-Q40 0.526 0.277
-Q41 0.526 0.277
-Q42 0.526 0.277
-Q43 0.526 0.277
-Q44 0.526 0.277
-Q45 0.526 0.277
-Q46 0.526 0.277
-Q47 0.526 0.277
-Q49 0.526 0.277
-Q50 0.526 0.277
-Q51 0.526 0.277
-Q52 0.526 0.277
-Q53 0.526 0.277
-Q54 0.526 0.277
-Q55 0.526 0.277
-Q56 0.526 0.277
-Q57 0.526 0.277
-Q58 0.526 0.277
-Q59 0.526 0.277
-Q60 0.526 0.277
-Q61 0.526 0.277
-Q62 0.526 0.277
-Q63 0.526 0.277
-Q64 0.526 0.277
-Q65 0.526 0.277
-Q66 0.526 0.277
-Q68 0.526 0.277
-Q69 0.526 0.277
-Q70 0.526 0.277
-Q71 0.526 0.277
-Q72 0.526 0.277
-Q73 0.526 0.277
-Q74 0.526 0.277
-Q76 0.526 0.277
-Q77 0.526 0.277
-Q78 0.526 0.277
-Q79 0.526 0.277
-Q80 0.526 0.277
-Q81 0.526 0.277
-Q82 0.526 0.277
+    SPIRITUALABUSERSM    h2
+Q7              0.526 0.277
+Q10             0.526 0.277
+Q11             0.526 0.277
+Q16             0.526 0.277
+Q17             0.526 0.277
+Q18             0.526 0.277
+Q19             0.526 0.277
+Q20             0.526 0.277
+Q21             0.526 0.277
+Q22             0.526 0.277
+Q23             0.526 0.277
+Q24             0.526 0.277
+Q25             0.526 0.277
+Q26             0.526 0.277
+Q27             0.526 0.277
+Q28             0.526 0.277
+Q29             0.526 0.277
+Q30             0.526 0.277
+Q31             0.526 0.277
+Q32             0.526 0.277
+Q34             0.526 0.277
+Q35             0.526 0.277
+Q36             0.526 0.277
+Q37             0.526 0.277
+Q38             0.526 0.277
+Q39             0.526 0.277
+Q40             0.526 0.277
+Q41             0.526 0.277
+Q42             0.526 0.277
+Q43             0.526 0.277
+Q44             0.526 0.277
+Q45             0.526 0.277
+Q46             0.526 0.277
+Q47             0.526 0.277
+Q49             0.526 0.277
+Q50             0.526 0.277
+Q51             0.526 0.277
+Q52             0.526 0.277
+Q53             0.526 0.277
+Q54             0.526 0.277
+Q55             0.526 0.277
+Q56             0.526 0.277
+Q57             0.526 0.277
+Q58             0.526 0.277
+Q59             0.526 0.277
+Q60             0.526 0.277
+Q61             0.526 0.277
+Q62             0.526 0.277
+Q63             0.526 0.277
+Q64             0.526 0.277
+Q65             0.526 0.277
+Q66             0.526 0.277
+Q68             0.526 0.277
+Q69             0.526 0.277
+Q70             0.526 0.277
+Q71             0.526 0.277
+Q72             0.526 0.277
+Q73             0.526 0.277
+Q74             0.526 0.277
+Q76             0.526 0.277
+Q77             0.526 0.277
+Q78             0.526 0.277
+Q79             0.526 0.277
+Q80             0.526 0.277
+Q81             0.526 0.277
+Q82             0.526 0.277
 
 SS loadings:  18.287 
 Proportion Var:  0.277 
 
 Factor correlations: 
 
-    RSM
-RSM   1
+                  SPIRITUALABUSERSM
+SPIRITUALABUSERSM                 1
 $rotF
-         RSM
-Q7  0.526374
-Q10 0.526374
-Q11 0.526374
-Q16 0.526374
-Q17 0.526374
-Q18 0.526374
-Q19 0.526374
-Q20 0.526374
-Q21 0.526374
-Q22 0.526374
-Q23 0.526374
-Q24 0.526374
-Q25 0.526374
-Q26 0.526374
-Q27 0.526374
-Q28 0.526374
-Q29 0.526374
-Q30 0.526374
-Q31 0.526374
-Q32 0.526374
-Q34 0.526374
-Q35 0.526374
-Q36 0.526374
-Q37 0.526374
-Q38 0.526374
-Q39 0.526374
-Q40 0.526374
-Q41 0.526374
-Q42 0.526374
-Q43 0.526374
-Q44 0.526374
-Q45 0.526374
-Q46 0.526374
-Q47 0.526374
-Q49 0.526374
-Q50 0.526374
-Q51 0.526374
-Q52 0.526374
-Q53 0.526374
-Q54 0.526374
-Q55 0.526374
-Q56 0.526374
-Q57 0.526374
-Q58 0.526374
-Q59 0.526374
-Q60 0.526374
-Q61 0.526374
-Q62 0.526374
-Q63 0.526374
-Q64 0.526374
-Q65 0.526374
-Q66 0.526374
-Q68 0.526374
-Q69 0.526374
-Q70 0.526374
-Q71 0.526374
-Q72 0.526374
-Q73 0.526374
-Q74 0.526374
-Q76 0.526374
-Q77 0.526374
-Q78 0.526374
-Q79 0.526374
-Q80 0.526374
-Q81 0.526374
-Q82 0.526374
+    SPIRITUALABUSERSM
+Q7           0.526374
+Q10          0.526374
+Q11          0.526374
+Q16          0.526374
+Q17          0.526374
+Q18          0.526374
+Q19          0.526374
+Q20          0.526374
+Q21          0.526374
+Q22          0.526374
+Q23          0.526374
+Q24          0.526374
+Q25          0.526374
+Q26          0.526374
+Q27          0.526374
+Q28          0.526374
+Q29          0.526374
+Q30          0.526374
+Q31          0.526374
+Q32          0.526374
+Q34          0.526374
+Q35          0.526374
+Q36          0.526374
+Q37          0.526374
+Q38          0.526374
+Q39          0.526374
+Q40          0.526374
+Q41          0.526374
+Q42          0.526374
+Q43          0.526374
+Q44          0.526374
+Q45          0.526374
+Q46          0.526374
+Q47          0.526374
+Q49          0.526374
+Q50          0.526374
+Q51          0.526374
+Q52          0.526374
+Q53          0.526374
+Q54          0.526374
+Q55          0.526374
+Q56          0.526374
+Q57          0.526374
+Q58          0.526374
+Q59          0.526374
+Q60          0.526374
+Q61          0.526374
+Q62          0.526374
+Q63          0.526374
+Q64          0.526374
+Q65          0.526374
+Q66          0.526374
+Q68          0.526374
+Q69          0.526374
+Q70          0.526374
+Q71          0.526374
+Q72          0.526374
+Q73          0.526374
+Q74          0.526374
+Q76          0.526374
+Q77          0.526374
+Q78          0.526374
+Q79          0.526374
+Q80          0.526374
+Q81          0.526374
+Q82          0.526374
 
 $h2
            h2
@@ -1668,8 +1669,8 @@ Q81 0.2770696
 Q82 0.2770696
 
 $fcor
-    RSM
-RSM   1
+                  SPIRITUALABUSERSM
+SPIRITUALABUSERSM                 1
 \end{verbatim}
 
 \begin{Shaded}
@@ -1681,7 +1682,7 @@ RSM   1
 
 \begin{table}
 
-\caption{\label{tab:unnamed-chunk-8}Rating Scale Model (RSM) - Item Parameters}
+\caption{\label{tab:rsm-est}Rating Scale Model (RSM) - Item Parameters}
 \centering
 \begin{tabular}[t]{l|r|r|r|r|r|r}
 \hline
@@ -1830,7 +1831,7 @@ Q82 & 1 & 0.15 & -0.11 & 0.79 & 1.39 & -0.33\\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-8-1.pdf}
+\includegraphics{_main_files/figure-latex/rsm-plots-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1839,7 +1840,7 @@ Q82 & 1 & 0.15 & -0.11 & 0.79 & 1.39 & -0.33\\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-8-2.pdf}
+\includegraphics{_main_files/figure-latex/rsm-plots-2.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1857,7 +1858,7 @@ Q82 & 1 & 0.15 & -0.11 & 0.79 & 1.39 & -0.33\\
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{model.grm }\OtherTok{\textless{}{-}} \StringTok{"GRM = 1{-}4"}
+\NormalTok{model.grm }\OtherTok{\textless{}{-}} \StringTok{"SPIRITUAL ABUSE GRM = 1{-}66"}
 \NormalTok{results.grm }\OtherTok{\textless{}{-}} \FunctionTok{mirt}\NormalTok{(}\AttributeTok{data =}\NormalTok{ items, }\AttributeTok{model =}\NormalTok{ model.grm, }\AttributeTok{itemtype =} \StringTok{"graded"}\NormalTok{,}
     \AttributeTok{verbose =} \ConstantTok{FALSE}\NormalTok{)}
 \NormalTok{coef.grm }\OtherTok{\textless{}{-}} \FunctionTok{coef}\NormalTok{(results.grm, }\AttributeTok{simplify =} \ConstantTok{TRUE}\NormalTok{)}
@@ -1867,222 +1868,222 @@ Q82 & 1 & 0.15 & -0.11 & 0.79 & 1.39 & -0.33\\
 \end{Shaded}
 
 \begin{verbatim}
-      GRM    h2
-Q7  0.764 0.584
-Q10 0.736 0.542
-Q11 0.843 0.711
-Q16 0.691 0.478
-Q17 0.000 0.000
-Q18 0.000 0.000
-Q19 0.000 0.000
-Q20 0.000 0.000
-Q21 0.000 0.000
-Q22 0.000 0.000
-Q23 0.000 0.000
-Q24 0.000 0.000
-Q25 0.000 0.000
-Q26 0.000 0.000
-Q27 0.000 0.000
-Q28 0.000 0.000
-Q29 0.000 0.000
-Q30 0.000 0.000
-Q31 0.000 0.000
-Q32 0.000 0.000
-Q34 0.000 0.000
-Q35 0.000 0.000
-Q36 0.000 0.000
-Q37 0.000 0.000
-Q38 0.000 0.000
-Q39 0.000 0.000
-Q40 0.000 0.000
-Q41 0.000 0.000
-Q42 0.000 0.000
-Q43 0.000 0.000
-Q44 0.000 0.000
-Q45 0.000 0.000
-Q46 0.000 0.000
-Q47 0.000 0.000
-Q49 0.000 0.000
-Q50 0.000 0.000
-Q51 0.000 0.000
-Q52 0.000 0.000
-Q53 0.000 0.000
-Q54 0.000 0.000
-Q55 0.000 0.000
-Q56 0.000 0.000
-Q57 0.000 0.000
-Q58 0.000 0.000
-Q59 0.000 0.000
-Q60 0.000 0.000
-Q61 0.000 0.000
-Q62 0.000 0.000
-Q63 0.000 0.000
-Q64 0.000 0.000
-Q65 0.000 0.000
-Q66 0.000 0.000
-Q68 0.000 0.000
-Q69 0.000 0.000
-Q70 0.000 0.000
-Q71 0.000 0.000
-Q72 0.000 0.000
-Q73 0.000 0.000
-Q74 0.000 0.000
-Q76 0.000 0.000
-Q77 0.000 0.000
-Q78 0.000 0.000
-Q79 0.000 0.000
-Q80 0.000 0.000
-Q81 0.000 0.000
-Q82 0.000 0.000
+    SPIRITUALABUSEGRM     h2
+Q7              0.727 0.5290
+Q10             0.739 0.5465
+Q11             0.820 0.6723
+Q16             0.742 0.5499
+Q17             0.535 0.2867
+Q18             0.830 0.6894
+Q19             0.817 0.6671
+Q20             0.752 0.5659
+Q21             0.761 0.5795
+Q22             0.761 0.5796
+Q23             0.715 0.5116
+Q24             0.757 0.5738
+Q25             0.816 0.6666
+Q26             0.758 0.5741
+Q27             0.528 0.2793
+Q28             0.778 0.6060
+Q29             0.732 0.5362
+Q30             0.780 0.6078
+Q31             0.699 0.4892
+Q32             0.785 0.6166
+Q34             0.707 0.4999
+Q35             0.786 0.6180
+Q36             0.811 0.6581
+Q37             0.801 0.6412
+Q38             0.851 0.7238
+Q39             0.776 0.6028
+Q40             0.819 0.6703
+Q41             0.488 0.2377
+Q42             0.817 0.6676
+Q43             0.803 0.6453
+Q44             0.847 0.7175
+Q45             0.770 0.5924
+Q46             0.329 0.1080
+Q47             0.657 0.4319
+Q49             0.786 0.6182
+Q50             0.579 0.3352
+Q51             0.679 0.4606
+Q52             0.825 0.6805
+Q53             0.784 0.6148
+Q54             0.803 0.6441
+Q55             0.307 0.0944
+Q56             0.866 0.7497
+Q57             0.790 0.6237
+Q58             0.781 0.6097
+Q59             0.821 0.6742
+Q60             0.606 0.3670
+Q61             0.770 0.5927
+Q62             0.715 0.5105
+Q63             0.823 0.6766
+Q64             0.760 0.5778
+Q65             0.699 0.4889
+Q66             0.773 0.5970
+Q68             0.755 0.5698
+Q69             0.629 0.3955
+Q70             0.606 0.3675
+Q71             0.779 0.6075
+Q72             0.655 0.4288
+Q73             0.679 0.4605
+Q74             0.651 0.4233
+Q76             0.787 0.6195
+Q77             0.823 0.6774
+Q78             0.710 0.5043
+Q79             0.645 0.4165
+Q80             0.738 0.5444
+Q81             0.752 0.5660
+Q82             0.662 0.4385
 
-SS loadings:  2.316 
-Proportion Var:  0.035 
+SS loadings:  35.877 
+Proportion Var:  0.544 
 
 Factor correlations: 
 
-    GRM
-GRM   1
+                  SPIRITUALABUSEGRM
+SPIRITUALABUSEGRM                 1
 $rotF
-          GRM
-Q7  0.7644889
-Q10 0.7362822
-Q11 0.8434104
-Q16 0.6913146
-Q17 0.0000000
-Q18 0.0000000
-Q19 0.0000000
-Q20 0.0000000
-Q21 0.0000000
-Q22 0.0000000
-Q23 0.0000000
-Q24 0.0000000
-Q25 0.0000000
-Q26 0.0000000
-Q27 0.0000000
-Q28 0.0000000
-Q29 0.0000000
-Q30 0.0000000
-Q31 0.0000000
-Q32 0.0000000
-Q34 0.0000000
-Q35 0.0000000
-Q36 0.0000000
-Q37 0.0000000
-Q38 0.0000000
-Q39 0.0000000
-Q40 0.0000000
-Q41 0.0000000
-Q42 0.0000000
-Q43 0.0000000
-Q44 0.0000000
-Q45 0.0000000
-Q46 0.0000000
-Q47 0.0000000
-Q49 0.0000000
-Q50 0.0000000
-Q51 0.0000000
-Q52 0.0000000
-Q53 0.0000000
-Q54 0.0000000
-Q55 0.0000000
-Q56 0.0000000
-Q57 0.0000000
-Q58 0.0000000
-Q59 0.0000000
-Q60 0.0000000
-Q61 0.0000000
-Q62 0.0000000
-Q63 0.0000000
-Q64 0.0000000
-Q65 0.0000000
-Q66 0.0000000
-Q68 0.0000000
-Q69 0.0000000
-Q70 0.0000000
-Q71 0.0000000
-Q72 0.0000000
-Q73 0.0000000
-Q74 0.0000000
-Q76 0.0000000
-Q77 0.0000000
-Q78 0.0000000
-Q79 0.0000000
-Q80 0.0000000
-Q81 0.0000000
-Q82 0.0000000
+    SPIRITUALABUSEGRM
+Q7          0.7273447
+Q10         0.7392654
+Q11         0.8199105
+Q16         0.7415796
+Q17         0.5354169
+Q18         0.8302895
+Q19         0.8167810
+Q20         0.7522586
+Q21         0.7612588
+Q22         0.7613129
+Q23         0.7152675
+Q24         0.7574735
+Q25         0.8164676
+Q26         0.7577021
+Q27         0.5284502
+Q28         0.7784905
+Q29         0.7322242
+Q30         0.7796425
+Q31         0.6994070
+Q32         0.7852474
+Q34         0.7070087
+Q35         0.7861148
+Q36         0.8112530
+Q37         0.8007379
+Q38         0.8507415
+Q39         0.7764261
+Q40         0.8187023
+Q41         0.4875086
+Q42         0.8170742
+Q43         0.8032980
+Q44         0.8470270
+Q45         0.7696765
+Q46         0.3286257
+Q47         0.6572126
+Q49         0.7862305
+Q50         0.5789845
+Q51         0.6786928
+Q52         0.8249420
+Q53         0.7841150
+Q54         0.8025781
+Q55         0.3073124
+Q56         0.8658399
+Q57         0.7897445
+Q58         0.7808479
+Q59         0.8210990
+Q60         0.6057677
+Q61         0.7698478
+Q62         0.7145275
+Q63         0.8225350
+Q64         0.7601200
+Q65         0.6991821
+Q66         0.7726298
+Q68         0.7548566
+Q69         0.6289129
+Q70         0.6062136
+Q71         0.7794003
+Q72         0.6548466
+Q73         0.6785923
+Q74         0.6506270
+Q76         0.7871014
+Q77         0.8230311
+Q78         0.7101742
+Q79         0.6453957
+Q80         0.7378229
+Q81         0.7523344
+Q82         0.6621952
 
 $h2
-           h2
-Q7  0.5844433
-Q10 0.5421115
-Q11 0.7113411
-Q16 0.4779159
-Q17 0.0000000
-Q18 0.0000000
-Q19 0.0000000
-Q20 0.0000000
-Q21 0.0000000
-Q22 0.0000000
-Q23 0.0000000
-Q24 0.0000000
-Q25 0.0000000
-Q26 0.0000000
-Q27 0.0000000
-Q28 0.0000000
-Q29 0.0000000
-Q30 0.0000000
-Q31 0.0000000
-Q32 0.0000000
-Q34 0.0000000
-Q35 0.0000000
-Q36 0.0000000
-Q37 0.0000000
-Q38 0.0000000
-Q39 0.0000000
-Q40 0.0000000
-Q41 0.0000000
-Q42 0.0000000
-Q43 0.0000000
-Q44 0.0000000
-Q45 0.0000000
-Q46 0.0000000
-Q47 0.0000000
-Q49 0.0000000
-Q50 0.0000000
-Q51 0.0000000
-Q52 0.0000000
-Q53 0.0000000
-Q54 0.0000000
-Q55 0.0000000
-Q56 0.0000000
-Q57 0.0000000
-Q58 0.0000000
-Q59 0.0000000
-Q60 0.0000000
-Q61 0.0000000
-Q62 0.0000000
-Q63 0.0000000
-Q64 0.0000000
-Q65 0.0000000
-Q66 0.0000000
-Q68 0.0000000
-Q69 0.0000000
-Q70 0.0000000
-Q71 0.0000000
-Q72 0.0000000
-Q73 0.0000000
-Q74 0.0000000
-Q76 0.0000000
-Q77 0.0000000
-Q78 0.0000000
-Q79 0.0000000
-Q80 0.0000000
-Q81 0.0000000
-Q82 0.0000000
+            h2
+Q7  0.52903026
+Q10 0.54651327
+Q11 0.67225315
+Q16 0.54994032
+Q17 0.28667123
+Q18 0.68938069
+Q19 0.66713127
+Q20 0.56589296
+Q21 0.57951499
+Q22 0.57959735
+Q23 0.51160755
+Q24 0.57376617
+Q25 0.66661936
+Q26 0.57411254
+Q27 0.27925964
+Q28 0.60604748
+Q29 0.53615222
+Q30 0.60784237
+Q31 0.48917014
+Q32 0.61661355
+Q34 0.49986135
+Q35 0.61797647
+Q36 0.65813139
+Q37 0.64118125
+Q38 0.72376112
+Q39 0.60283750
+Q40 0.67027346
+Q41 0.23766463
+Q42 0.66761017
+Q43 0.64528775
+Q44 0.71745468
+Q45 0.59240198
+Q46 0.10799484
+Q47 0.43192841
+Q49 0.61815847
+Q50 0.33522304
+Q51 0.46062394
+Q52 0.68052935
+Q53 0.61483632
+Q54 0.64413157
+Q55 0.09444091
+Q56 0.74967866
+Q57 0.62369635
+Q58 0.60972338
+Q59 0.67420354
+Q60 0.36695451
+Q61 0.59266565
+Q62 0.51054950
+Q63 0.67656376
+Q64 0.57778236
+Q65 0.48885564
+Q66 0.59695684
+Q68 0.56980842
+Q69 0.39553148
+Q70 0.36749487
+Q71 0.60746490
+Q72 0.42882404
+Q73 0.46048752
+Q74 0.42331555
+Q76 0.61952855
+Q77 0.67738024
+Q78 0.50434733
+Q79 0.41653555
+Q80 0.54438258
+Q81 0.56600712
+Q82 0.43850244
 
 $fcor
-    GRM
-GRM   1
+                  SPIRITUALABUSEGRM
+SPIRITUALABUSEGRM                 1
 \end{verbatim}
 
 \begin{Shaded}
@@ -2094,143 +2095,143 @@ GRM   1
 
 \begin{table}
 
-\caption{\label{tab:unnamed-chunk-9}Graded Response Model (GRM) - Item Parameters}
+\caption{\label{tab:unnamed-chunk-8}Graded Response Model (GRM) - Item Parameters}
 \centering
 \begin{tabular}[t]{l|r|r|r|r|r}
 \hline
   & a1 & d1 & d2 & d3 & d4\\
 \hline
-Q7 & 2.02 & 1.01 & -0.17 & -1.47 & -3.01\\
+Q7 & 1.80 & 0.91 & -0.19 & -1.39 & -2.78\\
 \hline
-Q10 & 1.85 & -0.53 & -1.62 & -2.96 & -4.42\\
+Q10 & 1.87 & -0.58 & -1.65 & -2.94 & -4.34\\
 \hline
-Q11 & 2.67 & 1.46 & -0.26 & -1.93 & -4.15\\
+Q11 & 2.44 & 1.33 & -0.28 & -1.83 & -3.82\\
 \hline
-Q16 & 1.63 & 0.32 & -0.95 & -2.22 & -3.67\\
+Q16 & 1.88 & 0.32 & -1.04 & -2.39 & -3.88\\
 \hline
-Q17 & 0.00 & -1.95 & -2.17 & -2.58 & -3.19\\
+Q17 & 1.08 & -2.31 & -2.55 & -3.00 & -3.65\\
 \hline
-Q18 & 0.00 & 1.00 & 0.26 & -0.75 & -1.91\\
+Q18 & 2.54 & 1.85 & 0.43 & -1.52 & -3.46\\
 \hline
-Q19 & 0.00 & 0.41 & -0.34 & -1.24 & -2.49\\
+Q19 & 2.41 & 0.69 & -0.68 & -2.26 & -4.17\\
 \hline
-Q20 & 0.00 & 0.01 & -0.61 & -1.34 & -2.26\\
+Q20 & 1.94 & 0.00 & -0.98 & -2.11 & -3.39\\
 \hline
-Q21 & 0.00 & -0.04 & -0.60 & -1.22 & -1.92\\
+Q21 & 2.00 & -0.10 & -1.00 & -1.98 & -3.00\\
 \hline
-Q22 & 0.00 & 1.41 & 0.80 & 0.15 & -0.85\\
+Q22 & 2.00 & 2.23 & 1.25 & 0.17 & -1.44\\
 \hline
-Q23 & 0.00 & -0.04 & -0.93 & -2.07 & -3.43\\
+Q23 & 1.74 & -0.08 & -1.39 & -2.94 & -4.57\\
 \hline
-Q24 & 0.00 & -0.23 & -0.93 & -1.98 & -3.21\\
+Q24 & 1.97 & -0.41 & -1.51 & -3.01 & -4.59\\
 \hline
-Q25 & 0.00 & 1.71 & 0.85 & -0.19 & -1.48\\
+Q25 & 2.41 & 3.06 & 1.47 & -0.49 & -2.68\\
 \hline
-Q26 & 0.00 & -0.42 & -1.05 & -1.71 & -2.71\\
+Q26 & 1.98 & -0.69 & -1.65 & -2.63 & -3.99\\
 \hline
-Q27 & 0.00 & -0.43 & -0.90 & -1.57 & -2.40\\
+Q27 & 1.06 & -0.50 & -1.06 & -1.85 & -2.80\\
 \hline
-Q28 & 0.00 & 0.51 & -0.47 & -1.43 & -2.76\\
+Q28 & 2.11 & 0.85 & -0.79 & -2.32 & -4.22\\
 \hline
-Q29 & 0.00 & 0.66 & -0.13 & -1.08 & -2.31\\
+Q29 & 1.83 & 1.03 & -0.18 & -1.65 & -3.34\\
 \hline
-Q30 & 0.00 & 0.00 & -0.70 & -1.65 & -2.92\\
+Q30 & 2.12 & -0.04 & -1.19 & -2.66 & -4.43\\
 \hline
-Q31 & 0.00 & 0.15 & -0.79 & -1.85 & -3.05\\
+Q31 & 1.67 & 0.21 & -1.14 & -2.62 & -4.10\\
 \hline
-Q32 & 0.00 & 1.14 & 0.38 & -0.74 & -2.08\\
+Q32 & 2.16 & 1.91 & 0.61 & -1.29 & -3.35\\
 \hline
-Q34 & 0.00 & 0.67 & -0.14 & -1.12 & -2.34\\
+Q34 & 1.70 & 0.96 & -0.23 & -1.63 & -3.24\\
 \hline
-Q35 & 0.00 & 1.46 & 0.70 & -0.26 & -1.34\\
+Q35 & 2.16 & 2.41 & 1.13 & -0.51 & -2.28\\
 \hline
-Q36 & 0.00 & 1.16 & 0.28 & -0.72 & -2.00\\
+Q36 & 2.36 & 2.06 & 0.49 & -1.34 & -3.43\\
 \hline
-Q37 & 0.00 & 1.29 & 0.46 & -0.50 & -1.63\\
+Q37 & 2.28 & 2.24 & 0.80 & -0.95 & -2.81\\
 \hline
-Q38 & 0.00 & 1.24 & 0.47 & -0.49 & -1.53\\
+Q38 & 2.75 & 2.42 & 0.86 & -1.11 & -3.04\\
 \hline
-Q39 & 0.00 & 1.17 & 0.55 & -0.28 & -1.24\\
+Q39 & 2.10 & 1.94 & 0.90 & -0.52 & -2.07\\
 \hline
-Q40 & 0.00 & 0.25 & -0.42 & -1.27 & -2.18\\
+Q40 & 2.43 & 0.40 & -0.83 & -2.32 & -3.74\\
 \hline
-Q41 & 0.00 & -2.13 & -2.41 & -2.87 & -3.41\\
+Q41 & 0.95 & -2.43 & -2.73 & -3.23 & -3.79\\
 \hline
-Q42 & 0.00 & 1.11 & 0.04 & -1.08 & -2.44\\
+Q42 & 2.41 & 2.01 & 0.03 & -1.98 & -4.12\\
 \hline
-Q43 & 0.00 & 0.18 & -0.74 & -1.83 & -3.15\\
+Q43 & 2.30 & 0.28 & -1.32 & -3.10 & -4.95\\
 \hline
-Q44 & 0.00 & 0.83 & 0.08 & -0.88 & -2.19\\
+Q44 & 2.71 & 1.59 & 0.07 & -1.83 & -4.07\\
 \hline
-Q45 & 0.00 & 0.91 & 0.16 & -0.65 & -1.62\\
+Q45 & 2.05 & 1.49 & 0.24 & -1.10 & -2.59\\
 \hline
-Q46 & 0.00 & -2.74 & -3.37 & -4.50 & -5.49\\
+Q46 & 0.59 & -2.89 & -3.52 & -4.67 & -5.67\\
 \hline
-Q47 & 0.00 & -0.86 & -1.89 & -3.25 & -4.38\\
+Q47 & 1.48 & -1.18 & -2.47 & -4.08 & -5.32\\
 \hline
-Q49 & 0.00 & 0.25 & -0.65 & -1.62 & -2.90\\
+Q49 & 2.17 & 0.41 & -1.10 & -2.65 & -4.46\\
 \hline
-Q50 & 0.00 & -0.09 & -0.44 & -1.12 & -2.05\\
+Q50 & 1.21 & -0.05 & -0.47 & -1.33 & -2.48\\
 \hline
-Q51 & 0.00 & 0.38 & -0.37 & -1.16 & -2.25\\
+Q51 & 1.57 & 0.54 & -0.51 & -1.61 & -3.02\\
 \hline
-Q52 & 0.00 & 0.07 & -0.70 & -1.56 & -2.86\\
+Q52 & 2.48 & 0.11 & -1.31 & -2.84 & -4.82\\
 \hline
-Q53 & 0.00 & 0.46 & -0.30 & -1.21 & -2.30\\
+Q53 & 2.15 & 0.75 & -0.52 & -2.03 & -3.63\\
 \hline
-Q54 & 0.00 & 1.19 & 0.44 & -0.52 & -1.59\\
+Q54 & 2.29 & 2.03 & 0.69 & -1.01 & -2.75\\
 \hline
-Q55 & 0.00 & -0.64 & -1.63 & -2.80 & -4.12\\
+Q55 & 0.55 & -0.68 & -1.70 & -2.91 & -4.26\\
 \hline
-Q56 & 0.00 & 0.98 & 0.21 & -0.72 & -2.02\\
+Q56 & 2.95 & 2.00 & 0.34 & -1.64 & -4.03\\
 \hline
-Q57 & 0.00 & 0.09 & -0.58 & -1.41 & -2.51\\
+Q57 & 2.19 & 0.13 & -1.03 & -2.39 & -3.97\\
 \hline
-Q58 & 0.00 & 0.76 & -0.01 & -1.05 & -2.21\\
+Q58 & 2.13 & 1.24 & -0.06 & -1.78 & -3.51\\
 \hline
-Q59 & 0.00 & 0.32 & -0.55 & -1.58 & -2.99\\
+Q59 & 2.45 & 0.57 & -1.03 & -2.81 & -4.91\\
 \hline
-Q60 & 0.00 & -1.14 & -1.75 & -2.53 & -3.73\\
+Q60 & 1.30 & -1.43 & -2.15 & -3.06 & -4.42\\
 \hline
-Q61 & 0.00 & 0.87 & 0.21 & -0.59 & -1.59\\
+Q61 & 2.05 & 1.41 & 0.31 & -1.01 & -2.55\\
 \hline
-Q62 & 0.00 & 0.28 & -0.49 & -1.62 & -2.95\\
+Q62 & 1.74 & 0.40 & -0.74 & -2.35 & -4.03\\
 \hline
-Q63 & 0.00 & 0.58 & -0.38 & -1.44 & -2.75\\
+Q63 & 2.46 & 1.03 & -0.76 & -2.64 & -4.60\\
 \hline
-Q64 & 0.00 & 0.46 & -0.47 & -1.45 & -2.59\\
+Q64 & 1.99 & 0.72 & -0.77 & -2.27 & -3.87\\
 \hline
-Q65 & 0.00 & -0.36 & -1.12 & -1.98 & -3.09\\
+Q65 & 1.66 & -0.53 & -1.58 & -2.75 & -4.12\\
 \hline
-Q66 & 0.00 & 1.54 & 0.87 & -0.01 & -1.14\\
+Q66 & 2.07 & 2.52 & 1.42 & -0.08 & -1.90\\
 \hline
-Q68 & 0.00 & 0.05 & -0.66 & -1.69 & -3.03\\
+Q68 & 1.96 & -0.01 & -1.12 & -2.65 & -4.38\\
 \hline
-Q69 & 0.00 & 1.89 & 0.72 & -0.62 & -1.97\\
+Q69 & 1.38 & 2.47 & 0.91 & -0.89 & -2.54\\
 \hline
-Q70 & 0.00 & 0.33 & -0.65 & -1.83 & -3.02\\
+Q70 & 1.30 & 0.43 & -0.82 & -2.28 & -3.66\\
 \hline
-Q71 & 0.00 & 1.43 & 0.55 & -0.44 & -1.56\\
+Q71 & 2.12 & 2.31 & 0.83 & -0.88 & -2.60\\
 \hline
-Q72 & 0.00 & -0.56 & -1.43 & -2.71 & -3.90\\
+Q72 & 1.47 & -0.81 & -1.93 & -3.46 & -4.81\\
 \hline
-Q73 & 0.00 & 0.79 & -0.08 & -1.15 & -2.34\\
+Q73 & 1.57 & 1.08 & -0.18 & -1.65 & -3.14\\
 \hline
-Q74 & 0.00 & 1.25 & 0.36 & -0.77 & -2.11\\
+Q74 & 1.46 & 1.69 & 0.44 & -1.12 & -2.76\\
 \hline
-Q76 & 0.00 & 0.93 & 0.23 & -0.55 & -1.46\\
+Q76 & 2.17 & 1.50 & 0.27 & -1.08 & -2.49\\
 \hline
-Q77 & 0.00 & 1.73 & 0.72 & -0.36 & -1.74\\
+Q77 & 2.47 & 3.09 & 1.22 & -0.83 & -3.16\\
 \hline
-Q78 & 0.00 & 1.23 & 0.32 & -0.78 & -2.12\\
+Q78 & 1.72 & 1.78 & 0.42 & -1.21 & -2.99\\
 \hline
-Q79 & 0.00 & 0.71 & -0.22 & -1.38 & -2.47\\
+Q79 & 1.44 & 0.96 & -0.30 & -1.84 & -3.18\\
 \hline
-Q80 & 0.00 & 1.82 & 0.78 & -0.42 & -1.92\\
+Q80 & 1.86 & 2.74 & 1.12 & -0.75 & -2.87\\
 \hline
-Q81 & 0.00 & -0.24 & -1.20 & -2.49 & -3.85\\
+Q81 & 1.94 & -0.47 & -1.94 & -3.68 & -5.33\\
 \hline
-Q82 & 0.00 & 0.51 & -0.41 & -1.67 & -2.88\\
+Q82 & 1.50 & 0.68 & -0.61 & -2.27 & -3.69\\
 \hline
 \end{tabular}
 \end{table}
@@ -2243,7 +2244,7 @@ Q82 & 0.00 & 0.51 & -0.41 & -1.67 & -2.88\\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-9-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-8-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2252,7 +2253,7 @@ Q82 & 0.00 & 0.51 & -0.41 & -1.67 & -2.88\\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-9-2.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-8-2.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2266,23 +2267,6 @@ Q82 & 0.00 & 0.51 & -0.41 & -1.67 & -2.88\\
 \end{Shaded}
 
 In the Graded Response Model, between category threshold parameters are ordered.
-
-\hypertarget{trait-scores}{%
-\subsection{Trait scores}\label{trait-scores}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# attach factor scores pcmscores \textless{}{-} fscores(results.pcm)}
-\CommentTok{\# gpcmscores \textless{}{-} fscores(results.gpcm) rsmscores \textless{}{-}}
-\CommentTok{\# fscores(results.rsm) grmscores \textless{}{-} fscores(results.grm)}
-\CommentTok{\# pew \textless{}{-} cbind(pew, pcmscores) pew \textless{}{-} cbind(pew,}
-\CommentTok{\# gpcmscores) pew \textless{}{-} cbind(pew, rsmscores) pew \textless{}{-}}
-\CommentTok{\# cbind(pew, grmscores) head(items) scores \textless{}{-} pew[ ,5:9]}
-\CommentTok{\# corrs2 \textless{}{-} cor(scores, method = c(\textquotesingle{}pearson\textquotesingle{}))}
-\CommentTok{\# knitr::kable(round(corrs2,2), caption = \textquotesingle{}Correlation}
-\CommentTok{\# Matrix\textquotesingle{})}
-\end{Highlighting}
-\end{Shaded}
 
 \hypertarget{summary-1}{%
 \section{Summary}\label{summary-1}}
@@ -2397,305 +2381,27 @@ Wright and Masters (1982) developed reliability measures based on the Rasch meas
 \hypertarget{summary-2}{%
 \section{Summary}\label{summary-2}}
 
-\hypertarget{dimensionality}{%
-\chapter{Dimensionality}\label{dimensionality}}
-
-This chapter deals with the topic of dimensionality. It begins with a definition of dimensionality and explains how it is important. It outlines how to investigate it and suggests what counts as good evidence. Then it reports our study of the dimensionality of the SHAS.
-
-\hypertarget{about-dimensionality}{%
-\section{About Dimensionality}\label{about-dimensionality}}
-
-Dimensionality is the study of the dimensions (also known as ``factors'', ``components'', and ``latent traits'') that the items are designed and assembled to collectively measure. This study tends to take two forms. One is exploration of what dimensions a set of items apparently measure, regardless of what they intended to measure. The other is what evidence exist to confirm that a set of items actually measure the dimension they are intended to measure.
-
-Dimensionality is important for the reporting of scores. Scores, as summary measures of a set of items, are only meaningful to the extent that they enjoy evidence that they measure the dimension(s) they are designed to measure. Scores, in turn, are important to the extent that they support decisions that have consequences in the real world. Scores are needed to decide who gets to practice medicine, or fly an airplane.
-
-Dimensionality is an important part of the validation process for psychological measures \citep{EmbretsonReise2000}.
-
-The methodology commonly used to investigate dimensionality is factor analysis. To assess the dimensionality of these 66 piloted SHAS items we use exploratory factor analysis and confirmatory factor analysis (CFA) and PCAR.
-
-\hypertarget{exploratory-factor-analysis-efa}{%
-\section{Exploratory Factor Analysis (EFA)}\label{exploratory-factor-analysis-efa}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# LOAD PACKAGES}
-\FunctionTok{library}\NormalTok{(lavaan)}
-\FunctionTok{library}\NormalTok{(psych)}
-\FunctionTok{library}\NormalTok{(psychTools)}
-
-\CommentTok{\# LOAD DATA all \textless{}{-} read.csv(\textquotesingle{}data/all.csv\textquotesingle{})}
-\NormalTok{items }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/items.csv"}\NormalTok{)}
-\NormalTok{ext\_items }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/ext\_items.csv"}\NormalTok{)}
-\NormalTok{int\_items }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/int\_items.csv"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# }\AlertTok{TEST}\CommentTok{ FOR NUMBER OF FACTORS IN DATA USING PARALLEL}
-\CommentTok{\# ANALYSIS AND VERY SIMPLE STRUCTURE (VSS)}
-\FunctionTok{fa.parallel}\NormalTok{(items)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{_main_files/figure-latex/unnamed-chunk-13-1.pdf}
-
-\begin{verbatim}
-Parallel analysis suggests that the number of factors =  16  and the number of components =  6 
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{vss}\NormalTok{(items)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{_main_files/figure-latex/unnamed-chunk-13-2.pdf}
-
-\begin{verbatim}
-Very Simple Structure
-Call: vss(x = items)
-VSS complexity 1 achieves a maximimum of 0.96  with  1  factors
-VSS complexity 2 achieves a maximimum of 0.97  with  2  factors
-
-The Velicer MAP achieves a minimum of 0.01  with  6  factors 
-BIC achieves a minimum of  -788.85  with  8  factors
-Sample Size adjusted BIC achieves a minimum of  4438.02  with  8  factors
-
-Statistics by number of factors 
-  vss1 vss2    map  dof chisq prob sqresid  fit RMSEA   BIC SABIC complex
-1 0.96 0.00 0.0091 2079 37231    0      33 0.96 0.072 20438 27044     1.0
-2 0.50 0.97 0.0068 2014 29480    0      26 0.97 0.065 13211 19611     1.6
-3 0.35 0.81 0.0058 1950 24035    0      23 0.98 0.059  8283 14479     2.1
-4 0.29 0.67 0.0056 1887 20947    0      20 0.98 0.056  5704 11700     2.5
-5 0.29 0.62 0.0055 1825 17804    0      18 0.98 0.052  3062  8861     2.7
-6 0.25 0.60 0.0052 1764 15824    0      16 0.98 0.050  1575  7180     2.8
-7 0.23 0.58 0.0056 1704 13729    0      15 0.98 0.047   -35  5379     2.9
-8 0.21 0.54 0.0055 1645 12499    0      14 0.98 0.045  -789  4438     3.0
-  eChisq  SRMR eCRMS  eBIC
-1  37967 0.052 0.053 21173
-2  23187 0.041 0.042  6918
-3  16097 0.034 0.036   345
-4  12506 0.030 0.032 -2737
-5   9591 0.026 0.029 -5151
-6   7329 0.023 0.025 -6921
-7   5949 0.021 0.023 -7815
-8   5053 0.019 0.022 -8235
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# PRINCIPAL COMPONENTS ANALYSIS}
-\FunctionTok{principal}\NormalTok{(items)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-Principal Components Analysis
-Call: principal(r = items)
-Standardized loadings (pattern matrix) based upon correlation matrix
-     PC1    h2   u2 com
-Q7  0.67 0.451 0.55   1
-Q10 0.64 0.404 0.60   1
-Q11 0.77 0.598 0.40   1
-Q16 0.69 0.481 0.52   1
-Q17 0.33 0.112 0.89   1
-Q18 0.78 0.604 0.40   1
-Q19 0.75 0.569 0.43   1
-Q20 0.68 0.466 0.53   1
-Q21 0.68 0.467 0.53   1
-Q22 0.70 0.488 0.51   1
-Q23 0.64 0.406 0.59   1
-Q24 0.66 0.440 0.56   1
-Q25 0.76 0.583 0.42   1
-Q26 0.66 0.430 0.57   1
-Q27 0.47 0.222 0.78   1
-Q28 0.73 0.529 0.47   1
-Q29 0.69 0.474 0.53   1
-Q30 0.70 0.496 0.50   1
-Q31 0.65 0.417 0.58   1
-Q32 0.73 0.539 0.46   1
-Q34 0.65 0.428 0.57   1
-Q35 0.74 0.542 0.46   1
-Q36 0.77 0.590 0.41   1
-Q37 0.76 0.572 0.43   1
-Q38 0.80 0.647 0.35   1
-Q39 0.72 0.515 0.48   1
-Q40 0.75 0.564 0.44   1
-Q41 0.30 0.089 0.91   1
-Q42 0.77 0.594 0.41   1
-Q43 0.74 0.542 0.46   1
-Q44 0.80 0.642 0.36   1
-Q45 0.72 0.516 0.48   1
-Q46 0.15 0.021 0.98   1
-Q47 0.52 0.269 0.73   1
-Q49 0.72 0.520 0.48   1
-Q50 0.53 0.281 0.72   1
-Q51 0.62 0.380 0.62   1
-Q52 0.76 0.577 0.42   1
-Q53 0.73 0.535 0.46   1
-Q54 0.75 0.568 0.43   1
-Q55 0.27 0.075 0.93   1
-Q56 0.82 0.670 0.33   1
-Q57 0.72 0.521 0.48   1
-Q58 0.73 0.533 0.47   1
-Q59 0.76 0.579 0.42   1
-Q60 0.47 0.224 0.78   1
-Q61 0.72 0.511 0.49   1
-Q62 0.65 0.424 0.58   1
-Q63 0.77 0.590 0.41   1
-Q64 0.71 0.503 0.50   1
-Q65 0.61 0.373 0.63   1
-Q66 0.71 0.498 0.50   1
-Q68 0.68 0.459 0.54   1
-Q69 0.57 0.323 0.68   1
-Q70 0.56 0.309 0.69   1
-Q71 0.74 0.544 0.46   1
-Q72 0.54 0.294 0.71   1
-Q73 0.64 0.405 0.59   1
-Q74 0.60 0.359 0.64   1
-Q76 0.74 0.544 0.46   1
-Q77 0.77 0.598 0.40   1
-Q78 0.66 0.442 0.56   1
-Q79 0.60 0.365 0.64   1
-Q80 0.68 0.466 0.53   1
-Q81 0.65 0.419 0.58   1
-Q82 0.61 0.368 0.63   1
-
-                 PC1
-SS loadings    29.96
-Proportion Var  0.45
-
-Mean item complexity =  1
-Test of the hypothesis that 1 component is sufficient.
-
-The root mean square of the residuals (RMSR) is  0.05 
- with the empirical chi square  38864.3  with prob <  0 
-
-Fit based upon off diagonal values = 0.99
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# PRINCIPAL AXIS FACTORING library(psych) fit \textless{}{-}}
-\CommentTok{\# factor.pa(items, nfactors=3, rotation=\textquotesingle{}varimax\textquotesingle{}) fit \#}
-\CommentTok{\# print results}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# PRINCIPAL COMPONENTS ANALYSIS entering raw data and}
-\CommentTok{\# extracting PCs from the correlation matrix fit \textless{}{-}}
-\CommentTok{\# princomp(items, cor=TRUE) summary(fit) \# print variance}
-\CommentTok{\# accounted for loadings(fit) \# pc loadings}
-\CommentTok{\# plot(fit,type=\textquotesingle{}lines\textquotesingle{}) \# scree plot fit$scores \# the}
-\CommentTok{\# principal components biplot(fit)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# DETERMINE NUMBER OF FACTORS TO EXTRACT library(nFactors)}
-\CommentTok{\# ev \textless{}{-} eigen(cor(items)) \# get eigenvalues ap \textless{}{-}}
-\CommentTok{\# parallel(subject=nrow(items),var=ncol(items),}
-\CommentTok{\# rep=100,cent=.05) nS \textless{}{-} nScree(x=ev$values,}
-\CommentTok{\# aparallel=ap$eigen$qevpea) plotnScree(nS)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# MAXIMUM LIKELIHOOD FACTOR ANALYSIS entering raw data and}
-\CommentTok{\# extracting 3 factors, with varimax rotation fit \textless{}{-}}
-\CommentTok{\# factanal(items, 3, rotation=\textquotesingle{}varimax\textquotesingle{}) print(fit,}
-\CommentTok{\# digits=2, cutoff=.3, sort=TRUE) \# plot factor 1 by factor}
-\CommentTok{\# 2 load \textless{}{-} fit$loadings[,1:2] plot(load,type=\textquotesingle{}n\textquotesingle{}) \# set up}
-\CommentTok{\# plot text(load,labels=names(items),cex=.7) \# add variable}
-\CommentTok{\# names}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{confirmatory-factor-analysis-cfa}{%
-\section{Confirmatory Factor Analysis (CFA)}\label{confirmatory-factor-analysis-cfa}}
-
-The purpose of confirmatory factor analysis is, as the name implies, to confirm that items measure the factor(s) or trait(s) for which the items were designed and intended to measure.
-
-In our use of CFA we used several statistics and fit indices:
-
-\begin{itemize}
-\tightlist
-\item
-  Root Mean Square Error of Approximation (RMSEA)
-\item
-  Comparative Fit Index (CFI)
-\item
-  Tucker--Lewis Index (TLI), and
-\item
-  Standardized Root-Mean-Square Residual (SRMR)
-\end{itemize}
-
-Based on published criteria (Hu \& Bentler, 1999; Wang \& Wang, 2019), we used the following standards for good fit:
-
-\begin{itemize}
-\tightlist
-\item
-  CFI \textgreater{} 0.95
-\item
-  TLI \textgreater{} 0.95
-\item
-  RMSEA \textless{} 0.05
-\item
-  SRMR \textless{} 0.08
-\end{itemize}
-
-We use the MLM estimator \citep{Brown2006}.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# ltm::factor.scores(items) \# Computation of factor scores}
-\CommentTok{\# for grm, ltm, rasch and tpm models}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# library(lavaan) MODEL WITH ONE COMMON FACTOR}
-
-\CommentTok{\# wb\_1factor \textless{}{-} \textquotesingle{} \#start of model}
-
-\CommentTok{\# latent variable definitions (common factors) wellbeing =\textasciitilde{}}
-\CommentTok{\# NA*sense.peace + NA*sense.wonder + NA*sense.gratitude +}
-\CommentTok{\# NA*sense.purpose}
-
-\CommentTok{\# latent variable variances wellbeing \textasciitilde{}\textasciitilde{} 1*wellbeing}
-
-\CommentTok{\# latent variable covariances latent variable means}
-
-\CommentTok{\# manifest variable variances (uniquenesses) sense.peace \textasciitilde{}\textasciitilde{}}
-\CommentTok{\# sense.peace sense.wonder \textasciitilde{}\textasciitilde{} sense.wonder sense.gratitude}
-\CommentTok{\# \textasciitilde{}\textasciitilde{} sense.gratitude sense.purpose \textasciitilde{}\textasciitilde{} sense.purpose}
-
-\CommentTok{\# manifest variable covariances (uniquenesses)}
-
-\CommentTok{\# manifest variable means sense.peace \textasciitilde{} 1 sense.wonder \textasciitilde{} 1}
-\CommentTok{\# sense.gratitude \textasciitilde{} 1 sense.purpose \textasciitilde{} 1 end of model}
-
-\CommentTok{\# CFA1 \textless{}{-} lavaan(wb\_1factor, data=items, estimator = \textquotesingle{}MLM\textquotesingle{})}
-\CommentTok{\# \# estimate model summary(CFA1, standardized=TRUE,}
-\CommentTok{\# fit.measures=TRUE)}
-\end{Highlighting}
-\end{Shaded}
-
-The results of CFA, using MLR estimation, confirmed the second order factor model, in line with the original structure of the scale (see Olufadi, 2017), because the values of the indices were above the acceptable threshold {[}χ2 (167) = 284.032, p \textless{} 0.001; RMSEA = 0.030 (90\% CI = 0.024-0.036), CFI = 0.983, TLI = 0.981, SRMR = 0.023{]}, compared to the unidimensional model {[}χ2 (170) = 316.949, p \textless{} 0.001; RMSEA = 0.034 (90\% CI = 0.028-0.039), CFI = 0.978, TLI = 0.976, SRMR = 0.023{]} and a 3-uncorrelated-factors model {[}χ2 (170) = 2427.628, p \textless{} 0.001; RMSEA = 0.132 (90\% CI = 0.127-0.136), CFI = 0.669, TLI = 0.631, SRMR = 0.345{]}. Based on RMSEA, CFI, TLI, and SRMR, the results indicated that the model provided satisfactory representations of the underlying structure of the psychological well-being construct. All items loaded significantly (ranging from 0.535 to 0.817) in relation to each first order factor, at a p \textless{} 0.01 significance level. These results of the CFA offer evidence that the four items measure one dimension of well-being.
-
-\hypertarget{summary-3}{%
-\section{Summary}\label{summary-3}}
-
 \hypertarget{scale-analysis}{%
 \chapter{Scale Analysis}\label{scale-analysis}}
 
-In this chapter, we examine the technical quality of the scales derived from the SHAS piloted items. We begin by defining scaling and discussing the importance of scale analysis. We report the results of our scale analysis from within the item response theory (IRT) framework. We conclude by considering what this information contributes to improved SHAS instrumentation.
+In this chapter, we examine the technical quality of the scales derived from the SHAS piloted items. Here we address questions like the following:
+
+\begin{itemize}
+\item
+  \textbf{Person fit} - How well does the current scale fit the population of examinees? Are there ceiling or floor effects? To what extent might the existing items under-represent the full range of abuse?
+\item
+  \textbf{Scale invariance} - Do the scales mean the same thing to different groups of examinees? To what extent do these scales (abuse constructs) vary by age, gender, and/or sexuality?
+\item
+  \textbf{Developmental pathway} - Beyond total scores, what might an incremental scale of in terms of items look like? What items might represent the most severe or most frequent forms of spiritual abuse?
+\end{itemize}
+
+We begin by defining scaling and discussing the importance of scale analysis. We report the results of our scale analysis from within the item response theory (IRT) framework. We conclude by considering what this information contributes to improved SHAS instrumentation.
+
+\hypertarget{person-fit}{%
+\section{Person Fit}\label{person-fit}}
+
+\hypertarget{scale-invariance}{%
+\section{Scale Invariance}\label{scale-invariance}}
 
 \hypertarget{the-item-person-map}{%
 \section{The Item-Person Map}\label{the-item-person-map}}
@@ -2737,8 +2443,8 @@ These provide important information about where along the scale of the latent tr
 \hypertarget{item-separation}{%
 \section{Item Separation}\label{item-separation}}
 
-\hypertarget{summary-4}{%
-\section{Summary}\label{summary-4}}
+\hypertarget{summary-3}{%
+\section{Summary}\label{summary-3}}
 
 \hypertarget{discussion}{%
 \chapter{Discussion}\label{discussion}}
