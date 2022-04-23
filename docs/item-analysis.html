@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Jack Huber and Dan Koch" />
 
 
-<meta name="date" content="2022-04-22" />
+<meta name="date" content="2022-04-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -164,7 +164,7 @@ div.csl-indent {
 <li><a href="./">Validity of SHAS</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About this Project</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>url: your book url like <span>https://bookdown.org/yihui/bookdown</span></a>
 <ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#research-questions"><i class="fa fa-check"></i>Research Questions</a></li>
 </ul></li>
@@ -270,720 +270,765 @@ div.csl-indent {
 </div>
 <div id="partial-credit-model-pcm" class="section level3 hasAnchor">
 <h3>Partial Credit Model (PCM)<a href="item-analysis.html#partial-credit-model-pcm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The first model we examine is the Partial Credit Model (PCM) <span class="citation">(<a href="#ref-Masters1982" role="doc-biblioref"><strong>Masters1982?</strong></a>)</span>. This is a polytomous item response model belonging to the Rasch family. This means that it extends the Rasch model, which is based on dichotomous item responses (1=correct response, 0=incorrect response), by considering the probabliity of choosing from among several response options such as those typically presented in Likert scales of agreement or frequency. The PCM assumes that items use ordered response categories as they exist in questionnaires, such as unidimensional rating scales. The number of response categories in each item may vary <span class="citation">(<a href="references.html#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>)</span>. It follows that the PCM contains m (m + 1 being the number of response categories) threshold parameters. Each threshold parameter marks a category intersection <span class="citation">(<a href="#ref-Masters1982" role="doc-biblioref"><strong>Masters1982?</strong></a>)</span>. Threshold sometimes refers to “step difficulty” or “step parameter” and illustrates the point on the latent trait continuum (e.g., spiritual abuse) where a response in category k becomes more likely than a response in category k – 1 (de Ayala, 2009). The PCM provides scores for items, persons, and step parameters on a logit scale.</p>
+<p>The first model we examine is the Partial Credit Model (PCM) <span class="citation">(<a href="#ref-Masters1982" role="doc-biblioref"><strong>Masters1982?</strong></a>)</span>. This is a polytomous item response model belonging to the Rasch family. This means that it extends the Rasch model, which is based on dichotomous item responses (1=correct, 0=incorrect), by considering the probabliity of choosing from among several response options such as those typically presented in Likert scales of agreement or frequency. The PCM assumes that items use ordered response categories as they exist in questionnaires, such as unidimensional rating scales. The number of response categories in each item may vary <span class="citation">(<a href="references.html#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>)</span>. It follows that the PCM contains m (m + 1 being the number of response categories) threshold parameters. Each threshold parameter marks a category intersection <span class="citation">(<a href="#ref-Masters1982" role="doc-biblioref"><strong>Masters1982?</strong></a>)</span>. Threshold sometimes refers to “step difficulty” or “step parameter” and illustrates the point on the latent trait continuum (e.g., spiritual abuse) where a response in category k becomes more likely than a response in category k – 1 (de Ayala, 2009). The PCM provides scores for items, persons, and step parameters on a logit scale.</p>
 <p><strong>Model Estimation</strong>. We begin by loading the <code>mirt</code> library and estimating the model on the data from the 66 SHAS items. This model constrains the slopes to 1 and freely estimates the variance parameters.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="item-analysis.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ESTIMATE MIRT MODEL</span></span>
-<span id="cb10-2"><a href="item-analysis.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mirt)</span>
-<span id="cb10-3"><a href="item-analysis.html#cb10-3" aria-hidden="true" tabindex="-1"></a>items <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/items.csv&quot;</span>)</span>
-<span id="cb10-4"><a href="item-analysis.html#cb10-4" aria-hidden="true" tabindex="-1"></a>model.pcm <span class="ot">&lt;-</span> <span class="st">&quot;SPIRITUAL ABUSE = 1-66&quot;</span></span>
-<span id="cb10-5"><a href="item-analysis.html#cb10-5" aria-hidden="true" tabindex="-1"></a>results.pcm <span class="ot">&lt;-</span> <span class="fu">mirt</span>(<span class="at">data =</span> items, <span class="at">model =</span> model.pcm, <span class="at">itemtype =</span> <span class="st">&quot;Rasch&quot;</span>,</span>
-<span id="cb10-6"><a href="item-analysis.html#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="item-analysis.html#cb11-1" aria-hidden="true" tabindex="-1"></a>coef.pcm <span class="ot">&lt;-</span> <span class="fu">coef</span>(results.pcm, <span class="at">IRTpars =</span> <span class="cn">TRUE</span>, <span class="at">simplify =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb11-2"><a href="item-analysis.html#cb11-2" aria-hidden="true" tabindex="-1"></a>items.pcm <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(coef.pcm<span class="sc">$</span>items)</span>
-<span id="cb11-3"><a href="item-analysis.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># print(results.pcm)</span></span>
-<span id="cb11-4"><a href="item-analysis.html#cb11-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">round</span>(items.pcm, <span class="dv">2</span>), <span class="at">caption =</span> <span class="st">&quot;Partial Credit Model (PCM) - Item Parameters&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="item-analysis.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ESTIMATE PCM MODEL</span></span>
+<span id="cb1-2"><a href="item-analysis.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mirt)</span>
+<span id="cb1-3"><a href="item-analysis.html#cb1-3" aria-hidden="true" tabindex="-1"></a>items <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/items.csv&quot;</span>)</span>
+<span id="cb1-4"><a href="item-analysis.html#cb1-4" aria-hidden="true" tabindex="-1"></a>model.pcm <span class="ot">&lt;-</span> <span class="st">&#39;SPIRITUAL ABUSE PARTIAL CREDIT MODEL = 1-66&#39;</span></span>
+<span id="cb1-5"><a href="item-analysis.html#cb1-5" aria-hidden="true" tabindex="-1"></a>results.pcm <span class="ot">&lt;-</span> <span class="fu">mirt</span>(<span class="at">data=</span>items, <span class="at">model=</span>model.pcm, <span class="at">itemtype=</span><span class="st">&quot;Rasch&quot;</span>, <span class="at">verbose=</span><span class="cn">FALSE</span>) <span class="co"># estimate model</span></span>
+<span id="cb1-6"><a href="item-analysis.html#cb1-6" aria-hidden="true" tabindex="-1"></a>coef.pcm <span class="ot">&lt;-</span> <span class="fu">coef</span>(results.pcm, <span class="at">IRTpars=</span><span class="cn">TRUE</span>, <span class="at">simplify=</span><span class="cn">TRUE</span>) <span class="co"># save coefficients</span></span>
+<span id="cb1-7"><a href="item-analysis.html#cb1-7" aria-hidden="true" tabindex="-1"></a>items.pcm <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(coef.pcm<span class="sc">$</span>items) <span class="co"># item parameters as data frame</span></span>
+<span id="cb1-8"><a href="item-analysis.html#cb1-8" aria-hidden="true" tabindex="-1"></a>items.pcm<span class="sc">$</span>deltab1b2 <span class="ot">&lt;-</span> items.pcm<span class="sc">$</span>b2 <span class="sc">-</span> items.pcm<span class="sc">$</span>b1 <span class="co"># look for reversals b1 to b2</span></span>
+<span id="cb1-9"><a href="item-analysis.html#cb1-9" aria-hidden="true" tabindex="-1"></a>items.pcm<span class="sc">$</span>deltab2b3 <span class="ot">&lt;-</span> items.pcm<span class="sc">$</span>b3 <span class="sc">-</span> items.pcm<span class="sc">$</span>b2 <span class="co"># look for reversals b2 to b3</span></span>
+<span id="cb1-10"><a href="item-analysis.html#cb1-10" aria-hidden="true" tabindex="-1"></a>items.pcm<span class="sc">$</span>deltab3b4 <span class="ot">&lt;-</span> items.pcm<span class="sc">$</span>b4 <span class="sc">-</span> items.pcm<span class="sc">$</span>b3 <span class="co"># look for reversals b3 to b4</span></span>
+<span id="cb1-11"><a href="item-analysis.html#cb1-11" aria-hidden="true" tabindex="-1"></a>rv <span class="ot">&lt;-</span> <span class="fu">subset</span>(items.pcm, deltab1b2 <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">|</span> deltab2b3 <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">|</span> deltab3b4 <span class="sc">&lt;</span><span class="dv">0</span>) <span class="co"># subset items with reversals</span></span>
+<span id="cb1-12"><a href="item-analysis.html#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(rv,<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##     a          b1          b2           b3        b4   deltab1b2 deltab2b3
+## Q7  1  0.22960527  0.08042032  0.743985672 1.1083545 -0.14918496 0.6635654
+## Q10 1  1.25940396  0.66765906  1.468996170 1.7815510 -0.59174490 0.8013371
+## Q17 1  3.93217524  0.38885842  1.197624975 1.1769514 -3.54331682 0.8087666
+## Q18 1 -0.15149162 -0.38614772  0.709460696 1.2779678 -0.23465610 1.0956084
+## Q19 1  0.41799569  0.19683590  0.941019055 1.6850883 -0.22115979 0.7441832
+## Q20 1  0.97306473  0.36621028  0.986239059 1.2369866 -0.60685445 0.6200288
+## Q21 1  1.10720247  0.38032793  0.930092850 0.7833945 -0.72687454 0.5497649
+## Q22 1 -0.39358089 -0.61482429 -0.266106192 0.3758051 -0.22124339 0.3487181
+## Q23 1  0.76559478  0.64256407  1.623883168 2.1907776 -0.12303070 0.9813191
+## Q24 1  1.13441866  0.47191076  1.551913215 1.9817505 -0.66250790 1.0800025
+## Q26 1  1.41365401  0.74086425  1.026962213 1.5495059 -0.67278976 0.2860980
+## Q27 1  1.64328377  0.36251192  1.089364808 1.2037549 -1.28077185 0.7268529
+## Q29 1  0.11600294  0.03865107  0.881464135 1.5769322 -0.07735187 0.8428131
+## Q30 1  0.89084648  0.38027925  1.233494258 1.9242138 -0.51056723 0.8532150
+## Q32 1 -0.30408026 -0.53393754  0.694288331 1.5301824 -0.22985728 1.2282259
+## Q34 1  0.09729386  0.04346799  0.942258028 1.5678325 -0.05382587 0.8987900
+## Q35 1 -0.62492242 -0.69687930  0.293507337 0.8215871 -0.07195688 0.9903866
+## Q38 1 -0.43253992 -0.49379458  0.521720195 0.9190069 -0.06125466 1.0155148
+## Q39 1 -0.15991561 -0.61763283  0.292666984 0.6451154 -0.45771722 0.9102998
+## Q40 1  0.66125600  0.21037223  1.091464996 1.1680715 -0.45088377 0.8810928
+## Q41 1  3.89125113  0.65157926  1.480546242 1.0983619 -3.23967187 0.8289670
+## Q44 1 -0.01468431 -0.16986412  0.697228041 1.5748605 -0.15517980 0.8670922
+## Q45 1 -0.09959971 -0.12213278  0.569320673 0.9188085 -0.02253307 0.6914535
+## Q46 1  3.92039641  1.19275713  2.644555064 2.3998119 -2.72763928 1.4517979
+## Q47 1  1.56179387  1.28663777  2.470487138 2.2088355 -0.27515610 1.1838494
+## Q50 1  1.58315358 -0.24402770  0.776972755 1.1535970 -1.82718128 1.0210005
+## Q51 1  0.43571924  0.33293038  0.823409895 1.4166538 -0.10278885 0.4904795
+## Q52 1  0.72952133  0.54398258  1.062209043 1.9284310 -0.18553876 0.5182265
+## Q53 1  0.35624004  0.16800779  0.999210536 1.4301846 -0.18823224 0.8312027
+## Q54 1 -0.36114279 -0.48100059  0.538011045 0.9740797 -0.11985780 1.0190116
+## Q55 1  1.34409216  1.18247534  2.000525345 2.3889885 -0.16161682 0.8180500
+## Q56 1 -0.17774957 -0.24078189  0.556187847 1.4703332 -0.06303232 0.7969697
+## Q57 1  0.83078938  0.33079846  1.043175540 1.5638892 -0.49999092 0.7123771
+## Q58 1  0.04240073 -0.12837831  0.965035560 1.4495029 -0.17077904 1.0934139
+## Q60 1  2.21020375  0.94667847  1.457702007 2.1895592 -1.26352528 0.5110235
+## Q61 1  0.05394780 -0.24253368  0.490411947 0.9290178 -0.29648148 0.7329456
+## Q62 1  0.54054160  0.19816517  1.377005844 1.9628381 -0.34237643 1.1788407
+## Q65 1  1.21574452  0.77684956  1.385232386 1.8227414 -0.43889496 0.6083828
+## Q66 1 -0.57594356 -0.86942860  0.006640244 0.7006473 -0.29348503 0.8760688
+## Q68 1  0.86405940  0.30770518  1.339347998 2.0168199 -0.55635421 1.0316428
+## Q72 1  1.36427734  0.89426090  2.141469045 2.1533536 -0.47001643 1.2472081
+## Q76 1 -0.02449889 -0.19031198  0.523393393 0.7480810 -0.16581309 0.7137054
+## Q81 1  0.94319339  0.85691228  1.980887359 2.3263225 -0.08628110 1.1239751
+##       deltab3b4
+## Q7   0.36436879
+## Q10  0.31255479
+## Q17 -0.02067359
+## Q18  0.56850711
+## Q19  0.74406928
+## Q20  0.25074757
+## Q21 -0.14669832
+## Q22  0.64191129
+## Q23  0.56689442
+## Q24  0.42983731
+## Q26  0.52254373
+## Q27  0.11439013
+## Q29  0.69546809
+## Q30  0.69071951
+## Q32  0.83589410
+## Q34  0.62557452
+## Q35  0.52807978
+## Q38  0.39728675
+## Q39  0.35244842
+## Q40  0.07660646
+## Q41 -0.38218433
+## Q44  0.87763242
+## Q45  0.34948780
+## Q46 -0.24474315
+## Q47 -0.26165161
+## Q50  0.37662427
+## Q51  0.59324394
+## Q52  0.86622192
+## Q53  0.43097408
+## Q54  0.43606870
+## Q55  0.38846317
+## Q56  0.91414537
+## Q57  0.52071363
+## Q58  0.48446738
+## Q60  0.73185718
+## Q61  0.43860582
+## Q62  0.58583221
+## Q65  0.43750905
+## Q66  0.69400709
+## Q68  0.67747193
+## Q72  0.01188456
+## Q76  0.22468761
+## Q81  0.34543514</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="item-analysis.html#cb3-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(rv, <span class="st">&quot;simple&quot;</span>, <span class="at">digits =</span> <span class="dv">2</span>, <span class="at">caption =</span> <span class="st">&quot;Partial Credit Model - Item Parameters - Items with Category Threshold Reversals&quot;</span>, <span class="at">full =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <table>
-<caption><span id="tab:mirt-items">Table 1: </span>Partial Credit Model (PCM) - Item Parameters</caption>
+<caption><span id="tab:mirt-items">Table 1: </span>Partial Credit Model - Item Parameters - Items with Category Threshold Reversals</caption>
 <thead>
 <tr class="header">
-<th align="left"></th>
+<th></th>
 <th align="right">a</th>
 <th align="right">b1</th>
 <th align="right">b2</th>
 <th align="right">b3</th>
 <th align="right">b4</th>
+<th align="right">deltab1b2</th>
+<th align="right">deltab2b3</th>
+<th align="right">deltab3b4</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Q7</td>
+<td>Q7</td>
 <td align="right">1</td>
 <td align="right">0.23</td>
 <td align="right">0.08</td>
 <td align="right">0.74</td>
 <td align="right">1.11</td>
+<td align="right">-0.15</td>
+<td align="right">0.66</td>
+<td align="right">0.36</td>
 </tr>
 <tr class="even">
-<td align="left">Q10</td>
+<td>Q10</td>
 <td align="right">1</td>
 <td align="right">1.26</td>
 <td align="right">0.67</td>
 <td align="right">1.47</td>
 <td align="right">1.78</td>
+<td align="right">-0.59</td>
+<td align="right">0.80</td>
+<td align="right">0.31</td>
 </tr>
 <tr class="odd">
-<td align="left">Q11</td>
-<td align="right">1</td>
-<td align="right">-0.05</td>
-<td align="right">0.20</td>
-<td align="right">0.69</td>
-<td align="right">1.53</td>
-</tr>
-<tr class="even">
-<td align="left">Q16</td>
-<td align="right">1</td>
-<td align="right">0.50</td>
-<td align="right">0.59</td>
-<td align="right">1.17</td>
-<td align="right">1.64</td>
-</tr>
-<tr class="odd">
-<td align="left">Q17</td>
+<td>Q17</td>
 <td align="right">1</td>
 <td align="right">3.93</td>
 <td align="right">0.39</td>
 <td align="right">1.20</td>
 <td align="right">1.18</td>
+<td align="right">-3.54</td>
+<td align="right">0.81</td>
+<td align="right">-0.02</td>
 </tr>
 <tr class="even">
-<td align="left">Q18</td>
+<td>Q18</td>
 <td align="right">1</td>
 <td align="right">-0.15</td>
 <td align="right">-0.39</td>
 <td align="right">0.71</td>
 <td align="right">1.28</td>
+<td align="right">-0.23</td>
+<td align="right">1.10</td>
+<td align="right">0.57</td>
 </tr>
 <tr class="odd">
-<td align="left">Q19</td>
+<td>Q19</td>
 <td align="right">1</td>
 <td align="right">0.42</td>
 <td align="right">0.20</td>
 <td align="right">0.94</td>
 <td align="right">1.69</td>
+<td align="right">-0.22</td>
+<td align="right">0.74</td>
+<td align="right">0.74</td>
 </tr>
 <tr class="even">
-<td align="left">Q20</td>
+<td>Q20</td>
 <td align="right">1</td>
 <td align="right">0.97</td>
 <td align="right">0.37</td>
 <td align="right">0.99</td>
 <td align="right">1.24</td>
+<td align="right">-0.61</td>
+<td align="right">0.62</td>
+<td align="right">0.25</td>
 </tr>
 <tr class="odd">
-<td align="left">Q21</td>
+<td>Q21</td>
 <td align="right">1</td>
 <td align="right">1.11</td>
 <td align="right">0.38</td>
 <td align="right">0.93</td>
 <td align="right">0.78</td>
+<td align="right">-0.73</td>
+<td align="right">0.55</td>
+<td align="right">-0.15</td>
 </tr>
 <tr class="even">
-<td align="left">Q22</td>
+<td>Q22</td>
 <td align="right">1</td>
 <td align="right">-0.39</td>
 <td align="right">-0.61</td>
 <td align="right">-0.27</td>
 <td align="right">0.38</td>
+<td align="right">-0.22</td>
+<td align="right">0.35</td>
+<td align="right">0.64</td>
 </tr>
 <tr class="odd">
-<td align="left">Q23</td>
+<td>Q23</td>
 <td align="right">1</td>
 <td align="right">0.77</td>
 <td align="right">0.64</td>
 <td align="right">1.62</td>
 <td align="right">2.19</td>
+<td align="right">-0.12</td>
+<td align="right">0.98</td>
+<td align="right">0.57</td>
 </tr>
 <tr class="even">
-<td align="left">Q24</td>
+<td>Q24</td>
 <td align="right">1</td>
 <td align="right">1.13</td>
 <td align="right">0.47</td>
 <td align="right">1.55</td>
 <td align="right">1.98</td>
+<td align="right">-0.66</td>
+<td align="right">1.08</td>
+<td align="right">0.43</td>
 </tr>
 <tr class="odd">
-<td align="left">Q25</td>
-<td align="right">1</td>
-<td align="right">-0.95</td>
-<td align="right">-0.81</td>
-<td align="right">0.18</td>
-<td align="right">1.08</td>
-</tr>
-<tr class="even">
-<td align="left">Q26</td>
+<td>Q26</td>
 <td align="right">1</td>
 <td align="right">1.41</td>
 <td align="right">0.74</td>
 <td align="right">1.03</td>
 <td align="right">1.55</td>
+<td align="right">-0.67</td>
+<td align="right">0.29</td>
+<td align="right">0.52</td>
 </tr>
-<tr class="odd">
-<td align="left">Q27</td>
+<tr class="even">
+<td>Q27</td>
 <td align="right">1</td>
 <td align="right">1.64</td>
 <td align="right">0.36</td>
 <td align="right">1.09</td>
 <td align="right">1.20</td>
-</tr>
-<tr class="even">
-<td align="left">Q28</td>
-<td align="right">1</td>
-<td align="right">0.08</td>
-<td align="right">0.51</td>
-<td align="right">1.07</td>
-<td align="right">1.89</td>
+<td align="right">-1.28</td>
+<td align="right">0.73</td>
+<td align="right">0.11</td>
 </tr>
 <tr class="odd">
-<td align="left">Q29</td>
+<td>Q29</td>
 <td align="right">1</td>
 <td align="right">0.12</td>
 <td align="right">0.04</td>
 <td align="right">0.88</td>
 <td align="right">1.58</td>
+<td align="right">-0.08</td>
+<td align="right">0.84</td>
+<td align="right">0.70</td>
 </tr>
 <tr class="even">
-<td align="left">Q30</td>
+<td>Q30</td>
 <td align="right">1</td>
 <td align="right">0.89</td>
 <td align="right">0.38</td>
 <td align="right">1.23</td>
 <td align="right">1.92</td>
+<td align="right">-0.51</td>
+<td align="right">0.85</td>
+<td align="right">0.69</td>
 </tr>
 <tr class="odd">
-<td align="left">Q31</td>
-<td align="right">1</td>
-<td align="right">0.51</td>
-<td align="right">0.64</td>
-<td align="right">1.49</td>
-<td align="right">1.88</td>
-</tr>
-<tr class="even">
-<td align="left">Q32</td>
+<td>Q32</td>
 <td align="right">1</td>
 <td align="right">-0.30</td>
 <td align="right">-0.53</td>
 <td align="right">0.69</td>
 <td align="right">1.53</td>
+<td align="right">-0.23</td>
+<td align="right">1.23</td>
+<td align="right">0.84</td>
 </tr>
-<tr class="odd">
-<td align="left">Q34</td>
+<tr class="even">
+<td>Q34</td>
 <td align="right">1</td>
 <td align="right">0.10</td>
 <td align="right">0.04</td>
 <td align="right">0.94</td>
 <td align="right">1.57</td>
+<td align="right">-0.05</td>
+<td align="right">0.90</td>
+<td align="right">0.63</td>
 </tr>
-<tr class="even">
-<td align="left">Q35</td>
+<tr class="odd">
+<td>Q35</td>
 <td align="right">1</td>
 <td align="right">-0.62</td>
 <td align="right">-0.70</td>
 <td align="right">0.29</td>
 <td align="right">0.82</td>
-</tr>
-<tr class="odd">
-<td align="left">Q36</td>
-<td align="right">1</td>
-<td align="right">-0.47</td>
-<td align="right">-0.24</td>
-<td align="right">0.60</td>
-<td align="right">1.43</td>
+<td align="right">-0.07</td>
+<td align="right">0.99</td>
+<td align="right">0.53</td>
 </tr>
 <tr class="even">
-<td align="left">Q37</td>
-<td align="right">1</td>
-<td align="right">-0.54</td>
-<td align="right">-0.44</td>
-<td align="right">0.49</td>
-<td align="right">1.06</td>
-</tr>
-<tr class="odd">
-<td align="left">Q38</td>
+<td>Q38</td>
 <td align="right">1</td>
 <td align="right">-0.43</td>
 <td align="right">-0.49</td>
 <td align="right">0.52</td>
 <td align="right">0.92</td>
+<td align="right">-0.06</td>
+<td align="right">1.02</td>
+<td align="right">0.40</td>
 </tr>
-<tr class="even">
-<td align="left">Q39</td>
+<tr class="odd">
+<td>Q39</td>
 <td align="right">1</td>
 <td align="right">-0.16</td>
 <td align="right">-0.62</td>
 <td align="right">0.29</td>
 <td align="right">0.65</td>
+<td align="right">-0.46</td>
+<td align="right">0.91</td>
+<td align="right">0.35</td>
 </tr>
-<tr class="odd">
-<td align="left">Q40</td>
+<tr class="even">
+<td>Q40</td>
 <td align="right">1</td>
 <td align="right">0.66</td>
 <td align="right">0.21</td>
 <td align="right">1.09</td>
 <td align="right">1.17</td>
+<td align="right">-0.45</td>
+<td align="right">0.88</td>
+<td align="right">0.08</td>
 </tr>
-<tr class="even">
-<td align="left">Q41</td>
+<tr class="odd">
+<td>Q41</td>
 <td align="right">1</td>
 <td align="right">3.89</td>
 <td align="right">0.65</td>
 <td align="right">1.48</td>
 <td align="right">1.10</td>
-</tr>
-<tr class="odd">
-<td align="left">Q42</td>
-<td align="right">1</td>
-<td align="right">-0.59</td>
-<td align="right">0.03</td>
-<td align="right">0.95</td>
-<td align="right">1.75</td>
+<td align="right">-3.24</td>
+<td align="right">0.83</td>
+<td align="right">-0.38</td>
 </tr>
 <tr class="even">
-<td align="left">Q43</td>
-<td align="right">1</td>
-<td align="right">0.50</td>
-<td align="right">0.57</td>
-<td align="right">1.46</td>
-<td align="right">2.04</td>
-</tr>
-<tr class="odd">
-<td align="left">Q44</td>
+<td>Q44</td>
 <td align="right">1</td>
 <td align="right">-0.01</td>
 <td align="right">-0.17</td>
 <td align="right">0.70</td>
 <td align="right">1.57</td>
+<td align="right">-0.16</td>
+<td align="right">0.87</td>
+<td align="right">0.88</td>
 </tr>
-<tr class="even">
-<td align="left">Q45</td>
+<tr class="odd">
+<td>Q45</td>
 <td align="right">1</td>
 <td align="right">-0.10</td>
 <td align="right">-0.12</td>
 <td align="right">0.57</td>
 <td align="right">0.92</td>
+<td align="right">-0.02</td>
+<td align="right">0.69</td>
+<td align="right">0.35</td>
 </tr>
-<tr class="odd">
-<td align="left">Q46</td>
+<tr class="even">
+<td>Q46</td>
 <td align="right">1</td>
 <td align="right">3.92</td>
 <td align="right">1.19</td>
 <td align="right">2.64</td>
 <td align="right">2.40</td>
+<td align="right">-2.73</td>
+<td align="right">1.45</td>
+<td align="right">-0.24</td>
 </tr>
-<tr class="even">
-<td align="left">Q47</td>
+<tr class="odd">
+<td>Q47</td>
 <td align="right">1</td>
 <td align="right">1.56</td>
 <td align="right">1.29</td>
 <td align="right">2.47</td>
 <td align="right">2.21</td>
-</tr>
-<tr class="odd">
-<td align="left">Q49</td>
-<td align="right">1</td>
-<td align="right">0.42</td>
-<td align="right">0.57</td>
-<td align="right">1.22</td>
-<td align="right">1.90</td>
+<td align="right">-0.28</td>
+<td align="right">1.18</td>
+<td align="right">-0.26</td>
 </tr>
 <tr class="even">
-<td align="left">Q50</td>
+<td>Q50</td>
 <td align="right">1</td>
 <td align="right">1.58</td>
 <td align="right">-0.24</td>
 <td align="right">0.78</td>
 <td align="right">1.15</td>
+<td align="right">-1.83</td>
+<td align="right">1.02</td>
+<td align="right">0.38</td>
 </tr>
 <tr class="odd">
-<td align="left">Q51</td>
+<td>Q51</td>
 <td align="right">1</td>
 <td align="right">0.44</td>
 <td align="right">0.33</td>
 <td align="right">0.82</td>
 <td align="right">1.42</td>
+<td align="right">-0.10</td>
+<td align="right">0.49</td>
+<td align="right">0.59</td>
 </tr>
 <tr class="even">
-<td align="left">Q52</td>
+<td>Q52</td>
 <td align="right">1</td>
 <td align="right">0.73</td>
 <td align="right">0.54</td>
 <td align="right">1.06</td>
 <td align="right">1.93</td>
+<td align="right">-0.19</td>
+<td align="right">0.52</td>
+<td align="right">0.87</td>
 </tr>
 <tr class="odd">
-<td align="left">Q53</td>
+<td>Q53</td>
 <td align="right">1</td>
 <td align="right">0.36</td>
 <td align="right">0.17</td>
 <td align="right">1.00</td>
 <td align="right">1.43</td>
+<td align="right">-0.19</td>
+<td align="right">0.83</td>
+<td align="right">0.43</td>
 </tr>
 <tr class="even">
-<td align="left">Q54</td>
+<td>Q54</td>
 <td align="right">1</td>
 <td align="right">-0.36</td>
 <td align="right">-0.48</td>
 <td align="right">0.54</td>
 <td align="right">0.97</td>
+<td align="right">-0.12</td>
+<td align="right">1.02</td>
+<td align="right">0.44</td>
 </tr>
 <tr class="odd">
-<td align="left">Q55</td>
+<td>Q55</td>
 <td align="right">1</td>
 <td align="right">1.34</td>
 <td align="right">1.18</td>
 <td align="right">2.00</td>
 <td align="right">2.39</td>
+<td align="right">-0.16</td>
+<td align="right">0.82</td>
+<td align="right">0.39</td>
 </tr>
 <tr class="even">
-<td align="left">Q56</td>
+<td>Q56</td>
 <td align="right">1</td>
 <td align="right">-0.18</td>
 <td align="right">-0.24</td>
 <td align="right">0.56</td>
 <td align="right">1.47</td>
+<td align="right">-0.06</td>
+<td align="right">0.80</td>
+<td align="right">0.91</td>
 </tr>
 <tr class="odd">
-<td align="left">Q57</td>
+<td>Q57</td>
 <td align="right">1</td>
 <td align="right">0.83</td>
 <td align="right">0.33</td>
 <td align="right">1.04</td>
 <td align="right">1.56</td>
+<td align="right">-0.50</td>
+<td align="right">0.71</td>
+<td align="right">0.52</td>
 </tr>
 <tr class="even">
-<td align="left">Q58</td>
+<td>Q58</td>
 <td align="right">1</td>
 <td align="right">0.04</td>
 <td align="right">-0.13</td>
 <td align="right">0.97</td>
 <td align="right">1.45</td>
+<td align="right">-0.17</td>
+<td align="right">1.09</td>
+<td align="right">0.48</td>
 </tr>
 <tr class="odd">
-<td align="left">Q59</td>
-<td align="right">1</td>
-<td align="right">0.38</td>
-<td align="right">0.42</td>
-<td align="right">1.21</td>
-<td align="right">2.07</td>
-</tr>
-<tr class="even">
-<td align="left">Q60</td>
+<td>Q60</td>
 <td align="right">1</td>
 <td align="right">2.21</td>
 <td align="right">0.95</td>
 <td align="right">1.46</td>
 <td align="right">2.19</td>
+<td align="right">-1.26</td>
+<td align="right">0.51</td>
+<td align="right">0.73</td>
 </tr>
-<tr class="odd">
-<td align="left">Q61</td>
+<tr class="even">
+<td>Q61</td>
 <td align="right">1</td>
 <td align="right">0.05</td>
 <td align="right">-0.24</td>
 <td align="right">0.49</td>
 <td align="right">0.93</td>
+<td align="right">-0.30</td>
+<td align="right">0.73</td>
+<td align="right">0.44</td>
 </tr>
-<tr class="even">
-<td align="left">Q62</td>
+<tr class="odd">
+<td>Q62</td>
 <td align="right">1</td>
 <td align="right">0.54</td>
 <td align="right">0.20</td>
 <td align="right">1.38</td>
 <td align="right">1.96</td>
-</tr>
-<tr class="odd">
-<td align="left">Q63</td>
-<td align="right">1</td>
-<td align="right">0.05</td>
-<td align="right">0.33</td>
-<td align="right">1.19</td>
-<td align="right">1.85</td>
+<td align="right">-0.34</td>
+<td align="right">1.18</td>
+<td align="right">0.59</td>
 </tr>
 <tr class="even">
-<td align="left">Q64</td>
-<td align="right">1</td>
-<td align="right">0.19</td>
-<td align="right">0.45</td>
-<td align="right">1.18</td>
-<td align="right">1.63</td>
-</tr>
-<tr class="odd">
-<td align="left">Q65</td>
+<td>Q65</td>
 <td align="right">1</td>
 <td align="right">1.22</td>
 <td align="right">0.78</td>
 <td align="right">1.39</td>
 <td align="right">1.82</td>
+<td align="right">-0.44</td>
+<td align="right">0.61</td>
+<td align="right">0.44</td>
 </tr>
-<tr class="even">
-<td align="left">Q66</td>
+<tr class="odd">
+<td>Q66</td>
 <td align="right">1</td>
 <td align="right">-0.58</td>
 <td align="right">-0.87</td>
 <td align="right">0.01</td>
 <td align="right">0.70</td>
+<td align="right">-0.29</td>
+<td align="right">0.88</td>
+<td align="right">0.69</td>
 </tr>
-<tr class="odd">
-<td align="left">Q68</td>
+<tr class="even">
+<td>Q68</td>
 <td align="right">1</td>
 <td align="right">0.86</td>
 <td align="right">0.31</td>
 <td align="right">1.34</td>
 <td align="right">2.02</td>
-</tr>
-<tr class="even">
-<td align="left">Q69</td>
-<td align="right">1</td>
-<td align="right">-1.35</td>
-<td align="right">-0.69</td>
-<td align="right">0.73</td>
-<td align="right">1.45</td>
+<td align="right">-0.56</td>
+<td align="right">1.03</td>
+<td align="right">0.68</td>
 </tr>
 <tr class="odd">
-<td align="left">Q70</td>
-<td align="right">1</td>
-<td align="right">0.32</td>
-<td align="right">0.51</td>
-<td align="right">1.59</td>
-<td align="right">1.84</td>
-</tr>
-<tr class="even">
-<td align="left">Q71</td>
-<td align="right">1</td>
-<td align="right">-0.69</td>
-<td align="right">-0.48</td>
-<td align="right">0.48</td>
-<td align="right">1.00</td>
-</tr>
-<tr class="odd">
-<td align="left">Q72</td>
+<td>Q72</td>
 <td align="right">1</td>
 <td align="right">1.36</td>
 <td align="right">0.89</td>
 <td align="right">2.14</td>
 <td align="right">2.15</td>
+<td align="right">-0.47</td>
+<td align="right">1.25</td>
+<td align="right">0.01</td>
 </tr>
 <tr class="even">
-<td align="left">Q73</td>
-<td align="right">1</td>
-<td align="right">-0.07</td>
-<td align="right">0.02</td>
-<td align="right">1.05</td>
-<td align="right">1.54</td>
-</tr>
-<tr class="odd">
-<td align="left">Q74</td>
-<td align="right">1</td>
-<td align="right">-0.51</td>
-<td align="right">-0.40</td>
-<td align="right">0.75</td>
-<td align="right">1.55</td>
-</tr>
-<tr class="even">
-<td align="left">Q76</td>
+<td>Q76</td>
 <td align="right">1</td>
 <td align="right">-0.02</td>
 <td align="right">-0.19</td>
 <td align="right">0.52</td>
 <td align="right">0.75</td>
+<td align="right">-0.17</td>
+<td align="right">0.71</td>
+<td align="right">0.22</td>
 </tr>
 <tr class="odd">
-<td align="left">Q77</td>
-<td align="right">1</td>
-<td align="right">-1.09</td>
-<td align="right">-0.58</td>
-<td align="right">0.32</td>
-<td align="right">1.34</td>
-</tr>
-<tr class="even">
-<td align="left">Q78</td>
-<td align="right">1</td>
-<td align="right">-0.53</td>
-<td align="right">-0.32</td>
-<td align="right">0.73</td>
-<td align="right">1.55</td>
-</tr>
-<tr class="odd">
-<td align="left">Q79</td>
-<td align="right">1</td>
-<td align="right">-0.05</td>
-<td align="right">0.14</td>
-<td align="right">1.34</td>
-<td align="right">1.49</td>
-</tr>
-<tr class="even">
-<td align="left">Q80</td>
-<td align="right">1</td>
-<td align="right">-1.19</td>
-<td align="right">-0.71</td>
-<td align="right">0.41</td>
-<td align="right">1.55</td>
-</tr>
-<tr class="odd">
-<td align="left">Q81</td>
+<td>Q81</td>
 <td align="right">1</td>
 <td align="right">0.94</td>
 <td align="right">0.86</td>
 <td align="right">1.98</td>
 <td align="right">2.33</td>
-</tr>
-<tr class="even">
-<td align="left">Q82</td>
-<td align="right">1</td>
-<td align="right">0.18</td>
-<td align="right">0.23</td>
-<td align="right">1.56</td>
-<td align="right">1.79</td>
+<td align="right">-0.09</td>
+<td align="right">1.12</td>
+<td align="right">0.35</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Item parameters</strong>. Table <a href="item-analysis.html#tab:mirt-items">1</a> reports the item parameters estimated by the PCM. The first column shows the discrimination parameter, which is equal to “1” for all items because the Partial Credit Model, similar to the Rasch model, constrains the discrimination parameter to be “1”. In the following columns (b1 to b4) are the estimated thresholds or step parameters. Because the SHAS items all have five response categories, the Partial Credit Model estimates four threshold parameters (b1 to b4) for each item. The question here is the spread of the parameters across the range of the trait. In the PCM, “the property of ordered threshold parameters is not a requirement in the partial credit or generalized partial credit models” <span class="citation">(<a href="references.html#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>)</span>.</p>
-<p>Consider the first item: Q7. The thresholds are as follows: b1=0.23, b2=0.08, b3=0.74, b4=1.11. The threshold for b1 is higher than b2. This means examinees who experienced more spiritual abuse overall were more likely to choose “Never” than “Once or twice” on this item.</p>
+<p><strong>Item parameters</strong>. Table <a href="item-analysis.html#tab:mirt-items">1</a> reports the item parameters estimated by the PCM. The first column shows the discrimination parameter, which is equal to “1” for all items. This is because the Partial Credit Model, similar to the Rasch model, constrains the discrimination parameter to be “1”. The subsequent columns (b1 to b4) report the estimated thresholds or step parameters. Because the SHAS items all have five response categories, the PCM estimates four threshold parameters (b1 to b4) for each item. Ordered threshold parameters are not a requirement of the partial credit or generalized partial credit models <span class="citation">(<a href="references.html#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>)</span>. The important question, therefore, is which items have ordered thresholds and which have “reversals.” A reversal suggests that a response category is not contributing reliable information and might be collapsed.</p>
+<p>This information reveals several insights about the SHAS items. XX items have reversals. On items X, Y, and Z, examinees who have experienced more abuse overall were more likely to report “Never” than “Once or twice”. To collapse these categories would help these items contribute less noise and more reliable information.</p>
 <p><strong>Item fit</strong>. Two fit statistics assess the fit of an item to the PCM: the infit mean square (MNSQ) and the outfit mean square (MNSQ). The infit statistic places greater emphasis on unexpected responses that are close to the examinees and item location. The outfit is sensitive to unexpected responses that are far from the location <span class="citation">(<a href="references.html#ref-BondFox2015" role="doc-biblioref">Bond and Fox 2015</a>)</span>. The infit and outfit values identify potential unexpected response patterns. The expected value of infit or outfit for each item is 1.0, with a range of acceptable values ranging from 0.5 to 1.5. Values outside this boundary indicate a lack of fit between items and models.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="item-analysis.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">itemfit</span>(results.pcm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="st">&quot;infit&quot;</span>)</span></code></pre></div>
-<pre><code>   item outfit z.outfit infit z.infit
-1    Q7  1.276    7.187 1.122   4.669
-2   Q10  0.963   -0.671 0.988  -0.415
-3   Q11  0.780   -7.399 0.799  -8.713
-4   Q16  0.930   -1.824 0.939  -2.337
-5   Q17  2.813    7.053 1.555   9.545
-6   Q18  0.777   -7.906 0.804  -8.498
-7   Q19  0.778   -6.464 0.836  -6.867
-8   Q20  0.970   -0.618 1.014   0.513
-9   Q21  1.203    3.704 1.043   1.575
-10  Q22  1.104    2.990 1.099   3.596
-11  Q23  0.941   -1.383 1.007   0.269
-12  Q24  0.913   -1.766 0.936  -2.327
-13  Q25  0.771   -9.221 0.791  -9.059
-14  Q26  1.313    4.798 0.963  -1.247
-15  Q27  2.671   17.851 1.502  15.055
-16  Q28  0.848   -4.823 0.869  -5.376
-17  Q29  1.014    0.428 1.026   1.060
-18  Q30  0.848   -3.539 0.893  -4.155
-19  Q31  1.012    0.318 1.006   0.216
-20  Q32  0.882   -4.193 0.897  -4.308
-21  Q34  1.119    3.474 1.102   3.963
-22  Q35  0.976   -0.850 0.917  -3.397
-23  Q36  0.792   -7.866 0.812  -8.212
-24  Q37  0.845   -5.731 0.862  -5.881
-25  Q38  0.680  -12.407 0.711 -13.043
-26  Q39  0.994   -0.167 0.998  -0.085
-27  Q40  0.788   -5.520 0.845  -6.321
-28  Q41  6.705   15.057 1.534   8.204
-29  Q42  0.763   -9.409 0.790  -9.222
-30  Q43  0.748   -7.211 0.795  -8.281
-31  Q44  0.715   -9.971 0.734 -11.859
-32  Q45  0.978   -0.672 0.994  -0.251
-33  Q46  3.223    8.213 1.392   4.076
-34  Q47  0.986   -0.207 1.027   0.728
-35  Q49  0.821   -5.079 0.865  -5.373
-36  Q50  1.947   12.371 1.513  16.610
-37  Q51  1.287    6.901 1.232   8.445
-38  Q52  0.698   -7.911 0.759  -9.911
-39  Q53  0.836   -4.767 0.896  -4.247
-40  Q54  0.872   -4.519 0.866  -5.674
-41  Q55  2.828   22.030 1.577  14.747
-42  Q56  0.659  -12.674 0.687 -14.270
-43  Q57  0.800   -4.843 0.896  -4.083
-44  Q58  0.879   -3.921 0.920  -3.294
-45  Q59  0.720   -8.510 0.778  -9.340
-46  Q60  1.436    4.429 1.199   4.970
-47  Q61  1.013    0.402 1.025   0.997
-48  Q62  0.968   -0.821 1.037   1.426
-49  Q63  0.722   -9.474 0.775  -9.632
-50  Q64  0.900   -2.977 0.913  -3.471
-51  Q65  1.183    3.247 1.051   1.715
-52  Q66  1.013    0.443 0.984  -0.613
-53  Q68  0.890   -2.575 0.959  -1.542
-54  Q69  1.184    6.976 1.185   7.178
-55  Q70  1.238    6.218 1.223   7.897
-56  Q71  0.869   -4.950 0.891  -4.589
-57  Q72  1.020    0.380 1.091   2.772
-58  Q73  1.089    2.783 1.121   4.679
-59  Q74  1.205    6.924 1.188   7.246
-60  Q76  0.922   -2.415 0.925  -3.068
-61  Q77  0.735  -11.202 0.745 -11.386
-62  Q78  1.024    0.878 1.039   1.571
-63  Q79  1.215    6.432 1.184   6.889
-64  Q80  0.938   -2.471 0.946  -2.227
-65  Q81  0.812   -4.346 0.909  -3.187
-66  Q82  1.069    2.012 1.127   4.750</code></pre>
-<p>As seen in the <a href="#tab:pcm-item-fit"><strong>??</strong></a>, XX items had infit and outfit statistics within an acceptable value (0.5 - 1.5). XX misfitting items were found and this means that XX items fit within the Rasch PCM. <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
-<p><strong>Item plots</strong>. We can use also examine these item statistics visually. The following curves are called category response curves because they represent “the probability of an examinee (or survey respondent) responding in a particular category conditional on trait level” <span class="citation">(<a href="references.html#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>)</span>. In general, “the higher the slope parameters, the steeper the operating characteristic curves and the more narrow and peaked the category response curves, indicating that the response categories differentiate among trait levels fairly well” <span class="citation">(<a href="references.html#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>)</span>. Polytomous IRT models such as the Partial Credit Model have option characteristic curves (OCCs) which can be considered as an extension of item characteristic curves (ICCs) for polytomous items. Because the items have more than two response categories, OCCs have multiple curves in the same plot. Each curve represents the probability of selecting a particular response option as a function of the latent trait.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="item-analysis.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PCM ITEM PLOTS itemplot(results.pcm, 1, type=&#39;infotrace&#39;)</span></span>
-<span id="cb14-2"><a href="item-analysis.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(results.pcm, <span class="at">type =</span> <span class="st">&quot;trace&quot;</span>, <span class="at">which.items =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>,</span>
-<span id="cb14-3"><a href="item-analysis.html#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>), <span class="at">main =</span> <span class="st">&quot;&quot;</span>, <span class="at">par.settings =</span> <span class="fu">simpleTheme</span>(<span class="at">lty =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
-<span id="cb14-4"><a href="item-analysis.html#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">lwd =</span> <span class="dv">2</span>), <span class="at">auto.key =</span> <span class="fu">list</span>(<span class="at">points =</span> <span class="cn">FALSE</span>, <span class="at">lines =</span> <span class="cn">TRUE</span>, <span class="at">columns =</span> <span class="dv">4</span>))  <span class="co"># option curves</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="item-analysis.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ITEM FIT</span></span>
+<span id="cb4-2"><a href="item-analysis.html#cb4-2" aria-hidden="true" tabindex="-1"></a>ifit <span class="ot">&lt;-</span> <span class="fu">itemfit</span>(results.pcm, <span class="at">na.rm=</span><span class="cn">TRUE</span>, <span class="st">&#39;infit&#39;</span>)</span></code></pre></div>
+<pre><code>## Sample size after row-wise response data removal: 2979</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="item-analysis.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># knitr::kable(ifit, &quot;simple&quot;, digits = 2, caption = &quot;Partial Credit Model (PCM) - Item Fit Statistics&quot;)</span></span>
+<span id="cb6-2"><a href="item-analysis.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># itemfit(results.pcm, na.rm = TRUE, &#39;infit&#39;)</span></span>
+<span id="cb6-3"><a href="item-analysis.html#cb6-3" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">itemfit</span>(results.pcm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="st">&#39;infit&#39;</span>))</span></code></pre></div>
+<pre><code>## Sample size after row-wise response data removal: 2979</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="item-analysis.html#cb8-1" aria-hidden="true" tabindex="-1"></a>misfits <span class="ot">&lt;-</span> <span class="fu">subset</span>(i, outfit <span class="sc">&gt;</span> <span class="fl">1.5</span> <span class="sc">|</span> outfit <span class="sc">&lt;</span> <span class="fl">0.5</span> <span class="sc">|</span> infit <span class="sc">&gt;</span> <span class="fl">1.5</span> <span class="sc">|</span> infit <span class="sc">&lt;</span> <span class="fl">0.5</span>)</span>
+<span id="cb8-2"><a href="item-analysis.html#cb8-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(misfits, <span class="st">&quot;simple&quot;</span>, <span class="at">digits =</span> <span class="dv">2</span>, <span class="at">caption =</span> <span class="st">&quot;Partial Credit Model (PCM) - Misfitting Items&quot;</span>)</span></code></pre></div>
+<table>
+<caption><span id="tab:pcm-item-fit">Table 2: </span>Partial Credit Model (PCM) - Misfitting Items</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left">item</th>
+<th align="right">outfit</th>
+<th align="right">z.outfit</th>
+<th align="right">infit</th>
+<th align="right">z.infit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>5</td>
+<td align="left">Q17</td>
+<td align="right">2.81</td>
+<td align="right">7.05</td>
+<td align="right">1.55</td>
+<td align="right">9.54</td>
+</tr>
+<tr class="even">
+<td>15</td>
+<td align="left">Q27</td>
+<td align="right">2.67</td>
+<td align="right">17.85</td>
+<td align="right">1.50</td>
+<td align="right">15.05</td>
+</tr>
+<tr class="odd">
+<td>28</td>
+<td align="left">Q41</td>
+<td align="right">6.71</td>
+<td align="right">15.06</td>
+<td align="right">1.53</td>
+<td align="right">8.20</td>
+</tr>
+<tr class="even">
+<td>33</td>
+<td align="left">Q46</td>
+<td align="right">3.22</td>
+<td align="right">8.21</td>
+<td align="right">1.39</td>
+<td align="right">4.08</td>
+</tr>
+<tr class="odd">
+<td>36</td>
+<td align="left">Q50</td>
+<td align="right">1.95</td>
+<td align="right">12.37</td>
+<td align="right">1.51</td>
+<td align="right">16.61</td>
+</tr>
+<tr class="even">
+<td>41</td>
+<td align="left">Q55</td>
+<td align="right">2.83</td>
+<td align="right">22.03</td>
+<td align="right">1.58</td>
+<td align="right">14.75</td>
+</tr>
+</tbody>
+</table>
+<p>All but six of the 66 SHAS items had infit and outfit statistics within the acceptable range from 0.5 to 1.5. Statistics for these six items are presented here in <a href="item-analysis.html#tab:pcm-item-fit">2</a>. The large outfit values mean the observed patterns of responses to these items differed substantially from the patterns of responses expected by the PCM. These items capture the experiences of women, people of color, and LGBTQ persons.</p>
+<p><strong>Item plots</strong>. We can also use plots to examine these item statistics visually. The following curves are called category response curves because they represent “the probability of an examinee (or survey respondent) responding in a particular category conditional on trait level” <span class="citation">(<a href="references.html#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>)</span>. In general, “the higher the slope parameters, the steeper the operating characteristic curves and the more narrow and peaked the category response curves, indicating that the response categories differentiate among trait levels fairly well” <span class="citation">(<a href="references.html#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>)</span>. Polytomous IRT models such as the Partial Credit Model have option characteristic curves (OCCs) which can be considered as an extension of item characteristic curves (ICCs) for polytomous items. Because the items have more than two response categories, OCCs have multiple curves in the same plot. Each curve represents the probability of selecting a particular response option as a function of the latent trait.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="item-analysis.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PCM ITEM PLOTS</span></span>
+<span id="cb9-2"><a href="item-analysis.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># itemplot(results.pcm, 1, type=&#39;infotrace&#39;)</span></span>
+<span id="cb9-3"><a href="item-analysis.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(results.pcm, <span class="at">type =</span> <span class="st">&#39;trace&#39;</span>, <span class="at">which.items =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>),</span>
+<span id="cb9-4"><a href="item-analysis.html#cb9-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;&quot;</span>, <span class="at">par.settings =</span> <span class="fu">simpleTheme</span>(<span class="at">lty=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,<span class="at">lwd=</span><span class="dv">2</span>),</span>
+<span id="cb9-5"><a href="item-analysis.html#cb9-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">auto.key=</span><span class="fu">list</span>(<span class="at">points=</span><span class="cn">FALSE</span>,<span class="at">lines=</span><span class="cn">TRUE</span>, <span class="at">columns=</span><span class="dv">4</span>)) <span class="co"># option curves</span></span></code></pre></div>
 <p><img src="_main_files/figure-html/pcm-occs-1.png" width="672" /></p>
 <p>In Figure <a href="#fig:pcm-occs"><strong>??</strong></a>, each item has four OCCs representing the four response options. The response categories are labeled as “P1” to “P4”. For all four items, the OCCs follow the same order as the response categories. The OCC for the first response option (P1) is on the very left side of the plot, whereas the last response option (P4) is located on the right side of the plot. There are two questions to ask of OCCs: (1) Are they in the correct order? and (2) Does each response category meaningfully represent the responses of respondents at a given trait level? In this case, the OCCs are in the correct order, but the middle categories do not seem to capture distinct respondents.</p>
 <p><strong>Model fit</strong>. One way to evaluate the fit of the Partial Credit Model is to evaluate how well it fits the data from the item responses. The following table presents this information.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="item-analysis.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PCM MODEL FIT</span></span>
-<span id="cb15-2"><a href="item-analysis.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">itemplot</span>(results.pcm, <span class="dv">1</span>, <span class="at">type =</span> <span class="st">&quot;score&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="item-analysis.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PCM MODEL FIT</span></span>
+<span id="cb10-2"><a href="item-analysis.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">itemplot</span>(results.pcm, <span class="dv">1</span>, <span class="at">type =</span> <span class="st">&#39;score&#39;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/pcm-model-fit-1.png" width="672" /></p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="item-analysis.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">empirical_plot</span>(items, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="at">main =</span> <span class="st">&quot;Empirical Plots&quot;</span>)  <span class="co"># multiple items</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="item-analysis.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">empirical_plot</span>(items, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>), <span class="at">main =</span> <span class="st">&#39;Empirical Plots&#39;</span>) <span class="co"># multiple items</span></span></code></pre></div>
 <p><img src="_main_files/figure-html/pcm-model-fit-2.png" width="672" /></p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="item-analysis.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">empirical_plot</span>(items, <span class="dv">1</span>, <span class="at">main =</span> <span class="st">&quot;Empirical Plots&quot;</span>)  <span class="co"># one item</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="item-analysis.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">empirical_plot</span>(items, <span class="dv">1</span>, <span class="at">main =</span> <span class="st">&#39;Empirical Plots&#39;</span>) <span class="co"># one item</span></span></code></pre></div>
 <p><img src="_main_files/figure-html/pcm-model-fit-3.png" width="672" /></p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="item-analysis.html#cb18-1" aria-hidden="true" tabindex="-1"></a>pcmfit <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">itemfit</span>(results.pcm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb18-2"><a href="item-analysis.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(pcmfit, <span class="at">caption =</span> <span class="st">&quot;Partial Credit Model (PCM) - Item Fit Statistics&quot;</span>)</span></code></pre></div>
-<pre><code>   item      S_X2 df.S_X2   RMSEA.S_X2       p.S_X2
-1    Q7  533.3564     533 0.0004738806 4.875015e-01
-2   Q10  495.1835     467 0.0045017043 1.772288e-01
-3   Q11  579.6394     531 0.0055460592 7.083978e-02
-4   Q16  481.6413     503 0.0000000000 7.460408e-01
-5   Q17  443.3413     213 0.0190560901 2.710678e-18
-6   Q18  511.1011     523 0.0000000000 6.368612e-01
-7   Q19  548.8232     517 0.0045463620 1.609217e-01
-8   Q20  543.2461     513 0.0044495252 1.718095e-01
-9   Q21  556.8474     518 0.0050182679 1.153414e-01
-10  Q22  610.6849     477 0.0097010700 3.161075e-05
-11  Q23  451.2542     440 0.0029306759 3.450871e-01
-12  Q24  439.9162     449 0.0000000000 6.113781e-01
-13  Q25  505.6217     492 0.0030490903 3.258128e-01
-14  Q26  481.9682     475 0.0022194765 4.026140e-01
-15  Q27  896.8917     479 0.0171159793 9.180280e-28
-16  Q28  514.6797     500 0.0031398698 3.153365e-01
-17  Q29  530.1984     524 0.0019930273 4.163283e-01
-18  Q30  569.1584     488 0.0074729914 6.434023e-03
-19  Q31  526.1497     479 0.0057492248 6.714310e-02
-20  Q32  486.5294     515 0.0000000000 8.114182e-01
-21  Q34  586.1511     525 0.0062540338 3.296610e-02
-22  Q35  542.2495     508 0.0047580948 1.418454e-01
-23  Q36  553.8355     515 0.0050320936 1.147646e-01
-24  Q37  548.0106     519 0.0043324357 1.827871e-01
-25  Q38  568.9640     517 0.0058095664 5.643818e-02
-26  Q39  473.9639     507 0.0000000000 8.507912e-01
-27  Q40  573.7718     529 0.0053310428 8.694811e-02
-28  Q41  435.2054     180 0.0218195764 3.605120e-23
-29  Q42  549.9676     494 0.0061679751 4.106454e-02
-30  Q43  502.6761     461 0.0055097377 8.770565e-02
-31  Q44  618.0733     528 0.0075686550 4.042814e-03
-32  Q45  548.4064     531 0.0033177605 2.915691e-01
-33  Q46  249.0751     108 0.0209435812 3.719748e-13
-34  Q47  347.5054     338 0.0030730106 3.490803e-01
-35  Q49  515.8695     493 0.0039467760 2.301057e-01
-36  Q50 1193.8223     508 0.0212917621 3.932729e-57
-37  Q51  613.6675     527 0.0074312269 5.292971e-03
-38  Q52  486.9722     493 0.0000000000 5.680840e-01
-39  Q53  541.7427     523 0.0034689851 2.764940e-01
-40  Q54  561.7842     518 0.0053275956 8.941954e-02
-41  Q55  977.8732     373 0.0233354077 9.345000e-56
-42  Q56  700.4023     524 0.0106322243 3.610390e-07
-43  Q57  508.4694     507 0.0009865056 4.732781e-01
-44  Q58  583.6834     531 0.0057720141 5.632886e-02
-45  Q59  546.5812     477 0.0069988128 1.488867e-02
-46  Q60  552.8959     347 0.0141155160 1.226614e-11
-47  Q61  559.8063     528 0.0044975646 1.634943e-01
-48  Q62  511.0822     489 0.0038940741 2.366890e-01
-49  Q63  557.6752     505 0.0059182722 5.219718e-02
-50  Q64  560.6293     508 0.0058981997 5.282423e-02
-51  Q65  493.0967     466 0.0044187815 1.860160e-01
-52  Q66  484.6288     486 0.0000000000 5.090283e-01
-53  Q68  524.0797     483 0.0053441398 9.555432e-02
-54  Q69  514.9555     493 0.0038671045 2.387767e-01
-55  Q70  596.9121     469 0.0095698906 5.464063e-05
-56  Q71  517.4845     517 0.0005609969 4.857223e-01
-57  Q72  398.9107     382 0.0038555564 2.653161e-01
-58  Q73  575.2774     521 0.0059146412 4.979387e-02
-59  Q74  656.6494     501 0.0102139223 3.324529e-06
-60  Q76  578.0990     526 0.0057671246 5.745455e-02
-61  Q77  556.0596     489 0.0067859959 1.901382e-02
-62  Q78  517.0659     518 0.0000000000 5.033200e-01
-63  Q79  565.0319     517 0.0055854376 7.072720e-02
-64  Q80  495.3246     488 0.0022450114 3.995138e-01
-65  Q81  431.9793     407 0.0045397375 1.890289e-01
-66  Q82  520.8786     480 0.0053476755 9.594222e-02</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="item-analysis.html#cb20-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(pcmfit, <span class="at">caption =</span> <span class="st">&quot;Partial Credit Model (PCM) - Item Fit Statistics&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="item-analysis.html#cb13-1" aria-hidden="true" tabindex="-1"></a>pcmfit <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">itemfit</span>(results.pcm, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code></pre></div>
+<pre><code>## Sample size after row-wise response data removal: 2979</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="item-analysis.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(pcmfit, <span class="at">caption =</span> <span class="st">&#39;Partial Credit Model (PCM) - Item Fit Statistics&#39;</span>)</span></code></pre></div>
+<pre><code>##    item      S_X2 df.S_X2   RMSEA.S_X2       p.S_X2
+## 1    Q7  533.3564     533 0.0004738806 4.875015e-01
+## 2   Q10  495.1835     467 0.0045017043 1.772288e-01
+## 3   Q11  579.6394     531 0.0055460592 7.083978e-02
+## 4   Q16  481.6413     503 0.0000000000 7.460408e-01
+## 5   Q17  443.3413     213 0.0190560901 2.710678e-18
+## 6   Q18  511.1011     523 0.0000000000 6.368612e-01
+## 7   Q19  548.8232     517 0.0045463620 1.609217e-01
+## 8   Q20  543.2461     513 0.0044495252 1.718095e-01
+## 9   Q21  556.8474     518 0.0050182679 1.153414e-01
+## 10  Q22  610.6849     477 0.0097010700 3.161075e-05
+## 11  Q23  451.2542     440 0.0029306759 3.450871e-01
+## 12  Q24  439.9162     449 0.0000000000 6.113781e-01
+## 13  Q25  505.6217     492 0.0030490903 3.258128e-01
+## 14  Q26  481.9682     475 0.0022194765 4.026140e-01
+## 15  Q27  896.8917     479 0.0171159793 9.180280e-28
+## 16  Q28  514.6797     500 0.0031398698 3.153365e-01
+## 17  Q29  530.1984     524 0.0019930273 4.163283e-01
+## 18  Q30  569.1584     488 0.0074729914 6.434023e-03
+## 19  Q31  526.1497     479 0.0057492248 6.714310e-02
+## 20  Q32  486.5294     515 0.0000000000 8.114182e-01
+## 21  Q34  586.1511     525 0.0062540338 3.296610e-02
+## 22  Q35  542.2495     508 0.0047580948 1.418454e-01
+## 23  Q36  553.8355     515 0.0050320936 1.147646e-01
+## 24  Q37  548.0106     519 0.0043324357 1.827871e-01
+## 25  Q38  568.9640     517 0.0058095664 5.643818e-02
+## 26  Q39  473.9639     507 0.0000000000 8.507912e-01
+## 27  Q40  573.7718     529 0.0053310428 8.694811e-02
+## 28  Q41  435.2054     180 0.0218195764 3.605120e-23
+## 29  Q42  549.9676     494 0.0061679751 4.106454e-02
+## 30  Q43  502.6761     461 0.0055097377 8.770565e-02
+## 31  Q44  618.0733     528 0.0075686550 4.042814e-03
+## 32  Q45  548.4064     531 0.0033177605 2.915691e-01
+## 33  Q46  249.0751     108 0.0209435812 3.719748e-13
+## 34  Q47  347.5054     338 0.0030730106 3.490803e-01
+## 35  Q49  515.8695     493 0.0039467760 2.301057e-01
+## 36  Q50 1193.8223     508 0.0212917621 3.932729e-57
+## 37  Q51  613.6675     527 0.0074312269 5.292971e-03
+## 38  Q52  486.9722     493 0.0000000000 5.680840e-01
+## 39  Q53  541.7427     523 0.0034689851 2.764940e-01
+## 40  Q54  561.7842     518 0.0053275956 8.941954e-02
+## 41  Q55  977.8732     373 0.0233354077 9.345000e-56
+## 42  Q56  700.4023     524 0.0106322243 3.610390e-07
+## 43  Q57  508.4694     507 0.0009865056 4.732781e-01
+## 44  Q58  583.6834     531 0.0057720141 5.632886e-02
+## 45  Q59  546.5812     477 0.0069988128 1.488867e-02
+## 46  Q60  552.8959     347 0.0141155160 1.226614e-11
+## 47  Q61  559.8063     528 0.0044975646 1.634943e-01
+## 48  Q62  511.0822     489 0.0038940741 2.366890e-01
+## 49  Q63  557.6752     505 0.0059182722 5.219718e-02
+## 50  Q64  560.6293     508 0.0058981997 5.282423e-02
+## 51  Q65  493.0967     466 0.0044187815 1.860160e-01
+## 52  Q66  484.6288     486 0.0000000000 5.090283e-01
+## 53  Q68  524.0797     483 0.0053441398 9.555432e-02
+## 54  Q69  514.9555     493 0.0038671045 2.387767e-01
+## 55  Q70  596.9121     469 0.0095698906 5.464063e-05
+## 56  Q71  517.4845     517 0.0005609969 4.857223e-01
+## 57  Q72  398.9107     382 0.0038555564 2.653161e-01
+## 58  Q73  575.2774     521 0.0059146412 4.979387e-02
+## 59  Q74  656.6494     501 0.0102139223 3.324529e-06
+## 60  Q76  578.0990     526 0.0057671246 5.745455e-02
+## 61  Q77  556.0596     489 0.0067859959 1.901382e-02
+## 62  Q78  517.0659     518 0.0000000000 5.033200e-01
+## 63  Q79  565.0319     517 0.0055854376 7.072720e-02
+## 64  Q80  495.3246     488 0.0022450114 3.995138e-01
+## 65  Q81  431.9793     407 0.0045397375 1.890289e-01
+## 66  Q82  520.8786     480 0.0053476755 9.594222e-02</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="item-analysis.html#cb17-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(pcmfit, <span class="at">caption =</span> <span class="st">&#39;Partial Credit Model (PCM) - Item Fit Statistics&#39;</span>)</span></code></pre></div>
 <table>
-<caption><span id="tab:pcm-model-fit">Table 2: </span>Partial Credit Model (PCM) - Item Fit Statistics</caption>
+<caption><span id="tab:pcm-model-fit">Table 3: </span>Partial Credit Model (PCM) - Item Fit Statistics</caption>
 <thead>
 <tr class="header">
 <th align="left">item</th>
@@ -1458,2290 +1503,138 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="item-analysis.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">itemfit</span>(results.pcm, <span class="at">empirical.plot =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="item-analysis.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">itemfit</span>(results.pcm, <span class="at">empirical.plot=</span><span class="dv">1</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/pcm-model-fit-4.png" width="672" /></p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="item-analysis.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">itemfit</span>(results.pcm, <span class="st">&quot;infit&quot;</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>   item outfit z.outfit infit z.infit
-1    Q7  1.276    7.187 1.122   4.669
-2   Q10  0.963   -0.671 0.988  -0.415
-3   Q11  0.780   -7.399 0.799  -8.713
-4   Q16  0.930   -1.824 0.939  -2.337
-5   Q17  2.813    7.053 1.555   9.545
-6   Q18  0.777   -7.906 0.804  -8.498
-7   Q19  0.778   -6.464 0.836  -6.867
-8   Q20  0.970   -0.618 1.014   0.513
-9   Q21  1.203    3.704 1.043   1.575
-10  Q22  1.104    2.990 1.099   3.596
-11  Q23  0.941   -1.383 1.007   0.269
-12  Q24  0.913   -1.766 0.936  -2.327
-13  Q25  0.771   -9.221 0.791  -9.059
-14  Q26  1.313    4.798 0.963  -1.247
-15  Q27  2.671   17.851 1.502  15.055
-16  Q28  0.848   -4.823 0.869  -5.376
-17  Q29  1.014    0.428 1.026   1.060
-18  Q30  0.848   -3.539 0.893  -4.155
-19  Q31  1.012    0.318 1.006   0.216
-20  Q32  0.882   -4.193 0.897  -4.308
-21  Q34  1.119    3.474 1.102   3.963
-22  Q35  0.976   -0.850 0.917  -3.397
-23  Q36  0.792   -7.866 0.812  -8.212
-24  Q37  0.845   -5.731 0.862  -5.881
-25  Q38  0.680  -12.407 0.711 -13.043
-26  Q39  0.994   -0.167 0.998  -0.085
-27  Q40  0.788   -5.520 0.845  -6.321
-28  Q41  6.705   15.057 1.534   8.204
-29  Q42  0.763   -9.409 0.790  -9.222
-30  Q43  0.748   -7.211 0.795  -8.281
-31  Q44  0.715   -9.971 0.734 -11.859
-32  Q45  0.978   -0.672 0.994  -0.251
-33  Q46  3.223    8.213 1.392   4.076
-34  Q47  0.986   -0.207 1.027   0.728
-35  Q49  0.821   -5.079 0.865  -5.373
-36  Q50  1.947   12.371 1.513  16.610
-37  Q51  1.287    6.901 1.232   8.445
-38  Q52  0.698   -7.911 0.759  -9.911
-39  Q53  0.836   -4.767 0.896  -4.247
-40  Q54  0.872   -4.519 0.866  -5.674
-41  Q55  2.828   22.030 1.577  14.747
-42  Q56  0.659  -12.674 0.687 -14.270
-43  Q57  0.800   -4.843 0.896  -4.083
-44  Q58  0.879   -3.921 0.920  -3.294
-45  Q59  0.720   -8.510 0.778  -9.340
-46  Q60  1.436    4.429 1.199   4.970
-47  Q61  1.013    0.402 1.025   0.997
-48  Q62  0.968   -0.821 1.037   1.426
-49  Q63  0.722   -9.474 0.775  -9.632
-50  Q64  0.900   -2.977 0.913  -3.471
-51  Q65  1.183    3.247 1.051   1.715
-52  Q66  1.013    0.443 0.984  -0.613
-53  Q68  0.890   -2.575 0.959  -1.542
-54  Q69  1.184    6.976 1.185   7.178
-55  Q70  1.238    6.218 1.223   7.897
-56  Q71  0.869   -4.950 0.891  -4.589
-57  Q72  1.020    0.380 1.091   2.772
-58  Q73  1.089    2.783 1.121   4.679
-59  Q74  1.205    6.924 1.188   7.246
-60  Q76  0.922   -2.415 0.925  -3.068
-61  Q77  0.735  -11.202 0.745 -11.386
-62  Q78  1.024    0.878 1.039   1.571
-63  Q79  1.215    6.432 1.184   6.889
-64  Q80  0.938   -2.471 0.946  -2.227
-65  Q81  0.812   -4.346 0.909  -3.187
-66  Q82  1.069    2.012 1.127   4.750</code></pre>
-<p>Table X “contains estimation results and the fit index model from each item of the SHAS.” The estimates of item difficulty were between -X.XX TO X.XX (ie., -1.36 to 1.51) on the logit scale. Based on the item discrimination index (PTBIS; point-biserial correlation), which is analogous to classical test theory (item to-total-correlation), X SHAS items have high discrimination values in a positive direction, with no values below 0.30 or negative values. This indicates that XX items function well to distinguish persons with high versus low levels of spiritual abuse. For each item, we examined the step parameter of category endorsements, and the statistics of each response for the items. X items, except item X, followed the step ordering requirement. We found Item X (Step 1 = -0.XX, Step 2 = -0.XX, Step 3 = 0.XX) experienced threshold disordering as the thresholds were not ordered from lowest to highest. However, none of the infit and outfit statistics for response categories were greater than 2. This finding indicated that collapsing categories was not necessary because the disordered threshold still fit and did not violate the Rasch model (Linacre, 2010; 2018). Based on this information, we concluded that, in general, the SHAS items (fit)/(did not fit) the Rasch PCM model.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="item-analysis.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">itemfit</span>(results.pcm, <span class="st">&#39;infit&#39;</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## Sample size after row-wise response data removal: 2979</code></pre>
+<pre><code>##    item outfit z.outfit infit z.infit
+## 1    Q7  1.276    7.187 1.122   4.669
+## 2   Q10  0.963   -0.671 0.988  -0.415
+## 3   Q11  0.780   -7.399 0.799  -8.713
+## 4   Q16  0.930   -1.824 0.939  -2.337
+## 5   Q17  2.813    7.053 1.555   9.545
+## 6   Q18  0.777   -7.906 0.804  -8.498
+## 7   Q19  0.778   -6.464 0.836  -6.867
+## 8   Q20  0.970   -0.618 1.014   0.513
+## 9   Q21  1.203    3.704 1.043   1.575
+## 10  Q22  1.104    2.990 1.099   3.596
+## 11  Q23  0.941   -1.383 1.007   0.269
+## 12  Q24  0.913   -1.766 0.936  -2.327
+## 13  Q25  0.771   -9.221 0.791  -9.059
+## 14  Q26  1.313    4.798 0.963  -1.247
+## 15  Q27  2.671   17.851 1.502  15.055
+## 16  Q28  0.848   -4.823 0.869  -5.376
+## 17  Q29  1.014    0.428 1.026   1.060
+## 18  Q30  0.848   -3.539 0.893  -4.155
+## 19  Q31  1.012    0.318 1.006   0.216
+## 20  Q32  0.882   -4.193 0.897  -4.308
+## 21  Q34  1.119    3.474 1.102   3.963
+## 22  Q35  0.976   -0.850 0.917  -3.397
+## 23  Q36  0.792   -7.866 0.812  -8.212
+## 24  Q37  0.845   -5.731 0.862  -5.881
+## 25  Q38  0.680  -12.407 0.711 -13.043
+## 26  Q39  0.994   -0.167 0.998  -0.085
+## 27  Q40  0.788   -5.520 0.845  -6.321
+## 28  Q41  6.705   15.057 1.534   8.204
+## 29  Q42  0.763   -9.409 0.790  -9.222
+## 30  Q43  0.748   -7.211 0.795  -8.281
+## 31  Q44  0.715   -9.971 0.734 -11.859
+## 32  Q45  0.978   -0.672 0.994  -0.251
+## 33  Q46  3.223    8.213 1.392   4.076
+## 34  Q47  0.986   -0.207 1.027   0.728
+## 35  Q49  0.821   -5.079 0.865  -5.373
+## 36  Q50  1.947   12.371 1.513  16.610
+## 37  Q51  1.287    6.901 1.232   8.445
+## 38  Q52  0.698   -7.911 0.759  -9.911
+## 39  Q53  0.836   -4.767 0.896  -4.247
+## 40  Q54  0.872   -4.519 0.866  -5.674
+## 41  Q55  2.828   22.030 1.577  14.747
+## 42  Q56  0.659  -12.674 0.687 -14.270
+## 43  Q57  0.800   -4.843 0.896  -4.083
+## 44  Q58  0.879   -3.921 0.920  -3.294
+## 45  Q59  0.720   -8.510 0.778  -9.340
+## 46  Q60  1.436    4.429 1.199   4.970
+## 47  Q61  1.013    0.402 1.025   0.997
+## 48  Q62  0.968   -0.821 1.037   1.426
+## 49  Q63  0.722   -9.474 0.775  -9.632
+## 50  Q64  0.900   -2.977 0.913  -3.471
+## 51  Q65  1.183    3.247 1.051   1.715
+## 52  Q66  1.013    0.443 0.984  -0.613
+## 53  Q68  0.890   -2.575 0.959  -1.542
+## 54  Q69  1.184    6.976 1.185   7.178
+## 55  Q70  1.238    6.218 1.223   7.897
+## 56  Q71  0.869   -4.950 0.891  -4.589
+## 57  Q72  1.020    0.380 1.091   2.772
+## 58  Q73  1.089    2.783 1.121   4.679
+## 59  Q74  1.205    6.924 1.188   7.246
+## 60  Q76  0.922   -2.415 0.925  -3.068
+## 61  Q77  0.735  -11.202 0.745 -11.386
+## 62  Q78  1.024    0.878 1.039   1.571
+## 63  Q79  1.215    6.432 1.184   6.889
+## 64  Q80  0.938   -2.471 0.946  -2.227
+## 65  Q81  0.812   -4.346 0.909  -3.187
+## 66  Q82  1.069    2.012 1.127   4.750</code></pre>
+<p>Table X “contains estimation results and the fit index model from each item of the SHAS.” The estimates of item difficulty were between -X.XX TO X.XX (ie., -1.36 to 1.51) on the logit scale. Based on the item discrimination index (PTBIS; point-biserial correlation), which is analogous to classical test theory (item to-total-correlation), X SHAS items have high discrimination values in a positive direction, with no values below 0.30 or negative values. This indicates that XX items function well to distinguish persons with high versus low levels of spiritual abuse. For each item, we examined the step parameter of category endorsements and the statistics of each response for the items. X items, except item X, followed the step ordering requirement.</p>
+<p>We found Item X (Step 1 = -0.XX, Step 2 = -0.XX, Step 3 = 0.XX) experienced threshold disordering as the thresholds were not ordered from lowest to highest. However, none of the infit and outfit statistics for response categories were greater than 2. This finding indicated that collapsing categories was not necessary because the disordered threshold still fit and did not violate the Rasch model (Linacre, 2010; 2018). Based on this information, we concluded that, in general, the SHAS items (fit)/(did not fit) the Rasch PCM model.</p>
 </div>
 <div id="generalized-partial-credit-model-gpcm" class="section level3 hasAnchor">
 <h3>Generalized Partial Credit Model (GPCM)<a href="item-analysis.html#generalized-partial-credit-model-gpcm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In the PCM, “the property of ordered threshold parameters is not a requirement in the partial credit or generalized partial credit models” <span class="citation">(<a href="references.html#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>)</span>.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="item-analysis.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GENERALIZED PCM ESTIMATION</span></span>
-<span id="cb24-2"><a href="item-analysis.html#cb24-2" aria-hidden="true" tabindex="-1"></a>model.gpcm <span class="ot">&lt;-</span> <span class="st">&quot;SPIRITUAL ABUSE GPCM = 1-66&quot;</span></span>
-<span id="cb24-3"><a href="item-analysis.html#cb24-3" aria-hidden="true" tabindex="-1"></a>results.gpcm <span class="ot">&lt;-</span> <span class="fu">mirt</span>(<span class="at">data =</span> items, <span class="at">model =</span> model.gpcm, <span class="at">itemtype =</span> <span class="st">&quot;gpcm&quot;</span>,</span>
-<span id="cb24-4"><a href="item-analysis.html#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb24-5"><a href="item-analysis.html#cb24-5" aria-hidden="true" tabindex="-1"></a>coef.gpcm <span class="ot">&lt;-</span> <span class="fu">coef</span>(results.gpcm, <span class="at">IRTpars =</span> <span class="cn">TRUE</span>, <span class="at">simplify =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb24-6"><a href="item-analysis.html#cb24-6" aria-hidden="true" tabindex="-1"></a>items.gpcm <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(coef.gpcm<span class="sc">$</span>items)</span>
-<span id="cb24-7"><a href="item-analysis.html#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(results.gpcm)</span></code></pre></div>
-<pre><code>
-Call:
-mirt(data = items, model = model.gpcm, itemtype = &quot;gpcm&quot;, verbose = FALSE)
-
-Full-information item factor analysis with 1 factor(s).
-Converged within 1e-04 tolerance after 56 EM iterations.
-mirt version: 1.36.1 
-M-step optimizer: BFGS 
-EM acceleration: Ramsay 
-Number of rectangular quadrature: 61
-Latent density type: Gaussian 
-
-Log-likelihood = -234269.7
-Estimated parameters: 330 
-AIC = 469199.3
-BIC = 471205; SABIC = 470156.4</code></pre>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="item-analysis.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print(items.gpcm)</span></span>
-<span id="cb26-2"><a href="item-analysis.html#cb26-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">round</span>(items.gpcm, <span class="dv">2</span>), <span class="at">caption =</span> <span class="st">&quot;Generalized Partial Credit Model (GPCM) - Item Parameters&quot;</span>)</span></code></pre></div>
-<table>
-<caption><span id="tab:gpcm-mod">Table 3: </span>Generalized Partial Credit Model (GPCM) - Item Parameters</caption>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="right">a</th>
-<th align="right">b1</th>
-<th align="right">b2</th>
-<th align="right">b3</th>
-<th align="right">b4</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Q7</td>
-<td align="right">0.89</td>
-<td align="right">0.36</td>
-<td align="right">0.02</td>
-<td align="right">0.67</td>
-<td align="right">1.01</td>
-</tr>
-<tr class="even">
-<td align="left">Q10</td>
-<td align="right">1.06</td>
-<td align="right">1.17</td>
-<td align="right">0.59</td>
-<td align="right">1.36</td>
-<td align="right">1.69</td>
-</tr>
-<tr class="odd">
-<td align="left">Q11</td>
-<td align="right">1.51</td>
-<td align="right">-0.19</td>
-<td align="right">0.16</td>
-<td align="right">0.62</td>
-<td align="right">1.35</td>
-</tr>
-<tr class="even">
-<td align="left">Q16</td>
-<td align="right">1.13</td>
-<td align="right">0.42</td>
-<td align="right">0.51</td>
-<td align="right">1.06</td>
-<td align="right">1.53</td>
-</tr>
-<tr class="odd">
-<td align="left">Q17</td>
-<td align="right">0.43</td>
-<td align="right">8.66</td>
-<td align="right">-0.52</td>
-<td align="right">0.82</td>
-<td align="right">0.34</td>
-</tr>
-<tr class="even">
-<td align="left">Q18</td>
-<td align="right">1.55</td>
-<td align="right">-0.32</td>
-<td align="right">-0.27</td>
-<td align="right">0.59</td>
-<td align="right">1.14</td>
-</tr>
-<tr class="odd">
-<td align="left">Q19</td>
-<td align="right">1.44</td>
-<td align="right">0.18</td>
-<td align="right">0.19</td>
-<td align="right">0.82</td>
-<td align="right">1.49</td>
-</tr>
-<tr class="even">
-<td align="left">Q20</td>
-<td align="right">1.03</td>
-<td align="right">0.93</td>
-<td align="right">0.30</td>
-<td align="right">0.89</td>
-<td align="right">1.15</td>
-</tr>
-<tr class="odd">
-<td align="left">Q21</td>
-<td align="right">0.97</td>
-<td align="right">1.14</td>
-<td align="right">0.31</td>
-<td align="right">0.84</td>
-<td align="right">0.68</td>
-</tr>
-<tr class="even">
-<td align="left">Q22</td>
-<td align="right">0.97</td>
-<td align="right">-0.28</td>
-<td align="right">-0.61</td>
-<td align="right">-0.32</td>
-<td align="right">0.29</td>
-</tr>
-<tr class="odd">
-<td align="left">Q23</td>
-<td align="right">1.05</td>
-<td align="right">0.71</td>
-<td align="right">0.56</td>
-<td align="right">1.51</td>
-<td align="right">2.09</td>
-</tr>
-<tr class="even">
-<td align="left">Q24</td>
-<td align="right">1.15</td>
-<td align="right">0.96</td>
-<td align="right">0.42</td>
-<td align="right">1.40</td>
-<td align="right">1.86</td>
-</tr>
-<tr class="odd">
-<td align="left">Q25</td>
-<td align="right">1.57</td>
-<td align="right">-0.95</td>
-<td align="right">-0.64</td>
-<td align="right">0.16</td>
-<td align="right">0.95</td>
-</tr>
-<tr class="even">
-<td align="left">Q26</td>
-<td align="right">1.04</td>
-<td align="right">1.34</td>
-<td align="right">0.66</td>
-<td align="right">0.93</td>
-<td align="right">1.46</td>
-</tr>
-<tr class="odd">
-<td align="left">Q27</td>
-<td align="right">0.47</td>
-<td align="right">3.54</td>
-<td align="right">0.04</td>
-<td align="right">1.09</td>
-<td align="right">0.93</td>
-</tr>
-<tr class="even">
-<td align="left">Q28</td>
-<td align="right">1.31</td>
-<td align="right">-0.02</td>
-<td align="right">0.42</td>
-<td align="right">0.94</td>
-<td align="right">1.69</td>
-</tr>
-<tr class="odd">
-<td align="left">Q29</td>
-<td align="right">1.01</td>
-<td align="right">0.14</td>
-<td align="right">-0.01</td>
-<td align="right">0.80</td>
-<td align="right">1.49</td>
-</tr>
-<tr class="even">
-<td align="left">Q30</td>
-<td align="right">1.24</td>
-<td align="right">0.68</td>
-<td align="right">0.34</td>
-<td align="right">1.10</td>
-<td align="right">1.76</td>
-</tr>
-<tr class="odd">
-<td align="left">Q31</td>
-<td align="right">1.01</td>
-<td align="right">0.51</td>
-<td align="right">0.56</td>
-<td align="right">1.39</td>
-<td align="right">1.80</td>
-</tr>
-<tr class="even">
-<td align="left">Q32</td>
-<td align="right">1.27</td>
-<td align="right">-0.36</td>
-<td align="right">-0.45</td>
-<td align="right">0.60</td>
-<td align="right">1.36</td>
-</tr>
-<tr class="odd">
-<td align="left">Q34</td>
-<td align="right">0.91</td>
-<td align="right">0.19</td>
-<td align="right">-0.03</td>
-<td align="right">0.87</td>
-<td align="right">1.51</td>
-</tr>
-<tr class="even">
-<td align="left">Q35</td>
-<td align="right">1.20</td>
-<td align="right">-0.62</td>
-<td align="right">-0.63</td>
-<td align="right">0.24</td>
-<td align="right">0.75</td>
-</tr>
-<tr class="odd">
-<td align="left">Q36</td>
-<td align="right">1.44</td>
-<td align="right">-0.53</td>
-<td align="right">-0.20</td>
-<td align="right">0.52</td>
-<td align="right">1.25</td>
-</tr>
-<tr class="even">
-<td align="left">Q37</td>
-<td align="right">1.34</td>
-<td align="right">-0.57</td>
-<td align="right">-0.38</td>
-<td align="right">0.42</td>
-<td align="right">0.96</td>
-</tr>
-<tr class="odd">
-<td align="left">Q38</td>
-<td align="right">1.75</td>
-<td align="right">-0.57</td>
-<td align="right">-0.35</td>
-<td align="right">0.42</td>
-<td align="right">0.87</td>
-</tr>
-<tr class="even">
-<td align="left">Q39</td>
-<td align="right">1.09</td>
-<td align="right">-0.16</td>
-<td align="right">-0.59</td>
-<td align="right">0.24</td>
-<td align="right">0.58</td>
-</tr>
-<tr class="odd">
-<td align="left">Q40</td>
-<td align="right">1.39</td>
-<td align="right">0.39</td>
-<td align="right">0.20</td>
-<td align="right">0.94</td>
-<td align="right">1.11</td>
-</tr>
-<tr class="even">
-<td align="left">Q41</td>
-<td align="right">0.40</td>
-<td align="right">9.15</td>
-<td align="right">-0.05</td>
-<td align="right">1.39</td>
-<td align="right">-0.08</td>
-</tr>
-<tr class="odd">
-<td align="left">Q42</td>
-<td align="right">1.59</td>
-<td align="right">-0.61</td>
-<td align="right">0.03</td>
-<td align="right">0.79</td>
-<td align="right">1.49</td>
-</tr>
-<tr class="even">
-<td align="left">Q43</td>
-<td align="right">1.51</td>
-<td align="right">0.25</td>
-<td align="right">0.50</td>
-<td align="right">1.23</td>
-<td align="right">1.80</td>
-</tr>
-<tr class="odd">
-<td align="left">Q44</td>
-<td align="right">1.73</td>
-<td align="right">-0.24</td>
-<td align="right">-0.08</td>
-<td align="right">0.61</td>
-<td align="right">1.34</td>
-</tr>
-<tr class="even">
-<td align="left">Q45</td>
-<td align="right">1.09</td>
-<td align="right">-0.11</td>
-<td align="right">-0.14</td>
-<td align="right">0.49</td>
-<td align="right">0.84</td>
-</tr>
-<tr class="odd">
-<td align="left">Q46</td>
-<td align="right">0.35</td>
-<td align="right">10.37</td>
-<td align="right">0.96</td>
-<td align="right">4.11</td>
-<td align="right">2.47</td>
-</tr>
-<tr class="even">
-<td align="left">Q47</td>
-<td align="right">0.98</td>
-<td align="right">1.55</td>
-<td align="right">1.20</td>
-<td align="right">2.40</td>
-<td align="right">2.18</td>
-</tr>
-<tr class="odd">
-<td align="left">Q49</td>
-<td align="right">1.35</td>
-<td align="right">0.24</td>
-<td align="right">0.48</td>
-<td align="right">1.07</td>
-<td align="right">1.71</td>
-</tr>
-<tr class="even">
-<td align="left">Q50</td>
-<td align="right">0.52</td>
-<td align="right">3.26</td>
-<td align="right">-0.90</td>
-<td align="right">0.64</td>
-<td align="right">1.01</td>
-</tr>
-<tr class="odd">
-<td align="left">Q51</td>
-<td align="right">0.77</td>
-<td align="right">0.70</td>
-<td align="right">0.27</td>
-<td align="right">0.74</td>
-<td align="right">1.37</td>
-</tr>
-<tr class="even">
-<td align="left">Q52</td>
-<td align="right">1.60</td>
-<td align="right">0.38</td>
-<td align="right">0.48</td>
-<td align="right">0.95</td>
-<td align="right">1.67</td>
-</tr>
-<tr class="odd">
-<td align="left">Q53</td>
-<td align="right">1.24</td>
-<td align="right">0.22</td>
-<td align="right">0.14</td>
-<td align="right">0.88</td>
-<td align="right">1.32</td>
-</tr>
-<tr class="even">
-<td align="left">Q54</td>
-<td align="right">1.31</td>
-<td align="right">-0.42</td>
-<td align="right">-0.41</td>
-<td align="right">0.45</td>
-<td align="right">0.90</td>
-</tr>
-<tr class="odd">
-<td align="left">Q55</td>
-<td align="right">0.33</td>
-<td align="right">3.94</td>
-<td align="right">1.89</td>
-<td align="right">3.39</td>
-<td align="right">3.68</td>
-</tr>
-<tr class="even">
-<td align="left">Q56</td>
-<td align="right">1.97</td>
-<td align="right">-0.40</td>
-<td align="right">-0.13</td>
-<td align="right">0.50</td>
-<td align="right">1.23</td>
-</tr>
-<tr class="odd">
-<td align="left">Q57</td>
-<td align="right">1.25</td>
-<td align="right">0.61</td>
-<td align="right">0.29</td>
-<td align="right">0.93</td>
-<td align="right">1.44</td>
-</tr>
-<tr class="even">
-<td align="left">Q58</td>
-<td align="right">1.24</td>
-<td align="right">-0.05</td>
-<td align="right">-0.11</td>
-<td align="right">0.84</td>
-<td align="right">1.32</td>
-</tr>
-<tr class="odd">
-<td align="left">Q59</td>
-<td align="right">1.62</td>
-<td align="right">0.12</td>
-<td align="right">0.38</td>
-<td align="right">1.03</td>
-<td align="right">1.77</td>
-</tr>
-<tr class="even">
-<td align="left">Q60</td>
-<td align="right">0.72</td>
-<td align="right">2.94</td>
-<td align="right">0.85</td>
-<td align="right">1.39</td>
-<td align="right">2.28</td>
-</tr>
-<tr class="odd">
-<td align="left">Q61</td>
-<td align="right">1.06</td>
-<td align="right">0.05</td>
-<td align="right">-0.26</td>
-<td align="right">0.42</td>
-<td align="right">0.85</td>
-</tr>
-<tr class="even">
-<td align="left">Q62</td>
-<td align="right">0.99</td>
-<td align="right">0.55</td>
-<td align="right">0.13</td>
-<td align="right">1.29</td>
-<td align="right">1.89</td>
-</tr>
-<tr class="odd">
-<td align="left">Q63</td>
-<td align="right">1.64</td>
-<td align="right">-0.13</td>
-<td align="right">0.29</td>
-<td align="right">0.99</td>
-<td align="right">1.60</td>
-</tr>
-<tr class="even">
-<td align="left">Q64</td>
-<td align="right">1.19</td>
-<td align="right">0.11</td>
-<td align="right">0.38</td>
-<td align="right">1.04</td>
-<td align="right">1.50</td>
-</tr>
-<tr class="odd">
-<td align="left">Q65</td>
-<td align="right">0.93</td>
-<td align="right">1.28</td>
-<td align="right">0.70</td>
-<td align="right">1.30</td>
-<td align="right">1.76</td>
-</tr>
-<tr class="even">
-<td align="left">Q66</td>
-<td align="right">1.10</td>
-<td align="right">-0.53</td>
-<td align="right">-0.82</td>
-<td align="right">-0.02</td>
-<td align="right">0.63</td>
-</tr>
-<tr class="odd">
-<td align="left">Q68</td>
-<td align="right">1.13</td>
-<td align="right">0.73</td>
-<td align="right">0.26</td>
-<td align="right">1.21</td>
-<td align="right">1.88</td>
-</tr>
-<tr class="even">
-<td align="left">Q69</td>
-<td align="right">0.77</td>
-<td align="right">-1.28</td>
-<td align="right">-0.82</td>
-<td align="right">0.74</td>
-<td align="right">1.48</td>
-</tr>
-<tr class="odd">
-<td align="left">Q70</td>
-<td align="right">0.72</td>
-<td align="right">0.56</td>
-<td align="right">0.44</td>
-<td align="right">1.72</td>
-<td align="right">1.90</td>
-</tr>
-<tr class="even">
-<td align="left">Q71</td>
-<td align="right">1.25</td>
-<td align="right">-0.68</td>
-<td align="right">-0.43</td>
-<td align="right">0.41</td>
-<td align="right">0.92</td>
-</tr>
-<tr class="odd">
-<td align="left">Q72</td>
-<td align="right">0.88</td>
-<td align="right">1.50</td>
-<td align="right">0.81</td>
-<td align="right">2.15</td>
-<td align="right">2.14</td>
-</tr>
-<tr class="even">
-<td align="left">Q73</td>
-<td align="right">0.86</td>
-<td align="right">0.04</td>
-<td align="right">-0.06</td>
-<td align="right">1.01</td>
-<td align="right">1.50</td>
-</tr>
-<tr class="odd">
-<td align="left">Q74</td>
-<td align="right">0.79</td>
-<td align="right">-0.35</td>
-<td align="right">-0.53</td>
-<td align="right">0.71</td>
-<td align="right">1.58</td>
-</tr>
-<tr class="even">
-<td align="left">Q76</td>
-<td align="right">1.17</td>
-<td align="right">-0.08</td>
-<td align="right">-0.19</td>
-<td align="right">0.45</td>
-<td align="right">0.70</td>
-</tr>
-<tr class="odd">
-<td align="left">Q77</td>
-<td align="right">1.65</td>
-<td align="right">-1.03</td>
-<td align="right">-0.46</td>
-<td align="right">0.29</td>
-<td align="right">1.14</td>
-</tr>
-<tr class="even">
-<td align="left">Q78</td>
-<td align="right">0.97</td>
-<td align="right">-0.45</td>
-<td align="right">-0.36</td>
-<td align="right">0.66</td>
-<td align="right">1.47</td>
-</tr>
-<tr class="odd">
-<td align="left">Q79</td>
-<td align="right">0.78</td>
-<td align="right">0.11</td>
-<td align="right">0.04</td>
-<td align="right">1.40</td>
-<td align="right">1.46</td>
-</tr>
-<tr class="even">
-<td align="left">Q80</td>
-<td align="right">1.14</td>
-<td align="right">-1.10</td>
-<td align="right">-0.66</td>
-<td align="right">0.35</td>
-<td align="right">1.40</td>
-</tr>
-<tr class="odd">
-<td align="left">Q81</td>
-<td align="right">1.25</td>
-<td align="right">0.73</td>
-<td align="right">0.76</td>
-<td align="right">1.75</td>
-<td align="right">2.16</td>
-</tr>
-<tr class="even">
-<td align="left">Q82</td>
-<td align="right">0.86</td>
-<td align="right">0.29</td>
-<td align="right">0.13</td>
-<td align="right">1.57</td>
-<td align="right">1.77</td>
-</tr>
-</tbody>
-</table>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="item-analysis.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># OPTION CHARACTERISTIC CURVES</span></span>
-<span id="cb27-2"><a href="item-analysis.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(results.gpcm, <span class="at">type =</span> <span class="st">&quot;trace&quot;</span>, <span class="at">which.items =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>),</span>
-<span id="cb27-3"><a href="item-analysis.html#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> <span class="st">&quot;&quot;</span>, <span class="at">par.settings =</span> <span class="fu">simpleTheme</span>(<span class="at">lty =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">lwd =</span> <span class="dv">2</span>),</span>
-<span id="cb27-4"><a href="item-analysis.html#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">auto.key =</span> <span class="fu">list</span>(<span class="at">points =</span> <span class="cn">FALSE</span>, <span class="at">lines =</span> <span class="cn">TRUE</span>, <span class="at">columns =</span> <span class="dv">4</span>))  <span class="co"># option curves</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/gpcm-occs-1.png" width="672" /></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="item-analysis.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GENERALIZED PCM ESTIMATION</span></span>
+<span id="cb22-2"><a href="item-analysis.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># model.gpcm &lt;- &#39;SPIRITUAL ABUSE GPCM = 1-66&#39;</span></span>
+<span id="cb22-3"><a href="item-analysis.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># results.gpcm &lt;- mirt(data=items, model=model.gpcm, itemtype=&quot;gpcm&quot;, verbose=FALSE)</span></span>
+<span id="cb22-4"><a href="item-analysis.html#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># coef.gpcm &lt;- coef(results.gpcm, IRTpars=TRUE, simplify=TRUE)</span></span>
+<span id="cb22-5"><a href="item-analysis.html#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co"># items.gpcm &lt;- as.data.frame(coef.gpcm$items)</span></span>
+<span id="cb22-6"><a href="item-analysis.html#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co"># print(results.gpcm)</span></span>
+<span id="cb22-7"><a href="item-analysis.html#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co"># #print(items.gpcm)</span></span>
+<span id="cb22-8"><a href="item-analysis.html#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co"># knitr::kable(round(items.gpcm,2), caption = &quot;Generalized Partial Credit Model (GPCM) - Item Parameters&quot;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="item-analysis.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># OPTION CHARACTERISTIC CURVES</span></span>
+<span id="cb23-2"><a href="item-analysis.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(results.gpcm, type = &#39;trace&#39;, which.items = c(1,2,3,4),</span></span>
+<span id="cb23-3"><a href="item-analysis.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co">#      main = &quot;&quot;, par.settings = simpleTheme(lty=1:4,lwd=2),</span></span>
+<span id="cb23-4"><a href="item-analysis.html#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co">#      auto.key=list(points=FALSE,lines=TRUE, columns=4)) # option curves</span></span></code></pre></div>
 <p><strong>Item parameters</strong>.</p>
 <p><strong>Item plots</strong>.</p>
 <p><strong>Model fit</strong>.</p>
 </div>
 <div id="rating-scale-model-rsm" class="section level3 hasAnchor">
 <h3>Rating Scale Model (RSM)<a href="item-analysis.html#rating-scale-model-rsm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="item-analysis.html#cb28-1" aria-hidden="true" tabindex="-1"></a>model.rsm <span class="ot">&lt;-</span> <span class="st">&quot;SPIRITUAL ABUSE RSM = 1-66&quot;</span></span>
-<span id="cb28-2"><a href="item-analysis.html#cb28-2" aria-hidden="true" tabindex="-1"></a>results.rsm <span class="ot">&lt;-</span> <span class="fu">mirt</span>(<span class="at">data =</span> items, <span class="at">model =</span> model.rsm, <span class="at">itemtype =</span> <span class="st">&quot;rsm&quot;</span>,</span>
-<span id="cb28-3"><a href="item-analysis.html#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb28-4"><a href="item-analysis.html#cb28-4" aria-hidden="true" tabindex="-1"></a>coef.rsm <span class="ot">&lt;-</span> <span class="fu">coef</span>(results.rsm, <span class="at">simplify =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb28-5"><a href="item-analysis.html#cb28-5" aria-hidden="true" tabindex="-1"></a>items.rsm <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(coef.rsm<span class="sc">$</span>items)</span>
-<span id="cb28-6"><a href="item-analysis.html#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">summary</span>(results.rsm))</span></code></pre></div>
-<pre><code>    SPIRITUALABUSERSM    h2
-Q7              0.526 0.277
-Q10             0.526 0.277
-Q11             0.526 0.277
-Q16             0.526 0.277
-Q17             0.526 0.277
-Q18             0.526 0.277
-Q19             0.526 0.277
-Q20             0.526 0.277
-Q21             0.526 0.277
-Q22             0.526 0.277
-Q23             0.526 0.277
-Q24             0.526 0.277
-Q25             0.526 0.277
-Q26             0.526 0.277
-Q27             0.526 0.277
-Q28             0.526 0.277
-Q29             0.526 0.277
-Q30             0.526 0.277
-Q31             0.526 0.277
-Q32             0.526 0.277
-Q34             0.526 0.277
-Q35             0.526 0.277
-Q36             0.526 0.277
-Q37             0.526 0.277
-Q38             0.526 0.277
-Q39             0.526 0.277
-Q40             0.526 0.277
-Q41             0.526 0.277
-Q42             0.526 0.277
-Q43             0.526 0.277
-Q44             0.526 0.277
-Q45             0.526 0.277
-Q46             0.526 0.277
-Q47             0.526 0.277
-Q49             0.526 0.277
-Q50             0.526 0.277
-Q51             0.526 0.277
-Q52             0.526 0.277
-Q53             0.526 0.277
-Q54             0.526 0.277
-Q55             0.526 0.277
-Q56             0.526 0.277
-Q57             0.526 0.277
-Q58             0.526 0.277
-Q59             0.526 0.277
-Q60             0.526 0.277
-Q61             0.526 0.277
-Q62             0.526 0.277
-Q63             0.526 0.277
-Q64             0.526 0.277
-Q65             0.526 0.277
-Q66             0.526 0.277
-Q68             0.526 0.277
-Q69             0.526 0.277
-Q70             0.526 0.277
-Q71             0.526 0.277
-Q72             0.526 0.277
-Q73             0.526 0.277
-Q74             0.526 0.277
-Q76             0.526 0.277
-Q77             0.526 0.277
-Q78             0.526 0.277
-Q79             0.526 0.277
-Q80             0.526 0.277
-Q81             0.526 0.277
-Q82             0.526 0.277
-
-SS loadings:  18.287 
-Proportion Var:  0.277 
-
-Factor correlations: 
-
-                  SPIRITUALABUSERSM
-SPIRITUALABUSERSM                 1
-$rotF
-    SPIRITUALABUSERSM
-Q7           0.526374
-Q10          0.526374
-Q11          0.526374
-Q16          0.526374
-Q17          0.526374
-Q18          0.526374
-Q19          0.526374
-Q20          0.526374
-Q21          0.526374
-Q22          0.526374
-Q23          0.526374
-Q24          0.526374
-Q25          0.526374
-Q26          0.526374
-Q27          0.526374
-Q28          0.526374
-Q29          0.526374
-Q30          0.526374
-Q31          0.526374
-Q32          0.526374
-Q34          0.526374
-Q35          0.526374
-Q36          0.526374
-Q37          0.526374
-Q38          0.526374
-Q39          0.526374
-Q40          0.526374
-Q41          0.526374
-Q42          0.526374
-Q43          0.526374
-Q44          0.526374
-Q45          0.526374
-Q46          0.526374
-Q47          0.526374
-Q49          0.526374
-Q50          0.526374
-Q51          0.526374
-Q52          0.526374
-Q53          0.526374
-Q54          0.526374
-Q55          0.526374
-Q56          0.526374
-Q57          0.526374
-Q58          0.526374
-Q59          0.526374
-Q60          0.526374
-Q61          0.526374
-Q62          0.526374
-Q63          0.526374
-Q64          0.526374
-Q65          0.526374
-Q66          0.526374
-Q68          0.526374
-Q69          0.526374
-Q70          0.526374
-Q71          0.526374
-Q72          0.526374
-Q73          0.526374
-Q74          0.526374
-Q76          0.526374
-Q77          0.526374
-Q78          0.526374
-Q79          0.526374
-Q80          0.526374
-Q81          0.526374
-Q82          0.526374
-
-$h2
-           h2
-Q7  0.2770696
-Q10 0.2770696
-Q11 0.2770696
-Q16 0.2770696
-Q17 0.2770696
-Q18 0.2770696
-Q19 0.2770696
-Q20 0.2770696
-Q21 0.2770696
-Q22 0.2770696
-Q23 0.2770696
-Q24 0.2770696
-Q25 0.2770696
-Q26 0.2770696
-Q27 0.2770696
-Q28 0.2770696
-Q29 0.2770696
-Q30 0.2770696
-Q31 0.2770696
-Q32 0.2770696
-Q34 0.2770696
-Q35 0.2770696
-Q36 0.2770696
-Q37 0.2770696
-Q38 0.2770696
-Q39 0.2770696
-Q40 0.2770696
-Q41 0.2770696
-Q42 0.2770696
-Q43 0.2770696
-Q44 0.2770696
-Q45 0.2770696
-Q46 0.2770696
-Q47 0.2770696
-Q49 0.2770696
-Q50 0.2770696
-Q51 0.2770696
-Q52 0.2770696
-Q53 0.2770696
-Q54 0.2770696
-Q55 0.2770696
-Q56 0.2770696
-Q57 0.2770696
-Q58 0.2770696
-Q59 0.2770696
-Q60 0.2770696
-Q61 0.2770696
-Q62 0.2770696
-Q63 0.2770696
-Q64 0.2770696
-Q65 0.2770696
-Q66 0.2770696
-Q68 0.2770696
-Q69 0.2770696
-Q70 0.2770696
-Q71 0.2770696
-Q72 0.2770696
-Q73 0.2770696
-Q74 0.2770696
-Q76 0.2770696
-Q77 0.2770696
-Q78 0.2770696
-Q79 0.2770696
-Q80 0.2770696
-Q81 0.2770696
-Q82 0.2770696
-
-$fcor
-                  SPIRITUALABUSERSM
-SPIRITUALABUSERSM                 1</code></pre>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="item-analysis.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print(items.rsm)</span></span>
-<span id="cb30-2"><a href="item-analysis.html#cb30-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">round</span>(items.rsm, <span class="dv">2</span>), <span class="at">caption =</span> <span class="st">&quot;Rating Scale Model (RSM) - Item Parameters&quot;</span>)</span></code></pre></div>
-<table>
-<caption><span id="tab:rsm-est">Table 4: </span>Rating Scale Model (RSM) - Item Parameters</caption>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="right">a1</th>
-<th align="right">b1</th>
-<th align="right">b2</th>
-<th align="right">b3</th>
-<th align="right">b4</th>
-<th align="right">c</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Q7</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">0.00</td>
-</tr>
-<tr class="even">
-<td align="left">Q10</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.82</td>
-</tr>
-<tr class="odd">
-<td align="left">Q11</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.02</td>
-</tr>
-<tr class="even">
-<td align="left">Q16</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.44</td>
-</tr>
-<tr class="odd">
-<td align="left">Q17</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-1.73</td>
-</tr>
-<tr class="even">
-<td align="left">Q18</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">0.22</td>
-</tr>
-<tr class="odd">
-<td align="left">Q19</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.23</td>
-</tr>
-<tr class="even">
-<td align="left">Q20</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.41</td>
-</tr>
-<tr class="odd">
-<td align="left">Q21</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.36</td>
-</tr>
-<tr class="even">
-<td align="left">Q22</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">0.82</td>
-</tr>
-<tr class="odd">
-<td align="left">Q23</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.70</td>
-</tr>
-<tr class="even">
-<td align="left">Q24</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.74</td>
-</tr>
-<tr class="odd">
-<td align="left">Q25</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">0.67</td>
-</tr>
-<tr class="even">
-<td align="left">Q26</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.76</td>
-</tr>
-<tr class="odd">
-<td align="left">Q27</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.67</td>
-</tr>
-<tr class="even">
-<td align="left">Q28</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.29</td>
-</tr>
-<tr class="odd">
-<td align="left">Q29</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.07</td>
-</tr>
-<tr class="even">
-<td align="left">Q30</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.54</td>
-</tr>
-<tr class="odd">
-<td align="left">Q31</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.56</td>
-</tr>
-<tr class="even">
-<td align="left">Q32</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">0.26</td>
-</tr>
-<tr class="odd">
-<td align="left">Q34</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.08</td>
-</tr>
-<tr class="even">
-<td align="left">Q35</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">0.61</td>
-</tr>
-<tr class="odd">
-<td align="left">Q36</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">0.25</td>
-</tr>
-<tr class="even">
-<td align="left">Q37</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">0.42</td>
-</tr>
-<tr class="odd">
-<td align="left">Q38</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">0.43</td>
-</tr>
-<tr class="even">
-<td align="left">Q39</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">0.53</td>
-</tr>
-<tr class="odd">
-<td align="left">Q40</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.27</td>
-</tr>
-<tr class="even">
-<td align="left">Q41</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-1.92</td>
-</tr>
-<tr class="odd">
-<td align="left">Q42</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">0.06</td>
-</tr>
-<tr class="even">
-<td align="left">Q43</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.54</td>
-</tr>
-<tr class="odd">
-<td align="left">Q44</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">0.08</td>
-</tr>
-<tr class="even">
-<td align="left">Q45</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">0.23</td>
-</tr>
-<tr class="odd">
-<td align="left">Q46</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-2.76</td>
-</tr>
-<tr class="even">
-<td align="left">Q47</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-1.40</td>
-</tr>
-<tr class="odd">
-<td align="left">Q49</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.45</td>
-</tr>
-<tr class="even">
-<td align="left">Q50</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.33</td>
-</tr>
-<tr class="odd">
-<td align="left">Q51</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.21</td>
-</tr>
-<tr class="even">
-<td align="left">Q52</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.50</td>
-</tr>
-<tr class="odd">
-<td align="left">Q53</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.18</td>
-</tr>
-<tr class="even">
-<td align="left">Q54</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">0.39</td>
-</tr>
-<tr class="odd">
-<td align="left">Q55</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-1.20</td>
-</tr>
-<tr class="even">
-<td align="left">Q56</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">0.19</td>
-</tr>
-<tr class="odd">
-<td align="left">Q57</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.41</td>
-</tr>
-<tr class="even">
-<td align="left">Q58</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">0.00</td>
-</tr>
-<tr class="odd">
-<td align="left">Q59</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.40</td>
-</tr>
-<tr class="even">
-<td align="left">Q60</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-1.38</td>
-</tr>
-<tr class="odd">
-<td align="left">Q61</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">0.25</td>
-</tr>
-<tr class="even">
-<td align="left">Q62</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.40</td>
-</tr>
-<tr class="odd">
-<td align="left">Q63</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.25</td>
-</tr>
-<tr class="even">
-<td align="left">Q64</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.30</td>
-</tr>
-<tr class="odd">
-<td align="left">Q65</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.83</td>
-</tr>
-<tr class="even">
-<td align="left">Q66</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">0.76</td>
-</tr>
-<tr class="odd">
-<td align="left">Q68</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.54</td>
-</tr>
-<tr class="even">
-<td align="left">Q69</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">0.47</td>
-</tr>
-<tr class="odd">
-<td align="left">Q70</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.48</td>
-</tr>
-<tr class="even">
-<td align="left">Q71</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">0.47</td>
-</tr>
-<tr class="odd">
-<td align="left">Q72</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-1.12</td>
-</tr>
-<tr class="even">
-<td align="left">Q73</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.05</td>
-</tr>
-<tr class="odd">
-<td align="left">Q74</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">0.25</td>
-</tr>
-<tr class="even">
-<td align="left">Q76</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">0.28</td>
-</tr>
-<tr class="odd">
-<td align="left">Q77</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">0.54</td>
-</tr>
-<tr class="even">
-<td align="left">Q78</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">0.23</td>
-</tr>
-<tr class="odd">
-<td align="left">Q79</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.16</td>
-</tr>
-<tr class="even">
-<td align="left">Q80</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">0.53</td>
-</tr>
-<tr class="odd">
-<td align="left">Q81</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.92</td>
-</tr>
-<tr class="even">
-<td align="left">Q82</td>
-<td align="right">1</td>
-<td align="right">0.15</td>
-<td align="right">-0.11</td>
-<td align="right">0.79</td>
-<td align="right">1.39</td>
-<td align="right">-0.33</td>
-</tr>
-</tbody>
-</table>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="item-analysis.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(results.rsm, <span class="at">type =</span> <span class="st">&quot;trace&quot;</span>, <span class="at">which.items =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>),</span>
-<span id="cb31-2"><a href="item-analysis.html#cb31-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> <span class="st">&quot;&quot;</span>, <span class="at">par.settings =</span> <span class="fu">simpleTheme</span>(<span class="at">lty =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">lwd =</span> <span class="dv">2</span>),</span>
-<span id="cb31-3"><a href="item-analysis.html#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">auto.key =</span> <span class="fu">list</span>(<span class="at">points =</span> <span class="cn">FALSE</span>, <span class="at">lines =</span> <span class="cn">TRUE</span>, <span class="at">columns =</span> <span class="dv">4</span>))  <span class="co"># option curves</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/rsm-plots-1.png" width="672" /></p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="item-analysis.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(results.rsm, <span class="at">type =</span> <span class="st">&quot;itemscore&quot;</span>, <span class="at">theta_lim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">4</span>), <span class="at">lwd =</span> <span class="dv">2</span>,</span>
-<span id="cb32-2"><a href="item-analysis.html#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">facet_items =</span> <span class="cn">FALSE</span>)  <span class="co"># item scoring traceline</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/rsm-plots-2.png" width="672" /></p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="item-analysis.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(results.rsm, type = &#39;infotrace&#39;, which.items =</span></span>
-<span id="cb33-2"><a href="item-analysis.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># c(1,2,3,4), main = &#39;&#39;, par.settings = simpleTheme(lwd=2))</span></span>
-<span id="cb33-3"><a href="item-analysis.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># # item information functions (IIF) plot(results.rsm, type</span></span>
-<span id="cb33-4"><a href="item-analysis.html#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co"># = &#39;info&#39;, theta_lim = c(-4,4), lwd=2) # test information</span></span>
-<span id="cb33-5"><a href="item-analysis.html#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co"># curve plot(results.rsm, type = &#39;SE&#39;, theta_lim = c(-4,4),</span></span>
-<span id="cb33-6"><a href="item-analysis.html#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="co"># lwd=2) # test standard errors</span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="item-analysis.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># model.rsm &lt;- &#39;SPIRITUAL ABUSE RSM = 1-66&#39;</span></span>
+<span id="cb24-2"><a href="item-analysis.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># results.rsm &lt;- mirt(data=items, model=model.rsm, itemtype=&quot;rsm&quot;, verbose=FALSE)</span></span>
+<span id="cb24-3"><a href="item-analysis.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># coef.rsm &lt;- coef(results.rsm, simplify=TRUE)</span></span>
+<span id="cb24-4"><a href="item-analysis.html#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># items.rsm &lt;- as.data.frame(coef.rsm$items)</span></span>
+<span id="cb24-5"><a href="item-analysis.html#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co"># print(summary(results.rsm))</span></span>
+<span id="cb24-6"><a href="item-analysis.html#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co"># #print(items.rsm)</span></span>
+<span id="cb24-7"><a href="item-analysis.html#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co"># knitr::kable(round(items.rsm,2), caption = &quot;Rating Scale Model (RSM) - Item Parameters&quot;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="item-analysis.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(results.rsm, type = &#39;trace&#39;, which.items = c(1,2,3,4),</span></span>
+<span id="cb25-2"><a href="item-analysis.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co">#      main = &quot;&quot;, par.settings = simpleTheme(lty=1:4,lwd=2),</span></span>
+<span id="cb25-3"><a href="item-analysis.html#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co">#      auto.key=list(points=FALSE,lines=TRUE, columns=4)) # option curves</span></span>
+<span id="cb25-4"><a href="item-analysis.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(results.rsm, type = &#39;itemscore&#39;, theta_lim = c(-4,4), lwd=2, facet_items = FALSE) # item scoring traceline</span></span>
+<span id="cb25-5"><a href="item-analysis.html#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="item-analysis.html#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(results.rsm, type = &#39;infotrace&#39;, which.items = c(1,2,3,4),</span></span>
+<span id="cb25-7"><a href="item-analysis.html#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co">#     main = &quot;&quot;, par.settings = simpleTheme(lwd=2)) # item information functions (IIF)</span></span>
+<span id="cb25-8"><a href="item-analysis.html#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(results.rsm, type = &#39;info&#39;, theta_lim = c(-4,4), lwd=2) # test information curve</span></span>
+<span id="cb25-9"><a href="item-analysis.html#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(results.rsm, type = &#39;SE&#39;, theta_lim = c(-4,4), lwd=2) # test standard errors</span></span></code></pre></div>
 </div>
 <div id="graded-response-model-grm" class="section level3 hasAnchor">
 <h3>Graded Response Model (GRM)<a href="item-analysis.html#graded-response-model-grm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="item-analysis.html#cb34-1" aria-hidden="true" tabindex="-1"></a>model.grm <span class="ot">&lt;-</span> <span class="st">&quot;SPIRITUAL ABUSE GRM = 1-66&quot;</span></span>
-<span id="cb34-2"><a href="item-analysis.html#cb34-2" aria-hidden="true" tabindex="-1"></a>results.grm <span class="ot">&lt;-</span> <span class="fu">mirt</span>(<span class="at">data =</span> items, <span class="at">model =</span> model.grm, <span class="at">itemtype =</span> <span class="st">&quot;graded&quot;</span>,</span>
-<span id="cb34-3"><a href="item-analysis.html#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb34-4"><a href="item-analysis.html#cb34-4" aria-hidden="true" tabindex="-1"></a>coef.grm <span class="ot">&lt;-</span> <span class="fu">coef</span>(results.grm, <span class="at">simplify =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb34-5"><a href="item-analysis.html#cb34-5" aria-hidden="true" tabindex="-1"></a>items.grm <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(coef.grm<span class="sc">$</span>items)</span>
-<span id="cb34-6"><a href="item-analysis.html#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">summary</span>(results.grm))</span></code></pre></div>
-<pre><code>    SPIRITUALABUSEGRM     h2
-Q7              0.727 0.5290
-Q10             0.739 0.5465
-Q11             0.820 0.6723
-Q16             0.742 0.5499
-Q17             0.535 0.2867
-Q18             0.830 0.6894
-Q19             0.817 0.6671
-Q20             0.752 0.5659
-Q21             0.761 0.5795
-Q22             0.761 0.5796
-Q23             0.715 0.5116
-Q24             0.757 0.5738
-Q25             0.816 0.6666
-Q26             0.758 0.5741
-Q27             0.528 0.2793
-Q28             0.778 0.6060
-Q29             0.732 0.5362
-Q30             0.780 0.6078
-Q31             0.699 0.4892
-Q32             0.785 0.6166
-Q34             0.707 0.4999
-Q35             0.786 0.6180
-Q36             0.811 0.6581
-Q37             0.801 0.6412
-Q38             0.851 0.7238
-Q39             0.776 0.6028
-Q40             0.819 0.6703
-Q41             0.488 0.2377
-Q42             0.817 0.6676
-Q43             0.803 0.6453
-Q44             0.847 0.7175
-Q45             0.770 0.5924
-Q46             0.329 0.1080
-Q47             0.657 0.4319
-Q49             0.786 0.6182
-Q50             0.579 0.3352
-Q51             0.679 0.4606
-Q52             0.825 0.6805
-Q53             0.784 0.6148
-Q54             0.803 0.6441
-Q55             0.307 0.0944
-Q56             0.866 0.7497
-Q57             0.790 0.6237
-Q58             0.781 0.6097
-Q59             0.821 0.6742
-Q60             0.606 0.3670
-Q61             0.770 0.5927
-Q62             0.715 0.5105
-Q63             0.823 0.6766
-Q64             0.760 0.5778
-Q65             0.699 0.4889
-Q66             0.773 0.5970
-Q68             0.755 0.5698
-Q69             0.629 0.3955
-Q70             0.606 0.3675
-Q71             0.779 0.6075
-Q72             0.655 0.4288
-Q73             0.679 0.4605
-Q74             0.651 0.4233
-Q76             0.787 0.6195
-Q77             0.823 0.6774
-Q78             0.710 0.5043
-Q79             0.645 0.4165
-Q80             0.738 0.5444
-Q81             0.752 0.5660
-Q82             0.662 0.4385
-
-SS loadings:  35.877 
-Proportion Var:  0.544 
-
-Factor correlations: 
-
-                  SPIRITUALABUSEGRM
-SPIRITUALABUSEGRM                 1
-$rotF
-    SPIRITUALABUSEGRM
-Q7          0.7273447
-Q10         0.7392654
-Q11         0.8199105
-Q16         0.7415796
-Q17         0.5354169
-Q18         0.8302895
-Q19         0.8167810
-Q20         0.7522586
-Q21         0.7612588
-Q22         0.7613129
-Q23         0.7152675
-Q24         0.7574735
-Q25         0.8164676
-Q26         0.7577021
-Q27         0.5284502
-Q28         0.7784905
-Q29         0.7322242
-Q30         0.7796425
-Q31         0.6994070
-Q32         0.7852474
-Q34         0.7070087
-Q35         0.7861148
-Q36         0.8112530
-Q37         0.8007379
-Q38         0.8507415
-Q39         0.7764261
-Q40         0.8187023
-Q41         0.4875086
-Q42         0.8170742
-Q43         0.8032980
-Q44         0.8470270
-Q45         0.7696765
-Q46         0.3286257
-Q47         0.6572126
-Q49         0.7862305
-Q50         0.5789845
-Q51         0.6786928
-Q52         0.8249420
-Q53         0.7841150
-Q54         0.8025781
-Q55         0.3073124
-Q56         0.8658399
-Q57         0.7897445
-Q58         0.7808479
-Q59         0.8210990
-Q60         0.6057677
-Q61         0.7698478
-Q62         0.7145275
-Q63         0.8225350
-Q64         0.7601200
-Q65         0.6991821
-Q66         0.7726298
-Q68         0.7548566
-Q69         0.6289129
-Q70         0.6062136
-Q71         0.7794003
-Q72         0.6548466
-Q73         0.6785923
-Q74         0.6506270
-Q76         0.7871014
-Q77         0.8230311
-Q78         0.7101742
-Q79         0.6453957
-Q80         0.7378229
-Q81         0.7523344
-Q82         0.6621952
-
-$h2
-            h2
-Q7  0.52903026
-Q10 0.54651327
-Q11 0.67225315
-Q16 0.54994032
-Q17 0.28667123
-Q18 0.68938069
-Q19 0.66713127
-Q20 0.56589296
-Q21 0.57951499
-Q22 0.57959735
-Q23 0.51160755
-Q24 0.57376617
-Q25 0.66661936
-Q26 0.57411254
-Q27 0.27925964
-Q28 0.60604748
-Q29 0.53615222
-Q30 0.60784237
-Q31 0.48917014
-Q32 0.61661355
-Q34 0.49986135
-Q35 0.61797647
-Q36 0.65813139
-Q37 0.64118125
-Q38 0.72376112
-Q39 0.60283750
-Q40 0.67027346
-Q41 0.23766463
-Q42 0.66761017
-Q43 0.64528775
-Q44 0.71745468
-Q45 0.59240198
-Q46 0.10799484
-Q47 0.43192841
-Q49 0.61815847
-Q50 0.33522304
-Q51 0.46062394
-Q52 0.68052935
-Q53 0.61483632
-Q54 0.64413157
-Q55 0.09444091
-Q56 0.74967866
-Q57 0.62369635
-Q58 0.60972338
-Q59 0.67420354
-Q60 0.36695451
-Q61 0.59266565
-Q62 0.51054950
-Q63 0.67656376
-Q64 0.57778236
-Q65 0.48885564
-Q66 0.59695684
-Q68 0.56980842
-Q69 0.39553148
-Q70 0.36749487
-Q71 0.60746490
-Q72 0.42882404
-Q73 0.46048752
-Q74 0.42331555
-Q76 0.61952855
-Q77 0.67738024
-Q78 0.50434733
-Q79 0.41653555
-Q80 0.54438258
-Q81 0.56600712
-Q82 0.43850244
-
-$fcor
-                  SPIRITUALABUSEGRM
-SPIRITUALABUSEGRM                 1</code></pre>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="item-analysis.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print(items.grm)</span></span>
-<span id="cb36-2"><a href="item-analysis.html#cb36-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">round</span>(items.grm, <span class="dv">2</span>), <span class="at">caption =</span> <span class="st">&quot;Graded Response Model (GRM) - Item Parameters&quot;</span>)</span></code></pre></div>
-<table>
-<caption><span id="tab:unnamed-chunk-6">Table 5: </span>Graded Response Model (GRM) - Item Parameters</caption>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="right">a1</th>
-<th align="right">d1</th>
-<th align="right">d2</th>
-<th align="right">d3</th>
-<th align="right">d4</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Q7</td>
-<td align="right">1.80</td>
-<td align="right">0.91</td>
-<td align="right">-0.19</td>
-<td align="right">-1.39</td>
-<td align="right">-2.78</td>
-</tr>
-<tr class="even">
-<td align="left">Q10</td>
-<td align="right">1.87</td>
-<td align="right">-0.58</td>
-<td align="right">-1.65</td>
-<td align="right">-2.94</td>
-<td align="right">-4.34</td>
-</tr>
-<tr class="odd">
-<td align="left">Q11</td>
-<td align="right">2.44</td>
-<td align="right">1.33</td>
-<td align="right">-0.28</td>
-<td align="right">-1.83</td>
-<td align="right">-3.82</td>
-</tr>
-<tr class="even">
-<td align="left">Q16</td>
-<td align="right">1.88</td>
-<td align="right">0.32</td>
-<td align="right">-1.04</td>
-<td align="right">-2.39</td>
-<td align="right">-3.88</td>
-</tr>
-<tr class="odd">
-<td align="left">Q17</td>
-<td align="right">1.08</td>
-<td align="right">-2.31</td>
-<td align="right">-2.55</td>
-<td align="right">-3.00</td>
-<td align="right">-3.65</td>
-</tr>
-<tr class="even">
-<td align="left">Q18</td>
-<td align="right">2.54</td>
-<td align="right">1.85</td>
-<td align="right">0.43</td>
-<td align="right">-1.52</td>
-<td align="right">-3.46</td>
-</tr>
-<tr class="odd">
-<td align="left">Q19</td>
-<td align="right">2.41</td>
-<td align="right">0.69</td>
-<td align="right">-0.68</td>
-<td align="right">-2.26</td>
-<td align="right">-4.17</td>
-</tr>
-<tr class="even">
-<td align="left">Q20</td>
-<td align="right">1.94</td>
-<td align="right">0.00</td>
-<td align="right">-0.98</td>
-<td align="right">-2.11</td>
-<td align="right">-3.39</td>
-</tr>
-<tr class="odd">
-<td align="left">Q21</td>
-<td align="right">2.00</td>
-<td align="right">-0.10</td>
-<td align="right">-1.00</td>
-<td align="right">-1.98</td>
-<td align="right">-3.00</td>
-</tr>
-<tr class="even">
-<td align="left">Q22</td>
-<td align="right">2.00</td>
-<td align="right">2.23</td>
-<td align="right">1.25</td>
-<td align="right">0.17</td>
-<td align="right">-1.44</td>
-</tr>
-<tr class="odd">
-<td align="left">Q23</td>
-<td align="right">1.74</td>
-<td align="right">-0.08</td>
-<td align="right">-1.39</td>
-<td align="right">-2.94</td>
-<td align="right">-4.57</td>
-</tr>
-<tr class="even">
-<td align="left">Q24</td>
-<td align="right">1.97</td>
-<td align="right">-0.41</td>
-<td align="right">-1.51</td>
-<td align="right">-3.01</td>
-<td align="right">-4.59</td>
-</tr>
-<tr class="odd">
-<td align="left">Q25</td>
-<td align="right">2.41</td>
-<td align="right">3.06</td>
-<td align="right">1.47</td>
-<td align="right">-0.49</td>
-<td align="right">-2.68</td>
-</tr>
-<tr class="even">
-<td align="left">Q26</td>
-<td align="right">1.98</td>
-<td align="right">-0.69</td>
-<td align="right">-1.65</td>
-<td align="right">-2.63</td>
-<td align="right">-3.99</td>
-</tr>
-<tr class="odd">
-<td align="left">Q27</td>
-<td align="right">1.06</td>
-<td align="right">-0.50</td>
-<td align="right">-1.06</td>
-<td align="right">-1.85</td>
-<td align="right">-2.80</td>
-</tr>
-<tr class="even">
-<td align="left">Q28</td>
-<td align="right">2.11</td>
-<td align="right">0.85</td>
-<td align="right">-0.79</td>
-<td align="right">-2.32</td>
-<td align="right">-4.22</td>
-</tr>
-<tr class="odd">
-<td align="left">Q29</td>
-<td align="right">1.83</td>
-<td align="right">1.03</td>
-<td align="right">-0.18</td>
-<td align="right">-1.65</td>
-<td align="right">-3.34</td>
-</tr>
-<tr class="even">
-<td align="left">Q30</td>
-<td align="right">2.12</td>
-<td align="right">-0.04</td>
-<td align="right">-1.19</td>
-<td align="right">-2.66</td>
-<td align="right">-4.43</td>
-</tr>
-<tr class="odd">
-<td align="left">Q31</td>
-<td align="right">1.67</td>
-<td align="right">0.21</td>
-<td align="right">-1.14</td>
-<td align="right">-2.62</td>
-<td align="right">-4.10</td>
-</tr>
-<tr class="even">
-<td align="left">Q32</td>
-<td align="right">2.16</td>
-<td align="right">1.91</td>
-<td align="right">0.61</td>
-<td align="right">-1.29</td>
-<td align="right">-3.35</td>
-</tr>
-<tr class="odd">
-<td align="left">Q34</td>
-<td align="right">1.70</td>
-<td align="right">0.96</td>
-<td align="right">-0.23</td>
-<td align="right">-1.63</td>
-<td align="right">-3.24</td>
-</tr>
-<tr class="even">
-<td align="left">Q35</td>
-<td align="right">2.16</td>
-<td align="right">2.41</td>
-<td align="right">1.13</td>
-<td align="right">-0.51</td>
-<td align="right">-2.28</td>
-</tr>
-<tr class="odd">
-<td align="left">Q36</td>
-<td align="right">2.36</td>
-<td align="right">2.06</td>
-<td align="right">0.49</td>
-<td align="right">-1.34</td>
-<td align="right">-3.43</td>
-</tr>
-<tr class="even">
-<td align="left">Q37</td>
-<td align="right">2.28</td>
-<td align="right">2.24</td>
-<td align="right">0.80</td>
-<td align="right">-0.95</td>
-<td align="right">-2.81</td>
-</tr>
-<tr class="odd">
-<td align="left">Q38</td>
-<td align="right">2.75</td>
-<td align="right">2.42</td>
-<td align="right">0.86</td>
-<td align="right">-1.11</td>
-<td align="right">-3.04</td>
-</tr>
-<tr class="even">
-<td align="left">Q39</td>
-<td align="right">2.10</td>
-<td align="right">1.94</td>
-<td align="right">0.90</td>
-<td align="right">-0.52</td>
-<td align="right">-2.07</td>
-</tr>
-<tr class="odd">
-<td align="left">Q40</td>
-<td align="right">2.43</td>
-<td align="right">0.40</td>
-<td align="right">-0.83</td>
-<td align="right">-2.32</td>
-<td align="right">-3.74</td>
-</tr>
-<tr class="even">
-<td align="left">Q41</td>
-<td align="right">0.95</td>
-<td align="right">-2.43</td>
-<td align="right">-2.73</td>
-<td align="right">-3.23</td>
-<td align="right">-3.79</td>
-</tr>
-<tr class="odd">
-<td align="left">Q42</td>
-<td align="right">2.41</td>
-<td align="right">2.01</td>
-<td align="right">0.03</td>
-<td align="right">-1.98</td>
-<td align="right">-4.12</td>
-</tr>
-<tr class="even">
-<td align="left">Q43</td>
-<td align="right">2.30</td>
-<td align="right">0.28</td>
-<td align="right">-1.32</td>
-<td align="right">-3.10</td>
-<td align="right">-4.95</td>
-</tr>
-<tr class="odd">
-<td align="left">Q44</td>
-<td align="right">2.71</td>
-<td align="right">1.59</td>
-<td align="right">0.07</td>
-<td align="right">-1.83</td>
-<td align="right">-4.07</td>
-</tr>
-<tr class="even">
-<td align="left">Q45</td>
-<td align="right">2.05</td>
-<td align="right">1.49</td>
-<td align="right">0.24</td>
-<td align="right">-1.10</td>
-<td align="right">-2.59</td>
-</tr>
-<tr class="odd">
-<td align="left">Q46</td>
-<td align="right">0.59</td>
-<td align="right">-2.89</td>
-<td align="right">-3.52</td>
-<td align="right">-4.67</td>
-<td align="right">-5.67</td>
-</tr>
-<tr class="even">
-<td align="left">Q47</td>
-<td align="right">1.48</td>
-<td align="right">-1.18</td>
-<td align="right">-2.47</td>
-<td align="right">-4.08</td>
-<td align="right">-5.32</td>
-</tr>
-<tr class="odd">
-<td align="left">Q49</td>
-<td align="right">2.17</td>
-<td align="right">0.41</td>
-<td align="right">-1.10</td>
-<td align="right">-2.65</td>
-<td align="right">-4.46</td>
-</tr>
-<tr class="even">
-<td align="left">Q50</td>
-<td align="right">1.21</td>
-<td align="right">-0.05</td>
-<td align="right">-0.47</td>
-<td align="right">-1.33</td>
-<td align="right">-2.48</td>
-</tr>
-<tr class="odd">
-<td align="left">Q51</td>
-<td align="right">1.57</td>
-<td align="right">0.54</td>
-<td align="right">-0.51</td>
-<td align="right">-1.61</td>
-<td align="right">-3.02</td>
-</tr>
-<tr class="even">
-<td align="left">Q52</td>
-<td align="right">2.48</td>
-<td align="right">0.11</td>
-<td align="right">-1.31</td>
-<td align="right">-2.84</td>
-<td align="right">-4.82</td>
-</tr>
-<tr class="odd">
-<td align="left">Q53</td>
-<td align="right">2.15</td>
-<td align="right">0.75</td>
-<td align="right">-0.52</td>
-<td align="right">-2.03</td>
-<td align="right">-3.63</td>
-</tr>
-<tr class="even">
-<td align="left">Q54</td>
-<td align="right">2.29</td>
-<td align="right">2.03</td>
-<td align="right">0.69</td>
-<td align="right">-1.01</td>
-<td align="right">-2.75</td>
-</tr>
-<tr class="odd">
-<td align="left">Q55</td>
-<td align="right">0.55</td>
-<td align="right">-0.68</td>
-<td align="right">-1.70</td>
-<td align="right">-2.91</td>
-<td align="right">-4.26</td>
-</tr>
-<tr class="even">
-<td align="left">Q56</td>
-<td align="right">2.95</td>
-<td align="right">2.00</td>
-<td align="right">0.34</td>
-<td align="right">-1.64</td>
-<td align="right">-4.03</td>
-</tr>
-<tr class="odd">
-<td align="left">Q57</td>
-<td align="right">2.19</td>
-<td align="right">0.13</td>
-<td align="right">-1.03</td>
-<td align="right">-2.39</td>
-<td align="right">-3.97</td>
-</tr>
-<tr class="even">
-<td align="left">Q58</td>
-<td align="right">2.13</td>
-<td align="right">1.24</td>
-<td align="right">-0.06</td>
-<td align="right">-1.78</td>
-<td align="right">-3.51</td>
-</tr>
-<tr class="odd">
-<td align="left">Q59</td>
-<td align="right">2.45</td>
-<td align="right">0.57</td>
-<td align="right">-1.03</td>
-<td align="right">-2.81</td>
-<td align="right">-4.91</td>
-</tr>
-<tr class="even">
-<td align="left">Q60</td>
-<td align="right">1.30</td>
-<td align="right">-1.43</td>
-<td align="right">-2.15</td>
-<td align="right">-3.06</td>
-<td align="right">-4.42</td>
-</tr>
-<tr class="odd">
-<td align="left">Q61</td>
-<td align="right">2.05</td>
-<td align="right">1.41</td>
-<td align="right">0.31</td>
-<td align="right">-1.01</td>
-<td align="right">-2.55</td>
-</tr>
-<tr class="even">
-<td align="left">Q62</td>
-<td align="right">1.74</td>
-<td align="right">0.40</td>
-<td align="right">-0.74</td>
-<td align="right">-2.35</td>
-<td align="right">-4.03</td>
-</tr>
-<tr class="odd">
-<td align="left">Q63</td>
-<td align="right">2.46</td>
-<td align="right">1.03</td>
-<td align="right">-0.76</td>
-<td align="right">-2.64</td>
-<td align="right">-4.60</td>
-</tr>
-<tr class="even">
-<td align="left">Q64</td>
-<td align="right">1.99</td>
-<td align="right">0.72</td>
-<td align="right">-0.77</td>
-<td align="right">-2.27</td>
-<td align="right">-3.87</td>
-</tr>
-<tr class="odd">
-<td align="left">Q65</td>
-<td align="right">1.66</td>
-<td align="right">-0.53</td>
-<td align="right">-1.58</td>
-<td align="right">-2.75</td>
-<td align="right">-4.12</td>
-</tr>
-<tr class="even">
-<td align="left">Q66</td>
-<td align="right">2.07</td>
-<td align="right">2.52</td>
-<td align="right">1.42</td>
-<td align="right">-0.08</td>
-<td align="right">-1.90</td>
-</tr>
-<tr class="odd">
-<td align="left">Q68</td>
-<td align="right">1.96</td>
-<td align="right">-0.01</td>
-<td align="right">-1.12</td>
-<td align="right">-2.65</td>
-<td align="right">-4.38</td>
-</tr>
-<tr class="even">
-<td align="left">Q69</td>
-<td align="right">1.38</td>
-<td align="right">2.47</td>
-<td align="right">0.91</td>
-<td align="right">-0.89</td>
-<td align="right">-2.54</td>
-</tr>
-<tr class="odd">
-<td align="left">Q70</td>
-<td align="right">1.30</td>
-<td align="right">0.43</td>
-<td align="right">-0.82</td>
-<td align="right">-2.28</td>
-<td align="right">-3.66</td>
-</tr>
-<tr class="even">
-<td align="left">Q71</td>
-<td align="right">2.12</td>
-<td align="right">2.31</td>
-<td align="right">0.83</td>
-<td align="right">-0.88</td>
-<td align="right">-2.60</td>
-</tr>
-<tr class="odd">
-<td align="left">Q72</td>
-<td align="right">1.47</td>
-<td align="right">-0.81</td>
-<td align="right">-1.93</td>
-<td align="right">-3.46</td>
-<td align="right">-4.81</td>
-</tr>
-<tr class="even">
-<td align="left">Q73</td>
-<td align="right">1.57</td>
-<td align="right">1.08</td>
-<td align="right">-0.18</td>
-<td align="right">-1.65</td>
-<td align="right">-3.14</td>
-</tr>
-<tr class="odd">
-<td align="left">Q74</td>
-<td align="right">1.46</td>
-<td align="right">1.69</td>
-<td align="right">0.44</td>
-<td align="right">-1.12</td>
-<td align="right">-2.76</td>
-</tr>
-<tr class="even">
-<td align="left">Q76</td>
-<td align="right">2.17</td>
-<td align="right">1.50</td>
-<td align="right">0.27</td>
-<td align="right">-1.08</td>
-<td align="right">-2.49</td>
-</tr>
-<tr class="odd">
-<td align="left">Q77</td>
-<td align="right">2.47</td>
-<td align="right">3.09</td>
-<td align="right">1.22</td>
-<td align="right">-0.83</td>
-<td align="right">-3.16</td>
-</tr>
-<tr class="even">
-<td align="left">Q78</td>
-<td align="right">1.72</td>
-<td align="right">1.78</td>
-<td align="right">0.42</td>
-<td align="right">-1.21</td>
-<td align="right">-2.99</td>
-</tr>
-<tr class="odd">
-<td align="left">Q79</td>
-<td align="right">1.44</td>
-<td align="right">0.96</td>
-<td align="right">-0.30</td>
-<td align="right">-1.84</td>
-<td align="right">-3.18</td>
-</tr>
-<tr class="even">
-<td align="left">Q80</td>
-<td align="right">1.86</td>
-<td align="right">2.74</td>
-<td align="right">1.12</td>
-<td align="right">-0.75</td>
-<td align="right">-2.87</td>
-</tr>
-<tr class="odd">
-<td align="left">Q81</td>
-<td align="right">1.94</td>
-<td align="right">-0.47</td>
-<td align="right">-1.94</td>
-<td align="right">-3.68</td>
-<td align="right">-5.33</td>
-</tr>
-<tr class="even">
-<td align="left">Q82</td>
-<td align="right">1.50</td>
-<td align="right">0.68</td>
-<td align="right">-0.61</td>
-<td align="right">-2.27</td>
-<td align="right">-3.69</td>
-</tr>
-</tbody>
-</table>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="item-analysis.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(results.grm, <span class="at">type =</span> <span class="st">&quot;trace&quot;</span>, <span class="at">which.items =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>),</span>
-<span id="cb37-2"><a href="item-analysis.html#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> <span class="st">&quot;&quot;</span>, <span class="at">par.settings =</span> <span class="fu">simpleTheme</span>(<span class="at">lty =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">lwd =</span> <span class="dv">2</span>),</span>
-<span id="cb37-3"><a href="item-analysis.html#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">auto.key =</span> <span class="fu">list</span>(<span class="at">points =</span> <span class="cn">FALSE</span>, <span class="at">lines =</span> <span class="cn">TRUE</span>, <span class="at">columns =</span> <span class="dv">4</span>))  <span class="co"># option curves</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="item-analysis.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(results.grm, <span class="at">type =</span> <span class="st">&quot;itemscore&quot;</span>, <span class="at">theta_lim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">4</span>), <span class="at">lwd =</span> <span class="dv">2</span>,</span>
-<span id="cb38-2"><a href="item-analysis.html#cb38-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">facet_items =</span> <span class="cn">FALSE</span>)  <span class="co"># item scoring traceline</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="item-analysis.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(results.rsm, type = &#39;infotrace&#39;, which.items =</span></span>
-<span id="cb39-2"><a href="item-analysis.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co"># c(1,2,3,4), main = &#39;&#39;, par.settings = simpleTheme(lwd=2))</span></span>
-<span id="cb39-3"><a href="item-analysis.html#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># # item information functions (IIF) plot(results.rsm, type</span></span>
-<span id="cb39-4"><a href="item-analysis.html#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># = &#39;info&#39;, theta_lim = c(-4,4), lwd=2) # test information</span></span>
-<span id="cb39-5"><a href="item-analysis.html#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co"># curve plot(results.rsm, type = &#39;SE&#39;, theta_lim = c(-4,4),</span></span>
-<span id="cb39-6"><a href="item-analysis.html#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="co"># lwd=2) # test standard errors</span></span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="item-analysis.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># model.grm &lt;- &#39;SPIRITUAL ABUSE GRM = 1-66&#39;</span></span>
+<span id="cb26-2"><a href="item-analysis.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># results.grm &lt;- mirt(data=items, model=model.grm, itemtype=&quot;graded&quot;, verbose=FALSE)</span></span>
+<span id="cb26-3"><a href="item-analysis.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># coef.grm &lt;- coef(results.grm, simplify=TRUE)</span></span>
+<span id="cb26-4"><a href="item-analysis.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co"># items.grm &lt;- as.data.frame(coef.grm$items)</span></span>
+<span id="cb26-5"><a href="item-analysis.html#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co"># print(summary(results.grm))</span></span>
+<span id="cb26-6"><a href="item-analysis.html#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co"># #print(items.grm)</span></span>
+<span id="cb26-7"><a href="item-analysis.html#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co"># knitr::kable(round(items.grm,2), caption = &quot;Graded Response Model (GRM) - Item Parameters&quot;)</span></span>
+<span id="cb26-8"><a href="item-analysis.html#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb26-9"><a href="item-analysis.html#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb26-10"><a href="item-analysis.html#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(results.grm, type = &#39;trace&#39;, which.items = c(1,2,3,4),</span></span>
+<span id="cb26-11"><a href="item-analysis.html#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="co">#      main = &quot;&quot;, par.settings = simpleTheme(lty=1:4,lwd=2),</span></span>
+<span id="cb26-12"><a href="item-analysis.html#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="co">#      auto.key=list(points=FALSE,lines=TRUE, columns=4)) # option curves</span></span>
+<span id="cb26-13"><a href="item-analysis.html#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(results.grm, type = &#39;itemscore&#39;, theta_lim = c(-4,4), lwd=2, facet_items = FALSE) # item scoring traceline</span></span>
+<span id="cb26-14"><a href="item-analysis.html#cb26-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-15"><a href="item-analysis.html#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(results.rsm, type = &#39;infotrace&#39;, which.items = c(1,2,3,4),</span></span>
+<span id="cb26-16"><a href="item-analysis.html#cb26-16" aria-hidden="true" tabindex="-1"></a><span class="co">#     main = &quot;&quot;, par.settings = simpleTheme(lwd=2)) # item information functions (IIF)</span></span>
+<span id="cb26-17"><a href="item-analysis.html#cb26-17" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(results.rsm, type = &#39;info&#39;, theta_lim = c(-4,4), lwd=2) # test information curve</span></span>
+<span id="cb26-18"><a href="item-analysis.html#cb26-18" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(results.rsm, type = &#39;SE&#39;, theta_lim = c(-4,4), lwd=2) # test standard errors</span></span></code></pre></div>
 <p>In the Graded Response Model, between category threshold parameters are ordered.</p>
 </div>
 </div>
@@ -3749,12 +1642,6 @@ SPIRITUALABUSEGRM                 1</code></pre>
 <h2>Summary<a href="item-analysis.html#summary-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="1">
-<li id="fn1"><p>and this is important because…<a href="item-analysis.html#fnref1" class="footnote-back">↩︎</a></p></li>
-</ol>
 </div>
             </section>
 
