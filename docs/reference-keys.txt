@@ -1,3 +1,0 @@
-tab:mirt-items
-tab:pcm-item-fit
-tab:pcm-model-fit
