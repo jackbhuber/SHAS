@@ -12,7 +12,7 @@ set in the _output.yml file.</p>" />
 
   <meta property="og:title" content="Scale Analysis | Validity Evidence for the Spiritual Harm and Abuse Scale (SHAS)" />
   <meta property="og:type" content="book" />
-  <meta property="og:image" content="/dk-circle-large.jpeg" />
+  
   <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
@@ -24,12 +24,13 @@ set in the _output.yml file.</p>" />
   <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
-  <meta name="twitter:image" content="/dk-circle-large.jpeg" />
+  
 
-<meta name="author" content="Jack Huber and Dan Koch" />
+<meta name="author" content="Jack Huber, Swedish Medical Center" />
+<meta name="author" content="Dan Koch, Northwest University" />
 
 
-<meta name="date" content="2022-04-23" />
+<meta name="date" content="2022-04-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -258,13 +259,13 @@ div.csl-indent {
 <h2>The Item-Person Map<a href="scale-analysis.html#the-item-person-map" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The item-person map (also known as the Wright map) is a tool for visualizing the results of a calibration of items and persons. The Wright map was originally developed for use in test development but it also helps illuminate the results of surveys <span class="citation">(<a href="references.html#ref-bulut20215" role="doc-biblioref">Bulut 2021</a>)</span>. As <span class="citation">Bulut (<a href="references.html#ref-bulut20215" role="doc-biblioref">2021</a>)</span> explains:</p>
 <p><em>“The Partial Credit Model (PCM), which is an extension of the Rasch model for polytomous item responses, can be used for survey development and validation (Green &amp; Frantom, 2002). We can analyze survey items using PCM and obtain item thresholds for each item. These thresholds indicate the magnitude of the latent trait required to select a particular response option (e.g., selecting disagree over strongly disagree). Using an item-person map, we can see thresholds for the items as well as the distribution of the latent trait for the respondents. This plot is quite useful for analyzing the alignment (or match) between the items and respondents answering the items.”</em></p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="scale-analysis.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ITEM-PERSON MAP #1: FOR ALL THE SHAS ITEMS</span></span>
-<span id="cb26-2"><a href="scale-analysis.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;code/itempersonmap.R&quot;</span>)</span>
-<span id="cb26-3"><a href="scale-analysis.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;mirt&quot;</span>)</span>
-<span id="cb26-4"><a href="scale-analysis.html#cb26-4" aria-hidden="true" tabindex="-1"></a>items <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/items.csv&quot;</span>)</span>
-<span id="cb26-5"><a href="scale-analysis.html#cb26-5" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">mirt</span>(items, <span class="dv">1</span>, <span class="at">itemtype =</span> <span class="st">&quot;Rasch&quot;</span>, <span class="at">technical =</span> <span class="fu">list</span>(<span class="at">removeEmptyRows =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb26-6"><a href="scale-analysis.html#cb26-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="cn">FALSE</span>)  <span class="co"># estimate the Partial Credit Model</span></span>
-<span id="cb26-7"><a href="scale-analysis.html#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="fu">itempersonmap</span>(mod)  <span class="co"># create the item-person map</span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r bg-success"><code class="sourceCode r"><span id="cb24-1"><a href="scale-analysis.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ITEM-PERSON MAP #1: FOR ALL THE SHAS ITEMS</span></span>
+<span id="cb24-2"><a href="scale-analysis.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;code/itempersonmap.R&quot;</span>)</span>
+<span id="cb24-3"><a href="scale-analysis.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;mirt&quot;</span>)</span>
+<span id="cb24-4"><a href="scale-analysis.html#cb24-4" aria-hidden="true" tabindex="-1"></a>items <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/items.csv&quot;</span>)</span>
+<span id="cb24-5"><a href="scale-analysis.html#cb24-5" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">mirt</span>(items, <span class="dv">1</span>, <span class="at">itemtype =</span> <span class="st">&quot;Rasch&quot;</span>, <span class="at">technical =</span> <span class="fu">list</span>(<span class="at">removeEmptyRows =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb24-6"><a href="scale-analysis.html#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="cn">FALSE</span>)  <span class="co"># estimate the Partial Credit Model</span></span>
+<span id="cb24-7"><a href="scale-analysis.html#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">itempersonmap</span>(mod)  <span class="co"># create the item-person map</span></span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:wright"></span>
 <img src="_main_files/figure-html/wright-1.png" alt="Item-Person Map: All Likert Items" width="672" />
 <p class="caption">

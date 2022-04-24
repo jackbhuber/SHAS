@@ -37,7 +37,7 @@
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
   pdftitle={Validity Evidence for the Spiritual Harm and Abuse Scale (SHAS)},
-  pdfauthor={Jack Huber and Dan Koch},
+  pdfauthor={Jack Huber, Swedish Medical Center; Dan Koch, Northwest University},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
@@ -139,8 +139,8 @@
 \bibliographystyle{plainnat}
 
 \title{Validity Evidence for the Spiritual Harm and Abuse Scale (SHAS)}
-\author{Jack Huber and Dan Koch}
-\date{2022-04-23}
+\author{Jack Huber, Swedish Medical Center \and Dan Koch, Northwest University}
+\date{2022-04-24}
 
 \begin{document}
 \maketitle
@@ -154,7 +154,7 @@
 
 This is a reproducible research project for validation of the nascent Spiritual Harm and Abuse Scale (SHAS), developed by Dan Koch. It aims to function as an evolving technical report to conceptualize and document various validity studies -- and, by extension, validity evidence -- for this scale. We hope some of these validity considerations and empirical studies amount to meaningful publishable contributions to the nascent research literature in spiritual abuse and/or the literature in religion, counseling psychology, and/or psychological measurement.
 
-The project is open source, for collaboraion. It is built in R using the R Studio IDE. No Excel, no SPSS, no Word. It is built in \texttt{bookdown} and hosted at Github as a public repository at \url{https://github.com/jackbhuber/SHAS}. There it is served over Github Pages as a website -- \url{https://jackhuber.org/SHAS/} -- for collaboration between Jack and Dan.
+The project is open source, for collaboration. It is built in R using the R Studio IDE \citep{R-base}. No Excel, no SPSS, no Word. It is built in \texttt{bookdown} (\citet{R-bookdown}) and hosted at Github as a public repository at \url{https://github.com/jackbhuber/SHAS}. There it is served over Github Pages as a website -- \url{https://jackhuber.org/SHAS/} -- for collaboration between Jack and Dan.
 
 \hypertarget{research-questions}{%
 \section{Research Questions}\label{research-questions}}
@@ -309,100 +309,11 @@ This chapter documents our decisions surrounding how to prepare the data for ana
 \NormalTok{all }\OtherTok{\textless{}{-}}\NormalTok{ shas[, }\DecValTok{14}\SpecialCharTok{:}\DecValTok{97}\NormalTok{]  }\CommentTok{\# select items, dems from columns 14{-}79}
 \NormalTok{all }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(all, }\AttributeTok{select =} \SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(Ext\_Avg}\SpecialCharTok{:}\NormalTok{Global\_Avg))  }\CommentTok{\# remove columns for now}
 \NormalTok{items }\OtherTok{\textless{}{-}}\NormalTok{ all[, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{66}\NormalTok{]}
-
-\CommentTok{\# VARIABLE LABELS names(items) \textless{}{-} c( \# EXTERNAL EVENTS}
-\CommentTok{\# ITEMS Q7 = \textquotesingle{}EQ7 {-} Pastor speaking on God\textquotesingle{}s behalf\textquotesingle{}, Q10 =}
-\CommentTok{\# \textquotesingle{}EQ10 {-} Asked to give up personal goals by pastor\textquotesingle{}, Q11 =}
-\CommentTok{\# \textquotesingle{}EQ11 {-} Disagree w/pastor portrayed as evil\textquotesingle{}, Q16 = \textquotesingle{}EQ16}
-\CommentTok{\# {-} Church/community abandoning me in difficult time\textquotesingle{}, Q17}
-\CommentTok{\# = \textquotesingle{}EQ17 {-} Treated as less than b/c my sexual}
-\CommentTok{\# orientation\textquotesingle{}, Q18 = \textquotesingle{}EQ18 {-} Church/pastor discourage}
-\CommentTok{\# critical thinking\textquotesingle{}, Q19 = \textquotesingle{}EQ19 {-} Behavior excessively}
-\CommentTok{\# monitored by pastor/group\textquotesingle{}, Q20 = \textquotesingle{}EQ20 {-} Members}
-\CommentTok{\# pressured to give money despite financial hardship\textquotesingle{}, Q21}
-\CommentTok{\# = \textquotesingle{}EQ21 {-} Taught I would risk Hell if left my}
-\CommentTok{\# church/group\textquotesingle{}, Q22 = \textquotesingle{}EQ22 {-} Expected to follow}
-\CommentTok{\# pastor/leader rules re: dating/marriage/sex\textquotesingle{}, Q23 = \textquotesingle{}EQ23}
-\CommentTok{\# {-} Prayer replacing needed medical interventions\textquotesingle{}, Q24 =}
-\CommentTok{\# \textquotesingle{}EQ24 {-} Expected to consult pastor/leader before making}
-\CommentTok{\# non{-}religious decisions\textquotesingle{}, Q25 = \textquotesingle{}EQ25 {-} Feeling unable to}
-\CommentTok{\# raise questions and issues\textquotesingle{}, Q26 = \textquotesingle{}EQ26 {-} Pressured to}
-\CommentTok{\# forgive abuser while abuse was ongoing\textquotesingle{}, Q27 = \textquotesingle{}EQ27 {-}}
-\CommentTok{\# Denied opportunities to serve b/c of my gender\textquotesingle{}, Q28 =}
-\CommentTok{\# \textquotesingle{}EQ28 {-} Leadershi/group protecting abusive individuals\textquotesingle{},}
-\CommentTok{\# Q29 = \textquotesingle{}EQ29 {-} Feeling special when in pastor’s good}
-\CommentTok{\# graces; otherwise ignored\textquotesingle{}, Q30 = \textquotesingle{}EQ30 {-} Deterred from}
-\CommentTok{\# seeking mental health treatment/counseling/medication\textquotesingle{},}
-\CommentTok{\# Q31 = \textquotesingle{}EQ31 {-} Shunned/ignored by pastor/church/group\textquotesingle{},}
-\CommentTok{\# Q32 = \textquotesingle{}EQ32 {-} Feeling unable to express unhappiness\textquotesingle{}, Q34}
-\CommentTok{\# = \textquotesingle{}EQ34 {-} Scripture used to justify physical}
-\CommentTok{\# punishment/severe discipline\textquotesingle{}, Q35 = \textquotesingle{}EQ35 {-} Taught to}
-\CommentTok{\# distrust my emotions\textquotesingle{}, Q36 = \textquotesingle{}EQ36 {-} Mental/physical}
-\CommentTok{\# problems interpreted as spiritual/moral weakness\textquotesingle{}, Q37 =}
-\CommentTok{\# \textquotesingle{}EQ37 {-} Made to feel less spiritually mature than}
-\CommentTok{\# pastor/leadership\textquotesingle{}, Q38 = \textquotesingle{}EQ38 {-} Unrealistic demands}
-\CommentTok{\# placed on my moral/religious behavior\textquotesingle{}, Q39 = \textquotesingle{}EQ39 {-}}
-\CommentTok{\# Made to feel shame over natural sexual desires (not}
-\CommentTok{\# actions)\textquotesingle{}, Q40 = \textquotesingle{}EQ40 {-} Threatening Divine punishment to}
-\CommentTok{\# keep group members in line\textquotesingle{}, Q41 = \textquotesingle{}EQ41 {-} Denied}
-\CommentTok{\# opportunities to serve because of my sexual orientation\textquotesingle{},}
-\CommentTok{\# Q42 = \textquotesingle{}EQ42 {-} Seeing others shamed/shunned by}
-\CommentTok{\# pastor/leader/group\textquotesingle{}, Q43 = \textquotesingle{}EQ43 {-} Shamed by}
-\CommentTok{\# pastor/group for poor spiritual/moral performance\textquotesingle{}, Q44 =}
-\CommentTok{\# \textquotesingle{}EQ44 {-} Love/acceptance offered only for high}
-\CommentTok{\# spiritual/moral performance\textquotesingle{}, Q45 = \textquotesingle{}EQ45 {-}}
-\CommentTok{\# Developmentally{-}inappropriate/anxious Hell/Satan/demons}
-\CommentTok{\# taught to young children\textquotesingle{}, Q46 = \textquotesingle{}EQ46 {-} Treated as less}
-\CommentTok{\# than because of my skin color\textquotesingle{}, Q47 = \textquotesingle{}EQ47 {-} Medical}
-\CommentTok{\# care being postponed/withheld for religious reasons\textquotesingle{}, Q49}
-\CommentTok{\# = \textquotesingle{}EQ49 {-} Leadership/group protecting and elevating}
-\CommentTok{\# abusive individuals\textquotesingle{}, Q50 = \textquotesingle{}EQ50 {-} Treated as less than}
-\CommentTok{\# because of my gender\textquotesingle{}, Q51 = \textquotesingle{}EQ51 {-} Extreme pressure to}
-\CommentTok{\# be pastor/missionary/spiritual leader\textquotesingle{}, Q52 = \textquotesingle{}EQ52 {-}}
-\CommentTok{\# Blamed for harm I suffered rather than blaming who harmed}
-\CommentTok{\# me\textquotesingle{}, Q53 = \textquotesingle{}EQ53 {-} Scripture used to justify abusive}
-\CommentTok{\# parent{-}child behavior\textquotesingle{}, Q54 = \textquotesingle{}EQ54 {-} Being explicitly}
-\CommentTok{\# taught to distrust my intuitions\textquotesingle{}, Q55 = \textquotesingle{}EQ55 {-} Hearing}
-\CommentTok{\# cultural references in sermons unfamiliar to my race/eth.}
-\CommentTok{\# subculture\textquotesingle{}, Q56 = \textquotesingle{}EQ56 {-} Being made to feel I was}
-\CommentTok{\# crazy/weird for doubts/questions\textquotesingle{}, Q57 = \textquotesingle{}EQ57 {-}}
-\CommentTok{\# Developing mental/physical ailments from conforming to}
-\CommentTok{\# group/leader’s expectation\textquotesingle{}, Q58 = \textquotesingle{}EQ58 {-} Terror/horror}
-\CommentTok{\# used to motivate religious decisions\textquotesingle{}, Q59 = \textquotesingle{}EQ59 {-}}
-\CommentTok{\# Pastor/group blame victim for their abuse\textquotesingle{}, Q60 = \textquotesingle{}EQ60 {-}}
-\CommentTok{\# Encouraged by leader to stay in abusive marriage\textquotesingle{}, Q61 =}
-\CommentTok{\# \textquotesingle{}EQ61 {-} Developmentally{-}inappropriate/anxious end times}
-\CommentTok{\# taught to young children\textquotesingle{}, Q62 = \textquotesingle{}EQ62 {-} Scripture used}
-\CommentTok{\# to justify physical violence\textquotesingle{}, Q63 = \textquotesingle{}EQ63 {-} Shamed by}
-\CommentTok{\# pastor/group for raising questions or concerns\textquotesingle{}, Q64 =}
-\CommentTok{\# \textquotesingle{}EQ64 {-} Witnessing women pressured to stay in}
-\CommentTok{\# unfaithful/abusive marriages\textquotesingle{}, Q65 = \textquotesingle{}EQ65 {-} Cut}
-\CommentTok{\# off/shunned by more religious family members\textquotesingle{}, Q66 =}
-\CommentTok{\# \textquotesingle{}EQ66 {-} Others treated as less than due to their sexual}
-\CommentTok{\# orientation\textquotesingle{}, \# VARIABLE LABELS: INTERNAL STATES ITEMS}
-\CommentTok{\# Q68 = \textquotesingle{}IQ68 {-} Anxiety attacks triggered by religious}
-\CommentTok{\# stimuli\textquotesingle{}, Q69 = \textquotesingle{}IQ69 {-} Lack of spiritual}
-\CommentTok{\# direction/purpose\textquotesingle{}, Q70 = \textquotesingle{}IQ70 {-} Feeling betrayed by}
-\CommentTok{\# God\textquotesingle{}, Q71 = \textquotesingle{}IQ71 {-} Avoiding religious}
-\CommentTok{\# activities/settings to reduce distressing feelings\textquotesingle{}, Q72}
-\CommentTok{\# = \textquotesingle{}IQ72 {-} Feeling as if God harmed me directly\textquotesingle{}, Q73 =}
-\CommentTok{\# \textquotesingle{}IQ73 {-} Self{-}hatred or self{-}loathing\textquotesingle{}, Q74 = \textquotesingle{}IQ74 {-}}
-\CommentTok{\# Sadness over the loss of my faith/religious community\textquotesingle{},}
-\CommentTok{\# Q76 = \textquotesingle{}IQ76 {-} Feeling I wasted years of my life in a}
-\CommentTok{\# church/set of beliefs\textquotesingle{}, Q77 = \textquotesingle{}IQ77 {-} Anger upon}
-\CommentTok{\# reflecting on negative religious experiences\textquotesingle{}, Q78 =}
-\CommentTok{\# \textquotesingle{}IQ78 {-} A lack of self{-}worth\textquotesingle{}, Q79 = \textquotesingle{}IQ79 {-} Distrust of}
-\CommentTok{\# God\textquotesingle{}, Q80 = \textquotesingle{}IQ80 {-} Feeling isolated\textquotesingle{}, Q81 = \textquotesingle{}IQ81 {-}}
-\CommentTok{\# Nightmares about my negative religious experiences\textquotesingle{}, Q82}
-\CommentTok{\# = \textquotesingle{}IQ82 {-} Having trouble navigating life outside my}
-\CommentTok{\# church/community\textquotesingle{})}
-
-\CommentTok{\# SELECT ITEMS}
 \NormalTok{ext\_items }\OtherTok{\textless{}{-}}\NormalTok{ items[, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{52}\NormalTok{]}
 \NormalTok{int\_items }\OtherTok{\textless{}{-}}\NormalTok{ items[, }\DecValTok{52}\SpecialCharTok{:}\DecValTok{66}\NormalTok{]}
 
 \CommentTok{\# SAVE DATA FILES}
-\FunctionTok{write.csv}\NormalTok{(all, }\StringTok{"data/all.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)  }\CommentTok{\# save data for later use}
+\FunctionTok{write.csv}\NormalTok{(all, }\StringTok{"data/all.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
 \FunctionTok{write.csv}\NormalTok{(items, }\StringTok{"data/items.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
 \FunctionTok{write.csv}\NormalTok{(ext\_items, }\StringTok{"data/ext\_items.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
 \FunctionTok{write.csv}\NormalTok{(int\_items, }\StringTok{"data/int\_items.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
@@ -412,7 +323,7 @@ This chapter documents our decisions surrounding how to prepare the data for ana
 \hypertarget{missing-data}{%
 \section{Missing data}\label{missing-data}}
 
-Missing data can be an important problem. The problem has two parts. The first is how many data are missing. Obviously the more data are missing, the larger the barrier this problem poses to analysis. The second is the mechanism of missing data. Are the missing data randomly, or is there a pattern to the missing data - like a problematic item, or a distinct group of examinees who chose not to respond? Figure \ref{fig:vim-plots} presents two plots from the VIM package for missing data \citep{VIM}.
+Missing data can be an important problem. The problem has two parts. The first is how many data are missing. Obviously the more data are missing, the larger the barrier this problem poses to analysis. The second is the mechanism of missing data. Are the missing data randomly, or is there a pattern to the missing data - like a problematic item, or a distinct group of examinees who chose not to respond? Figure \ref{fig:vim-plots} presents two plots from the VIM package for missing data \citep{R-VIM}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -433,36 +344,38 @@ The first plot in Figure \ref{fig:vim-plots} is a frequency distribution of the 
 
 The second plot in Figure \ref{fig:vim-plots} illustrates the different combinations of missing entries. The blue squares represent cases with complete responses, and the red indicates missing data. The rows represent combinations of complete and missing responses. The bottom row of entirely blue squares represents complete data -- examinees who responded to all of the items. The barplot on the right axis indicates that these were the most frequent combinations. The second most frequent combination was examinees who completed all of the External Events items and then quit the survey. Beyond that, there is no apparent order or pattern to the missing data.
 
-\textbf{Mechanism of missing data}. \citet{McKnightEtAl2007} outline a variety of approaches for investigating the mechanisms of missing data. An appropriate first step is to test whether the data are Missing Completely At Random (MCAR) with the use of Little's test \citet{Little1988}.
+\textbf{Mechanism of missing data}. \citet{McKnightEtAl2007} prescribe several approaches for investigating the mechanisms of missing data. An appropriate first step is to test whether the data are Missing Completely At Random (MCAR) with the use of Little's test \citet{Little1988}. This is a chi-square test of the difference between the observed pattern of missing responses and the pattern of responses that would expected if missingness were completely random. We report the results of this test in Table \ref{tab:mcar}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(naniar)}
-\FunctionTok{mcar\_test}\NormalTok{(all)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}\FunctionTok{mcar\_test}\NormalTok{(all), }\AttributeTok{caption =} \StringTok{"Little\textquotesingle{}s Test of Missing Completely At Random (MCAR)"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-# A tibble: 1 x 4
-  statistic    df p.value missing.patterns
-      <dbl> <dbl>   <dbl>            <int>
-1     2089.  8663       1              117
-\end{verbatim}
+\begin{table}
 
-This test is fairly conclusive. The p-value for the chi-square is 1, which means observed pattern of missing data do not diverge significantly from what would be expected if the data were missing completely at random.
+\caption{\label{tab:mcar}Little's Test of Missing Completely At Random (MCAR)}
+\centering
+\begin{tabular}[t]{r|r|r|r}
+\hline
+statistic & df & p.value & missing.patterns\\
+\hline
+2089.341 & 8663 & 1 & 117\\
+\hline
+\end{tabular}
+\end{table}
 
-\textbf{Were examinees triggered?} As mentioned above, a possible explanation of the missing data in the Internal States items is that examinees were triggered. As after responding to the preceding 52 items calling to mind imagery of abusive external events, these examinees were \textbf{done} with the survey. A possible test of this hypothesis is an examination of the relationship between a total score of responses to the External Events items and a score of total missingness on the Internal States items. The empirical work to test this hypothesis is laid out in the following code chunk. The items measuring external events are summed into a total score such that a higher value indicates more exposure to abusive external events. The items measuring internal states are coded so that 1=missing and 0=all others response, and these items are summed into a score of total missingness.
+The test is fairly conclusive. The p-value for the chi-square is 1, which means observed pattern of missing data do not diverge significantly from what would be expected if the data were missing completely at random.
+
+\textbf{Were examinees triggered?} As mentioned above, a possible explanation of the missing data in the Internal States items is that examinees were triggered. As after responding to the preceding 52 items calling to mind imagery of abusive external events, these examinees were \textbf{\emph{done}} with the survey. A possible test of this hypothesis is an examination of the relationship between a total score of responses to the External Events items and a score of total missingness on the Internal States items. The empirical work to test this hypothesis is laid out in the following code chunk. The items measuring external events are summed into a total score such that a higher value indicates more exposure to abusive external events. The items measuring internal states are coded so that 1=missing and 0=all others response, and these items are summed into a score of total missingness.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# 1. MAKE A COPY OF ALL THE ITEMS JUST FOR THIS ANALYSIS}
-\NormalTok{miss\_set }\OtherTok{\textless{}{-}}\NormalTok{ all}
+\CommentTok{\# 1. ISOLATE THE DATA}
+\NormalTok{miss\_set }\OtherTok{\textless{}{-}}\NormalTok{ items}
 
-\CommentTok{\# write.csv(miss\_set,\textquotesingle{}data/miss\_set.csv\textquotesingle{}) \# save as Excel}
-\CommentTok{\# to explore visually}
-
-\CommentTok{\# 2. RECODE INTERNAL STATES ITEMS AS DICHOTOMOUS}
-\CommentTok{\# (1=MISSING, 0=ENDORSED)}
+\CommentTok{\# 2. DUMMY CODE INTERNAL STATES ITEMS}
 \NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q68[miss\_set}\SpecialCharTok{$}\NormalTok{Q68 }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{0}
 \NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q69[miss\_set}\SpecialCharTok{$}\NormalTok{Q69 }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{0}
 \NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q70[miss\_set}\SpecialCharTok{$}\NormalTok{Q70 }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{0}
@@ -492,52 +405,28 @@ This test is fairly conclusive. The p-value for the chi-square is 1, which means
 \NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q81[}\FunctionTok{is.na}\NormalTok{(miss\_set}\SpecialCharTok{$}\NormalTok{Q81)] }\OtherTok{\textless{}{-}} \DecValTok{1}
 \NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{Q82[}\FunctionTok{is.na}\NormalTok{(miss\_set}\SpecialCharTok{$}\NormalTok{Q82)] }\OtherTok{\textless{}{-}} \DecValTok{1}
 
-\CommentTok{\# 3. OBTAIN TOTAL SCORE ON EXTERNAL EVENTS ITEMS}
-\NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{total\_ext }\OtherTok{\textless{}{-}} \FunctionTok{rowSums}\NormalTok{(miss\_set[, }\FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{52}\NormalTok{)])  }\CommentTok{\# total score of exposure to abusive external events}
-\NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{total\_int }\OtherTok{\textless{}{-}} \FunctionTok{rowSums}\NormalTok{(miss\_set[, }\FunctionTok{c}\NormalTok{(}\DecValTok{53}\SpecialCharTok{:}\DecValTok{66}\NormalTok{)])  }\CommentTok{\# a total score of internal states missingness}
-
-\CommentTok{\# 4. RUN CORRELATION BETWEEN TOTAL SCORE AND DICHOTOMOUS}
-\CommentTok{\# ITEMS}
-\FunctionTok{library}\NormalTok{(psych)}
-\NormalTok{miss\_set2 }\OtherTok{\textless{}{-}}\NormalTok{ miss\_set[, }\FunctionTok{c}\NormalTok{(}\DecValTok{53}\SpecialCharTok{:}\DecValTok{68}\NormalTok{)]  }\CommentTok{\# delete all but the internal states and total scores}
-\NormalTok{miss\_r }\OtherTok{\textless{}{-}} \FunctionTok{lowerCor}\NormalTok{(miss\_set2)  }\CommentTok{\# the correlation matrix, rounded to 2 decimals}
+\CommentTok{\# 3. TOTAL SCORES ON EXTERNAL EVENTS ITEMS AND INTERNAL}
+\CommentTok{\# STATES MISSINGNESS}
+\NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{total\_ext }\OtherTok{\textless{}{-}} \FunctionTok{rowSums}\NormalTok{(miss\_set[, }\FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{52}\NormalTok{)])}
+\NormalTok{miss\_set}\SpecialCharTok{$}\NormalTok{total\_int }\OtherTok{\textless{}{-}} \FunctionTok{rowSums}\NormalTok{(miss\_set[, }\FunctionTok{c}\NormalTok{(}\DecValTok{53}\SpecialCharTok{:}\DecValTok{66}\NormalTok{)])}
+\NormalTok{miss\_set2 }\OtherTok{\textless{}{-}}\NormalTok{ miss\_set[, }\FunctionTok{c}\NormalTok{(}\DecValTok{53}\SpecialCharTok{:}\DecValTok{68}\NormalTok{)]  }\CommentTok{\# just the total score, missingness}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-    Q68   Q69   Q70   Q71   Q72   Q73   Q74   Q76   Q77   Q78   Q79  
-Q68  1.00                                                            
-Q69  0.99  1.00                                                      
-Q70  0.99  0.99  1.00                                                
-Q71  1.00  0.99  0.98  1.00                                          
-Q72  0.99  0.99  0.99  0.99  1.00                                    
-Q73  1.00  0.99  0.98  0.99  0.99  1.00                              
-Q74  0.99  0.98  0.97  0.99  0.98  0.98  1.00                        
-Q76  0.99  0.99  0.98  0.99  0.99  0.99  0.98  1.00                  
-Q77  0.99  0.99  0.98  1.00  0.98  0.99  0.99  0.99  1.00            
-Q78  0.99  0.99  0.98  0.99  0.98  0.99  0.98  0.98  0.99  1.00      
-Q79  0.98  0.98  0.97  0.98  0.97  0.98  0.97  0.97  0.98  0.98  1.00
-Q80  0.98  0.98  0.98  0.99  0.98  0.98  0.98  0.99  0.98  0.98  0.97
-Q81  1.00  0.99  0.99  1.00  0.99  1.00  0.99  0.99  0.99  0.99  0.98
-Q82  0.99  0.99  0.98  0.99  0.98  0.98  0.98  0.99  0.99  0.98  0.97
-Q84  0.01  0.00  0.00  0.00  0.03  0.03  0.02  0.02    NA  0.01  0.01
-Q85  0.01  0.04  0.03  0.01  0.03  0.01 -0.01  0.04    NA  0.06 -0.01
-    Q80   Q81   Q82   Q84   Q85  
-Q80  1.00                        
-Q81  0.98  1.00                  
-Q82  0.98  0.99  1.00            
-Q84 -0.02  0.01 -0.01  1.00      
-Q85  0.05  0.01  0.05  0.06  1.00
-\end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{corPlot}\NormalTok{(miss\_r, }\AttributeTok{stars =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{upper =} \ConstantTok{FALSE}\NormalTok{)  }\CommentTok{\# examine the many options for this function}
+\CommentTok{\# 4. CORRELATIONS}
+\NormalTok{psych}\SpecialCharTok{::}\FunctionTok{corPlot}\NormalTok{(miss\_set2[, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{16}\NormalTok{], }\AttributeTok{main =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{upper =} \ConstantTok{FALSE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
+\begin{figure}
+\centering
 \includegraphics{_main_files/figure-latex/trigger-1.pdf}
-Figure \ref{fig:trigger} illustrates the correlations among the Internal States items (dichotomized according to their missingness (1=missing, 0=all others)), the total score from the external states (total\_ext), and the total score of internal item missingness (total\_int). The correlation of total\_ext with all the other items is nearly zero, suggesting that more exposure to abusive external states did \textbf{\emph{not}} predict nonresponse to the Internal States items. This finding is consistent with the finding from Figure \ref{fig:mcar} that the missing data appear to missing completely at random.
+\caption{\label{fig:trigger}Correlation Matrix: External States and Internal States Missingness}
+\end{figure}
+
+Figure \ref{fig:trigger} illustrates the correlations among the Internal States items (dichotomized according to their missingness (1=missing, 0=all others)), the total score from the external states (total\_ext), and the total score of internal item missingness (total\_int). The correlation of total\_ext with all the other items is nearly zero, suggesting that more exposure to abusive external states did \textbf{\emph{not}} predict nonresponse to the Internal States items. This finding is consistent with the finding from Figure \ref{tab:mcar} that the missing data appear to missing completely at random.
 
 \textbf{Missing data methods}. There are several different ways to handle missing data. A common method is to \emph{delete all cases missing any data}. This is called \textbf{listwise} deletion of data. Its primary advantages are simplicity, expedience, and analysis based on complete information. The disadvantages of listwise are (1) disposal of the information offered by those examinees who responded to some items but not others, and (2) diminishment of the dataset, and with it, a reduction in statistical power. The ``all'' data file of all Likert items and demographics items derived earlier reports data from 3,222 examinees. The following code chunk creates a subset of complete data. This smaller dataset has 1,841 examinees.
 

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.4.7)  23 APR 2022 21:53
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.4.7)  24 APR 2022 08:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -843,604 +843,535 @@ Chapter 5.
 [10
 
 ]
-Underfull \vbox (badness 10000) detected at line 410
- []
-
-[11]
-Underfull \vbox (badness 10000) detected at line 410
- []
-
-
-Underfull \vbox (badness 10000) detected at line 410
- []
-
-[12]
-
-Package natbib Warning: Citation `VIM' on page 13 undefined on input line 415.
-
 File: _main_files/figure-latex/vim-plots-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/vim-plots-1.pdf>
-[13] [14]
-Underfull \vbox (badness 10000) detected at line 505
+[11] [12]
+Underfull \vbox (badness 10000) detected at line 414
  []
 
-[15]
-Overfull \hbox (6.75pt too wide) in paragraph at lines 531--531
-[]    \TU/lmtt/m/n/10 Q68   Q69   Q70   Q71   Q72   Q73   Q74   Q76   Q77   Q78
-   Q79[] 
- []
-
-
-Overfull \hbox (17.25pt too wide) in paragraph at lines 531--531
-[]\TU/lmtt/m/n/10 Q79  0.98  0.98  0.97  0.98  0.97  0.98  0.97  0.97  0.98  0.
-98  1.00[] 
- []
-
-
-Overfull \hbox (17.25pt too wide) in paragraph at lines 531--531
-[]\TU/lmtt/m/n/10 Q80  0.98  0.98  0.98  0.99  0.98  0.98  0.98  0.99  0.98  0.
-98  0.97[] 
- []
-
-
-Overfull \hbox (17.25pt too wide) in paragraph at lines 531--531
-[]\TU/lmtt/m/n/10 Q81  1.00  0.99  0.99  1.00  0.99  1.00  0.99  0.99  0.99  0.
-99  0.98[] 
- []
-
-
-Overfull \hbox (17.25pt too wide) in paragraph at lines 531--531
-[]\TU/lmtt/m/n/10 Q82  0.99  0.99  0.98  0.99  0.98  0.98  0.98  0.99  0.99  0.
-98  0.97[] 
- []
-
-
-Overfull \hbox (17.25pt too wide) in paragraph at lines 531--531
-[]\TU/lmtt/m/n/10 Q84  0.01  0.00  0.00  0.00  0.03  0.03  0.02  0.02    NA  0.
-01  0.01[] 
- []
-
-
-Overfull \hbox (17.25pt too wide) in paragraph at lines 531--531
-[]\TU/lmtt/m/n/10 Q85  0.01  0.04  0.03  0.01  0.03  0.01 -0.01  0.04    NA  0.
-06 -0.01[] 
- []
-
+[13]
 File: _main_files/figure-latex/trigger-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/trigger-1.pdf>
-
-LaTeX Warning: Reference `fig:trigger' on page 16 undefined on input line 540.
-
-
-LaTeX Warning: Reference `fig:mcar' on page 16 undefined on input line 540.
-
-[16]
-Underfull \vbox (badness 10000) detected at line 561
- []
-
-[17] [18]
+[14] [15]
 Chapter 6.
-[19
+[16
 
-] [20]
-Overfull \hbox (385.57016pt too wide) in alignment at lines 625--630
+] [17]
+Overfull \hbox (385.57016pt too wide) in alignment at lines 514--519
  [] [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (385.57016pt too wide) in alignment at lines 630--634
+Overfull \hbox (385.57016pt too wide) in alignment at lines 519--523
  [] [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (385.57016pt too wide) in alignment at lines 634--655
+Overfull \hbox (385.57016pt too wide) in alignment at lines 523--544
  [] [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (385.57016pt too wide) in alignment at lines 655--675
+Overfull \hbox (385.57016pt too wide) in alignment at lines 544--564
  [] [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (385.57016pt too wide) in alignment at lines 675--679
+Overfull \hbox (385.57016pt too wide) in alignment at lines 564--568
  [] [] [] [] [] [] [] [] [] 
  []
 
-[21]
+[18]
 
-LaTeX Warning: Reference `pcm-occs' on page 22 undefined on input line 685.
+LaTeX Warning: Reference `pcm-occs' on page 19 undefined on input line 574.
 
 
-Overfull \vbox (0.39091pt too high) detected at line 696
+Overfull \vbox (0.39091pt too high) detected at line 585
  []
 
-[22]
+[19]
 File: _main_files/figure-latex/pcm-occs-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/pcm-occs-1.pdf>
 
-Overfull \hbox (195.07013pt too wide) in alignment at lines 709--714
+Overfull \hbox (195.07013pt too wide) in alignment at lines 598--603
  [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (195.07013pt too wide) in alignment at lines 714--718
+Overfull \hbox (195.07013pt too wide) in alignment at lines 603--607
  [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (195.07013pt too wide) in alignment at lines 718--726
+Overfull \hbox (195.07013pt too wide) in alignment at lines 607--615
  [] [] [] [] [] [] 
  []
 
-[23]
+[20]
 File: _main_files/figure-latex/pcm-model-fit-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/pcm-model-fit-1.pdf>
-[24]
+[21]
 File: _main_files/figure-latex/pcm-model-fit-2.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/pcm-model-fit-2.pdf>
 File: _main_files/figure-latex/pcm-model-fit-3.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/pcm-model-fit-3.pdf>
-[25]
-Overfull \hbox (323.95006pt too wide) in paragraph at lines 768--905
+[22]
+Overfull \hbox (323.95006pt too wide) in paragraph at lines 657--794
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 310.29959pt on input line 905.
+LaTeX Warning: Float too large for page by 310.29959pt on input line 794.
 
 File: _main_files/figure-latex/pcm-model-fit-4.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/pcm-model-fit-4.pdf>
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []                                                                             
               \TU/lmtt/m/n/10 item[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 1                                                         EQ7
  - Pastor speaking on God[]s behalf[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 2                                              EQ10 - Asked t
 o give up personal goals by pastor[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 3                                                    EQ11 - D
 isagree w/pastor portrayed as evil[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 4                                       EQ16 - Church/communi
 ty abandoning me in difficult time[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 5                                         EQ17 - Treated as l
 ess than b/c my sexual orientation[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 6                                             EQ18 - Church/p
 astor discourage critical thinking[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 7                                         EQ19 - Behavior exc
 essively monitored by pastor/group[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 8                             EQ20 - Members pressured to giv
 e money despite financial hardship[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 9                                       EQ21 - Taught I would
  risk Hell if left my church/group[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 10                        EQ22 - Expected to follow pastor/le
 ader rules re: dating/marriage/sex[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 11                                         EQ23 - Prayer repl
 acing needed medical interventions[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 12               EQ24 - Expected to consult pastor/leader bef
 ore making non-religious decisions[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 13                                          EQ25 - Feeling un
 able to raise questions and issues[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 14                                   EQ26 - Pressured to forg
 ive abuser while abuse was ongoing[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 15                                        EQ27 - Denied oppor
 tunities to serve b/c of my gender[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 16                                        EQ28 - Leadershi/gr
 oup protecting abusive individuals[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 17                       EQ29 - Feeling special when in pasto
 r’s good graces; otherwise ignored[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 18                   EQ30 - Deterred from seeking mental heal
 th treatment/counseling/medication[] 
  []
 
-[26] [27]
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+[23] [24]
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 19                                                EQ31 - Shun
 ned/ignored by pastor/church/group[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 20                                                 EQ32 - Fee
 ling unable to express unhappiness[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 21                       EQ34 - Scripture used to justify phy
 sical punishment/severe discipline[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 22                                                        EQ3
 5 - Taught to distrust my emotions[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 23                      EQ36 - Mental/physical problems inter
 preted as spiritual/moral weakness[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 24                           EQ37 - Made to feel less spiritu
 ally mature than pastor/leadership[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 25                             EQ38 - Unrealistic demands pla
 ced on my moral/religious behavior[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 26                          EQ39 - Made to feel shame over na
 tural sexual desires (not actions)[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 27                           EQ40 - Threatening Divine punish
 ment to keep group members in line[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 28                        EQ41 - Denied opportunities to serv
 e because of my sexual orientation[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 29                                   EQ42 - Seeing others sha
 med/shunned by pastor/leader/group[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 30                           EQ43 - Shamed by pastor/group fo
 r poor spiritual/moral performance[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 31                     EQ44 - Love/acceptance offered only fo
 r high spiritual/moral performance[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 32      EQ45 - Developmentally-inappropriate/anxious Hell/Sat
 an/demons taught to young children[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 33                                         EQ46 - Treated as 
 less than because of my skin color[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 34                           EQ47 - Medical care being postpo
 ned/withheld for religious reasons[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 35                         EQ49 - Leadership/group protecting
  and elevating abusive individuals[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 36                                             EQ50 - Treated
  as less than because of my gender[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 37                             EQ51 - Extreme pressure to be 
 pastor/missionary/spiritual leader[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 38                          EQ52 - Blamed for harm I suffered
  rather than blaming who harmed me[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 39                               EQ53 - Scripture used to jus
 tify abusive parent-child behavior[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 40                                     EQ54 - Being explicitl
 y taught to distrust my intuitions[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 41          EQ55 - Hearing cultural references in sermons unf
 amiliar to my race/eth. subculture[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 42                             EQ56 - Being made to feel I wa
 s crazy/weird for doubts/questions[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 43     EQ57 - Developing mental/physical ailments from confor
 ming to group/leader’s expectation[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 44                                    EQ58 - Terror/horror us
 ed to motivate religious decisions[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 45                                             EQ59 - Pastor/
 group blame victim for their abuse[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 46                                      EQ60 - Encouraged by 
 leader to stay in abusive marriage[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 47 EQ61 - Developmentally-inappropriate/anxious end times des
 criptions taught to young children[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 48                                           EQ62 - Scripture
  used to justify physical violence[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 49                              EQ63 - Shamed by pastor/group
  for raising questions or concerns[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 50                    EQ64 - Witnessing women pressured to st
 ay in unfaithful/abusive marriages[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 51                                      EQ65 - Cut off/shunne
 d by more religious family members[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 52                           EQ66 - Others treated as less th
 an due to their sexual orientation[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 53                                        IQ68 - Anxiety atta
 cks triggered by religious stimuli[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 54                                                   IQ69 - L
 ack of spiritual direction/purpose[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 55                                                           
     IQ70 - Feeling betrayed by God[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 56                 IQ71 - Avoiding religious activities/setti
 ngs to reduce distressing feelings[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 57                                                  IQ72 - Fe
 eling as if God harmed me directly[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 58                                                          I
 Q73 - Self-hatred or self-loathing[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 59                                 IQ74 - Sadness over the lo
 ss of my faith/religious community[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 60                          IQ76 - Feeling I wasted years of 
 my life in a church/set of beliefs[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 61                               IQ77 - Anger upon reflecting
  on negative religious experiences[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 62                                                           
        IQ78 - A lack of self-worth[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 63                                                           
             IQ79 - Distrust of God[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 64                                                           
            IQ80 - Feeling isolated[] 
  []
 
-[28]
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+[25]
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 65                                    IQ81 - Nightmares about
  my negative religious experiences[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (153.75pt too wide) in paragraph at lines 945--945
 []\TU/lmtt/m/n/10 66                            IQ82 - Having trouble navigatin
 g life outside my church/community[] 
  []
 
-[29] [30] [31]
+[26] [27] [28]
 Chapter 7.
-[32
+[29
 
 ]
 File: _main_files/figure-latex/corrmtrx-ext-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/corrmtrx-ext-1.pdf>
 File: _main_files/figure-latex/corrmtrx-int-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/corrmtrx-int-1.pdf>
-[33]
+[30]
 File: _main_files/figure-latex/corrmtrx-all-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/corrmtrx-all-1.pdf>
-[34] [35] [36]
+[31] [32] [33]
 Chapter 8.
-[37
+[34
 
 ]
 File: _main_files/figure-latex/wright-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/wright-1.pdf>
-[38] [39]
+[35] [36]
 Chapter 9.
-[40
+[37
 
-] (./_main.bbl [41
+] (./_main.bbl [38
 
-] [42
+] [39
 
 ])
-
-Package natbib Warning: There were undefined citations.
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1260.
-[43]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1260.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1149.
+[40]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1149.
 (./_main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1260.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1260.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1149.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1149.
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 19244 strings out of 479418
- 341327 string characters out of 5884586
- 804497 words of memory out of 5000000
- 36469 multiletter control sequences out of 15000+600000
+ 19253 strings out of 479418
+ 341462 string characters out of 5884586
+ 805120 words of memory out of 5000000
+ 36478 multiletter control sequences out of 15000+600000
  538805 words of font info for 79 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 58i,8n,118p,1246b,515s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 58i,8n,118p,1246b,517s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on _main.pdf (44 pages).
+Output written on _main.pdf (41 pages).

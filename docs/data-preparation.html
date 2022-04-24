@@ -12,7 +12,7 @@ set in the _output.yml file.</p>" />
 
   <meta property="og:title" content="Data Preparation | Validity Evidence for the Spiritual Harm and Abuse Scale (SHAS)" />
   <meta property="og:type" content="book" />
-  <meta property="og:image" content="/dk-circle-large.jpeg" />
+  
   <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
@@ -24,12 +24,13 @@ set in the _output.yml file.</p>" />
   <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
-  <meta name="twitter:image" content="/dk-circle-large.jpeg" />
+  
 
-<meta name="author" content="Jack Huber and Dan Koch" />
+<meta name="author" content="Jack Huber, Swedish Medical Center" />
+<meta name="author" content="Dan Koch, Northwest University" />
 
 
-<meta name="date" content="2022-04-23" />
+<meta name="date" content="2022-04-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -245,14 +246,14 @@ div.csl-indent {
 <div id="preliminary-work" class="section level2 hasAnchor">
 <h2>Preliminary work<a href="data-preparation.html#preliminary-work" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>Load R packages</strong>. Some R users load all their packages up front. Others, perhaps for instructional reasons, load them just before calling functions, perhaps for instructional reasons. I can see merit in listing all the packages for properly citing them. Here is a code chunk for loading all the packages up front:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="data-preparation.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># LOAD PACKAGES</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r bg-success"><code class="sourceCode r"><span id="cb1-1"><a href="data-preparation.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># LOAD PACKAGES</span></span>
 <span id="cb1-2"><a href="data-preparation.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Hmisc)  <span class="co"># for variable and value labels</span></span>
 <span id="cb1-3"><a href="data-preparation.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(naniar)  <span class="co"># for missing data</span></span>
 <span id="cb1-4"><a href="data-preparation.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)  <span class="co"># for correlation plot</span></span>
 <span id="cb1-5"><a href="data-preparation.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)  <span class="co"># how RMarkdown compiles code into documents</span></span></code></pre></div>
 <p><strong>Load data</strong>. The data are contained in an Excel file, simply named “data.xlsx”, in the “data” folder of this project. The important thing is to keep all the data in the same folder within the larger “SHAS Validity” project folder.</p>
 <p><strong>Select items for analysis</strong>. Which items should we include for analysis? The first 13 columns in the original data file report data from several screening items that were placed at the beginning of the questionnaire. But because they are constant and not variable, they don’t seem to have a place in scale development. Therefore it seems the important columns range from columns 14 to 97. The first set of items measure the <strong>External Events</strong> scale. These 52 items range from columns 14 to 35. The second set of items measure the <strong>Internal States</strong> scale, and these 14 items range from columns 66 to 79. The last set of items capture <strong>demographic</strong> variables, and these range from columns 80 to 97.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="data-preparation.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># LOAD ORIGINAL DATA</span></span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r bg-success"><code class="sourceCode r"><span id="cb2-1"><a href="data-preparation.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># LOAD ORIGINAL DATA</span></span>
 <span id="cb2-2"><a href="data-preparation.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)  <span class="co"># for reading the source Excel file</span></span>
 <span id="cb2-3"><a href="data-preparation.html#cb2-3" aria-hidden="true" tabindex="-1"></a>shas <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/data.xlsx&quot;</span>)  <span class="co"># load Excel file</span></span>
 <span id="cb2-4"><a href="data-preparation.html#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -260,108 +261,19 @@ div.csl-indent {
 <span id="cb2-6"><a href="data-preparation.html#cb2-6" aria-hidden="true" tabindex="-1"></a>all <span class="ot">&lt;-</span> shas[, <span class="dv">14</span><span class="sc">:</span><span class="dv">97</span>]  <span class="co"># select items, dems from columns 14-79</span></span>
 <span id="cb2-7"><a href="data-preparation.html#cb2-7" aria-hidden="true" tabindex="-1"></a>all <span class="ot">&lt;-</span> <span class="fu">subset</span>(all, <span class="at">select =</span> <span class="sc">-</span><span class="fu">c</span>(Ext_Avg<span class="sc">:</span>Global_Avg))  <span class="co"># remove columns for now</span></span>
 <span id="cb2-8"><a href="data-preparation.html#cb2-8" aria-hidden="true" tabindex="-1"></a>items <span class="ot">&lt;-</span> all[, <span class="dv">1</span><span class="sc">:</span><span class="dv">66</span>]</span>
-<span id="cb2-9"><a href="data-preparation.html#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="data-preparation.html#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># VARIABLE LABELS names(items) &lt;- c( # EXTERNAL EVENTS</span></span>
-<span id="cb2-11"><a href="data-preparation.html#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># ITEMS Q7 = &#39;EQ7 - Pastor speaking on God&#39;s behalf&#39;, Q10 =</span></span>
-<span id="cb2-12"><a href="data-preparation.html#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;EQ10 - Asked to give up personal goals by pastor&#39;, Q11 =</span></span>
-<span id="cb2-13"><a href="data-preparation.html#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;EQ11 - Disagree w/pastor portrayed as evil&#39;, Q16 = &#39;EQ16</span></span>
-<span id="cb2-14"><a href="data-preparation.html#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># - Church/community abandoning me in difficult time&#39;, Q17</span></span>
-<span id="cb2-15"><a href="data-preparation.html#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># = &#39;EQ17 - Treated as less than b/c my sexual</span></span>
-<span id="cb2-16"><a href="data-preparation.html#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># orientation&#39;, Q18 = &#39;EQ18 - Church/pastor discourage</span></span>
-<span id="cb2-17"><a href="data-preparation.html#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># critical thinking&#39;, Q19 = &#39;EQ19 - Behavior excessively</span></span>
-<span id="cb2-18"><a href="data-preparation.html#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># monitored by pastor/group&#39;, Q20 = &#39;EQ20 - Members</span></span>
-<span id="cb2-19"><a href="data-preparation.html#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co"># pressured to give money despite financial hardship&#39;, Q21</span></span>
-<span id="cb2-20"><a href="data-preparation.html#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># = &#39;EQ21 - Taught I would risk Hell if left my</span></span>
-<span id="cb2-21"><a href="data-preparation.html#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co"># church/group&#39;, Q22 = &#39;EQ22 - Expected to follow</span></span>
-<span id="cb2-22"><a href="data-preparation.html#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co"># pastor/leader rules re: dating/marriage/sex&#39;, Q23 = &#39;EQ23</span></span>
-<span id="cb2-23"><a href="data-preparation.html#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co"># - Prayer replacing needed medical interventions&#39;, Q24 =</span></span>
-<span id="cb2-24"><a href="data-preparation.html#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;EQ24 - Expected to consult pastor/leader before making</span></span>
-<span id="cb2-25"><a href="data-preparation.html#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="co"># non-religious decisions&#39;, Q25 = &#39;EQ25 - Feeling unable to</span></span>
-<span id="cb2-26"><a href="data-preparation.html#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co"># raise questions and issues&#39;, Q26 = &#39;EQ26 - Pressured to</span></span>
-<span id="cb2-27"><a href="data-preparation.html#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="co"># forgive abuser while abuse was ongoing&#39;, Q27 = &#39;EQ27 -</span></span>
-<span id="cb2-28"><a href="data-preparation.html#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Denied opportunities to serve b/c of my gender&#39;, Q28 =</span></span>
-<span id="cb2-29"><a href="data-preparation.html#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;EQ28 - Leadershi/group protecting abusive individuals&#39;,</span></span>
-<span id="cb2-30"><a href="data-preparation.html#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Q29 = &#39;EQ29 - Feeling special when in pastor’s good</span></span>
-<span id="cb2-31"><a href="data-preparation.html#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="co"># graces; otherwise ignored&#39;, Q30 = &#39;EQ30 - Deterred from</span></span>
-<span id="cb2-32"><a href="data-preparation.html#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="co"># seeking mental health treatment/counseling/medication&#39;,</span></span>
-<span id="cb2-33"><a href="data-preparation.html#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Q31 = &#39;EQ31 - Shunned/ignored by pastor/church/group&#39;,</span></span>
-<span id="cb2-34"><a href="data-preparation.html#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Q32 = &#39;EQ32 - Feeling unable to express unhappiness&#39;, Q34</span></span>
-<span id="cb2-35"><a href="data-preparation.html#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="co"># = &#39;EQ34 - Scripture used to justify physical</span></span>
-<span id="cb2-36"><a href="data-preparation.html#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="co"># punishment/severe discipline&#39;, Q35 = &#39;EQ35 - Taught to</span></span>
-<span id="cb2-37"><a href="data-preparation.html#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="co"># distrust my emotions&#39;, Q36 = &#39;EQ36 - Mental/physical</span></span>
-<span id="cb2-38"><a href="data-preparation.html#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="co"># problems interpreted as spiritual/moral weakness&#39;, Q37 =</span></span>
-<span id="cb2-39"><a href="data-preparation.html#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;EQ37 - Made to feel less spiritually mature than</span></span>
-<span id="cb2-40"><a href="data-preparation.html#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="co"># pastor/leadership&#39;, Q38 = &#39;EQ38 - Unrealistic demands</span></span>
-<span id="cb2-41"><a href="data-preparation.html#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="co"># placed on my moral/religious behavior&#39;, Q39 = &#39;EQ39 -</span></span>
-<span id="cb2-42"><a href="data-preparation.html#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Made to feel shame over natural sexual desires (not</span></span>
-<span id="cb2-43"><a href="data-preparation.html#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="co"># actions)&#39;, Q40 = &#39;EQ40 - Threatening Divine punishment to</span></span>
-<span id="cb2-44"><a href="data-preparation.html#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="co"># keep group members in line&#39;, Q41 = &#39;EQ41 - Denied</span></span>
-<span id="cb2-45"><a href="data-preparation.html#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="co"># opportunities to serve because of my sexual orientation&#39;,</span></span>
-<span id="cb2-46"><a href="data-preparation.html#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Q42 = &#39;EQ42 - Seeing others shamed/shunned by</span></span>
-<span id="cb2-47"><a href="data-preparation.html#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="co"># pastor/leader/group&#39;, Q43 = &#39;EQ43 - Shamed by</span></span>
-<span id="cb2-48"><a href="data-preparation.html#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="co"># pastor/group for poor spiritual/moral performance&#39;, Q44 =</span></span>
-<span id="cb2-49"><a href="data-preparation.html#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;EQ44 - Love/acceptance offered only for high</span></span>
-<span id="cb2-50"><a href="data-preparation.html#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="co"># spiritual/moral performance&#39;, Q45 = &#39;EQ45 -</span></span>
-<span id="cb2-51"><a href="data-preparation.html#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Developmentally-inappropriate/anxious Hell/Satan/demons</span></span>
-<span id="cb2-52"><a href="data-preparation.html#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="co"># taught to young children&#39;, Q46 = &#39;EQ46 - Treated as less</span></span>
-<span id="cb2-53"><a href="data-preparation.html#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="co"># than because of my skin color&#39;, Q47 = &#39;EQ47 - Medical</span></span>
-<span id="cb2-54"><a href="data-preparation.html#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="co"># care being postponed/withheld for religious reasons&#39;, Q49</span></span>
-<span id="cb2-55"><a href="data-preparation.html#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="co"># = &#39;EQ49 - Leadership/group protecting and elevating</span></span>
-<span id="cb2-56"><a href="data-preparation.html#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="co"># abusive individuals&#39;, Q50 = &#39;EQ50 - Treated as less than</span></span>
-<span id="cb2-57"><a href="data-preparation.html#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="co"># because of my gender&#39;, Q51 = &#39;EQ51 - Extreme pressure to</span></span>
-<span id="cb2-58"><a href="data-preparation.html#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="co"># be pastor/missionary/spiritual leader&#39;, Q52 = &#39;EQ52 -</span></span>
-<span id="cb2-59"><a href="data-preparation.html#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="co"># Blamed for harm I suffered rather than blaming who harmed</span></span>
-<span id="cb2-60"><a href="data-preparation.html#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="co"># me&#39;, Q53 = &#39;EQ53 - Scripture used to justify abusive</span></span>
-<span id="cb2-61"><a href="data-preparation.html#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="co"># parent-child behavior&#39;, Q54 = &#39;EQ54 - Being explicitly</span></span>
-<span id="cb2-62"><a href="data-preparation.html#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="co"># taught to distrust my intuitions&#39;, Q55 = &#39;EQ55 - Hearing</span></span>
-<span id="cb2-63"><a href="data-preparation.html#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="co"># cultural references in sermons unfamiliar to my race/eth.</span></span>
-<span id="cb2-64"><a href="data-preparation.html#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="co"># subculture&#39;, Q56 = &#39;EQ56 - Being made to feel I was</span></span>
-<span id="cb2-65"><a href="data-preparation.html#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="co"># crazy/weird for doubts/questions&#39;, Q57 = &#39;EQ57 -</span></span>
-<span id="cb2-66"><a href="data-preparation.html#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="co"># Developing mental/physical ailments from conforming to</span></span>
-<span id="cb2-67"><a href="data-preparation.html#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="co"># group/leader’s expectation&#39;, Q58 = &#39;EQ58 - Terror/horror</span></span>
-<span id="cb2-68"><a href="data-preparation.html#cb2-68" aria-hidden="true" tabindex="-1"></a><span class="co"># used to motivate religious decisions&#39;, Q59 = &#39;EQ59 -</span></span>
-<span id="cb2-69"><a href="data-preparation.html#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="co"># Pastor/group blame victim for their abuse&#39;, Q60 = &#39;EQ60 -</span></span>
-<span id="cb2-70"><a href="data-preparation.html#cb2-70" aria-hidden="true" tabindex="-1"></a><span class="co"># Encouraged by leader to stay in abusive marriage&#39;, Q61 =</span></span>
-<span id="cb2-71"><a href="data-preparation.html#cb2-71" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;EQ61 - Developmentally-inappropriate/anxious end times</span></span>
-<span id="cb2-72"><a href="data-preparation.html#cb2-72" aria-hidden="true" tabindex="-1"></a><span class="co"># taught to young children&#39;, Q62 = &#39;EQ62 - Scripture used</span></span>
-<span id="cb2-73"><a href="data-preparation.html#cb2-73" aria-hidden="true" tabindex="-1"></a><span class="co"># to justify physical violence&#39;, Q63 = &#39;EQ63 - Shamed by</span></span>
-<span id="cb2-74"><a href="data-preparation.html#cb2-74" aria-hidden="true" tabindex="-1"></a><span class="co"># pastor/group for raising questions or concerns&#39;, Q64 =</span></span>
-<span id="cb2-75"><a href="data-preparation.html#cb2-75" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;EQ64 - Witnessing women pressured to stay in</span></span>
-<span id="cb2-76"><a href="data-preparation.html#cb2-76" aria-hidden="true" tabindex="-1"></a><span class="co"># unfaithful/abusive marriages&#39;, Q65 = &#39;EQ65 - Cut</span></span>
-<span id="cb2-77"><a href="data-preparation.html#cb2-77" aria-hidden="true" tabindex="-1"></a><span class="co"># off/shunned by more religious family members&#39;, Q66 =</span></span>
-<span id="cb2-78"><a href="data-preparation.html#cb2-78" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;EQ66 - Others treated as less than due to their sexual</span></span>
-<span id="cb2-79"><a href="data-preparation.html#cb2-79" aria-hidden="true" tabindex="-1"></a><span class="co"># orientation&#39;, # VARIABLE LABELS: INTERNAL STATES ITEMS</span></span>
-<span id="cb2-80"><a href="data-preparation.html#cb2-80" aria-hidden="true" tabindex="-1"></a><span class="co"># Q68 = &#39;IQ68 - Anxiety attacks triggered by religious</span></span>
-<span id="cb2-81"><a href="data-preparation.html#cb2-81" aria-hidden="true" tabindex="-1"></a><span class="co"># stimuli&#39;, Q69 = &#39;IQ69 - Lack of spiritual</span></span>
-<span id="cb2-82"><a href="data-preparation.html#cb2-82" aria-hidden="true" tabindex="-1"></a><span class="co"># direction/purpose&#39;, Q70 = &#39;IQ70 - Feeling betrayed by</span></span>
-<span id="cb2-83"><a href="data-preparation.html#cb2-83" aria-hidden="true" tabindex="-1"></a><span class="co"># God&#39;, Q71 = &#39;IQ71 - Avoiding religious</span></span>
-<span id="cb2-84"><a href="data-preparation.html#cb2-84" aria-hidden="true" tabindex="-1"></a><span class="co"># activities/settings to reduce distressing feelings&#39;, Q72</span></span>
-<span id="cb2-85"><a href="data-preparation.html#cb2-85" aria-hidden="true" tabindex="-1"></a><span class="co"># = &#39;IQ72 - Feeling as if God harmed me directly&#39;, Q73 =</span></span>
-<span id="cb2-86"><a href="data-preparation.html#cb2-86" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;IQ73 - Self-hatred or self-loathing&#39;, Q74 = &#39;IQ74 -</span></span>
-<span id="cb2-87"><a href="data-preparation.html#cb2-87" aria-hidden="true" tabindex="-1"></a><span class="co"># Sadness over the loss of my faith/religious community&#39;,</span></span>
-<span id="cb2-88"><a href="data-preparation.html#cb2-88" aria-hidden="true" tabindex="-1"></a><span class="co"># Q76 = &#39;IQ76 - Feeling I wasted years of my life in a</span></span>
-<span id="cb2-89"><a href="data-preparation.html#cb2-89" aria-hidden="true" tabindex="-1"></a><span class="co"># church/set of beliefs&#39;, Q77 = &#39;IQ77 - Anger upon</span></span>
-<span id="cb2-90"><a href="data-preparation.html#cb2-90" aria-hidden="true" tabindex="-1"></a><span class="co"># reflecting on negative religious experiences&#39;, Q78 =</span></span>
-<span id="cb2-91"><a href="data-preparation.html#cb2-91" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;IQ78 - A lack of self-worth&#39;, Q79 = &#39;IQ79 - Distrust of</span></span>
-<span id="cb2-92"><a href="data-preparation.html#cb2-92" aria-hidden="true" tabindex="-1"></a><span class="co"># God&#39;, Q80 = &#39;IQ80 - Feeling isolated&#39;, Q81 = &#39;IQ81 -</span></span>
-<span id="cb2-93"><a href="data-preparation.html#cb2-93" aria-hidden="true" tabindex="-1"></a><span class="co"># Nightmares about my negative religious experiences&#39;, Q82</span></span>
-<span id="cb2-94"><a href="data-preparation.html#cb2-94" aria-hidden="true" tabindex="-1"></a><span class="co"># = &#39;IQ82 - Having trouble navigating life outside my</span></span>
-<span id="cb2-95"><a href="data-preparation.html#cb2-95" aria-hidden="true" tabindex="-1"></a><span class="co"># church/community&#39;)</span></span>
-<span id="cb2-96"><a href="data-preparation.html#cb2-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-97"><a href="data-preparation.html#cb2-97" aria-hidden="true" tabindex="-1"></a><span class="co"># SELECT ITEMS</span></span>
-<span id="cb2-98"><a href="data-preparation.html#cb2-98" aria-hidden="true" tabindex="-1"></a>ext_items <span class="ot">&lt;-</span> items[, <span class="dv">1</span><span class="sc">:</span><span class="dv">52</span>]</span>
-<span id="cb2-99"><a href="data-preparation.html#cb2-99" aria-hidden="true" tabindex="-1"></a>int_items <span class="ot">&lt;-</span> items[, <span class="dv">52</span><span class="sc">:</span><span class="dv">66</span>]</span>
-<span id="cb2-100"><a href="data-preparation.html#cb2-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-101"><a href="data-preparation.html#cb2-101" aria-hidden="true" tabindex="-1"></a><span class="co"># SAVE DATA FILES</span></span>
-<span id="cb2-102"><a href="data-preparation.html#cb2-102" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(all, <span class="st">&quot;data/all.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)  <span class="co"># save data for later use</span></span>
-<span id="cb2-103"><a href="data-preparation.html#cb2-103" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(items, <span class="st">&quot;data/items.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb2-104"><a href="data-preparation.html#cb2-104" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(ext_items, <span class="st">&quot;data/ext_items.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb2-105"><a href="data-preparation.html#cb2-105" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(int_items, <span class="st">&quot;data/int_items.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<span id="cb2-9"><a href="data-preparation.html#cb2-9" aria-hidden="true" tabindex="-1"></a>ext_items <span class="ot">&lt;-</span> items[, <span class="dv">1</span><span class="sc">:</span><span class="dv">52</span>]</span>
+<span id="cb2-10"><a href="data-preparation.html#cb2-10" aria-hidden="true" tabindex="-1"></a>int_items <span class="ot">&lt;-</span> items[, <span class="dv">52</span><span class="sc">:</span><span class="dv">66</span>]</span>
+<span id="cb2-11"><a href="data-preparation.html#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="data-preparation.html#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># SAVE DATA FILES</span></span>
+<span id="cb2-13"><a href="data-preparation.html#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(all, <span class="st">&quot;data/all.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb2-14"><a href="data-preparation.html#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(items, <span class="st">&quot;data/items.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb2-15"><a href="data-preparation.html#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(ext_items, <span class="st">&quot;data/ext_items.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb2-16"><a href="data-preparation.html#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(int_items, <span class="st">&quot;data/int_items.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 </div>
 <div id="missing-data" class="section level2 hasAnchor">
 <h2>Missing data<a href="data-preparation.html#missing-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Missing data can be an important problem. The problem has two parts. The first is how many data are missing. Obviously the more data are missing, the larger the barrier this problem poses to analysis. The second is the mechanism of missing data. Are the missing data randomly, or is there a pattern to the missing data - like a problematic item, or a distinct group of examinees who chose not to respond? Figure <a href="data-preparation.html#fig:vim-plots">1</a> presents two plots from the VIM package for missing data <span class="citation">(<a href="#ref-VIM" role="doc-biblioref"><strong>VIM?</strong></a>)</span>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="data-preparation.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># VISUALIZE AND QUANTIFY MISSING DATA</span></span>
+<p>Missing data can be an important problem. The problem has two parts. The first is how many data are missing. Obviously the more data are missing, the larger the barrier this problem poses to analysis. The second is the mechanism of missing data. Are the missing data randomly, or is there a pattern to the missing data - like a problematic item, or a distinct group of examinees who chose not to respond? Figure <a href="data-preparation.html#fig:vim-plots">1</a> presents two plots from the VIM package for missing data <span class="citation">(<a href="references.html#ref-R-VIM" role="doc-biblioref">Templ et al. 2021</a>)</span>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r bg-success"><code class="sourceCode r"><span id="cb3-1"><a href="data-preparation.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># VISUALIZE AND QUANTIFY MISSING DATA</span></span>
 <span id="cb3-2"><a href="data-preparation.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(VIM)</span>
 <span id="cb3-3"><a href="data-preparation.html#cb3-3" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> VIM<span class="sc">::</span><span class="fu">aggr</span>(all, <span class="at">plot =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb3-4"><a href="data-preparation.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(a, <span class="at">numbers =</span> <span class="cn">TRUE</span>, <span class="at">prop =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
@@ -373,107 +285,92 @@ Figure 1: Missing Data
 </div>
 <p>The first plot in Figure <a href="data-preparation.html#fig:vim-plots">1</a> is a frequency distribution of the number of missing data entries for each item. This plot reveals very few missing data for the first set of External Events items, but nearly 200 missing entries for the second set of Internal States items and demographics. The raises two questions. The first is: Who were those examinees? We know that they responded to the first 52 items, then apparently quit the survey. Why? Was it just fatigue, or is there more to know about them? The second question is what to do with the information they actually did provide.</p>
 <p>The second plot in Figure <a href="data-preparation.html#fig:vim-plots">1</a> illustrates the different combinations of missing entries. The blue squares represent cases with complete responses, and the red indicates missing data. The rows represent combinations of complete and missing responses. The bottom row of entirely blue squares represents complete data – examinees who responded to all of the items. The barplot on the right axis indicates that these were the most frequent combinations. The second most frequent combination was examinees who completed all of the External Events items and then quit the survey. Beyond that, there is no apparent order or pattern to the missing data.</p>
-<p><strong>Mechanism of missing data</strong>. <span class="citation">McKnight et al. (<a href="references.html#ref-McKnightEtAl2007" role="doc-biblioref">2007</a>)</span> outline a variety of approaches for investigating the mechanisms of missing data. An appropriate first step is to test whether the data are Missing Completely At Random (MCAR) with the use of Little’s test <span class="citation">Little (<a href="references.html#ref-Little1988" role="doc-biblioref">1988</a>)</span>.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="data-preparation.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(naniar)</span>
-<span id="cb4-2"><a href="data-preparation.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mcar_test</span>(all)</span></code></pre></div>
-<pre><code># A tibble: 1 × 4
-  statistic    df p.value missing.patterns
-      &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;            &lt;int&gt;
-1     2089.  8663       1              117</code></pre>
-<p>This test is fairly conclusive. The p-value for the chi-square is 1, which means observed pattern of missing data do not diverge significantly from what would be expected if the data were missing completely at random.</p>
-<p><strong>Were examinees triggered?</strong> As mentioned above, a possible explanation of the missing data in the Internal States items is that examinees were triggered. As after responding to the preceding 52 items calling to mind imagery of abusive external events, these examinees were <strong>done</strong> with the survey. A possible test of this hypothesis is an examination of the relationship between a total score of responses to the External Events items and a score of total missingness on the Internal States items. The empirical work to test this hypothesis is laid out in the following code chunk. The items measuring external events are summed into a total score such that a higher value indicates more exposure to abusive external events. The items measuring internal states are coded so that 1=missing and 0=all others response, and these items are summed into a score of total missingness.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="data-preparation.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. MAKE A COPY OF ALL THE ITEMS JUST FOR THIS ANALYSIS</span></span>
-<span id="cb6-2"><a href="data-preparation.html#cb6-2" aria-hidden="true" tabindex="-1"></a>miss_set <span class="ot">&lt;-</span> all</span>
-<span id="cb6-3"><a href="data-preparation.html#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="data-preparation.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># write.csv(miss_set,&#39;data/miss_set.csv&#39;) # save as Excel</span></span>
-<span id="cb6-5"><a href="data-preparation.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># to explore visually</span></span>
-<span id="cb6-6"><a href="data-preparation.html#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="data-preparation.html#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. RECODE INTERNAL STATES ITEMS AS DICHOTOMOUS</span></span>
-<span id="cb6-8"><a href="data-preparation.html#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># (1=MISSING, 0=ENDORSED)</span></span>
-<span id="cb6-9"><a href="data-preparation.html#cb6-9" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q68[miss_set<span class="sc">$</span>Q68 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb6-10"><a href="data-preparation.html#cb6-10" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q69[miss_set<span class="sc">$</span>Q69 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb6-11"><a href="data-preparation.html#cb6-11" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q70[miss_set<span class="sc">$</span>Q70 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb6-12"><a href="data-preparation.html#cb6-12" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q71[miss_set<span class="sc">$</span>Q71 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb6-13"><a href="data-preparation.html#cb6-13" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q72[miss_set<span class="sc">$</span>Q72 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb6-14"><a href="data-preparation.html#cb6-14" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q73[miss_set<span class="sc">$</span>Q73 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb6-15"><a href="data-preparation.html#cb6-15" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q74[miss_set<span class="sc">$</span>Q74 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb6-16"><a href="data-preparation.html#cb6-16" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q76[miss_set<span class="sc">$</span>Q76 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb6-17"><a href="data-preparation.html#cb6-17" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q77[miss_set<span class="sc">$</span>Q77 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb6-18"><a href="data-preparation.html#cb6-18" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q78[miss_set<span class="sc">$</span>Q78 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb6-19"><a href="data-preparation.html#cb6-19" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q79[miss_set<span class="sc">$</span>Q79 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb6-20"><a href="data-preparation.html#cb6-20" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q80[miss_set<span class="sc">$</span>Q80 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb6-21"><a href="data-preparation.html#cb6-21" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q81[miss_set<span class="sc">$</span>Q81 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb6-22"><a href="data-preparation.html#cb6-22" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q82[miss_set<span class="sc">$</span>Q82 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb6-23"><a href="data-preparation.html#cb6-23" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q68[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q68)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb6-24"><a href="data-preparation.html#cb6-24" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q69[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q69)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb6-25"><a href="data-preparation.html#cb6-25" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q70[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q70)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb6-26"><a href="data-preparation.html#cb6-26" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q71[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q71)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb6-27"><a href="data-preparation.html#cb6-27" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q72[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q72)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb6-28"><a href="data-preparation.html#cb6-28" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q73[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q73)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb6-29"><a href="data-preparation.html#cb6-29" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q74[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q74)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb6-30"><a href="data-preparation.html#cb6-30" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q76[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q76)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb6-31"><a href="data-preparation.html#cb6-31" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q77[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q77)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb6-32"><a href="data-preparation.html#cb6-32" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q78[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q78)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb6-33"><a href="data-preparation.html#cb6-33" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q79[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q79)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb6-34"><a href="data-preparation.html#cb6-34" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q80[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q80)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb6-35"><a href="data-preparation.html#cb6-35" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q81[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q81)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb6-36"><a href="data-preparation.html#cb6-36" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q82[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q82)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb6-37"><a href="data-preparation.html#cb6-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-38"><a href="data-preparation.html#cb6-38" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. OBTAIN TOTAL SCORE ON EXTERNAL EVENTS ITEMS</span></span>
-<span id="cb6-39"><a href="data-preparation.html#cb6-39" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>total_ext <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(miss_set[, <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">52</span>)])  <span class="co"># total score of exposure to abusive external events</span></span>
-<span id="cb6-40"><a href="data-preparation.html#cb6-40" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>total_int <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(miss_set[, <span class="fu">c</span>(<span class="dv">53</span><span class="sc">:</span><span class="dv">66</span>)])  <span class="co"># a total score of internal states missingness</span></span>
-<span id="cb6-41"><a href="data-preparation.html#cb6-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-42"><a href="data-preparation.html#cb6-42" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. RUN CORRELATION BETWEEN TOTAL SCORE AND DICHOTOMOUS</span></span>
-<span id="cb6-43"><a href="data-preparation.html#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="co"># ITEMS</span></span>
-<span id="cb6-44"><a href="data-preparation.html#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
-<span id="cb6-45"><a href="data-preparation.html#cb6-45" aria-hidden="true" tabindex="-1"></a>miss_set2 <span class="ot">&lt;-</span> miss_set[, <span class="fu">c</span>(<span class="dv">53</span><span class="sc">:</span><span class="dv">68</span>)]  <span class="co"># delete all but the internal states and total scores</span></span>
-<span id="cb6-46"><a href="data-preparation.html#cb6-46" aria-hidden="true" tabindex="-1"></a>miss_r <span class="ot">&lt;-</span> <span class="fu">lowerCor</span>(miss_set2)  <span class="co"># the correlation matrix, rounded to 2 decimals</span></span></code></pre></div>
-<pre><code>    Q68   Q69   Q70   Q71   Q72   Q73   Q74   Q76   Q77   Q78   Q79  
-Q68  1.00                                                            
-Q69  0.99  1.00                                                      
-Q70  0.99  0.99  1.00                                                
-Q71  1.00  0.99  0.98  1.00                                          
-Q72  0.99  0.99  0.99  0.99  1.00                                    
-Q73  1.00  0.99  0.98  0.99  0.99  1.00                              
-Q74  0.99  0.98  0.97  0.99  0.98  0.98  1.00                        
-Q76  0.99  0.99  0.98  0.99  0.99  0.99  0.98  1.00                  
-Q77  0.99  0.99  0.98  1.00  0.98  0.99  0.99  0.99  1.00            
-Q78  0.99  0.99  0.98  0.99  0.98  0.99  0.98  0.98  0.99  1.00      
-Q79  0.98  0.98  0.97  0.98  0.97  0.98  0.97  0.97  0.98  0.98  1.00
-Q80  0.98  0.98  0.98  0.99  0.98  0.98  0.98  0.99  0.98  0.98  0.97
-Q81  1.00  0.99  0.99  1.00  0.99  1.00  0.99  0.99  0.99  0.99  0.98
-Q82  0.99  0.99  0.98  0.99  0.98  0.98  0.98  0.99  0.99  0.98  0.97
-Q84  0.01  0.00  0.00  0.00  0.03  0.03  0.02  0.02    NA  0.01  0.01
-Q85  0.01  0.04  0.03  0.01  0.03  0.01 -0.01  0.04    NA  0.06 -0.01
-    Q80   Q81   Q82   Q84   Q85  
-Q80  1.00                        
-Q81  0.98  1.00                  
-Q82  0.98  0.99  1.00            
-Q84 -0.02  0.01 -0.01  1.00      
-Q85  0.05  0.01  0.05  0.06  1.00</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="data-preparation.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corPlot</span>(miss_r, <span class="at">stars =</span> <span class="cn">TRUE</span>, <span class="at">upper =</span> <span class="cn">FALSE</span>)  <span class="co"># examine the many options for this function</span></span></code></pre></div>
+<p><strong>Mechanism of missing data</strong>. <span class="citation">McKnight et al. (<a href="references.html#ref-McKnightEtAl2007" role="doc-biblioref">2007</a>)</span> prescribe several approaches for investigating the mechanisms of missing data. An appropriate first step is to test whether the data are Missing Completely At Random (MCAR) with the use of Little’s test <span class="citation">Little (<a href="references.html#ref-Little1988" role="doc-biblioref">1988</a>)</span>. This is a chi-square test of the difference between the observed pattern of missing responses and the pattern of responses that would expected if missingness were completely random. We report the results of this test in Table <a href="data-preparation.html#tab:mcar">1</a>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r bg-success"><code class="sourceCode r"><span id="cb4-1"><a href="data-preparation.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(naniar)</span>
+<span id="cb4-2"><a href="data-preparation.html#cb4-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">mcar_test</span>(all), <span class="at">caption =</span> <span class="st">&quot;Little&#39;s Test of Missing Completely At Random (MCAR)&quot;</span>)</span></code></pre></div>
+<table>
+<caption><span id="tab:mcar">Table 1: </span>Little’s Test of Missing Completely At Random (MCAR)</caption>
+<thead>
+<tr class="header">
+<th align="right">statistic</th>
+<th align="right">df</th>
+<th align="right">p.value</th>
+<th align="right">missing.patterns</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">2089.341</td>
+<td align="right">8663</td>
+<td align="right">1</td>
+<td align="right">117</td>
+</tr>
+</tbody>
+</table>
+<p>The test is fairly conclusive. The p-value for the chi-square is 1, which means observed pattern of missing data do not diverge significantly from what would be expected if the data were missing completely at random.</p>
+<p><strong>Were examinees triggered?</strong> As mentioned above, a possible explanation of the missing data in the Internal States items is that examinees were triggered. As after responding to the preceding 52 items calling to mind imagery of abusive external events, these examinees were <strong><em>done</em></strong> with the survey. A possible test of this hypothesis is an examination of the relationship between a total score of responses to the External Events items and a score of total missingness on the Internal States items. The empirical work to test this hypothesis is laid out in the following code chunk. The items measuring external events are summed into a total score such that a higher value indicates more exposure to abusive external events. The items measuring internal states are coded so that 1=missing and 0=all others response, and these items are summed into a score of total missingness.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r bg-success"><code class="sourceCode r"><span id="cb5-1"><a href="data-preparation.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. ISOLATE THE DATA</span></span>
+<span id="cb5-2"><a href="data-preparation.html#cb5-2" aria-hidden="true" tabindex="-1"></a>miss_set <span class="ot">&lt;-</span> items</span>
+<span id="cb5-3"><a href="data-preparation.html#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="data-preparation.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. DUMMY CODE INTERNAL STATES ITEMS</span></span>
+<span id="cb5-5"><a href="data-preparation.html#cb5-5" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q68[miss_set<span class="sc">$</span>Q68 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb5-6"><a href="data-preparation.html#cb5-6" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q69[miss_set<span class="sc">$</span>Q69 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb5-7"><a href="data-preparation.html#cb5-7" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q70[miss_set<span class="sc">$</span>Q70 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb5-8"><a href="data-preparation.html#cb5-8" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q71[miss_set<span class="sc">$</span>Q71 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb5-9"><a href="data-preparation.html#cb5-9" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q72[miss_set<span class="sc">$</span>Q72 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb5-10"><a href="data-preparation.html#cb5-10" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q73[miss_set<span class="sc">$</span>Q73 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb5-11"><a href="data-preparation.html#cb5-11" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q74[miss_set<span class="sc">$</span>Q74 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb5-12"><a href="data-preparation.html#cb5-12" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q76[miss_set<span class="sc">$</span>Q76 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb5-13"><a href="data-preparation.html#cb5-13" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q77[miss_set<span class="sc">$</span>Q77 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb5-14"><a href="data-preparation.html#cb5-14" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q78[miss_set<span class="sc">$</span>Q78 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb5-15"><a href="data-preparation.html#cb5-15" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q79[miss_set<span class="sc">$</span>Q79 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb5-16"><a href="data-preparation.html#cb5-16" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q80[miss_set<span class="sc">$</span>Q80 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb5-17"><a href="data-preparation.html#cb5-17" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q81[miss_set<span class="sc">$</span>Q81 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb5-18"><a href="data-preparation.html#cb5-18" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q82[miss_set<span class="sc">$</span>Q82 <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb5-19"><a href="data-preparation.html#cb5-19" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q68[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q68)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb5-20"><a href="data-preparation.html#cb5-20" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q69[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q69)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb5-21"><a href="data-preparation.html#cb5-21" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q70[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q70)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb5-22"><a href="data-preparation.html#cb5-22" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q71[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q71)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb5-23"><a href="data-preparation.html#cb5-23" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q72[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q72)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb5-24"><a href="data-preparation.html#cb5-24" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q73[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q73)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb5-25"><a href="data-preparation.html#cb5-25" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q74[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q74)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb5-26"><a href="data-preparation.html#cb5-26" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q76[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q76)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb5-27"><a href="data-preparation.html#cb5-27" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q77[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q77)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb5-28"><a href="data-preparation.html#cb5-28" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q78[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q78)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb5-29"><a href="data-preparation.html#cb5-29" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q79[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q79)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb5-30"><a href="data-preparation.html#cb5-30" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q80[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q80)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb5-31"><a href="data-preparation.html#cb5-31" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q81[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q81)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb5-32"><a href="data-preparation.html#cb5-32" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>Q82[<span class="fu">is.na</span>(miss_set<span class="sc">$</span>Q82)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb5-33"><a href="data-preparation.html#cb5-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-34"><a href="data-preparation.html#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. TOTAL SCORES ON EXTERNAL EVENTS ITEMS AND INTERNAL</span></span>
+<span id="cb5-35"><a href="data-preparation.html#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="co"># STATES MISSINGNESS</span></span>
+<span id="cb5-36"><a href="data-preparation.html#cb5-36" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>total_ext <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(miss_set[, <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">52</span>)])</span>
+<span id="cb5-37"><a href="data-preparation.html#cb5-37" aria-hidden="true" tabindex="-1"></a>miss_set<span class="sc">$</span>total_int <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(miss_set[, <span class="fu">c</span>(<span class="dv">53</span><span class="sc">:</span><span class="dv">66</span>)])</span>
+<span id="cb5-38"><a href="data-preparation.html#cb5-38" aria-hidden="true" tabindex="-1"></a>miss_set2 <span class="ot">&lt;-</span> miss_set[, <span class="fu">c</span>(<span class="dv">53</span><span class="sc">:</span><span class="dv">68</span>)]  <span class="co"># just the total score, missingness</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r bg-success"><code class="sourceCode r"><span id="cb6-1"><a href="data-preparation.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. CORRELATIONS</span></span>
+<span id="cb6-2"><a href="data-preparation.html#cb6-2" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">corPlot</span>(miss_set2[, <span class="dv">1</span><span class="sc">:</span><span class="dv">16</span>], <span class="at">main =</span> <span class="cn">NULL</span>, <span class="at">upper =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:trigger"></span>
-<img src="_main_files/figure-html/trigger-1.png" alt="Trigger Hypothesis" width="672" />
+<img src="_main_files/figure-html/trigger-1.png" alt="Correlation Matrix: External States and Internal States Missingness" width="672" />
 <p class="caption">
-Figure 2: Trigger Hypothesis
+Figure 2: Correlation Matrix: External States and Internal States Missingness
 </p>
 </div>
-<p>Figure <a href="data-preparation.html#fig:trigger">2</a> illustrates the correlations among the Internal States items (dichotomized according to their missingness (1=missing, 0=all others)), the total score from the external states (total_ext), and the total score of internal item missingness (total_int). The correlation of total_ext with all the other items is nearly zero, suggesting that more exposure to abusive external states did <strong><em>not</em></strong> predict nonresponse to the Internal States items. This finding is consistent with the finding from Figure <a href="#fig:mcar"><strong>??</strong></a> that the missing data appear to missing completely at random.</p>
+<p>Figure <a href="data-preparation.html#fig:trigger">2</a> illustrates the correlations among the Internal States items (dichotomized according to their missingness (1=missing, 0=all others)), the total score from the external states (total_ext), and the total score of internal item missingness (total_int). The correlation of total_ext with all the other items is nearly zero, suggesting that more exposure to abusive external states did <strong><em>not</em></strong> predict nonresponse to the Internal States items. This finding is consistent with the finding from Figure <a href="data-preparation.html#tab:mcar">1</a> that the missing data appear to missing completely at random.</p>
 <p><strong>Missing data methods</strong>. There are several different ways to handle missing data. A common method is to <em>delete all cases missing any data</em>. This is called <strong>listwise</strong> deletion of data. Its primary advantages are simplicity, expedience, and analysis based on complete information. The disadvantages of listwise are (1) disposal of the information offered by those examinees who responded to some items but not others, and (2) diminishment of the dataset, and with it, a reduction in statistical power. The “all” data file of all Likert items and demographics items derived earlier reports data from 3,222 examinees. The following code chunk creates a subset of complete data. This smaller dataset has 1,841 examinees.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="data-preparation.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># LISTWISE DELETION OF MISSING DATA</span></span>
-<span id="cb9-2"><a href="data-preparation.html#cb9-2" aria-hidden="true" tabindex="-1"></a>all_l <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(all)  <span class="co">#  Likert items from columns 14-79 plus demographics post listwise</span></span>
-<span id="cb9-3"><a href="data-preparation.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(all_l, <span class="st">&quot;data/all_l.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)  <span class="co"># save data</span></span>
-<span id="cb9-4"><a href="data-preparation.html#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="data-preparation.html#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># OTHER POSSIBLE LISTWISE DATASETS</span></span>
-<span id="cb9-6"><a href="data-preparation.html#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="data-preparation.html#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># items &lt;- items[complete.cases(items), ] # create new</span></span>
-<span id="cb9-8"><a href="data-preparation.html#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># dataset without missing data</span></span>
-<span id="cb9-9"><a href="data-preparation.html#cb9-9" aria-hidden="true" tabindex="-1"></a>items_l <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(items)  <span class="co"># Likert items from columns 14-79 post listwise</span></span>
-<span id="cb9-10"><a href="data-preparation.html#cb9-10" aria-hidden="true" tabindex="-1"></a>ext_items_l <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(ext_items)  <span class="co"># Likert items for external events post listwise</span></span>
-<span id="cb9-11"><a href="data-preparation.html#cb9-11" aria-hidden="true" tabindex="-1"></a>int_items_l <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(int_items)  <span class="co"># Likert items for internal states post listwise</span></span>
-<span id="cb9-12"><a href="data-preparation.html#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(items_l, <span class="st">&quot;data/items_l.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb9-13"><a href="data-preparation.html#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(ext_items_l, <span class="st">&quot;data/ext_items_l.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb9-14"><a href="data-preparation.html#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(int_items_l, <span class="st">&quot;data/int_items_l.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r bg-success"><code class="sourceCode r"><span id="cb7-1"><a href="data-preparation.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># LISTWISE DELETION OF MISSING DATA</span></span>
+<span id="cb7-2"><a href="data-preparation.html#cb7-2" aria-hidden="true" tabindex="-1"></a>all_l <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(all)  <span class="co">#  Likert items from columns 14-79 plus demographics post listwise</span></span>
+<span id="cb7-3"><a href="data-preparation.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(all_l, <span class="st">&quot;data/all_l.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)  <span class="co"># save data</span></span>
+<span id="cb7-4"><a href="data-preparation.html#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="data-preparation.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># OTHER POSSIBLE LISTWISE DATASETS</span></span>
+<span id="cb7-6"><a href="data-preparation.html#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="data-preparation.html#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># items &lt;- items[complete.cases(items), ] # create new</span></span>
+<span id="cb7-8"><a href="data-preparation.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># dataset without missing data</span></span>
+<span id="cb7-9"><a href="data-preparation.html#cb7-9" aria-hidden="true" tabindex="-1"></a>items_l <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(items)  <span class="co"># Likert items from columns 14-79 post listwise</span></span>
+<span id="cb7-10"><a href="data-preparation.html#cb7-10" aria-hidden="true" tabindex="-1"></a>ext_items_l <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(ext_items)  <span class="co"># Likert items for external events post listwise</span></span>
+<span id="cb7-11"><a href="data-preparation.html#cb7-11" aria-hidden="true" tabindex="-1"></a>int_items_l <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(int_items)  <span class="co"># Likert items for internal states post listwise</span></span>
+<span id="cb7-12"><a href="data-preparation.html#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(items_l, <span class="st">&quot;data/items_l.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb7-13"><a href="data-preparation.html#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(ext_items_l, <span class="st">&quot;data/ext_items_l.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb7-14"><a href="data-preparation.html#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(int_items_l, <span class="st">&quot;data/int_items_l.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p>Analysis can proceed with these two datasets:</p>
 <ol style="list-style-type: decimal">
 <li>the “all” dataset of all Likert and demographic items (N=3,222)</li>
