@@ -1,6 +1,4 @@
-# PARTIAL CREDIT MODEL
-library(mirt) # load package
-items <- read.csv("data/items.csv") # read data
+# APPLY VARIABLE LABELS
 names(items) <- c(
   # EXTERNAL EVENTS ITEMS
   Q7  = "EQ7 - Pastor speaking on God's behalf",
@@ -49,13 +47,13 @@ names(items) <- c(
   Q58 = "EQ58 - Terror/horror used to motivate religious decisions",
   Q59 = "EQ59 - Pastor/group blame victim for their abuse",
   Q60 = "EQ60 - Encouraged by leader to stay in abusive marriage",
-  Q61 = "EQ61 - Developmentally-inappropriate/anxious end times taught to young children",
+  Q61 = "EQ61 - Developmentally-inappropriate/anxious end times descriptions taught to young children",
   Q62 = "EQ62 - Scripture used to justify physical violence",
   Q63 = "EQ63 - Shamed by pastor/group for raising questions or concerns",
   Q64 = "EQ64 - Witnessing women pressured to stay in unfaithful/abusive marriages",
   Q65 = "EQ65 - Cut off/shunned by more religious family members",
   Q66 = "EQ66 - Others treated as less than due to their sexual orientation",
-
+  
   # VARIABLE LABELS: INTERNAL STATES ITEMS
   Q68 = "IQ68 - Anxiety attacks triggered by religious stimuli",
   Q69 = "IQ69 - Lack of spiritual direction/purpose",
@@ -71,54 +69,3 @@ names(items) <- c(
   Q80 = "IQ80 - Feeling isolated",
   Q81 = "IQ81 - Nightmares about my negative religious experiences",
   Q82 = "IQ82 - Having trouble navigating life outside my church/community")
-
-
-# MODEL SPECIFICATION/ESTIMATION
-model.pcm <- 'SPIRITUAL ABUSE = 1-66'
-results.pcm <- mirt(data=items, model=model.pcm, itemtype="Rasch", verbose=FALSE)
-coef.pcm <- coef(results.pcm, IRTpars=TRUE, simplify=TRUE)
-items.pcm <- as.data.frame(coef.pcm$items)
-items.pcm$deltab1b2 <- items.pcm$b2 - items.pcm$b1
-items.pcm$deltab2b3 <- items.pcm$b3 - items.pcm$b2
-items.pcm$deltab3b4 <- items.pcm$b4 - items.pcm$b3
-items.pcm
-print(results.pcm)
-print(round(items.pcm),2)
-knitr::kable(round(items.pcm,2), caption = "Partial Credit Model (PCM) - Item Parameters")
-
-do <- as.data.frame(items.pcm) # save item parameters as data frame
-rv <- subset(do, deltab1b2 < 0 | deltab2b3 < 0 | deltab3b4 <0) # subset the item fit data to find the misfitting items
-print(rv,2)
-knitr::kable(rv, "simple", digits = 2)
-
-
-
-# PCM ITEM PLOTS
-itemplot(results.pcm, 1, type='infotrace')
-# use the directlabels package to put labels on tracelines
-library(directlabels)
-plt <- itemplot(results.pcm, 3)
-direct.label(plt, 'top.points')
-plt <- plot(results.pcm, type = 'trace', which.items = c(1,2),
-     main = "", par.settings = simpleTheme(lty=1:4,lwd=2),
-     auto.key=list(points=FALSE,lines=TRUE, columns=4)) # option curves
-direct.label(plt, 'top.points')
-
-# ITEM FIT
-itemfit(results.pcm, na.rm = TRUE, 'infit') # item fit function
-i <- as.data.frame(itemfit(results.pcm, na.rm = TRUE, 'infit')) # save item fit stats as data frame
-misfits <- subset(i, outfit > 1.5 | outfit < 0.5 | infit > 1.5 | infit < 0.5) # subset the item fit data to find the misfitting items
-misfits
-
-# PCM MODEL FIT
-itemplot(results.pcm, 1, type = 'score')
-empirical_plot(items, c(1,2,3,4), main = 'Empirical Plots') # multiple items
-empirical_plot(items, 1, main = 'Empirical Plots') # one item
-pcmfit <- as.data.frame(itemfit(results.pcm, na.rm=TRUE))
-print(pcmfit, caption = 'Partial Credit Model (PCM) - Item Fit Statistics')
-knitr::kable(pcmfit, caption = 'Partial Credit Model (PCM) - Item Fit Statistics')
-itemfit(results.pcm, empirical.plot=1)
-itemfit(results.pcm, 'infit', na.rm=TRUE)
-
-results.pcm
-

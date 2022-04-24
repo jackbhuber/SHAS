@@ -252,40 +252,22 @@ div.csl-indent {
 <div id="item-analyses-in-item-response-theory" class="section level2 hasAnchor">
 <h2>Item analyses in item response theory<a href="item-analysis.html#item-analyses-in-item-response-theory" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Item response theory (IRT) is an established framework for empirically evaluating what items measure <span class="citation">(<a href="references.html#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>; <a href="references.html#ref-WrightMasters1982" role="doc-biblioref">Wright and Masters 1982</a>)</span>. IRT methods complement methods derived from classical test theory in several ways.</p>
-<ol style="list-style-type: decimal">
-<li><p><strong>Examinees and items on the same equal-interval scale</strong>. In classical test theory, examinees differ in their scores and items differ in their means or percent of examinees selecting a response; examinees and items are on different scales. By contrast, IRT methods allow measurement of persons and items on the <strong><em>same scale</em></strong> with <em>equal interval properties</em> of the <em>logit</em> scale** and resulting linear measures (Wright &amp; Stone, 1999). In IRT we can estimate <em>item parameters independently of the characteristics of the calibrating sample</em>, and we can estimate <em>person parameters apart from the difficulties of the items taken</em> (Masters, 1982; Rasch, 1966).</p></li>
-<li><p><strong>Item separation has diagnostic value</strong>. A core assumption of CTT is that items are <em>redundant</em>; they contribute meaningful variation to a total score but they do not occupy a distinct place on the score continuum. IRT is different. IRT does not assume that items are redundant; instead it investigates whether items make distinct contributions to the measurement of the latent trait.</p></li>
-</ol>
-<p>Whereas classical test theory measurement is principally concerned with the ratio of noise to signal in the variation contributed by an item, IRT models compute the probability of a certain response to an item given the level of the latent construct the individual possesses (i.e., spiritual abuse) and the relevant item’s difficulty of endorsement. IRT is based on the logistic model and operates on the <em>logit</em> scale.</p>
-<p>In what follows, we conduct item analyses through a comparison of several different IRT models: the Partial Credit Model (PCM), the Generalized Partial Credit Model (GPCM), and the Rating Scale Model (RSM). I credit Okan Bulut <span class="citation">(<a href="#ref-Bulut2020" role="doc-biblioref"><strong>Bulut2020?</strong></a>)</span> for his excellent tutorial illustrating how to carry out IRT analyses in R using the <code>mirt</code> package (cite mirt).</p>
+<p>First, IRT places both examinees and items on the same interval scale. In classical test theory, examinees differ in their scores and items differ in their means or percent of examinees selecting a response; examinees and items are on different scales. By contrast, IRT methods allow measurement of persons and items on the <strong><em>same scale</em></strong> with <em>equal interval properties</em> of the <em>logit</em> scale** and resulting linear measures (Wright &amp; Stone, 1999). In IRT we can estimate <em>item parameters independently of the characteristics of the calibrating sample</em>, and we can estimate <em>person parameters apart from the difficulties of the items taken</em> (Masters, 1982; Rasch, 1966).</p>
+<p>Second, IRT gives items diagnostic value. A core assumption of CTT is that items are <em>redundant</em>; they contribute meaningful variation to a total score but they do not occupy a distinct place on the score continuum. IRT is different. IRT does not assume that items are redundant; instead it investigates whether items make distinct contributions to the measurement of the latent trait. Whereas classical test theory measurement is principally concerned with the ratio of noise to signal in the variation contributed by an item, IRT models compute the probability of a certain response to an item given the level of the latent construct the individual possesses (i.e., spiritual abuse) and the relevant item’s difficulty of endorsement. IRT is based on the logistic model and operates on the <em>logit</em> scale.</p>
+<p>In what follows, we conduct item analyses through a comparison of several different IRT models: the Partial Credit Model (PCM), the Generalized Partial Credit Model (GPCM), and the Rating Scale Model (RSM). I credit Okan Bulut <span class="citation">(<a href="references.html#ref-Bulut2018" role="doc-biblioref">2018</a>)</span> for his tutorial illustrating how to carry out IRT analyses in R using the <code>mirt</code> package <span class="citation">(<a href="references.html#ref-mirt" role="doc-biblioref">Chalmers 2012</a>)</span>.</p>
 <div id="irt-model-assumptions" class="section level3 hasAnchor">
 <h3>IRT Model Assumptions<a href="item-analysis.html#irt-model-assumptions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>IRT makes two assumptions of the data. The first is unidimensionality of the latent trait. Is the trait one dimension? This is important for the SHAS because the questionnaire explicitly distinguished between items measuring external events and internal states. To check this assumption we first confirm the factor structure using confirmatory factor analysis (CFA) and Rasch Principal Component Analysis of Residuals (PCAR; Smith, 2002).</p>
-<p>The second assumption is local independence <span class="citation">(<a href="references.html#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>)</span>. This means that any set of items should not share any meaningful correlation once the latent variable has been accounted for (Edwards, Houts, &amp; Cai, 2018).</p>
+<p>IRT makes two assumptions of the data. The first is unidimensionality of the latent trait. Is the trait one dimension? This is important for the SHAS because the questionnaire explicitly distinguished between items measuring external events and internal states. To check this assumption we first confirm the factor structure using confirmatory factor analysis (CFA) and Rasch Principal Component Analysis of Residuals (PCAR; Smith, 2002). The second assumption is local independence <span class="citation">(<a href="references.html#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>)</span>. This means that any set of items should not share any meaningful correlation once the latent variable has been accounted for (Edwards, Houts, &amp; Cai, 2018).</p>
 <p>To check the assumption of local independence, we used the Q3 statistic (Yen, 1984). The Q3 statistic index criteria are that the raw residual correlation between pairs of items should never exceed 0.10 (Marais &amp; Andrich, 2008).</p>
-<p>Using these criteria, we found XX items having local dependence. The items that had the highest raw residual correlations had negative signs and no positive residual correlation. In other words, the assumption of local independence in this study was met.</p>
+<p>Using these criteria, we found XX items in possession of local dependence. The items that had the highest raw residual correlations had negative signs and no positive residual correlation. In other words, the assumption of local independence in this study (was)/(was not) met.</p>
 </div>
 <div id="partial-credit-model-pcm" class="section level3 hasAnchor">
 <h3>Partial Credit Model (PCM)<a href="item-analysis.html#partial-credit-model-pcm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The first model we examine is the Partial Credit Model (PCM) <span class="citation">(<a href="#ref-Masters1982" role="doc-biblioref"><strong>Masters1982?</strong></a>)</span>. This is a polytomous item response model belonging to the Rasch family. This means that it extends the Rasch model, which is based on dichotomous item responses (1=correct, 0=incorrect), by considering the probabliity of choosing from among several response options such as those typically presented in Likert scales of agreement or frequency. The PCM assumes that items use ordered response categories as they exist in questionnaires, such as unidimensional rating scales. The number of response categories in each item may vary <span class="citation">(<a href="references.html#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>)</span>. It follows that the PCM contains m (m + 1 being the number of response categories) threshold parameters. Each threshold parameter marks a category intersection <span class="citation">(<a href="#ref-Masters1982" role="doc-biblioref"><strong>Masters1982?</strong></a>)</span>. Threshold sometimes refers to “step difficulty” or “step parameter” and illustrates the point on the latent trait continuum (e.g., spiritual abuse) where a response in category k becomes more likely than a response in category k – 1 (de Ayala, 2009). The PCM provides scores for items, persons, and step parameters on a logit scale.</p>
-<p><strong>Model Estimation</strong>. We begin by loading the <code>mirt</code> library and estimating the model on the data from the 66 SHAS items. This model constrains the slopes to 1 and freely estimates the variance parameters.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="item-analysis.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ESTIMATE PCM MODEL</span></span>
-<span id="cb10-2"><a href="item-analysis.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mirt)</span>
-<span id="cb10-3"><a href="item-analysis.html#cb10-3" aria-hidden="true" tabindex="-1"></a>items <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/items.csv&quot;</span>)</span>
-<span id="cb10-4"><a href="item-analysis.html#cb10-4" aria-hidden="true" tabindex="-1"></a>model.pcm <span class="ot">&lt;-</span> <span class="st">&quot;SPIRITUAL ABUSE PARTIAL CREDIT MODEL = 1-66&quot;</span></span>
-<span id="cb10-5"><a href="item-analysis.html#cb10-5" aria-hidden="true" tabindex="-1"></a>results.pcm <span class="ot">&lt;-</span> <span class="fu">mirt</span>(<span class="at">data =</span> items, <span class="at">model =</span> model.pcm, <span class="at">itemtype =</span> <span class="st">&quot;Rasch&quot;</span>,</span>
-<span id="cb10-6"><a href="item-analysis.html#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="cn">FALSE</span>)  <span class="co"># estimate model</span></span>
-<span id="cb10-7"><a href="item-analysis.html#cb10-7" aria-hidden="true" tabindex="-1"></a>coef.pcm <span class="ot">&lt;-</span> <span class="fu">coef</span>(results.pcm, <span class="at">IRTpars =</span> <span class="cn">TRUE</span>, <span class="at">simplify =</span> <span class="cn">TRUE</span>)  <span class="co"># save coefficients</span></span>
-<span id="cb10-8"><a href="item-analysis.html#cb10-8" aria-hidden="true" tabindex="-1"></a>items.pcm <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(coef.pcm<span class="sc">$</span>items)  <span class="co"># item parameters as data frame</span></span>
-<span id="cb10-9"><a href="item-analysis.html#cb10-9" aria-hidden="true" tabindex="-1"></a>items.pcm<span class="sc">$</span>deltab1b2 <span class="ot">&lt;-</span> items.pcm<span class="sc">$</span>b2 <span class="sc">-</span> items.pcm<span class="sc">$</span>b1  <span class="co"># look for reversals b1 to b2</span></span>
-<span id="cb10-10"><a href="item-analysis.html#cb10-10" aria-hidden="true" tabindex="-1"></a>items.pcm<span class="sc">$</span>deltab2b3 <span class="ot">&lt;-</span> items.pcm<span class="sc">$</span>b3 <span class="sc">-</span> items.pcm<span class="sc">$</span>b2  <span class="co"># look for reversals b2 to b3</span></span>
-<span id="cb10-11"><a href="item-analysis.html#cb10-11" aria-hidden="true" tabindex="-1"></a>items.pcm<span class="sc">$</span>deltab3b4 <span class="ot">&lt;-</span> items.pcm<span class="sc">$</span>b4 <span class="sc">-</span> items.pcm<span class="sc">$</span>b3  <span class="co"># look for reversals b3 to b4</span></span>
-<span id="cb10-12"><a href="item-analysis.html#cb10-12" aria-hidden="true" tabindex="-1"></a>rv <span class="ot">&lt;-</span> <span class="fu">subset</span>(items.pcm, deltab1b2 <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">|</span> deltab2b3 <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">|</span> deltab3b4 <span class="sc">&lt;</span></span>
-<span id="cb10-13"><a href="item-analysis.html#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span>)  <span class="co"># subset items with reversals</span></span>
-<span id="cb10-14"><a href="item-analysis.html#cb10-14" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(rv, <span class="st">&quot;simple&quot;</span>, <span class="at">digits =</span> <span class="dv">2</span>, <span class="at">caption =</span> <span class="st">&quot;Partial Credit Model - Item Parameters - Items with Category Threshold Reversals&quot;</span>,</span>
-<span id="cb10-15"><a href="item-analysis.html#cb10-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">full =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>The first model we examine is the Partial Credit Model (PCM) <span class="citation">(<a href="references.html#ref-Masters1982" role="doc-biblioref">Masters 1982</a>)</span>. This is a polytomous item response model belonging to the Rasch family. This means that it extends the Rasch model, which is based on dichotomous item responses (1=correct, 0=incorrect), by considering the probability of choosing from among several response options such as those typically presented in Likert scales of agreement. The number of response categories in each item may vary <span class="citation">(<a href="references.html#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>)</span>. It follows that the PCM contains m (m + 1 being the number of response categories) threshold parameters, and each threshold parameter marks a category intersection <span class="citation">(<a href="references.html#ref-Masters1982" role="doc-biblioref">Masters 1982</a>)</span>. Threshold sometimes refers to “step difficulty” or “step parameter” and illustrates the point on the latent trait continuum (e.g., spiritual abuse) where a response in category k becomes more likely than a response in category k – 1 (de Ayala, 2009). The PCM provides scores for items, persons, and step parameters on a logit scale. We begin by loading the <code>mirt</code> library and estimating the model on the data from the 66 SHAS items. This model constrains the slopes to 1 and freely estimates the variance parameters.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="item-analysis.html#cb10-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(rv, <span class="st">&quot;simple&quot;</span>, <span class="at">digits =</span> <span class="dv">2</span>, <span class="at">caption =</span> <span class="st">&quot;Partial Credit Model - Item Parameters - Items with Category Threshold Reversals&quot;</span>,</span>
+<span id="cb10-2"><a href="item-analysis.html#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">full =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <table>
-<caption><span id="tab:mirt-items">Table 1: </span>Partial Credit Model - Item Parameters - Items with Category Threshold Reversals</caption>
+<caption><span id="tab:pcm-items">Table 1: </span>Partial Credit Model - Item Parameters - Items with Category Threshold Reversals</caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -301,7 +283,7 @@ div.csl-indent {
 </thead>
 <tbody>
 <tr class="odd">
-<td>Q7</td>
+<td>EQ7 - Pastor speaking on God’s behalf</td>
 <td align="right">1</td>
 <td align="right">0.23</td>
 <td align="right">0.08</td>
@@ -312,7 +294,7 @@ div.csl-indent {
 <td align="right">0.36</td>
 </tr>
 <tr class="even">
-<td>Q10</td>
+<td>EQ10 - Asked to give up personal goals by pastor</td>
 <td align="right">1</td>
 <td align="right">1.26</td>
 <td align="right">0.67</td>
@@ -323,7 +305,7 @@ div.csl-indent {
 <td align="right">0.31</td>
 </tr>
 <tr class="odd">
-<td>Q17</td>
+<td>EQ17 - Treated as less than b/c my sexual orientation</td>
 <td align="right">1</td>
 <td align="right">3.93</td>
 <td align="right">0.39</td>
@@ -334,7 +316,7 @@ div.csl-indent {
 <td align="right">-0.02</td>
 </tr>
 <tr class="even">
-<td>Q18</td>
+<td>EQ18 - Church/pastor discourage critical thinking</td>
 <td align="right">1</td>
 <td align="right">-0.15</td>
 <td align="right">-0.39</td>
@@ -345,7 +327,7 @@ div.csl-indent {
 <td align="right">0.57</td>
 </tr>
 <tr class="odd">
-<td>Q19</td>
+<td>EQ19 - Behavior excessively monitored by pastor/group</td>
 <td align="right">1</td>
 <td align="right">0.42</td>
 <td align="right">0.20</td>
@@ -356,7 +338,7 @@ div.csl-indent {
 <td align="right">0.74</td>
 </tr>
 <tr class="even">
-<td>Q20</td>
+<td>EQ20 - Members pressured to give money despite financial hardship</td>
 <td align="right">1</td>
 <td align="right">0.97</td>
 <td align="right">0.37</td>
@@ -367,7 +349,7 @@ div.csl-indent {
 <td align="right">0.25</td>
 </tr>
 <tr class="odd">
-<td>Q21</td>
+<td>EQ21 - Taught I would risk Hell if left my church/group</td>
 <td align="right">1</td>
 <td align="right">1.11</td>
 <td align="right">0.38</td>
@@ -378,7 +360,7 @@ div.csl-indent {
 <td align="right">-0.15</td>
 </tr>
 <tr class="even">
-<td>Q22</td>
+<td>EQ22 - Expected to follow pastor/leader rules re: dating/marriage/sex</td>
 <td align="right">1</td>
 <td align="right">-0.39</td>
 <td align="right">-0.61</td>
@@ -389,7 +371,7 @@ div.csl-indent {
 <td align="right">0.64</td>
 </tr>
 <tr class="odd">
-<td>Q23</td>
+<td>EQ23 - Prayer replacing needed medical interventions</td>
 <td align="right">1</td>
 <td align="right">0.77</td>
 <td align="right">0.64</td>
@@ -400,7 +382,7 @@ div.csl-indent {
 <td align="right">0.57</td>
 </tr>
 <tr class="even">
-<td>Q24</td>
+<td>EQ24 - Expected to consult pastor/leader before making non-religious decisions</td>
 <td align="right">1</td>
 <td align="right">1.13</td>
 <td align="right">0.47</td>
@@ -411,7 +393,7 @@ div.csl-indent {
 <td align="right">0.43</td>
 </tr>
 <tr class="odd">
-<td>Q26</td>
+<td>EQ26 - Pressured to forgive abuser while abuse was ongoing</td>
 <td align="right">1</td>
 <td align="right">1.41</td>
 <td align="right">0.74</td>
@@ -422,7 +404,7 @@ div.csl-indent {
 <td align="right">0.52</td>
 </tr>
 <tr class="even">
-<td>Q27</td>
+<td>EQ27 - Denied opportunities to serve b/c of my gender</td>
 <td align="right">1</td>
 <td align="right">1.64</td>
 <td align="right">0.36</td>
@@ -433,7 +415,7 @@ div.csl-indent {
 <td align="right">0.11</td>
 </tr>
 <tr class="odd">
-<td>Q29</td>
+<td>EQ29 - Feeling special when in pastor’s good graces; otherwise ignored</td>
 <td align="right">1</td>
 <td align="right">0.12</td>
 <td align="right">0.04</td>
@@ -444,7 +426,7 @@ div.csl-indent {
 <td align="right">0.70</td>
 </tr>
 <tr class="even">
-<td>Q30</td>
+<td>EQ30 - Deterred from seeking mental health treatment/counseling/medication</td>
 <td align="right">1</td>
 <td align="right">0.89</td>
 <td align="right">0.38</td>
@@ -455,7 +437,7 @@ div.csl-indent {
 <td align="right">0.69</td>
 </tr>
 <tr class="odd">
-<td>Q32</td>
+<td>EQ32 - Feeling unable to express unhappiness</td>
 <td align="right">1</td>
 <td align="right">-0.30</td>
 <td align="right">-0.53</td>
@@ -466,7 +448,7 @@ div.csl-indent {
 <td align="right">0.84</td>
 </tr>
 <tr class="even">
-<td>Q34</td>
+<td>EQ34 - Scripture used to justify physical punishment/severe discipline</td>
 <td align="right">1</td>
 <td align="right">0.10</td>
 <td align="right">0.04</td>
@@ -477,7 +459,7 @@ div.csl-indent {
 <td align="right">0.63</td>
 </tr>
 <tr class="odd">
-<td>Q35</td>
+<td>EQ35 - Taught to distrust my emotions</td>
 <td align="right">1</td>
 <td align="right">-0.62</td>
 <td align="right">-0.70</td>
@@ -488,7 +470,7 @@ div.csl-indent {
 <td align="right">0.53</td>
 </tr>
 <tr class="even">
-<td>Q38</td>
+<td>EQ38 - Unrealistic demands placed on my moral/religious behavior</td>
 <td align="right">1</td>
 <td align="right">-0.43</td>
 <td align="right">-0.49</td>
@@ -499,7 +481,7 @@ div.csl-indent {
 <td align="right">0.40</td>
 </tr>
 <tr class="odd">
-<td>Q39</td>
+<td>EQ39 - Made to feel shame over natural sexual desires (not actions)</td>
 <td align="right">1</td>
 <td align="right">-0.16</td>
 <td align="right">-0.62</td>
@@ -510,7 +492,7 @@ div.csl-indent {
 <td align="right">0.35</td>
 </tr>
 <tr class="even">
-<td>Q40</td>
+<td>EQ40 - Threatening Divine punishment to keep group members in line</td>
 <td align="right">1</td>
 <td align="right">0.66</td>
 <td align="right">0.21</td>
@@ -521,7 +503,7 @@ div.csl-indent {
 <td align="right">0.08</td>
 </tr>
 <tr class="odd">
-<td>Q41</td>
+<td>EQ41 - Denied opportunities to serve because of my sexual orientation</td>
 <td align="right">1</td>
 <td align="right">3.89</td>
 <td align="right">0.65</td>
@@ -532,7 +514,7 @@ div.csl-indent {
 <td align="right">-0.38</td>
 </tr>
 <tr class="even">
-<td>Q44</td>
+<td>EQ44 - Love/acceptance offered only for high spiritual/moral performance</td>
 <td align="right">1</td>
 <td align="right">-0.01</td>
 <td align="right">-0.17</td>
@@ -543,7 +525,7 @@ div.csl-indent {
 <td align="right">0.88</td>
 </tr>
 <tr class="odd">
-<td>Q45</td>
+<td>EQ45 - Developmentally-inappropriate/anxious Hell/Satan/demons taught to young children</td>
 <td align="right">1</td>
 <td align="right">-0.10</td>
 <td align="right">-0.12</td>
@@ -554,7 +536,7 @@ div.csl-indent {
 <td align="right">0.35</td>
 </tr>
 <tr class="even">
-<td>Q46</td>
+<td>EQ46 - Treated as less than because of my skin color</td>
 <td align="right">1</td>
 <td align="right">3.92</td>
 <td align="right">1.19</td>
@@ -565,7 +547,7 @@ div.csl-indent {
 <td align="right">-0.24</td>
 </tr>
 <tr class="odd">
-<td>Q47</td>
+<td>EQ47 - Medical care being postponed/withheld for religious reasons</td>
 <td align="right">1</td>
 <td align="right">1.56</td>
 <td align="right">1.29</td>
@@ -576,7 +558,7 @@ div.csl-indent {
 <td align="right">-0.26</td>
 </tr>
 <tr class="even">
-<td>Q50</td>
+<td>EQ50 - Treated as less than because of my gender</td>
 <td align="right">1</td>
 <td align="right">1.58</td>
 <td align="right">-0.24</td>
@@ -587,7 +569,7 @@ div.csl-indent {
 <td align="right">0.38</td>
 </tr>
 <tr class="odd">
-<td>Q51</td>
+<td>EQ51 - Extreme pressure to be pastor/missionary/spiritual leader</td>
 <td align="right">1</td>
 <td align="right">0.44</td>
 <td align="right">0.33</td>
@@ -598,7 +580,7 @@ div.csl-indent {
 <td align="right">0.59</td>
 </tr>
 <tr class="even">
-<td>Q52</td>
+<td>EQ52 - Blamed for harm I suffered rather than blaming who harmed me</td>
 <td align="right">1</td>
 <td align="right">0.73</td>
 <td align="right">0.54</td>
@@ -609,7 +591,7 @@ div.csl-indent {
 <td align="right">0.87</td>
 </tr>
 <tr class="odd">
-<td>Q53</td>
+<td>EQ53 - Scripture used to justify abusive parent-child behavior</td>
 <td align="right">1</td>
 <td align="right">0.36</td>
 <td align="right">0.17</td>
@@ -620,7 +602,7 @@ div.csl-indent {
 <td align="right">0.43</td>
 </tr>
 <tr class="even">
-<td>Q54</td>
+<td>EQ54 - Being explicitly taught to distrust my intuitions</td>
 <td align="right">1</td>
 <td align="right">-0.36</td>
 <td align="right">-0.48</td>
@@ -631,7 +613,7 @@ div.csl-indent {
 <td align="right">0.44</td>
 </tr>
 <tr class="odd">
-<td>Q55</td>
+<td>EQ55 - Hearing cultural references in sermons unfamiliar to my race/eth. subculture</td>
 <td align="right">1</td>
 <td align="right">1.34</td>
 <td align="right">1.18</td>
@@ -642,7 +624,7 @@ div.csl-indent {
 <td align="right">0.39</td>
 </tr>
 <tr class="even">
-<td>Q56</td>
+<td>EQ56 - Being made to feel I was crazy/weird for doubts/questions</td>
 <td align="right">1</td>
 <td align="right">-0.18</td>
 <td align="right">-0.24</td>
@@ -653,7 +635,7 @@ div.csl-indent {
 <td align="right">0.91</td>
 </tr>
 <tr class="odd">
-<td>Q57</td>
+<td>EQ57 - Developing mental/physical ailments from conforming to group/leader’s expectation</td>
 <td align="right">1</td>
 <td align="right">0.83</td>
 <td align="right">0.33</td>
@@ -664,7 +646,7 @@ div.csl-indent {
 <td align="right">0.52</td>
 </tr>
 <tr class="even">
-<td>Q58</td>
+<td>EQ58 - Terror/horror used to motivate religious decisions</td>
 <td align="right">1</td>
 <td align="right">0.04</td>
 <td align="right">-0.13</td>
@@ -675,7 +657,7 @@ div.csl-indent {
 <td align="right">0.48</td>
 </tr>
 <tr class="odd">
-<td>Q60</td>
+<td>EQ60 - Encouraged by leader to stay in abusive marriage</td>
 <td align="right">1</td>
 <td align="right">2.21</td>
 <td align="right">0.95</td>
@@ -686,7 +668,7 @@ div.csl-indent {
 <td align="right">0.73</td>
 </tr>
 <tr class="even">
-<td>Q61</td>
+<td>EQ61 - Developmentally-inappropriate/anxious end times descriptions taught to young children</td>
 <td align="right">1</td>
 <td align="right">0.05</td>
 <td align="right">-0.24</td>
@@ -697,7 +679,7 @@ div.csl-indent {
 <td align="right">0.44</td>
 </tr>
 <tr class="odd">
-<td>Q62</td>
+<td>EQ62 - Scripture used to justify physical violence</td>
 <td align="right">1</td>
 <td align="right">0.54</td>
 <td align="right">0.20</td>
@@ -708,7 +690,7 @@ div.csl-indent {
 <td align="right">0.59</td>
 </tr>
 <tr class="even">
-<td>Q65</td>
+<td>EQ65 - Cut off/shunned by more religious family members</td>
 <td align="right">1</td>
 <td align="right">1.22</td>
 <td align="right">0.78</td>
@@ -719,7 +701,7 @@ div.csl-indent {
 <td align="right">0.44</td>
 </tr>
 <tr class="odd">
-<td>Q66</td>
+<td>EQ66 - Others treated as less than due to their sexual orientation</td>
 <td align="right">1</td>
 <td align="right">-0.58</td>
 <td align="right">-0.87</td>
@@ -730,7 +712,7 @@ div.csl-indent {
 <td align="right">0.69</td>
 </tr>
 <tr class="even">
-<td>Q68</td>
+<td>IQ68 - Anxiety attacks triggered by religious stimuli</td>
 <td align="right">1</td>
 <td align="right">0.86</td>
 <td align="right">0.31</td>
@@ -741,7 +723,7 @@ div.csl-indent {
 <td align="right">0.68</td>
 </tr>
 <tr class="odd">
-<td>Q72</td>
+<td>IQ72 - Feeling as if God harmed me directly</td>
 <td align="right">1</td>
 <td align="right">1.36</td>
 <td align="right">0.89</td>
@@ -752,7 +734,7 @@ div.csl-indent {
 <td align="right">0.01</td>
 </tr>
 <tr class="even">
-<td>Q76</td>
+<td>IQ76 - Feeling I wasted years of my life in a church/set of beliefs</td>
 <td align="right">1</td>
 <td align="right">-0.02</td>
 <td align="right">-0.19</td>
@@ -763,7 +745,7 @@ div.csl-indent {
 <td align="right">0.22</td>
 </tr>
 <tr class="odd">
-<td>Q81</td>
+<td>IQ81 - Nightmares about my negative religious experiences</td>
 <td align="right">1</td>
 <td align="right">0.94</td>
 <td align="right">0.86</td>
@@ -775,18 +757,19 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-<p><strong>Item parameters</strong>. Table <a href="item-analysis.html#tab:mirt-items">1</a> reports the item parameters estimated by the PCM. The first column shows the discrimination parameter, which is equal to “1” for all items. This is because the Partial Credit Model, similar to the Rasch model, constrains the discrimination parameter to be “1”. The subsequent columns (b1 to b4) report the estimated thresholds or step parameters. Because the SHAS items all have five response categories, the PCM estimates four threshold parameters (b1 to b4) for each item. Ordered threshold parameters are not a requirement of the partial credit or generalized partial credit models <span class="citation">(<a href="references.html#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>)</span>. The important question, therefore, is which items have ordered thresholds and which have “reversals.” A reversal suggests that a response category is not contributing reliable information and might be collapsed.</p>
-<p>This information reveals several insights about the SHAS items. XX items have reversals. On items X, Y, and Z, examinees who have experienced more abuse overall were more likely to report “Never” than “Once or twice”. To collapse these categories would help these items contribute less noise and more reliable information.</p>
+<p>Table <a href="item-analysis.html#tab:pcm-items">1</a> reports the item parameters estimated by the PCM. The first column shows the discrimination parameter, which is equal to “1” for all items. This is because the Partial Credit Model, similar to the Rasch model, constrains the discrimination parameter to be “1”. The subsequent columns (b1 to b4) report the estimated thresholds or step parameters. Because the SHAS items all have five response categories, the PCM estimates four threshold parameters (b1 to b4) for each item. Ordered threshold parameters are not a requirement of the partial credit or generalized partial credit models <span class="citation">(<a href="references.html#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>)</span>. The important question, therefore, is which items have ordered thresholds and which have “reversals.” A reversal suggests that a response category is not contributing reliable information and might be collapsed.</p>
+<p>As shown in Table <a href="item-analysis.html#tab:pcm-items">1</a>, most of the SHAS items (43 out of 66) had reversals. On each of these items, examinees who had experienced more overall lifetime spiritual abuse were more likely to report “Never” than “Once or twice”. To collapse these categories would help these items contribute less noise and more reliable information.</p>
+<p>Item plots help illustrate these statistics visually. Figure <a href="#pcm-occs"><strong>??</strong></a> is a plot of the option characeristic curves (also called category characteristic curves) of Q7.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="item-analysis.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PCM ITEM PLOTS</span></span>
+<span id="cb11-2"><a href="item-analysis.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(directlabels)</span>
+<span id="cb11-3"><a href="item-analysis.html#cb11-3" aria-hidden="true" tabindex="-1"></a>plt <span class="ot">&lt;-</span> <span class="fu">plot</span>(results.pcm, <span class="at">type =</span> <span class="st">&quot;trace&quot;</span>, <span class="at">which.items =</span> <span class="dv">3</span>, <span class="at">main =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb11-4"><a href="item-analysis.html#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">par.settings =</span> <span class="fu">simpleTheme</span>(<span class="at">lty =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">lwd =</span> <span class="dv">2</span>), <span class="at">auto.key =</span> <span class="fu">list</span>(<span class="at">points =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb11-5"><a href="item-analysis.html#cb11-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">lines =</span> <span class="cn">TRUE</span>, <span class="at">columns =</span> <span class="dv">4</span>))  <span class="co"># option curves</span></span>
+<span id="cb11-6"><a href="item-analysis.html#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">direct.label</span>(plt, <span class="st">&quot;top.points&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/pcm-occs-1.png" width="672" />
+In this kind of plot, the x axis is the scale of the latent trait–in this case, lifetime exposure to spiritual abuse–expressed in logits ranging from -6 to +6. The y axis is the probability of selecting a given response (such as “Always”) at each level of overall lifetime exposure to spiritual abuse. The blue line is the thus the probability of selecting “Never” for examinees ranging from low to high lifetime spiritual abuse. The reversal is that examinees just below zero are more likely to select “Never” than “Once or twice.” In addition, examinees with above-average lifetime exposure to spiritual abuse were more likely to select “Always” than “Often”. The item parameter statistics shown Table <a href="item-analysis.html#tab:pcm-items">1</a> indicate that this issue applies to 43 items. These items would contribute less noise and more reliable information if these response categories were collapsed.</p>
 <p><strong>Item fit</strong>. Two fit statistics assess the fit of an item to the PCM: the infit mean square (MNSQ) and the outfit mean square (MNSQ). The infit statistic places greater emphasis on unexpected responses that are close to the examinees and item location. The outfit is sensitive to unexpected responses that are far from the location <span class="citation">(<a href="references.html#ref-BondFox2015" role="doc-biblioref">Bond and Fox 2015</a>)</span>. The infit and outfit values identify potential unexpected response patterns. The expected value of infit or outfit for each item is 1.0, with a range of acceptable values ranging from 0.5 to 1.5. Values outside this boundary indicate a lack of fit between items and models.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="item-analysis.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ITEM FIT</span></span>
-<span id="cb11-2"><a href="item-analysis.html#cb11-2" aria-hidden="true" tabindex="-1"></a>ifit <span class="ot">&lt;-</span> <span class="fu">itemfit</span>(results.pcm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="st">&quot;infit&quot;</span>)</span>
-<span id="cb11-3"><a href="item-analysis.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># knitr::kable(ifit, &#39;simple&#39;, digits = 2, caption =</span></span>
-<span id="cb11-4"><a href="item-analysis.html#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;Partial Credit Model (PCM) - Item Fit Statistics&#39;)</span></span>
-<span id="cb11-5"><a href="item-analysis.html#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># itemfit(results.pcm, na.rm = TRUE, &#39;infit&#39;)</span></span>
-<span id="cb11-6"><a href="item-analysis.html#cb11-6" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">itemfit</span>(results.pcm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="st">&quot;infit&quot;</span>))</span>
-<span id="cb11-7"><a href="item-analysis.html#cb11-7" aria-hidden="true" tabindex="-1"></a>misfits <span class="ot">&lt;-</span> <span class="fu">subset</span>(i, outfit <span class="sc">&gt;</span> <span class="fl">1.5</span> <span class="sc">|</span> outfit <span class="sc">&lt;</span> <span class="fl">0.5</span> <span class="sc">|</span> infit <span class="sc">&gt;</span> <span class="fl">1.5</span> <span class="sc">|</span></span>
-<span id="cb11-8"><a href="item-analysis.html#cb11-8" aria-hidden="true" tabindex="-1"></a>    infit <span class="sc">&lt;</span> <span class="fl">0.5</span>)</span>
-<span id="cb11-9"><a href="item-analysis.html#cb11-9" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(misfits, <span class="st">&quot;simple&quot;</span>, <span class="at">digits =</span> <span class="dv">2</span>, <span class="at">caption =</span> <span class="st">&quot;Partial Credit Model (PCM) - Misfitting Items&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="item-analysis.html#cb12-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(misfits, <span class="st">&quot;simple&quot;</span>, <span class="at">digits =</span> <span class="dv">2</span>, <span class="at">caption =</span> <span class="st">&quot;Partial Credit Model (PCM) - Misfitting Items&quot;</span>)</span></code></pre></div>
 <table>
 <caption><span id="tab:pcm-item-fit">Table 2: </span>Partial Credit Model (PCM) - Misfitting Items</caption>
 <thead>
@@ -802,7 +785,7 @@ div.csl-indent {
 <tbody>
 <tr class="odd">
 <td>5</td>
-<td align="left">Q17</td>
+<td align="left">EQ17 - Treated as less than b/c my sexual orientation</td>
 <td align="right">2.81</td>
 <td align="right">7.05</td>
 <td align="right">1.55</td>
@@ -810,7 +793,7 @@ div.csl-indent {
 </tr>
 <tr class="even">
 <td>15</td>
-<td align="left">Q27</td>
+<td align="left">EQ27 - Denied opportunities to serve b/c of my gender</td>
 <td align="right">2.67</td>
 <td align="right">17.85</td>
 <td align="right">1.50</td>
@@ -818,7 +801,7 @@ div.csl-indent {
 </tr>
 <tr class="odd">
 <td>28</td>
-<td align="left">Q41</td>
+<td align="left">EQ41 - Denied opportunities to serve because of my sexual orientation</td>
 <td align="right">6.71</td>
 <td align="right">15.06</td>
 <td align="right">1.53</td>
@@ -826,7 +809,7 @@ div.csl-indent {
 </tr>
 <tr class="even">
 <td>33</td>
-<td align="left">Q46</td>
+<td align="left">EQ46 - Treated as less than because of my skin color</td>
 <td align="right">3.22</td>
 <td align="right">8.21</td>
 <td align="right">1.39</td>
@@ -834,7 +817,7 @@ div.csl-indent {
 </tr>
 <tr class="odd">
 <td>36</td>
-<td align="left">Q50</td>
+<td align="left">EQ50 - Treated as less than because of my gender</td>
 <td align="right">1.95</td>
 <td align="right">12.37</td>
 <td align="right">1.51</td>
@@ -842,7 +825,7 @@ div.csl-indent {
 </tr>
 <tr class="even">
 <td>41</td>
-<td align="left">Q55</td>
+<td align="left">EQ55 - Hearing cultural references in sermons unfamiliar to my race/eth. subculture</td>
 <td align="right">2.83</td>
 <td align="right">22.03</td>
 <td align="right">1.58</td>
@@ -851,13 +834,6 @@ div.csl-indent {
 </tbody>
 </table>
 <p>All but six of the 66 SHAS items had infit and outfit statistics within the acceptable range from 0.5 to 1.5. Statistics for these six items are presented here in <a href="item-analysis.html#tab:pcm-item-fit">2</a>. The large outfit values mean the observed patterns of responses to these items differed substantially from the patterns of responses expected by the PCM. These items capture the experiences of women, people of color, and LGBTQ persons.</p>
-<p><strong>Item plots</strong>. We can also use plots to examine these item statistics visually. The following curves are called category response curves because they represent “the probability of an examinee (or survey respondent) responding in a particular category conditional on trait level” <span class="citation">(<a href="references.html#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>)</span>. In general, “the higher the slope parameters, the steeper the operating characteristic curves and the more narrow and peaked the category response curves, indicating that the response categories differentiate among trait levels fairly well” <span class="citation">(<a href="references.html#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>)</span>. Polytomous IRT models such as the Partial Credit Model have option characteristic curves (OCCs) which can be considered as an extension of item characteristic curves (ICCs) for polytomous items. Because the items have more than two response categories, OCCs have multiple curves in the same plot. Each curve represents the probability of selecting a particular response option as a function of the latent trait.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="item-analysis.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PCM ITEM PLOTS itemplot(results.pcm, 1, type=&#39;infotrace&#39;)</span></span>
-<span id="cb12-2"><a href="item-analysis.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(results.pcm, <span class="at">type =</span> <span class="st">&quot;trace&quot;</span>, <span class="at">which.items =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>,</span>
-<span id="cb12-3"><a href="item-analysis.html#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>), <span class="at">main =</span> <span class="st">&quot;&quot;</span>, <span class="at">par.settings =</span> <span class="fu">simpleTheme</span>(<span class="at">lty =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
-<span id="cb12-4"><a href="item-analysis.html#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">lwd =</span> <span class="dv">2</span>), <span class="at">auto.key =</span> <span class="fu">list</span>(<span class="at">points =</span> <span class="cn">FALSE</span>, <span class="at">lines =</span> <span class="cn">TRUE</span>, <span class="at">columns =</span> <span class="dv">4</span>))  <span class="co"># option curves</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/pcm-occs-1.png" width="672" /></p>
-<p>In Figure <a href="#fig:pcm-occs"><strong>??</strong></a>, each item has four OCCs representing the four response options. The response categories are labeled as “P1” to “P4”. For all four items, the OCCs follow the same order as the response categories. The OCC for the first response option (P1) is on the very left side of the plot, whereas the last response option (P4) is located on the right side of the plot. There are two questions to ask of OCCs: (1) Are they in the correct order? and (2) Does each response category meaningfully represent the responses of respondents at a given trait level? In this case, the OCCs are in the correct order, but the middle categories do not seem to capture distinct respondents.</p>
 <p><strong>Model fit</strong>. One way to evaluate the fit of the Partial Credit Model is to evaluate how well it fits the data from the item responses. The following table presents this information.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="item-analysis.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PCM MODEL FIT</span></span>
 <span id="cb13-2"><a href="item-analysis.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">itemplot</span>(results.pcm, <span class="dv">1</span>, <span class="at">type =</span> <span class="st">&quot;score&quot;</span>)</span></code></pre></div>
@@ -868,8 +844,15 @@ div.csl-indent {
 <p><img src="_main_files/figure-html/pcm-model-fit-3.png" width="672" /></p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="item-analysis.html#cb16-1" aria-hidden="true" tabindex="-1"></a>pcmfit <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">itemfit</span>(results.pcm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
 <span id="cb16-2"><a href="item-analysis.html#cb16-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(pcmfit, <span class="at">caption =</span> <span class="st">&quot;Partial Credit Model (PCM) - Item Fit Statistics&quot;</span>)</span></code></pre></div>
-<table>
+<table style="width:100%;">
 <caption><span id="tab:pcm-model-fit">Table 3: </span>Partial Credit Model (PCM) - Item Fit Statistics</caption>
+<colgroup>
+<col width="70%" />
+<col width="7%" />
+<col width="6%" />
+<col width="8%" />
+<col width="7%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">item</th>
@@ -881,462 +864,462 @@ div.csl-indent {
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Q7</td>
+<td align="left">EQ7 - Pastor speaking on God’s behalf</td>
 <td align="right">533.3564</td>
 <td align="right">533</td>
 <td align="right">0.0004739</td>
 <td align="right">0.4875015</td>
 </tr>
 <tr class="even">
-<td align="left">Q10</td>
+<td align="left">EQ10 - Asked to give up personal goals by pastor</td>
 <td align="right">495.1835</td>
 <td align="right">467</td>
 <td align="right">0.0045017</td>
 <td align="right">0.1772288</td>
 </tr>
 <tr class="odd">
-<td align="left">Q11</td>
+<td align="left">EQ11 - Disagree w/pastor portrayed as evil</td>
 <td align="right">579.6394</td>
 <td align="right">531</td>
 <td align="right">0.0055461</td>
 <td align="right">0.0708398</td>
 </tr>
 <tr class="even">
-<td align="left">Q16</td>
+<td align="left">EQ16 - Church/community abandoning me in difficult time</td>
 <td align="right">481.6413</td>
 <td align="right">503</td>
 <td align="right">0.0000000</td>
 <td align="right">0.7460408</td>
 </tr>
 <tr class="odd">
-<td align="left">Q17</td>
+<td align="left">EQ17 - Treated as less than b/c my sexual orientation</td>
 <td align="right">443.3413</td>
 <td align="right">213</td>
 <td align="right">0.0190561</td>
 <td align="right">0.0000000</td>
 </tr>
 <tr class="even">
-<td align="left">Q18</td>
+<td align="left">EQ18 - Church/pastor discourage critical thinking</td>
 <td align="right">511.1011</td>
 <td align="right">523</td>
 <td align="right">0.0000000</td>
 <td align="right">0.6368612</td>
 </tr>
 <tr class="odd">
-<td align="left">Q19</td>
+<td align="left">EQ19 - Behavior excessively monitored by pastor/group</td>
 <td align="right">548.8232</td>
 <td align="right">517</td>
 <td align="right">0.0045464</td>
 <td align="right">0.1609217</td>
 </tr>
 <tr class="even">
-<td align="left">Q20</td>
+<td align="left">EQ20 - Members pressured to give money despite financial hardship</td>
 <td align="right">543.2461</td>
 <td align="right">513</td>
 <td align="right">0.0044495</td>
 <td align="right">0.1718095</td>
 </tr>
 <tr class="odd">
-<td align="left">Q21</td>
+<td align="left">EQ21 - Taught I would risk Hell if left my church/group</td>
 <td align="right">556.8474</td>
 <td align="right">518</td>
 <td align="right">0.0050183</td>
 <td align="right">0.1153414</td>
 </tr>
 <tr class="even">
-<td align="left">Q22</td>
+<td align="left">EQ22 - Expected to follow pastor/leader rules re: dating/marriage/sex</td>
 <td align="right">610.6849</td>
 <td align="right">477</td>
 <td align="right">0.0097011</td>
 <td align="right">0.0000316</td>
 </tr>
 <tr class="odd">
-<td align="left">Q23</td>
+<td align="left">EQ23 - Prayer replacing needed medical interventions</td>
 <td align="right">451.2542</td>
 <td align="right">440</td>
 <td align="right">0.0029307</td>
 <td align="right">0.3450871</td>
 </tr>
 <tr class="even">
-<td align="left">Q24</td>
+<td align="left">EQ24 - Expected to consult pastor/leader before making non-religious decisions</td>
 <td align="right">439.9162</td>
 <td align="right">449</td>
 <td align="right">0.0000000</td>
 <td align="right">0.6113781</td>
 </tr>
 <tr class="odd">
-<td align="left">Q25</td>
+<td align="left">EQ25 - Feeling unable to raise questions and issues</td>
 <td align="right">505.6217</td>
 <td align="right">492</td>
 <td align="right">0.0030491</td>
 <td align="right">0.3258128</td>
 </tr>
 <tr class="even">
-<td align="left">Q26</td>
+<td align="left">EQ26 - Pressured to forgive abuser while abuse was ongoing</td>
 <td align="right">481.9682</td>
 <td align="right">475</td>
 <td align="right">0.0022195</td>
 <td align="right">0.4026140</td>
 </tr>
 <tr class="odd">
-<td align="left">Q27</td>
+<td align="left">EQ27 - Denied opportunities to serve b/c of my gender</td>
 <td align="right">896.8917</td>
 <td align="right">479</td>
 <td align="right">0.0171160</td>
 <td align="right">0.0000000</td>
 </tr>
 <tr class="even">
-<td align="left">Q28</td>
+<td align="left">EQ28 - Leadershi/group protecting abusive individuals</td>
 <td align="right">514.6797</td>
 <td align="right">500</td>
 <td align="right">0.0031399</td>
 <td align="right">0.3153365</td>
 </tr>
 <tr class="odd">
-<td align="left">Q29</td>
+<td align="left">EQ29 - Feeling special when in pastor’s good graces; otherwise ignored</td>
 <td align="right">530.1984</td>
 <td align="right">524</td>
 <td align="right">0.0019930</td>
 <td align="right">0.4163283</td>
 </tr>
 <tr class="even">
-<td align="left">Q30</td>
+<td align="left">EQ30 - Deterred from seeking mental health treatment/counseling/medication</td>
 <td align="right">569.1584</td>
 <td align="right">488</td>
 <td align="right">0.0074730</td>
 <td align="right">0.0064340</td>
 </tr>
 <tr class="odd">
-<td align="left">Q31</td>
+<td align="left">EQ31 - Shunned/ignored by pastor/church/group</td>
 <td align="right">526.1497</td>
 <td align="right">479</td>
 <td align="right">0.0057492</td>
 <td align="right">0.0671431</td>
 </tr>
 <tr class="even">
-<td align="left">Q32</td>
+<td align="left">EQ32 - Feeling unable to express unhappiness</td>
 <td align="right">486.5294</td>
 <td align="right">515</td>
 <td align="right">0.0000000</td>
 <td align="right">0.8114182</td>
 </tr>
 <tr class="odd">
-<td align="left">Q34</td>
+<td align="left">EQ34 - Scripture used to justify physical punishment/severe discipline</td>
 <td align="right">586.1511</td>
 <td align="right">525</td>
 <td align="right">0.0062540</td>
 <td align="right">0.0329661</td>
 </tr>
 <tr class="even">
-<td align="left">Q35</td>
+<td align="left">EQ35 - Taught to distrust my emotions</td>
 <td align="right">542.2495</td>
 <td align="right">508</td>
 <td align="right">0.0047581</td>
 <td align="right">0.1418454</td>
 </tr>
 <tr class="odd">
-<td align="left">Q36</td>
+<td align="left">EQ36 - Mental/physical problems interpreted as spiritual/moral weakness</td>
 <td align="right">553.8355</td>
 <td align="right">515</td>
 <td align="right">0.0050321</td>
 <td align="right">0.1147646</td>
 </tr>
 <tr class="even">
-<td align="left">Q37</td>
+<td align="left">EQ37 - Made to feel less spiritually mature than pastor/leadership</td>
 <td align="right">548.0106</td>
 <td align="right">519</td>
 <td align="right">0.0043324</td>
 <td align="right">0.1827871</td>
 </tr>
 <tr class="odd">
-<td align="left">Q38</td>
+<td align="left">EQ38 - Unrealistic demands placed on my moral/religious behavior</td>
 <td align="right">568.9640</td>
 <td align="right">517</td>
 <td align="right">0.0058096</td>
 <td align="right">0.0564382</td>
 </tr>
 <tr class="even">
-<td align="left">Q39</td>
+<td align="left">EQ39 - Made to feel shame over natural sexual desires (not actions)</td>
 <td align="right">473.9639</td>
 <td align="right">507</td>
 <td align="right">0.0000000</td>
 <td align="right">0.8507912</td>
 </tr>
 <tr class="odd">
-<td align="left">Q40</td>
+<td align="left">EQ40 - Threatening Divine punishment to keep group members in line</td>
 <td align="right">573.7718</td>
 <td align="right">529</td>
 <td align="right">0.0053310</td>
 <td align="right">0.0869481</td>
 </tr>
 <tr class="even">
-<td align="left">Q41</td>
+<td align="left">EQ41 - Denied opportunities to serve because of my sexual orientation</td>
 <td align="right">435.2054</td>
 <td align="right">180</td>
 <td align="right">0.0218196</td>
 <td align="right">0.0000000</td>
 </tr>
 <tr class="odd">
-<td align="left">Q42</td>
+<td align="left">EQ42 - Seeing others shamed/shunned by pastor/leader/group</td>
 <td align="right">549.9676</td>
 <td align="right">494</td>
 <td align="right">0.0061680</td>
 <td align="right">0.0410645</td>
 </tr>
 <tr class="even">
-<td align="left">Q43</td>
+<td align="left">EQ43 - Shamed by pastor/group for poor spiritual/moral performance</td>
 <td align="right">502.6761</td>
 <td align="right">461</td>
 <td align="right">0.0055097</td>
 <td align="right">0.0877056</td>
 </tr>
 <tr class="odd">
-<td align="left">Q44</td>
+<td align="left">EQ44 - Love/acceptance offered only for high spiritual/moral performance</td>
 <td align="right">618.0733</td>
 <td align="right">528</td>
 <td align="right">0.0075687</td>
 <td align="right">0.0040428</td>
 </tr>
 <tr class="even">
-<td align="left">Q45</td>
+<td align="left">EQ45 - Developmentally-inappropriate/anxious Hell/Satan/demons taught to young children</td>
 <td align="right">548.4064</td>
 <td align="right">531</td>
 <td align="right">0.0033178</td>
 <td align="right">0.2915691</td>
 </tr>
 <tr class="odd">
-<td align="left">Q46</td>
+<td align="left">EQ46 - Treated as less than because of my skin color</td>
 <td align="right">249.0751</td>
 <td align="right">108</td>
 <td align="right">0.0209436</td>
 <td align="right">0.0000000</td>
 </tr>
 <tr class="even">
-<td align="left">Q47</td>
+<td align="left">EQ47 - Medical care being postponed/withheld for religious reasons</td>
 <td align="right">347.5054</td>
 <td align="right">338</td>
 <td align="right">0.0030730</td>
 <td align="right">0.3490803</td>
 </tr>
 <tr class="odd">
-<td align="left">Q49</td>
+<td align="left">EQ49 - Leadership/group protecting and elevating abusive individuals</td>
 <td align="right">515.8695</td>
 <td align="right">493</td>
 <td align="right">0.0039468</td>
 <td align="right">0.2301057</td>
 </tr>
 <tr class="even">
-<td align="left">Q50</td>
+<td align="left">EQ50 - Treated as less than because of my gender</td>
 <td align="right">1193.8223</td>
 <td align="right">508</td>
 <td align="right">0.0212918</td>
 <td align="right">0.0000000</td>
 </tr>
 <tr class="odd">
-<td align="left">Q51</td>
+<td align="left">EQ51 - Extreme pressure to be pastor/missionary/spiritual leader</td>
 <td align="right">613.6675</td>
 <td align="right">527</td>
 <td align="right">0.0074312</td>
 <td align="right">0.0052930</td>
 </tr>
 <tr class="even">
-<td align="left">Q52</td>
+<td align="left">EQ52 - Blamed for harm I suffered rather than blaming who harmed me</td>
 <td align="right">486.9722</td>
 <td align="right">493</td>
 <td align="right">0.0000000</td>
 <td align="right">0.5680840</td>
 </tr>
 <tr class="odd">
-<td align="left">Q53</td>
+<td align="left">EQ53 - Scripture used to justify abusive parent-child behavior</td>
 <td align="right">541.7427</td>
 <td align="right">523</td>
 <td align="right">0.0034690</td>
 <td align="right">0.2764940</td>
 </tr>
 <tr class="even">
-<td align="left">Q54</td>
+<td align="left">EQ54 - Being explicitly taught to distrust my intuitions</td>
 <td align="right">561.7842</td>
 <td align="right">518</td>
 <td align="right">0.0053276</td>
 <td align="right">0.0894195</td>
 </tr>
 <tr class="odd">
-<td align="left">Q55</td>
+<td align="left">EQ55 - Hearing cultural references in sermons unfamiliar to my race/eth. subculture</td>
 <td align="right">977.8732</td>
 <td align="right">373</td>
 <td align="right">0.0233354</td>
 <td align="right">0.0000000</td>
 </tr>
 <tr class="even">
-<td align="left">Q56</td>
+<td align="left">EQ56 - Being made to feel I was crazy/weird for doubts/questions</td>
 <td align="right">700.4023</td>
 <td align="right">524</td>
 <td align="right">0.0106322</td>
 <td align="right">0.0000004</td>
 </tr>
 <tr class="odd">
-<td align="left">Q57</td>
+<td align="left">EQ57 - Developing mental/physical ailments from conforming to group/leader’s expectation</td>
 <td align="right">508.4694</td>
 <td align="right">507</td>
 <td align="right">0.0009865</td>
 <td align="right">0.4732781</td>
 </tr>
 <tr class="even">
-<td align="left">Q58</td>
+<td align="left">EQ58 - Terror/horror used to motivate religious decisions</td>
 <td align="right">583.6834</td>
 <td align="right">531</td>
 <td align="right">0.0057720</td>
 <td align="right">0.0563289</td>
 </tr>
 <tr class="odd">
-<td align="left">Q59</td>
+<td align="left">EQ59 - Pastor/group blame victim for their abuse</td>
 <td align="right">546.5812</td>
 <td align="right">477</td>
 <td align="right">0.0069988</td>
 <td align="right">0.0148887</td>
 </tr>
 <tr class="even">
-<td align="left">Q60</td>
+<td align="left">EQ60 - Encouraged by leader to stay in abusive marriage</td>
 <td align="right">552.8959</td>
 <td align="right">347</td>
 <td align="right">0.0141155</td>
 <td align="right">0.0000000</td>
 </tr>
 <tr class="odd">
-<td align="left">Q61</td>
+<td align="left">EQ61 - Developmentally-inappropriate/anxious end times descriptions taught to young children</td>
 <td align="right">559.8063</td>
 <td align="right">528</td>
 <td align="right">0.0044976</td>
 <td align="right">0.1634943</td>
 </tr>
 <tr class="even">
-<td align="left">Q62</td>
+<td align="left">EQ62 - Scripture used to justify physical violence</td>
 <td align="right">511.0822</td>
 <td align="right">489</td>
 <td align="right">0.0038941</td>
 <td align="right">0.2366890</td>
 </tr>
 <tr class="odd">
-<td align="left">Q63</td>
+<td align="left">EQ63 - Shamed by pastor/group for raising questions or concerns</td>
 <td align="right">557.6752</td>
 <td align="right">505</td>
 <td align="right">0.0059183</td>
 <td align="right">0.0521972</td>
 </tr>
 <tr class="even">
-<td align="left">Q64</td>
+<td align="left">EQ64 - Witnessing women pressured to stay in unfaithful/abusive marriages</td>
 <td align="right">560.6293</td>
 <td align="right">508</td>
 <td align="right">0.0058982</td>
 <td align="right">0.0528242</td>
 </tr>
 <tr class="odd">
-<td align="left">Q65</td>
+<td align="left">EQ65 - Cut off/shunned by more religious family members</td>
 <td align="right">493.0967</td>
 <td align="right">466</td>
 <td align="right">0.0044188</td>
 <td align="right">0.1860160</td>
 </tr>
 <tr class="even">
-<td align="left">Q66</td>
+<td align="left">EQ66 - Others treated as less than due to their sexual orientation</td>
 <td align="right">484.6288</td>
 <td align="right">486</td>
 <td align="right">0.0000000</td>
 <td align="right">0.5090283</td>
 </tr>
 <tr class="odd">
-<td align="left">Q68</td>
+<td align="left">IQ68 - Anxiety attacks triggered by religious stimuli</td>
 <td align="right">524.0797</td>
 <td align="right">483</td>
 <td align="right">0.0053441</td>
 <td align="right">0.0955543</td>
 </tr>
 <tr class="even">
-<td align="left">Q69</td>
+<td align="left">IQ69 - Lack of spiritual direction/purpose</td>
 <td align="right">514.9555</td>
 <td align="right">493</td>
 <td align="right">0.0038671</td>
 <td align="right">0.2387767</td>
 </tr>
 <tr class="odd">
-<td align="left">Q70</td>
+<td align="left">IQ70 - Feeling betrayed by God</td>
 <td align="right">596.9121</td>
 <td align="right">469</td>
 <td align="right">0.0095699</td>
 <td align="right">0.0000546</td>
 </tr>
 <tr class="even">
-<td align="left">Q71</td>
+<td align="left">IQ71 - Avoiding religious activities/settings to reduce distressing feelings</td>
 <td align="right">517.4845</td>
 <td align="right">517</td>
 <td align="right">0.0005610</td>
 <td align="right">0.4857223</td>
 </tr>
 <tr class="odd">
-<td align="left">Q72</td>
+<td align="left">IQ72 - Feeling as if God harmed me directly</td>
 <td align="right">398.9107</td>
 <td align="right">382</td>
 <td align="right">0.0038556</td>
 <td align="right">0.2653161</td>
 </tr>
 <tr class="even">
-<td align="left">Q73</td>
+<td align="left">IQ73 - Self-hatred or self-loathing</td>
 <td align="right">575.2774</td>
 <td align="right">521</td>
 <td align="right">0.0059146</td>
 <td align="right">0.0497939</td>
 </tr>
 <tr class="odd">
-<td align="left">Q74</td>
+<td align="left">IQ74 - Sadness over the loss of my faith/religious community</td>
 <td align="right">656.6494</td>
 <td align="right">501</td>
 <td align="right">0.0102139</td>
 <td align="right">0.0000033</td>
 </tr>
 <tr class="even">
-<td align="left">Q76</td>
+<td align="left">IQ76 - Feeling I wasted years of my life in a church/set of beliefs</td>
 <td align="right">578.0990</td>
 <td align="right">526</td>
 <td align="right">0.0057671</td>
 <td align="right">0.0574545</td>
 </tr>
 <tr class="odd">
-<td align="left">Q77</td>
+<td align="left">IQ77 - Anger upon reflecting on negative religious experiences</td>
 <td align="right">556.0596</td>
 <td align="right">489</td>
 <td align="right">0.0067860</td>
 <td align="right">0.0190138</td>
 </tr>
 <tr class="even">
-<td align="left">Q78</td>
+<td align="left">IQ78 - A lack of self-worth</td>
 <td align="right">517.0659</td>
 <td align="right">518</td>
 <td align="right">0.0000000</td>
 <td align="right">0.5033200</td>
 </tr>
 <tr class="odd">
-<td align="left">Q79</td>
+<td align="left">IQ79 - Distrust of God</td>
 <td align="right">565.0319</td>
 <td align="right">517</td>
 <td align="right">0.0055854</td>
 <td align="right">0.0707272</td>
 </tr>
 <tr class="even">
-<td align="left">Q80</td>
+<td align="left">IQ80 - Feeling isolated</td>
 <td align="right">495.3246</td>
 <td align="right">488</td>
 <td align="right">0.0022450</td>
 <td align="right">0.3995138</td>
 </tr>
 <tr class="odd">
-<td align="left">Q81</td>
+<td align="left">IQ81 - Nightmares about my negative religious experiences</td>
 <td align="right">431.9793</td>
 <td align="right">407</td>
 <td align="right">0.0045397</td>
 <td align="right">0.1890289</td>
 </tr>
 <tr class="even">
-<td align="left">Q82</td>
+<td align="left">IQ82 - Having trouble navigating life outside my church/community</td>
 <td align="right">520.8786</td>
 <td align="right">480</td>
 <td align="right">0.0053477</td>
@@ -1347,75 +1330,144 @@ div.csl-indent {
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="item-analysis.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">itemfit</span>(results.pcm, <span class="at">empirical.plot =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/pcm-model-fit-4.png" width="672" /></p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="item-analysis.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">itemfit</span>(results.pcm, <span class="st">&quot;infit&quot;</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>   item outfit z.outfit infit z.infit
-1    Q7  1.276    7.187 1.122   4.669
-2   Q10  0.963   -0.671 0.988  -0.415
-3   Q11  0.780   -7.399 0.799  -8.713
-4   Q16  0.930   -1.824 0.939  -2.337
-5   Q17  2.813    7.053 1.555   9.545
-6   Q18  0.777   -7.906 0.804  -8.498
-7   Q19  0.778   -6.464 0.836  -6.867
-8   Q20  0.970   -0.618 1.014   0.513
-9   Q21  1.203    3.704 1.043   1.575
-10  Q22  1.104    2.990 1.099   3.596
-11  Q23  0.941   -1.383 1.007   0.269
-12  Q24  0.913   -1.766 0.936  -2.327
-13  Q25  0.771   -9.221 0.791  -9.059
-14  Q26  1.313    4.798 0.963  -1.247
-15  Q27  2.671   17.851 1.502  15.055
-16  Q28  0.848   -4.823 0.869  -5.376
-17  Q29  1.014    0.428 1.026   1.060
-18  Q30  0.848   -3.539 0.893  -4.155
-19  Q31  1.012    0.318 1.006   0.216
-20  Q32  0.882   -4.193 0.897  -4.308
-21  Q34  1.119    3.474 1.102   3.963
-22  Q35  0.976   -0.850 0.917  -3.397
-23  Q36  0.792   -7.866 0.812  -8.212
-24  Q37  0.845   -5.731 0.862  -5.881
-25  Q38  0.680  -12.407 0.711 -13.043
-26  Q39  0.994   -0.167 0.998  -0.085
-27  Q40  0.788   -5.520 0.845  -6.321
-28  Q41  6.705   15.057 1.534   8.204
-29  Q42  0.763   -9.409 0.790  -9.222
-30  Q43  0.748   -7.211 0.795  -8.281
-31  Q44  0.715   -9.971 0.734 -11.859
-32  Q45  0.978   -0.672 0.994  -0.251
-33  Q46  3.223    8.213 1.392   4.076
-34  Q47  0.986   -0.207 1.027   0.728
-35  Q49  0.821   -5.079 0.865  -5.373
-36  Q50  1.947   12.371 1.513  16.610
-37  Q51  1.287    6.901 1.232   8.445
-38  Q52  0.698   -7.911 0.759  -9.911
-39  Q53  0.836   -4.767 0.896  -4.247
-40  Q54  0.872   -4.519 0.866  -5.674
-41  Q55  2.828   22.030 1.577  14.747
-42  Q56  0.659  -12.674 0.687 -14.270
-43  Q57  0.800   -4.843 0.896  -4.083
-44  Q58  0.879   -3.921 0.920  -3.294
-45  Q59  0.720   -8.510 0.778  -9.340
-46  Q60  1.436    4.429 1.199   4.970
-47  Q61  1.013    0.402 1.025   0.997
-48  Q62  0.968   -0.821 1.037   1.426
-49  Q63  0.722   -9.474 0.775  -9.632
-50  Q64  0.900   -2.977 0.913  -3.471
-51  Q65  1.183    3.247 1.051   1.715
-52  Q66  1.013    0.443 0.984  -0.613
-53  Q68  0.890   -2.575 0.959  -1.542
-54  Q69  1.184    6.976 1.185   7.178
-55  Q70  1.238    6.218 1.223   7.897
-56  Q71  0.869   -4.950 0.891  -4.589
-57  Q72  1.020    0.380 1.091   2.772
-58  Q73  1.089    2.783 1.121   4.679
-59  Q74  1.205    6.924 1.188   7.246
-60  Q76  0.922   -2.415 0.925  -3.068
-61  Q77  0.735  -11.202 0.745 -11.386
-62  Q78  1.024    0.878 1.039   1.571
-63  Q79  1.215    6.432 1.184   6.889
-64  Q80  0.938   -2.471 0.946  -2.227
-65  Q81  0.812   -4.346 0.909  -3.187
-66  Q82  1.069    2.012 1.127   4.750</code></pre>
+<pre><code>                                                                                           item
+1                                                         EQ7 - Pastor speaking on God&#39;s behalf
+2                                              EQ10 - Asked to give up personal goals by pastor
+3                                                    EQ11 - Disagree w/pastor portrayed as evil
+4                                       EQ16 - Church/community abandoning me in difficult time
+5                                         EQ17 - Treated as less than b/c my sexual orientation
+6                                             EQ18 - Church/pastor discourage critical thinking
+7                                         EQ19 - Behavior excessively monitored by pastor/group
+8                             EQ20 - Members pressured to give money despite financial hardship
+9                                       EQ21 - Taught I would risk Hell if left my church/group
+10                        EQ22 - Expected to follow pastor/leader rules re: dating/marriage/sex
+11                                         EQ23 - Prayer replacing needed medical interventions
+12               EQ24 - Expected to consult pastor/leader before making non-religious decisions
+13                                          EQ25 - Feeling unable to raise questions and issues
+14                                   EQ26 - Pressured to forgive abuser while abuse was ongoing
+15                                        EQ27 - Denied opportunities to serve b/c of my gender
+16                                        EQ28 - Leadershi/group protecting abusive individuals
+17                       EQ29 - Feeling special when in pastor’s good graces; otherwise ignored
+18                   EQ30 - Deterred from seeking mental health treatment/counseling/medication
+19                                                EQ31 - Shunned/ignored by pastor/church/group
+20                                                 EQ32 - Feeling unable to express unhappiness
+21                       EQ34 - Scripture used to justify physical punishment/severe discipline
+22                                                        EQ35 - Taught to distrust my emotions
+23                      EQ36 - Mental/physical problems interpreted as spiritual/moral weakness
+24                           EQ37 - Made to feel less spiritually mature than pastor/leadership
+25                             EQ38 - Unrealistic demands placed on my moral/religious behavior
+26                          EQ39 - Made to feel shame over natural sexual desires (not actions)
+27                           EQ40 - Threatening Divine punishment to keep group members in line
+28                        EQ41 - Denied opportunities to serve because of my sexual orientation
+29                                   EQ42 - Seeing others shamed/shunned by pastor/leader/group
+30                           EQ43 - Shamed by pastor/group for poor spiritual/moral performance
+31                     EQ44 - Love/acceptance offered only for high spiritual/moral performance
+32      EQ45 - Developmentally-inappropriate/anxious Hell/Satan/demons taught to young children
+33                                         EQ46 - Treated as less than because of my skin color
+34                           EQ47 - Medical care being postponed/withheld for religious reasons
+35                         EQ49 - Leadership/group protecting and elevating abusive individuals
+36                                             EQ50 - Treated as less than because of my gender
+37                             EQ51 - Extreme pressure to be pastor/missionary/spiritual leader
+38                          EQ52 - Blamed for harm I suffered rather than blaming who harmed me
+39                               EQ53 - Scripture used to justify abusive parent-child behavior
+40                                     EQ54 - Being explicitly taught to distrust my intuitions
+41          EQ55 - Hearing cultural references in sermons unfamiliar to my race/eth. subculture
+42                             EQ56 - Being made to feel I was crazy/weird for doubts/questions
+43     EQ57 - Developing mental/physical ailments from conforming to group/leader’s expectation
+44                                    EQ58 - Terror/horror used to motivate religious decisions
+45                                             EQ59 - Pastor/group blame victim for their abuse
+46                                      EQ60 - Encouraged by leader to stay in abusive marriage
+47 EQ61 - Developmentally-inappropriate/anxious end times descriptions taught to young children
+48                                           EQ62 - Scripture used to justify physical violence
+49                              EQ63 - Shamed by pastor/group for raising questions or concerns
+50                    EQ64 - Witnessing women pressured to stay in unfaithful/abusive marriages
+51                                      EQ65 - Cut off/shunned by more religious family members
+52                           EQ66 - Others treated as less than due to their sexual orientation
+53                                        IQ68 - Anxiety attacks triggered by religious stimuli
+54                                                   IQ69 - Lack of spiritual direction/purpose
+55                                                               IQ70 - Feeling betrayed by God
+56                 IQ71 - Avoiding religious activities/settings to reduce distressing feelings
+57                                                  IQ72 - Feeling as if God harmed me directly
+58                                                          IQ73 - Self-hatred or self-loathing
+59                                 IQ74 - Sadness over the loss of my faith/religious community
+60                          IQ76 - Feeling I wasted years of my life in a church/set of beliefs
+61                               IQ77 - Anger upon reflecting on negative religious experiences
+62                                                                  IQ78 - A lack of self-worth
+63                                                                       IQ79 - Distrust of God
+64                                                                      IQ80 - Feeling isolated
+65                                    IQ81 - Nightmares about my negative religious experiences
+66                            IQ82 - Having trouble navigating life outside my church/community
+   outfit z.outfit infit z.infit
+1   1.276    7.187 1.122   4.669
+2   0.963   -0.671 0.988  -0.415
+3   0.780   -7.399 0.799  -8.713
+4   0.930   -1.824 0.939  -2.337
+5   2.813    7.053 1.555   9.545
+6   0.777   -7.906 0.804  -8.498
+7   0.778   -6.464 0.836  -6.867
+8   0.970   -0.618 1.014   0.513
+9   1.203    3.704 1.043   1.575
+10  1.104    2.990 1.099   3.596
+11  0.941   -1.383 1.007   0.269
+12  0.913   -1.766 0.936  -2.327
+13  0.771   -9.221 0.791  -9.059
+14  1.313    4.798 0.963  -1.247
+15  2.671   17.851 1.502  15.055
+16  0.848   -4.823 0.869  -5.376
+17  1.014    0.428 1.026   1.060
+18  0.848   -3.539 0.893  -4.155
+19  1.012    0.318 1.006   0.216
+20  0.882   -4.193 0.897  -4.308
+21  1.119    3.474 1.102   3.963
+22  0.976   -0.850 0.917  -3.397
+23  0.792   -7.866 0.812  -8.212
+24  0.845   -5.731 0.862  -5.881
+25  0.680  -12.407 0.711 -13.043
+26  0.994   -0.167 0.998  -0.085
+27  0.788   -5.520 0.845  -6.321
+28  6.705   15.057 1.534   8.204
+29  0.763   -9.409 0.790  -9.222
+30  0.748   -7.211 0.795  -8.281
+31  0.715   -9.971 0.734 -11.859
+32  0.978   -0.672 0.994  -0.251
+33  3.223    8.213 1.392   4.076
+34  0.986   -0.207 1.027   0.728
+35  0.821   -5.079 0.865  -5.373
+36  1.947   12.371 1.513  16.610
+37  1.287    6.901 1.232   8.445
+38  0.698   -7.911 0.759  -9.911
+39  0.836   -4.767 0.896  -4.247
+40  0.872   -4.519 0.866  -5.674
+41  2.828   22.030 1.577  14.747
+42  0.659  -12.674 0.687 -14.270
+43  0.800   -4.843 0.896  -4.083
+44  0.879   -3.921 0.920  -3.294
+45  0.720   -8.510 0.778  -9.340
+46  1.436    4.429 1.199   4.970
+47  1.013    0.402 1.025   0.997
+48  0.968   -0.821 1.037   1.426
+49  0.722   -9.474 0.775  -9.632
+50  0.900   -2.977 0.913  -3.471
+51  1.183    3.247 1.051   1.715
+52  1.013    0.443 0.984  -0.613
+53  0.890   -2.575 0.959  -1.542
+54  1.184    6.976 1.185   7.178
+55  1.238    6.218 1.223   7.897
+56  0.869   -4.950 0.891  -4.589
+57  1.020    0.380 1.091   2.772
+58  1.089    2.783 1.121   4.679
+59  1.205    6.924 1.188   7.246
+60  0.922   -2.415 0.925  -3.068
+61  0.735  -11.202 0.745 -11.386
+62  1.024    0.878 1.039   1.571
+63  1.215    6.432 1.184   6.889
+64  0.938   -2.471 0.946  -2.227
+65  0.812   -4.346 0.909  -3.187
+66  1.069    2.012 1.127   4.750</code></pre>
 <p>Table X “contains estimation results and the fit index model from each item of the SHAS.” The estimates of item difficulty were between -X.XX TO X.XX (ie., -1.36 to 1.51) on the logit scale. Based on the item discrimination index (PTBIS; point-biserial correlation), which is analogous to classical test theory (item to-total-correlation), X SHAS items have high discrimination values in a positive direction, with no values below 0.30 or negative values. This indicates that XX items function well to distinguish persons with high versus low levels of spiritual abuse. For each item, we examined the step parameter of category endorsements and the statistics of each response for the items. X items, except item X, followed the step ordering requirement.</p>
 <p>We found Item X (Step 1 = -0.XX, Step 2 = -0.XX, Step 3 = 0.XX) experienced threshold disordering as the thresholds were not ordered from lowest to highest. However, none of the infit and outfit statistics for response categories were greater than 2. This finding indicated that collapsing categories was not necessary because the disordered threshold still fit and did not violate the Rasch model (Linacre, 2010; 2018). Based on this information, we concluded that, in general, the SHAS items (fit)/(did not fit) the Rasch PCM model.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="item-analysis.html#cb20-1" aria-hidden="true" tabindex="-1"></a>pcmscores <span class="ot">&lt;-</span> <span class="fu">fscores</span>(results.pcm)</span>
+<span id="cb20-2"><a href="item-analysis.html#cb20-2" aria-hidden="true" tabindex="-1"></a>items <span class="ot">&lt;-</span> <span class="fu">cbind</span>(items, pcmscores)</span></code></pre></div>
 </div>
 </div>
 <div id="summary-1" class="section level2 hasAnchor">

@@ -154,7 +154,7 @@
 
 This is a reproducible research project for validation of the nascent Spiritual Harm and Abuse Scale (SHAS), developed by Dan Koch. It aims to function as an evolving technical report to conceptualize and document various validity studies -- and, by extension, validity evidence -- for this scale. We hope some of these validity considerations and empirical studies amount to meaningful publishable contributions to the nascent research literature in spiritual abuse and/or the literature in religion, counseling psychology, and/or psychological measurement.
 
-The project is open source, for collaboraion. It is built in R using the R Studio IDE. No Excel, no SPSS, no Word. It is built in bookdown and hosted at \url{https://github.com/jackbhuber/SHAS} as a public repository. It is served out over Github Pages as a website for collaboration between Jack and Dan at \url{https://jackhuber.org/SHAS/}.
+The project is open source, for collaboraion. It is built in R using the R Studio IDE. No Excel, no SPSS, no Word. It is built in \texttt{bookdown} and hosted at Github as a public repository at \url{https://github.com/jackbhuber/SHAS}. There it is served over Github Pages as a website -- \url{https://jackhuber.org/SHAS/} -- for collaboration between Jack and Dan.
 
 \hypertarget{research-questions}{%
 \section{Research Questions}\label{research-questions}}
@@ -595,58 +595,35 @@ We begin by defining item analysis and discussing its importance. Then we docume
 
 Item response theory (IRT) is an established framework for empirically evaluating what items measure \citep{EmbretsonReise2000, WrightMasters1982}. IRT methods complement methods derived from classical test theory in several ways.
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  \textbf{Examinees and items on the same equal-interval scale}. In classical test theory, examinees differ in their scores and items differ in their means or percent of examinees selecting a response; examinees and items are on different scales. By contrast, IRT methods allow measurement of persons and items on the \textbf{\emph{same scale}} with \emph{equal interval properties} of the \emph{logit} scale** and resulting linear measures (Wright \& Stone, 1999). In IRT we can estimate \emph{item parameters independently of the characteristics of the calibrating sample}, and we can estimate \emph{person parameters apart from the difficulties of the items taken} (Masters, 1982; Rasch, 1966).
-\item
-  \textbf{Item separation has diagnostic value}. A core assumption of CTT is that items are \emph{redundant}; they contribute meaningful variation to a total score but they do not occupy a distinct place on the score continuum. IRT is different. IRT does not assume that items are redundant; instead it investigates whether items make distinct contributions to the measurement of the latent trait.
-\end{enumerate}
+First, IRT places both examinees and items on the same interval scale. In classical test theory, examinees differ in their scores and items differ in their means or percent of examinees selecting a response; examinees and items are on different scales. By contrast, IRT methods allow measurement of persons and items on the \textbf{\emph{same scale}} with \emph{equal interval properties} of the \emph{logit} scale** and resulting linear measures (Wright \& Stone, 1999). In IRT we can estimate \emph{item parameters independently of the characteristics of the calibrating sample}, and we can estimate \emph{person parameters apart from the difficulties of the items taken} (Masters, 1982; Rasch, 1966).
 
-Whereas classical test theory measurement is principally concerned with the ratio of noise to signal in the variation contributed by an item, IRT models compute the probability of a certain response to an item given the level of the latent construct the individual possesses (i.e., spiritual abuse) and the relevant item's difficulty of endorsement. IRT is based on the logistic model and operates on the \emph{logit} scale.
+Second, IRT gives items diagnostic value. A core assumption of CTT is that items are \emph{redundant}; they contribute meaningful variation to a total score but they do not occupy a distinct place on the score continuum. IRT is different. IRT does not assume that items are redundant; instead it investigates whether items make distinct contributions to the measurement of the latent trait. Whereas classical test theory measurement is principally concerned with the ratio of noise to signal in the variation contributed by an item, IRT models compute the probability of a certain response to an item given the level of the latent construct the individual possesses (i.e., spiritual abuse) and the relevant item's difficulty of endorsement. IRT is based on the logistic model and operates on the \emph{logit} scale.
 
-In what follows, we conduct item analyses through a comparison of several different IRT models: the Partial Credit Model (PCM), the Generalized Partial Credit Model (GPCM), and the Rating Scale Model (RSM). I credit Okan Bulut \citeyearpar{Bulut2020} for his excellent tutorial illustrating how to carry out IRT analyses in R using the \texttt{mirt} package (cite mirt).
+In what follows, we conduct item analyses through a comparison of several different IRT models: the Partial Credit Model (PCM), the Generalized Partial Credit Model (GPCM), and the Rating Scale Model (RSM). I credit Okan Bulut \citeyearpar{Bulut2018} for his tutorial illustrating how to carry out IRT analyses in R using the \texttt{mirt} package \citep{mirt}.
 
 \hypertarget{irt-model-assumptions}{%
 \subsection{IRT Model Assumptions}\label{irt-model-assumptions}}
 
-IRT makes two assumptions of the data. The first is unidimensionality of the latent trait. Is the trait one dimension? This is important for the SHAS because the questionnaire explicitly distinguished between items measuring external events and internal states. To check this assumption we first confirm the factor structure using confirmatory factor analysis (CFA) and Rasch Principal Component Analysis of Residuals (PCAR; Smith, 2002).
-
-The second assumption is local independence \citep{EmbretsonReise2000}. This means that any set of items should not share any meaningful correlation once the latent variable has been accounted for (Edwards, Houts, \& Cai, 2018).
+IRT makes two assumptions of the data. The first is unidimensionality of the latent trait. Is the trait one dimension? This is important for the SHAS because the questionnaire explicitly distinguished between items measuring external events and internal states. To check this assumption we first confirm the factor structure using confirmatory factor analysis (CFA) and Rasch Principal Component Analysis of Residuals (PCAR; Smith, 2002). The second assumption is local independence \citep{EmbretsonReise2000}. This means that any set of items should not share any meaningful correlation once the latent variable has been accounted for (Edwards, Houts, \& Cai, 2018).
 
 To check the assumption of local independence, we used the Q3 statistic (Yen, 1984). The Q3 statistic index criteria are that the raw residual correlation between pairs of items should never exceed 0.10 (Marais \& Andrich, 2008).
 
-Using these criteria, we found XX items having local dependence. The items that had the highest raw residual correlations had negative signs and no positive residual correlation. In other words, the assumption of local independence in this study was met.
+Using these criteria, we found XX items in possession of local dependence. The items that had the highest raw residual correlations had negative signs and no positive residual correlation. In other words, the assumption of local independence in this study (was)/(was not) met.
 
 \hypertarget{partial-credit-model-pcm}{%
 \subsection{Partial Credit Model (PCM)}\label{partial-credit-model-pcm}}
 
-The first model we examine is the Partial Credit Model (PCM) \citep{Masters1982}. This is a polytomous item response model belonging to the Rasch family. This means that it extends the Rasch model, which is based on dichotomous item responses (1=correct, 0=incorrect), by considering the probabliity of choosing from among several response options such as those typically presented in Likert scales of agreement or frequency. The PCM assumes that items use ordered response categories as they exist in questionnaires, such as unidimensional rating scales. The number of response categories in each item may vary \citep{EmbretsonReise2000}. It follows that the PCM contains m (m + 1 being the number of response categories) threshold parameters. Each threshold parameter marks a category intersection \citep{Masters1982}. Threshold sometimes refers to ``step difficulty'' or ``step parameter'' and illustrates the point on the latent trait continuum (e.g., spiritual abuse) where a response in category k becomes more likely than a response in category k -- 1 (de Ayala, 2009). The PCM provides scores for items, persons, and step parameters on a logit scale.
-
-\textbf{Model Estimation}. We begin by loading the \texttt{mirt} library and estimating the model on the data from the 66 SHAS items. This model constrains the slopes to 1 and freely estimates the variance parameters.
+The first model we examine is the Partial Credit Model (PCM) \citep{Masters1982}. This is a polytomous item response model belonging to the Rasch family. This means that it extends the Rasch model, which is based on dichotomous item responses (1=correct, 0=incorrect), by considering the probability of choosing from among several response options such as those typically presented in Likert scales of agreement. The number of response categories in each item may vary \citep{EmbretsonReise2000}. It follows that the PCM contains m (m + 1 being the number of response categories) threshold parameters, and each threshold parameter marks a category intersection \citep{Masters1982}. Threshold sometimes refers to ``step difficulty'' or ``step parameter'' and illustrates the point on the latent trait continuum (e.g., spiritual abuse) where a response in category k becomes more likely than a response in category k -- 1 (de Ayala, 2009). The PCM provides scores for items, persons, and step parameters on a logit scale. We begin by loading the \texttt{mirt} library and estimating the model on the data from the 66 SHAS items. This model constrains the slopes to 1 and freely estimates the variance parameters.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# ESTIMATE PCM MODEL}
-\FunctionTok{library}\NormalTok{(mirt)}
-\NormalTok{items }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/items.csv"}\NormalTok{)}
-\NormalTok{model.pcm }\OtherTok{\textless{}{-}} \StringTok{"SPIRITUAL ABUSE PARTIAL CREDIT MODEL = 1{-}66"}
-\NormalTok{results.pcm }\OtherTok{\textless{}{-}} \FunctionTok{mirt}\NormalTok{(}\AttributeTok{data =}\NormalTok{ items, }\AttributeTok{model =}\NormalTok{ model.pcm, }\AttributeTok{itemtype =} \StringTok{"Rasch"}\NormalTok{,}
-    \AttributeTok{verbose =} \ConstantTok{FALSE}\NormalTok{)  }\CommentTok{\# estimate model}
-\NormalTok{coef.pcm }\OtherTok{\textless{}{-}} \FunctionTok{coef}\NormalTok{(results.pcm, }\AttributeTok{IRTpars =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{simplify =} \ConstantTok{TRUE}\NormalTok{)  }\CommentTok{\# save coefficients}
-\NormalTok{items.pcm }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(coef.pcm}\SpecialCharTok{$}\NormalTok{items)  }\CommentTok{\# item parameters as data frame}
-\NormalTok{items.pcm}\SpecialCharTok{$}\NormalTok{deltab1b2 }\OtherTok{\textless{}{-}}\NormalTok{ items.pcm}\SpecialCharTok{$}\NormalTok{b2 }\SpecialCharTok{{-}}\NormalTok{ items.pcm}\SpecialCharTok{$}\NormalTok{b1  }\CommentTok{\# look for reversals b1 to b2}
-\NormalTok{items.pcm}\SpecialCharTok{$}\NormalTok{deltab2b3 }\OtherTok{\textless{}{-}}\NormalTok{ items.pcm}\SpecialCharTok{$}\NormalTok{b3 }\SpecialCharTok{{-}}\NormalTok{ items.pcm}\SpecialCharTok{$}\NormalTok{b2  }\CommentTok{\# look for reversals b2 to b3}
-\NormalTok{items.pcm}\SpecialCharTok{$}\NormalTok{deltab3b4 }\OtherTok{\textless{}{-}}\NormalTok{ items.pcm}\SpecialCharTok{$}\NormalTok{b4 }\SpecialCharTok{{-}}\NormalTok{ items.pcm}\SpecialCharTok{$}\NormalTok{b3  }\CommentTok{\# look for reversals b3 to b4}
-\NormalTok{rv }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(items.pcm, deltab1b2 }\SpecialCharTok{\textless{}} \DecValTok{0} \SpecialCharTok{|}\NormalTok{ deltab2b3 }\SpecialCharTok{\textless{}} \DecValTok{0} \SpecialCharTok{|}\NormalTok{ deltab3b4 }\SpecialCharTok{\textless{}}
-    \DecValTok{0}\NormalTok{)  }\CommentTok{\# subset items with reversals}
 \NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(rv, }\StringTok{"simple"}\NormalTok{, }\AttributeTok{digits =} \DecValTok{2}\NormalTok{, }\AttributeTok{caption =} \StringTok{"Partial Credit Model {-} Item Parameters {-} Items with Category Threshold Reversals"}\NormalTok{,}
     \AttributeTok{full =} \ConstantTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{longtable}[]{@{}lrrrrrrrr@{}}
-\caption{\label{tab:mirt-items}Partial Credit Model - Item Parameters - Items with Category Threshold Reversals}\tabularnewline
+\caption{\label{tab:pcm-items}Partial Credit Model - Item Parameters - Items with Category Threshold Reversals}\tabularnewline
 \toprule
 & a & b1 & b2 & b3 & b4 & deltab1b2 & deltab2b3 & deltab3b4 \\
 \midrule
@@ -655,68 +632,76 @@ The first model we examine is the Partial Credit Model (PCM) \citep{Masters1982}
 & a & b1 & b2 & b3 & b4 & deltab1b2 & deltab2b3 & deltab3b4 \\
 \midrule
 \endhead
-Q7 & 1 & 0.23 & 0.08 & 0.74 & 1.11 & -0.15 & 0.66 & 0.36 \\
-Q10 & 1 & 1.26 & 0.67 & 1.47 & 1.78 & -0.59 & 0.80 & 0.31 \\
-Q17 & 1 & 3.93 & 0.39 & 1.20 & 1.18 & -3.54 & 0.81 & -0.02 \\
-Q18 & 1 & -0.15 & -0.39 & 0.71 & 1.28 & -0.23 & 1.10 & 0.57 \\
-Q19 & 1 & 0.42 & 0.20 & 0.94 & 1.69 & -0.22 & 0.74 & 0.74 \\
-Q20 & 1 & 0.97 & 0.37 & 0.99 & 1.24 & -0.61 & 0.62 & 0.25 \\
-Q21 & 1 & 1.11 & 0.38 & 0.93 & 0.78 & -0.73 & 0.55 & -0.15 \\
-Q22 & 1 & -0.39 & -0.61 & -0.27 & 0.38 & -0.22 & 0.35 & 0.64 \\
-Q23 & 1 & 0.77 & 0.64 & 1.62 & 2.19 & -0.12 & 0.98 & 0.57 \\
-Q24 & 1 & 1.13 & 0.47 & 1.55 & 1.98 & -0.66 & 1.08 & 0.43 \\
-Q26 & 1 & 1.41 & 0.74 & 1.03 & 1.55 & -0.67 & 0.29 & 0.52 \\
-Q27 & 1 & 1.64 & 0.36 & 1.09 & 1.20 & -1.28 & 0.73 & 0.11 \\
-Q29 & 1 & 0.12 & 0.04 & 0.88 & 1.58 & -0.08 & 0.84 & 0.70 \\
-Q30 & 1 & 0.89 & 0.38 & 1.23 & 1.92 & -0.51 & 0.85 & 0.69 \\
-Q32 & 1 & -0.30 & -0.53 & 0.69 & 1.53 & -0.23 & 1.23 & 0.84 \\
-Q34 & 1 & 0.10 & 0.04 & 0.94 & 1.57 & -0.05 & 0.90 & 0.63 \\
-Q35 & 1 & -0.62 & -0.70 & 0.29 & 0.82 & -0.07 & 0.99 & 0.53 \\
-Q38 & 1 & -0.43 & -0.49 & 0.52 & 0.92 & -0.06 & 1.02 & 0.40 \\
-Q39 & 1 & -0.16 & -0.62 & 0.29 & 0.65 & -0.46 & 0.91 & 0.35 \\
-Q40 & 1 & 0.66 & 0.21 & 1.09 & 1.17 & -0.45 & 0.88 & 0.08 \\
-Q41 & 1 & 3.89 & 0.65 & 1.48 & 1.10 & -3.24 & 0.83 & -0.38 \\
-Q44 & 1 & -0.01 & -0.17 & 0.70 & 1.57 & -0.16 & 0.87 & 0.88 \\
-Q45 & 1 & -0.10 & -0.12 & 0.57 & 0.92 & -0.02 & 0.69 & 0.35 \\
-Q46 & 1 & 3.92 & 1.19 & 2.64 & 2.40 & -2.73 & 1.45 & -0.24 \\
-Q47 & 1 & 1.56 & 1.29 & 2.47 & 2.21 & -0.28 & 1.18 & -0.26 \\
-Q50 & 1 & 1.58 & -0.24 & 0.78 & 1.15 & -1.83 & 1.02 & 0.38 \\
-Q51 & 1 & 0.44 & 0.33 & 0.82 & 1.42 & -0.10 & 0.49 & 0.59 \\
-Q52 & 1 & 0.73 & 0.54 & 1.06 & 1.93 & -0.19 & 0.52 & 0.87 \\
-Q53 & 1 & 0.36 & 0.17 & 1.00 & 1.43 & -0.19 & 0.83 & 0.43 \\
-Q54 & 1 & -0.36 & -0.48 & 0.54 & 0.97 & -0.12 & 1.02 & 0.44 \\
-Q55 & 1 & 1.34 & 1.18 & 2.00 & 2.39 & -0.16 & 0.82 & 0.39 \\
-Q56 & 1 & -0.18 & -0.24 & 0.56 & 1.47 & -0.06 & 0.80 & 0.91 \\
-Q57 & 1 & 0.83 & 0.33 & 1.04 & 1.56 & -0.50 & 0.71 & 0.52 \\
-Q58 & 1 & 0.04 & -0.13 & 0.97 & 1.45 & -0.17 & 1.09 & 0.48 \\
-Q60 & 1 & 2.21 & 0.95 & 1.46 & 2.19 & -1.26 & 0.51 & 0.73 \\
-Q61 & 1 & 0.05 & -0.24 & 0.49 & 0.93 & -0.30 & 0.73 & 0.44 \\
-Q62 & 1 & 0.54 & 0.20 & 1.38 & 1.96 & -0.34 & 1.18 & 0.59 \\
-Q65 & 1 & 1.22 & 0.78 & 1.39 & 1.82 & -0.44 & 0.61 & 0.44 \\
-Q66 & 1 & -0.58 & -0.87 & 0.01 & 0.70 & -0.29 & 0.88 & 0.69 \\
-Q68 & 1 & 0.86 & 0.31 & 1.34 & 2.02 & -0.56 & 1.03 & 0.68 \\
-Q72 & 1 & 1.36 & 0.89 & 2.14 & 2.15 & -0.47 & 1.25 & 0.01 \\
-Q76 & 1 & -0.02 & -0.19 & 0.52 & 0.75 & -0.17 & 0.71 & 0.22 \\
-Q81 & 1 & 0.94 & 0.86 & 1.98 & 2.33 & -0.09 & 1.12 & 0.35 \\
+EQ7 - Pastor speaking on God's behalf & 1 & 0.23 & 0.08 & 0.74 & 1.11 & -0.15 & 0.66 & 0.36 \\
+EQ10 - Asked to give up personal goals by pastor & 1 & 1.26 & 0.67 & 1.47 & 1.78 & -0.59 & 0.80 & 0.31 \\
+EQ17 - Treated as less than b/c my sexual orientation & 1 & 3.93 & 0.39 & 1.20 & 1.18 & -3.54 & 0.81 & -0.02 \\
+EQ18 - Church/pastor discourage critical thinking & 1 & -0.15 & -0.39 & 0.71 & 1.28 & -0.23 & 1.10 & 0.57 \\
+EQ19 - Behavior excessively monitored by pastor/group & 1 & 0.42 & 0.20 & 0.94 & 1.69 & -0.22 & 0.74 & 0.74 \\
+EQ20 - Members pressured to give money despite financial hardship & 1 & 0.97 & 0.37 & 0.99 & 1.24 & -0.61 & 0.62 & 0.25 \\
+EQ21 - Taught I would risk Hell if left my church/group & 1 & 1.11 & 0.38 & 0.93 & 0.78 & -0.73 & 0.55 & -0.15 \\
+EQ22 - Expected to follow pastor/leader rules re: dating/marriage/sex & 1 & -0.39 & -0.61 & -0.27 & 0.38 & -0.22 & 0.35 & 0.64 \\
+EQ23 - Prayer replacing needed medical interventions & 1 & 0.77 & 0.64 & 1.62 & 2.19 & -0.12 & 0.98 & 0.57 \\
+EQ24 - Expected to consult pastor/leader before making non-religious decisions & 1 & 1.13 & 0.47 & 1.55 & 1.98 & -0.66 & 1.08 & 0.43 \\
+EQ26 - Pressured to forgive abuser while abuse was ongoing & 1 & 1.41 & 0.74 & 1.03 & 1.55 & -0.67 & 0.29 & 0.52 \\
+EQ27 - Denied opportunities to serve b/c of my gender & 1 & 1.64 & 0.36 & 1.09 & 1.20 & -1.28 & 0.73 & 0.11 \\
+EQ29 - Feeling special when in pastor's good graces; otherwise ignored & 1 & 0.12 & 0.04 & 0.88 & 1.58 & -0.08 & 0.84 & 0.70 \\
+EQ30 - Deterred from seeking mental health treatment/counseling/medication & 1 & 0.89 & 0.38 & 1.23 & 1.92 & -0.51 & 0.85 & 0.69 \\
+EQ32 - Feeling unable to express unhappiness & 1 & -0.30 & -0.53 & 0.69 & 1.53 & -0.23 & 1.23 & 0.84 \\
+EQ34 - Scripture used to justify physical punishment/severe discipline & 1 & 0.10 & 0.04 & 0.94 & 1.57 & -0.05 & 0.90 & 0.63 \\
+EQ35 - Taught to distrust my emotions & 1 & -0.62 & -0.70 & 0.29 & 0.82 & -0.07 & 0.99 & 0.53 \\
+EQ38 - Unrealistic demands placed on my moral/religious behavior & 1 & -0.43 & -0.49 & 0.52 & 0.92 & -0.06 & 1.02 & 0.40 \\
+EQ39 - Made to feel shame over natural sexual desires (not actions) & 1 & -0.16 & -0.62 & 0.29 & 0.65 & -0.46 & 0.91 & 0.35 \\
+EQ40 - Threatening Divine punishment to keep group members in line & 1 & 0.66 & 0.21 & 1.09 & 1.17 & -0.45 & 0.88 & 0.08 \\
+EQ41 - Denied opportunities to serve because of my sexual orientation & 1 & 3.89 & 0.65 & 1.48 & 1.10 & -3.24 & 0.83 & -0.38 \\
+EQ44 - Love/acceptance offered only for high spiritual/moral performance & 1 & -0.01 & -0.17 & 0.70 & 1.57 & -0.16 & 0.87 & 0.88 \\
+EQ45 - Developmentally-inappropriate/anxious Hell/Satan/demons taught to young children & 1 & -0.10 & -0.12 & 0.57 & 0.92 & -0.02 & 0.69 & 0.35 \\
+EQ46 - Treated as less than because of my skin color & 1 & 3.92 & 1.19 & 2.64 & 2.40 & -2.73 & 1.45 & -0.24 \\
+EQ47 - Medical care being postponed/withheld for religious reasons & 1 & 1.56 & 1.29 & 2.47 & 2.21 & -0.28 & 1.18 & -0.26 \\
+EQ50 - Treated as less than because of my gender & 1 & 1.58 & -0.24 & 0.78 & 1.15 & -1.83 & 1.02 & 0.38 \\
+EQ51 - Extreme pressure to be pastor/missionary/spiritual leader & 1 & 0.44 & 0.33 & 0.82 & 1.42 & -0.10 & 0.49 & 0.59 \\
+EQ52 - Blamed for harm I suffered rather than blaming who harmed me & 1 & 0.73 & 0.54 & 1.06 & 1.93 & -0.19 & 0.52 & 0.87 \\
+EQ53 - Scripture used to justify abusive parent-child behavior & 1 & 0.36 & 0.17 & 1.00 & 1.43 & -0.19 & 0.83 & 0.43 \\
+EQ54 - Being explicitly taught to distrust my intuitions & 1 & -0.36 & -0.48 & 0.54 & 0.97 & -0.12 & 1.02 & 0.44 \\
+EQ55 - Hearing cultural references in sermons unfamiliar to my race/eth. subculture & 1 & 1.34 & 1.18 & 2.00 & 2.39 & -0.16 & 0.82 & 0.39 \\
+EQ56 - Being made to feel I was crazy/weird for doubts/questions & 1 & -0.18 & -0.24 & 0.56 & 1.47 & -0.06 & 0.80 & 0.91 \\
+EQ57 - Developing mental/physical ailments from conforming to group/leader's expectation & 1 & 0.83 & 0.33 & 1.04 & 1.56 & -0.50 & 0.71 & 0.52 \\
+EQ58 - Terror/horror used to motivate religious decisions & 1 & 0.04 & -0.13 & 0.97 & 1.45 & -0.17 & 1.09 & 0.48 \\
+EQ60 - Encouraged by leader to stay in abusive marriage & 1 & 2.21 & 0.95 & 1.46 & 2.19 & -1.26 & 0.51 & 0.73 \\
+EQ61 - Developmentally-inappropriate/anxious end times descriptions taught to young children & 1 & 0.05 & -0.24 & 0.49 & 0.93 & -0.30 & 0.73 & 0.44 \\
+EQ62 - Scripture used to justify physical violence & 1 & 0.54 & 0.20 & 1.38 & 1.96 & -0.34 & 1.18 & 0.59 \\
+EQ65 - Cut off/shunned by more religious family members & 1 & 1.22 & 0.78 & 1.39 & 1.82 & -0.44 & 0.61 & 0.44 \\
+EQ66 - Others treated as less than due to their sexual orientation & 1 & -0.58 & -0.87 & 0.01 & 0.70 & -0.29 & 0.88 & 0.69 \\
+IQ68 - Anxiety attacks triggered by religious stimuli & 1 & 0.86 & 0.31 & 1.34 & 2.02 & -0.56 & 1.03 & 0.68 \\
+IQ72 - Feeling as if God harmed me directly & 1 & 1.36 & 0.89 & 2.14 & 2.15 & -0.47 & 1.25 & 0.01 \\
+IQ76 - Feeling I wasted years of my life in a church/set of beliefs & 1 & -0.02 & -0.19 & 0.52 & 0.75 & -0.17 & 0.71 & 0.22 \\
+IQ81 - Nightmares about my negative religious experiences & 1 & 0.94 & 0.86 & 1.98 & 2.33 & -0.09 & 1.12 & 0.35 \\
 \bottomrule
 \end{longtable}
 
-\textbf{Item parameters}. Table \ref{tab:mirt-items} reports the item parameters estimated by the PCM. The first column shows the discrimination parameter, which is equal to ``1'' for all items. This is because the Partial Credit Model, similar to the Rasch model, constrains the discrimination parameter to be ``1''. The subsequent columns (b1 to b4) report the estimated thresholds or step parameters. Because the SHAS items all have five response categories, the PCM estimates four threshold parameters (b1 to b4) for each item. Ordered threshold parameters are not a requirement of the partial credit or generalized partial credit models \citep{EmbretsonReise2000}. The important question, therefore, is which items have ordered thresholds and which have ``reversals.'' A reversal suggests that a response category is not contributing reliable information and might be collapsed.
+Table \ref{tab:pcm-items} reports the item parameters estimated by the PCM. The first column shows the discrimination parameter, which is equal to ``1'' for all items. This is because the Partial Credit Model, similar to the Rasch model, constrains the discrimination parameter to be ``1''. The subsequent columns (b1 to b4) report the estimated thresholds or step parameters. Because the SHAS items all have five response categories, the PCM estimates four threshold parameters (b1 to b4) for each item. Ordered threshold parameters are not a requirement of the partial credit or generalized partial credit models \citep{EmbretsonReise2000}. The important question, therefore, is which items have ordered thresholds and which have ``reversals.'' A reversal suggests that a response category is not contributing reliable information and might be collapsed.
 
-This information reveals several insights about the SHAS items. XX items have reversals. On items X, Y, and Z, examinees who have experienced more abuse overall were more likely to report ``Never'' than ``Once or twice''. To collapse these categories would help these items contribute less noise and more reliable information.
+As shown in Table \ref{tab:pcm-items}, most of the SHAS items (43 out of 66) had reversals. On each of these items, examinees who had experienced more overall lifetime spiritual abuse were more likely to report ``Never'' than ``Once or twice''. To collapse these categories would help these items contribute less noise and more reliable information.
+
+Item plots help illustrate these statistics visually. Figure \ref{pcm-occs} is a plot of the option characeristic curves (also called category characteristic curves) of Q7.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# PCM ITEM PLOTS}
+\FunctionTok{library}\NormalTok{(directlabels)}
+\NormalTok{plt }\OtherTok{\textless{}{-}} \FunctionTok{plot}\NormalTok{(results.pcm, }\AttributeTok{type =} \StringTok{"trace"}\NormalTok{, }\AttributeTok{which.items =} \DecValTok{3}\NormalTok{, }\AttributeTok{main =} \StringTok{""}\NormalTok{,}
+    \AttributeTok{par.settings =} \FunctionTok{simpleTheme}\NormalTok{(}\AttributeTok{lty =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{, }\AttributeTok{lwd =} \DecValTok{2}\NormalTok{), }\AttributeTok{auto.key =} \FunctionTok{list}\NormalTok{(}\AttributeTok{points =} \ConstantTok{FALSE}\NormalTok{,}
+        \AttributeTok{lines =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{columns =} \DecValTok{4}\NormalTok{))  }\CommentTok{\# option curves}
+\FunctionTok{direct.label}\NormalTok{(plt, }\StringTok{"top.points"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/pcm-occs-1.pdf}
+In this kind of plot, the x axis is the scale of the latent trait--in this case, lifetime exposure to spiritual abuse--expressed in logits ranging from -6 to +6. The y axis is the probability of selecting a given response (such as ``Always'') at each level of overall lifetime exposure to spiritual abuse. The blue line is the thus the probability of selecting ``Never'' for examinees ranging from low to high lifetime spiritual abuse. The reversal is that examinees just below zero are more likely to select ``Never'' than ``Once or twice.'' In addition, examinees with above-average lifetime exposure to spiritual abuse were more likely to select ``Always'' than ``Often''. The item parameter statistics shown Table \ref{tab:pcm-items} indicate that this issue applies to 43 items. These items would contribute less noise and more reliable information if these response categories were collapsed.
 
 \textbf{Item fit}. Two fit statistics assess the fit of an item to the PCM: the infit mean square (MNSQ) and the outfit mean square (MNSQ). The infit statistic places greater emphasis on unexpected responses that are close to the examinees and item location. The outfit is sensitive to unexpected responses that are far from the location \citep{BondFox2015}. The infit and outfit values identify potential unexpected response patterns. The expected value of infit or outfit for each item is 1.0, with a range of acceptable values ranging from 0.5 to 1.5. Values outside this boundary indicate a lack of fit between items and models.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# ITEM FIT}
-\NormalTok{ifit }\OtherTok{\textless{}{-}} \FunctionTok{itemfit}\NormalTok{(results.pcm, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{, }\StringTok{"infit"}\NormalTok{)}
-\CommentTok{\# knitr::kable(ifit, \textquotesingle{}simple\textquotesingle{}, digits = 2, caption =}
-\CommentTok{\# \textquotesingle{}Partial Credit Model (PCM) {-} Item Fit Statistics\textquotesingle{})}
-\CommentTok{\# itemfit(results.pcm, na.rm = TRUE, \textquotesingle{}infit\textquotesingle{})}
-\NormalTok{i }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{itemfit}\NormalTok{(results.pcm, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{, }\StringTok{"infit"}\NormalTok{))}
-\NormalTok{misfits }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(i, outfit }\SpecialCharTok{\textgreater{}} \FloatTok{1.5} \SpecialCharTok{|}\NormalTok{ outfit }\SpecialCharTok{\textless{}} \FloatTok{0.5} \SpecialCharTok{|}\NormalTok{ infit }\SpecialCharTok{\textgreater{}} \FloatTok{1.5} \SpecialCharTok{|}
-\NormalTok{    infit }\SpecialCharTok{\textless{}} \FloatTok{0.5}\NormalTok{)}
 \NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(misfits, }\StringTok{"simple"}\NormalTok{, }\AttributeTok{digits =} \DecValTok{2}\NormalTok{, }\AttributeTok{caption =} \StringTok{"Partial Credit Model (PCM) {-} Misfitting Items"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -731,31 +716,16 @@ This information reveals several insights about the SHAS items. XX items have re
 & item & outfit & z.outfit & infit & z.infit \\
 \midrule
 \endhead
-5 & Q17 & 2.81 & 7.05 & 1.55 & 9.54 \\
-15 & Q27 & 2.67 & 17.85 & 1.50 & 15.05 \\
-28 & Q41 & 6.71 & 15.06 & 1.53 & 8.20 \\
-33 & Q46 & 3.22 & 8.21 & 1.39 & 4.08 \\
-36 & Q50 & 1.95 & 12.37 & 1.51 & 16.61 \\
-41 & Q55 & 2.83 & 22.03 & 1.58 & 14.75 \\
+5 & EQ17 - Treated as less than b/c my sexual orientation & 2.81 & 7.05 & 1.55 & 9.54 \\
+15 & EQ27 - Denied opportunities to serve b/c of my gender & 2.67 & 17.85 & 1.50 & 15.05 \\
+28 & EQ41 - Denied opportunities to serve because of my sexual orientation & 6.71 & 15.06 & 1.53 & 8.20 \\
+33 & EQ46 - Treated as less than because of my skin color & 3.22 & 8.21 & 1.39 & 4.08 \\
+36 & EQ50 - Treated as less than because of my gender & 1.95 & 12.37 & 1.51 & 16.61 \\
+41 & EQ55 - Hearing cultural references in sermons unfamiliar to my race/eth. subculture & 2.83 & 22.03 & 1.58 & 14.75 \\
 \bottomrule
 \end{longtable}
 
 All but six of the 66 SHAS items had infit and outfit statistics within the acceptable range from 0.5 to 1.5. Statistics for these six items are presented here in \ref{tab:pcm-item-fit}. The large outfit values mean the observed patterns of responses to these items differed substantially from the patterns of responses expected by the PCM. These items capture the experiences of women, people of color, and LGBTQ persons.
-
-\textbf{Item plots}. We can also use plots to examine these item statistics visually. The following curves are called category response curves because they represent ``the probability of an examinee (or survey respondent) responding in a particular category conditional on trait level'' \citep{EmbretsonReise2000}. In general, ``the higher the slope parameters, the steeper the operating characteristic curves and the more narrow and peaked the category response curves, indicating that the response categories differentiate among trait levels fairly well'' \citep{EmbretsonReise2000}. Polytomous IRT models such as the Partial Credit Model have option characteristic curves (OCCs) which can be considered as an extension of item characteristic curves (ICCs) for polytomous items. Because the items have more than two response categories, OCCs have multiple curves in the same plot. Each curve represents the probability of selecting a particular response option as a function of the latent trait.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# PCM ITEM PLOTS itemplot(results.pcm, 1, type=\textquotesingle{}infotrace\textquotesingle{})}
-\FunctionTok{plot}\NormalTok{(results.pcm, }\AttributeTok{type =} \StringTok{"trace"}\NormalTok{, }\AttributeTok{which.items =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{,}
-    \DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{, }\DecValTok{12}\NormalTok{), }\AttributeTok{main =} \StringTok{""}\NormalTok{, }\AttributeTok{par.settings =} \FunctionTok{simpleTheme}\NormalTok{(}\AttributeTok{lty =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{,}
-    \AttributeTok{lwd =} \DecValTok{2}\NormalTok{), }\AttributeTok{auto.key =} \FunctionTok{list}\NormalTok{(}\AttributeTok{points =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{lines =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{columns =} \DecValTok{4}\NormalTok{))  }\CommentTok{\# option curves}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{_main_files/figure-latex/pcm-occs-1.pdf}
-
-In Figure \ref{fig:pcm-occs}, each item has four OCCs representing the four response options. The response categories are labeled as ``P1'' to ``P4''. For all four items, the OCCs follow the same order as the response categories. The OCC for the first response option (P1) is on the very left side of the plot, whereas the last response option (P4) is located on the right side of the plot. There are two questions to ask of OCCs: (1) Are they in the correct order? and (2) Does each response category meaningfully represent the responses of respondents at a given trait level? In this case, the OCCs are in the correct order, but the middle categories do not seem to capture distinct respondents.
 
 \textbf{Model fit}. One way to evaluate the fit of the Partial Credit Model is to evaluate how well it fits the data from the item responses. The following table presents this information.
 
@@ -799,137 +769,137 @@ In Figure \ref{fig:pcm-occs}, each item has four OCCs representing the four resp
 \hline
 item & S\_X2 & df.S\_X2 & RMSEA.S\_X2 & p.S\_X2\\
 \hline
-Q7 & 533.3564 & 533 & 0.0004739 & 0.4875015\\
+EQ7 - Pastor speaking on God's behalf & 533.3564 & 533 & 0.0004739 & 0.4875015\\
 \hline
-Q10 & 495.1835 & 467 & 0.0045017 & 0.1772288\\
+EQ10 - Asked to give up personal goals by pastor & 495.1835 & 467 & 0.0045017 & 0.1772288\\
 \hline
-Q11 & 579.6394 & 531 & 0.0055461 & 0.0708398\\
+EQ11 - Disagree w/pastor portrayed as evil & 579.6394 & 531 & 0.0055461 & 0.0708398\\
 \hline
-Q16 & 481.6413 & 503 & 0.0000000 & 0.7460408\\
+EQ16 - Church/community abandoning me in difficult time & 481.6413 & 503 & 0.0000000 & 0.7460408\\
 \hline
-Q17 & 443.3413 & 213 & 0.0190561 & 0.0000000\\
+EQ17 - Treated as less than b/c my sexual orientation & 443.3413 & 213 & 0.0190561 & 0.0000000\\
 \hline
-Q18 & 511.1011 & 523 & 0.0000000 & 0.6368612\\
+EQ18 - Church/pastor discourage critical thinking & 511.1011 & 523 & 0.0000000 & 0.6368612\\
 \hline
-Q19 & 548.8232 & 517 & 0.0045464 & 0.1609217\\
+EQ19 - Behavior excessively monitored by pastor/group & 548.8232 & 517 & 0.0045464 & 0.1609217\\
 \hline
-Q20 & 543.2461 & 513 & 0.0044495 & 0.1718095\\
+EQ20 - Members pressured to give money despite financial hardship & 543.2461 & 513 & 0.0044495 & 0.1718095\\
 \hline
-Q21 & 556.8474 & 518 & 0.0050183 & 0.1153414\\
+EQ21 - Taught I would risk Hell if left my church/group & 556.8474 & 518 & 0.0050183 & 0.1153414\\
 \hline
-Q22 & 610.6849 & 477 & 0.0097011 & 0.0000316\\
+EQ22 - Expected to follow pastor/leader rules re: dating/marriage/sex & 610.6849 & 477 & 0.0097011 & 0.0000316\\
 \hline
-Q23 & 451.2542 & 440 & 0.0029307 & 0.3450871\\
+EQ23 - Prayer replacing needed medical interventions & 451.2542 & 440 & 0.0029307 & 0.3450871\\
 \hline
-Q24 & 439.9162 & 449 & 0.0000000 & 0.6113781\\
+EQ24 - Expected to consult pastor/leader before making non-religious decisions & 439.9162 & 449 & 0.0000000 & 0.6113781\\
 \hline
-Q25 & 505.6217 & 492 & 0.0030491 & 0.3258128\\
+EQ25 - Feeling unable to raise questions and issues & 505.6217 & 492 & 0.0030491 & 0.3258128\\
 \hline
-Q26 & 481.9682 & 475 & 0.0022195 & 0.4026140\\
+EQ26 - Pressured to forgive abuser while abuse was ongoing & 481.9682 & 475 & 0.0022195 & 0.4026140\\
 \hline
-Q27 & 896.8917 & 479 & 0.0171160 & 0.0000000\\
+EQ27 - Denied opportunities to serve b/c of my gender & 896.8917 & 479 & 0.0171160 & 0.0000000\\
 \hline
-Q28 & 514.6797 & 500 & 0.0031399 & 0.3153365\\
+EQ28 - Leadershi/group protecting abusive individuals & 514.6797 & 500 & 0.0031399 & 0.3153365\\
 \hline
-Q29 & 530.1984 & 524 & 0.0019930 & 0.4163283\\
+EQ29 - Feeling special when in pastor’s good graces; otherwise ignored & 530.1984 & 524 & 0.0019930 & 0.4163283\\
 \hline
-Q30 & 569.1584 & 488 & 0.0074730 & 0.0064340\\
+EQ30 - Deterred from seeking mental health treatment/counseling/medication & 569.1584 & 488 & 0.0074730 & 0.0064340\\
 \hline
-Q31 & 526.1497 & 479 & 0.0057492 & 0.0671431\\
+EQ31 - Shunned/ignored by pastor/church/group & 526.1497 & 479 & 0.0057492 & 0.0671431\\
 \hline
-Q32 & 486.5294 & 515 & 0.0000000 & 0.8114182\\
+EQ32 - Feeling unable to express unhappiness & 486.5294 & 515 & 0.0000000 & 0.8114182\\
 \hline
-Q34 & 586.1511 & 525 & 0.0062540 & 0.0329661\\
+EQ34 - Scripture used to justify physical punishment/severe discipline & 586.1511 & 525 & 0.0062540 & 0.0329661\\
 \hline
-Q35 & 542.2495 & 508 & 0.0047581 & 0.1418454\\
+EQ35 - Taught to distrust my emotions & 542.2495 & 508 & 0.0047581 & 0.1418454\\
 \hline
-Q36 & 553.8355 & 515 & 0.0050321 & 0.1147646\\
+EQ36 - Mental/physical problems interpreted as spiritual/moral weakness & 553.8355 & 515 & 0.0050321 & 0.1147646\\
 \hline
-Q37 & 548.0106 & 519 & 0.0043324 & 0.1827871\\
+EQ37 - Made to feel less spiritually mature than pastor/leadership & 548.0106 & 519 & 0.0043324 & 0.1827871\\
 \hline
-Q38 & 568.9640 & 517 & 0.0058096 & 0.0564382\\
+EQ38 - Unrealistic demands placed on my moral/religious behavior & 568.9640 & 517 & 0.0058096 & 0.0564382\\
 \hline
-Q39 & 473.9639 & 507 & 0.0000000 & 0.8507912\\
+EQ39 - Made to feel shame over natural sexual desires (not actions) & 473.9639 & 507 & 0.0000000 & 0.8507912\\
 \hline
-Q40 & 573.7718 & 529 & 0.0053310 & 0.0869481\\
+EQ40 - Threatening Divine punishment to keep group members in line & 573.7718 & 529 & 0.0053310 & 0.0869481\\
 \hline
-Q41 & 435.2054 & 180 & 0.0218196 & 0.0000000\\
+EQ41 - Denied opportunities to serve because of my sexual orientation & 435.2054 & 180 & 0.0218196 & 0.0000000\\
 \hline
-Q42 & 549.9676 & 494 & 0.0061680 & 0.0410645\\
+EQ42 - Seeing others shamed/shunned by pastor/leader/group & 549.9676 & 494 & 0.0061680 & 0.0410645\\
 \hline
-Q43 & 502.6761 & 461 & 0.0055097 & 0.0877056\\
+EQ43 - Shamed by pastor/group for poor spiritual/moral performance & 502.6761 & 461 & 0.0055097 & 0.0877056\\
 \hline
-Q44 & 618.0733 & 528 & 0.0075687 & 0.0040428\\
+EQ44 - Love/acceptance offered only for high spiritual/moral performance & 618.0733 & 528 & 0.0075687 & 0.0040428\\
 \hline
-Q45 & 548.4064 & 531 & 0.0033178 & 0.2915691\\
+EQ45 - Developmentally-inappropriate/anxious Hell/Satan/demons taught to young children & 548.4064 & 531 & 0.0033178 & 0.2915691\\
 \hline
-Q46 & 249.0751 & 108 & 0.0209436 & 0.0000000\\
+EQ46 - Treated as less than because of my skin color & 249.0751 & 108 & 0.0209436 & 0.0000000\\
 \hline
-Q47 & 347.5054 & 338 & 0.0030730 & 0.3490803\\
+EQ47 - Medical care being postponed/withheld for religious reasons & 347.5054 & 338 & 0.0030730 & 0.3490803\\
 \hline
-Q49 & 515.8695 & 493 & 0.0039468 & 0.2301057\\
+EQ49 - Leadership/group protecting and elevating abusive individuals & 515.8695 & 493 & 0.0039468 & 0.2301057\\
 \hline
-Q50 & 1193.8223 & 508 & 0.0212918 & 0.0000000\\
+EQ50 - Treated as less than because of my gender & 1193.8223 & 508 & 0.0212918 & 0.0000000\\
 \hline
-Q51 & 613.6675 & 527 & 0.0074312 & 0.0052930\\
+EQ51 - Extreme pressure to be pastor/missionary/spiritual leader & 613.6675 & 527 & 0.0074312 & 0.0052930\\
 \hline
-Q52 & 486.9722 & 493 & 0.0000000 & 0.5680840\\
+EQ52 - Blamed for harm I suffered rather than blaming who harmed me & 486.9722 & 493 & 0.0000000 & 0.5680840\\
 \hline
-Q53 & 541.7427 & 523 & 0.0034690 & 0.2764940\\
+EQ53 - Scripture used to justify abusive parent-child behavior & 541.7427 & 523 & 0.0034690 & 0.2764940\\
 \hline
-Q54 & 561.7842 & 518 & 0.0053276 & 0.0894195\\
+EQ54 - Being explicitly taught to distrust my intuitions & 561.7842 & 518 & 0.0053276 & 0.0894195\\
 \hline
-Q55 & 977.8732 & 373 & 0.0233354 & 0.0000000\\
+EQ55 - Hearing cultural references in sermons unfamiliar to my race/eth. subculture & 977.8732 & 373 & 0.0233354 & 0.0000000\\
 \hline
-Q56 & 700.4023 & 524 & 0.0106322 & 0.0000004\\
+EQ56 - Being made to feel I was crazy/weird for doubts/questions & 700.4023 & 524 & 0.0106322 & 0.0000004\\
 \hline
-Q57 & 508.4694 & 507 & 0.0009865 & 0.4732781\\
+EQ57 - Developing mental/physical ailments from conforming to group/leader’s expectation & 508.4694 & 507 & 0.0009865 & 0.4732781\\
 \hline
-Q58 & 583.6834 & 531 & 0.0057720 & 0.0563289\\
+EQ58 - Terror/horror used to motivate religious decisions & 583.6834 & 531 & 0.0057720 & 0.0563289\\
 \hline
-Q59 & 546.5812 & 477 & 0.0069988 & 0.0148887\\
+EQ59 - Pastor/group blame victim for their abuse & 546.5812 & 477 & 0.0069988 & 0.0148887\\
 \hline
-Q60 & 552.8959 & 347 & 0.0141155 & 0.0000000\\
+EQ60 - Encouraged by leader to stay in abusive marriage & 552.8959 & 347 & 0.0141155 & 0.0000000\\
 \hline
-Q61 & 559.8063 & 528 & 0.0044976 & 0.1634943\\
+EQ61 - Developmentally-inappropriate/anxious end times descriptions taught to young children & 559.8063 & 528 & 0.0044976 & 0.1634943\\
 \hline
-Q62 & 511.0822 & 489 & 0.0038941 & 0.2366890\\
+EQ62 - Scripture used to justify physical violence & 511.0822 & 489 & 0.0038941 & 0.2366890\\
 \hline
-Q63 & 557.6752 & 505 & 0.0059183 & 0.0521972\\
+EQ63 - Shamed by pastor/group for raising questions or concerns & 557.6752 & 505 & 0.0059183 & 0.0521972\\
 \hline
-Q64 & 560.6293 & 508 & 0.0058982 & 0.0528242\\
+EQ64 - Witnessing women pressured to stay in unfaithful/abusive marriages & 560.6293 & 508 & 0.0058982 & 0.0528242\\
 \hline
-Q65 & 493.0967 & 466 & 0.0044188 & 0.1860160\\
+EQ65 - Cut off/shunned by more religious family members & 493.0967 & 466 & 0.0044188 & 0.1860160\\
 \hline
-Q66 & 484.6288 & 486 & 0.0000000 & 0.5090283\\
+EQ66 - Others treated as less than due to their sexual orientation & 484.6288 & 486 & 0.0000000 & 0.5090283\\
 \hline
-Q68 & 524.0797 & 483 & 0.0053441 & 0.0955543\\
+IQ68 - Anxiety attacks triggered by religious stimuli & 524.0797 & 483 & 0.0053441 & 0.0955543\\
 \hline
-Q69 & 514.9555 & 493 & 0.0038671 & 0.2387767\\
+IQ69 - Lack of spiritual direction/purpose & 514.9555 & 493 & 0.0038671 & 0.2387767\\
 \hline
-Q70 & 596.9121 & 469 & 0.0095699 & 0.0000546\\
+IQ70 - Feeling betrayed by God & 596.9121 & 469 & 0.0095699 & 0.0000546\\
 \hline
-Q71 & 517.4845 & 517 & 0.0005610 & 0.4857223\\
+IQ71 - Avoiding religious activities/settings to reduce distressing feelings & 517.4845 & 517 & 0.0005610 & 0.4857223\\
 \hline
-Q72 & 398.9107 & 382 & 0.0038556 & 0.2653161\\
+IQ72 - Feeling as if God harmed me directly & 398.9107 & 382 & 0.0038556 & 0.2653161\\
 \hline
-Q73 & 575.2774 & 521 & 0.0059146 & 0.0497939\\
+IQ73 - Self-hatred or self-loathing & 575.2774 & 521 & 0.0059146 & 0.0497939\\
 \hline
-Q74 & 656.6494 & 501 & 0.0102139 & 0.0000033\\
+IQ74 - Sadness over the loss of my faith/religious community & 656.6494 & 501 & 0.0102139 & 0.0000033\\
 \hline
-Q76 & 578.0990 & 526 & 0.0057671 & 0.0574545\\
+IQ76 - Feeling I wasted years of my life in a church/set of beliefs & 578.0990 & 526 & 0.0057671 & 0.0574545\\
 \hline
-Q77 & 556.0596 & 489 & 0.0067860 & 0.0190138\\
+IQ77 - Anger upon reflecting on negative religious experiences & 556.0596 & 489 & 0.0067860 & 0.0190138\\
 \hline
-Q78 & 517.0659 & 518 & 0.0000000 & 0.5033200\\
+IQ78 - A lack of self-worth & 517.0659 & 518 & 0.0000000 & 0.5033200\\
 \hline
-Q79 & 565.0319 & 517 & 0.0055854 & 0.0707272\\
+IQ79 - Distrust of God & 565.0319 & 517 & 0.0055854 & 0.0707272\\
 \hline
-Q80 & 495.3246 & 488 & 0.0022450 & 0.3995138\\
+IQ80 - Feeling isolated & 495.3246 & 488 & 0.0022450 & 0.3995138\\
 \hline
-Q81 & 431.9793 & 407 & 0.0045397 & 0.1890289\\
+IQ81 - Nightmares about my negative religious experiences & 431.9793 & 407 & 0.0045397 & 0.1890289\\
 \hline
-Q82 & 520.8786 & 480 & 0.0053477 & 0.0959422\\
+IQ82 - Having trouble navigating life outside my church/community & 520.8786 & 480 & 0.0053477 & 0.0959422\\
 \hline
 \end{tabular}
 \end{table}
@@ -949,78 +919,152 @@ Q82 & 520.8786 & 480 & 0.0053477 & 0.0959422\\
 \end{Shaded}
 
 \begin{verbatim}
-   item outfit z.outfit infit z.infit
-1    Q7  1.276    7.187 1.122   4.669
-2   Q10  0.963   -0.671 0.988  -0.415
-3   Q11  0.780   -7.399 0.799  -8.713
-4   Q16  0.930   -1.824 0.939  -2.337
-5   Q17  2.813    7.053 1.555   9.545
-6   Q18  0.777   -7.906 0.804  -8.498
-7   Q19  0.778   -6.464 0.836  -6.867
-8   Q20  0.970   -0.618 1.014   0.513
-9   Q21  1.203    3.704 1.043   1.575
-10  Q22  1.104    2.990 1.099   3.596
-11  Q23  0.941   -1.383 1.007   0.269
-12  Q24  0.913   -1.766 0.936  -2.327
-13  Q25  0.771   -9.221 0.791  -9.059
-14  Q26  1.313    4.798 0.963  -1.247
-15  Q27  2.671   17.851 1.502  15.055
-16  Q28  0.848   -4.823 0.869  -5.376
-17  Q29  1.014    0.428 1.026   1.060
-18  Q30  0.848   -3.539 0.893  -4.155
-19  Q31  1.012    0.318 1.006   0.216
-20  Q32  0.882   -4.193 0.897  -4.308
-21  Q34  1.119    3.474 1.102   3.963
-22  Q35  0.976   -0.850 0.917  -3.397
-23  Q36  0.792   -7.866 0.812  -8.212
-24  Q37  0.845   -5.731 0.862  -5.881
-25  Q38  0.680  -12.407 0.711 -13.043
-26  Q39  0.994   -0.167 0.998  -0.085
-27  Q40  0.788   -5.520 0.845  -6.321
-28  Q41  6.705   15.057 1.534   8.204
-29  Q42  0.763   -9.409 0.790  -9.222
-30  Q43  0.748   -7.211 0.795  -8.281
-31  Q44  0.715   -9.971 0.734 -11.859
-32  Q45  0.978   -0.672 0.994  -0.251
-33  Q46  3.223    8.213 1.392   4.076
-34  Q47  0.986   -0.207 1.027   0.728
-35  Q49  0.821   -5.079 0.865  -5.373
-36  Q50  1.947   12.371 1.513  16.610
-37  Q51  1.287    6.901 1.232   8.445
-38  Q52  0.698   -7.911 0.759  -9.911
-39  Q53  0.836   -4.767 0.896  -4.247
-40  Q54  0.872   -4.519 0.866  -5.674
-41  Q55  2.828   22.030 1.577  14.747
-42  Q56  0.659  -12.674 0.687 -14.270
-43  Q57  0.800   -4.843 0.896  -4.083
-44  Q58  0.879   -3.921 0.920  -3.294
-45  Q59  0.720   -8.510 0.778  -9.340
-46  Q60  1.436    4.429 1.199   4.970
-47  Q61  1.013    0.402 1.025   0.997
-48  Q62  0.968   -0.821 1.037   1.426
-49  Q63  0.722   -9.474 0.775  -9.632
-50  Q64  0.900   -2.977 0.913  -3.471
-51  Q65  1.183    3.247 1.051   1.715
-52  Q66  1.013    0.443 0.984  -0.613
-53  Q68  0.890   -2.575 0.959  -1.542
-54  Q69  1.184    6.976 1.185   7.178
-55  Q70  1.238    6.218 1.223   7.897
-56  Q71  0.869   -4.950 0.891  -4.589
-57  Q72  1.020    0.380 1.091   2.772
-58  Q73  1.089    2.783 1.121   4.679
-59  Q74  1.205    6.924 1.188   7.246
-60  Q76  0.922   -2.415 0.925  -3.068
-61  Q77  0.735  -11.202 0.745 -11.386
-62  Q78  1.024    0.878 1.039   1.571
-63  Q79  1.215    6.432 1.184   6.889
-64  Q80  0.938   -2.471 0.946  -2.227
-65  Q81  0.812   -4.346 0.909  -3.187
-66  Q82  1.069    2.012 1.127   4.750
+                                                                                           item
+1                                                         EQ7 - Pastor speaking on God's behalf
+2                                              EQ10 - Asked to give up personal goals by pastor
+3                                                    EQ11 - Disagree w/pastor portrayed as evil
+4                                       EQ16 - Church/community abandoning me in difficult time
+5                                         EQ17 - Treated as less than b/c my sexual orientation
+6                                             EQ18 - Church/pastor discourage critical thinking
+7                                         EQ19 - Behavior excessively monitored by pastor/group
+8                             EQ20 - Members pressured to give money despite financial hardship
+9                                       EQ21 - Taught I would risk Hell if left my church/group
+10                        EQ22 - Expected to follow pastor/leader rules re: dating/marriage/sex
+11                                         EQ23 - Prayer replacing needed medical interventions
+12               EQ24 - Expected to consult pastor/leader before making non-religious decisions
+13                                          EQ25 - Feeling unable to raise questions and issues
+14                                   EQ26 - Pressured to forgive abuser while abuse was ongoing
+15                                        EQ27 - Denied opportunities to serve b/c of my gender
+16                                        EQ28 - Leadershi/group protecting abusive individuals
+17                       EQ29 - Feeling special when in pastor’s good graces; otherwise ignored
+18                   EQ30 - Deterred from seeking mental health treatment/counseling/medication
+19                                                EQ31 - Shunned/ignored by pastor/church/group
+20                                                 EQ32 - Feeling unable to express unhappiness
+21                       EQ34 - Scripture used to justify physical punishment/severe discipline
+22                                                        EQ35 - Taught to distrust my emotions
+23                      EQ36 - Mental/physical problems interpreted as spiritual/moral weakness
+24                           EQ37 - Made to feel less spiritually mature than pastor/leadership
+25                             EQ38 - Unrealistic demands placed on my moral/religious behavior
+26                          EQ39 - Made to feel shame over natural sexual desires (not actions)
+27                           EQ40 - Threatening Divine punishment to keep group members in line
+28                        EQ41 - Denied opportunities to serve because of my sexual orientation
+29                                   EQ42 - Seeing others shamed/shunned by pastor/leader/group
+30                           EQ43 - Shamed by pastor/group for poor spiritual/moral performance
+31                     EQ44 - Love/acceptance offered only for high spiritual/moral performance
+32      EQ45 - Developmentally-inappropriate/anxious Hell/Satan/demons taught to young children
+33                                         EQ46 - Treated as less than because of my skin color
+34                           EQ47 - Medical care being postponed/withheld for religious reasons
+35                         EQ49 - Leadership/group protecting and elevating abusive individuals
+36                                             EQ50 - Treated as less than because of my gender
+37                             EQ51 - Extreme pressure to be pastor/missionary/spiritual leader
+38                          EQ52 - Blamed for harm I suffered rather than blaming who harmed me
+39                               EQ53 - Scripture used to justify abusive parent-child behavior
+40                                     EQ54 - Being explicitly taught to distrust my intuitions
+41          EQ55 - Hearing cultural references in sermons unfamiliar to my race/eth. subculture
+42                             EQ56 - Being made to feel I was crazy/weird for doubts/questions
+43     EQ57 - Developing mental/physical ailments from conforming to group/leader’s expectation
+44                                    EQ58 - Terror/horror used to motivate religious decisions
+45                                             EQ59 - Pastor/group blame victim for their abuse
+46                                      EQ60 - Encouraged by leader to stay in abusive marriage
+47 EQ61 - Developmentally-inappropriate/anxious end times descriptions taught to young children
+48                                           EQ62 - Scripture used to justify physical violence
+49                              EQ63 - Shamed by pastor/group for raising questions or concerns
+50                    EQ64 - Witnessing women pressured to stay in unfaithful/abusive marriages
+51                                      EQ65 - Cut off/shunned by more religious family members
+52                           EQ66 - Others treated as less than due to their sexual orientation
+53                                        IQ68 - Anxiety attacks triggered by religious stimuli
+54                                                   IQ69 - Lack of spiritual direction/purpose
+55                                                               IQ70 - Feeling betrayed by God
+56                 IQ71 - Avoiding religious activities/settings to reduce distressing feelings
+57                                                  IQ72 - Feeling as if God harmed me directly
+58                                                          IQ73 - Self-hatred or self-loathing
+59                                 IQ74 - Sadness over the loss of my faith/religious community
+60                          IQ76 - Feeling I wasted years of my life in a church/set of beliefs
+61                               IQ77 - Anger upon reflecting on negative religious experiences
+62                                                                  IQ78 - A lack of self-worth
+63                                                                       IQ79 - Distrust of God
+64                                                                      IQ80 - Feeling isolated
+65                                    IQ81 - Nightmares about my negative religious experiences
+66                            IQ82 - Having trouble navigating life outside my church/community
+   outfit z.outfit infit z.infit
+1   1.276    7.187 1.122   4.669
+2   0.963   -0.671 0.988  -0.415
+3   0.780   -7.399 0.799  -8.713
+4   0.930   -1.824 0.939  -2.337
+5   2.813    7.053 1.555   9.545
+6   0.777   -7.906 0.804  -8.498
+7   0.778   -6.464 0.836  -6.867
+8   0.970   -0.618 1.014   0.513
+9   1.203    3.704 1.043   1.575
+10  1.104    2.990 1.099   3.596
+11  0.941   -1.383 1.007   0.269
+12  0.913   -1.766 0.936  -2.327
+13  0.771   -9.221 0.791  -9.059
+14  1.313    4.798 0.963  -1.247
+15  2.671   17.851 1.502  15.055
+16  0.848   -4.823 0.869  -5.376
+17  1.014    0.428 1.026   1.060
+18  0.848   -3.539 0.893  -4.155
+19  1.012    0.318 1.006   0.216
+20  0.882   -4.193 0.897  -4.308
+21  1.119    3.474 1.102   3.963
+22  0.976   -0.850 0.917  -3.397
+23  0.792   -7.866 0.812  -8.212
+24  0.845   -5.731 0.862  -5.881
+25  0.680  -12.407 0.711 -13.043
+26  0.994   -0.167 0.998  -0.085
+27  0.788   -5.520 0.845  -6.321
+28  6.705   15.057 1.534   8.204
+29  0.763   -9.409 0.790  -9.222
+30  0.748   -7.211 0.795  -8.281
+31  0.715   -9.971 0.734 -11.859
+32  0.978   -0.672 0.994  -0.251
+33  3.223    8.213 1.392   4.076
+34  0.986   -0.207 1.027   0.728
+35  0.821   -5.079 0.865  -5.373
+36  1.947   12.371 1.513  16.610
+37  1.287    6.901 1.232   8.445
+38  0.698   -7.911 0.759  -9.911
+39  0.836   -4.767 0.896  -4.247
+40  0.872   -4.519 0.866  -5.674
+41  2.828   22.030 1.577  14.747
+42  0.659  -12.674 0.687 -14.270
+43  0.800   -4.843 0.896  -4.083
+44  0.879   -3.921 0.920  -3.294
+45  0.720   -8.510 0.778  -9.340
+46  1.436    4.429 1.199   4.970
+47  1.013    0.402 1.025   0.997
+48  0.968   -0.821 1.037   1.426
+49  0.722   -9.474 0.775  -9.632
+50  0.900   -2.977 0.913  -3.471
+51  1.183    3.247 1.051   1.715
+52  1.013    0.443 0.984  -0.613
+53  0.890   -2.575 0.959  -1.542
+54  1.184    6.976 1.185   7.178
+55  1.238    6.218 1.223   7.897
+56  0.869   -4.950 0.891  -4.589
+57  1.020    0.380 1.091   2.772
+58  1.089    2.783 1.121   4.679
+59  1.205    6.924 1.188   7.246
+60  0.922   -2.415 0.925  -3.068
+61  0.735  -11.202 0.745 -11.386
+62  1.024    0.878 1.039   1.571
+63  1.215    6.432 1.184   6.889
+64  0.938   -2.471 0.946  -2.227
+65  0.812   -4.346 0.909  -3.187
+66  1.069    2.012 1.127   4.750
 \end{verbatim}
 
 Table X ``contains estimation results and the fit index model from each item of the SHAS.'' The estimates of item difficulty were between -X.XX TO X.XX (ie., -1.36 to 1.51) on the logit scale. Based on the item discrimination index (PTBIS; point-biserial correlation), which is analogous to classical test theory (item to-total-correlation), X SHAS items have high discrimination values in a positive direction, with no values below 0.30 or negative values. This indicates that XX items function well to distinguish persons with high versus low levels of spiritual abuse. For each item, we examined the step parameter of category endorsements and the statistics of each response for the items. X items, except item X, followed the step ordering requirement.
 
 We found Item X (Step 1 = -0.XX, Step 2 = -0.XX, Step 3 = 0.XX) experienced threshold disordering as the thresholds were not ordered from lowest to highest. However, none of the infit and outfit statistics for response categories were greater than 2. This finding indicated that collapsing categories was not necessary because the disordered threshold still fit and did not violate the Rasch model (Linacre, 2010; 2018). Based on this information, we concluded that, in general, the SHAS items (fit)/(did not fit) the Rasch PCM model.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pcmscores }\OtherTok{\textless{}{-}} \FunctionTok{fscores}\NormalTok{(results.pcm)}
+\NormalTok{items }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(items, pcmscores)}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{summary-1}{%
 \section{Summary}\label{summary-1}}
