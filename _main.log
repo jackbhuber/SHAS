@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.4.7)  24 APR 2022 10:20
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.4.7)  25 APR 2022 10:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -883,113 +883,75 @@ Overfull \hbox (385.57016pt too wide) in alignment at lines 564--568
 
 [18]
 
-LaTeX Warning: Reference `pcm-occs' on page 19 undefined on input line 574.
+LaTeX Warning: Reference `fig:pcm-occs' on page 19 undefined on input line 574.
 
 
-Overfull \vbox (0.39091pt too high) detected at line 585
- []
-
-[19]
 File: _main_files/figure-latex/pcm-occs-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/pcm-occs-1.pdf>
-
-Overfull \hbox (195.07013pt too wide) in alignment at lines 598--603
+File: _main_files/figure-latex/pcm-occs-2.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/pcm-occs-2.pdf>
+File: _main_files/figure-latex/pcm-occs-3.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/pcm-occs-3.pdf>
+[19] [20]
+Overfull \hbox (195.07013pt too wide) in alignment at lines 587--592
  [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (195.07013pt too wide) in alignment at lines 603--607
+Overfull \hbox (195.07013pt too wide) in alignment at lines 592--596
  [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (195.07013pt too wide) in alignment at lines 607--615
+Overfull \hbox (195.07013pt too wide) in alignment at lines 596--604
  [] [] [] [] [] [] 
  []
 
-[20]
-File: _main_files/figure-latex/pcm-model-fit-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/pcm-model-fit-1.pdf>
-[21]
-File: _main_files/figure-latex/pcm-model-fit-2.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/pcm-model-fit-2.pdf>
-File: _main_files/figure-latex/pcm-model-fit-3.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/pcm-model-fit-3.pdf>
-[22]
-Overfull \hbox (323.95006pt too wide) in paragraph at lines 657--794
- [][] 
- []
-
-
-LaTeX Warning: Float too large for page by 310.29959pt on input line 794.
-
-File: _main_files/figure-latex/pcm-model-fit-4.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/pcm-model-fit-4.pdf>
-
-Overfull \vbox (1.48836pt too high) detected at line 947
- []
-
-[23] [24]
-Underfull \vbox (badness 10000) detected at line 947
- []
-
-
-Underfull \vbox (badness 10000) detected at line 947
- []
-
-[25]
-Underfull \vbox (badness 10000) detected at line 947
- []
-
-
-Underfull \vbox (badness 10000) detected at line 947
- []
-
-[26] [27] [28]
+[21] [22]
 Chapter 7.
-[29
+[23
 
 ]
 File: _main_files/figure-latex/corrmtrx-ext-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/corrmtrx-ext-1.pdf>
 File: _main_files/figure-latex/corrmtrx-int-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/corrmtrx-int-1.pdf>
-[30]
+[24]
 File: _main_files/figure-latex/corrmtrx-all-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/corrmtrx-all-1.pdf>
-[31] [32] [33]
+[25] [26] [27]
 Chapter 8.
-[34
+[28
 
 ]
 File: _main_files/figure-latex/wright-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/wright-1.pdf>
-[35] [36]
+[29] [30]
 Chapter 9.
-[37
+[31
 
-] (./_main.bbl [38
+] (./_main.bbl [32
 
-] [39
+] [33
 
 ])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1154.
-[40]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1154.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 799.
+[34]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 799.
 (./_main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1154.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1154.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 799.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 799.
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 19253 strings out of 479418
- 341462 string characters out of 5884586
- 821120 words of memory out of 5000000
- 36478 multiletter control sequences out of 15000+600000
+ 19238 strings out of 479418
+ 340836 string characters out of 5884586
+ 798011 words of memory out of 5000000
+ 36465 multiletter control sequences out of 15000+600000
  538805 words of font info for 79 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  58i,8n,118p,1246b,517s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on _main.pdf (41 pages).
+Output written on _main.pdf (35 pages).

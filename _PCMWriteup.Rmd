@@ -1,0 +1,13 @@
+## PCM WRITEUP
+
+Table X "contains estimation results and the fit index model from each item of the SHAS."
+
+The estimates of item difficulty were between -X.XX TO X.XX (ie., -1.36 to 1.51) on the logit scale.
+
+Based on the item discrimination index (PTBIS; point-biserial correlation), which is analogous to classical test theory (item to-total-correlation), X SHAS items have high discrimination values in a positive direction, with no values below 0.30 or negative values. This indicates that XX items function well to distinguish persons with high versus low levels of spiritual abuse. 
+
+For each item, we examined the step parameter of category endorsements and the statistics of each response for the items. X items, except item X, followed the step ordering requirement.
+
+We found X ITEMS (Item X (Step 1 = -0.XX, Step 2 = -0.XX, Step 3 = 0.XX)) revealed threshold disordering as the thresholds were not ordered from lowest to highest. 
+
+However, none of the infit and outfit statistics for response categories were greater than 2. This finding indicated that collapsing categories was not necessary because the disordered threshold still fit and did not violate the Rasch model (Linacre, 2010; 2018). Based on this information, we concluded that, in general, the SHAS items (fit)/(did not fit) the Rasch PCM model.
