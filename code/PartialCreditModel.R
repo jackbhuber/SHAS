@@ -99,10 +99,16 @@ itemplot(results.pcm, 1, type='infotrace')
 library(directlabels)
 plt <- itemplot(results.pcm, 3)
 direct.label(plt, 'top.points')
-plt <- plot(results.pcm, type = 'trace', which.items = c(1,2),
+plt1 <- plot(results.pcm, type = 'trace', which.items = 1,
      main = "", par.settings = simpleTheme(lty=1:4,lwd=2),
      auto.key=list(points=FALSE,lines=TRUE, columns=4)) # option curves
 direct.label(plt, 'top.points')
+
+plt2 <- plot(results.pcm, type = 'trace', which.items = 2,
+             main = "", par.settings = simpleTheme(lty=1:4,lwd=2),
+             auto.key=list(points=FALSE,lines=TRUE, columns=4)) # option curves
+direct.label(plt, 'top.points')
+
 
 # ITEM FIT
 itemfit(results.pcm, na.rm = TRUE, 'infit') # item fit function

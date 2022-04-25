@@ -250,8 +250,6 @@ div.csl-indent {
 <h2>Reliability in Classical Test Theory (CTT)<a href="reliability.html#reliability-in-classical-test-theory-ctt" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>One way to think about reliability in classical test theory is the ratio of signal to noise in the observed data. Do the various item responses and scores provide a true sort of examinees on the trait, or is all this variation merely noise?</p>
 <p>The foundation of internal consistency reliability in CTT is relationships between item responses: correlations. Strong correlations among the items are evidence that the items are measuring the same construct. Thus we begin by examining correlation matrices.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r bg-danger"><code class="sourceCode r"><span id="cb10-1"><a href="reliability.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># HEATMAP OF CORRELATIONS</span></span>
-<span id="cb10-2"><a href="reliability.html#cb10-2" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">corPlot</span>(ext_items_l, <span class="at">upper =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:corrmtrx-ext"></span>
 <img src="_main_files/figure-html/corrmtrx-ext-1.png" alt="Correlation Matrix of External Events Items" width="672" />
 <p class="caption">
@@ -260,8 +258,6 @@ Figure 3: Correlation Matrix of External Events Items
 </div>
 <p>Figure <a href="reliability.html#fig:corrmtrx-ext">3</a> is a correlation matrix of the External Events items for the <em>3,174</em> examinees who responded to all of these items. Each cell reports the correlation coefficient between scores of the two items. All of the cells are color coded to the scale of correlations which range from 0 (indicating no relationship) to 1 (indicating a perfect linear relationship). The cells along the diagonal are all 1.0 because they represent the correlation of the item with itself. Only one half of the matrix is necessary to report all the correlations among all the items.</p>
 <p>The plot offers several interesting pieces of information. The first is that Q17–“Being treated as ‘less than’ because of my sexual orientation–does not quite fit. Responses to this item correlate weakly with responses to all the other items. It is possible that so few examinees experience this event that the responses vary very little, which would attenuate any correlation. Or it may be measuring something different than what the other items in this set. Similar could be said of Q27–”Being denied opportunities to serve/volunteer because of my gender.”</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r bg-danger"><code class="sourceCode r"><span id="cb11-1"><a href="reliability.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># HEATMAP OF CORRELATIONS</span></span>
-<span id="cb11-2"><a href="reliability.html#cb11-2" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">corPlot</span>(int_items_l, <span class="at">upper =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:corrmtrx-int"></span>
 <img src="_main_files/figure-html/corrmtrx-int-1.png" alt="Correlation Matrix of Internal States Items" width="672" />
 <p class="caption">
@@ -269,8 +265,6 @@ Figure 4: Correlation Matrix of Internal States Items
 </p>
 </div>
 <p>Figure <a href="reliability.html#fig:corrmtrx-int">4</a> is a correlation matrix of the Internal States items for the <em>3,051</em> examinees who responded to all of these items. This plot is interesting in that most of the correlations are in the moderate (0.50) range. They are sorting examinees in a similar way, but together they do not measure exactly the same thing.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r bg-danger"><code class="sourceCode r"><span id="cb12-1"><a href="reliability.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># HEATMAP OF CORRELATIONS</span></span>
-<span id="cb12-2"><a href="reliability.html#cb12-2" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">corPlot</span>(items_l, <span class="at">upper =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:corrmtrx-all"></span>
 <img src="_main_files/figure-html/corrmtrx-all-1.png" alt="Correlation Matrix of All 66 Likert SHAS Items" width="672" />
 <p class="caption">
@@ -283,8 +277,6 @@ Figure 5: Correlation Matrix of All 66 Likert SHAS Items
 <p>Finally, we see at a glance a handful of items that correlate very weakly with all the other items. These items should be scrutinized for refinement and possible omission from the analysis.</p>
 <p><strong>Cronbach’s coefficient alpha</strong>.
 Arguably the most well-known statistic for estimating internal consistency reliability is Cronbach’s coefficient alpha (citation). This is a measure of the average inter-item correlation (?). It is also a measure of the ratio of signal to noise (X = T + e). A ballpark cutoff value is 0.70 <span class="citation">(<a href="references.html#ref-Nunnally1994" role="doc-biblioref">Nunnally and Bernstein 1994</a>)</span>.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r bg-danger"><code class="sourceCode r"><span id="cb13-1"><a href="reliability.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CRONBACH&#39;S ALPHA</span></span>
-<span id="cb13-2"><a href="reliability.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">reliability</span>(items)  <span class="co"># , itemal = TRUE, NA.Delete = TRUE, ml = TRUE)</span></span></code></pre></div>
 <pre class="bg-warning"><code>
  Number of Items 
  66 
