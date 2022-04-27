@@ -62,6 +62,8 @@ The first model we examine is the Partial Credit Model (PCM) [@Masters1982]. Thi
 
 ```{r pcm-run}
 # ESTIMATE PCM MODEL
+library(stats4)
+library(lattice)
 library(mirt)
 items <- read.csv("data/items.csv")
 source("code/ApplyItemLabels.R")
@@ -77,17 +79,18 @@ items.pcm$deltab1b2 <- items.pcm$b2 - items.pcm$b1 # look for reversals b1 to b2
 items.pcm$deltab2b3 <- items.pcm$b3 - items.pcm$b2 # look for reversals b2 to b3
 items.pcm$deltab3b4 <- items.pcm$b4 - items.pcm$b3 # look for reversals b3 to b4
 rv <- subset(items.pcm, deltab1b2 < 0 | deltab2b3 < 0 | deltab3b4 <0) # subset items with reversals
+rv2 <- subset(rv, select = -c(deltab1b2:deltab3b4))
 ```
 
 ```{r pcm-items, fig.cap='Partial Credit Model - Item Parameters - Items with Category Threshold Reversals'}
-knitr::kable(rv, "simple", digits = 2, caption = "Partial Credit Model - Item Parameters - Items with Category Threshold Reversals", full = TRUE)
+knitr::kable(rv2, digits = 2, caption = "Partial Credit Model Item Parameters - Items with Category Threshold Reversals")
 ```
 
-Table \@ref(tab:pcm-items) reports the item parameters estimated by the PCM. The first column shows the discrimination parameter, which is equal to “1” for all items. This is because the Partial Credit Model, similar to the Rasch model, constrains the discrimination parameter to be “1”. The subsequent columns (b1 to b4) report the estimated thresholds or step parameters. Because the SHAS items all have five response categories, the PCM estimates four threshold parameters (b1 to b4) for each item. Ordered threshold parameters are not a requirement of the partial credit or generalized partial credit models [@EmbretsonReise2000]. The important question, therefore, is which items have ordered thresholds and which have "reversals." A reversal suggests that a response category is not contributing reliable information and might be collapsed.
+**Item parameters**. Table \@ref(tab:pcm-items) reports the item parameters estimated by the PCM. The first column shows the discrimination parameter, which is equal to “1” for all items. This is because the Partial Credit Model, similar to the Rasch model, constrains the discrimination parameter to be “1”. The subsequent columns (b1 to b4) report the estimated thresholds or step parameters. Because the SHAS items all have five response categories, the PCM estimates four threshold parameters (b1 to b4) for each item. Ordered threshold parameters are not a requirement of the partial credit or generalized partial credit models [@EmbretsonReise2000]. The important question, therefore, is which items have ordered thresholds and which have "reversals." A reversal between two category thresholds suggests that one might not be contributing reliable information and might be collapsed.
 
-As shown in Table \@ref(tab:pcm-items), most of the SHAS items (43 out of 66) had reversals. On each of these items, examinees who had experienced more overall lifetime spiritual abuse were more likely to report "Never" than "Once or twice". To collapse these categories would help these items contribute less noise and more reliable information.
+As shown in Table \@ref(tab:pcm-items), most of the SHAS items (43 out of 66) had reversals. On each of these items, examinees who had experienced more overall lifetime spiritual abuse were more likely to report "Never" than "Once or twice".
 
-Item plots help illustrate these statistics visually. The following figures are plots of the option characteristic curves (also called category characteristic curves) of the first three items (Q7, Q10, Q11) with category reversals.
+**Item plots**. Item plots help show this information visually. The following figures are plots of the _option characteristic curves_ (also called category characteristic curves) of the first three items (Q7, Q10, Q11) with category reversals.
 
 ```{r pcm-a}
 # PCM ITEM PLOTS
@@ -114,22 +117,19 @@ c <- plot(results.pcm, type = 'trace', which.items = 3,
 direct.label(c, 'top.points')
 ```
 
-In these plots, the x axis is the scale of the latent trait -- in this case, lifetime exposure to spiritual abuse -- expressed in logits ranging from -6 to +6. The y axis is the probability of selecting a given response (such as "Always") at each level of overall lifetime exposure to spiritual abuse. The blue line is thus the probability of selecting "Never" for examinees ranging from low to high lifetime spiritual abuse. The reversal is that examinees just below zero are more likely to select "Never" than "Once or twice." In addition, examinees with above-average lifetime exposure to spiritual abuse were more likely to select "Always" than "Often". The item parameter statistics shown Table \@ref(tab:pcm-items) indicate that this issue applies to 43 items. These items would contribute less noise and more reliable information if these response categories were collapsed.
+In these plots, the x axis is the scale of the latent trait (lifetime exposure to spiritual abuse) expressed in logits ranging from -6 to +6. The y axis is the probability of selecting a given response (such as "Always") at each level of latent trait (overall lifetime exposure to spiritual abuse). The blue line is the probability of selecting "Never" for examinees ranging from low to high lifetime spiritual abuse. The reversal is that examinees just below zero are more likely to select "Never" than "Once or twice." In addition, examinees with above-average lifetime exposure to spiritual abuse were more likely to select "Always" than "Often". The item parameter statistics shown Table \@ref(tab:pcm-items) indicate that this issue applies to 43 items. These items might contribute more reliable information if these response categories were collapsed.
 
-**Item fit**. Two fit statistics assess the fit of an item to the PCM: the infit mean square (MNSQ) and the outfit mean square (MNSQ). The infit statistic places greater emphasis on unexpected responses that are close to the examinees and item location. The outfit is sensitive to unexpected responses that are far from the location [@BondFox2015]. The infit and outfit values identify potential unexpected response patterns. The expected value of infit or outfit for each item is 1.0, with a range of acceptable values ranging from 0.5 to 1.5. Values outside this boundary indicate a lack of fit between items and models.
+**Fit statistics**. Fit statistics gauge the extent to which the observed pattern of item responses fit the IRT model (Rasch, partial credit, etc.). They do this by means of chi-square statistics which examine the cumulative difference the observed pattern of item responses and the pattern of item respones that the model would expect. Two fit statistics commonly used in IRT modesl are the infit mean square (MNSQ) and the outfit mean square (MNSQ) [@BondFox2015]. The infit statistic places greater emphasis on unexpected responses that are close to the examinees and item location. The outfit is sensitive to unexpected responses that are far from the location. The expected value of infit or outfit for each item is 1.0, with a range of acceptable values ranging from 0.5 to 1.5. Values outside these boundaries indicate a lack of fit between items and the model.
 
 ```{r pcm-item-fits}
 # ITEM FIT
-ifit <- itemfit(results.pcm, na.rm=TRUE, 'infit')
-# itemfit(results.pcm, na.rm = TRUE, 'infit')
+ifit <- mirt::itemfit(results.pcm, na.rm=TRUE, 'infit')
 i <- as.data.frame(itemfit(results.pcm, na.rm = TRUE, 'infit'))
 misfits <- subset(i, outfit > 1.5 | outfit < 0.5 | infit > 1.5 | infit < 0.5)
-misfits
 ```
 
 ```{r pcm-item-fit, fig.cap='Partial Credit Model (PCM) - Misfitting Items'}
-print(misfits, digits = 2, row.names = FALSE)
-# knitr::kable(misfits, digits = 2, caption = "Partial Credit Model (PCM) - Misfitting Items", row.names = FALSE)
+knitr::kable(misfits, digits = 2, caption = "Partial Credit Model (PCM) - Misfitting Items", row.names = FALSE)
 ```
 
-This information suggests a decent fit of the PCM to the SHAS item response data. All but six of the 66 items had infit and outfit statistics within the acceptable range from 0.5 to 1.5. Statistics for these six items are presented here in Table \@ref(tab:pcm-item-fit). The large outfit values mean the observed patterns of responses to these items differed substantially from the patterns of responses expected by the PCM. These items capture the experiences of women, people of color, and LGBTQ persons.
+This information suggests a decent fit of the PCM to the SHAS item response data. All but six of the 66 items had infit and outfit statistics within the acceptable range from 0.5 to 1.5. Statistics for these six misfitting items are presented here in Table \@ref(tab:pcm-item-fit). The large outfit values mean the observed patterns of responses to these items differed substantially from the patterns of responses expected by the PCM. These items capture the experiences of women, people of color, and LGBTQ persons.
