@@ -140,7 +140,7 @@
 
 \title{Validity Evidence for the Spiritual Harm and Abuse Scale (SHAS)}
 \author{Jack Huber, Swedish Medical Center \and Dan Koch, Northwest University}
-\date{2022-04-27}
+\date{2022-04-28}
 
 \begin{document}
 \maketitle
@@ -488,16 +488,7 @@ First, IRT places both examinees and items on the same interval scale. In classi
 
 Second, IRT gives items diagnostic value. A core assumption of CTT is that items are \emph{redundant}; they contribute meaningful variation to a total score but they do not occupy a distinct place on the score continuum. IRT is different. IRT does not assume that items are redundant; instead it investigates whether items make distinct contributions to the measurement of the latent trait. Whereas classical test theory measurement is principally concerned with the ratio of noise to signal in the variation contributed by an item, IRT models compute the probability of a certain response to an item given the level of the latent construct the individual possesses (i.e., spiritual abuse) and the relevant item's difficulty of endorsement. IRT is based on the logistic model and operates on the \emph{logit} scale.
 
-In what follows, we conduct item analyses through a comparison of several different IRT models: the Partial Credit Model (PCM), the Generalized Partial Credit Model (GPCM), and the Rating Scale Model (RSM). I credit Okan Bulut \citeyearpar{Bulut2018} for his tutorial illustrating how to carry out IRT analyses in R using the \texttt{mirt} package \citep{mirt}.
-
-\hypertarget{irt-model-assumptions}{%
-\subsection{IRT Model Assumptions}\label{irt-model-assumptions}}
-
-IRT makes two assumptions of the data. The first is unidimensionality of the latent trait. Is the trait one dimension? This is important for the SHAS because the questionnaire explicitly distinguished between items measuring external events and internal states. To check this assumption we first confirm the factor structure using confirmatory factor analysis (CFA) and Rasch Principal Component Analysis of Residuals (PCAR; Smith, 2002). The second assumption is local independence \citep{EmbretsonReise2000}. This means that any set of items should not share any meaningful correlation once the latent variable has been accounted for (Edwards, Houts, \& Cai, 2018).
-
-To check the assumption of local independence, we used the Q3 statistic (Yen, 1984). The Q3 statistic index criteria are that the raw residual correlation between pairs of items should never exceed 0.10 (Marais \& Andrich, 2008).
-
-Using these criteria, we found XX items in possession of local dependence. The items that had the highest raw residual correlations had negative signs and no positive residual correlation. In other words, the assumption of local independence in this study (was)/(was not) met.
+In what follows, we conduct item analyses through a comparison of several different IRT models: the Rating Scale Model (RSM), the Partial Credit Model (PCM), the Generalized Partial Credit Model (GPCM). I credit Okan Bulut \citeyearpar{Bulut2018} for his tutorial illustrating how to carry out IRT analyses in R using the \texttt{mirt} package \citep{mirt}.
 
 \hypertarget{partial-credit-model-pcm}{%
 \subsection{Partial Credit Model (PCM)}\label{partial-credit-model-pcm}}
