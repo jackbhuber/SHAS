@@ -15,6 +15,10 @@ knitr::opts_knit$set(verbose = FALSE)
 
 ```{r}
 # LOAD PACKAGES
+library(lattice)
+library(survival)
+library(Formula)
+library(ggplot2)
 library(Hmisc) # for item statistics
 library(psych) # for psychometric analysis
 library(psychTools) # for psychometric analysis
@@ -27,14 +31,8 @@ library(knitr) # how RMarkdown compiles all the code into documents
 
 ```{r}
 # LOAD DATA
-all         <- read.csv("data/all.csv")
 items       <- read.csv("data/items.csv")
-ext_items   <- read.csv("data/ext_items.csv")
-int_items   <- read.csv("data/int_items.csv")
-all_l       <- read.csv("data/all_l.csv") # listwise
 items_l     <- read.csv("data/items_l.csv") # listwise
-ext_items_l <- read.csv("data/ext_items_l.csv") # listwise
-int_items_l <- read.csv("data/int_items_l.csv") # listwise
 ```
 
 ## Item analyses in item response theory
@@ -58,7 +56,7 @@ To check the assumption of local independence, we used the Q3 statistic (Yen, 19
 Using these criteria, we found XX items in possession of local dependence. The items that had the highest raw residual correlations had negative signs and no positive residual correlation. In other words, the assumption of local independence in this study (was)/(was not) met.
 
 ### Partial Credit Model (PCM)
-The first model we examine is the Partial Credit Model (PCM) [@Masters1982]. This is a polytomous item response model belonging to the Rasch family. This means that it extends the Rasch model, which is based on dichotomous item responses (1=correct, 0=incorrect), by considering the probability of choosing from among several response options such as those typically presented in Likert scales of agreement. The number of response categories in each item may vary [@EmbretsonReise2000]. It follows that the PCM contains m (m + 1 being the number of response categories) threshold parameters, and each threshold parameter marks a category intersection [@Masters1982]. Threshold sometimes refers to “step difficulty” or “step parameter” and illustrates the point on the latent trait continuum (e.g., spiritual abuse) where a response in category k becomes more likely than a response in category k – 1 (de Ayala, 2009). The PCM provides scores for items, persons, and step parameters on a logit scale. We begin by loading the `mirt` library and estimating the model on the data from the 66 SHAS items. This model constrains the slopes to 1 and freely estimates the variance parameters.
+The second model we examine is the Partial Credit Model (PCM) [@Masters1982]. This is a polytomous item response model belonging to the Rasch family. This means that it extends the Rasch model, which is based on dichotomous item responses (1=correct, 0=incorrect), by considering the probability of choosing from among several response options such as those typically presented in Likert scales of agreement. The number of response categories in each item may vary [@EmbretsonReise2000]. It follows that the PCM contains m (m + 1 being the number of response categories) threshold parameters, and each threshold parameter marks a category intersection [@Masters1982]. Threshold sometimes refers to “step difficulty” or “step parameter” and illustrates the point on the latent trait continuum (e.g., spiritual abuse) where a response in category k becomes more likely than a response in category k – 1 (de Ayala, 2009). The PCM provides scores for items, persons, and step parameters on a logit scale. We begin by loading the `mirt` library and estimating the model on the data from the 66 SHAS items. This model constrains the slopes to 1 and freely estimates the variance parameters.
 
 ```{r pcm-run}
 # ESTIMATE PCM MODEL
@@ -133,3 +131,13 @@ knitr::kable(misfits, digits = 2, caption = "Partial Credit Model (PCM) - Misfit
 ```
 
 This information suggests a decent fit of the PCM to the SHAS item response data. All but six of the 66 items had infit and outfit statistics within the acceptable range from 0.5 to 1.5. Statistics for these six misfitting items are presented here in Table \@ref(tab:pcm-item-fit). The large outfit values mean the observed patterns of responses to these items differed substantially from the patterns of responses expected by the PCM. These items capture the experiences of women, people of color, and LGBTQ persons.
+
+**Model fit**. 
+
+```{r pcm-fit, fig.cap='PCM Model Fit'}
+# MODEL FIT
+M2(results.pcm, type = "C2", na.rm=TRUE, calcNULL = FALSE)
+```
+
+The obtained RMSEA value = .088 (95% CI[.088, .089]) and SRMSR value = .118 suggest that data do not fit the model reasonably very well using suggested cutoff values of RMSEA <= .06 and SRMSR <= .08 as suggested guidelines for assessing fit. The CFI = .961 exceeded the recommended .95 threshold.
+

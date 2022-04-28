@@ -502,7 +502,7 @@ Using these criteria, we found XX items in possession of local dependence. The i
 \hypertarget{partial-credit-model-pcm}{%
 \subsection{Partial Credit Model (PCM)}\label{partial-credit-model-pcm}}
 
-The first model we examine is the Partial Credit Model (PCM) \citep{Masters1982}. This is a polytomous item response model belonging to the Rasch family. This means that it extends the Rasch model, which is based on dichotomous item responses (1=correct, 0=incorrect), by considering the probability of choosing from among several response options such as those typically presented in Likert scales of agreement. The number of response categories in each item may vary \citep{EmbretsonReise2000}. It follows that the PCM contains m (m + 1 being the number of response categories) threshold parameters, and each threshold parameter marks a category intersection \citep{Masters1982}. Threshold sometimes refers to ``step difficulty'' or ``step parameter'' and illustrates the point on the latent trait continuum (e.g., spiritual abuse) where a response in category k becomes more likely than a response in category k -- 1 (de Ayala, 2009). The PCM provides scores for items, persons, and step parameters on a logit scale. We begin by loading the \texttt{mirt} library and estimating the model on the data from the 66 SHAS items. This model constrains the slopes to 1 and freely estimates the variance parameters.
+The second model we examine is the Partial Credit Model (PCM) \citep{Masters1982}. This is a polytomous item response model belonging to the Rasch family. This means that it extends the Rasch model, which is based on dichotomous item responses (1=correct, 0=incorrect), by considering the probability of choosing from among several response options such as those typically presented in Likert scales of agreement. The number of response categories in each item may vary \citep{EmbretsonReise2000}. It follows that the PCM contains m (m + 1 being the number of response categories) threshold parameters, and each threshold parameter marks a category intersection \citep{Masters1982}. Threshold sometimes refers to ``step difficulty'' or ``step parameter'' and illustrates the point on the latent trait continuum (e.g., spiritual abuse) where a response in category k becomes more likely than a response in category k -- 1 (de Ayala, 2009). The PCM provides scores for items, persons, and step parameters on a logit scale. We begin by loading the \texttt{mirt} library and estimating the model on the data from the 66 SHAS items. This model constrains the slopes to 1 and freely estimates the variance parameters.
 
 \begin{table}
 
@@ -641,6 +641,19 @@ EQ55 - Hearing cultural references in sermons unfamiliar to my race/eth. subcult
 \end{table}
 
 This information suggests a decent fit of the PCM to the SHAS item response data. All but six of the 66 items had infit and outfit statistics within the acceptable range from 0.5 to 1.5. Statistics for these six misfitting items are presented here in Table \ref{tab:pcm-item-fit}. The large outfit values mean the observed patterns of responses to these items differed substantially from the patterns of responses expected by the PCM. These items capture the experiences of women, people of color, and LGBTQ persons.
+
+\textbf{Model fit}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{            M2   df p      RMSEA   RMSEA\_5   RMSEA\_95    SRMSR      TLI}
+\NormalTok{stats 51851.31 2144 0 0.08823389 0.0875621 0.08887775 0.118136 0.960859}
+\NormalTok{            CFI}
+\NormalTok{stats 0.9608772}
+\end{Highlighting}
+\end{Shaded}
+
+The obtained RMSEA value = .088 (95\% CI{[}.088, .089{]}) and SRMSR value = .118 suggest that data do not fit the model reasonably very well using suggested cutoff values of RMSEA \textless= .06 and SRMSR \textless= .08 as suggested guidelines for assessing fit. The CFI = .961 exceeded the recommended .95 threshold.
 
 \hypertarget{reliability}{%
 \chapter{Reliability}\label{reliability}}
