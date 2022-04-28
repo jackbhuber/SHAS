@@ -1,8 +1,7 @@
-### Partial Credit Model (PCM)
-The first model we examine is the Rating Scale Model (citation).. This is a polytomous item response model belonging to the Rasch family. This means that it extends the Rasch model, which is based on dichotomous item responses (1=correct, 0=incorrect), by considering the probability of choosing from among several response options such as those typically presented in Likert scales of agreement. 
+### Rating Scale Model (RSM)
+The first model we examine is the Rating Scale Model (citation). This is a polytomous item response model belonging to the Rasch family. This means that it extends the Rasch model, which is based on dichotomous item responses (1=correct, 0=incorrect), by considering the probability of choosing from among several response options such as those typically presented in Likert scales of agreement. 
 
-
-The number of response categories in each item may vary [@EmbretsonReise2000]. It follows that the PCM contains m (m + 1 being the number of response categories) threshold parameters, and each threshold parameter marks a category intersection [@Masters1982]. Threshold sometimes refers to “step difficulty” or “step parameter” and illustrates the point on the latent trait continuum (e.g., spiritual abuse) where a response in category k becomes more likely than a response in category k – 1 (de Ayala, 2009). The PCM provides scores for items, persons, and step parameters on a logit scale. 
+In the RSM, the number of response categories in each item may vary [@EmbretsonReise2000]. Thus it contains m (m + 1 being the number of response categories) threshold parameters, and each threshold parameter marks a category intersection [@Masters1982]. Threshold (also referred to as “step difficulty” or “step parameter”) illustrates the point on the latent trait continuum (e.g., spiritual abuse) where a response in category k becomes more likely than a response in category k – 1 (de Ayala, 2009). The PCM provides scores for items, persons, and step parameters on a logit scale. 
 
 We begin by loading the `mirt` library and estimating the model on the data from the 66 SHAS items.
 
@@ -11,7 +10,7 @@ We begin by loading the `mirt` library and estimating the model on the data from
 library(stats4)
 library(lattice)
 library(mirt)
-items <- read.csv("data/items.csv")
+items_l <- read.csv("data/items_l.csv")
 source("code/ApplyItemLabels.R")
 model.rsm <- 'SPIRITUAL ABUSE RATING SCALE MODEL = 1-66'
 results.rsm <- mirt(data=items, model=model.rsm, itemtype="rsm", verbose=FALSE) # estimate model
@@ -27,11 +26,13 @@ items.rsm <- as.data.frame(coef.rsm$items) # item parameters as data frame
 knitr::kable(items.rsm, digits = 2, caption = "Rating Scale Model Item Parameters")
 ```
 
-**Item parameters**. Table \@ref(tab:rsm-items) reports the item parameters estimated by the RSM. The first column shows the discrimination parameter, which is equal to “1” for all items. This is because the Rating Scale Model, similar to the Rasch model, constrains the discrimination parameter to be “1”. The subsequent columns (b1 to b4) report the estimated thresholds or step parameters. Because the SHAS items all have five response categories, the PCM estimates four threshold parameters (b1 to b4) for each item.
+**Item parameters**. Table \@ref(tab:rsm-items) reports the item parameters estimated by the RSM. The first column shows the discrimination parameter, which is equal to “1” for all items. The subsequent columns (b1 to b4) report the estimated thresholds or step parameters. Because the SHAS items all have five response categories, the RSM estimates four threshold parameters (b1 to b4) for each item.
+
+What varies for each item is the xxx, reported in the "c" column. This represents the item's overall location or difficulty level on the latent trait.
 
 **Item plots**. Item plots help show this information visually. The following figures are plots of the _option characteristic curves_ (also called category characteristic curves) of the items.
 
-```{r pcm-a}
+```{r rsm-a}
 # PCM ITEM PLOTS
 library(directlabels)
 a <- plot(results.rsm, type = 'trace', which.items = 1,
@@ -44,14 +45,14 @@ In these plots, the x axis is the scale of the latent trait (lifetime exposure t
 
 **Item fit statistics**. Fit statistics gauge the extent to which the observed pattern of item responses fit the IRT model (Rasch, partial credit, etc.). They do this by means of chi-square statistics which examine the cumulative difference the observed pattern of item responses and the pattern of item respones that the model would expect. Two fit statistics commonly used in IRT modesl are the infit mean square (MNSQ) and the outfit mean square (MNSQ) [@BondFox2015]. The infit statistic places greater emphasis on unexpected responses that are close to the examinees and item location. The outfit is sensitive to unexpected responses that are far from the location. The expected value of infit or outfit for each item is 1.0, with a range of acceptable values ranging from 0.5 to 1.5. Values outside these boundaries indicate a lack of fit between items and the model.
 
-```{r pcm-item-fits}
+```{r rsm-item-fits}
 # ITEM FIT
-ifit <- mirt::itemfit(results.pcm, na.rm=TRUE, 'infit')
-i <- as.data.frame(itemfit(results.pcm, na.rm = TRUE, 'infit'))
+ifit <- mirt::itemfit(results.rsm, na.rm=TRUE, 'infit')
+i <- as.data.frame(itemfit(results.rsm, na.rm = TRUE, 'infit'))
 misfits <- subset(i, outfit > 1.5 | outfit < 0.5 | infit > 1.5 | infit < 0.5)
 ```
 
-```{r pcm-item-fit, fig.cap='Partial Credit Model (PCM) - Misfitting Items'}
+```{r rsm-item-fit, fig.cap='Rating Scale Model (RSM) - Misfitting Items'}
 knitr::kable(misfits, digits = 2, caption = "Partial Credit Model (PCM) - Misfitting Items", row.names = FALSE)
 ```
 
@@ -59,9 +60,9 @@ This information suggests a decent fit of the PCM to the SHAS item response data
 
 **Model fit**. 
 
-```{r pcm-fit, fig.cap='PCM Model Fit'}
+```{r rsm-fit, fig.cap='RSM Model Fit'}
 # MODEL FIT
-M2(results.pcm, type = "C2", na.rm=TRUE, calcNULL = FALSE)
+M2(results.rsm, type = "C2", na.rm=TRUE, calcNULL = FALSE)
 ```
 
 The obtained RMSEA value = .088 (95% CI[.088, .089]) and SRMSR value = .118 suggest that data do not fit the model reasonably very well using suggested cutoff values of RMSEA <= .06 and SRMSR <= .08 as suggested guidelines for assessing fit. The CFI = .961 exceeded the recommended .95 threshold.
