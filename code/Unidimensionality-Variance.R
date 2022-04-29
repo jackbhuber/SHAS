@@ -5,14 +5,14 @@ library(psych)
 library(eRm)
 items <- read.csv("data/items_l.csv") # NO MISSING DATA
 source("code/ApplyItemLabels.R") # apply variable labels
-items <- items <- items-1 # subtract 1 from all responses to rescale from 0-4
+items <- items-1 # subtract 1 from all responses to rescale from 0-4
 items[items == 2] <- 1
 items[items == 3] <- 1
 items[items == 4] <- 1
 
 # 2 - ESTIMATE THE MODEL
 results <- RM(items)
-summary(results)
+# summary(results)
 
 # 3 - GET RESIDUALS
 person.locs <- person.parameter(results) # person parameters
@@ -30,15 +30,16 @@ residuals.vector <- as.vector(resids)
 VR <- var(residuals.vector)
 
 ## Raw variance explained by Rasch measures: (VO - VR)/VO
-(VO - VR)/VO
+library(knitr)
+knitr::kable((VO - VR)/VO)
 
 # This came out to .444 which exceeds threshold of 20%
 
 # 5 - PCA OF RESIDUAL CORRELATIONS
-item.fit <- itemfit(person.locs)
-std.resids <- item.fit$st.res
-pca <- pca(std.resids, nfactors = ncol(items), rotate = "none")
-contrasts <- c(pca$values[1], pca$values[2], pca$values[3], pca$values[4], pca$values[5])
-plot(contrasts, ylab = "Eigenvalues for Contrasts", xlab = "Contrast Number", 
-     main = "Contrasts from PCA of Standardized Residual Correlations")
+# item.fit <- itemfit(person.locs)
+# std.resids <- item.fit$st.res
+# pca <- pca(std.resids, nfactors = ncol(items), rotate = "none")
+# contrasts <- c(pca$values[1], pca$values[2], pca$values[3], pca$values[4], pca$values[5])
+# plot(contrasts, ylab = "Eigenvalues for Contrasts", xlab = "Contrast Number", 
+#      main = "Contrasts from PCA of Standardized Residual Correlations")
 

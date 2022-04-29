@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.4.7)  28 APR 2022 16:08
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.4.7)  29 APR 2022 08:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -857,12 +857,12 @@ Chapter 6.
 [16
 
 ]
-Overfull \hbox (235.20006pt too wide) in paragraph at lines 502--593
+Overfull \hbox (235.20006pt too wide) in paragraph at lines 504--595
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 36.64973pt on input line 593.
+LaTeX Warning: Float too large for page by 36.64973pt on input line 595.
 
 [17] [18]
 File: _main_files/figure-latex/pcm-a-1.pdf Graphic file (type pdf)
@@ -873,7 +873,7 @@ File: _main_files/figure-latex/pcm-b-1.pdf Graphic file (type pdf)
 File: _main_files/figure-latex/pcm-c-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/pcm-c-1.pdf>
 [20]
-Overfull \hbox (186.67009pt too wide) in paragraph at lines 615--632
+Overfull \hbox (186.67009pt too wide) in paragraph at lines 617--634
  [][] 
  []
 
@@ -904,12 +904,12 @@ Chapter 9.
 ] [31
 
 ])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 800.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 802.
 [32]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 800.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 802.
 (./_main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 800.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 800.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 802.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 802.
  ) 
 Here is how much of TeX's memory you used:
  19234 strings out of 479418

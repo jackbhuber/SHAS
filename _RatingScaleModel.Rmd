@@ -54,6 +54,14 @@ plot(results.rsm, type='infotrace', which.item = c(1,2,3,4,5,6), facet_items=T, 
 
 >Information functions are best illustrated by the item information curves for each item as displayed above. These curves show that item information is not a static quantity, rather, it is conditional on levels of theta. The relationship between slopes and information is illustrated here. Item 3 had the lowest slope and is, therefore, the least informative item.On the other hand, Item 9 had the highest slope and provides the highest amount of statistical information. Items tended to provide the most information between -2.5 to + 1 theta range. The “wavy” form of the curves reflects the fact that item information is a composite of category information, that is, each category has an information function which is then combined to form the item information function.
 
+```{r rsm-itmplot-emp}
+itemfit(results.rsm, empirical.plot = 2)
+
+```
+
+
+
+
 **Item fit statistics**. Fit statistics gauge the extent to which the observed pattern of item responses fit the IRT model (Rasch, partial credit, etc.). They do this by means of chi-square statistics which examine the cumulative difference the observed pattern of item responses and the pattern of item respones that the model would expect. Two fit statistics commonly used in IRT modesl are the infit mean square (MNSQ) and the outfit mean square (MNSQ) [@BondFox2015]. The infit statistic places greater emphasis on unexpected responses that are close to the examinees and item location. The outfit is sensitive to unexpected responses that are far from the location. The expected value of infit or outfit for each item is 1.0, with a range of acceptable values ranging from 0.5 to 1.5. Values outside these boundaries indicate a lack of fit between items and the model.
 
 ```{r rsm-item-fits}

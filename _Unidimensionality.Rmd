@@ -1,42 +1,29 @@
 
 ### IRT Model Assumptions
-IRT makes two assumptions of the data. The first is unidimensionality of the latent trait. Is the trait one dimension? This is important for the SHAS because the questionnaire explicitly distinguished between items measuring external events and internal states. To check this assumption we first confirm the factor structure using confirmatory factor analysis (CFA) and Rasch Principal Component Analysis of Residuals (PCAR; Smith, 2002). The second assumption is local independence [@EmbretsonReise2000]. This means that any set of items should not share any meaningful correlation once the latent variable has been accounted for (Edwards, Houts, & Cai, 2018).
+IRT makes two assumptions of the data. The first is unidimensionality of the latent trait. Is the trait one dimension? This is important for the SHAS because the questionnaire explicitly distinguished between items measuring external events and internal states. The second assumption is local independence [@EmbretsonReise2000]. This means that, once the latent variable has been accounted for, any set of items should not share any meaningful correlation (Edwards, Houts, & Cai, 2018).
 
-## Unidimensionality
-First, we will calculate the proportion of variance in responses that can be attributed to item and person locations on the primary latent variable, as estimated using the Rasch model. To do this, we need to find the variance associated with the responses and the variance associated with residuals so that we can compare these values. To do this, we need to calculate person parameters by applying the person.parameter() function to the model results object:
+#### Unidimensionality
+To verify the assumption of unidimensionality we conducted three analyses. First we confirmed the factor structure using confirmatory factor analysis (CFA). Then we determined the proportion of variance in the observed item responses due to the Rasch model. Finally, we conducted Rasch Principal Component Analysis of Residuals (PCAR) (Smith, 2002).
 
-```{r}
-# GET PERSON PARAMETERS FROM THE RSM MODEL
-responses.without.extremes
+**Factor structure**.
+
+**Proportion of variance**.
+
+```{r uni-variance}
+source("code/Unidimensionality-Variance.R")
 ```
 
-Then, we can apply the pmat() function to the student locations object to calculate the model-predicted probabilities for a correct response for each student on each of the transitive reasoning tasks:
+Reckase suggests that the unidimensionality assumption is safely met if the Rasch model explains 20% of the variance in the data. According to this analysis, the Rasch model explains 44% of the variance in the SHAS item data. Thus we have some evidence of unidimensionality with which to proceed to further Rasch modeling.
 
-```{r}
-# GET MODEL PREDICTED PROBABILITIES
-model.prob <- 
+**Principal Component Analysis of Residuals (PCAR)**
 
+```{r uni-pcar, fig.cap='Contrasts from PCA of Standardized Residual Correlations'}
+source("code/Unidimensionality-PCAR.R")
 ```
 
+The second analysis of PCAR examines the correlations among residuals. The premise is that once the Rasch model has been estimated, the correlations among the residuals should be minimal. Linacre () suggests that contrasts with eigenvalues of 2.0 or below can be considered noise. In Figure \@ref(fig:uni-pcar), our PCAR analysis found three contrasts that rose above that 2.0 threshold.
 
-Now we can calculate residuals as the difference between the observed responses and model-predictions:
-
-```{r}
-resids <- responses.without.extremes - model.prob
-```
-
-Following Linacre (2003), we can calculate the proportion of variance in the responses associated with the Rasch model estimates using the following values:
-
-Variance of the observations: VO
-Variance of the residuals: VR
-Raw variance explained by Rasch measures: (VO - VR)/VO
-
-```{r}
-residuals(results.rsm, type='Q3')
-```
-
-
-## Local independence
+#### Local independence
 To check the assumption of local independence, we used the Q3 statistic (Yen, 1984). The Q3 statistic index criteria are that the raw residual correlation between pairs of items should never exceed 0.10 (Marais & Andrich, 2008).
 
 ```{r q3, eval=FALSE, include = FALSE}
