@@ -115,17 +115,19 @@ ditems <- items
 ditems[ditems == 2] <- 1
 ditems[ditems == 3] <- 1
 ditems[ditems == 4] <- 1
+ditems[ditems == 5] <- 1
 
 dext_items <- ext_items
 dext_items[dext_items == 2] <- 1
 dext_items[dext_items == 3] <- 1
 dext_items[dext_items == 4] <- 1
+dext_items[dext_items == 5] <- 1
 
 dint_items <- int_items
 dint_items[dint_items == 2] <- 1
 dint_items[dint_items == 3] <- 1
 dint_items[dint_items == 4] <- 1
-
+dint_items[dint_items == 5] <- 1
 ```
 
 ## Missing data

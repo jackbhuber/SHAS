@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.4.7)  29 APR 2022 17:34
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.4.7)  30 APR 2022 07:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -855,25 +855,25 @@ File: _main_files/figure-latex/vim-plots-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/vim-plots-1.pdf>
 [14]
 
-LaTeX Warning: Reference `tab:mcar' on page 15 undefined on input line 469.
+LaTeX Warning: Reference `tab:mcar' on page 15 undefined on input line 472.
 
 [15]
 File: _main_files/figure-latex/trigger-b-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/trigger-b-1.pdf>
 
-LaTeX Warning: Reference `tab:mcar' on page 16 undefined on input line 548.
+LaTeX Warning: Reference `tab:mcar' on page 16 undefined on input line 551.
 
 [16] [17] [18]
 Chapter 6.
 [19
 
 ]
-Overfull \hbox (235.20006pt too wide) in paragraph at lines 626--717
+Overfull \hbox (235.20006pt too wide) in paragraph at lines 629--720
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 36.64973pt on input line 717.
+LaTeX Warning: Float too large for page by 36.64973pt on input line 720.
 
 [20] [21]
 File: _main_files/figure-latex/pcm-a-1.pdf Graphic file (type pdf)
@@ -884,18 +884,18 @@ File: _main_files/figure-latex/pcm-b-1.pdf Graphic file (type pdf)
 File: _main_files/figure-latex/pcm-c-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/pcm-c-1.pdf>
 [23]
-Overfull \hbox (186.67009pt too wide) in paragraph at lines 739--756
+Overfull \hbox (186.67009pt too wide) in paragraph at lines 742--759
  [][] 
  []
 
 
-Overfull \hbox (27.75pt too wide) in paragraph at lines 767--767
+Overfull \hbox (27.75pt too wide) in paragraph at lines 770--770
 []            \TU/lmtt/m/n/10 M2   df p      RMSEA   RMSEA_5   RMSEA_95    SRMS
 R      TLI[] 
  []
 
 
-Overfull \hbox (27.75pt too wide) in paragraph at lines 767--767
+Overfull \hbox (27.75pt too wide) in paragraph at lines 770--770
 []\TU/lmtt/m/n/10 stats 51851.31 2144 0 0.08823389 0.0875621 0.08887775 0.11813
 6 0.960859[] 
  []
@@ -927,12 +927,12 @@ Chapter 9.
 ] [34
 
 ])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 919.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 922.
 [35]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 919.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 922.
 (./_main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 919.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 919.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 922.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 922.
 
 LaTeX Warning: There were undefined references.
 
