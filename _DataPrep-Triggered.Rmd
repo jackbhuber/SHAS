@@ -1,0 +1,53 @@
+# TRIGGERED STUDY
+
+**Were examinees triggered?** As mentioned above, a possible explanation of the missing data in the Internal States items is that examinees were triggered: After responding to the preceding 52 items calling to mind imagery of abusive external events, these examinees may have been **_done_** with the survey. A possible test of this hypothesis is an examination of the relationship between a total score of responses to the External Events items and a score of total missingness on the Internal States items. The empirical work to test this hypothesis is laid out in the following code chunk. The items measuring external events are summed into a total score such that a higher value indicates more exposure to abusive external events. The items measuring internal states are coded so that 1=missing and 0=all others response, and these items are summed into a score of total missingness.
+
+```{r trigger-a, message=FALSE, warning=FALSE}
+
+# 1. ISOLATE THE DATA
+miss_set <- items
+
+# 2. DUMMY CODE INTERNAL STATES ITEMS
+miss_set$Q68[miss_set$Q68 > 0] <- 0
+miss_set$Q69[miss_set$Q69 > 0] <- 0
+miss_set$Q70[miss_set$Q70 > 0] <- 0
+miss_set$Q71[miss_set$Q71 > 0] <- 0
+miss_set$Q72[miss_set$Q72 > 0] <- 0
+miss_set$Q73[miss_set$Q73 > 0] <- 0
+miss_set$Q74[miss_set$Q74 > 0] <- 0
+miss_set$Q76[miss_set$Q76 > 0] <- 0
+miss_set$Q77[miss_set$Q77 > 0] <- 0
+miss_set$Q78[miss_set$Q78 > 0] <- 0
+miss_set$Q79[miss_set$Q79 > 0] <- 0
+miss_set$Q80[miss_set$Q80 > 0] <- 0
+miss_set$Q81[miss_set$Q81 > 0] <- 0
+miss_set$Q82[miss_set$Q82 > 0] <- 0
+miss_set$Q68[is.na(miss_set$Q68)] <- 1
+miss_set$Q69[is.na(miss_set$Q69)] <- 1
+miss_set$Q70[is.na(miss_set$Q70)] <- 1
+miss_set$Q71[is.na(miss_set$Q71)] <- 1
+miss_set$Q72[is.na(miss_set$Q72)] <- 1
+miss_set$Q73[is.na(miss_set$Q73)] <- 1
+miss_set$Q74[is.na(miss_set$Q74)] <- 1
+miss_set$Q76[is.na(miss_set$Q76)] <- 1
+miss_set$Q77[is.na(miss_set$Q77)] <- 1
+miss_set$Q78[is.na(miss_set$Q78)] <- 1
+miss_set$Q79[is.na(miss_set$Q79)] <- 1
+miss_set$Q80[is.na(miss_set$Q80)] <- 1
+miss_set$Q81[is.na(miss_set$Q81)] <- 1
+miss_set$Q82[is.na(miss_set$Q82)] <- 1
+
+# 3. TOTAL SCORES ON EXTERNAL EVENTS ITEMS AND
+#    INTERNAL STATES MISSINGNESS
+miss_set$total_ext <- rowSums(miss_set[ , c(1:52)])
+miss_set$total_int <- rowSums(miss_set[ , c(53:66)])
+miss_set2 <- miss_set[ , c(53:68)] # just the total score, missingness
+```
+
+```{r trigger-b, warning=FALSE, message=FALSE, fig.cap='Correlation Matrix: External States and Internal States Missingness'}
+# 4. CORRELATIONS
+library(psych)
+psych::corPlot(miss_set2[,1:16], main=NULL, upper = FALSE)
+```
+
+Figure \@ref(fig:trigger-b) illustrates the correlations among the Internal States items (dichotomized according to their missingness (1=missing, 0=all others)), the total score from the external states (total_ext), and the total score of internal item missingness (total_int). The correlation of total_ext with all the other items is nearly zero, suggesting that more exposure to abusive external states did **_not_** predict nonresponse to the Internal States items. This finding is consistent with the finding from Figure \@ref(tab:mcar) that the missing data appear to missing completely at random.

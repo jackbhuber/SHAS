@@ -27,7 +27,7 @@ The second analysis of PCAR examines the correlations among residuals. The premi
 To check the assumption of local independence, we used the Q3 statistic (Yen, 1984). The Q3 statistic index criteria are that the raw residual correlation between pairs of items should never exceed 0.10 (Marais & Andrich, 2008).
 
 ```{r q3, eval=FALSE, include = FALSE}
-
+source("code/Unidimensionality-Q3.R")
 ```
 
 Using these criteria, we found XX items in possession of local dependence. The items that had the highest raw residual correlations had negative signs and no positive residual correlation. In other words, the assumption of local independence in this study (was)/(was not) met.
