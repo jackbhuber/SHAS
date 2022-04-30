@@ -278,45 +278,167 @@ One source of examinees was people who listen to progressive Christians podcasts
 \hypertarget{data-preparation}{%
 \chapter{Data Preparation}\label{data-preparation}}
 
-This chapter documents our decisions surrounding how to prepare the data for analysis. These decisions include details on loading the necessary R packages, loading the data in R, coding or recoding of variables. Also discussed is how we deal with missing data.
+This chapter documents our decisions surrounding how to prepare the data for analysis. Here we get into the weeds. We begin with loading the data from the original data file. From this we select a subset of just the items to which we apply labels and recode so that they begin from 0. We deal with missing data. The chapter concludes with a final set of datasets for use in the remaining chapters.
 
-\hypertarget{preliminary-work}{%
-\section{Preliminary work}\label{preliminary-work}}
+\hypertarget{load-data}{%
+\section{Load data}\label{load-data}}
 
-\textbf{Load R packages}. Some R users load all their packages up front. Others, perhaps for instructional reasons, load them just before calling functions, perhaps for instructional reasons. I can see merit in listing all the packages for properly citing them. Here is a code chunk for loading all the packages up front:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# LOAD PACKAGES}
-\FunctionTok{library}\NormalTok{(Hmisc)  }\CommentTok{\# for variable and value labels}
-\FunctionTok{library}\NormalTok{(naniar)  }\CommentTok{\# for missing data}
-\FunctionTok{library}\NormalTok{(corrplot)  }\CommentTok{\# for correlation plot}
-\FunctionTok{library}\NormalTok{(knitr)  }\CommentTok{\# how RMarkdown compiles code into documents}
-\end{Highlighting}
-\end{Shaded}
-
-\textbf{Load data}. The data are contained in an Excel file, simply named ``data.xlsx'', in the ``data'' folder of this project. The important thing is to keep all the data in the same folder within the larger ``SHAS Validity'' project folder.
-
-\textbf{Select items for analysis}. Which items should we include for analysis? The first 13 columns in the original data file report data from several screening items that were placed at the beginning of the questionnaire. But because they are constant and not variable, they don't seem to have a place in scale development. Therefore it seems the important columns range from columns 14 to 97. The first set of items measure the \textbf{External Events} scale. These 52 items range from columns 14 to 35. The second set of items measure the \textbf{Internal States} scale, and these 14 items range from columns 66 to 79. The last set of items capture \textbf{demographic} variables, and these range from columns 80 to 97.
+The data are contained in an Excel file, simply named ``data.xlsx'', in the ``data'' folder of this project. The important thing is to keep all the data in the same folder within the larger ``SHAS Validity'' project folder.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# LOAD ORIGINAL DATA}
 \FunctionTok{library}\NormalTok{(readxl)  }\CommentTok{\# for reading the source Excel file}
 \NormalTok{shas }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"data/data.xlsx"}\NormalTok{)  }\CommentTok{\# load Excel file}
+\end{Highlighting}
+\end{Shaded}
 
-\CommentTok{\# SELECT DATASETS FOR ANALYSIS}
+\hypertarget{select-items}{%
+\section{Select items}\label{select-items}}
+
+Which items should we include for analysis? The first 13 columns in the original data file report data from several screening items that were placed at the beginning of the questionnaire. But because they are constant and not variable, they don't seem to have a place in scale development. Therefore it seems the important columns range from columns 14 to 97. The first set of items measure the \textbf{External Events} scale. These 52 items range from columns 14 to 35. The second set of items measure the \textbf{Internal States} scale, and these 14 items range from columns 66 to 79. The last set of items capture \textbf{demographic} variables, and these range from columns 80 to 97.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# SELECT ITEMS}
 \NormalTok{all }\OtherTok{\textless{}{-}}\NormalTok{ shas[, }\DecValTok{14}\SpecialCharTok{:}\DecValTok{97}\NormalTok{]  }\CommentTok{\# select items, dems from columns 14{-}79}
 \NormalTok{all }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(all, }\AttributeTok{select =} \SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(Ext\_Avg}\SpecialCharTok{:}\NormalTok{Global\_Avg))  }\CommentTok{\# remove columns for now}
 \NormalTok{items }\OtherTok{\textless{}{-}}\NormalTok{ all[, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{66}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{apply-item-labels}{%
+\section{Apply item labels}\label{apply-item-labels}}
+
+To aid interpretation it will be helpful to label the items.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# LABEL THE ITEMS}
+\FunctionTok{library}\NormalTok{(Hmisc)}
+\CommentTok{\# names(items) \textless{}{-} c( \# EXTERNAL EVENTS ITEMS Q7 = \textquotesingle{}EQ7 {-}}
+\CommentTok{\# Pastor speaking on God\textquotesingle{}s behalf\textquotesingle{}, Q10 = \textquotesingle{}EQ10 {-} Asked to}
+\CommentTok{\# give up personal goals by pastor\textquotesingle{}, Q11 = \textquotesingle{}EQ11 {-} Disagree}
+\CommentTok{\# w/pastor portrayed as evil\textquotesingle{}, Q16 = \textquotesingle{}EQ16 {-}}
+\CommentTok{\# Church/community abandoning me in difficult time\textquotesingle{}, Q17 =}
+\CommentTok{\# \textquotesingle{}EQ17 {-} Treated as less than b/c my sexual orientation\textquotesingle{},}
+\CommentTok{\# Q18 = \textquotesingle{}EQ18 {-} Church/pastor discourage critical}
+\CommentTok{\# thinking\textquotesingle{}, Q19 = \textquotesingle{}EQ19 {-} Behavior excessively monitored}
+\CommentTok{\# by pastor/group\textquotesingle{}, Q20 = \textquotesingle{}EQ20 {-} Members pressured to give}
+\CommentTok{\# money despite financial hardship\textquotesingle{}, Q21 = \textquotesingle{}EQ21 {-} Taught I}
+\CommentTok{\# would risk Hell if left my church/group\textquotesingle{}, Q22 = \textquotesingle{}EQ22 {-}}
+\CommentTok{\# Expected to follow pastor/leader rules re:}
+\CommentTok{\# dating/marriage/sex\textquotesingle{}, Q23 = \textquotesingle{}EQ23 {-} Prayer replacing}
+\CommentTok{\# needed medical interventions\textquotesingle{}, Q24 = \textquotesingle{}EQ24 {-} Expected to}
+\CommentTok{\# consult pastor/leader before making non{-}religious}
+\CommentTok{\# decisions\textquotesingle{}, Q25 = \textquotesingle{}EQ25 {-} Feeling unable to raise}
+\CommentTok{\# questions and issues\textquotesingle{}, Q26 = \textquotesingle{}EQ26 {-} Pressured to forgive}
+\CommentTok{\# abuser while abuse was ongoing\textquotesingle{}, Q27 = \textquotesingle{}EQ27 {-} Denied}
+\CommentTok{\# opportunities to serve b/c of my gender\textquotesingle{}, Q28 = \textquotesingle{}EQ28 {-}}
+\CommentTok{\# Leadershi/group protecting abusive individuals\textquotesingle{}, Q29 =}
+\CommentTok{\# \textquotesingle{}EQ29 {-} Feeling special when in pastor’s good graces;}
+\CommentTok{\# otherwise ignored\textquotesingle{}, Q30 = \textquotesingle{}EQ30 {-} Deterred from seeking}
+\CommentTok{\# mental health treatment/counseling/medication\textquotesingle{}, Q31 =}
+\CommentTok{\# \textquotesingle{}EQ31 {-} Shunned/ignored by pastor/church/group\textquotesingle{}, Q32 =}
+\CommentTok{\# \textquotesingle{}EQ32 {-} Feeling unable to express unhappiness\textquotesingle{}, Q34 =}
+\CommentTok{\# \textquotesingle{}EQ34 {-} Scripture used to justify physical}
+\CommentTok{\# punishment/severe discipline\textquotesingle{}, Q35 = \textquotesingle{}EQ35 {-} Taught to}
+\CommentTok{\# distrust my emotions\textquotesingle{}, Q36 = \textquotesingle{}EQ36 {-} Mental/physical}
+\CommentTok{\# problems interpreted as spiritual/moral weakness\textquotesingle{}, Q37 =}
+\CommentTok{\# \textquotesingle{}EQ37 {-} Made to feel less spiritually mature than}
+\CommentTok{\# pastor/leadership\textquotesingle{}, Q38 = \textquotesingle{}EQ38 {-} Unrealistic demands}
+\CommentTok{\# placed on my moral/religious behavior\textquotesingle{}, Q39 = \textquotesingle{}EQ39 {-}}
+\CommentTok{\# Made to feel shame over natural sexual desires (not}
+\CommentTok{\# actions)\textquotesingle{}, Q40 = \textquotesingle{}EQ40 {-} Threatening Divine punishment to}
+\CommentTok{\# keep group members in line\textquotesingle{}, Q41 = \textquotesingle{}EQ41 {-} Denied}
+\CommentTok{\# opportunities to serve because of my sexual orientation\textquotesingle{},}
+\CommentTok{\# Q42 = \textquotesingle{}EQ42 {-} Seeing others shamed/shunned by}
+\CommentTok{\# pastor/leader/group\textquotesingle{}, Q43 = \textquotesingle{}EQ43 {-} Shamed by}
+\CommentTok{\# pastor/group for poor spiritual/moral performance\textquotesingle{}, Q44 =}
+\CommentTok{\# \textquotesingle{}EQ44 {-} Love/acceptance offered only for high}
+\CommentTok{\# spiritual/moral performance\textquotesingle{}, Q45 = \textquotesingle{}EQ45 {-}}
+\CommentTok{\# Developmentally{-}inappropriate/anxious Hell/Satan/demons}
+\CommentTok{\# taught to young children\textquotesingle{}, Q46 = \textquotesingle{}EQ46 {-} Treated as less}
+\CommentTok{\# than because of my skin color\textquotesingle{}, Q47 = \textquotesingle{}EQ47 {-} Medical}
+\CommentTok{\# care being postponed/withheld for religious reasons\textquotesingle{}, Q49}
+\CommentTok{\# = \textquotesingle{}EQ49 {-} Leadership/group protecting and elevating}
+\CommentTok{\# abusive individuals\textquotesingle{}, Q50 = \textquotesingle{}EQ50 {-} Treated as less than}
+\CommentTok{\# because of my gender\textquotesingle{}, Q51 = \textquotesingle{}EQ51 {-} Extreme pressure to}
+\CommentTok{\# be pastor/missionary/spiritual leader\textquotesingle{}, Q52 = \textquotesingle{}EQ52 {-}}
+\CommentTok{\# Blamed for harm I suffered rather than blaming who harmed}
+\CommentTok{\# me\textquotesingle{}, Q53 = \textquotesingle{}EQ53 {-} Scripture used to justify abusive}
+\CommentTok{\# parent{-}child behavior\textquotesingle{}, Q54 = \textquotesingle{}EQ54 {-} Being explicitly}
+\CommentTok{\# taught to distrust my intuitions\textquotesingle{}, Q55 = \textquotesingle{}EQ55 {-} Hearing}
+\CommentTok{\# cultural references in sermons unfamiliar to my race/eth.}
+\CommentTok{\# subculture\textquotesingle{}, Q56 = \textquotesingle{}EQ56 {-} Being made to feel I was}
+\CommentTok{\# crazy/weird for doubts/questions\textquotesingle{}, Q57 = \textquotesingle{}EQ57 {-}}
+\CommentTok{\# Developing mental/physical ailments from conforming to}
+\CommentTok{\# group/leader’s expectation\textquotesingle{}, Q58 = \textquotesingle{}EQ58 {-} Terror/horror}
+\CommentTok{\# used to motivate religious decisions\textquotesingle{}, Q59 = \textquotesingle{}EQ59 {-}}
+\CommentTok{\# Pastor/group blame victim for their abuse\textquotesingle{}, Q60 = \textquotesingle{}EQ60 {-}}
+\CommentTok{\# Encouraged by leader to stay in abusive marriage\textquotesingle{}, Q61 =}
+\CommentTok{\# \textquotesingle{}EQ61 {-} Developmentally{-}inappropriate/anxious end times}
+\CommentTok{\# descriptions taught to young children\textquotesingle{}, Q62 = \textquotesingle{}EQ62 {-}}
+\CommentTok{\# Scripture used to justify physical violence\textquotesingle{}, Q63 = \textquotesingle{}EQ63}
+\CommentTok{\# {-} Shamed by pastor/group for raising questions or}
+\CommentTok{\# concerns\textquotesingle{}, Q64 = \textquotesingle{}EQ64 {-} Witnessing women pressured to}
+\CommentTok{\# stay in unfaithful/abusive marriages\textquotesingle{}, Q65 = \textquotesingle{}EQ65 {-} Cut}
+\CommentTok{\# off/shunned by more religious family members\textquotesingle{}, Q66 =}
+\CommentTok{\# \textquotesingle{}EQ66 {-} Others treated as less than due to their sexual}
+\CommentTok{\# orientation\textquotesingle{}, \# VARIABLE LABELS: INTERNAL STATES ITEMS}
+\CommentTok{\# Q68 = \textquotesingle{}IQ68 {-} Anxiety attacks triggered by religious}
+\CommentTok{\# stimuli\textquotesingle{}, Q69 = \textquotesingle{}IQ69 {-} Lack of spiritual}
+\CommentTok{\# direction/purpose\textquotesingle{}, Q70 = \textquotesingle{}IQ70 {-} Feeling betrayed by}
+\CommentTok{\# God\textquotesingle{}, Q71 = \textquotesingle{}IQ71 {-} Avoiding religious}
+\CommentTok{\# activities/settings to reduce distressing feelings\textquotesingle{}, Q72}
+\CommentTok{\# = \textquotesingle{}IQ72 {-} Feeling as if God harmed me directly\textquotesingle{}, Q73 =}
+\CommentTok{\# \textquotesingle{}IQ73 {-} Self{-}hatred or self{-}loathing\textquotesingle{}, Q74 = \textquotesingle{}IQ74 {-}}
+\CommentTok{\# Sadness over the loss of my faith/religious community\textquotesingle{},}
+\CommentTok{\# Q76 = \textquotesingle{}IQ76 {-} Feeling I wasted years of my life in a}
+\CommentTok{\# church/set of beliefs\textquotesingle{}, Q77 = \textquotesingle{}IQ77 {-} Anger upon}
+\CommentTok{\# reflecting on negative religious experiences\textquotesingle{}, Q78 =}
+\CommentTok{\# \textquotesingle{}IQ78 {-} A lack of self{-}worth\textquotesingle{}, Q79 = \textquotesingle{}IQ79 {-} Distrust of}
+\CommentTok{\# God\textquotesingle{}, Q80 = \textquotesingle{}IQ80 {-} Feeling isolated\textquotesingle{}, Q81 = \textquotesingle{}IQ81 {-}}
+\CommentTok{\# Nightmares about my negative religious experiences\textquotesingle{}, Q82}
+\CommentTok{\# = \textquotesingle{}IQ82 {-} Having trouble navigating life outside my}
+\CommentTok{\# church/community\textquotesingle{})}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{select-item-clusters}{%
+\section{Select item clusters}\label{select-item-clusters}}
+
+We select two subsets of the item data, one from just the External Events items and the other from the Internal States items.
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \NormalTok{ext\_items }\OtherTok{\textless{}{-}}\NormalTok{ items[, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{52}\NormalTok{]}
 \NormalTok{int\_items }\OtherTok{\textless{}{-}}\NormalTok{ items[, }\DecValTok{52}\SpecialCharTok{:}\DecValTok{66}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
 
-\CommentTok{\# SAVE DATA FILES}
-\FunctionTok{write.csv}\NormalTok{(all, }\StringTok{"data/all.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
-\FunctionTok{write.csv}\NormalTok{(items, }\StringTok{"data/items.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
-\FunctionTok{write.csv}\NormalTok{(ext\_items, }\StringTok{"data/ext\_items.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
-\FunctionTok{write.csv}\NormalTok{(int\_items, }\StringTok{"data/int\_items.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
+\hypertarget{dichotomized-data}{%
+\section{Dichotomized data}\label{dichotomized-data}}
+
+Some IRT models (such as the Rasch model) and their estimation procedures in various R packages are based on dichotomous data (0=incorrect, 1=correct) rather than the polytomous data that comes from Likert scales. It is also possible that the extra categories create noise and improved SHAS items might use fewer response categories. Here we create several data sets of dichotomized SHAS items.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# DICHOTOMIZED DATA SETS}
+\NormalTok{ditems }\OtherTok{\textless{}{-}}\NormalTok{ items}
+\NormalTok{ditems[ditems }\SpecialCharTok{==} \DecValTok{2}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{ditems[ditems }\SpecialCharTok{==} \DecValTok{3}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{ditems[ditems }\SpecialCharTok{==} \DecValTok{4}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1}
+
+\NormalTok{dext\_items }\OtherTok{\textless{}{-}}\NormalTok{ ext\_items}
+\NormalTok{dext\_items[dext\_items }\SpecialCharTok{==} \DecValTok{2}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{dext\_items[dext\_items }\SpecialCharTok{==} \DecValTok{3}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{dext\_items[dext\_items }\SpecialCharTok{==} \DecValTok{4}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1}
+
+\NormalTok{dint\_items }\OtherTok{\textless{}{-}}\NormalTok{ int\_items}
+\NormalTok{dint\_items[dint\_items }\SpecialCharTok{==} \DecValTok{2}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{dint\_items[dint\_items }\SpecialCharTok{==} \DecValTok{3}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{dint\_items[dint\_items }\SpecialCharTok{==} \DecValTok{4}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1}
 \end{Highlighting}
 \end{Shaded}
 
@@ -349,26 +471,22 @@ The second plot in Figure \ref{fig:vim-plots} illustrates the different combinat
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(naniar)}
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}\FunctionTok{mcar\_test}\NormalTok{(all), }\AttributeTok{caption =} \StringTok{"Little\textquotesingle{}s Test of Missing Completely At Random (MCAR)"}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(knitr)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}\FunctionTok{mcar\_test}\NormalTok{(all))}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{table}
-
-\caption{\label{tab:mcar}Little's Test of Missing Completely At Random (MCAR)}
-\centering
-\begin{tabular}[t]{r|r|r|r}
+\begin{tabular}{r|r|r|r}
 \hline
 statistic & df & p.value & missing.patterns\\
 \hline
 2089.341 & 8663 & 1 & 117\\
 \hline
 \end{tabular}
-\end{table}
 
 The test is fairly conclusive. The p-value for the chi-square is 1, which means observed pattern of missing data do not diverge significantly from what would be expected if the data were missing completely at random.
 
-\textbf{Were examinees triggered?} As mentioned above, a possible explanation of the missing data in the Internal States items is that examinees were triggered. As after responding to the preceding 52 items calling to mind imagery of abusive external events, these examinees were \textbf{\emph{done}} with the survey. A possible test of this hypothesis is an examination of the relationship between a total score of responses to the External Events items and a score of total missingness on the Internal States items. The empirical work to test this hypothesis is laid out in the following code chunk. The items measuring external events are summed into a total score such that a higher value indicates more exposure to abusive external events. The items measuring internal states are coded so that 1=missing and 0=all others response, and these items are summed into a score of total missingness.
+\textbf{Were examinees triggered?} As mentioned above, a possible explanation of the missing data in the Internal States items is that examinees were triggered: After responding to the preceding 52 items calling to mind imagery of abusive external events, these examinees may have been \textbf{\emph{done}} with the survey. A possible test of this hypothesis is an examination of the relationship between a total score of responses to the External Events items and a score of total missingness on the Internal States items. The empirical work to test this hypothesis is laid out in the following code chunk. The items measuring external events are summed into a total score such that a higher value indicates more exposure to abusive external events. The items measuring internal states are coded so that 1=missing and 0=all others response, and these items are summed into a score of total missingness.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -416,49 +534,53 @@ The test is fairly conclusive. The p-value for the chi-square is 1, which means 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# 4. CORRELATIONS}
+\FunctionTok{library}\NormalTok{(psych)}
 \NormalTok{psych}\SpecialCharTok{::}\FunctionTok{corPlot}\NormalTok{(miss\_set2[, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{16}\NormalTok{], }\AttributeTok{main =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{upper =} \ConstantTok{FALSE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{figure}
 \centering
-\includegraphics{_main_files/figure-latex/trigger-1.pdf}
-\caption{\label{fig:trigger}Correlation Matrix: External States and Internal States Missingness}
+\includegraphics{_main_files/figure-latex/trigger-b-1.pdf}
+\caption{\label{fig:trigger-b}Correlation Matrix: External States and Internal States Missingness}
 \end{figure}
 
-Figure \ref{fig:trigger} illustrates the correlations among the Internal States items (dichotomized according to their missingness (1=missing, 0=all others)), the total score from the external states (total\_ext), and the total score of internal item missingness (total\_int). The correlation of total\_ext with all the other items is nearly zero, suggesting that more exposure to abusive external states did \textbf{\emph{not}} predict nonresponse to the Internal States items. This finding is consistent with the finding from Figure \ref{tab:mcar} that the missing data appear to missing completely at random.
+Figure \ref{fig:trigger-b} illustrates the correlations among the Internal States items (dichotomized according to their missingness (1=missing, 0=all others)), the total score from the external states (total\_ext), and the total score of internal item missingness (total\_int). The correlation of total\_ext with all the other items is nearly zero, suggesting that more exposure to abusive external states did \textbf{\emph{not}} predict nonresponse to the Internal States items. This finding is consistent with the finding from Figure \ref{tab:mcar} that the missing data appear to missing completely at random.
 
-\textbf{Missing data methods}. There are several different ways to handle missing data. A common method is to \emph{delete all cases missing any data}. This is called \textbf{listwise} deletion of data. Its primary advantages are simplicity, expedience, and analysis based on complete information. The disadvantages of listwise are (1) disposal of the information offered by those examinees who responded to some items but not others, and (2) diminishment of the dataset, and with it, a reduction in statistical power. The ``all'' data file of all Likert items and demographics items derived earlier reports data from 3,222 examinees. The following code chunk creates a subset of complete data. This smaller dataset has 1,841 examinees.
+\textbf{Missing data methods}. There are several different ways to handle missing data. A common one is to \emph{delete all cases missing any data}. This is called \textbf{listwise} deletion of data. Its primary advantages are simplicity, expedience, and analysis based on complete information. Its disadvantages are (1) disposal of the information offered by those examinees who responded to some items but not others, and (2) diminishment of the dataset, and with it, a reduction in statistical power. There are also methods of imputing values to missing responses. Here, for expedience, we use listwise deletion to create several datasets with complete data.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# LISTWISE DELETION OF MISSING DATA}
-\NormalTok{all\_l }\OtherTok{\textless{}{-}} \FunctionTok{na.omit}\NormalTok{(all)  }\CommentTok{\#  Likert items from columns 14{-}79 plus demographics post listwise}
-\FunctionTok{write.csv}\NormalTok{(all\_l, }\StringTok{"data/all\_l.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)  }\CommentTok{\# save data}
-
-\CommentTok{\# OTHER POSSIBLE LISTWISE DATASETS}
-
-\CommentTok{\# items \textless{}{-} items[complete.cases(items), ] \# create new}
-\CommentTok{\# dataset without missing data}
-\NormalTok{items\_l }\OtherTok{\textless{}{-}} \FunctionTok{na.omit}\NormalTok{(items)  }\CommentTok{\# Likert items from columns 14{-}79 post listwise}
-\NormalTok{ext\_items\_l }\OtherTok{\textless{}{-}} \FunctionTok{na.omit}\NormalTok{(ext\_items)  }\CommentTok{\# Likert items for external events post listwise}
-\NormalTok{int\_items\_l }\OtherTok{\textless{}{-}} \FunctionTok{na.omit}\NormalTok{(int\_items)  }\CommentTok{\# Likert items for internal states post listwise}
-\FunctionTok{write.csv}\NormalTok{(items\_l, }\StringTok{"data/items\_l.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
-\FunctionTok{write.csv}\NormalTok{(ext\_items\_l, }\StringTok{"data/ext\_items\_l.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
-\FunctionTok{write.csv}\NormalTok{(int\_items\_l, }\StringTok{"data/int\_items\_l.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{all\_l }\OtherTok{\textless{}{-}} \FunctionTok{na.omit}\NormalTok{(all)  }\CommentTok{\#  All items + demographics}
+\NormalTok{items\_l }\OtherTok{\textless{}{-}} \FunctionTok{na.omit}\NormalTok{(items)  }\CommentTok{\# All Likert items}
+\NormalTok{ext\_items\_l }\OtherTok{\textless{}{-}} \FunctionTok{na.omit}\NormalTok{(ext\_items)  }\CommentTok{\# Likert items for External Events post listwise}
+\NormalTok{int\_items\_l }\OtherTok{\textless{}{-}} \FunctionTok{na.omit}\NormalTok{(int\_items)  }\CommentTok{\# Likert items for Internal States post listwise}
+\NormalTok{ditems\_l }\OtherTok{\textless{}{-}} \FunctionTok{na.omit}\NormalTok{(ditems)  }\CommentTok{\# All dichotomized Likert items post listwise}
+\NormalTok{dext\_items\_l }\OtherTok{\textless{}{-}} \FunctionTok{na.omit}\NormalTok{(dext\_items)  }\CommentTok{\# Dichotomized External Events items post listwise}
+\NormalTok{dint\_items\_l }\OtherTok{\textless{}{-}} \FunctionTok{na.omit}\NormalTok{(dint\_items)  }\CommentTok{\# Dichotomized Internal States items post listwise}
 \end{Highlighting}
 \end{Shaded}
 
-Analysis can proceed with these two datasets:
+\hypertarget{final-datasets}{%
+\section{Final datasets}\label{final-datasets}}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  the ``all'' dataset of all Likert and demographic items (N=3,222)
-\item
-  the ``all\_l'' dataset of 1,841 examinees who reported complete data
-\end{enumerate}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# SAVE DATA FILES}
+\FunctionTok{write.csv}\NormalTok{(all, }\StringTok{"data/all.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{write.csv}\NormalTok{(items, }\StringTok{"data/items.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{write.csv}\NormalTok{(ext\_items, }\StringTok{"data/ext\_items.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{write.csv}\NormalTok{(int\_items, }\StringTok{"data/int\_items.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{write.csv}\NormalTok{(all\_l, }\StringTok{"data/all\_l.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{write.csv}\NormalTok{(items\_l, }\StringTok{"data/items\_l.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{write.csv}\NormalTok{(ext\_items\_l, }\StringTok{"data/ext\_items\_l.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{write.csv}\NormalTok{(int\_items\_l, }\StringTok{"data/int\_items\_l.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{write.csv}\NormalTok{(ditems\_l, }\StringTok{"data/ditems\_l.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{write.csv}\NormalTok{(dext\_items\_l, }\StringTok{"data/dext\_items\_l.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{write.csv}\NormalTok{(dint\_items\_l, }\StringTok{"data/dint\_items\_l.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{item-analysis}{%
 \chapter{Item Analysis}\label{item-analysis}}
@@ -637,14 +759,12 @@ This information suggests a decent fit of the PCM to the SHAS item response data
 
 \textbf{Model fit}.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{            M2   df p      RMSEA   RMSEA\_5   RMSEA\_95    SRMSR      TLI}
-\NormalTok{stats 51851.31 2144 0 0.08823389 0.0875621 0.08887775 0.118136 0.960859}
-\NormalTok{            CFI}
-\NormalTok{stats 0.9608772}
-\end{Highlighting}
-\end{Shaded}
+\begin{verbatim}
+            M2   df p      RMSEA   RMSEA_5   RMSEA_95    SRMSR      TLI
+stats 51851.31 2144 0 0.08823389 0.0875621 0.08887775 0.118136 0.960859
+            CFI
+stats 0.9608772
+\end{verbatim}
 
 The obtained RMSEA value = .088 (95\% CI{[}.088, .089{]}) and SRMSR value = .118 suggest that data do not fit the model reasonably very well using suggested cutoff values of RMSEA \textless= .06 and SRMSR \textless= .08 as suggested guidelines for assessing fit. The CFI = .961 exceeded the recommended .95 threshold.
 
@@ -709,19 +829,16 @@ Finally, we see at a glance a handful of items that correlate very weakly with a
 \textbf{Cronbach's coefficient alpha}.
 Arguably the most well-known statistic for estimating internal consistency reliability is Cronbach's coefficient alpha (citation). This is a measure of the average inter-item correlation (?). It is also a measure of the ratio of signal to noise (X = T + e). A ballpark cutoff value is 0.70 \citep{Nunnally1994}.
 
-\begin{Shaded}
-\begin{Highlighting}[]
+\begin{verbatim}
+ Number of Items 
+ 66 
 
-\NormalTok{ Number of Items }
-\NormalTok{ 66 }
+ Number of Examinees 
+ 2979 
 
-\NormalTok{ Number of Examinees }
-\NormalTok{ 2979 }
-
-\NormalTok{ Coefficient Alpha }
-\NormalTok{ 0.981 }
-\end{Highlighting}
-\end{Shaded}
+ Coefficient Alpha 
+ 0.981 
+\end{verbatim}
 
 This output is not pretty, but it does report a Cronbach's alpha of 0.98. This is a high level of internal consistency reliability.
 
