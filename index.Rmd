@@ -32,7 +32,7 @@ Validation is research into the meanings and uses of scores from instruments. It
 
 ```{r, include=FALSE}
 
-knitr::opts_chunk$set(class.source="bg-danger", class.output="bg-warning", comment = "", warning = FALSE, message = FALSE, tidy.opts=list(width.cutoff=60), tidy = TRUE)
+knitr::opts_chunk$set(comment = "", warning = FALSE, message = FALSE, tidy.opts=list(width.cutoff=60), tidy = TRUE)
 
 knitr::opts_knit$set(verbose = FALSE)
 

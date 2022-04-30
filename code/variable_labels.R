@@ -1,5 +1,4 @@
 # APPLY VARIABLE LABELS
-
 names(items) <- c(
   # EXTERNAL EVENTS ITEMS
   Q7  = "EQ7 - Pastor speaking on God's behalf",
