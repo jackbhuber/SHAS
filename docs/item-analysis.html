@@ -30,7 +30,6 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Dan Koch, Northwest University" />
 
 
-<meta name="date" content="2022-04-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -199,8 +198,10 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="" data-path="item-analysis.html"><a href="item-analysis.html"><i class="fa fa-check"></i>Item Analysis</a>
 <ul>
-<li class="chapter" data-level="" data-path="item-analysis.html"><a href="item-analysis.html#item-analyses-in-item-response-theory"><i class="fa fa-check"></i>Item analyses in item response theory</a>
+<li class="chapter" data-level="" data-path="item-analysis.html"><a href="item-analysis.html#item-response-theory"><i class="fa fa-check"></i>Item response theory</a>
 <ul>
+<li class="chapter" data-level="" data-path="item-analysis.html"><a href="item-analysis.html#irt-model-assumptions"><i class="fa fa-check"></i>IRT Model Assumptions</a></li>
+<li class="chapter" data-level="" data-path="item-analysis.html"><a href="item-analysis.html#rating-scale-model-rsm"><i class="fa fa-check"></i>Rating Scale Model (RSM)</a></li>
 <li class="chapter" data-level="" data-path="item-analysis.html"><a href="item-analysis.html#partial-credit-model-pcm"><i class="fa fa-check"></i>Partial Credit Model (PCM)</a></li>
 </ul></li>
 </ul></li>
@@ -253,18 +254,1264 @@ div.csl-indent {
 <li>Which items, if any, have too many response categories which might be profitably collapsed?</li>
 </ul>
 <p>We begin by defining item analysis and discussing its importance. Then we document our item analyses from an item response theory (IRT) framework. We conclude by summarizing what we learn from these analyses to help us refine these 66 items and possibly develop better ones in the future.</p>
-<div id="item-analyses-in-item-response-theory" class="section level2 hasAnchor">
-<h2>Item analyses in item response theory<a href="item-analysis.html#item-analyses-in-item-response-theory" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="item-response-theory" class="section level2 hasAnchor">
+<h2>Item response theory<a href="item-analysis.html#item-response-theory" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Item response theory (IRT) is an established framework for empirically evaluating what items measure <span class="citation">(<a href="references.html#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>; <a href="references.html#ref-WrightMasters1982" role="doc-biblioref">Wright and Masters 1982</a>)</span>. IRT methods complement methods derived from classical test theory in several ways.</p>
-<p>First, IRT places both examinees and items on the same interval scale. In classical test theory, examinees differ in their scores and items differ in their means or percent of examinees selecting a response; examinees and items are on different scales. By contrast, IRT methods allow measurement of persons and items on the <strong><em>same scale</em></strong> with <em>equal interval properties</em> of the <em>logit</em> scale** and resulting linear measures (Wright &amp; Stone, 1999). In IRT we can estimate <em>item parameters independently of the characteristics of the calibrating sample</em>, and we can estimate <em>person parameters apart from the difficulties of the items taken</em> (Masters, 1982; Rasch, 1966).</p>
-<p>Second, parameters for examinees and items are independent of each other.</p>
-<p>Third, IRT gives items diagnostic value. A core assumption of CTT is that items are <em>redundant</em>; they contribute meaningful variation to a total score but they do not occupy a distinct place on the score continuum. IRT is different. IRT does not assume that items are redundant; instead it investigates whether items make distinct contributions to the measurement of the latent trait. Whereas classical test theory measurement is principally concerned with the ratio of noise to signal in the variation contributed by an item, IRT models compute the probability of a certain response to an item given the level of the latent construct the individual possesses (i.e., spiritual abuse) and the relevant item’s difficulty of endorsement. IRT is based on the logistic model and operates on the <em>logit</em> scale.</p>
-<p>In what follows, we conduct item analyses through a comparison of several different IRT models: the Rating Scale Model (RSM), the Partial Credit Model (PCM), the Generalized Partial Credit Model (GPCM). I credit Okan Bulut <span class="citation">(<a href="references.html#ref-Bulut2018" role="doc-biblioref">2018</a>)</span> for his tutorial illustrating how to carry out IRT analyses in R using the <code>mirt</code> package <span class="citation">(<a href="references.html#ref-mirt" role="doc-biblioref">Chalmers 2012</a>)</span>.</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>IRT places both examinees and items on the same interval scale</strong>. In classical test theory, examinees differ in their scores and items differ in their means or percent of examinees selecting a response; examinees and items are on different scales. By contrast, IRT methods allow measurement of persons and items on the <strong><em>same scale</em></strong> with <em>equal interval properties</em> of the <em>logit</em> scale** and resulting linear measures (Wright &amp; Stone, 1999). In IRT we can estimate <em>item parameters independently of the characteristics of the calibrating sample</em>, and we can estimate <em>person parameters apart from the difficulties of the items taken</em> (Masters, 1982; Rasch, 1966).</p></li>
+<li><p><strong>Parameters for examinees and items derived from IRT are independent of each other</strong>.</p></li>
+<li><p><strong>IRT gives items diagnostic value</strong>. A core assumption of CTT is that items are <em>redundant</em>; they contribute meaningful variation to a total score but they do not occupy a distinct place on the score continuum. IRT is different. IRT does not assume that items are redundant; instead it investigates whether items make distinct contributions to the measurement of the latent trait. Whereas classical test theory measurement is principally concerned with the ratio of noise to signal in the variation contributed by an item, IRT models compute the probability of a certain response to an item given the level of the latent construct the individual possesses (i.e., spiritual abuse) and the relevant item’s difficulty of endorsement. IRT is based on the logistic model and operates on the <em>logit</em> scale.</p></li>
+</ol>
+<p>In what follows, we conduct item analyses through a comparison of several different IRT models: the Rating Scale Model (RSM), the Partial Credit Model (PCM), the Generalized Partial Credit Model (GPCM).</p>
+<div id="irt-model-assumptions" class="section level3 hasAnchor">
+<h3>IRT Model Assumptions<a href="item-analysis.html#irt-model-assumptions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>IRT makes two assumptions of the data. The first is unidimensionality of the latent trait. Is the trait one dimension? This is important for the SHAS because the questionnaire explicitly distinguished between items measuring external events and internal states. The second assumption is local independence <span class="citation">(<a href="references.html#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>)</span>. This means that, once the latent variable has been accounted for, any set of items should not share any meaningful correlation (Edwards, Houts, &amp; Cai, 2018).</p>
+<div id="unidimensionality" class="section level4 hasAnchor">
+<h4>Unidimensionality<a href="item-analysis.html#unidimensionality" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>To verify the assumption of unidimensionality we conducted three analyses. First we confirmed the factor structure using confirmatory factor analysis (CFA). Then we determined the proportion of variance in the observed item responses due to the Rasch model. Finally, we conducted Rasch Principal Component Analysis of Residuals (PCAR) (Smith, 2002).</p>
+<p><strong>Factor structure</strong>.</p>
+<p><strong>Proportion of variance</strong>.</p>
+<p>Reckase suggests that the unidimensionality assumption is safely met if the Rasch model explains 20% of the variance in the data. According to this analysis, the Rasch model explains 44% of the variance in the SHAS item data. Thus we have some evidence of unidimensionality with which to proceed to further Rasch modeling.</p>
+<p><strong>Principal Component Analysis of Residuals (PCAR)</strong></p>
+<div class="figure"><span style="display:block;" id="fig:uni-pcar"></span>
+<img src="_main_files/figure-html/uni-pcar-1.png" alt="Contrasts from PCA of Standardized Residual Correlations" width="672" />
+<p class="caption">
+Figure 2: Contrasts from PCA of Standardized Residual Correlations
+</p>
+</div>
+<p>The second analysis of PCAR examines the correlations among residuals. The premise is that once the Rasch model has been estimated, the correlations among the residuals should be minimal. Linacre () suggests that contrasts with eigenvalues of 2.0 or below can be considered noise. In Figure <a href="item-analysis.html#fig:uni-pcar">2</a>, our PCAR analysis found three contrasts that rose above that 2.0 threshold.</p>
+</div>
+<div id="local-independence" class="section level4 hasAnchor">
+<h4>Local Independence<a href="item-analysis.html#local-independence" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>To check the assumption of local independence, we used the Q3 statistic (Yen, 1984). The Q3 statistic index criteria are that the raw residual correlation between pairs of items should never exceed 0.10 (Marais &amp; Andrich, 2008).</p>
+<pre><code>------------------------------------------------------------
+Semiparametric Marginal Maximum Likelihood Estimation 
+Raschtype Model with generalized logistic link function: alpha1= 0 , alpha2= 0  
+------------------------------------------------------------
+...........................................................
+Iteration 1     2022-04-30 21:25:33 
+   Deviance=178730.6812
+    Maximum b parameter change=0.837684 
+...........................................................
+Iteration 2     2022-04-30 21:25:34 
+   Deviance=174132.6014 | Deviance change=4598.079793
+    Maximum b parameter change=0.263887 
+...........................................................
+Iteration 3     2022-04-30 21:25:34 
+   Deviance=173692.1918 | Deviance change=440.409632
+    Maximum b parameter change=0.094586 
+...........................................................
+Iteration 4     2022-04-30 21:25:34 
+   Deviance=173647.6904 | Deviance change=44.501431
+    Maximum b parameter change=0.027496 
+...........................................................
+Iteration 5     2022-04-30 21:25:34 
+   Deviance=173642.3097 | Deviance change=5.3807
+    Maximum b parameter change=0.009127 
+...........................................................
+Iteration 6     2022-04-30 21:25:34 
+   Deviance=173640.8591 | Deviance change=1.450531
+    Maximum b parameter change=0.005552 
+...........................................................
+Iteration 7     2022-04-30 21:25:34 
+   Deviance=173639.9026 | Deviance change=0.956595
+    Maximum b parameter change=0.004379 
+...........................................................
+Iteration 8     2022-04-30 21:25:34 
+   Deviance=173639.0673 | Deviance change=0.835259
+    Maximum b parameter change=0.003935 
+...........................................................
+Iteration 9     2022-04-30 21:25:34 
+   Deviance=173638.2993 | Deviance change=0.767991
+    Maximum b parameter change=0.003732 
+...........................................................
+Iteration 10     2022-04-30 21:25:34 
+   Deviance=173637.5854 | Deviance change=0.713935
+    Maximum b parameter change=0.003601 
+...........................................................
+Iteration 11     2022-04-30 21:25:34 
+   Deviance=173636.9197 | Deviance change=0.665655
+    Maximum b parameter change=0.00348 
+...........................................................
+Iteration 12     2022-04-30 21:25:34 
+   Deviance=173636.2985 | Deviance change=0.621216
+    Maximum b parameter change=0.003363 
+...........................................................
+Iteration 13     2022-04-30 21:25:34 
+   Deviance=173635.7186 | Deviance change=0.579931
+    Maximum b parameter change=0.00325 
+...........................................................
+Iteration 14     2022-04-30 21:25:34 
+   Deviance=173635.1771 | Deviance change=0.541464
+    Maximum b parameter change=0.00314 
+...........................................................
+Iteration 15     2022-04-30 21:25:34 
+   Deviance=173634.6715 | Deviance change=0.505589
+    Maximum b parameter change=0.003034 
+...........................................................
+Iteration 16     2022-04-30 21:25:34 
+   Deviance=173634.1994 | Deviance change=0.47212
+    Maximum b parameter change=0.002932 
+...........................................................
+Iteration 17     2022-04-30 21:25:34 
+   Deviance=173633.7585 | Deviance change=0.440891
+    Maximum b parameter change=0.002834 
+...........................................................
+Iteration 18     2022-04-30 21:25:34 
+   Deviance=173633.3467 | Deviance change=0.411751
+    Maximum b parameter change=0.002738 
+...........................................................
+Iteration 19     2022-04-30 21:25:34 
+   Deviance=173632.9622 | Deviance change=0.384558
+    Maximum b parameter change=0.002646 
+...........................................................
+Iteration 20     2022-04-30 21:25:34 
+   Deviance=173632.603 | Deviance change=0.359181
+    Maximum b parameter change=0.002558 
+...........................................................
+Iteration 21     2022-04-30 21:25:34 
+   Deviance=173632.2675 | Deviance change=0.335497
+    Maximum b parameter change=0.002472 
+...........................................................
+Iteration 22     2022-04-30 21:25:34 
+   Deviance=173631.9541 | Deviance change=0.313392
+    Maximum b parameter change=0.002389 
+...........................................................
+Iteration 23     2022-04-30 21:25:35 
+   Deviance=173631.6614 | Deviance change=0.29276
+    Maximum b parameter change=0.002309 
+...........................................................
+Iteration 24     2022-04-30 21:25:35 
+   Deviance=173631.3879 | Deviance change=0.273502
+    Maximum b parameter change=0.002232 
+...........................................................
+Iteration 25     2022-04-30 21:25:35 
+   Deviance=173631.1323 | Deviance change=0.255524
+    Maximum b parameter change=0.002158 
+...........................................................
+Iteration 26     2022-04-30 21:25:35 
+   Deviance=173630.8936 | Deviance change=0.238741
+    Maximum b parameter change=0.002086 
+...........................................................
+Iteration 27     2022-04-30 21:25:35 
+   Deviance=173630.6705 | Deviance change=0.223073
+    Maximum b parameter change=0.002016 
+...........................................................
+Iteration 28     2022-04-30 21:25:35 
+   Deviance=173630.4621 | Deviance change=0.208444
+    Maximum b parameter change=0.001949 
+...........................................................
+Iteration 29     2022-04-30 21:25:35 
+   Deviance=173630.2673 | Deviance change=0.194784
+    Maximum b parameter change=0.001884 
+...........................................................
+Iteration 30     2022-04-30 21:25:35 
+   Deviance=173630.0853 | Deviance change=0.182029
+    Maximum b parameter change=0.001822 
+...........................................................
+Iteration 31     2022-04-30 21:25:35 
+   Deviance=173629.9151 | Deviance change=0.170117
+    Maximum b parameter change=0.001761 
+...........................................................
+Iteration 32     2022-04-30 21:25:35 
+   Deviance=173629.7562 | Deviance change=0.158993
+    Maximum b parameter change=0.001703 
+...........................................................
+Iteration 33     2022-04-30 21:25:35 
+   Deviance=173629.6076 | Deviance change=0.148604
+    Maximum b parameter change=0.001646 
+...........................................................
+Iteration 34     2022-04-30 21:25:35 
+   Deviance=173629.4687 | Deviance change=0.138899
+    Maximum b parameter change=0.001592 
+...........................................................
+Iteration 35     2022-04-30 21:25:35 
+   Deviance=173629.3388 | Deviance change=0.129835
+    Maximum b parameter change=0.001539 
+...........................................................
+Iteration 36     2022-04-30 21:25:35 
+   Deviance=173629.2174 | Deviance change=0.121368
+    Maximum b parameter change=0.001488 
+...........................................................
+Iteration 37     2022-04-30 21:25:35 
+   Deviance=173629.104 | Deviance change=0.113458
+    Maximum b parameter change=0.001439 
+...........................................................
+Iteration 38     2022-04-30 21:25:35 
+   Deviance=173628.9979 | Deviance change=0.106068
+    Maximum b parameter change=0.001391 
+...........................................................
+Iteration 39     2022-04-30 21:25:35 
+   Deviance=173628.8988 | Deviance change=0.099163
+    Maximum b parameter change=0.001345 
+...........................................................
+Iteration 40     2022-04-30 21:25:35 
+   Deviance=173628.806 | Deviance change=0.092712
+    Maximum b parameter change=0.001301 
+...........................................................
+Iteration 41     2022-04-30 21:25:35 
+   Deviance=173628.7194 | Deviance change=0.086683
+    Maximum b parameter change=0.001258 
+...........................................................
+Iteration 42     2022-04-30 21:25:35 
+   Deviance=173628.6383 | Deviance change=0.08105
+    Maximum b parameter change=0.001216 
+...........................................................
+Iteration 43     2022-04-30 21:25:35 
+   Deviance=173628.5625 | Deviance change=0.075786
+    Maximum b parameter change=0.001176 
+...........................................................
+Iteration 44     2022-04-30 21:25:35 
+   Deviance=173628.4917 | Deviance change=0.070867
+    Maximum b parameter change=0.001137 
+...........................................................
+Iteration 45     2022-04-30 21:25:35 
+   Deviance=173628.4254 | Deviance change=0.066269
+    Maximum b parameter change=0.0011 
+...........................................................
+Iteration 46     2022-04-30 21:25:35 
+   Deviance=173628.3634 | Deviance change=0.061971
+    Maximum b parameter change=0.001064 
+...........................................................
+Iteration 47     2022-04-30 21:25:35 
+   Deviance=173628.3055 | Deviance change=0.057954
+    Maximum b parameter change=0.001029 
+...........................................................
+Iteration 48     2022-04-30 21:25:35 
+   Deviance=173628.2513 | Deviance change=0.054199
+    Maximum b parameter change=0.000995 
+...........................................................
+Iteration 49     2022-04-30 21:25:35 
+   Deviance=173628.2006 | Deviance change=0.050689
+    Maximum b parameter change=0.000962 
+...........................................................
+Iteration 50     2022-04-30 21:25:36 
+   Deviance=173628.1532 | Deviance change=0.047408
+    Maximum b parameter change=0.000931 
+...........................................................
+Iteration 51     2022-04-30 21:25:36 
+   Deviance=173628.1088 | Deviance change=0.044341
+    Maximum b parameter change=9e-04 
+...........................................................
+Iteration 52     2022-04-30 21:25:36 
+   Deviance=173628.0674 | Deviance change=0.041473
+    Maximum b parameter change=0.000871 
+...........................................................
+Iteration 53     2022-04-30 21:25:36 
+   Deviance=173628.0286 | Deviance change=0.038792
+    Maximum b parameter change=0.000842 
+...........................................................
+Iteration 54     2022-04-30 21:25:36 
+   Deviance=173627.9923 | Deviance change=0.036285
+    Maximum b parameter change=0.000814 
+...........................................................
+Iteration 55     2022-04-30 21:25:36 
+   Deviance=173627.9583 | Deviance change=0.03394
+    Maximum b parameter change=0.000788 
+...........................................................
+Iteration 56     2022-04-30 21:25:36 
+   Deviance=173627.9266 | Deviance change=0.031749
+    Maximum b parameter change=0.000762 
+...........................................................
+Iteration 57     2022-04-30 21:25:36 
+   Deviance=173627.8969 | Deviance change=0.029699
+    Maximum b parameter change=0.000737 
+...........................................................
+Iteration 58     2022-04-30 21:25:36 
+   Deviance=173627.8691 | Deviance change=0.027782
+    Maximum b parameter change=0.000713 
+...........................................................
+Iteration 59     2022-04-30 21:25:36 
+   Deviance=173627.8431 | Deviance change=0.02599
+    Maximum b parameter change=0.000689 
+...........................................................
+Iteration 60     2022-04-30 21:25:36 
+   Deviance=173627.8188 | Deviance change=0.024314
+    Maximum b parameter change=0.000667 
+...........................................................
+Iteration 61     2022-04-30 21:25:36 
+   Deviance=173627.7961 | Deviance change=0.022746
+    Maximum b parameter change=0.000645 
+...........................................................
+Iteration 62     2022-04-30 21:25:36 
+   Deviance=173627.7748 | Deviance change=0.02128
+    Maximum b parameter change=0.000624 
+...........................................................
+Iteration 63     2022-04-30 21:25:36 
+   Deviance=173627.7549 | Deviance change=0.019909
+    Maximum b parameter change=0.000604 
+...........................................................
+Iteration 64     2022-04-30 21:25:36 
+   Deviance=173627.7362 | Deviance change=0.018626
+    Maximum b parameter change=0.000584 
+...........................................................
+Iteration 65     2022-04-30 21:25:36 
+   Deviance=173627.7188 | Deviance change=0.017427
+    Maximum b parameter change=0.000565 
+...........................................................
+Iteration 66     2022-04-30 21:25:36 
+   Deviance=173627.7025 | Deviance change=0.016305
+    Maximum b parameter change=0.000546 
+...........................................................
+Iteration 67     2022-04-30 21:25:36 
+   Deviance=173627.6873 | Deviance change=0.015255
+    Maximum b parameter change=0.000528 
+...........................................................
+Iteration 68     2022-04-30 21:25:36 
+   Deviance=173627.673 | Deviance change=0.014273
+    Maximum b parameter change=0.000511 
+...........................................................
+Iteration 69     2022-04-30 21:25:36 
+   Deviance=173627.6596 | Deviance change=0.013355
+    Maximum b parameter change=0.000494 
+...........................................................
+Iteration 70     2022-04-30 21:25:36 
+   Deviance=173627.6471 | Deviance change=0.012496
+    Maximum b parameter change=0.000478 
+...........................................................
+Iteration 71     2022-04-30 21:25:36 
+   Deviance=173627.6354 | Deviance change=0.011692
+    Maximum b parameter change=0.000463 
+...........................................................
+Iteration 72     2022-04-30 21:25:36 
+   Deviance=173627.6245 | Deviance change=0.01094
+    Maximum b parameter change=0.000448 
+...........................................................
+Iteration 73     2022-04-30 21:25:36 
+   Deviance=173627.6143 | Deviance change=0.010237
+    Maximum b parameter change=0.000433 
+...........................................................
+Iteration 74     2022-04-30 21:25:36 
+   Deviance=173627.6047 | Deviance change=0.009579
+    Maximum b parameter change=0.000419 
+...........................................................
+Iteration 75     2022-04-30 21:25:36 
+   Deviance=173627.5957 | Deviance change=0.008963
+    Maximum b parameter change=0.000405 
+...........................................................
+Iteration 76     2022-04-30 21:25:36 
+   Deviance=173627.5873 | Deviance change=0.008387
+    Maximum b parameter change=0.000392 
+...........................................................
+Iteration 77     2022-04-30 21:25:37 
+   Deviance=173627.5795 | Deviance change=0.007848
+    Maximum b parameter change=0.000379 
+...........................................................
+Iteration 78     2022-04-30 21:25:37 
+   Deviance=173627.5721 | Deviance change=0.007344
+    Maximum b parameter change=0.000367 
+...........................................................
+Iteration 79     2022-04-30 21:25:37 
+   Deviance=173627.5653 | Deviance change=0.006872
+    Maximum b parameter change=0.000355 
+...........................................................
+Iteration 80     2022-04-30 21:25:37 
+   Deviance=173627.5588 | Deviance change=0.006431
+    Maximum b parameter change=0.000343 
+...........................................................
+Iteration 81     2022-04-30 21:25:37 
+   Deviance=173627.5528 | Deviance change=0.006018
+    Maximum b parameter change=0.000332 
+...........................................................
+Iteration 82     2022-04-30 21:25:37 
+   Deviance=173627.5472 | Deviance change=0.005632
+    Maximum b parameter change=0.000321 
+...........................................................
+Iteration 83     2022-04-30 21:25:37 
+   Deviance=173627.5419 | Deviance change=0.00527
+    Maximum b parameter change=0.000311 
+...........................................................
+Iteration 84     2022-04-30 21:25:37 
+   Deviance=173627.537 | Deviance change=0.004932
+    Maximum b parameter change=0.000301 
+...........................................................
+Iteration 85     2022-04-30 21:25:37 
+   Deviance=173627.5324 | Deviance change=0.004615
+    Maximum b parameter change=0.000291 
+...........................................................
+Iteration 86     2022-04-30 21:25:37 
+   Deviance=173627.5281 | Deviance change=0.004319
+    Maximum b parameter change=0.000282 
+...........................................................
+Iteration 87     2022-04-30 21:25:37 
+   Deviance=173627.524 | Deviance change=0.004042
+    Maximum b parameter change=0.000272 
+...........................................................
+Iteration 88     2022-04-30 21:25:37 
+   Deviance=173627.5202 | Deviance change=0.003783
+    Maximum b parameter change=0.000263 
+...........................................................
+Iteration 89     2022-04-30 21:25:37 
+   Deviance=173627.5167 | Deviance change=0.00354
+    Maximum b parameter change=0.000255 
+...........................................................
+Iteration 90     2022-04-30 21:25:37 
+   Deviance=173627.5134 | Deviance change=0.003313
+    Maximum b parameter change=0.000247 
+...........................................................
+Iteration 91     2022-04-30 21:25:37 
+   Deviance=173627.5103 | Deviance change=0.0031
+    Maximum b parameter change=0.000239 
+...........................................................
+Iteration 92     2022-04-30 21:25:37 
+   Deviance=173627.5074 | Deviance change=0.002901
+    Maximum b parameter change=0.000231 
+...........................................................
+Iteration 93     2022-04-30 21:25:37 
+   Deviance=173627.5047 | Deviance change=0.002715
+    Maximum b parameter change=0.000223 
+...........................................................
+Iteration 94     2022-04-30 21:25:37 
+   Deviance=173627.5021 | Deviance change=0.002541
+    Maximum b parameter change=0.000216 
+...........................................................
+Iteration 95     2022-04-30 21:25:37 
+   Deviance=173627.4997 | Deviance change=0.002378
+    Maximum b parameter change=0.000209 
+...........................................................
+Iteration 96     2022-04-30 21:25:37 
+   Deviance=173627.4975 | Deviance change=0.002225
+    Maximum b parameter change=0.000202 
+...........................................................
+Iteration 97     2022-04-30 21:25:37 
+   Deviance=173627.4954 | Deviance change=0.002083
+    Maximum b parameter change=0.000196 
+...........................................................
+Iteration 98     2022-04-30 21:25:37 
+   Deviance=173627.4935 | Deviance change=0.001949
+    Maximum b parameter change=0.000189 
+...........................................................
+Iteration 99     2022-04-30 21:25:38 
+   Deviance=173627.4917 | Deviance change=0.001824
+    Maximum b parameter change=0.000183 
+...........................................................
+Iteration 100     2022-04-30 21:25:38 
+   Deviance=173627.49 | Deviance change=0.001707
+    Maximum b parameter change=0.000177 
+...........................................................
+Iteration 101     2022-04-30 21:25:38 
+   Deviance=173627.4884 | Deviance change=0.001598
+    Maximum b parameter change=0.000171 
+...........................................................
+Iteration 102     2022-04-30 21:25:38 
+   Deviance=173627.4869 | Deviance change=0.001495
+    Maximum b parameter change=0.000166 
+...........................................................
+Iteration 103     2022-04-30 21:25:38 
+   Deviance=173627.4855 | Deviance change=0.001399
+    Maximum b parameter change=0.00016 
+...........................................................
+Iteration 104     2022-04-30 21:25:38 
+   Deviance=173627.4842 | Deviance change=0.001309
+    Maximum b parameter change=0.000155 
+...........................................................
+Iteration 105     2022-04-30 21:25:38 
+   Deviance=173627.4829 | Deviance change=0.001225
+    Maximum b parameter change=0.00015 
+...........................................................
+Iteration 106     2022-04-30 21:25:38 
+   Deviance=173627.4818 | Deviance change=0.001147
+    Maximum b parameter change=0.000145 
+...........................................................
+Iteration 107     2022-04-30 21:25:38 
+   Deviance=173627.4807 | Deviance change=0.001073
+    Maximum b parameter change=0.000141 
+...........................................................
+Iteration 108     2022-04-30 21:25:38 
+   Deviance=173627.4797 | Deviance change=0.001004
+    Maximum b parameter change=0.000136 
+...........................................................
+Iteration 109     2022-04-30 21:25:38 
+   Deviance=173627.4788 | Deviance change=0.00094
+    Maximum b parameter change=0.000132 
+...........................................................
+Iteration 110     2022-04-30 21:25:38 
+   Deviance=173627.4779 | Deviance change=0.00088
+    Maximum b parameter change=0.000127 
+...........................................................
+Iteration 111     2022-04-30 21:25:38 
+   Deviance=173627.4771 | Deviance change=0.000823
+    Maximum b parameter change=0.000123 
+...........................................................
+Iteration 112     2022-04-30 21:25:38 
+   Deviance=173627.4763 | Deviance change=0.00077
+    Maximum b parameter change=0.000119 
+...........................................................
+Iteration 113     2022-04-30 21:25:38 
+   Deviance=173627.4756 | Deviance change=0.000721
+    Maximum b parameter change=0.000115 
+...........................................................
+Iteration 114     2022-04-30 21:25:38 
+   Deviance=173627.4749 | Deviance change=0.000675
+    Maximum b parameter change=0.000112 
+...........................................................
+Iteration 115     2022-04-30 21:25:38 
+   Deviance=173627.4743 | Deviance change=0.000631
+    Maximum b parameter change=0.000108 
+...........................................................
+Iteration 116     2022-04-30 21:25:38 
+   Deviance=173627.4737 | Deviance change=0.000591
+    Maximum b parameter change=0.000104 
+...........................................................
+Iteration 117     2022-04-30 21:25:38 
+   Deviance=173627.4731 | Deviance change=0.000553
+    Maximum b parameter change=0.000101 
+...........................................................
+Iteration 118     2022-04-30 21:25:38 
+   Deviance=173627.4726 | Deviance change=0.000517
+    Maximum b parameter change=9.8e-05 
+------------------------------------------------------------
+Start: 2022-04-30 21:25:33 
+End: 2022-04-30 21:25:38 
+Time difference of 5.185556 secs
+Difference: 5.185556 
+------------------------------------------------------------</code></pre>
+<pre><code>
+WLE Reliability= 0.953 </code></pre>
+<pre><code>Yen&#39;s Q3 Statistic based on an estimated theta score 
+*** 66 Items | 2145 item pairs
+*** Q3 Descriptives
+     M     SD    Min    10%    25%    50%    75%    90%    Max 
+-0.015  0.063 -0.148 -0.076 -0.052 -0.023  0.010  0.047  0.649 </code></pre>
+<div class="figure"><span style="display:block;" id="fig:q3-plot"></span>
+<img src="_main_files/figure-html/q3-plot-1.png" alt="Correlations matrix of Item Residuals" width="672" />
+<p class="caption">
+Figure 3: Correlations matrix of Item Residuals
+</p>
+</div>
+<blockquote>
+<p>(Some sample language) “Using these criteria, we found XX items in possession of local dependence. The items that had the highest raw residual correlations had negative signs and no positive residual correlation. In other words, the assumption of local independence in this study (was)/(was not) met.”</p>
+</blockquote>
+<p>Figure <a href="item-analysis.html#fig:q3-plot">3</a> is a plot of the matrix of correlations between item residuals.</p>
+<p><strong>Summary</strong></p>
+<p>These analyses offer mixed evidence of assumption satisfaction. The model explains 44% of the variance of the item responses. But we see three contrasts of the standardized residuals above the threshold of 2. In the Q3 plot we see a few strong correlations of item correlations.</p>
+</div>
+</div>
+<div id="rating-scale-model-rsm" class="section level3 hasAnchor">
+<h3>Rating Scale Model (RSM)<a href="item-analysis.html#rating-scale-model-rsm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The first IRT model is the Rating Scale Model (RSM) (citation). The model is an extension of the Rasch model (designed for dichotomous items) for use with polytomous items based on rating scales such as Likert scales of agreement <span class="citation">(<a href="references.html#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>)</span> and estimates the probability of choosing from among several response options given an examinee’s location on the latent trait (level of lifetime exposure to spiritual abuse). More specifically, the increase in difficulty involved in choosing from between two response categories is called a “step parameter”. The RSM assumes that all items use the same rating scale. As a Rasch model, it assumes that all items discriminate equally well and thus fixes the discrimination parameter to 1. The model also fixes the step parameters of all the items on the premise that the response categories are the same for all items. What the RSM frees to vary are the item difficulty parameters. Thus the focus of the RSM is the differences in item difficulties. If all of these assumptions are true – that the items and their rating scales differentiate examinees equally well and differ only in overall difficulty – then the observed pattern of item responses will closely match the pattern of items responses expected by the RSM and the model will fit.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">a1</th>
+<th align="right">b1</th>
+<th align="right">b2</th>
+<th align="right">b3</th>
+<th align="right">b4</th>
+<th align="right">c</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>EQ46…Treated.as.less.than.because.of.my.skin.color</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-2.78</td>
+</tr>
+<tr class="even">
+<td>EQ41…Denied.opportunities.to.serve.because.of.my.sexual.orientation</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-1.90</td>
+</tr>
+<tr class="odd">
+<td>EQ17…Treated.as.less.than.b.c.my.sexual.orientation</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-1.73</td>
+</tr>
+<tr class="even">
+<td>EQ47…Medical.care.being.postponed.withheld.for.religious.reasons</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-1.40</td>
+</tr>
+<tr class="odd">
+<td>EQ60…Encouraged.by.leader.to.stay.in.abusive.marriage</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-1.37</td>
+</tr>
+<tr class="even">
+<td>EQ55…Hearing.cultural.references.in.sermons.unfamiliar.to.my.race.eth..subculture</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-1.19</td>
+</tr>
+<tr class="odd">
+<td>IQ72…Feeling.as.if.God.harmed.me.directly</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-1.11</td>
+</tr>
+<tr class="even">
+<td>IQ81…Nightmares.about.my.negative.religious.experiences</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.91</td>
+</tr>
+<tr class="odd">
+<td>EQ10…Asked.to.give.up.personal.goals.by.pastor</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.82</td>
+</tr>
+<tr class="even">
+<td>EQ65…Cut.off.shunned.by.more.religious.family.members</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.81</td>
+</tr>
+<tr class="odd">
+<td>EQ26…Pressured.to.forgive.abuser.while.abuse.was.ongoing</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.76</td>
+</tr>
+<tr class="even">
+<td>EQ24…Expected.to.consult.pastor.leader.before.making.non.religious.decisions</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.74</td>
+</tr>
+<tr class="odd">
+<td>EQ23…Prayer.replacing.needed.medical.interventions</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.69</td>
+</tr>
+<tr class="even">
+<td>EQ27…Denied.opportunities.to.serve.b.c.of.my.gender</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.67</td>
+</tr>
+<tr class="odd">
+<td>EQ31…Shunned.ignored.by.pastor.church.group</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.56</td>
+</tr>
+<tr class="even">
+<td>EQ30…Deterred.from.seeking.mental.health.treatment.counseling.medication</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.54</td>
+</tr>
+<tr class="odd">
+<td>EQ43…Shamed.by.pastor.group.for.poor.spiritual.moral.performance</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.53</td>
+</tr>
+<tr class="even">
+<td>IQ68…Anxiety.attacks.triggered.by.religious.stimuli</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.53</td>
+</tr>
+<tr class="odd">
+<td>EQ52…Blamed.for.harm.I.suffered.rather.than.blaming.who.harmed.me</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.49</td>
+</tr>
+<tr class="even">
+<td>IQ70…Feeling.betrayed.by.God</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.47</td>
+</tr>
+<tr class="odd">
+<td>EQ49…Leadership.group.protecting.and.elevating.abusive.individuals</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.44</td>
+</tr>
+<tr class="even">
+<td>EQ16…Church.community.abandoning.me.in.difficult.time</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.43</td>
+</tr>
+<tr class="odd">
+<td>EQ20…Members.pressured.to.give.money.despite.financial.hardship</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.41</td>
+</tr>
+<tr class="even">
+<td>EQ57…Developing.mental.physical.ailments.from.conforming.to.group.leader.s.expectation</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.40</td>
+</tr>
+<tr class="odd">
+<td>EQ62…Scripture.used.to.justify.physical.violence</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.40</td>
+</tr>
+<tr class="even">
+<td>EQ59…Pastor.group.blame.victim.for.their.abuse</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.39</td>
+</tr>
+<tr class="odd">
+<td>EQ21…Taught.I.would.risk.Hell.if.left.my.church.group</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.36</td>
+</tr>
+<tr class="even">
+<td>IQ82…Having.trouble.navigating.life.outside.my.church.community</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.32</td>
+</tr>
+<tr class="odd">
+<td>EQ50…Treated.as.less.than.because.of.my.gender</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.32</td>
+</tr>
+<tr class="even">
+<td>EQ64…Witnessing.women.pressured.to.stay.in.unfaithful.abusive.marriages</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.30</td>
+</tr>
+<tr class="odd">
+<td>EQ28…Leadershi.group.protecting.abusive.individuals</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.29</td>
+</tr>
+<tr class="even">
+<td>EQ40…Threatening.Divine.punishment.to.keep.group.members.in.line</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.27</td>
+</tr>
+<tr class="odd">
+<td>EQ63…Shamed.by.pastor.group.for.raising.questions.or.concerns</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.24</td>
+</tr>
+<tr class="even">
+<td>EQ19…Behavior.excessively.monitored.by.pastor.group</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.22</td>
+</tr>
+<tr class="odd">
+<td>EQ51…Extreme.pressure.to.be.pastor.missionary.spiritual.leader</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.21</td>
+</tr>
+<tr class="even">
+<td>EQ53…Scripture.used.to.justify.abusive.parent.child.behavior</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.18</td>
+</tr>
+<tr class="odd">
+<td>IQ79…Distrust.of.God</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.16</td>
+</tr>
+<tr class="even">
+<td>EQ34…Scripture.used.to.justify.physical.punishment.severe.discipline</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.07</td>
+</tr>
+<tr class="odd">
+<td>EQ29…Feeling.special.when.in.pastor.s.good.graces..otherwise.ignored</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.06</td>
+</tr>
+<tr class="even">
+<td>IQ73…Self.hatred.or.self.loathing</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.04</td>
+</tr>
+<tr class="odd">
+<td>EQ11…Disagree.w.pastor.portrayed.as.evil</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">-0.01</td>
+</tr>
+<tr class="even">
+<td>EQ7…Pastor.speaking.on.God.s.behalf</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="odd">
+<td>EQ58…Terror.horror.used.to.motivate.religious.decisions</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">0.02</td>
+</tr>
+<tr class="even">
+<td>EQ42…Seeing.others.shamed.shunned.by.pastor.leader.group</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">0.06</td>
+</tr>
+<tr class="odd">
+<td>EQ44…Love.acceptance.offered.only.for.high.spiritual.moral.performance</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">0.09</td>
+</tr>
+<tr class="even">
+<td>EQ56…Being.made.to.feel.I.was.crazy.weird.for.doubts.questions</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">0.21</td>
+</tr>
+<tr class="odd">
+<td>EQ18…Church.pastor.discourage.critical.thinking</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">0.22</td>
+</tr>
+<tr class="even">
+<td>IQ78…A.lack.of.self.worth</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">0.24</td>
+</tr>
+<tr class="odd">
+<td>EQ45…Developmentally.inappropriate.anxious.Hell.Satan.demons.taught.to.young.children</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">0.24</td>
+</tr>
+<tr class="even">
+<td>IQ74…Sadness.over.the.loss.of.my.faith.religious.community</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">0.26</td>
+</tr>
+<tr class="odd">
+<td>EQ36…Mental.physical.problems.interpreted.as.spiritual.moral.weakness</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">0.26</td>
+</tr>
+<tr class="even">
+<td>EQ61…Developmentally.inappropriate.anxious.end.times.descriptions.taught.to.young.children</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">0.26</td>
+</tr>
+<tr class="odd">
+<td>EQ32…Feeling.unable.to.express.unhappiness</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">0.28</td>
+</tr>
+<tr class="even">
+<td>IQ76…Feeling.I.wasted.years.of.my.life.in.a.church.set.of.beliefs</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">0.29</td>
+</tr>
+<tr class="odd">
+<td>EQ54…Being.explicitly.taught.to.distrust.my.intuitions</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">0.40</td>
+</tr>
+<tr class="even">
+<td>EQ37…Made.to.feel.less.spiritually.mature.than.pastor.leadership</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">0.42</td>
+</tr>
+<tr class="odd">
+<td>EQ38…Unrealistic.demands.placed.on.my.moral.religious.behavior</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">0.43</td>
+</tr>
+<tr class="even">
+<td>IQ71…Avoiding.religious.activities.settings.to.reduce.distressing.feelings</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">0.47</td>
+</tr>
+<tr class="odd">
+<td>IQ69…Lack.of.spiritual.direction.purpose</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">0.48</td>
+</tr>
+<tr class="even">
+<td>IQ80…Feeling.isolated</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">0.54</td>
+</tr>
+<tr class="odd">
+<td>EQ39…Made.to.feel.shame.over.natural.sexual.desires..not.actions.</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">0.55</td>
+</tr>
+<tr class="even">
+<td>IQ77…Anger.upon.reflecting.on.negative.religious.experiences</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">0.55</td>
+</tr>
+<tr class="odd">
+<td>EQ35…Taught.to.distrust.my.emotions</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">0.62</td>
+</tr>
+<tr class="even">
+<td>EQ25…Feeling.unable.to.raise.questions.and.issues</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">0.69</td>
+</tr>
+<tr class="odd">
+<td>EQ66…Others.treated.as.less.than.due.to.their.sexual.orientation</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">0.77</td>
+</tr>
+<tr class="even">
+<td>EQ22…Expected.to.follow.pastor.leader.rules.re..dating.marriage.sex</td>
+<td align="right">1</td>
+<td align="right">0.13</td>
+<td align="right">-0.11</td>
+<td align="right">0.78</td>
+<td align="right">1.37</td>
+<td align="right">0.83</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Item parameters</strong>. Table <a href="#tab:rsm-items"><strong>??</strong></a> reports the item parameters estimated by the RSM for all 66 SHAS items. The first column shows the discrimination parameter, fixed to “1” for all items on the premise that the items discriminate equally well. The subsequent columns (b1 to b4) report the estimated thresholds (or step parameters). Because the SHAS items all used the same 5-point Likert scale, and because the RSM assumes this scale discriminated examinees equally well, these four threshold parameters are the same for each item.</p>
+<p>What does vary between items, in this model, is the difficulty parameter, shown in the “c” column, which represents the location of the item on the continuum of the latent trait: Does the item represent the “most” spiritual abuse? The least? Or somewhere in the middle?</p>
+<div class="figure"><span style="display:block;" id="fig:rsm-item-diff"></span>
+<img src="_main_files/figure-html/rsm-item-diff-1.png" alt="Distribution of Item Difficulty" width="672" />
+<p class="caption">
+Figure 4: Distribution of Item Difficulty
+</p>
+</div>
+<p>Figure <a href="item-analysis.html#fig:rsm-item-diff">4</a> presents a histogram of the item difficult parameters. They are normally distributed but there are extremes.</p>
+<p><strong>Item plots</strong>. Item plots help show this information visually. The following figures are plots of the <em>option characteristic curves</em> (also called category characteristic curves) of the items.</p>
+<p><img src="_main_files/figure-html/rsm-a-1.png" width="672" /></p>
+<p>In these plots, the x axis is the scale of the latent trait (lifetime exposure to spiritual abuse) expressed in logits ranging from -6 to +6. The y axis is the probability of selecting a given response (such as “Always”) at each level of latent trait (overall lifetime exposure to spiritual abuse). The blue line is the probability of selecting “Never” for examinees ranging from low to high lifetime spiritual abuse. The reversal is that examinees just below zero are more likely to select “Never” than “Once or twice.” In addition, examinees with above-average lifetime exposure to spiritual abuse were more likely to select “Always” than “Often”. The item parameter statistics shown Table <a href="#tab:pcm-items"><strong>??</strong></a> indicate that this issue applies to 43 items. These items might contribute more reliable information if these response categories were collapsed.</p>
+<p><img src="_main_files/figure-html/rsm-item-info-1.png" width="672" /></p>
+<blockquote>
+<p>In polytomous models, the amount of information an item contributes depends on its slope parameter—–the larger the parameter, the more information the item provides. Further, the farther apart the location parameters (b1, b2, b3, b4), the more information the item provides. Typically, an optimally informative polytomous item will have a large location and broad category coverage (as indicated by location parameters) over theta.</p>
+</blockquote>
+<blockquote>
+<p>Information functions are best illustrated by the item information curves for each item as displayed above. These curves show that item information is not a static quantity, rather, it is conditional on levels of theta. The relationship between slopes and information is illustrated here. Item 3 had the lowest slope and is, therefore, the least informative item.On the other hand, Item 9 had the highest slope and provides the highest amount of statistical information. Items tended to provide the most information between -2.5 to + 1 theta range. The “wavy” form of the curves reflects the fact that item information is a composite of category information, that is, each category has an information function which is then combined to form the item information function.</p>
+</blockquote>
+<p><img src="_main_files/figure-html/rsm-itmplot-emp-1.png" width="672" /></p>
+<p><strong>Item fit statistics</strong>. Fit statistics gauge the extent to which the observed pattern of item responses fit the IRT model (Rasch, partial credit, etc.). They do this by means of chi-square statistics which examine the cumulative difference the observed pattern of item responses and the pattern of item respones that the model would expect. Two fit statistics commonly used in IRT modesl are the infit mean square (MNSQ) and the outfit mean square (MNSQ) <span class="citation">(<a href="references.html#ref-BondFox2015" role="doc-biblioref">Bond and Fox 2015</a>)</span>. The infit statistic places greater emphasis on unexpected responses that are close to the examinees and item location. The outfit is sensitive to unexpected responses that are far from the location. The expected value of infit or outfit for each item is 1.0, with a range of acceptable values ranging from 0.5 to 1.5. Values outside these boundaries indicate a lack of fit between items and the model.</p>
+<table>
+<caption><span id="tab:rsm-item-fit">Table 1: </span>Rating Scale Model (RSM) - Misfitting Items</caption>
+<thead>
+<tr class="header">
+<th align="left">item</th>
+<th align="right">outfit</th>
+<th align="right">z.outfit</th>
+<th align="right">infit</th>
+<th align="right">z.infit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">EQ17…Treated.as.less.than.b.c.my.sexual.orientation</td>
+<td align="right">1.89</td>
+<td align="right">10.09</td>
+<td align="right">2.26</td>
+<td align="right">22.15</td>
+</tr>
+<tr class="even">
+<td align="left">EQ27…Denied.opportunities.to.serve.b.c.of.my.gender</td>
+<td align="right">2.02</td>
+<td align="right">18.55</td>
+<td align="right">1.77</td>
+<td align="right">22.71</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ41…Denied.opportunities.to.serve.because.of.my.sexual.orientation</td>
+<td align="right">2.63</td>
+<td align="right">14.93</td>
+<td align="right">2.26</td>
+<td align="right">20.18</td>
+</tr>
+<tr class="even">
+<td align="left">EQ46…Treated.as.less.than.because.of.my.skin.color</td>
+<td align="right">2.37</td>
+<td align="right">8.95</td>
+<td align="right">1.89</td>
+<td align="right">9.79</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ50…Treated.as.less.than.because.of.my.gender</td>
+<td align="right">1.68</td>
+<td align="right">15.51</td>
+<td align="right">1.73</td>
+<td align="right">23.36</td>
+</tr>
+<tr class="even">
+<td align="left">EQ55…Hearing.cultural.references.in.sermons.unfamiliar.to.my.race.eth..subculture</td>
+<td align="right">2.68</td>
+<td align="right">21.37</td>
+<td align="right">1.62</td>
+<td align="right">15.75</td>
+</tr>
+</tbody>
+</table>
+<p>All but six of the 66 items had infit and outfit statistics within the acceptable range from 0.5 to 1.5. Statistics for these six misfitting items are presented here in Table <a href="item-analysis.html#tab:rsm-item-fit">1</a>. The large outfit values mean the observed patterns of responses to these items differed substantially from the patterns of responses expected by the PCM. These items capture the experiences of women, people of color, and LGBTQ persons.</p>
+<p><strong>Model fit</strong>. To assess the overall fit of the model to the item response data we use two statistics. The is the Root Mean Square Error of Approximation (RMSEA). The suggested cutoff for RMSEA is .06. The second is the CFI. The suggested cutoff for this is .95.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">M2</th>
+<th align="right">df</th>
+<th align="right">p</th>
+<th align="right">RMSEA</th>
+<th align="right">RMSEA_5</th>
+<th align="right">RMSEA_95</th>
+<th align="right">TLI</th>
+<th align="right">CFI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>stats</td>
+<td align="right">61561.13</td>
+<td align="right">2339</td>
+<td align="right">0</td>
+<td align="right">0.09</td>
+<td align="right">0.09</td>
+<td align="right">0.09</td>
+<td align="right">0.96</td>
+<td align="right">0.95</td>
+</tr>
+</tbody>
+</table>
+<p>Table <a href="#tab:rsm-fit"><strong>??</strong></a> reports the model fit statistics for the SHAS items. The obtained RMSEA value = .092 (95% CI[.092, .093]) exceeds the cutoff of .06. The CFI = .953 meets the recommended .95 threshold. Together these statistics offer weak evidence that the RSM fits the SHAS items.</p>
+</div>
 <div id="partial-credit-model-pcm" class="section level3 hasAnchor">
 <h3>Partial Credit Model (PCM)<a href="item-analysis.html#partial-credit-model-pcm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The second model we examine is the Partial Credit Model (PCM) <span class="citation">(<a href="references.html#ref-Masters1982" role="doc-biblioref">Masters 1982</a>)</span>. This is a polytomous item response model belonging to the Rasch family. This means that it extends the Rasch model, which is based on dichotomous item responses (1=correct, 0=incorrect), by considering the probability of choosing from among several response options such as those typically presented in Likert scales of agreement. The number of response categories in each item may vary <span class="citation">(<a href="references.html#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>)</span>. It follows that the PCM contains m (m + 1 being the number of response categories) threshold parameters, and each threshold parameter marks a category intersection <span class="citation">(<a href="references.html#ref-Masters1982" role="doc-biblioref">Masters 1982</a>)</span>. Threshold sometimes refers to “step difficulty” or “step parameter” and illustrates the point on the latent trait continuum (e.g., spiritual abuse) where a response in category k becomes more likely than a response in category k – 1 (de Ayala, 2009). The PCM provides scores for items, persons, and step parameters on a logit scale. We begin by loading the <code>mirt</code> library and estimating the model on the data from the 66 SHAS items. This model constrains the slopes to 1 and freely estimates the variance parameters.</p>
+<p>The second model we consider is the Partial Credit Model (PCM) <span class="citation">(<a href="references.html#ref-Masters1982" role="doc-biblioref">Masters 1982</a>)</span>. This is a polytomous item response model belonging to the Rasch family. This means that it extends the Rasch model, which is based on dichotomous item responses (1=correct, 0=incorrect), by considering the probability of choosing from among several response options such as those typically presented in Likert scales of agreement. The number of response categories in each item may vary <span class="citation">(<a href="references.html#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>)</span>. It follows that the PCM contains m (m + 1 being the number of response categories) threshold parameters, and each threshold parameter marks a category intersection <span class="citation">(<a href="references.html#ref-Masters1982" role="doc-biblioref">Masters 1982</a>)</span>. Threshold sometimes refers to “step difficulty” or “step parameter” and illustrates the point on the latent trait continuum (e.g., spiritual abuse) where a response in category k becomes more likely than a response in category k – 1 (de Ayala, 2009). The PCM provides scores for items, persons, and step parameters on a logit scale. We begin by loading the <code>mirt</code> library and estimating the model on the data from the 66 SHAS items. This model constrains the slopes to 1 and freely estimates the variance parameters.</p>
 <table style="width:100%;">
-<caption><span id="tab:pcm-items">Table 1: </span>Partial Credit Model Item Parameters - Items with Category Threshold Reversals</caption>
 <colgroup>
 <col width="78%" />
 <col width="2%" />
@@ -285,361 +1532,352 @@ div.csl-indent {
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">EQ7 - Pastor speaking on God’s behalf</td>
+<td align="left">EQ7…Pastor.speaking.on.God.s.behalf</td>
 <td align="right">1</td>
-<td align="right">0.23</td>
-<td align="right">0.08</td>
-<td align="right">0.74</td>
-<td align="right">1.11</td>
-</tr>
-<tr class="even">
-<td align="left">EQ10 - Asked to give up personal goals by pastor</td>
-<td align="right">1</td>
-<td align="right">1.26</td>
-<td align="right">0.67</td>
-<td align="right">1.47</td>
-<td align="right">1.78</td>
-</tr>
-<tr class="odd">
-<td align="left">EQ17 - Treated as less than b/c my sexual orientation</td>
-<td align="right">1</td>
-<td align="right">3.93</td>
-<td align="right">0.39</td>
-<td align="right">1.20</td>
-<td align="right">1.18</td>
-</tr>
-<tr class="even">
-<td align="left">EQ18 - Church/pastor discourage critical thinking</td>
-<td align="right">1</td>
-<td align="right">-0.15</td>
-<td align="right">-0.39</td>
-<td align="right">0.71</td>
-<td align="right">1.28</td>
-</tr>
-<tr class="odd">
-<td align="left">EQ19 - Behavior excessively monitored by pastor/group</td>
-<td align="right">1</td>
-<td align="right">0.42</td>
 <td align="right">0.20</td>
-<td align="right">0.94</td>
-<td align="right">1.69</td>
+<td align="right">0.11</td>
+<td align="right">0.73</td>
+<td align="right">1.09</td>
 </tr>
 <tr class="even">
-<td align="left">EQ20 - Members pressured to give money despite financial hardship</td>
+<td align="left">EQ10…Asked.to.give.up.personal.goals.by.pastor</td>
 <td align="right">1</td>
-<td align="right">0.97</td>
-<td align="right">0.37</td>
+<td align="right">1.25</td>
+<td align="right">0.67</td>
+<td align="right">1.44</td>
+<td align="right">1.77</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ17…Treated.as.less.than.b.c.my.sexual.orientation</td>
+<td align="right">1</td>
+<td align="right">3.94</td>
+<td align="right">0.32</td>
+<td align="right">1.18</td>
+<td align="right">1.20</td>
+</tr>
+<tr class="even">
+<td align="left">EQ18…Church.pastor.discourage.critical.thinking</td>
+<td align="right">1</td>
+<td align="right">-0.19</td>
+<td align="right">-0.38</td>
+<td align="right">0.68</td>
+<td align="right">1.29</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ19…Behavior.excessively.monitored.by.pastor.group</td>
+<td align="right">1</td>
+<td align="right">0.41</td>
+<td align="right">0.19</td>
+<td align="right">0.90</td>
+<td align="right">1.67</td>
+</tr>
+<tr class="even">
+<td align="left">EQ20…Members.pressured.to.give.money.despite.financial.hardship</td>
+<td align="right">1</td>
+<td align="right">0.96</td>
+<td align="right">0.34</td>
 <td align="right">0.99</td>
-<td align="right">1.24</td>
+<td align="right">1.23</td>
 </tr>
 <tr class="odd">
-<td align="left">EQ21 - Taught I would risk Hell if left my church/group</td>
+<td align="left">EQ21…Taught.I.would.risk.Hell.if.left.my.church.group</td>
 <td align="right">1</td>
-<td align="right">1.11</td>
-<td align="right">0.38</td>
-<td align="right">0.93</td>
-<td align="right">0.78</td>
+<td align="right">1.08</td>
+<td align="right">0.39</td>
+<td align="right">0.94</td>
+<td align="right">0.74</td>
 </tr>
 <tr class="even">
-<td align="left">EQ22 - Expected to follow pastor/leader rules re: dating/marriage/sex</td>
+<td align="left">EQ22…Expected.to.follow.pastor.leader.rules.re..dating.marriage.sex</td>
 <td align="right">1</td>
-<td align="right">-0.39</td>
-<td align="right">-0.61</td>
-<td align="right">-0.27</td>
-<td align="right">0.38</td>
+<td align="right">-0.41</td>
+<td align="right">-0.59</td>
+<td align="right">-0.29</td>
+<td align="right">0.33</td>
 </tr>
 <tr class="odd">
-<td align="left">EQ23 - Prayer replacing needed medical interventions</td>
+<td align="left">EQ23…Prayer.replacing.needed.medical.interventions</td>
 <td align="right">1</td>
-<td align="right">0.77</td>
-<td align="right">0.64</td>
-<td align="right">1.62</td>
-<td align="right">2.19</td>
+<td align="right">0.74</td>
+<td align="right">0.65</td>
+<td align="right">1.60</td>
+<td align="right">2.15</td>
 </tr>
 <tr class="even">
-<td align="left">EQ24 - Expected to consult pastor/leader before making non-religious decisions</td>
+<td align="left">EQ24…Expected.to.consult.pastor.leader.before.making.non.religious.decisions</td>
 <td align="right">1</td>
-<td align="right">1.13</td>
+<td align="right">1.10</td>
 <td align="right">0.47</td>
 <td align="right">1.55</td>
 <td align="right">1.98</td>
 </tr>
 <tr class="odd">
-<td align="left">EQ26 - Pressured to forgive abuser while abuse was ongoing</td>
+<td align="left">EQ26…Pressured.to.forgive.abuser.while.abuse.was.ongoing</td>
 <td align="right">1</td>
-<td align="right">1.41</td>
+<td align="right">1.40</td>
 <td align="right">0.74</td>
-<td align="right">1.03</td>
-<td align="right">1.55</td>
+<td align="right">1.01</td>
+<td align="right">1.51</td>
 </tr>
 <tr class="even">
-<td align="left">EQ27 - Denied opportunities to serve b/c of my gender</td>
+<td align="left">EQ27…Denied.opportunities.to.serve.b.c.of.my.gender</td>
 <td align="right">1</td>
-<td align="right">1.64</td>
-<td align="right">0.36</td>
-<td align="right">1.09</td>
-<td align="right">1.20</td>
-</tr>
-<tr class="odd">
-<td align="left">EQ29 - Feeling special when in pastor’s good graces; otherwise ignored</td>
-<td align="right">1</td>
-<td align="right">0.12</td>
-<td align="right">0.04</td>
-<td align="right">0.88</td>
-<td align="right">1.58</td>
-</tr>
-<tr class="even">
-<td align="left">EQ30 - Deterred from seeking mental health treatment/counseling/medication</td>
-<td align="right">1</td>
-<td align="right">0.89</td>
-<td align="right">0.38</td>
-<td align="right">1.23</td>
-<td align="right">1.92</td>
-</tr>
-<tr class="odd">
-<td align="left">EQ32 - Feeling unable to express unhappiness</td>
-<td align="right">1</td>
-<td align="right">-0.30</td>
-<td align="right">-0.53</td>
-<td align="right">0.69</td>
-<td align="right">1.53</td>
-</tr>
-<tr class="even">
-<td align="left">EQ34 - Scripture used to justify physical punishment/severe discipline</td>
-<td align="right">1</td>
-<td align="right">0.10</td>
-<td align="right">0.04</td>
-<td align="right">0.94</td>
-<td align="right">1.57</td>
-</tr>
-<tr class="odd">
-<td align="left">EQ35 - Taught to distrust my emotions</td>
-<td align="right">1</td>
-<td align="right">-0.62</td>
-<td align="right">-0.70</td>
-<td align="right">0.29</td>
-<td align="right">0.82</td>
-</tr>
-<tr class="even">
-<td align="left">EQ38 - Unrealistic demands placed on my moral/religious behavior</td>
-<td align="right">1</td>
-<td align="right">-0.43</td>
-<td align="right">-0.49</td>
-<td align="right">0.52</td>
-<td align="right">0.92</td>
-</tr>
-<tr class="odd">
-<td align="left">EQ39 - Made to feel shame over natural sexual desires (not actions)</td>
-<td align="right">1</td>
-<td align="right">-0.16</td>
-<td align="right">-0.62</td>
-<td align="right">0.29</td>
-<td align="right">0.65</td>
-</tr>
-<tr class="even">
-<td align="left">EQ40 - Threatening Divine punishment to keep group members in line</td>
-<td align="right">1</td>
-<td align="right">0.66</td>
-<td align="right">0.21</td>
-<td align="right">1.09</td>
+<td align="right">1.62</td>
+<td align="right">0.37</td>
+<td align="right">1.08</td>
 <td align="right">1.17</td>
 </tr>
 <tr class="odd">
-<td align="left">EQ41 - Denied opportunities to serve because of my sexual orientation</td>
+<td align="left">EQ29…Feeling.special.when.in.pastor.s.good.graces..otherwise.ignored</td>
+<td align="right">1</td>
+<td align="right">0.09</td>
+<td align="right">0.03</td>
+<td align="right">0.88</td>
+<td align="right">1.52</td>
+</tr>
+<tr class="even">
+<td align="left">EQ30…Deterred.from.seeking.mental.health.treatment.counseling.medication</td>
+<td align="right">1</td>
+<td align="right">0.85</td>
+<td align="right">0.40</td>
+<td align="right">1.21</td>
+<td align="right">1.89</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ32…Feeling.unable.to.express.unhappiness</td>
+<td align="right">1</td>
+<td align="right">-0.35</td>
+<td align="right">-0.53</td>
+<td align="right">0.65</td>
+<td align="right">1.52</td>
+</tr>
+<tr class="even">
+<td align="left">EQ34…Scripture.used.to.justify.physical.punishment.severe.discipline</td>
+<td align="right">1</td>
+<td align="right">0.07</td>
+<td align="right">0.04</td>
+<td align="right">0.93</td>
+<td align="right">1.52</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ35…Taught.to.distrust.my.emotions</td>
+<td align="right">1</td>
+<td align="right">-0.65</td>
+<td align="right">-0.71</td>
+<td align="right">0.28</td>
+<td align="right">0.80</td>
+</tr>
+<tr class="even">
+<td align="left">EQ38…Unrealistic.demands.placed.on.my.moral.religious.behavior</td>
+<td align="right">1</td>
+<td align="right">-0.49</td>
+<td align="right">-0.49</td>
+<td align="right">0.49</td>
+<td align="right">0.94</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ39…Made.to.feel.shame.over.natural.sexual.desires..not.actions.</td>
+<td align="right">1</td>
+<td align="right">-0.19</td>
+<td align="right">-0.61</td>
+<td align="right">0.25</td>
+<td align="right">0.63</td>
+</tr>
+<tr class="even">
+<td align="left">EQ40…Threatening.Divine.punishment.to.keep.group.members.in.line</td>
+<td align="right">1</td>
+<td align="right">0.64</td>
+<td align="right">0.20</td>
+<td align="right">1.08</td>
+<td align="right">1.17</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ41…Denied.opportunities.to.serve.because.of.my.sexual.orientation</td>
+<td align="right">1</td>
+<td align="right">3.87</td>
+<td align="right">0.61</td>
+<td align="right">1.45</td>
+<td align="right">1.09</td>
+</tr>
+<tr class="even">
+<td align="left">EQ44…Love.acceptance.offered.only.for.high.spiritual.moral.performance</td>
+<td align="right">1</td>
+<td align="right">-0.03</td>
+<td align="right">-0.18</td>
+<td align="right">0.67</td>
+<td align="right">1.53</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ46…Treated.as.less.than.because.of.my.skin.color</td>
 <td align="right">1</td>
 <td align="right">3.89</td>
-<td align="right">0.65</td>
-<td align="right">1.48</td>
-<td align="right">1.10</td>
+<td align="right">1.22</td>
+<td align="right">2.69</td>
+<td align="right">2.41</td>
 </tr>
 <tr class="even">
-<td align="left">EQ44 - Love/acceptance offered only for high spiritual/moral performance</td>
+<td align="left">EQ47…Medical.care.being.postponed.withheld.for.religious.reasons</td>
 <td align="right">1</td>
-<td align="right">-0.01</td>
-<td align="right">-0.17</td>
-<td align="right">0.70</td>
+<td align="right">1.55</td>
+<td align="right">1.25</td>
+<td align="right">2.51</td>
+<td align="right">2.25</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ50…Treated.as.less.than.because.of.my.gender</td>
+<td align="right">1</td>
 <td align="right">1.57</td>
-</tr>
-<tr class="odd">
-<td align="left">EQ45 - Developmentally-inappropriate/anxious Hell/Satan/demons taught to young children</td>
-<td align="right">1</td>
-<td align="right">-0.10</td>
-<td align="right">-0.12</td>
-<td align="right">0.57</td>
-<td align="right">0.92</td>
-</tr>
-<tr class="even">
-<td align="left">EQ46 - Treated as less than because of my skin color</td>
-<td align="right">1</td>
-<td align="right">3.92</td>
-<td align="right">1.19</td>
-<td align="right">2.64</td>
-<td align="right">2.40</td>
-</tr>
-<tr class="odd">
-<td align="left">EQ47 - Medical care being postponed/withheld for religious reasons</td>
-<td align="right">1</td>
-<td align="right">1.56</td>
-<td align="right">1.29</td>
-<td align="right">2.47</td>
-<td align="right">2.21</td>
-</tr>
-<tr class="even">
-<td align="left">EQ50 - Treated as less than because of my gender</td>
-<td align="right">1</td>
-<td align="right">1.58</td>
-<td align="right">-0.24</td>
-<td align="right">0.78</td>
+<td align="right">-0.26</td>
+<td align="right">0.76</td>
 <td align="right">1.15</td>
 </tr>
-<tr class="odd">
-<td align="left">EQ51 - Extreme pressure to be pastor/missionary/spiritual leader</td>
-<td align="right">1</td>
-<td align="right">0.44</td>
-<td align="right">0.33</td>
-<td align="right">0.82</td>
-<td align="right">1.42</td>
-</tr>
 <tr class="even">
-<td align="left">EQ52 - Blamed for harm I suffered rather than blaming who harmed me</td>
+<td align="left">EQ51…Extreme.pressure.to.be.pastor.missionary.spiritual.leader</td>
 <td align="right">1</td>
-<td align="right">0.73</td>
-<td align="right">0.54</td>
-<td align="right">1.06</td>
+<td align="right">0.41</td>
+<td align="right">0.35</td>
+<td align="right">0.82</td>
+<td align="right">1.37</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ52…Blamed.for.harm.I.suffered.rather.than.blaming.who.harmed.me</td>
+<td align="right">1</td>
+<td align="right">0.69</td>
+<td align="right">0.55</td>
+<td align="right">1.04</td>
 <td align="right">1.93</td>
 </tr>
-<tr class="odd">
-<td align="left">EQ53 - Scripture used to justify abusive parent-child behavior</td>
+<tr class="even">
+<td align="left">EQ53…Scripture.used.to.justify.abusive.parent.child.behavior</td>
 <td align="right">1</td>
-<td align="right">0.36</td>
-<td align="right">0.17</td>
-<td align="right">1.00</td>
+<td align="right">0.33</td>
+<td align="right">0.18</td>
+<td align="right">0.98</td>
+<td align="right">1.39</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ54…Being.explicitly.taught.to.distrust.my.intuitions</td>
+<td align="right">1</td>
+<td align="right">-0.39</td>
+<td align="right">-0.49</td>
+<td align="right">0.53</td>
+<td align="right">0.93</td>
+</tr>
+<tr class="even">
+<td align="left">EQ55…Hearing.cultural.references.in.sermons.unfamiliar.to.my.race.eth..subculture</td>
+<td align="right">1</td>
+<td align="right">1.32</td>
+<td align="right">1.20</td>
+<td align="right">1.94</td>
+<td align="right">2.41</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ56…Being.made.to.feel.I.was.crazy.weird.for.doubts.questions</td>
+<td align="right">1</td>
+<td align="right">-0.22</td>
+<td align="right">-0.26</td>
+<td align="right">0.53</td>
+<td align="right">1.45</td>
+</tr>
+<tr class="even">
+<td align="left">EQ57…Developing.mental.physical.ailments.from.conforming.to.group.leader.s.expectation</td>
+<td align="right">1</td>
+<td align="right">0.81</td>
+<td align="right">0.30</td>
+<td align="right">1.05</td>
+<td align="right">1.51</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ58…Terror.horror.used.to.motivate.religious.decisions</td>
+<td align="right">1</td>
+<td align="right">0.01</td>
+<td align="right">-0.15</td>
+<td align="right">0.94</td>
 <td align="right">1.43</td>
 </tr>
 <tr class="even">
-<td align="left">EQ54 - Being explicitly taught to distrust my intuitions</td>
-<td align="right">1</td>
-<td align="right">-0.36</td>
-<td align="right">-0.48</td>
-<td align="right">0.54</td>
-<td align="right">0.97</td>
-</tr>
-<tr class="odd">
-<td align="left">EQ55 - Hearing cultural references in sermons unfamiliar to my race/eth. subculture</td>
-<td align="right">1</td>
-<td align="right">1.34</td>
-<td align="right">1.18</td>
-<td align="right">2.00</td>
-<td align="right">2.39</td>
-</tr>
-<tr class="even">
-<td align="left">EQ56 - Being made to feel I was crazy/weird for doubts/questions</td>
-<td align="right">1</td>
-<td align="right">-0.18</td>
-<td align="right">-0.24</td>
-<td align="right">0.56</td>
-<td align="right">1.47</td>
-</tr>
-<tr class="odd">
-<td align="left">EQ57 - Developing mental/physical ailments from conforming to group/leader’s expectation</td>
-<td align="right">1</td>
-<td align="right">0.83</td>
-<td align="right">0.33</td>
-<td align="right">1.04</td>
-<td align="right">1.56</td>
-</tr>
-<tr class="even">
-<td align="left">EQ58 - Terror/horror used to motivate religious decisions</td>
-<td align="right">1</td>
-<td align="right">0.04</td>
-<td align="right">-0.13</td>
-<td align="right">0.97</td>
-<td align="right">1.45</td>
-</tr>
-<tr class="odd">
-<td align="left">EQ60 - Encouraged by leader to stay in abusive marriage</td>
+<td align="left">EQ60…Encouraged.by.leader.to.stay.in.abusive.marriage</td>
 <td align="right">1</td>
 <td align="right">2.21</td>
-<td align="right">0.95</td>
+<td align="right">0.92</td>
 <td align="right">1.46</td>
-<td align="right">2.19</td>
-</tr>
-<tr class="even">
-<td align="left">EQ61 - Developmentally-inappropriate/anxious end times descriptions taught to young children</td>
-<td align="right">1</td>
-<td align="right">0.05</td>
-<td align="right">-0.24</td>
-<td align="right">0.49</td>
-<td align="right">0.93</td>
-</tr>
-<tr class="odd">
-<td align="left">EQ62 - Scripture used to justify physical violence</td>
-<td align="right">1</td>
-<td align="right">0.54</td>
-<td align="right">0.20</td>
-<td align="right">1.38</td>
-<td align="right">1.96</td>
-</tr>
-<tr class="even">
-<td align="left">EQ65 - Cut off/shunned by more religious family members</td>
-<td align="right">1</td>
-<td align="right">1.22</td>
-<td align="right">0.78</td>
-<td align="right">1.39</td>
-<td align="right">1.82</td>
-</tr>
-<tr class="odd">
-<td align="left">EQ66 - Others treated as less than due to their sexual orientation</td>
-<td align="right">1</td>
-<td align="right">-0.58</td>
-<td align="right">-0.87</td>
-<td align="right">0.01</td>
-<td align="right">0.70</td>
-</tr>
-<tr class="even">
-<td align="left">IQ68 - Anxiety attacks triggered by religious stimuli</td>
-<td align="right">1</td>
-<td align="right">0.86</td>
-<td align="right">0.31</td>
-<td align="right">1.34</td>
-<td align="right">2.02</td>
-</tr>
-<tr class="odd">
-<td align="left">IQ72 - Feeling as if God harmed me directly</td>
-<td align="right">1</td>
-<td align="right">1.36</td>
-<td align="right">0.89</td>
-<td align="right">2.14</td>
 <td align="right">2.15</td>
 </tr>
-<tr class="even">
-<td align="left">IQ76 - Feeling I wasted years of my life in a church/set of beliefs</td>
+<tr class="odd">
+<td align="left">EQ61…Developmentally.inappropriate.anxious.end.times.descriptions.taught.to.young.children</td>
 <td align="right">1</td>
 <td align="right">-0.02</td>
-<td align="right">-0.19</td>
+<td align="right">-0.20</td>
+<td align="right">0.45</td>
+<td align="right">0.91</td>
+</tr>
+<tr class="even">
+<td align="left">EQ62…Scripture.used.to.justify.physical.violence</td>
+<td align="right">1</td>
 <td align="right">0.52</td>
-<td align="right">0.75</td>
+<td align="right">0.20</td>
+<td align="right">1.37</td>
+<td align="right">1.89</td>
 </tr>
 <tr class="odd">
-<td align="left">IQ81 - Nightmares about my negative religious experiences</td>
+<td align="left">EQ65…Cut.off.shunned.by.more.religious.family.members</td>
 <td align="right">1</td>
-<td align="right">0.94</td>
-<td align="right">0.86</td>
+<td align="right">1.19</td>
+<td align="right">0.79</td>
+<td align="right">1.32</td>
+<td align="right">1.81</td>
+</tr>
+<tr class="even">
+<td align="left">EQ66…Others.treated.as.less.than.due.to.their.sexual.orientation</td>
+<td align="right">1</td>
+<td align="right">-0.62</td>
+<td align="right">-0.86</td>
+<td align="right">-0.01</td>
+<td align="right">0.66</td>
+</tr>
+<tr class="odd">
+<td align="left">IQ68…Anxiety.attacks.triggered.by.religious.stimuli</td>
+<td align="right">1</td>
+<td align="right">0.83</td>
+<td align="right">0.29</td>
+<td align="right">1.32</td>
 <td align="right">1.98</td>
-<td align="right">2.33</td>
+</tr>
+<tr class="even">
+<td align="left">IQ72…Feeling.as.if.God.harmed.me.directly</td>
+<td align="right">1</td>
+<td align="right">1.35</td>
+<td align="right">0.88</td>
+<td align="right">2.15</td>
+<td align="right">2.11</td>
+</tr>
+<tr class="odd">
+<td align="left">IQ76…Feeling.I.wasted.years.of.my.life.in.a.church.set.of.beliefs</td>
+<td align="right">1</td>
+<td align="right">-0.04</td>
+<td align="right">-0.21</td>
+<td align="right">0.53</td>
+<td align="right">0.72</td>
+</tr>
+<tr class="even">
+<td align="left">IQ81…Nightmares.about.my.negative.religious.experiences</td>
+<td align="right">1</td>
+<td align="right">0.91</td>
+<td align="right">0.86</td>
+<td align="right">2.00</td>
+<td align="right">2.23</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Item parameters</strong>. Table <a href="item-analysis.html#tab:pcm-items">1</a> reports the item parameters estimated by the PCM. The first column shows the discrimination parameter, which is equal to “1” for all items. This is because the Partial Credit Model, similar to the Rasch model, constrains the discrimination parameter to be “1”. The subsequent columns (b1 to b4) report the estimated thresholds or step parameters. Because the SHAS items all have five response categories, the PCM estimates four threshold parameters (b1 to b4) for each item. Ordered threshold parameters are not a requirement of the partial credit or generalized partial credit models <span class="citation">(<a href="references.html#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>)</span>. The important question, therefore, is which items have ordered thresholds and which have “reversals.” A reversal between two category thresholds suggests that one might not be contributing reliable information and might be collapsed.</p>
-<p>As shown in Table <a href="item-analysis.html#tab:pcm-items">1</a>, most of the SHAS items (43 out of 66) had reversals. On each of these items, examinees who had experienced more overall lifetime spiritual abuse were more likely to report “Never” than “Once or twice”.</p>
+<p><strong>Item parameters</strong>. Table <a href="#tab:pcm-items"><strong>??</strong></a> reports the item parameters estimated by the PCM. The first column shows the discrimination parameter, which is equal to “1” for all items. This is because the Partial Credit Model, similar to the Rasch model, constrains the discrimination parameter to be “1”. The subsequent columns (b1 to b4) report the estimated thresholds or step parameters. Because the SHAS items all have five response categories, the PCM estimates four threshold parameters (b1 to b4) for each item. Ordered threshold parameters are not a requirement of the partial credit or generalized partial credit models <span class="citation">(<a href="references.html#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>)</span>. The important question, therefore, is which items have ordered thresholds and which have “reversals.” A reversal between two category thresholds suggests that one might not be contributing reliable information and might be collapsed.</p>
+<p>As shown in Table <a href="#tab:pcm-items"><strong>??</strong></a>, most of the SHAS items (43 out of 66) had reversals. On each of these items, examinees who had experienced more overall lifetime spiritual abuse were more likely to report “Never” than “Once or twice”.</p>
 <p><strong>Item plots</strong>. Item plots help show this information visually. The following figures are plots of the <em>option characteristic curves</em> (also called category characteristic curves) of the first three items (Q7, Q10, Q11) with category reversals.</p>
 <p><img src="_main_files/figure-html/pcm-a-1.png" width="672" /></p>
 <p><img src="_main_files/figure-html/pcm-b-1.png" width="672" /></p>
 <p><img src="_main_files/figure-html/pcm-c-1.png" width="672" /></p>
-<p>In these plots, the x axis is the scale of the latent trait (lifetime exposure to spiritual abuse) expressed in logits ranging from -6 to +6. The y axis is the probability of selecting a given response (such as “Always”) at each level of latent trait (overall lifetime exposure to spiritual abuse). The blue line is the probability of selecting “Never” for examinees ranging from low to high lifetime spiritual abuse. The reversal is that examinees just below zero are more likely to select “Never” than “Once or twice.” In addition, examinees with above-average lifetime exposure to spiritual abuse were more likely to select “Always” than “Often”. The item parameter statistics shown Table <a href="item-analysis.html#tab:pcm-items">1</a> indicate that this issue applies to 43 items. These items might contribute more reliable information if these response categories were collapsed.</p>
+<p>In these plots, the x axis is the scale of the latent trait (lifetime exposure to spiritual abuse) expressed in logits ranging from -6 to +6. The y axis is the probability of selecting a given response (such as “Always”) at each level of latent trait (overall lifetime exposure to spiritual abuse). The blue line is the probability of selecting “Never” for examinees ranging from low to high lifetime spiritual abuse. The reversal is that examinees just below zero are more likely to select “Never” than “Once or twice.” In addition, examinees with above-average lifetime exposure to spiritual abuse were more likely to select “Always” than “Often”. The item parameter statistics shown Table <a href="#tab:pcm-items"><strong>??</strong></a> indicate that this issue applies to 43 items. These items might contribute more reliable information if these response categories were collapsed.</p>
 <p><strong>Fit statistics</strong>. Fit statistics gauge the extent to which the observed pattern of item responses fit the IRT model (Rasch, partial credit, etc.). They do this by means of chi-square statistics which examine the cumulative difference the observed pattern of item responses and the pattern of item respones that the model would expect. Two fit statistics commonly used in IRT modesl are the infit mean square (MNSQ) and the outfit mean square (MNSQ) <span class="citation">(<a href="references.html#ref-BondFox2015" role="doc-biblioref">Bond and Fox 2015</a>)</span>. The infit statistic places greater emphasis on unexpected responses that are close to the examinees and item location. The outfit is sensitive to unexpected responses that are far from the location. The expected value of infit or outfit for each item is 1.0, with a range of acceptable values ranging from 0.5 to 1.5. Values outside these boundaries indicate a lack of fit between items and the model.</p>
 <table>
-<caption><span id="tab:pcm-item-fit">Table 2: </span>Partial Credit Model (PCM) - Misfitting Items</caption>
 <colgroup>
 <col width="73%" />
 <col width="6%" />
@@ -658,55 +1896,55 @@ div.csl-indent {
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">EQ17 - Treated as less than b/c my sexual orientation</td>
-<td align="right">2.81</td>
-<td align="right">7.05</td>
+<td align="left">EQ17…Treated.as.less.than.b.c.my.sexual.orientation</td>
+<td align="right">2.79</td>
+<td align="right">6.96</td>
 <td align="right">1.55</td>
 <td align="right">9.54</td>
 </tr>
 <tr class="even">
-<td align="left">EQ27 - Denied opportunities to serve b/c of my gender</td>
-<td align="right">2.67</td>
-<td align="right">17.85</td>
+<td align="left">EQ27…Denied.opportunities.to.serve.b.c.of.my.gender</td>
+<td align="right">2.68</td>
+<td align="right">17.94</td>
 <td align="right">1.50</td>
-<td align="right">15.05</td>
+<td align="right">15.02</td>
 </tr>
 <tr class="odd">
-<td align="left">EQ41 - Denied opportunities to serve because of my sexual orientation</td>
-<td align="right">6.71</td>
-<td align="right">15.06</td>
-<td align="right">1.53</td>
-<td align="right">8.20</td>
+<td align="left">EQ41…Denied.opportunities.to.serve.because.of.my.sexual.orientation</td>
+<td align="right">6.62</td>
+<td align="right">14.95</td>
+<td align="right">1.52</td>
+<td align="right">8.04</td>
 </tr>
 <tr class="even">
-<td align="left">EQ46 - Treated as less than because of my skin color</td>
-<td align="right">3.22</td>
-<td align="right">8.21</td>
-<td align="right">1.39</td>
-<td align="right">4.08</td>
+<td align="left">EQ46…Treated.as.less.than.because.of.my.skin.color</td>
+<td align="right">3.25</td>
+<td align="right">8.33</td>
+<td align="right">1.42</td>
+<td align="right">4.34</td>
 </tr>
 <tr class="odd">
-<td align="left">EQ50 - Treated as less than because of my gender</td>
+<td align="left">EQ50…Treated.as.less.than.because.of.my.gender</td>
 <td align="right">1.95</td>
-<td align="right">12.37</td>
+<td align="right">12.41</td>
 <td align="right">1.51</td>
-<td align="right">16.61</td>
+<td align="right">16.63</td>
 </tr>
 <tr class="even">
-<td align="left">EQ55 - Hearing cultural references in sermons unfamiliar to my race/eth. subculture</td>
-<td align="right">2.83</td>
-<td align="right">22.03</td>
+<td align="left">EQ55…Hearing.cultural.references.in.sermons.unfamiliar.to.my.race.eth..subculture</td>
+<td align="right">2.82</td>
+<td align="right">22.06</td>
 <td align="right">1.58</td>
-<td align="right">14.75</td>
+<td align="right">14.70</td>
 </tr>
 </tbody>
 </table>
-<p>This information suggests a decent fit of the PCM to the SHAS item response data. All but six of the 66 items had infit and outfit statistics within the acceptable range from 0.5 to 1.5. Statistics for these six misfitting items are presented here in Table <a href="item-analysis.html#tab:pcm-item-fit">2</a>. The large outfit values mean the observed patterns of responses to these items differed substantially from the patterns of responses expected by the PCM. These items capture the experiences of women, people of color, and LGBTQ persons.</p>
+<p>This information suggests a decent fit of the PCM to the SHAS item response data. All but six of the 66 items had infit and outfit statistics within the acceptable range from 0.5 to 1.5. Statistics for these six misfitting items are presented here in Table <a href="#tab:pcm-item-fit"><strong>??</strong></a>. The large outfit values mean the observed patterns of responses to these items differed substantially from the patterns of responses expected by the PCM. These items capture the experiences of women, people of color, and LGBTQ persons.</p>
 <p><strong>Model fit</strong>.</p>
-<pre><code>            M2   df p      RMSEA   RMSEA_5   RMSEA_95    SRMSR      TLI
-stats 51851.31 2144 0 0.08823389 0.0875621 0.08887775 0.118136 0.960859
+<pre><code>            M2   df p      RMSEA    RMSEA_5   RMSEA_95     SRMSR     TLI
+stats 51392.82 2144 0 0.08782602 0.08715423 0.08847002 0.1170549 0.96122
             CFI
-stats 0.9608772</code></pre>
+stats 0.9612381</code></pre>
 <p>The obtained RMSEA value = .088 (95% CI[.088, .089]) and SRMSR value = .118 suggest that data do not fit the model reasonably very well using suggested cutoff values of RMSEA &lt;= .06 and SRMSR &lt;= .08 as suggested guidelines for assessing fit. The CFI = .961 exceeded the recommended .95 threshold.</p>
 
 </div>

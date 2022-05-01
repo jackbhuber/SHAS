@@ -1,0 +1,9 @@
+fig:vim-plots
+fig:uni-pcar
+fig:q3-plot
+fig:rsm-item-diff
+tab:rsm-item-fit
+fig:corrmtrx-ext
+fig:corrmtrx-int
+fig:corrmtrx-all
+fig:wright

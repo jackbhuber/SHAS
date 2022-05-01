@@ -18,11 +18,15 @@ library(corrplot)
 items <- read.csv("data/items.csv")
 ext_items <- read.csv("data/ext_items.csv")
 int_items <- read.csv("data/int_items.csv")
+ext_items_l <- read.csv("data/ext_items_l.csv")
+int_items_l <- read.csv("data/int_items_l.csv")
+items_l <- read.csv("data/items_l.csv")
 ```
 
 
 ```{r corrmtrx-ext, fig.cap='Correlation Matrix of External Events Items', fig.align='center'}
 # HEATMAP OF CORRELATIONS
+library(psych)
 psych::corPlot(ext_items_l, upper = FALSE)
 ```
 

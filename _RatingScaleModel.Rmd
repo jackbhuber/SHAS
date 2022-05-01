@@ -1,5 +1,5 @@
 ### Rating Scale Model (RSM)
-The first model we examine is the Rating Scale Model (citation). This is an extension of the Rasch model (designed for dichotomous items) for use with polytomous items based on rating scales such as Likert scales of agreement [@EmbretsonReise2000] and estimates the probability of choosing from among several response options given an examinee's location on the latent trait (level of lifetime exposure to spiritual abuse). More specifically, the increase in difficulty involved in choosing from between two response categories is called a "step parameter". The RSM assumes that all items use the same rating scale. As a Rasch model, it assumes that all items discriminate equally well and thus fixes the discrimination parameter to 1. The model also fixes the step parameters of all the items on the premise that the response categories are the same for all items. What the RSM frees to vary are the item difficulty parameters. Thus the focus of the RSM is the differences in item difficulties. If all of these assumptions are true -- that the items and their rating scales differentiate examinees equally well and differ only in overall difficulty -- then the observed pattern of item responses will closely match the pattern of items responses expected by the RSM and the model will fit.
+The first IRT model is the Rating Scale Model (RSM) (citation). The model is an extension of the Rasch model (designed for dichotomous items) for use with polytomous items based on rating scales such as Likert scales of agreement [@EmbretsonReise2000] and estimates the probability of choosing from among several response options given an examinee's location on the latent trait (level of lifetime exposure to spiritual abuse). More specifically, the increase in difficulty involved in choosing from between two response categories is called a "step parameter". The RSM assumes that all items use the same rating scale. As a Rasch model, it assumes that all items discriminate equally well and thus fixes the discrimination parameter to 1. The model also fixes the step parameters of all the items on the premise that the response categories are the same for all items. What the RSM frees to vary are the item difficulty parameters. Thus the focus of the RSM is the differences in item difficulties. If all of these assumptions are true -- that the items and their rating scales differentiate examinees equally well and differ only in overall difficulty -- then the observed pattern of item responses will closely match the pattern of items responses expected by the RSM and the model will fit.
 
 ```{r rsm-run}
 # ESTIMATE RSM MODEL
@@ -7,7 +7,7 @@ library(stats4)
 library(lattice)
 library(mirt)
 items <- read.csv("data/items_l.csv")
-source("code/ApplyItemLabels.R")
+# source("code/ApplyItemLabels.R")
 model.rsm <- 'SPIRITUAL ABUSE RATING SCALE MODEL = 1-66'
 results.rsm <- mirt(data=items, model=model.rsm, itemtype="rsm", verbose=FALSE) # estimate model
 
@@ -17,8 +17,8 @@ items.rsm <- as.data.frame(coef.rsm$items) # item parameters as data frame
 items.rsm2 <- items.rsm[order(items.rsm$c),]
 ```
 
-```{r rsm-items}
-knitr::kable(items.rsm2, digits = 2, caption = "Rating Scale Model Item Parameters for Spiritual Harm and Abuse Items")
+```{r rsm-items, fig.cap='Rating Scale Model Item Parameters for Spiritual Harm and Abuse Items'}
+knitr::kable(items.rsm2, digits = 2, "simple")
 ```
 
 **Item parameters**. Table \@ref(tab:rsm-items) reports the item parameters estimated by the RSM for all 66 SHAS items. The first column shows the discrimination parameter, fixed to “1” for all items on the premise that the items discriminate equally well. The subsequent columns (b1 to b4) report the estimated thresholds (or step parameters). Because the SHAS items all used the same 5-point Likert scale, and because the RSM assumes this scale discriminated examinees equally well, these four threshold parameters are the same for each item. 
@@ -28,7 +28,7 @@ What does vary between items, in this model, is the difficulty parameter, shown 
 ```{r rsm-item-diff, fig.cap='Distribution of Item Difficulty'}
 hist(items.rsm2$c, breaks=50, main = NULL, col="red", xlab="Lifetime Exposure to Spiritual Abuse", xlim = c(-3,3))
 
-stripchart(items.rsm2$c, xlab = 'Lifetime Exposure to Spiritual Abuse', xlim = c(-3,3), col = 'red', pch = 1, method = 'stack')
+# stripchart(items.rsm2$c, xlab = 'Lifetime Exposure to Spiritual Abuse', xlim = c(-3,3), col = 'red', pch = 1, method = 'stack')
 ```
 
 Figure \@ref(fig:rsm-item-diff) presents a histogram of the item difficult parameters. They are normally distributed but there are extremes.
@@ -56,11 +56,7 @@ plot(results.rsm, type='infotrace', which.item = c(1,2,3,4,5,6), facet_items=T, 
 
 ```{r rsm-itmplot-emp}
 itemfit(results.rsm, empirical.plot = 2)
-
 ```
-
-
-
 
 **Item fit statistics**. Fit statistics gauge the extent to which the observed pattern of item responses fit the IRT model (Rasch, partial credit, etc.). They do this by means of chi-square statistics which examine the cumulative difference the observed pattern of item responses and the pattern of item respones that the model would expect. Two fit statistics commonly used in IRT modesl are the infit mean square (MNSQ) and the outfit mean square (MNSQ) [@BondFox2015]. The infit statistic places greater emphasis on unexpected responses that are close to the examinees and item location. The outfit is sensitive to unexpected responses that are far from the location. The expected value of infit or outfit for each item is 1.0, with a range of acceptable values ranging from 0.5 to 1.5. Values outside these boundaries indicate a lack of fit between items and the model.
 
@@ -72,18 +68,18 @@ misfits <- subset(i, outfit > 1.5 | outfit < 0.5 | infit > 1.5 | infit < 0.5)
 ```
 
 ```{r rsm-item-fit}
-knitr::kable(misfits, digits = 2, caption = "Rating Scale Model (RSM) - Misfitting Items", row.names = FALSE)
+knitr::kable(misfits, digits = 2, caption = "Rating Scale Model (RSM) - Misfitting Items", row.names = FALSE, "simple")
 ```
 
 All but six of the 66 items had infit and outfit statistics within the acceptable range from 0.5 to 1.5. Statistics for these six misfitting items are presented here in Table \@ref(tab:rsm-item-fit). The large outfit values mean the observed patterns of responses to these items differed substantially from the patterns of responses expected by the PCM. These items capture the experiences of women, people of color, and LGBTQ persons.
 
 ```{r}
-infit <- fit$itemfit$Infit
-upper_bound <- rep(x = 1.33, times =15) # this repeats 1.33 fifteen times
-lower_bound <- rep(x = .75, times = 15) 
+# infit <- fit$itemfit$Infit
+# upper_bound <- rep(x = 1.33, times =15) # this repeats 1.33 fifteen times
+# lower_bound <- rep(x = .75, times = 15) 
 
 # running fitgraph
-fitgraph(fitEst = infit, fitLB = lower_bound, fitUB = upper_bound, itemLabels = names(hls))
+# fitgraph(fitEst = infit, fitLB = lower_bound, fitUB = upper_bound, itemLabels = names(hls))
 ```
 
 **Model fit**. To assess the overall fit of the model to the item response data we use two statistics. The is the Root Mean Square Error of Approximation (RMSEA). The suggested cutoff for RMSEA is .06. The second is the CFI. The suggested cutoff for this is .95.
@@ -91,7 +87,11 @@ fitgraph(fitEst = infit, fitLB = lower_bound, fitUB = upper_bound, itemLabels = 
 ```{r rsm-fit, fig.cap='Rating Scale Model Fit - Overall Model Fit'}
 # MODEL FIT
 # knitr::kable(M2(results.rsm, type = "C2", na.rm=TRUE, calcNULL = FALSE))
-knitr::kable(M2(results.rsm, type = "C2"))
+knitr::kable(M2(results.rsm, type = "C2"), digits = 2, "simple")
 ```
 
 Table \@ref(tab:rsm-fit) reports the model fit statistics for the SHAS items. The obtained RMSEA value = .092 (95% CI[.092, .093]) exceeds the cutoff of .06. The CFI = .953 meets the recommended .95 threshold. Together these statistics offer weak evidence that the RSM fits the SHAS items.
+
+```{r}
+rm(list = ls())
+```

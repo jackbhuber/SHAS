@@ -1,8 +1,9 @@
-
 ### IRT Model Assumptions
+
 IRT makes two assumptions of the data. The first is unidimensionality of the latent trait. Is the trait one dimension? This is important for the SHAS because the questionnaire explicitly distinguished between items measuring external events and internal states. The second assumption is local independence [@EmbretsonReise2000]. This means that, once the latent variable has been accounted for, any set of items should not share any meaningful correlation (Edwards, Houts, & Cai, 2018).
 
 #### Unidimensionality
+
 To verify the assumption of unidimensionality we conducted three analyses. First we confirmed the factor structure using confirmatory factor analysis (CFA). Then we determined the proportion of variance in the observed item responses due to the Rasch model. Finally, we conducted Rasch Principal Component Analysis of Residuals (PCAR) (Smith, 2002).
 
 **Factor structure**.
@@ -23,11 +24,9 @@ source("code/Unidimensionality-PCAR.R")
 
 The second analysis of PCAR examines the correlations among residuals. The premise is that once the Rasch model has been estimated, the correlations among the residuals should be minimal. Linacre () suggests that contrasts with eigenvalues of 2.0 or below can be considered noise. In Figure \@ref(fig:uni-pcar), our PCAR analysis found three contrasts that rose above that 2.0 threshold.
 
-#### Local independence
-To check the assumption of local independence, we used the Q3 statistic (Yen, 1984). The Q3 statistic index criteria are that the raw residual correlation between pairs of items should never exceed 0.10 (Marais & Andrich, 2008).
-
-```{r q3, eval=FALSE, include = FALSE}
-source("code/Unidimensionality-Q3.R")
+```{r child='_LocalIndependence.Rmd'}
 ```
 
-Using these criteria, we found XX items in possession of local dependence. The items that had the highest raw residual correlations had negative signs and no positive residual correlation. In other words, the assumption of local independence in this study (was)/(was not) met.
+**Summary**
+
+These analyses offer mixed evidence of assumption satisfaction. The model explains 44% of the variance of the item responses. But we see three contrasts of the standardized residuals above the threshold of 2. In the Q3 plot we see a few strong correlations of item correlations.
