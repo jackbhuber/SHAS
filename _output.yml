@@ -1,4 +1,5 @@
 bookdown::gitbook:
+  code_foldig: HIDE
   split_bib: FALSE
   number_sections: FALSE
   fig_caption: TRUE

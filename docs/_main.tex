@@ -334,19 +334,8 @@ Some IRT models (such as the Rasch model) and their estimation procedures in var
 \NormalTok{ditems[ditems }\SpecialCharTok{==} \DecValTok{4}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1}
 \NormalTok{ditems[ditems }\SpecialCharTok{==} \DecValTok{5}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1}
 
-\NormalTok{dext\_items }\OtherTok{\textless{}{-}}\NormalTok{ ext\_items}
-\NormalTok{dext\_items[dext\_items }\SpecialCharTok{==} \DecValTok{1}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{0}
-\NormalTok{dext\_items[dext\_items }\SpecialCharTok{==} \DecValTok{2}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1}
-\NormalTok{dext\_items[dext\_items }\SpecialCharTok{==} \DecValTok{3}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1}
-\NormalTok{dext\_items[dext\_items }\SpecialCharTok{==} \DecValTok{4}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1}
-\NormalTok{dext\_items[dext\_items }\SpecialCharTok{==} \DecValTok{5}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1}
-
-\NormalTok{dint\_items }\OtherTok{\textless{}{-}}\NormalTok{ int\_items}
-\NormalTok{dint\_items[dint\_items }\SpecialCharTok{==} \DecValTok{1}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{0}
-\NormalTok{dint\_items[dint\_items }\SpecialCharTok{==} \DecValTok{2}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1}
-\NormalTok{dint\_items[dint\_items }\SpecialCharTok{==} \DecValTok{3}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1}
-\NormalTok{dint\_items[dint\_items }\SpecialCharTok{==} \DecValTok{4}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1}
-\NormalTok{dint\_items[dint\_items }\SpecialCharTok{==} \DecValTok{5}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{dext\_items }\OtherTok{\textless{}{-}}\NormalTok{ ditems[, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{52}\NormalTok{]}
+\NormalTok{dint\_items }\OtherTok{\textless{}{-}}\NormalTok{ ditems[, }\DecValTok{52}\SpecialCharTok{:}\DecValTok{66}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
 
@@ -380,17 +369,22 @@ The second plot in Figure \ref{fig:vim-plots} illustrates the different combinat
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(naniar)}
 \FunctionTok{library}\NormalTok{(knitr)}
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}\FunctionTok{mcar\_test}\NormalTok{(all), }\AttributeTok{digits =} \DecValTok{2}\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}\FunctionTok{mcar\_test}\NormalTok{(all), }\AttributeTok{digits =} \DecValTok{2}\NormalTok{, }\AttributeTok{caption =} \StringTok{"Little\textquotesingle{}s Test of Missing Completely at Random (MCAR)"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{tabular}{r|r|r|r}
+\begin{table}
+
+\caption{\label{tab:mcar}Little's Test of Missing Completely at Random (MCAR)}
+\centering
+\begin{tabular}[t]{r|r|r|r}
 \hline
 statistic & df & p.value & missing.patterns\\
 \hline
 2089.34 & 8663 & 1 & 117\\
 \hline
 \end{tabular}
+\end{table}
 
 The test is fairly conclusive. The p-value for the chi-square is 1, which means observed pattern of missing data do not diverge significantly from what would be expected if the data were missing completely at random.
 
@@ -426,7 +420,6 @@ The test is fairly conclusive. The p-value for the chi-square is 1, which means 
 \FunctionTok{write.csv}\NormalTok{(ditems\_l, }\StringTok{"data/ditems\_l.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
 \FunctionTok{write.csv}\NormalTok{(dext\_items\_l, }\StringTok{"data/dext\_items\_l.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
 \FunctionTok{write.csv}\NormalTok{(dint\_items\_l, }\StringTok{"data/dint\_items\_l.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
-\FunctionTok{rm}\NormalTok{(}\AttributeTok{list =} \FunctionTok{ls}\NormalTok{())}
 \end{Highlighting}
 \end{Shaded}
 
@@ -498,491 +491,6 @@ The second analysis of PCAR examines the correlations among residuals. The premi
 To check the assumption of local independence, we used the Q3 statistic (Yen, 1984). The Q3 statistic index criteria are that the raw residual correlation between pairs of items should never exceed 0.10 (Marais \& Andrich, 2008).
 
 \begin{verbatim}
-------------------------------------------------------------
-Semiparametric Marginal Maximum Likelihood Estimation 
-Raschtype Model with generalized logistic link function: alpha1= 0 , alpha2= 0  
-------------------------------------------------------------
-...........................................................
-Iteration 1     2022-05-01 11:52:50 
-   Deviance=178730.6812
-    Maximum b parameter change=0.837684 
-...........................................................
-Iteration 2     2022-05-01 11:52:51 
-   Deviance=174132.6014 | Deviance change=4598.079793
-    Maximum b parameter change=0.263887 
-...........................................................
-Iteration 3     2022-05-01 11:52:51 
-   Deviance=173692.1918 | Deviance change=440.409632
-    Maximum b parameter change=0.094586 
-...........................................................
-Iteration 4     2022-05-01 11:52:51 
-   Deviance=173647.6904 | Deviance change=44.501431
-    Maximum b parameter change=0.027496 
-...........................................................
-Iteration 5     2022-05-01 11:52:51 
-   Deviance=173642.3097 | Deviance change=5.3807
-    Maximum b parameter change=0.009127 
-...........................................................
-Iteration 6     2022-05-01 11:52:51 
-   Deviance=173640.8591 | Deviance change=1.450531
-    Maximum b parameter change=0.005552 
-...........................................................
-Iteration 7     2022-05-01 11:52:51 
-   Deviance=173639.9026 | Deviance change=0.956595
-    Maximum b parameter change=0.004379 
-...........................................................
-Iteration 8     2022-05-01 11:52:51 
-   Deviance=173639.0673 | Deviance change=0.835259
-    Maximum b parameter change=0.003935 
-...........................................................
-Iteration 9     2022-05-01 11:52:51 
-   Deviance=173638.2993 | Deviance change=0.767991
-    Maximum b parameter change=0.003732 
-...........................................................
-Iteration 10     2022-05-01 11:52:51 
-   Deviance=173637.5854 | Deviance change=0.713935
-    Maximum b parameter change=0.003601 
-...........................................................
-Iteration 11     2022-05-01 11:52:51 
-   Deviance=173636.9197 | Deviance change=0.665655
-    Maximum b parameter change=0.00348 
-...........................................................
-Iteration 12     2022-05-01 11:52:51 
-   Deviance=173636.2985 | Deviance change=0.621216
-    Maximum b parameter change=0.003363 
-...........................................................
-Iteration 13     2022-05-01 11:52:51 
-   Deviance=173635.7186 | Deviance change=0.579931
-    Maximum b parameter change=0.00325 
-...........................................................
-Iteration 14     2022-05-01 11:52:51 
-   Deviance=173635.1771 | Deviance change=0.541464
-    Maximum b parameter change=0.00314 
-...........................................................
-Iteration 15     2022-05-01 11:52:51 
-   Deviance=173634.6715 | Deviance change=0.505589
-    Maximum b parameter change=0.003034 
-...........................................................
-Iteration 16     2022-05-01 11:52:51 
-   Deviance=173634.1994 | Deviance change=0.47212
-    Maximum b parameter change=0.002932 
-...........................................................
-Iteration 17     2022-05-01 11:52:51 
-   Deviance=173633.7585 | Deviance change=0.440891
-    Maximum b parameter change=0.002834 
-...........................................................
-Iteration 18     2022-05-01 11:52:52 
-   Deviance=173633.3467 | Deviance change=0.411751
-    Maximum b parameter change=0.002738 
-...........................................................
-Iteration 19     2022-05-01 11:52:52 
-   Deviance=173632.9622 | Deviance change=0.384558
-    Maximum b parameter change=0.002646 
-...........................................................
-Iteration 20     2022-05-01 11:52:52 
-   Deviance=173632.603 | Deviance change=0.359181
-    Maximum b parameter change=0.002558 
-...........................................................
-Iteration 21     2022-05-01 11:52:52 
-   Deviance=173632.2675 | Deviance change=0.335497
-    Maximum b parameter change=0.002472 
-...........................................................
-Iteration 22     2022-05-01 11:52:52 
-   Deviance=173631.9541 | Deviance change=0.313392
-    Maximum b parameter change=0.002389 
-...........................................................
-Iteration 23     2022-05-01 11:52:52 
-   Deviance=173631.6614 | Deviance change=0.29276
-    Maximum b parameter change=0.002309 
-...........................................................
-Iteration 24     2022-05-01 11:52:52 
-   Deviance=173631.3879 | Deviance change=0.273502
-    Maximum b parameter change=0.002232 
-...........................................................
-Iteration 25     2022-05-01 11:52:52 
-   Deviance=173631.1323 | Deviance change=0.255524
-    Maximum b parameter change=0.002158 
-...........................................................
-Iteration 26     2022-05-01 11:52:52 
-   Deviance=173630.8936 | Deviance change=0.238741
-    Maximum b parameter change=0.002086 
-...........................................................
-Iteration 27     2022-05-01 11:52:52 
-   Deviance=173630.6705 | Deviance change=0.223073
-    Maximum b parameter change=0.002016 
-...........................................................
-Iteration 28     2022-05-01 11:52:52 
-   Deviance=173630.4621 | Deviance change=0.208444
-    Maximum b parameter change=0.001949 
-...........................................................
-Iteration 29     2022-05-01 11:52:52 
-   Deviance=173630.2673 | Deviance change=0.194784
-    Maximum b parameter change=0.001884 
-...........................................................
-Iteration 30     2022-05-01 11:52:52 
-   Deviance=173630.0853 | Deviance change=0.182029
-    Maximum b parameter change=0.001822 
-...........................................................
-Iteration 31     2022-05-01 11:52:52 
-   Deviance=173629.9151 | Deviance change=0.170117
-    Maximum b parameter change=0.001761 
-...........................................................
-Iteration 32     2022-05-01 11:52:52 
-   Deviance=173629.7562 | Deviance change=0.158993
-    Maximum b parameter change=0.001703 
-...........................................................
-Iteration 33     2022-05-01 11:52:52 
-   Deviance=173629.6076 | Deviance change=0.148604
-    Maximum b parameter change=0.001646 
-...........................................................
-Iteration 34     2022-05-01 11:52:52 
-   Deviance=173629.4687 | Deviance change=0.138899
-    Maximum b parameter change=0.001592 
-...........................................................
-Iteration 35     2022-05-01 11:52:52 
-   Deviance=173629.3388 | Deviance change=0.129835
-    Maximum b parameter change=0.001539 
-...........................................................
-Iteration 36     2022-05-01 11:52:53 
-   Deviance=173629.2174 | Deviance change=0.121368
-    Maximum b parameter change=0.001488 
-...........................................................
-Iteration 37     2022-05-01 11:52:53 
-   Deviance=173629.104 | Deviance change=0.113458
-    Maximum b parameter change=0.001439 
-...........................................................
-Iteration 38     2022-05-01 11:52:53 
-   Deviance=173628.9979 | Deviance change=0.106068
-    Maximum b parameter change=0.001391 
-...........................................................
-Iteration 39     2022-05-01 11:52:53 
-   Deviance=173628.8988 | Deviance change=0.099163
-    Maximum b parameter change=0.001345 
-...........................................................
-Iteration 40     2022-05-01 11:52:53 
-   Deviance=173628.806 | Deviance change=0.092712
-    Maximum b parameter change=0.001301 
-...........................................................
-Iteration 41     2022-05-01 11:52:53 
-   Deviance=173628.7194 | Deviance change=0.086683
-    Maximum b parameter change=0.001258 
-...........................................................
-Iteration 42     2022-05-01 11:52:53 
-   Deviance=173628.6383 | Deviance change=0.08105
-    Maximum b parameter change=0.001216 
-...........................................................
-Iteration 43     2022-05-01 11:52:53 
-   Deviance=173628.5625 | Deviance change=0.075786
-    Maximum b parameter change=0.001176 
-...........................................................
-Iteration 44     2022-05-01 11:52:53 
-   Deviance=173628.4917 | Deviance change=0.070867
-    Maximum b parameter change=0.001137 
-...........................................................
-Iteration 45     2022-05-01 11:52:53 
-   Deviance=173628.4254 | Deviance change=0.066269
-    Maximum b parameter change=0.0011 
-...........................................................
-Iteration 46     2022-05-01 11:52:53 
-   Deviance=173628.3634 | Deviance change=0.061971
-    Maximum b parameter change=0.001064 
-...........................................................
-Iteration 47     2022-05-01 11:52:53 
-   Deviance=173628.3055 | Deviance change=0.057954
-    Maximum b parameter change=0.001029 
-...........................................................
-Iteration 48     2022-05-01 11:52:53 
-   Deviance=173628.2513 | Deviance change=0.054199
-    Maximum b parameter change=0.000995 
-...........................................................
-Iteration 49     2022-05-01 11:52:53 
-   Deviance=173628.2006 | Deviance change=0.050689
-    Maximum b parameter change=0.000962 
-...........................................................
-Iteration 50     2022-05-01 11:52:53 
-   Deviance=173628.1532 | Deviance change=0.047408
-    Maximum b parameter change=0.000931 
-...........................................................
-Iteration 51     2022-05-01 11:52:53 
-   Deviance=173628.1088 | Deviance change=0.044341
-    Maximum b parameter change=9e-04 
-...........................................................
-Iteration 52     2022-05-01 11:52:53 
-   Deviance=173628.0674 | Deviance change=0.041473
-    Maximum b parameter change=0.000871 
-...........................................................
-Iteration 53     2022-05-01 11:52:53 
-   Deviance=173628.0286 | Deviance change=0.038792
-    Maximum b parameter change=0.000842 
-...........................................................
-Iteration 54     2022-05-01 11:52:53 
-   Deviance=173627.9923 | Deviance change=0.036285
-    Maximum b parameter change=0.000814 
-...........................................................
-Iteration 55     2022-05-01 11:52:53 
-   Deviance=173627.9583 | Deviance change=0.03394
-    Maximum b parameter change=0.000788 
-...........................................................
-Iteration 56     2022-05-01 11:52:53 
-   Deviance=173627.9266 | Deviance change=0.031749
-    Maximum b parameter change=0.000762 
-...........................................................
-Iteration 57     2022-05-01 11:52:53 
-   Deviance=173627.8969 | Deviance change=0.029699
-    Maximum b parameter change=0.000737 
-...........................................................
-Iteration 58     2022-05-01 11:52:53 
-   Deviance=173627.8691 | Deviance change=0.027782
-    Maximum b parameter change=0.000713 
-...........................................................
-Iteration 59     2022-05-01 11:52:53 
-   Deviance=173627.8431 | Deviance change=0.02599
-    Maximum b parameter change=0.000689 
-...........................................................
-Iteration 60     2022-05-01 11:52:53 
-   Deviance=173627.8188 | Deviance change=0.024314
-    Maximum b parameter change=0.000667 
-...........................................................
-Iteration 61     2022-05-01 11:52:54 
-   Deviance=173627.7961 | Deviance change=0.022746
-    Maximum b parameter change=0.000645 
-...........................................................
-Iteration 62     2022-05-01 11:52:54 
-   Deviance=173627.7748 | Deviance change=0.02128
-    Maximum b parameter change=0.000624 
-...........................................................
-Iteration 63     2022-05-01 11:52:54 
-   Deviance=173627.7549 | Deviance change=0.019909
-    Maximum b parameter change=0.000604 
-...........................................................
-Iteration 64     2022-05-01 11:52:54 
-   Deviance=173627.7362 | Deviance change=0.018626
-    Maximum b parameter change=0.000584 
-...........................................................
-Iteration 65     2022-05-01 11:52:54 
-   Deviance=173627.7188 | Deviance change=0.017427
-    Maximum b parameter change=0.000565 
-...........................................................
-Iteration 66     2022-05-01 11:52:54 
-   Deviance=173627.7025 | Deviance change=0.016305
-    Maximum b parameter change=0.000546 
-...........................................................
-Iteration 67     2022-05-01 11:52:54 
-   Deviance=173627.6873 | Deviance change=0.015255
-    Maximum b parameter change=0.000528 
-...........................................................
-Iteration 68     2022-05-01 11:52:54 
-   Deviance=173627.673 | Deviance change=0.014273
-    Maximum b parameter change=0.000511 
-...........................................................
-Iteration 69     2022-05-01 11:52:54 
-   Deviance=173627.6596 | Deviance change=0.013355
-    Maximum b parameter change=0.000494 
-...........................................................
-Iteration 70     2022-05-01 11:52:54 
-   Deviance=173627.6471 | Deviance change=0.012496
-    Maximum b parameter change=0.000478 
-...........................................................
-Iteration 71     2022-05-01 11:52:54 
-   Deviance=173627.6354 | Deviance change=0.011692
-    Maximum b parameter change=0.000463 
-...........................................................
-Iteration 72     2022-05-01 11:52:54 
-   Deviance=173627.6245 | Deviance change=0.01094
-    Maximum b parameter change=0.000448 
-...........................................................
-Iteration 73     2022-05-01 11:52:54 
-   Deviance=173627.6143 | Deviance change=0.010237
-    Maximum b parameter change=0.000433 
-...........................................................
-Iteration 74     2022-05-01 11:52:54 
-   Deviance=173627.6047 | Deviance change=0.009579
-    Maximum b parameter change=0.000419 
-...........................................................
-Iteration 75     2022-05-01 11:52:54 
-   Deviance=173627.5957 | Deviance change=0.008963
-    Maximum b parameter change=0.000405 
-...........................................................
-Iteration 76     2022-05-01 11:52:54 
-   Deviance=173627.5873 | Deviance change=0.008387
-    Maximum b parameter change=0.000392 
-...........................................................
-Iteration 77     2022-05-01 11:52:54 
-   Deviance=173627.5795 | Deviance change=0.007848
-    Maximum b parameter change=0.000379 
-...........................................................
-Iteration 78     2022-05-01 11:52:54 
-   Deviance=173627.5721 | Deviance change=0.007344
-    Maximum b parameter change=0.000367 
-...........................................................
-Iteration 79     2022-05-01 11:52:54 
-   Deviance=173627.5653 | Deviance change=0.006872
-    Maximum b parameter change=0.000355 
-...........................................................
-Iteration 80     2022-05-01 11:52:54 
-   Deviance=173627.5588 | Deviance change=0.006431
-    Maximum b parameter change=0.000343 
-...........................................................
-Iteration 81     2022-05-01 11:52:54 
-   Deviance=173627.5528 | Deviance change=0.006018
-    Maximum b parameter change=0.000332 
-...........................................................
-Iteration 82     2022-05-01 11:52:54 
-   Deviance=173627.5472 | Deviance change=0.005632
-    Maximum b parameter change=0.000321 
-...........................................................
-Iteration 83     2022-05-01 11:52:54 
-   Deviance=173627.5419 | Deviance change=0.00527
-    Maximum b parameter change=0.000311 
-...........................................................
-Iteration 84     2022-05-01 11:52:54 
-   Deviance=173627.537 | Deviance change=0.004932
-    Maximum b parameter change=0.000301 
-...........................................................
-Iteration 85     2022-05-01 11:52:54 
-   Deviance=173627.5324 | Deviance change=0.004615
-    Maximum b parameter change=0.000291 
-...........................................................
-Iteration 86     2022-05-01 11:52:54 
-   Deviance=173627.5281 | Deviance change=0.004319
-    Maximum b parameter change=0.000282 
-...........................................................
-Iteration 87     2022-05-01 11:52:55 
-   Deviance=173627.524 | Deviance change=0.004042
-    Maximum b parameter change=0.000272 
-...........................................................
-Iteration 88     2022-05-01 11:52:55 
-   Deviance=173627.5202 | Deviance change=0.003783
-    Maximum b parameter change=0.000263 
-...........................................................
-Iteration 89     2022-05-01 11:52:55 
-   Deviance=173627.5167 | Deviance change=0.00354
-    Maximum b parameter change=0.000255 
-...........................................................
-Iteration 90     2022-05-01 11:52:55 
-   Deviance=173627.5134 | Deviance change=0.003313
-    Maximum b parameter change=0.000247 
-...........................................................
-Iteration 91     2022-05-01 11:52:55 
-   Deviance=173627.5103 | Deviance change=0.0031
-    Maximum b parameter change=0.000239 
-...........................................................
-Iteration 92     2022-05-01 11:52:55 
-   Deviance=173627.5074 | Deviance change=0.002901
-    Maximum b parameter change=0.000231 
-...........................................................
-Iteration 93     2022-05-01 11:52:55 
-   Deviance=173627.5047 | Deviance change=0.002715
-    Maximum b parameter change=0.000223 
-...........................................................
-Iteration 94     2022-05-01 11:52:55 
-   Deviance=173627.5021 | Deviance change=0.002541
-    Maximum b parameter change=0.000216 
-...........................................................
-Iteration 95     2022-05-01 11:52:55 
-   Deviance=173627.4997 | Deviance change=0.002378
-    Maximum b parameter change=0.000209 
-...........................................................
-Iteration 96     2022-05-01 11:52:55 
-   Deviance=173627.4975 | Deviance change=0.002225
-    Maximum b parameter change=0.000202 
-...........................................................
-Iteration 97     2022-05-01 11:52:55 
-   Deviance=173627.4954 | Deviance change=0.002083
-    Maximum b parameter change=0.000196 
-...........................................................
-Iteration 98     2022-05-01 11:52:55 
-   Deviance=173627.4935 | Deviance change=0.001949
-    Maximum b parameter change=0.000189 
-...........................................................
-Iteration 99     2022-05-01 11:52:55 
-   Deviance=173627.4917 | Deviance change=0.001824
-    Maximum b parameter change=0.000183 
-...........................................................
-Iteration 100     2022-05-01 11:52:55 
-   Deviance=173627.49 | Deviance change=0.001707
-    Maximum b parameter change=0.000177 
-...........................................................
-Iteration 101     2022-05-01 11:52:55 
-   Deviance=173627.4884 | Deviance change=0.001598
-    Maximum b parameter change=0.000171 
-...........................................................
-Iteration 102     2022-05-01 11:52:55 
-   Deviance=173627.4869 | Deviance change=0.001495
-    Maximum b parameter change=0.000166 
-...........................................................
-Iteration 103     2022-05-01 11:52:55 
-   Deviance=173627.4855 | Deviance change=0.001399
-    Maximum b parameter change=0.00016 
-...........................................................
-Iteration 104     2022-05-01 11:52:55 
-   Deviance=173627.4842 | Deviance change=0.001309
-    Maximum b parameter change=0.000155 
-...........................................................
-Iteration 105     2022-05-01 11:52:55 
-   Deviance=173627.4829 | Deviance change=0.001225
-    Maximum b parameter change=0.00015 
-...........................................................
-Iteration 106     2022-05-01 11:52:55 
-   Deviance=173627.4818 | Deviance change=0.001147
-    Maximum b parameter change=0.000145 
-...........................................................
-Iteration 107     2022-05-01 11:52:55 
-   Deviance=173627.4807 | Deviance change=0.001073
-    Maximum b parameter change=0.000141 
-...........................................................
-Iteration 108     2022-05-01 11:52:55 
-   Deviance=173627.4797 | Deviance change=0.001004
-    Maximum b parameter change=0.000136 
-...........................................................
-Iteration 109     2022-05-01 11:52:55 
-   Deviance=173627.4788 | Deviance change=0.00094
-    Maximum b parameter change=0.000132 
-...........................................................
-Iteration 110     2022-05-01 11:52:55 
-   Deviance=173627.4779 | Deviance change=0.00088
-    Maximum b parameter change=0.000127 
-...........................................................
-Iteration 111     2022-05-01 11:52:55 
-   Deviance=173627.4771 | Deviance change=0.000823
-    Maximum b parameter change=0.000123 
-...........................................................
-Iteration 112     2022-05-01 11:52:55 
-   Deviance=173627.4763 | Deviance change=0.00077
-    Maximum b parameter change=0.000119 
-...........................................................
-Iteration 113     2022-05-01 11:52:56 
-   Deviance=173627.4756 | Deviance change=0.000721
-    Maximum b parameter change=0.000115 
-...........................................................
-Iteration 114     2022-05-01 11:52:56 
-   Deviance=173627.4749 | Deviance change=0.000675
-    Maximum b parameter change=0.000112 
-...........................................................
-Iteration 115     2022-05-01 11:52:56 
-   Deviance=173627.4743 | Deviance change=0.000631
-    Maximum b parameter change=0.000108 
-...........................................................
-Iteration 116     2022-05-01 11:52:56 
-   Deviance=173627.4737 | Deviance change=0.000591
-    Maximum b parameter change=0.000104 
-...........................................................
-Iteration 117     2022-05-01 11:52:56 
-   Deviance=173627.4731 | Deviance change=0.000553
-    Maximum b parameter change=0.000101 
-...........................................................
-Iteration 118     2022-05-01 11:52:56 
-   Deviance=173627.4726 | Deviance change=0.000517
-    Maximum b parameter change=9.8e-05 
-------------------------------------------------------------
-Start: 2022-05-01 11:52:50 
-End: 2022-05-01 11:52:56 
-Time difference of 5.74758 secs
-Difference: 5.74758 
-------------------------------------------------------------
-\end{verbatim}
-
-\begin{verbatim}
 WLE Reliability= 0.953 
 \end{verbatim}
 
@@ -1000,11 +508,7 @@ Yen's Q3 Statistic based on an estimated theta score
 \caption{\label{fig:q3-plot}Correlations matrix of Item Residuals}
 \end{figure}
 
-\begin{quote}
-(Some sample language) ``Using these criteria, we found XX items in possession of local dependence. The items that had the highest raw residual correlations had negative signs and no positive residual correlation. In other words, the assumption of local independence in this study (was)/(was not) met.''
-\end{quote}
-
-Figure \ref{fig:q3-plot} is a plot of the matrix of correlations between item residuals.
+Figure \ref{fig:q3-plot} is a plot of the matrix of correlations between item residuals. Each square depicts a correlation. The squares are shaded in grey with the lightest shade indicating the weakest correlations. As hoped, the vast majority of squares are very light, indicating weak correlations among the item residuals.
 
 \textbf{Summary}
 
@@ -1013,9 +517,9 @@ These analyses offer mixed evidence of assumption satisfaction. The model explai
 \hypertarget{rating-scale-model-rsm}{%
 \subsection{Rating Scale Model (RSM)}\label{rating-scale-model-rsm}}
 
-The first IRT model is the Rating Scale Model (RSM) (citation). The model is an extension of the Rasch model (designed for dichotomous items) for use with polytomous items based on rating scales such as Likert scales of agreement \citep{EmbretsonReise2000} and estimates the probability of choosing from among several response options given an examinee's location on the latent trait (level of lifetime exposure to spiritual abuse). More specifically, the increase in difficulty involved in choosing from between two response categories is called a ``step parameter''. The RSM assumes that all items use the same rating scale. As a Rasch model, it assumes that all items discriminate equally well and thus fixes the discrimination parameter to 1. The model also fixes the step parameters of all the items on the premise that the response categories are the same for all items. What the RSM frees to vary are the item difficulty parameters. Thus the focus of the RSM is the differences in item difficulties. If all of these assumptions are true -- that the items and their rating scales differentiate examinees equally well and differ only in overall difficulty -- then the observed pattern of item responses will closely match the pattern of items responses expected by the RSM and the model will fit.
+The first IRT model is the Rating Scale Model (RSM) \citep{Andrich1978}. The model is an extension of the Rasch model (designed for dichotomous items) for use with polytomous items based on rating scales such as Likert scales of agreement \citep{EmbretsonReise2000} and estimates the probability of choosing from among several response options given an examinee's location on the latent trait (level of lifetime exposure to spiritual abuse). More specifically, the increase in difficulty involved in choosing from between two response categories is called a ``step parameter''. The RSM assumes that all items use the same rating scale. As a Rasch model, it assumes that all items discriminate equally well and thus fixes the discrimination parameter to 1. The model also fixes the step parameters of all the items on the premise that the response categories are the same for all items. What the RSM frees to vary are the item difficulty parameters. Thus the focus of the RSM is the differences in item difficulties. If all of these assumptions are true -- that the items and their rating scales differentiate examinees equally well and differ only in overall difficulty -- then the observed pattern of item responses will closely match the pattern of items responses expected by the RSM and the model will fit.
 
-\begin{longtable}[]{@{}lrrrrrr@{}}
+\begin{longtable}[]{@{}llccccc@{}}
 \caption{\label{tab:rsm-items}Rating Scale Model Item Parameters for Spiritual Harm and Abuse Items}\tabularnewline
 \toprule
 & a1 & b1 & b2 & b3 & b4 & c \\
@@ -1096,13 +600,13 @@ EQ22 - Expected to follow pastor/leader rules re: dating/marriage/sex & 1 & 0.13
 
 \textbf{Item parameters}. Table \ref{tab:rsm-items} reports the item parameters estimated by the RSM for all 66 SHAS items. The first column shows the discrimination parameter, fixed to ``1'' for all items on the premise that the items discriminate equally well. The subsequent columns (b1 to b4) report the estimated thresholds (or step parameters). These values, too, are the same for all items.
 
-Item plots offer a way to see this information visually. Following are plots of three items. Here the horizontal (x) axis is the scale of the latent trait (overall lifetime exposure to spiritual abuse) expressed in logits ranging from -6 to +6. The vertical (y) axis is the probability of selecting a given response (such as ``Always'') at each level of latent trait. The blue line is the probability of selecting ``Never'' for examinees ranging from low to high lifetime spiritual abuse.
+Item plots offer a way to see this information visually. Following are plots of two items. In both plots, the horizontal (x) axis is the scale of the latent trait (overall lifetime exposure to spiritual abuse) expressed in logits ranging from -6 to +6. The vertical (y) axis is the probability of selecting a given response (such as ``Always'') at each level of latent trait. The blue line is the probability of selecting ``Never'' for examinees ranging from low to high lifetime spiritual abuse.
 
 \includegraphics{_main_files/figure-latex/rsm-a-1.pdf}
 
 \includegraphics{_main_files/figure-latex/rsm-b-1.pdf}
 
-What does vary between items in the RSM is the difficulty parameter, shown in the ``c'' column of Table \ref{tab:rsm-items}. This represents the location of the item on the logit scale of the latent trait: Does the item represent the ``most'' spiritual abuse? The least? Or somewhere in the middle? Table \ref{tab:rsm-items} presents the items sorted from least abuse to most abuse.
+What does vary between items in this model is the difficulty parameter (also called the item location), shown in the ``c'' column of Table \ref{tab:rsm-items}. This parameter represents the location of the item on the logit scale of the latent trait: Does the item represent the ``most'' spiritual abuse? The least? Or somewhere in the middle? In Table \ref{tab:rsm-items}, items are sorted by location from least abuse to most abuse.
 
 \begin{figure}
 \centering
@@ -1110,9 +614,7 @@ What does vary between items in the RSM is the difficulty parameter, shown in th
 \caption{\label{fig:rsm-item-diff}Distribution of Item Difficulty}
 \end{figure}
 
-Figure \ref{fig:rsm-item-diff} presents a histogram of the distribution of item difficulty parameters. The distribution is negatively skewed with most items clustered slightly above the average level of spiritual and several items measuring very low levels of lifetime exposure to spiritual abuse.
-
-\includegraphics{_main_files/figure-latex/rsm-item-info-1.pdf}
+Figure \ref{fig:rsm-item-diff} is a histogram of the distribution of item difficulty parameters. The distribution is negatively skewed with most items clustered slightly above the average level of spiritual abuse and several items measuring very low levels of lifetime exposure to spiritual abuse.
 
 \textbf{Item fit statistics}. Fit statistics show how closely the observed pattern of item responses fits the pattern of item responses predicted by the particular IRT model (Rasch, partial credit, etc.). They do this by means of chi-square statistics which examine the cumulative difference the observed pattern of item responses and the pattern of item responses that the model would expect. Two fit statistics commonly used in IRT models are the infit mean square (MNSQ) and the outfit mean square (MNSQ) \citep{BondFox2015}. The infit statistic places greater emphasis on unexpected responses that are close to the examinees and item location. The outfit is sensitive to unexpected responses that are far from the location. The expected value of infit or outfit for each item is 1.0, with a range of acceptable values ranging from 0.5 to 1.5. Values outside these boundaries indicate a lack of fit between items and the model.
 
@@ -1139,7 +641,7 @@ All but six of the 66 items had infit and outfit statistics within the acceptabl
 
 \textbf{Model fit}. To assess the overall fit of the model to the item response data we use two statistics. The first is the Root Mean Square Error of Approximation (RMSEA). The suggested cutoff for RMSEA is .06. The second is the CFI. The suggested cutoff for the CFI is .95.
 
-\begin{longtable}[]{@{}lrrrrrrrr@{}}
+\begin{longtable}[]{@{}llccccccc@{}}
 \caption{\label{tab:rsm-fit}Rating Scale Model Fit - Overall Model Fit}\tabularnewline
 \toprule
 & M2 & df & p & RMSEA & RMSEA\_5 & RMSEA\_95 & TLI & CFI \\
@@ -1154,6 +656,8 @@ stats & 61561.13 & 2339 & 0 & 0.09 & 0.09 & 0.09 & 0.96 & 0.95 \\
 \end{longtable}
 
 Table \ref{tab:rsm-fit} reports the model fit statistics for the SHAS items. The obtained RMSEA value = .092 (95\% CI{[}.092, .093{]}) exceeds the cutoff of .06. The CFI = .953 meets the recommended .95 threshold. Together these statistics offer weak evidence that the RSM fits the SHAS items.
+
+\textbf{Summary}.
 
 \hypertarget{partial-credit-model-pcm}{%
 \subsection{Partial Credit Model (PCM)}\label{partial-credit-model-pcm}}

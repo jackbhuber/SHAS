@@ -16,7 +16,7 @@ set in the _output.yml file.</p>" />
   <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
-  
+  <meta name="github-repo" content="https://github.com/jackbhuber/SHAS.git" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Data Preparation | Validity Evidence for the Spiritual Harm and Abuse Scale (SHAS)" />
@@ -278,19 +278,8 @@ div.csl-indent {
 <span id="cb4-6"><a href="data-preparation.html#cb4-6" aria-hidden="true" tabindex="-1"></a>ditems[ditems <span class="sc">==</span> <span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
 <span id="cb4-7"><a href="data-preparation.html#cb4-7" aria-hidden="true" tabindex="-1"></a>ditems[ditems <span class="sc">==</span> <span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
 <span id="cb4-8"><a href="data-preparation.html#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="data-preparation.html#cb4-9" aria-hidden="true" tabindex="-1"></a>dext_items <span class="ot">&lt;-</span> ext_items</span>
-<span id="cb4-10"><a href="data-preparation.html#cb4-10" aria-hidden="true" tabindex="-1"></a>dext_items[dext_items <span class="sc">==</span> <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb4-11"><a href="data-preparation.html#cb4-11" aria-hidden="true" tabindex="-1"></a>dext_items[dext_items <span class="sc">==</span> <span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb4-12"><a href="data-preparation.html#cb4-12" aria-hidden="true" tabindex="-1"></a>dext_items[dext_items <span class="sc">==</span> <span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb4-13"><a href="data-preparation.html#cb4-13" aria-hidden="true" tabindex="-1"></a>dext_items[dext_items <span class="sc">==</span> <span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb4-14"><a href="data-preparation.html#cb4-14" aria-hidden="true" tabindex="-1"></a>dext_items[dext_items <span class="sc">==</span> <span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb4-15"><a href="data-preparation.html#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="data-preparation.html#cb4-16" aria-hidden="true" tabindex="-1"></a>dint_items <span class="ot">&lt;-</span> int_items</span>
-<span id="cb4-17"><a href="data-preparation.html#cb4-17" aria-hidden="true" tabindex="-1"></a>dint_items[dint_items <span class="sc">==</span> <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb4-18"><a href="data-preparation.html#cb4-18" aria-hidden="true" tabindex="-1"></a>dint_items[dint_items <span class="sc">==</span> <span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb4-19"><a href="data-preparation.html#cb4-19" aria-hidden="true" tabindex="-1"></a>dint_items[dint_items <span class="sc">==</span> <span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb4-20"><a href="data-preparation.html#cb4-20" aria-hidden="true" tabindex="-1"></a>dint_items[dint_items <span class="sc">==</span> <span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb4-21"><a href="data-preparation.html#cb4-21" aria-hidden="true" tabindex="-1"></a>dint_items[dint_items <span class="sc">==</span> <span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span></code></pre></div>
+<span id="cb4-9"><a href="data-preparation.html#cb4-9" aria-hidden="true" tabindex="-1"></a>dext_items <span class="ot">&lt;-</span> ditems[, <span class="dv">1</span><span class="sc">:</span><span class="dv">52</span>]</span>
+<span id="cb4-10"><a href="data-preparation.html#cb4-10" aria-hidden="true" tabindex="-1"></a>dint_items <span class="ot">&lt;-</span> ditems[, <span class="dv">52</span><span class="sc">:</span><span class="dv">66</span>]</span></code></pre></div>
 </div>
 <div id="missing-data" class="section level2 hasAnchor">
 <h2>Missing data<a href="data-preparation.html#missing-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -307,11 +296,12 @@ Figure 1: Missing Data
 </div>
 <p>The first plot in Figure <a href="data-preparation.html#fig:vim-plots">1</a> is a frequency distribution of the number of missing data entries for each item. This plot reveals very few missing data for the first set of External Events items, but nearly 200 missing entries for the second set of Internal States items and demographics. The raises two questions. The first is: Who were those examinees? We know that they responded to the first 52 items, then apparently quit the survey. Why? Was it just fatigue, or is there more to know about them? The second question is what to do with the information they actually did provide.</p>
 <p>The second plot in Figure <a href="data-preparation.html#fig:vim-plots">1</a> illustrates the different combinations of missing entries. The blue squares represent cases with complete responses, and the red indicates missing data. The rows represent combinations of complete and missing responses. The bottom row of entirely blue squares represents complete data – examinees who responded to all of the items. The barplot on the right axis indicates that these were the most frequent combinations. The second most frequent combination was examinees who completed all of the External Events items and then quit the survey. Beyond that, there is no apparent order or pattern to the missing data.</p>
-<p><strong>Mechanism of missing data</strong>. <span class="citation">McKnight et al. (<a href="references.html#ref-McKnightEtAl2007" role="doc-biblioref">2007</a>)</span> prescribe several approaches for investigating the mechanisms of missing data. An appropriate first step is to test whether the data are Missing Completely At Random (MCAR) with the use of Little’s test <span class="citation">Little (<a href="references.html#ref-Little1988" role="doc-biblioref">1988</a>)</span>. This is a chi-square test of the difference between the observed pattern of missing responses and the pattern of responses that would expected if missingness were completely random. We report the results of this test in Table <a href="#tab:mcar"><strong>??</strong></a>.</p>
+<p><strong>Mechanism of missing data</strong>. <span class="citation">McKnight et al. (<a href="references.html#ref-McKnightEtAl2007" role="doc-biblioref">2007</a>)</span> prescribe several approaches for investigating the mechanisms of missing data. An appropriate first step is to test whether the data are Missing Completely At Random (MCAR) with the use of Little’s test <span class="citation">Little (<a href="references.html#ref-Little1988" role="doc-biblioref">1988</a>)</span>. This is a chi-square test of the difference between the observed pattern of missing responses and the pattern of responses that would expected if missingness were completely random. We report the results of this test in Table <a href="data-preparation.html#tab:mcar">1</a>.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="data-preparation.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(naniar)</span>
 <span id="cb6-2"><a href="data-preparation.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb6-3"><a href="data-preparation.html#cb6-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">mcar_test</span>(all), <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
+<span id="cb6-3"><a href="data-preparation.html#cb6-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">mcar_test</span>(all), <span class="at">digits =</span> <span class="dv">2</span>, <span class="at">caption =</span> <span class="st">&quot;Little&#39;s Test of Missing Completely at Random (MCAR)&quot;</span>)</span></code></pre></div>
 <table>
+<caption><span id="tab:mcar">Table 1: </span>Little’s Test of Missing Completely at Random (MCAR)</caption>
 <thead>
 <tr class="header">
 <th align="right">statistic</th>
@@ -353,8 +343,7 @@ Figure 1: Missing Data
 <span id="cb8-9"><a href="data-preparation.html#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(int_items_l, <span class="st">&quot;data/int_items_l.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb8-10"><a href="data-preparation.html#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(ditems_l, <span class="st">&quot;data/ditems_l.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb8-11"><a href="data-preparation.html#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(dext_items_l, <span class="st">&quot;data/dext_items_l.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb8-12"><a href="data-preparation.html#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(dint_items_l, <span class="st">&quot;data/dint_items_l.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb8-13"><a href="data-preparation.html#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code></pre></div>
+<span id="cb8-12"><a href="data-preparation.html#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(dint_items_l, <span class="st">&quot;data/dint_items_l.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 
 </div>
 </div>

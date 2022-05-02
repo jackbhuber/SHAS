@@ -40,19 +40,8 @@ ditems[ditems == 3] <- 1
 ditems[ditems == 4] <- 1
 ditems[ditems == 5] <- 1
 
-dext_items <- ext_items
-dext_items[dext_items == 1] <- 0
-dext_items[dext_items == 2] <- 1
-dext_items[dext_items == 3] <- 1
-dext_items[dext_items == 4] <- 1
-dext_items[dext_items == 5] <- 1
-
-dint_items <- int_items
-dint_items[dint_items == 1] <- 0
-dint_items[dint_items == 2] <- 1
-dint_items[dint_items == 3] <- 1
-dint_items[dint_items == 4] <- 1
-dint_items[dint_items == 5] <- 1
+dext_items <- ditems[ ,1:52]
+dint_items <- ditems[ ,52:66]
 ```
 
 ## Missing data
@@ -77,10 +66,10 @@ The second plot in Figure \@ref(fig:vim-plots) illustrates the different combina
 
 **Mechanism of missing data**. @McKnightEtAl2007 prescribe several approaches for investigating the mechanisms of missing data. An appropriate first step is to test whether the data are Missing Completely At Random (MCAR) with the use of Little's test @Little1988. This is a chi-square test of the difference between the observed pattern of missing responses and the pattern of responses that would expected if missingness were completely random. We report the results of this test in Table \@ref(tab:mcar).
 
-```{r mcar, message=FALSE, warning=FALSE, fig.cap='Little\'s Test of Missing Completely at Random (MCAR)'}
+```{r mcar, message=FALSE, warning=FALSE}
 library(naniar)
 library(knitr)
-knitr::kable(mcar_test(all), digits = 2)
+knitr::kable(mcar_test(all), digits = 2, caption = 'Little\'s Test of Missing Completely at Random (MCAR)')
 ```
 
 The test is fairly conclusive. The p-value for the chi-square is 1, which means observed pattern of missing data do not diverge significantly from what would be expected if the data were missing completely at random.
@@ -113,5 +102,9 @@ write.csv(int_items_l,"data/int_items_l.csv", row.names=FALSE)
 write.csv(ditems_l,"data/ditems_l.csv", row.names=FALSE)
 write.csv(dext_items_l,"data/dext_items_l.csv", row.names=FALSE)
 write.csv(dint_items_l,"data/dint_items_l.csv", row.names=FALSE)
+```
+
+```{r echo=FALSE}
 rm(list = ls())
 ```
+
