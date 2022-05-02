@@ -73,7 +73,7 @@ All but six of the 66 items had infit and outfit statistics within the acceptabl
 ```{r rsm-fit}
 # MODEL FIT
 # knitr::kable(M2(results.rsm, type = "C2", na.rm=TRUE, calcNULL = FALSE))
-knitr::kable(M2(results.rsm, type = "C2"), digits = 2, "simple", align = "lcccccccc", caption = 'Rating Scale Model Fit - Overall Model Fit')
+knitr::kable(M2(results.rsm, type = "C2"), digits = 3, "simple", align = "lcccccccc", caption = 'Rating Scale Model Fit - Overall Model Fit')
 ```
 
 Table \@ref(tab:rsm-fit) reports the model fit statistics for the SHAS items. The obtained RMSEA value = .092 (95% CI[.092, .093]) exceeds the cutoff of .06. The CFI = .953 meets the recommended .95 threshold. Together these statistics offer weak evidence that the RSM fits the SHAS items.
