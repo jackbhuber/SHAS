@@ -6,7 +6,7 @@ To check the assumption of local independence, we used the Q3 statistic (Yen, 19
 # Q3 STATISTIC
 library(sirt)
 items <- read.csv("data/ditems_l.csv") # grab the data
-mod <- sirt::rasch.mml2(items) # estimate the Rasch model
+mod <- sirt::rasch.mml2(items, progress = FALSE) # estimate the Rasch model
 mod.wle <- sirt::wle.rasch(dat=items, b=mod$item$b) # estimate WLEs
 mod.q3 <- sirt::Q3(dat=items, theta=mod.wle$theta, b=mod$item$b ) # estimate Q3
 ```
@@ -20,6 +20,4 @@ abline(v=c(53,66)) # borders for testlets
 abline(h=c(53,66))
 ```
 
->(Some sample language) "Using these criteria, we found XX items in possession of local dependence. The items that had the highest raw residual correlations had negative signs and no positive residual correlation. In other words, the assumption of local independence in this study (was)/(was not) met."
-
-Figure \@ref(fig:q3-plot) is a plot of the matrix of correlations between item residuals.
+Figure \@ref(fig:q3-plot) is a plot of the matrix of correlations between item residuals. Each square depicts a correlation. The squares are shaded in grey with the lightest shade indicating the weakest correlations. As hoped, the vast majority of squares are very light, indicating weak correlations among the item residuals.

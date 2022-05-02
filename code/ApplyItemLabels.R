@@ -1,5 +1,5 @@
 # APPLY VARIABLE LABELS
-names(items) <- c(
+names(data) <- c(
   # EXTERNAL EVENTS ITEMS
   Q7  = "EQ7 - Pastor speaking on God's behalf",
   Q10 = "EQ10 - Asked to give up personal goals by pastor",
@@ -68,4 +68,22 @@ names(items) <- c(
   Q79 = "IQ79 - Distrust of God",
   Q80 = "IQ80 - Feeling isolated",
   Q81 = "IQ81 - Nightmares about my negative religious experiences",
-  Q82 = "IQ82 - Having trouble navigating life outside my church/community")
+  Q82 = "IQ82 - Having trouble navigating life outside my church/community",
+  
+  # VARIABLE LABELS: DEMOGRAPHIC ITEMS
+  Q84 = "Age",
+  Q85 = "Gender",
+  Q86 = "Sexual orientation",
+  Q87 = "Race",
+  Q88 = "Raised in Christian home",
+  Q89 = "Most abusive group",
+  Q90 = "Racial makeup of abusive group",
+  Q91 = "Racial makeup of abusive group leadership",
+  Q92 = "Gender makeup of abusive group leadership",
+  Q95 = "Involvement in abusive group",
+  Q93 = "Current religious identification",
+  Q97 = "Current theological identification",
+  Q98 = "Current view of Bible",
+  "Generation",
+  "Podcast use"
+  )
