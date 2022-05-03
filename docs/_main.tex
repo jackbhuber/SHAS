@@ -423,24 +423,10 @@ The test is fairly conclusive. The p-value for the chi-square is 1, which means 
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{item-analysis}{%
-\chapter{Item Analysis}\label{item-analysis}}
+\hypertarget{item-analysis-in-irt}{%
+\chapter{Item Analysis in IRT}\label{item-analysis-in-irt}}
 
-In this chapter, we examine the technical quality of the items that Dan piloted for the SHAS. Here we address questions like the following:
-
-\begin{itemize}
-\tightlist
-\item
-  Which items, if any, are too ``easy''? What is the impact of this?
-\item
-  Which items, if any, are too ``difficult''? What is the impact of this?
-\item
-  Which items, if any, correlate weakly with others (and therefore might need to be refined or excluded from scaling?
-\item
-  Which items, if any, have too many response categories which might be profitably collapsed?
-\end{itemize}
-
-We begin by defining item analysis and discussing its importance. Then we document our item analyses from an item response theory (IRT) framework. We conclude by summarizing what we learn from these analyses to help us refine these 66 items and possibly develop better ones in the future.
+In this chapter, we examine the technical quality of the SHAS items within the framework of item response theory. We begin by introducing IRT and discussing its advantages. Then we document our IRT item analyses. We conclude by summarizing what we learn from these analyses to help us refine these 66 items and possibly develop better ones in the future.
 
 \hypertarget{item-response-theory}{%
 \section{Item response theory}\label{item-response-theory}}
@@ -618,7 +604,7 @@ Figure \ref{fig:rsm-item-diff} is a histogram of the distribution of item diffic
 
 \textbf{Item fit statistics}. Fit statistics show how closely the observed pattern of item responses fits the pattern of item responses predicted by the particular IRT model (Rasch, partial credit, etc.). They do this by means of chi-square statistics which examine the cumulative difference the observed pattern of item responses and the pattern of item responses that the model would expect. Two fit statistics commonly used in IRT models are the infit mean square (MNSQ) and the outfit mean square (MNSQ) \citep{BondFox2015}. The infit statistic places greater emphasis on unexpected responses that are close to the examinees and item location. The outfit is sensitive to unexpected responses that are far from the location. The expected value of infit or outfit for each item is 1.0, with a range of acceptable values ranging from 0.5 to 1.5. Values outside these boundaries indicate a lack of fit between items and the model.
 
-\begin{longtable}[]{@{}lrrrr@{}}
+\begin{longtable}[]{@{}lcccc@{}}
 \caption{\label{tab:rsm-item-fit}Rating Scale Model (RSM) - Misfitting Items}\tabularnewline
 \toprule
 item & outfit & z.outfit & infit & z.infit \\
@@ -651,7 +637,7 @@ All but six of the 66 items had infit and outfit statistics within the acceptabl
 & M2 & df & p & RMSEA & RMSEA\_5 & RMSEA\_95 & TLI & CFI \\
 \midrule
 \endhead
-stats & 61561.13 & 2339 & 0 & 0.09 & 0.09 & 0.09 & 0.96 & 0.95 \\
+stats & 61561.13 & 2339 & 0 & 0.092 & 0.092 & 0.093 & 0.957 & 0.953 \\
 \bottomrule
 \end{longtable}
 
@@ -660,7 +646,7 @@ Table \ref{tab:rsm-fit} reports the model fit statistics for the SHAS items. The
 \textbf{Summary}.
 
 \hypertarget{partial-credit-model-pcm}{%
-\subsection{Partial Credit Model (PCM)}\label{partial-credit-model-pcm}}
+\section{Partial Credit Model (PCM)}\label{partial-credit-model-pcm}}
 
 The second model we consider is the Partial Credit Model (PCM) \citep{Masters1982}. This is a polytomous item response model belonging to the Rasch family. This means that it extends the Rasch model, which is based on dichotomous item responses (1=correct, 0=incorrect), by considering the probability of choosing from among several response options such as those typically presented in Likert scales of agreement. The number of response categories in each item may vary \citep{EmbretsonReise2000}. It follows that the PCM contains m (m + 1 being the number of response categories) threshold parameters, and each threshold parameter marks a category intersection \citep{Masters1982}. Threshold sometimes refers to ``step difficulty'' or ``step parameter'' and illustrates the point on the latent trait continuum (e.g., spiritual abuse) where a response in category k becomes more likely than a response in category k -- 1 (de Ayala, 2009). The PCM provides scores for items, persons, and step parameters on a logit scale. We begin by loading the \texttt{mirt} library and estimating the model on the data from the 66 SHAS items. This model constrains the slopes to 1 and freely estimates the variance parameters.
 
@@ -719,7 +705,7 @@ EQ32 - Feeling unable to express unhappiness & 1 & -0.35 & -0.53 & 0.65 & 1.52 &
 \bottomrule
 \end{longtable}
 
-\textbf{Item parameters}. Table \ref{tab:pcm-items} reports the item parameters estimated by the PCM. Once again, column (a) reports the discrimination parameter fixed as ``1'' for all items on the premise that the items discriminate examinees equally well. The subsequent columns (b1 to b4) report the estimated thresholds (or step parameters) for each item. Because the SHAS items all have five response categories, the PCM estimates four threshold parameters (b1 to b4) for each item. These represent the change in lifetime exposure to spiritual abuse represented by choosing between two response categories, such as, for example, ``Once or twice'' over ``Never.'' Unlike the Rating Scale Model (RSM) which estimated the same thresholds for all items and allowed the items to vary only by overall difficulty, the PCM allows the thresholds to vary \citep{EmbretsonReise2000}. The important analytic question, therefore, is which items have ordered thresholds and which have ``reversals.'' A reversal between two category thresholds suggests that one might not be contributing reliable information and might be collapsed. Most of the SHAS items (43 out of 66) had reversals, and these items with reversals are shown in Table \ref{tab:pcm-items}. On each of these items, examinees who had experienced more overall lifetime spiritual abuse were more likely to report ``Never'' than ``Once or twice''.
+Table \ref{tab:pcm-items} reports the item parameters estimated by the PCM. Once again, column (a) reports the discrimination parameter fixed as ``1'' for all items on the premise that the items discriminate examinees equally well. The subsequent columns (b1 to b4) report the estimated thresholds (or step parameters) for each item. Because the SHAS items all have five response categories, the PCM estimates four threshold parameters (b1 to b4) for each item. These represent the change in lifetime exposure to spiritual abuse represented by choosing between two response categories, such as, for example, ``Once or twice'' over ``Never.'' Unlike the Rating Scale Model (RSM) which estimated the same thresholds for all items and allowed the items to vary only by overall difficulty, the PCM allows the thresholds to vary \citep{EmbretsonReise2000}. The important analytic question, therefore, is which items have ordered thresholds and which have ``reversals.'' A reversal between two category thresholds suggests that one might not be contributing reliable information and might be collapsed. Most of the SHAS items (43 out of 66) had reversals, and these items with reversals are shown in Table \ref{tab:pcm-items}. On each of these items, examinees who had experienced more overall lifetime spiritual abuse were more likely to report ``Never'' than ``Once or twice''.
 
 Again, plots of the option characteristic curves help convey this information visually. The following plots illustrate three items with very different sets of curves. The first item illustrates the intended pattern of ordered thresholds. The second and third items show pronounced reversals.
 
@@ -731,7 +717,7 @@ Figure \ref{fig:pcm-b} shows an item with reversals. the intended pattern of res
 
 \includegraphics{_main_files/figure-latex/pcm-c-1.pdf}
 
-\textbf{Fit statistics}. Fit statistics gauge the extent to which the observed pattern of item responses fit the IRT model (Rasch, partial credit, etc.). They do this by means of chi-square statistics which examine the cumulative difference the observed pattern of item responses and the pattern of item respones that the model would expect. Two fit statistics commonly used in IRT modesl are the infit mean square (MNSQ) and the outfit mean square (MNSQ) \citep{BondFox2015}. The infit statistic places greater emphasis on unexpected responses that are close to the examinees and item location. The outfit is sensitive to unexpected responses that are far from the location. The expected value of infit or outfit for each item is 1.0, with a range of acceptable values ranging from 0.5 to 1.5. Values outside these boundaries indicate a lack of fit between items and the model.
+Fit statistics gauge the extent to which the observed pattern of item responses fit the IRT model (Rasch, partial credit, etc.). They do this by means of chi-square statistics which examine the cumulative difference the observed pattern of item responses and the pattern of item respones that the model would expect. Two fit statistics commonly used in IRT modesl are the infit mean square (MNSQ) and the outfit mean square (MNSQ) \citep{BondFox2015}. The infit statistic places greater emphasis on unexpected responses that are close to the examinees and item location. The outfit is sensitive to unexpected responses that are far from the location. The expected value of infit or outfit for each item is 1.0, with a range of acceptable values ranging from 0.5 to 1.5. Values outside these boundaries indicate a lack of fit between items and the model.
 
 \begin{longtable}[]{@{}lrrrr@{}}
 \caption{\label{tab:pcm-item-fit}Partial Credit Model (PCM) - Misfitting Items}\tabularnewline
@@ -754,8 +740,6 @@ EQ55 - Hearing cultural references in sermons unfamiliar to my race/eth. subcult
 
 This information suggests a decent fit of the PCM to the SHAS item response data. All but six of the 66 items had infit and outfit statistics within the acceptable range from 0.5 to 1.5. Statistics for these six misfitting items are presented here in Table \ref{tab:pcm-item-fit}. The large outfit values mean the observed patterns of responses to these items differed substantially from the patterns of responses expected by the PCM. These items capture the experiences of women, people of color, and LGBTQ persons.
 
-\textbf{Model fit}.
-
 \begin{verbatim}
             M2   df p      RMSEA    RMSEA_5   RMSEA_95     SRMSR     TLI
 stats 51392.82 2144 0 0.08782602 0.08715423 0.08847002 0.1170549 0.96122
@@ -764,6 +748,470 @@ stats 0.9612381
 \end{verbatim}
 
 The obtained RMSEA value = .088 (95\% CI{[}.088, .089{]}) and SRMSR value = .118 suggest that data do not fit the model reasonably very well using suggested cutoff values of RMSEA \textless= .06 and SRMSR \textless= .08 as suggested guidelines for assessing fit. The CFI = .961 exceeded the recommended .95 threshold.
+
+\hypertarget{generalized-partial-credit-model-gpcm}{%
+\section{Generalized Partial Credit Model (GPCM)}\label{generalized-partial-credit-model-gpcm}}
+
+The third model, the Generalized Partial Credit Model (GPCM) is an extension of the Partial Credit Model. The extension is that the GPCM allows the item discrimination parameters to vary.
+
+\begin{longtable}[]{@{}llcccccccc@{}}
+\caption{\label{tab:gpcm-items}Generalized Partial Credit Model Item Parameters}\tabularnewline
+\toprule
+& a & b1 & b2 & b3 & b4 & deltab1b2 & deltab2b3 & deltab3b4 & avg \\
+\midrule
+\endfirsthead
+\toprule
+& a & b1 & b2 & b3 & b4 & deltab1b2 & deltab2b3 & deltab3b4 & avg \\
+\midrule
+\endhead
+EQ41 - Denied opportunities to serve because of my sexual orientation & 0.38 & 9.58 & -0.14 & 1.41 & -0.11 & -9.72 & 1.55 & -1.52 & -3.23 \\
+EQ46 - Treated as less than because of my skin color & 0.31 & 11.48 & 1.12 & 4.65 & 2.63 & -10.36 & 3.53 & -2.02 & -2.95 \\
+EQ17 - Treated as less than b/c my sexual orientation & 0.42 & 8.95 & -0.67 & 0.82 & 0.43 & -9.62 & 1.49 & -0.39 & -2.84 \\
+EQ27 - Denied opportunities to serve b/c of my gender & 0.47 & 3.55 & 0.07 & 1.10 & 0.91 & -3.48 & 1.04 & -0.19 & -0.88 \\
+EQ50 - Treated as less than because of my gender & 0.51 & 3.34 & -0.94 & 0.64 & 1.02 & -4.28 & 1.58 & 0.39 & -0.77 \\
+EQ60 - Encouraged by leader to stay in abusive marriage & 0.69 & 3.05 & 0.84 & 1.42 & 2.28 & -2.21 & 0.58 & 0.87 & -0.25 \\
+EQ21 - Taught I would risk Hell if left my church/group & 0.96 & 1.13 & 0.33 & 0.86 & 0.65 & -0.80 & 0.53 & -0.21 & -0.16 \\
+EQ55 - Hearing cultural references in sermons unfamiliar to my race/eth. subculture & 0.31 & 4.06 & 2.05 & 3.38 & 3.94 & -2.00 & 1.33 & 0.56 & -0.04 \\
+EQ26 - Pressured to forgive abuser while abuse was ongoing & 1.02 & 1.35 & 0.67 & 0.93 & 1.45 & -0.68 & 0.26 & 0.52 & 0.03 \\
+EQ20 - Members pressured to give money despite financial hardship & 1.02 & 0.94 & 0.28 & 0.91 & 1.16 & -0.65 & 0.63 & 0.25 & 0.07 \\
+EQ65 - Cut off/shunned by more religious family members & 0.93 & 1.26 & 0.72 & 1.25 & 1.77 & -0.54 & 0.53 & 0.52 & 0.17 \\
+EQ10 - Asked to give up personal goals by pastor & 1.06 & 1.16 & 0.60 & 1.35 & 1.71 & -0.56 & 0.74 & 0.36 & 0.18 \\
+EQ22 - Expected to follow pastor/leader rules re: dating/marriage/sex & 0.97 & -0.30 & -0.58 & -0.34 & 0.26 & -0.28 & 0.25 & 0.59 & 0.19 \\
+IQ72 - Feeling as if God harmed me directly & 0.87 & 1.51 & 0.81 & 2.19 & 2.13 & -0.70 & 1.38 & -0.06 & 0.21 \\
+EQ51 - Extreme pressure to be pastor/missionary/spiritual leader & 0.76 & 0.69 & 0.30 & 0.74 & 1.34 & -0.39 & 0.44 & 0.60 & 0.22 \\
+EQ7 - Pastor speaking on God's behalf & 0.87 & 0.34 & 0.05 & 0.66 & 1.01 & -0.29 & 0.61 & 0.35 & 0.22 \\
+EQ47 - Medical care being postponed/withheld for religious reasons & 0.98 & 1.55 & 1.17 & 2.46 & 2.25 & -0.38 & 1.29 & -0.21 & 0.23 \\
+EQ40 - Threatening Divine punishment to keep group members in line & 1.37 & 0.38 & 0.20 & 0.94 & 1.13 & -0.18 & 0.73 & 0.19 & 0.25 \\
+EQ39 - Made to feel shame over natural sexual desires (not actions) & 1.08 & -0.17 & -0.59 & 0.21 & 0.57 & -0.41 & 0.79 & 0.37 & 0.25 \\
+IQ76 - Feeling I wasted years of my life in a church/set of beliefs & 1.18 & -0.10 & -0.20 & 0.46 & 0.69 & -0.10 & 0.66 & 0.22 & 0.26 \\
+EQ57 - Developing mental/physical ailments from conforming to group/leader's expectation & 1.26 & 0.60 & 0.28 & 0.94 & 1.41 & -0.32 & 0.66 & 0.47 & 0.27 \\
+EQ61 - Developmentally-inappropriate/anxious end times descriptions taught to young children & 1.03 & 0.01 & -0.22 & 0.39 & 0.84 & -0.23 & 0.61 & 0.45 & 0.28 \\
+EQ24 - Expected to consult pastor/leader before making non-religious decisions & 1.14 & 0.94 & 0.43 & 1.41 & 1.88 & -0.51 & 0.98 & 0.46 & 0.31 \\
+EQ45 - Developmentally-inappropriate/anxious Hell/Satan/demons taught to young children & 1.07 & -0.14 & -0.13 & 0.47 & 0.85 & 0.01 & 0.59 & 0.39 & 0.33 \\
+EQ53 - Scripture used to justify abusive parent-child behavior & 1.25 & 0.20 & 0.16 & 0.87 & 1.30 & -0.04 & 0.71 & 0.42 & 0.37 \\
+EQ30 - Deterred from seeking mental health treatment/counseling/medication & 1.23 & 0.65 & 0.36 & 1.10 & 1.75 & -0.29 & 0.73 & 0.65 & 0.37 \\
+IQ68 - Anxiety attacks triggered by religious stimuli & 1.12 & 0.72 & 0.26 & 1.21 & 1.87 & -0.46 & 0.95 & 0.66 & 0.38 \\
+EQ16 - Church/community abandoning me in difficult time & 1.11 & 0.41 & 0.51 & 1.04 & 1.56 & 0.11 & 0.53 & 0.52 & 0.38 \\
+EQ66 - Others treated as less than due to their sexual orientation & 1.08 & -0.57 & -0.81 & -0.04 & 0.61 & -0.24 & 0.78 & 0.65 & 0.39 \\
+EQ62 - Scripture used to justify physical violence & 1.01 & 0.52 & 0.15 & 1.29 & 1.82 & -0.37 & 1.15 & 0.53 & 0.44 \\
+EQ19 - Behavior excessively monitored by pastor/group & 1.43 & 0.18 & 0.19 & 0.81 & 1.49 & 0.00 & 0.62 & 0.69 & 0.44 \\
+EQ34 - Scripture used to justify physical punishment/severe discipline & 0.91 & 0.16 & -0.02 & 0.88 & 1.48 & -0.18 & 0.90 & 0.60 & 0.44 \\
+EQ52 - Blamed for harm I suffered rather than blaming who harmed me & 1.58 & 0.36 & 0.48 & 0.94 & 1.69 & 0.12 & 0.45 & 0.75 & 0.44 \\
+EQ31 - Shunned/ignored by pastor/church/group & 1.00 & 0.48 & 0.57 & 1.43 & 1.81 & 0.09 & 0.86 & 0.38 & 0.44 \\
+EQ54 - Being explicitly taught to distrust my intuitions & 1.32 & -0.46 & -0.41 & 0.45 & 0.88 & 0.05 & 0.87 & 0.42 & 0.44 \\
+EQ29 - Feeling special when in pastor's good graces; otherwise ignored & 1.01 & 0.11 & -0.01 & 0.81 & 1.45 & -0.12 & 0.82 & 0.65 & 0.45 \\
+IQ70 - Feeling betrayed by God & 0.71 & 0.55 & 0.47 & 1.71 & 1.90 & -0.09 & 1.25 & 0.19 & 0.45 \\
+IQ79 - Distrust of God & 0.76 & 0.11 & 0.04 & 1.41 & 1.46 & -0.07 & 1.37 & 0.04 & 0.45 \\
+EQ23 - Prayer replacing needed medical interventions & 1.06 & 0.68 & 0.58 & 1.49 & 2.07 & -0.10 & 0.91 & 0.57 & 0.46 \\
+EQ58 - Terror/horror used to motivate religious decisions & 1.21 & -0.07 & -0.13 & 0.83 & 1.32 & -0.06 & 0.96 & 0.49 & 0.46 \\
+EQ35 - Taught to distrust my emotions & 1.19 & -0.64 & -0.64 & 0.24 & 0.75 & 0.00 & 0.88 & 0.51 & 0.46 \\
+IQ81 - Nightmares about my negative religious experiences & 1.25 & 0.71 & 0.77 & 1.77 & 2.10 & 0.06 & 1.00 & 0.33 & 0.46 \\
+EQ64 - Witnessing women pressured to stay in unfaithful/abusive marriages & 1.17 & 0.09 & 0.39 & 1.05 & 1.51 & 0.30 & 0.66 & 0.46 & 0.47 \\
+IQ73 - Self-hatred or self-loathing & 0.87 & 0.02 & -0.06 & 1.01 & 1.47 & -0.09 & 1.07 & 0.46 & 0.48 \\
+EQ49 - Leadership/group protecting and elevating abusive individuals & 1.34 & 0.25 & 0.49 & 1.05 & 1.72 & 0.24 & 0.56 & 0.67 & 0.49 \\
+IQ82 - Having trouble navigating life outside my church/community & 0.86 & 0.27 & 0.14 & 1.56 & 1.77 & -0.13 & 1.42 & 0.21 & 0.50 \\
+EQ18 - Church/pastor discourage critical thinking & 1.52 & -0.34 & -0.27 & 0.58 & 1.16 & 0.07 & 0.85 & 0.57 & 0.50 \\
+EQ38 - Unrealistic demands placed on my moral/religious behavior & 1.76 & -0.61 & -0.35 & 0.41 & 0.89 & 0.26 & 0.76 & 0.48 & 0.50 \\
+EQ37 - Made to feel less spiritually mature than pastor/leadership & 1.35 & -0.58 & -0.38 & 0.40 & 0.95 & 0.20 & 0.78 & 0.55 & 0.51 \\
+EQ43 - Shamed by pastor/group for poor spiritual/moral performance & 1.53 & 0.23 & 0.49 & 1.24 & 1.79 & 0.26 & 0.74 & 0.56 & 0.52 \\
+EQ44 - Love/acceptance offered only for high spiritual/moral performance & 1.72 & -0.25 & -0.09 & 0.60 & 1.32 & 0.16 & 0.68 & 0.72 & 0.52 \\
+EQ11 - Disagree w/pastor portrayed as evil & 1.49 & -0.22 & 0.15 & 0.64 & 1.35 & 0.37 & 0.49 & 0.71 & 0.52 \\
+IQ71 - Avoiding religious activities/settings to reduce distressing feelings & 1.24 & -0.70 & -0.43 & 0.41 & 0.90 & 0.27 & 0.84 & 0.49 & 0.53 \\
+EQ59 - Pastor/group blame victim for their abuse & 1.59 & 0.11 & 0.38 & 1.03 & 1.74 & 0.27 & 0.64 & 0.72 & 0.55 \\
+EQ56 - Being made to feel I was crazy/weird for doubts/questions & 1.93 & -0.43 & -0.15 & 0.49 & 1.22 & 0.28 & 0.64 & 0.73 & 0.55 \\
+EQ28 - Leadershi/group protecting abusive individuals & 1.32 & -0.03 & 0.42 & 0.96 & 1.66 & 0.45 & 0.54 & 0.70 & 0.56 \\
+EQ63 - Shamed by pastor/group for raising questions or concerns & 1.61 & -0.14 & 0.28 & 0.99 & 1.62 & 0.43 & 0.71 & 0.63 & 0.59 \\
+EQ32 - Feeling unable to express unhappiness & 1.26 & -0.40 & -0.45 & 0.57 & 1.37 & -0.05 & 1.02 & 0.80 & 0.59 \\
+EQ36 - Mental/physical problems interpreted as spiritual/moral weakness & 1.46 & -0.57 & -0.19 & 0.51 & 1.25 & 0.38 & 0.70 & 0.74 & 0.61 \\
+IQ74 - Sadness over the loss of my faith/religious community & 0.77 & -0.36 & -0.56 & 0.71 & 1.57 & -0.20 & 1.27 & 0.85 & 0.64 \\
+IQ78 - A lack of self-worth & 0.96 & -0.47 & -0.37 & 0.66 & 1.46 & 0.10 & 1.03 & 0.80 & 0.64 \\
+EQ25 - Feeling unable to raise questions and issues & 1.54 & -0.99 & -0.66 & 0.13 & 0.95 & 0.32 & 0.80 & 0.81 & 0.64 \\
+EQ42 - Seeing others shamed/shunned by pastor/leader/group & 1.58 & -0.61 & 0.02 & 0.79 & 1.49 & 0.63 & 0.77 & 0.70 & 0.70 \\
+IQ77 - Anger upon reflecting on negative religious experiences & 1.65 & -1.05 & -0.48 & 0.28 & 1.13 & 0.58 & 0.76 & 0.85 & 0.73 \\
+IQ80 - Feeling isolated & 1.12 & -1.10 & -0.68 & 0.34 & 1.41 & 0.42 & 1.02 & 1.07 & 0.84 \\
+IQ69 - Lack of spiritual direction/purpose & 0.77 & -1.30 & -0.82 & 0.73 & 1.46 & 0.48 & 1.55 & 0.73 & 0.92 \\
+\bottomrule
+\end{longtable}
+
+Table \ref{tab:gpcm-items} reports the item parameters estimated by the GPCM. Now the (a) reports the discrimination parameters which vary by item. These parameters suggest that the items vary considerably in how well they discriminate between examinees who have been exposed to more or less spiritual abuse.
+
+In Table \ref{tab:gpcm-items}, the items are sorted by the average difference between thresholds (or step parameters). Most of the items have reversals of the first two response categories (``Never'' and ``Once or Twice''), and some of these step parameters have very large values.
+
+Again, plots of the option characteristic curves help convey this information visually. The following plots illustrate three items with very different sets of curves. The first item illustrates the intended pattern of ordered thresholds. The second and third items show pronounced reversals.
+
+\begin{figure}
+\centering
+\includegraphics{_main_files/figure-latex/gpcm-a-1.pdf}
+\caption{\label{fig:gpcm-a}Option Characteristic Curve for Item 41: Denied opportunities to serve because of my sexual orientation}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{_main_files/figure-latex/gpcm-b-1.pdf}
+\caption{\label{fig:gpcm-b}Option Characteristic Curve for Item 42 - Seeing others shamed/shunned by pastor/leader/group}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{_main_files/figure-latex/gpcm-c-1.pdf}
+\caption{\label{fig:gpcm-c}Option Characteristic Curve for Item 63 - Shamed by pastor/group for raising questions or concerns}
+\end{figure}
+
+Figure \ref{fig:gpcm-c}, for Item 63 - ``Shamed by pastor/group for raising questions or concerns'' shows the intended pattern of responses. Examinees who had experienced less lifetime exposure to spiritual abuse were most likely to select P1: ``Never.'' Those who had experienced a little more were more likely to select P2: ``Once or twice.'' And so on. On this item the response categories functioned as intended to sort examinees on the basis of lifetime exposure to spiritual abuse.
+
+Fit statistics gauge the extent to which the observed pattern of item responses fit the IRT model (Rasch, partial credit, etc.). They do this by means of chi-square statistics which examine the cumulative difference the observed pattern of item responses and the pattern of item respones that the model would expect. Two fit statistics commonly used in IRT modesl are the infit mean square (MNSQ) and the outfit mean square (MNSQ) \citep{BondFox2015}. The infit statistic places greater emphasis on unexpected responses that are close to the examinees and item location. The outfit is sensitive to unexpected responses that are far from the location. The expected value of infit or outfit for each item is 1.0, with a range of acceptable values ranging from 0.5 to 1.5. Values outside these boundaries indicate a lack of fit between items and the model.
+
+\begin{longtable}[]{@{}lcccc@{}}
+\caption{\label{tab:gpcm-item-fit}Generalized Partial Credit Model (GPCM) Item Fit Statistics}\tabularnewline
+\toprule
+item & outfit & z.outfit & infit & z.infit \\
+\midrule
+\endfirsthead
+\toprule
+item & outfit & z.outfit & infit & z.infit \\
+\midrule
+\endhead
+EQ52 - Blamed for harm I suffered rather than blaming who harmed me & 0.95 & -0.81 & 0.96 & -1.48 \\
+EQ26 - Pressured to forgive abuser while abuse was ongoing & 1.24 & 3.86 & 0.96 & -1.33 \\
+IQ77 - Anger upon reflecting on negative religious experiences & 0.96 & -1.51 & 0.97 & -1.30 \\
+EQ25 - Feeling unable to raise questions and issues & 0.95 & -1.62 & 0.97 & -1.24 \\
+EQ44 - Love/acceptance offered only for high spiritual/moral performance & 0.99 & -0.21 & 0.97 & -1.17 \\
+EQ11 - Disagree w/pastor portrayed as evil & 0.98 & -0.50 & 0.97 & -1.17 \\
+EQ43 - Shamed by pastor/group for poor spiritual/moral performance & 0.97 & -0.69 & 0.97 & -1.07 \\
+EQ59 - Pastor/group blame victim for their abuse & 0.93 & -1.39 & 0.97 & -1.02 \\
+EQ56 - Being made to feel I was crazy/weird for doubts/questions & 0.95 & -1.19 & 0.97 & -1.04 \\
+EQ35 - Taught to distrust my emotions & 1.06 & 2.16 & 0.97 & -1.07 \\
+EQ16 - Church/community abandoning me in difficult time & 0.96 & -1.05 & 0.98 & -0.93 \\
+EQ28 - Leadershi/group protecting abusive individuals & 0.97 & -0.71 & 0.98 & -0.92 \\
+EQ38 - Unrealistic demands placed on my moral/religious behavior & 0.93 & -1.84 & 0.98 & -0.92 \\
+EQ36 - Mental/physical problems interpreted as spiritual/moral weakness & 0.96 & -1.14 & 0.98 & -0.93 \\
+EQ42 - Seeing others shamed/shunned by pastor/leader/group & 0.95 & -1.54 & 0.98 & -0.92 \\
+EQ37 - Made to feel less spiritually mature than pastor/leadership & 0.97 & -0.84 & 0.98 & -0.92 \\
+EQ54 - Being explicitly taught to distrust my intuitions & 0.99 & -0.15 & 0.98 & -0.81 \\
+EQ64 - Witnessing women pressured to stay in unfaithful/abusive marriages & 0.97 & -0.87 & 0.98 & -0.79 \\
+EQ18 - Church/pastor discourage critical thinking & 0.96 & -1.16 & 0.98 & -0.78 \\
+IQ71 - Avoiding religious activities/settings to reduce distressing feelings & 0.97 & -1.08 & 0.98 & -0.78 \\
+EQ63 - Shamed by pastor/group for raising questions or concerns & 0.93 & -1.78 & 0.98 & -0.68 \\
+EQ49 - Leadership/group protecting and elevating abusive individuals & 0.96 & -1.00 & 0.98 & -0.66 \\
+EQ31 - Shunned/ignored by pastor/church/group & 0.96 & -1.14 & 0.98 & -0.67 \\
+IQ80 - Feeling isolated & 0.98 & -0.74 & 0.98 & -0.66 \\
+EQ7 - Pastor speaking on God's behalf & 1.05 & 1.67 & 0.98 & -0.68 \\
+EQ29 - Feeling special when in pastor's good graces; otherwise ignored & 0.97 & -0.98 & 0.98 & -0.65 \\
+EQ66 - Others treated as less than due to their sexual orientation & 1.03 & 1.00 & 0.99 & -0.54 \\
+EQ21 - Taught I would risk Hell if left my church/group & 1.07 & 1.41 & 0.99 & -0.51 \\
+IQ76 - Feeling I wasted years of my life in a church/set of beliefs & 1.01 & 0.20 & 0.99 & -0.53 \\
+EQ32 - Feeling unable to express unhappiness & 0.98 & -0.65 & 0.99 & -0.52 \\
+EQ27 - Denied opportunities to serve b/c of my gender & 1.01 & 0.20 & 0.99 & -0.48 \\
+EQ65 - Cut off/shunned by more religious family members & 1.02 & 0.48 & 0.99 & -0.41 \\
+IQ74 - Sadness over the loss of my faith/religious community & 0.99 & -0.33 & 0.99 & -0.50 \\
+EQ19 - Behavior excessively monitored by pastor/group & 0.95 & -1.21 & 0.99 & -0.38 \\
+EQ30 - Deterred from seeking mental health treatment/counseling/medication & 0.96 & -0.83 & 0.99 & -0.36 \\
+EQ58 - Terror/horror used to motivate religious decisions & 0.95 & -1.51 & 0.99 & -0.36 \\
+IQ69 - Lack of spiritual direction/purpose & 0.99 & -0.35 & 0.99 & -0.37 \\
+EQ50 - Treated as less than because of my gender & 0.93 & -2.02 & 0.99 & -0.37 \\
+EQ40 - Threatening Divine punishment to keep group members in line & 0.96 & -0.76 & 0.99 & -0.29 \\
+EQ53 - Scripture used to justify abusive parent-child behavior & 0.94 & -1.47 & 0.99 & -0.30 \\
+IQ78 - A lack of self-worth & 0.98 & -0.63 & 0.99 & -0.30 \\
+EQ39 - Made to feel shame over natural sexual desires (not actions) & 1.00 & -0.09 & 0.99 & -0.28 \\
+EQ20 - Members pressured to give money despite financial hardship & 0.94 & -1.37 & 0.99 & -0.22 \\
+EQ24 - Expected to consult pastor/leader before making non-religious decisions & 0.98 & -0.39 & 0.99 & -0.18 \\
+EQ45 - Developmentally-inappropriate/anxious Hell/Satan/demons taught to young children & 0.98 & -0.54 & 0.99 & -0.21 \\
+IQ79 - Distrust of God & 0.98 & -0.88 & 1.00 & -0.20 \\
+EQ61 - Developmentally-inappropriate/anxious end times descriptions taught to young children & 0.98 & -0.49 & 1.00 & -0.17 \\
+EQ34 - Scripture used to justify physical punishment/severe discipline & 0.98 & -0.56 & 1.00 & -0.12 \\
+EQ55 - Hearing cultural references in sermons unfamiliar to my race/eth. subculture & 0.99 & -0.22 & 1.00 & -0.05 \\
+EQ57 - Developing mental/physical ailments from conforming to group/leader's expectation & 0.90 & -2.01 & 1.00 & -0.03 \\
+EQ41 - Denied opportunities to serve because of my sexual orientation & 1.08 & 0.87 & 1.00 & 0.03 \\
+IQ73 - Self-hatred or self-loathing & 0.96 & -1.23 & 1.00 & 0.11 \\
+EQ10 - Asked to give up personal goals by pastor & 0.96 & -0.67 & 1.00 & 0.10 \\
+EQ51 - Extreme pressure to be pastor/missionary/spiritual leader & 0.98 & -0.62 & 1.00 & 0.12 \\
+EQ60 - Encouraged by leader to stay in abusive marriage & 0.91 & -1.40 & 1.00 & 0.10 \\
+EQ46 - Treated as less than because of my skin color & 0.96 & -0.31 & 1.01 & 0.08 \\
+EQ62 - Scripture used to justify physical violence & 0.93 & -1.88 & 1.01 & 0.24 \\
+IQ68 - Anxiety attacks triggered by religious stimuli & 0.93 & -1.49 & 1.01 & 0.25 \\
+EQ22 - Expected to follow pastor/leader rules re: dating/marriage/sex & 1.00 & 0.04 & 1.01 & 0.32 \\
+IQ70 - Feeling betrayed by God & 0.96 & -1.39 & 1.01 & 0.35 \\
+IQ82 - Having trouble navigating life outside my church/community & 0.95 & -1.62 & 1.01 & 0.56 \\
+EQ23 - Prayer replacing needed medical interventions & 0.94 & -1.39 & 1.02 & 0.68 \\
+EQ17 - Treated as less than b/c my sexual orientation & 0.85 & -1.70 & 1.02 & 0.40 \\
+IQ81 - Nightmares about my negative religious experiences & 0.93 & -1.47 & 1.03 & 0.87 \\
+EQ47 - Medical care being postponed/withheld for religious reasons & 0.94 & -1.09 & 1.03 & 0.78 \\
+IQ72 - Feeling as if God harmed me directly & 0.92 & -1.60 & 1.03 & 0.93 \\
+\bottomrule
+\end{longtable}
+
+Interestingly, these fit statistics suggest a good fit of the GPCM. None of the items have fit statistics beyond the acceptable range from 0.5 to 1.5.
+
+\begin{table}
+
+\caption{\label{tab:gpcm-fit}GPCM Model Fit}
+\centering
+\begin{tabular}[t]{l|c|c|c|c|c|c|c|c|c}
+\hline
+  & M2 & df & p & RMSEA & RMSEA\_5 & RMSEA\_95 & SRMSR & TLI & CFI\\
+\hline
+stats & 39937.34 & 2079 & 0 & 0.078 & 0.078 & 0.079 & 0.064 & 0.969 & 0.97\\
+\hline
+\end{tabular}
+\end{table}
+
+Model fit statistics are reported in Table \ref{tab:gpcm-fit}. The obtained RMSEA value = .078 (95\% CI{[}.078, .079{]}) and SRMSR value = .064 suggest that data do not fit the model reasonably very well using suggested cutoff values of RMSEA \textless= .06 and SRMSR \textless= .08 as suggested guidelines for assessing fit. The CFI = .97 exceeded the recommended .95 threshold.
+
+\hypertarget{graded-response-model}{%
+\section{Graded Response Model}\label{graded-response-model}}
+
+The fourth model is the Graded Response Model ().
+
+\begin{table}
+
+\caption{\label{tab:grm-items}Graded Response Model Item Parameters}
+\centering
+\begin{tabular}[t]{l|c|c|c|c|c}
+\hline
+  & a & b1 & b2 & b3 & b4\\
+\hline
+EQ55 - Hearing cultural references in sermons unfamiliar to my race/eth. subculture & 0.52 & 1.25 & 3.23 & 5.48 & 8.12\\
+\hline
+EQ46 - Treated as less than because of my skin color & 0.54 & 5.36 & 6.59 & 8.82 & 10.71\\
+\hline
+EQ41 - Denied opportunities to serve because of my sexual orientation & 0.92 & 2.61 & 2.93 & 3.47 & 4.09\\
+\hline
+EQ27 - Denied opportunities to serve b/c of my gender & 1.04 & 0.46 & 1.01 & 1.77 & 2.67\\
+\hline
+EQ17 - Treated as less than b/c my sexual orientation & 1.04 & 2.18 & 2.40 & 2.84 & 3.49\\
+\hline
+EQ50 - Treated as less than because of my gender & 1.17 & 0.03 & 0.38 & 1.11 & 2.10\\
+\hline
+EQ60 - Encouraged by leader to stay in abusive marriage & 1.26 & 1.12 & 1.69 & 2.42 & 3.48\\
+\hline
+IQ70 - Feeling betrayed by God & 1.29 & -0.35 & 0.63 & 1.75 & 2.82\\
+\hline
+IQ69 - Lack of spiritual direction/purpose & 1.38 & -1.82 & -0.68 & 0.63 & 1.83\\
+\hline
+IQ79 - Distrust of God & 1.41 & -0.69 & 0.20 & 1.29 & 2.23\\
+\hline
+IQ74 - Sadness over the loss of my faith/religious community & 1.44 & -1.18 & -0.32 & 0.76 & 1.89\\
+\hline
+IQ72 - Feeling as if God harmed me directly & 1.46 & 0.54 & 1.31 & 2.37 & 3.28\\
+\hline
+EQ47 - Medical care being postponed/withheld for religious reasons & 1.48 & 0.79 & 1.66 & 2.79 & 3.66\\
+\hline
+IQ82 - Having trouble navigating life outside my church/community & 1.51 & -0.47 & 0.39 & 1.49 & 2.44\\
+\hline
+EQ51 - Extreme pressure to be pastor/missionary/spiritual leader & 1.55 & -0.36 & 0.32 & 1.03 & 1.92\\
+\hline
+IQ73 - Self-hatred or self-loathing & 1.58 & -0.70 & 0.10 & 1.03 & 1.97\\
+\hline
+EQ31 - Shunned/ignored by pastor/church/group & 1.64 & -0.15 & 0.68 & 1.59 & 2.49\\
+\hline
+EQ65 - Cut off/shunned by more religious family members & 1.66 & 0.30 & 0.94 & 1.63 & 2.47\\
+\hline
+EQ34 - Scripture used to justify physical punishment/severe discipline & 1.71 & -0.58 & 0.12 & 0.95 & 1.88\\
+\hline
+IQ78 - A lack of self-worth & 1.72 & -1.06 & -0.26 & 0.69 & 1.72\\
+\hline
+EQ23 - Prayer replacing needed medical interventions & 1.74 & 0.03 & 0.80 & 1.68 & 2.61\\
+\hline
+EQ62 - Scripture used to justify physical violence & 1.76 & -0.24 & 0.42 & 1.33 & 2.27\\
+\hline
+EQ7 - Pastor speaking on God's behalf & 1.77 & -0.52 & 0.11 & 0.77 & 1.55\\
+\hline
+EQ29 - Feeling special when in pastor’s good graces; otherwise ignored & 1.83 & -0.58 & 0.09 & 0.89 & 1.80\\
+\hline
+IQ80 - Feeling isolated & 1.84 & -1.50 & -0.62 & 0.39 & 1.54\\
+\hline
+EQ16 - Church/community abandoning me in difficult time & 1.86 & -0.19 & 0.54 & 1.26 & 2.08\\
+\hline
+EQ10 - Asked to give up personal goals by pastor & 1.87 & 0.31 & 0.88 & 1.57 & 2.33\\
+\hline
+EQ20 - Members pressured to give money despite financial hardship & 1.92 & -0.01 & 0.50 & 1.09 & 1.76\\
+\hline
+EQ26 - Pressured to forgive abuser while abuse was ongoing & 1.94 & 0.34 & 0.84 & 1.34 & 2.03\\
+\hline
+IQ68 - Anxiety attacks triggered by religious stimuli & 1.94 & -0.02 & 0.56 & 1.34 & 2.23\\
+\hline
+IQ81 - Nightmares about my negative religious experiences & 1.94 & 0.22 & 0.99 & 1.90 & 2.72\\
+\hline
+EQ64 - Witnessing women pressured to stay in unfaithful/abusive marriages & 1.95 & -0.38 & 0.38 & 1.15 & 1.96\\
+\hline
+EQ24 - Expected to consult pastor/leader before making non-religious decisions & 1.96 & 0.19 & 0.76 & 1.53 & 2.34\\
+\hline
+EQ21 - Taught I would risk Hell if left my church/group & 1.98 & 0.04 & 0.50 & 0.99 & 1.50\\
+\hline
+EQ61 - Developmentally-inappropriate/anxious end times descriptions taught to young children & 2.00 & -0.72 & -0.16 & 0.48 & 1.24\\
+\hline
+EQ22 - Expected to follow pastor/leader rules re: dating/marriage/sex & 2.01 & -1.12 & -0.63 & -0.10 & 0.69\\
+\hline
+EQ45 - Developmentally-inappropriate/anxious Hell/Satan/demons taught to young children & 2.03 & -0.75 & -0.13 & 0.52 & 1.26\\
+\hline
+EQ66 - Others treated as less than due to their sexual orientation & 2.06 & -1.25 & -0.71 & 0.02 & 0.90\\
+\hline
+EQ39 - Made to feel shame over natural sexual desires (not actions) & 2.08 & -0.95 & -0.45 & 0.22 & 0.97\\
+\hline
+EQ58 - Terror/horror used to motivate religious decisions & 2.09 & -0.62 & 0.00 & 0.82 & 1.65\\
+\hline
+IQ71 - Avoiding religious activities/settings to reduce distressing feelings & 2.10 & -1.11 & -0.40 & 0.40 & 1.21\\
+\hline
+EQ30 - Deterred from seeking mental health treatment/counseling/medication & 2.11 & 0.00 & 0.56 & 1.25 & 2.09\\
+\hline
+EQ28 - Leadershi/group protecting abusive individuals & 2.12 & -0.41 & 0.37 & 1.10 & 1.98\\
+\hline
+EQ32 - Feeling unable to express unhappiness & 2.14 & -0.92 & -0.30 & 0.57 & 1.54\\
+\hline
+EQ49 - Leadership/group protecting and elevating abusive individuals & 2.15 & -0.19 & 0.51 & 1.22 & 2.06\\
+\hline
+EQ35 - Taught to distrust my emotions & 2.16 & -1.14 & -0.54 & 0.23 & 1.05\\
+\hline
+EQ53 - Scripture used to justify abusive parent-child behavior & 2.16 & -0.36 & 0.24 & 0.93 & 1.66\\
+\hline
+IQ76 - Feeling I wasted years of my life in a church/set of beliefs & 2.18 & -0.70 & -0.13 & 0.49 & 1.13\\
+\hline
+EQ57 - Developing mental/physical ailments from conforming to group/leader’s expectation & 2.20 & -0.07 & 0.45 & 1.08 & 1.79\\
+\hline
+EQ37 - Made to feel less spiritually mature than pastor/leadership & 2.29 & -0.99 & -0.36 & 0.40 & 1.21\\
+\hline
+EQ54 - Being explicitly taught to distrust my intuitions & 2.30 & -0.90 & -0.31 & 0.43 & 1.18\\
+\hline
+EQ43 - Shamed by pastor/group for poor spiritual/moral performance & 2.31 & -0.14 & 0.56 & 1.34 & 2.15\\
+\hline
+EQ25 - Feeling unable to raise questions and issues & 2.36 & -1.32 & -0.64 & 0.18 & 1.11\\
+\hline
+EQ36 - Mental/physical problems interpreted as spiritual/moral weakness & 2.37 & -0.90 & -0.22 & 0.55 & 1.44\\
+\hline
+EQ19 - Behavior excessively monitored by pastor/group & 2.39 & -0.30 & 0.27 & 0.92 & 1.72\\
+\hline
+EQ42 - Seeing others shamed/shunned by pastor/leader/group & 2.40 & -0.84 & -0.02 & 0.82 & 1.70\\
+\hline
+EQ11 - Disagree w/pastor portrayed as evil & 2.40 & -0.57 & 0.10 & 0.75 & 1.57\\
+\hline
+EQ40 - Threatening Divine punishment to keep group members in line & 2.41 & -0.18 & 0.34 & 0.95 & 1.55\\
+\hline
+EQ59 - Pastor/group blame victim for their abuse & 2.41 & -0.25 & 0.41 & 1.14 & 2.00\\
+\hline
+EQ63 - Shamed by pastor/group for raising questions or concerns & 2.42 & -0.44 & 0.30 & 1.07 & 1.88\\
+\hline
+EQ52 - Blamed for harm I suffered rather than blaming who harmed me & 2.44 & -0.07 & 0.52 & 1.14 & 1.95\\
+\hline
+IQ77 - Anger upon reflecting on negative religious experiences & 2.47 & -1.27 & -0.51 & 0.32 & 1.27\\
+\hline
+EQ18 - Church/pastor discourage critical thinking & 2.50 & -0.75 & -0.18 & 0.59 & 1.37\\
+\hline
+EQ44 - Love/acceptance offered only for high spiritual/moral performance & 2.71 & -0.60 & -0.04 & 0.66 & 1.48\\
+\hline
+EQ38 - Unrealistic demands placed on my moral/religious behavior & 2.75 & -0.91 & -0.33 & 0.39 & 1.11\\
+\hline
+EQ56 - Being made to feel I was crazy/weird for doubts/questions & 2.91 & -0.71 & -0.13 & 0.54 & 1.36\\
+\hline
+\end{tabular}
+\end{table}
+
+Again, plots of the option characteristic curves help convey this information visually. The following plots illustrate three items with very different sets of curves. The first item illustrates the intended pattern of ordered thresholds. The second and third items show pronounced reversals.
+
+\begin{figure}
+\centering
+\includegraphics{_main_files/figure-latex/grm-a-1.pdf}
+\caption{\label{fig:grm-a}Option Characteristic Curve for Item 42 - Seeing others shamed/shunned by pastor/leader/group}
+\end{figure}
+
+\includegraphics{_main_files/figure-latex/grm-b-1.pdf}
+
+\includegraphics{_main_files/figure-latex/grm-c-1.pdf}
+
+\begin{longtable}[]{@{}lcccc@{}}
+\caption{\label{tab:grm-item-fit}Graded Response Model (GRM) Item Fit Statistics}\tabularnewline
+\toprule
+item & outfit & z.outfit & infit & z.infit \\
+\midrule
+\endfirsthead
+\toprule
+item & outfit & z.outfit & infit & z.infit \\
+\midrule
+\endhead
+EQ60 - Encouraged by leader to stay in abusive marriage & 0.74 & -3.59 & 0.91 & -2.31 \\
+EQ17 - Treated as less than b/c my sexual orientation & 0.77 & -2.72 & 0.97 & -0.57 \\
+EQ47 - Medical care being postponed/withheld for religious reasons & 0.81 & -2.30 & 0.95 & -1.17 \\
+IQ72 - Feeling as if God harmed me directly & 0.84 & -2.38 & 0.97 & -0.78 \\
+EQ57 - Developing mental/physical ailments from conforming to group/leader's expectation & 0.85 & -1.75 & 0.97 & -1.16 \\
+EQ20 - Members pressured to give money despite financial hardship & 0.86 & -1.97 & 0.95 & -1.63 \\
+IQ81 - Nightmares about my negative religious experiences & 0.87 & -1.49 & 0.99 & -0.41 \\
+EQ10 - Asked to give up personal goals by pastor & 0.87 & -1.48 & 0.96 & -1.39 \\
+EQ59 - Pastor/group blame victim for their abuse & 0.87 & -1.48 & 0.95 & -1.80 \\
+EQ23 - Prayer replacing needed medical interventions & 0.88 & -2.01 & 0.97 & -0.92 \\
+EQ52 - Blamed for harm I suffered rather than blaming who harmed me & 0.88 & -1.17 & 0.92 & -2.61 \\
+EQ16 - Church/community abandoning me in difficult time & 0.88 & -2.05 & 0.94 & -2.17 \\
+EQ31 - Shunned/ignored by pastor/church/group & 0.88 & -2.36 & 0.94 & -1.95 \\
+EQ50 - Treated as less than because of my gender & 0.89 & -3.52 & 0.96 & -1.84 \\
+IQ68 - Anxiety attacks triggered by religious stimuli & 0.89 & -1.60 & 0.98 & -0.63 \\
+EQ62 - Scripture used to justify physical violence & 0.89 & -2.23 & 0.98 & -0.74 \\
+EQ46 - Treated as less than because of my skin color & 0.89 & -0.92 & 1.00 & -0.01 \\
+EQ63 - Shamed by pastor/group for raising questions or concerns & 0.89 & -1.53 & 0.96 & -1.43 \\
+EQ49 - Leadership/group protecting and elevating abusive individuals & 0.90 & -1.40 & 0.95 & -1.55 \\
+EQ43 - Shamed by pastor/group for poor spiritual/moral performance & 0.90 & -1.11 & 0.94 & -1.96 \\
+EQ30 - Deterred from seeking mental health treatment/counseling/medication & 0.90 & -1.15 & 0.96 & -1.43 \\
+EQ53 - Scripture used to justify abusive parent-child behavior & 0.90 & -1.53 & 0.97 & -1.04 \\
+EQ19 - Behavior excessively monitored by pastor/group & 0.90 & -1.18 & 0.97 & -0.92 \\
+EQ64 - Witnessing women pressured to stay in unfaithful/abusive marriages & 0.91 & -1.71 & 0.95 & -1.77 \\
+EQ41 - Denied opportunities to serve because of my sexual orientation & 0.91 & -0.98 & 0.97 & -0.54 \\
+EQ40 - Threatening Divine punishment to keep group members in line & 0.91 & -0.91 & 0.96 & -1.32 \\
+IQ70 - Feeling betrayed by God & 0.91 & -2.41 & 0.98 & -0.86 \\
+EQ65 - Cut off/shunned by more religious family members & 0.91 & -1.18 & 0.94 & -1.89 \\
+EQ24 - Expected to consult pastor/leader before making non-religious decisions & 0.91 & -0.95 & 0.96 & -1.33 \\
+EQ38 - Unrealistic demands placed on my moral/religious behavior & 0.92 & -1.39 & 0.95 & -1.57 \\
+EQ58 - Terror/horror used to motivate religious decisions & 0.92 & -1.77 & 0.97 & -1.02 \\
+EQ25 - Feeling unable to raise questions and issues & 0.92 & -2.10 & 0.94 & -2.09 \\
+EQ27 - Denied opportunities to serve b/c of my gender & 0.92 & -2.03 & 0.95 & -1.75 \\
+IQ82 - Having trouble navigating life outside my church/community & 0.92 & -2.11 & 0.99 & -0.34 \\
+EQ56 - Being made to feel I was crazy/weird for doubts/questions & 0.92 & -0.98 & 0.95 & -1.63 \\
+EQ28 - Leadershi/group protecting abusive individuals & 0.93 & -1.20 & 0.96 & -1.55 \\
+EQ11 - Disagree w/pastor portrayed as evil & 0.93 & -1.08 & 0.94 & -1.97 \\
+EQ55 - Hearing cultural references in sermons unfamiliar to my race/eth. subculture & 0.93 & -1.68 & 0.97 & -0.71 \\
+EQ36 - Mental/physical problems interpreted as spiritual/moral weakness & 0.94 & -1.36 & 0.97 & -1.09 \\
+EQ42 - Seeing others shamed/shunned by pastor/leader/group & 0.94 & -1.32 & 0.97 & -1.04 \\
+IQ73 - Self-hatred or self-loathing & 0.94 & -1.76 & 0.98 & -0.61 \\
+IQ77 - Anger upon reflecting on negative religious experiences & 0.94 & -1.51 & 0.95 & -1.60 \\
+EQ18 - Church/pastor discourage critical thinking & 0.94 & -1.00 & 0.97 & -0.88 \\
+EQ37 - Made to feel less spiritually mature than pastor/leadership & 0.95 & -1.22 & 0.96 & -1.31 \\
+EQ51 - Extreme pressure to be pastor/missionary/spiritual leader & 0.95 & -1.25 & 0.99 & -0.20 \\
+IQ71 - Avoiding religious activities/settings to reduce distressing feelings & 0.95 & -1.31 & 0.96 & -1.35 \\
+IQ79 - Distrust of God & 0.95 & -1.52 & 0.98 & -0.73 \\
+EQ34 - Scripture used to justify physical punishment/severe discipline & 0.95 & -1.23 & 0.98 & -0.67 \\
+EQ22 - Expected to follow pastor/leader rules re: dating/marriage/sex & 0.95 & -1.02 & 0.98 & -0.57 \\
+EQ29 - Feeling special when in pastor's good graces; otherwise ignored & 0.95 & -1.13 & 0.97 & -1.09 \\
+EQ44 - Love/acceptance offered only for high spiritual/moral performance & 0.95 & -0.62 & 0.96 & -1.52 \\
+EQ32 - Feeling unable to express unhappiness & 0.96 & -0.99 & 0.98 & -0.73 \\
+EQ45 - Developmentally-inappropriate/anxious Hell/Satan/demons taught to young children & 0.96 & -0.84 & 0.98 & -0.68 \\
+EQ61 - Developmentally-inappropriate/anxious end times descriptions taught to young children & 0.97 & -0.74 & 0.98 & -0.57 \\
+IQ78 - A lack of self-worth & 0.98 & -0.69 & 0.99 & -0.50 \\
+IQ80 - Feeling isolated & 0.98 & -0.62 & 0.98 & -0.76 \\
+EQ54 - Being explicitly taught to distrust my intuitions & 0.98 & -0.36 & 0.97 & -1.08 \\
+EQ39 - Made to feel shame over natural sexual desires (not actions) & 1.00 & 0.05 & 0.99 & -0.34 \\
+IQ69 - Lack of spiritual direction/purpose & 1.00 & 0.08 & 1.00 & -0.05 \\
+IQ74 - Sadness over the loss of my faith/religious community & 1.01 & 0.31 & 0.99 & -0.25 \\
+EQ21 - Taught I would risk Hell if left my church/group & 1.02 & 0.27 & 0.96 & -1.49 \\
+IQ76 - Feeling I wasted years of my life in a church/set of beliefs & 1.04 & 0.86 & 0.97 & -1.01 \\
+EQ7 - Pastor speaking on God's behalf & 1.05 & 1.18 & 0.98 & -0.62 \\
+EQ66 - Others treated as less than due to their sexual orientation & 1.15 & 3.48 & 0.99 & -0.49 \\
+EQ26 - Pressured to forgive abuser while abuse was ongoing & 1.20 & 1.84 & 0.93 & -2.29 \\
+EQ35 - Taught to distrust my emotions & 1.25 & 5.75 & 0.97 & -1.19 \\
+\bottomrule
+\end{longtable}
+
+The items fit.
+
+The obtained RMSEA value = .079 (95\% CI{[}.078, .080{]}) and SRMSR value = .051 suggest that data do not fit the model reasonably very well using suggested cutoff values of RMSEA \textless= .06 and SRMSR \textless= .08 as suggested guidelines for assessing fit. The CFI = .97 exceeded the recommended .95 threshold.
+
+\begin{table}
+
+\caption{\label{tab:grm-fit}GRM Model Fit}
+\centering
+\begin{tabular}[t]{l|l|c|c|c|c|c|c|c|c}
+\hline
+  & M2 & df & p & RMSEA & RMSEA\_5 & RMSEA\_95 & SRMSR & TLI & CFI\\
+\hline
+stats & 40543.38 & 2079 & 0 & 0.079 & 0.078 & 0.079 & 0.051 & 0.969 & 0.97\\
+\hline
+\end{tabular}
+\end{table}
 
 \hypertarget{reliability}{%
 \chapter{Reliability}\label{reliability}}

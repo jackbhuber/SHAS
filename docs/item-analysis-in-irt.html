@@ -1,0 +1,4126 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Item Analysis in IRT | Validity Evidence for the Spiritual Harm and Abuse Scale (SHAS)</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Item Analysis in IRT | Validity Evidence for the Spiritual Harm and Abuse Scale (SHAS)" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="https://github.com/jackbhuber/SHAS.git" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Item Analysis in IRT | Validity Evidence for the Spiritual Harm and Abuse Scale (SHAS)" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="Jack Huber, Swedish Medical Center" />
+<meta name="author" content="Dan Koch, Northwest University" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data-preparation.html"/>
+<link rel="next" href="reliability.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="assets/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Validity of SHAS</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About this Project</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#research-questions"><i class="fa fa-check"></i>Research Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="background-of-the-project.html"><a href="background-of-the-project.html"><i class="fa fa-check"></i>Background of the Project</a>
+<ul>
+<li class="chapter" data-level="" data-path="background-of-the-project.html"><a href="background-of-the-project.html#spiritual-harm-and-abuse"><i class="fa fa-check"></i>Spiritual Harm and Abuse</a></li>
+<li class="chapter" data-level="" data-path="background-of-the-project.html"><a href="background-of-the-project.html#the-spiritual-harm-and-abuse-scale-shas"><i class="fa fa-check"></i>The Spiritual Harm and Abuse Scale (SHAS)</a></li>
+<li class="chapter" data-level="" data-path="background-of-the-project.html"><a href="background-of-the-project.html#validity-research-for-the-shas"><i class="fa fa-check"></i>Validity Research for the SHAS</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="content-validity.html"><a href="content-validity.html"><i class="fa fa-check"></i>Content Validity</a>
+<ul>
+<li class="chapter" data-level="" data-path="content-validity.html"><a href="content-validity.html#about-content-validity"><i class="fa fa-check"></i>About Content Validity</a></li>
+<li class="chapter" data-level="" data-path="content-validity.html"><a href="content-validity.html#content-specification"><i class="fa fa-check"></i>Content Specification</a>
+<ul>
+<li class="chapter" data-level="" data-path="content-validity.html"><a href="content-validity.html#external-events"><i class="fa fa-check"></i>External Events</a></li>
+<li class="chapter" data-level="" data-path="content-validity.html"><a href="content-validity.html#internal-states"><i class="fa fa-check"></i>Internal States</a></li>
+<li class="chapter" data-level="" data-path="content-validity.html"><a href="content-validity.html#additional-domains"><i class="fa fa-check"></i>Additional Domains</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="content-validity.html"><a href="content-validity.html#summary"><i class="fa fa-check"></i>Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-collection.html"><a href="data-collection.html"><i class="fa fa-check"></i>Data Collection</a></li>
+<li class="chapter" data-level="" data-path="data-preparation.html"><a href="data-preparation.html"><i class="fa fa-check"></i>Data Preparation</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-preparation.html"><a href="data-preparation.html#load-data"><i class="fa fa-check"></i>Load data</a></li>
+<li class="chapter" data-level="" data-path="data-preparation.html"><a href="data-preparation.html#select-items"><i class="fa fa-check"></i>Select items</a></li>
+<li class="chapter" data-level="" data-path="data-preparation.html"><a href="data-preparation.html#select-item-clusters"><i class="fa fa-check"></i>Select item clusters</a></li>
+<li class="chapter" data-level="" data-path="data-preparation.html"><a href="data-preparation.html#dichotomized-data"><i class="fa fa-check"></i>Dichotomized data</a></li>
+<li class="chapter" data-level="" data-path="data-preparation.html"><a href="data-preparation.html#missing-data"><i class="fa fa-check"></i>Missing data</a></li>
+<li class="chapter" data-level="" data-path="data-preparation.html"><a href="data-preparation.html#final-datasets"><i class="fa fa-check"></i>Final datasets</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="item-analysis-in-irt.html"><a href="item-analysis-in-irt.html"><i class="fa fa-check"></i>Item Analysis in IRT</a>
+<ul>
+<li class="chapter" data-level="" data-path="item-analysis-in-irt.html"><a href="item-analysis-in-irt.html#item-response-theory"><i class="fa fa-check"></i>Item response theory</a>
+<ul>
+<li class="chapter" data-level="" data-path="item-analysis-in-irt.html"><a href="item-analysis-in-irt.html#irt-model-assumptions"><i class="fa fa-check"></i>IRT Model Assumptions</a></li>
+<li class="chapter" data-level="" data-path="item-analysis-in-irt.html"><a href="item-analysis-in-irt.html#rating-scale-model-rsm"><i class="fa fa-check"></i>Rating Scale Model (RSM)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="item-analysis-in-irt.html"><a href="item-analysis-in-irt.html#partial-credit-model-pcm"><i class="fa fa-check"></i>Partial Credit Model (PCM)</a></li>
+<li class="chapter" data-level="" data-path="item-analysis-in-irt.html"><a href="item-analysis-in-irt.html#generalized-partial-credit-model-gpcm"><i class="fa fa-check"></i>Generalized Partial Credit Model (GPCM)</a></li>
+<li class="chapter" data-level="" data-path="item-analysis-in-irt.html"><a href="item-analysis-in-irt.html#graded-response-model"><i class="fa fa-check"></i>Graded Response Model</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="reliability.html"><a href="reliability.html"><i class="fa fa-check"></i>Reliability</a>
+<ul>
+<li class="chapter" data-level="" data-path="reliability.html"><a href="reliability.html#about-reliability"><i class="fa fa-check"></i>About reliability</a></li>
+<li class="chapter" data-level="" data-path="reliability.html"><a href="reliability.html#reliability-in-classical-test-theory-ctt"><i class="fa fa-check"></i>Reliability in Classical Test Theory (CTT)</a></li>
+<li class="chapter" data-level="" data-path="reliability.html"><a href="reliability.html#reliability-in-item-response-theory-irt"><i class="fa fa-check"></i>Reliability in Item Response Theory (IRT)</a></li>
+<li class="chapter" data-level="" data-path="reliability.html"><a href="reliability.html#summary-1"><i class="fa fa-check"></i>Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="scale-analysis.html"><a href="scale-analysis.html"><i class="fa fa-check"></i>Scale Analysis</a>
+<ul>
+<li class="chapter" data-level="" data-path="scale-analysis.html"><a href="scale-analysis.html#person-fit"><i class="fa fa-check"></i>Person Fit</a></li>
+<li class="chapter" data-level="" data-path="scale-analysis.html"><a href="scale-analysis.html#scale-invariance"><i class="fa fa-check"></i>Scale Invariance</a></li>
+<li class="chapter" data-level="" data-path="scale-analysis.html"><a href="scale-analysis.html#the-item-person-map"><i class="fa fa-check"></i>The Item-Person Map</a></li>
+<li class="chapter" data-level="" data-path="scale-analysis.html"><a href="scale-analysis.html#information-curves"><i class="fa fa-check"></i>Information curves</a></li>
+<li class="chapter" data-level="" data-path="scale-analysis.html"><a href="scale-analysis.html#person-separation-reliability"><i class="fa fa-check"></i>Person Separation Reliability</a></li>
+<li class="chapter" data-level="" data-path="scale-analysis.html"><a href="scale-analysis.html#item-separation"><i class="fa fa-check"></i>Item Separation</a></li>
+<li class="chapter" data-level="" data-path="scale-analysis.html"><a href="scale-analysis.html#summary-2"><i class="fa fa-check"></i>Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i>Discussion</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Validity Evidence for the Spiritual Harm and Abuse Scale (SHAS)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="item-analysis-in-irt" class="section level1 hasAnchor">
+<h1>Item Analysis in IRT<a href="item-analysis-in-irt.html#item-analysis-in-irt" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In this chapter, we examine the technical quality of the SHAS items within the framework of item response theory. We begin by introducing IRT and discussing its advantages. Then we document our IRT item analyses. We conclude by summarizing what we learn from these analyses to help us refine these 66 items and possibly develop better ones in the future.</p>
+<div id="item-response-theory" class="section level2 hasAnchor">
+<h2>Item response theory<a href="item-analysis-in-irt.html#item-response-theory" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Item response theory (IRT) is an established framework for empirically evaluating what items measure <span class="citation">(<a href="references.html#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>; <a href="references.html#ref-WrightMasters1982" role="doc-biblioref">Wright and Masters 1982</a>)</span>. IRT methods complement methods derived from classical test theory in several ways.</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>IRT places both examinees and items on the same interval scale</strong>. In classical test theory, examinees differ in their scores and items differ in their means or percent of examinees selecting a response; examinees and items are on different scales. By contrast, IRT methods allow measurement of persons and items on the <strong><em>same scale</em></strong> with <em>equal interval properties</em> of the <em>logit</em> scale** and resulting linear measures (Wright &amp; Stone, 1999). In IRT we can estimate <em>item parameters independently of the characteristics of the calibrating sample</em>, and we can estimate <em>person parameters apart from the difficulties of the items taken</em> (Masters, 1982; Rasch, 1966).</p></li>
+<li><p><strong>Parameters for examinees and items derived from IRT are independent of each other</strong>.</p></li>
+<li><p><strong>IRT gives items diagnostic value</strong>. A core assumption of CTT is that items are <em>redundant</em>; they contribute meaningful variation to a total score but they do not occupy a distinct place on the score continuum. IRT is different. IRT does not assume that items are redundant; instead it investigates whether items make distinct contributions to the measurement of the latent trait. Whereas classical test theory measurement is principally concerned with the ratio of noise to signal in the variation contributed by an item, IRT models compute the probability of a certain response to an item given the level of the latent construct the individual possesses (i.e., spiritual abuse) and the relevant item’s difficulty of endorsement. IRT is based on the logistic model and operates on the <em>logit</em> scale.</p></li>
+</ol>
+<p>In what follows, we conduct item analyses through a comparison of several different IRT models: the Rating Scale Model (RSM), the Partial Credit Model (PCM), the Generalized Partial Credit Model (GPCM).</p>
+<div id="irt-model-assumptions" class="section level3 hasAnchor">
+<h3>IRT Model Assumptions<a href="item-analysis-in-irt.html#irt-model-assumptions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>IRT makes two assumptions of the data. The first is unidimensionality of the latent trait. Is the trait one dimension? This is important for the SHAS because the questionnaire explicitly distinguished between items measuring external events and internal states. The second assumption is local independence <span class="citation">(<a href="references.html#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>)</span>. This means that, once the latent variable has been accounted for, any set of items should not share any meaningful correlation (Edwards, Houts, &amp; Cai, 2018).</p>
+<div id="unidimensionality" class="section level4 hasAnchor">
+<h4>Unidimensionality<a href="item-analysis-in-irt.html#unidimensionality" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>To verify the assumption of unidimensionality we conducted three analyses. First we confirmed the factor structure using confirmatory factor analysis (CFA). Then we determined the proportion of variance in the observed item responses due to the Rasch model. Finally, we conducted Rasch Principal Component Analysis of Residuals (PCAR) (Smith, 2002).</p>
+<p><strong>Factor structure</strong>.</p>
+<p><strong>Proportion of variance</strong>.</p>
+<p>Reckase suggests that the unidimensionality assumption is safely met if the Rasch model explains 20% of the variance in the data. According to this analysis, the Rasch model explains 44% of the variance in the SHAS item data. Thus we have some evidence of unidimensionality with which to proceed to further Rasch modeling.</p>
+<p><strong>Principal Component Analysis of Residuals (PCAR)</strong></p>
+<div class="figure"><span style="display:block;" id="fig:uni-pcar"></span>
+<img src="_main_files/figure-html/uni-pcar-1.png" alt="Contrasts from PCA of Standardized Residual Correlations" width="672" />
+<p class="caption">
+Figure 2: Contrasts from PCA of Standardized Residual Correlations
+</p>
+</div>
+<p>The second analysis of PCAR examines the correlations among residuals. The premise is that once the Rasch model has been estimated, the correlations among the residuals should be minimal. Linacre () suggests that contrasts with eigenvalues of 2.0 or below can be considered noise. In Figure <a href="item-analysis-in-irt.html#fig:uni-pcar">2</a>, our PCAR analysis found three contrasts that rose above that 2.0 threshold.</p>
+</div>
+<div id="local-independence" class="section level4 hasAnchor">
+<h4>Local Independence<a href="item-analysis-in-irt.html#local-independence" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>To check the assumption of local independence, we used the Q3 statistic (Yen, 1984). The Q3 statistic index criteria are that the raw residual correlation between pairs of items should never exceed 0.10 (Marais &amp; Andrich, 2008).</p>
+<pre><code>
+WLE Reliability= 0.953 </code></pre>
+<pre><code>Yen&#39;s Q3 Statistic based on an estimated theta score 
+*** 66 Items | 2145 item pairs
+*** Q3 Descriptives
+     M     SD    Min    10%    25%    50%    75%    90%    Max 
+-0.015  0.063 -0.148 -0.076 -0.052 -0.023  0.010  0.047  0.649 </code></pre>
+<div class="figure"><span style="display:block;" id="fig:q3-plot"></span>
+<img src="_main_files/figure-html/q3-plot-1.png" alt="Correlations matrix of Item Residuals" width="672" />
+<p class="caption">
+Figure 3: Correlations matrix of Item Residuals
+</p>
+</div>
+<p>Figure <a href="item-analysis-in-irt.html#fig:q3-plot">3</a> is a plot of the matrix of correlations between item residuals. Each square depicts a correlation. The squares are shaded in grey with the lightest shade indicating the weakest correlations. As hoped, the vast majority of squares are very light, indicating weak correlations among the item residuals.</p>
+<p><strong>Summary</strong></p>
+<p>These analyses offer mixed evidence of assumption satisfaction. The model explains 44% of the variance of the item responses. But we see three contrasts of the standardized residuals above the threshold of 2. In the Q3 plot we see a few strong correlations of item correlations.</p>
+</div>
+</div>
+<div id="rating-scale-model-rsm" class="section level3 hasAnchor">
+<h3>Rating Scale Model (RSM)<a href="item-analysis-in-irt.html#rating-scale-model-rsm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The first IRT model is the Rating Scale Model (RSM) <span class="citation">(<a href="references.html#ref-Andrich1978" role="doc-biblioref">Andrich 1978</a>)</span>. The model is an extension of the Rasch model (designed for dichotomous items) for use with polytomous items based on rating scales such as Likert scales of agreement <span class="citation">(<a href="references.html#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>)</span> and estimates the probability of choosing from among several response options given an examinee’s location on the latent trait (level of lifetime exposure to spiritual abuse). More specifically, the increase in difficulty involved in choosing from between two response categories is called a “step parameter”. The RSM assumes that all items use the same rating scale. As a Rasch model, it assumes that all items discriminate equally well and thus fixes the discrimination parameter to 1. The model also fixes the step parameters of all the items on the premise that the response categories are the same for all items. What the RSM frees to vary are the item difficulty parameters. Thus the focus of the RSM is the differences in item difficulties. If all of these assumptions are true – that the items and their rating scales differentiate examinees equally well and differ only in overall difficulty – then the observed pattern of item responses will closely match the pattern of items responses expected by the RSM and the model will fit.</p>
+<table>
+<caption><span id="tab:rsm-items">Table 2: </span>Rating Scale Model Item Parameters for Spiritual Harm and Abuse Items</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left">a1</th>
+<th align="center">b1</th>
+<th align="center">b2</th>
+<th align="center">b3</th>
+<th align="center">b4</th>
+<th align="center">c</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>EQ46 - Treated as less than because of my skin color</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-2.78</td>
+</tr>
+<tr class="even">
+<td>EQ41 - Denied opportunities to serve because of my sexual orientation</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-1.90</td>
+</tr>
+<tr class="odd">
+<td>EQ17 - Treated as less than b/c my sexual orientation</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-1.73</td>
+</tr>
+<tr class="even">
+<td>EQ47 - Medical care being postponed/withheld for religious reasons</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-1.40</td>
+</tr>
+<tr class="odd">
+<td>EQ60 - Encouraged by leader to stay in abusive marriage</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-1.37</td>
+</tr>
+<tr class="even">
+<td>EQ55 - Hearing cultural references in sermons unfamiliar to my race/eth. subculture</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-1.19</td>
+</tr>
+<tr class="odd">
+<td>IQ72 - Feeling as if God harmed me directly</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-1.11</td>
+</tr>
+<tr class="even">
+<td>IQ81 - Nightmares about my negative religious experiences</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.91</td>
+</tr>
+<tr class="odd">
+<td>EQ10 - Asked to give up personal goals by pastor</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.82</td>
+</tr>
+<tr class="even">
+<td>EQ65 - Cut off/shunned by more religious family members</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.81</td>
+</tr>
+<tr class="odd">
+<td>EQ26 - Pressured to forgive abuser while abuse was ongoing</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.76</td>
+</tr>
+<tr class="even">
+<td>EQ24 - Expected to consult pastor/leader before making non-religious decisions</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.74</td>
+</tr>
+<tr class="odd">
+<td>EQ23 - Prayer replacing needed medical interventions</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.69</td>
+</tr>
+<tr class="even">
+<td>EQ27 - Denied opportunities to serve b/c of my gender</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.67</td>
+</tr>
+<tr class="odd">
+<td>EQ31 - Shunned/ignored by pastor/church/group</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.56</td>
+</tr>
+<tr class="even">
+<td>EQ30 - Deterred from seeking mental health treatment/counseling/medication</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.54</td>
+</tr>
+<tr class="odd">
+<td>EQ43 - Shamed by pastor/group for poor spiritual/moral performance</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.53</td>
+</tr>
+<tr class="even">
+<td>IQ68 - Anxiety attacks triggered by religious stimuli</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.53</td>
+</tr>
+<tr class="odd">
+<td>EQ52 - Blamed for harm I suffered rather than blaming who harmed me</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.49</td>
+</tr>
+<tr class="even">
+<td>IQ70 - Feeling betrayed by God</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.47</td>
+</tr>
+<tr class="odd">
+<td>EQ49 - Leadership/group protecting and elevating abusive individuals</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.44</td>
+</tr>
+<tr class="even">
+<td>EQ16 - Church/community abandoning me in difficult time</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.43</td>
+</tr>
+<tr class="odd">
+<td>EQ20 - Members pressured to give money despite financial hardship</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.41</td>
+</tr>
+<tr class="even">
+<td>EQ57 - Developing mental/physical ailments from conforming to group/leader’s expectation</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.40</td>
+</tr>
+<tr class="odd">
+<td>EQ62 - Scripture used to justify physical violence</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.40</td>
+</tr>
+<tr class="even">
+<td>EQ59 - Pastor/group blame victim for their abuse</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.39</td>
+</tr>
+<tr class="odd">
+<td>EQ21 - Taught I would risk Hell if left my church/group</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.36</td>
+</tr>
+<tr class="even">
+<td>IQ82 - Having trouble navigating life outside my church/community</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.32</td>
+</tr>
+<tr class="odd">
+<td>EQ50 - Treated as less than because of my gender</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.32</td>
+</tr>
+<tr class="even">
+<td>EQ64 - Witnessing women pressured to stay in unfaithful/abusive marriages</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.30</td>
+</tr>
+<tr class="odd">
+<td>EQ28 - Leadershi/group protecting abusive individuals</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.29</td>
+</tr>
+<tr class="even">
+<td>EQ40 - Threatening Divine punishment to keep group members in line</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.27</td>
+</tr>
+<tr class="odd">
+<td>EQ63 - Shamed by pastor/group for raising questions or concerns</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.24</td>
+</tr>
+<tr class="even">
+<td>EQ19 - Behavior excessively monitored by pastor/group</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.22</td>
+</tr>
+<tr class="odd">
+<td>EQ51 - Extreme pressure to be pastor/missionary/spiritual leader</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.21</td>
+</tr>
+<tr class="even">
+<td>EQ53 - Scripture used to justify abusive parent-child behavior</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.18</td>
+</tr>
+<tr class="odd">
+<td>IQ79 - Distrust of God</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.16</td>
+</tr>
+<tr class="even">
+<td>EQ34 - Scripture used to justify physical punishment/severe discipline</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.07</td>
+</tr>
+<tr class="odd">
+<td>EQ29 - Feeling special when in pastor’s good graces; otherwise ignored</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.06</td>
+</tr>
+<tr class="even">
+<td>IQ73 - Self-hatred or self-loathing</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.04</td>
+</tr>
+<tr class="odd">
+<td>EQ11 - Disagree w/pastor portrayed as evil</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">-0.01</td>
+</tr>
+<tr class="even">
+<td>EQ7 - Pastor speaking on God’s behalf</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">0.00</td>
+</tr>
+<tr class="odd">
+<td>EQ58 - Terror/horror used to motivate religious decisions</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">0.02</td>
+</tr>
+<tr class="even">
+<td>EQ42 - Seeing others shamed/shunned by pastor/leader/group</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">0.06</td>
+</tr>
+<tr class="odd">
+<td>EQ44 - Love/acceptance offered only for high spiritual/moral performance</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">0.09</td>
+</tr>
+<tr class="even">
+<td>EQ56 - Being made to feel I was crazy/weird for doubts/questions</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">0.21</td>
+</tr>
+<tr class="odd">
+<td>EQ18 - Church/pastor discourage critical thinking</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">0.22</td>
+</tr>
+<tr class="even">
+<td>IQ78 - A lack of self-worth</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">0.24</td>
+</tr>
+<tr class="odd">
+<td>EQ45 - Developmentally-inappropriate/anxious Hell/Satan/demons taught to young children</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">0.24</td>
+</tr>
+<tr class="even">
+<td>IQ74 - Sadness over the loss of my faith/religious community</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">0.26</td>
+</tr>
+<tr class="odd">
+<td>EQ36 - Mental/physical problems interpreted as spiritual/moral weakness</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">0.26</td>
+</tr>
+<tr class="even">
+<td>EQ61 - Developmentally-inappropriate/anxious end times descriptions taught to young children</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">0.26</td>
+</tr>
+<tr class="odd">
+<td>EQ32 - Feeling unable to express unhappiness</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">0.28</td>
+</tr>
+<tr class="even">
+<td>IQ76 - Feeling I wasted years of my life in a church/set of beliefs</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">0.29</td>
+</tr>
+<tr class="odd">
+<td>EQ54 - Being explicitly taught to distrust my intuitions</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">0.40</td>
+</tr>
+<tr class="even">
+<td>EQ37 - Made to feel less spiritually mature than pastor/leadership</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">0.42</td>
+</tr>
+<tr class="odd">
+<td>EQ38 - Unrealistic demands placed on my moral/religious behavior</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">0.43</td>
+</tr>
+<tr class="even">
+<td>IQ71 - Avoiding religious activities/settings to reduce distressing feelings</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">0.47</td>
+</tr>
+<tr class="odd">
+<td>IQ69 - Lack of spiritual direction/purpose</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">0.48</td>
+</tr>
+<tr class="even">
+<td>IQ80 - Feeling isolated</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">0.54</td>
+</tr>
+<tr class="odd">
+<td>EQ39 - Made to feel shame over natural sexual desires (not actions)</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">0.55</td>
+</tr>
+<tr class="even">
+<td>IQ77 - Anger upon reflecting on negative religious experiences</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">0.55</td>
+</tr>
+<tr class="odd">
+<td>EQ35 - Taught to distrust my emotions</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">0.62</td>
+</tr>
+<tr class="even">
+<td>EQ25 - Feeling unable to raise questions and issues</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">0.69</td>
+</tr>
+<tr class="odd">
+<td>EQ66 - Others treated as less than due to their sexual orientation</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">0.77</td>
+</tr>
+<tr class="even">
+<td>EQ22 - Expected to follow pastor/leader rules re: dating/marriage/sex</td>
+<td align="left">1</td>
+<td align="center">0.13</td>
+<td align="center">-0.11</td>
+<td align="center">0.78</td>
+<td align="center">1.37</td>
+<td align="center">0.83</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Item parameters</strong>. Table <a href="item-analysis-in-irt.html#tab:rsm-items">2</a> reports the item parameters estimated by the RSM for all 66 SHAS items. The first column shows the discrimination parameter, fixed to “1” for all items on the premise that the items discriminate equally well. The subsequent columns (b1 to b4) report the estimated thresholds (or step parameters). These values, too, are the same for all items.</p>
+<p>Item plots offer a way to see this information visually. Following are plots of two items. In both plots, the horizontal (x) axis is the scale of the latent trait (overall lifetime exposure to spiritual abuse) expressed in logits ranging from -6 to +6. The vertical (y) axis is the probability of selecting a given response (such as “Always”) at each level of latent trait. The blue line is the probability of selecting “Never” for examinees ranging from low to high lifetime spiritual abuse.</p>
+<p><img src="_main_files/figure-html/rsm-a-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/rsm-b-1.png" width="672" /></p>
+<p>What does vary between items in this model is the difficulty parameter (also called the item location), shown in the “c” column of Table <a href="item-analysis-in-irt.html#tab:rsm-items">2</a>. This parameter represents the location of the item on the logit scale of the latent trait: Does the item represent the “most” spiritual abuse? The least? Or somewhere in the middle? In Table <a href="item-analysis-in-irt.html#tab:rsm-items">2</a>, items are sorted by location from least abuse to most abuse.</p>
+<div class="figure"><span style="display:block;" id="fig:rsm-item-diff"></span>
+<img src="_main_files/figure-html/rsm-item-diff-1.png" alt="Distribution of Item Difficulty" width="672" />
+<p class="caption">
+Figure 4: Distribution of Item Difficulty
+</p>
+</div>
+<p>Figure <a href="item-analysis-in-irt.html#fig:rsm-item-diff">4</a> is a histogram of the distribution of item difficulty parameters. The distribution is negatively skewed with most items clustered slightly above the average level of spiritual abuse and several items measuring very low levels of lifetime exposure to spiritual abuse.</p>
+<p><strong>Item fit statistics</strong>. Fit statistics show how closely the observed pattern of item responses fits the pattern of item responses predicted by the particular IRT model (Rasch, partial credit, etc.). They do this by means of chi-square statistics which examine the cumulative difference the observed pattern of item responses and the pattern of item responses that the model would expect. Two fit statistics commonly used in IRT models are the infit mean square (MNSQ) and the outfit mean square (MNSQ) <span class="citation">(<a href="references.html#ref-BondFox2015" role="doc-biblioref">Bond and Fox 2015</a>)</span>. The infit statistic places greater emphasis on unexpected responses that are close to the examinees and item location. The outfit is sensitive to unexpected responses that are far from the location. The expected value of infit or outfit for each item is 1.0, with a range of acceptable values ranging from 0.5 to 1.5. Values outside these boundaries indicate a lack of fit between items and the model.</p>
+<table>
+<caption><span id="tab:rsm-item-fit">Table 3: </span>Rating Scale Model (RSM) - Misfitting Items</caption>
+<thead>
+<tr class="header">
+<th align="left">item</th>
+<th align="center">outfit</th>
+<th align="center">z.outfit</th>
+<th align="center">infit</th>
+<th align="center">z.infit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">EQ17 - Treated as less than b/c my sexual orientation</td>
+<td align="center">1.89</td>
+<td align="center">10.09</td>
+<td align="center">2.26</td>
+<td align="center">22.15</td>
+</tr>
+<tr class="even">
+<td align="left">EQ27 - Denied opportunities to serve b/c of my gender</td>
+<td align="center">2.02</td>
+<td align="center">18.55</td>
+<td align="center">1.77</td>
+<td align="center">22.71</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ41 - Denied opportunities to serve because of my sexual orientation</td>
+<td align="center">2.63</td>
+<td align="center">14.93</td>
+<td align="center">2.26</td>
+<td align="center">20.18</td>
+</tr>
+<tr class="even">
+<td align="left">EQ46 - Treated as less than because of my skin color</td>
+<td align="center">2.37</td>
+<td align="center">8.95</td>
+<td align="center">1.89</td>
+<td align="center">9.79</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ50 - Treated as less than because of my gender</td>
+<td align="center">1.68</td>
+<td align="center">15.51</td>
+<td align="center">1.73</td>
+<td align="center">23.36</td>
+</tr>
+<tr class="even">
+<td align="left">EQ55 - Hearing cultural references in sermons unfamiliar to my race/eth. subculture</td>
+<td align="center">2.68</td>
+<td align="center">21.37</td>
+<td align="center">1.62</td>
+<td align="center">15.75</td>
+</tr>
+</tbody>
+</table>
+<p>All but six of the 66 items had infit and outfit statistics within the acceptable range from 0.5 to 1.5. Statistics for these six misfitting items are presented here in Table <a href="item-analysis-in-irt.html#tab:rsm-item-fit">3</a>. The large outfit values mean the observed patterns of responses to these items differed substantially from the patterns of responses expected by the PCM. These items capture the experiences of women, people of color, and LGBTQ persons.</p>
+<p><strong>Model fit</strong>. To assess the overall fit of the model to the item response data we use two statistics. The first is the Root Mean Square Error of Approximation (RMSEA). The suggested cutoff for RMSEA is .06. The second is the CFI. The suggested cutoff for the CFI is .95.</p>
+<table>
+<caption><span id="tab:rsm-fit">Table 4: </span>Rating Scale Model Fit - Overall Model Fit</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left">M2</th>
+<th align="center">df</th>
+<th align="center">p</th>
+<th align="center">RMSEA</th>
+<th align="center">RMSEA_5</th>
+<th align="center">RMSEA_95</th>
+<th align="center">TLI</th>
+<th align="center">CFI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>stats</td>
+<td align="left">61561.13</td>
+<td align="center">2339</td>
+<td align="center">0</td>
+<td align="center">0.092</td>
+<td align="center">0.092</td>
+<td align="center">0.093</td>
+<td align="center">0.957</td>
+<td align="center">0.953</td>
+</tr>
+</tbody>
+</table>
+<p>Table <a href="item-analysis-in-irt.html#tab:rsm-fit">4</a> reports the model fit statistics for the SHAS items. The obtained RMSEA value = .092 (95% CI[.092, .093]) exceeds the cutoff of .06. The CFI = .953 meets the recommended .95 threshold. Together these statistics offer weak evidence that the RSM fits the SHAS items.</p>
+<p><strong>Summary</strong>.</p>
+</div>
+</div>
+<div id="partial-credit-model-pcm" class="section level2 hasAnchor">
+<h2>Partial Credit Model (PCM)<a href="item-analysis-in-irt.html#partial-credit-model-pcm" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The second model we consider is the Partial Credit Model (PCM) <span class="citation">(<a href="references.html#ref-Masters1982" role="doc-biblioref">Masters 1982</a>)</span>. This is a polytomous item response model belonging to the Rasch family. This means that it extends the Rasch model, which is based on dichotomous item responses (1=correct, 0=incorrect), by considering the probability of choosing from among several response options such as those typically presented in Likert scales of agreement. The number of response categories in each item may vary <span class="citation">(<a href="references.html#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>)</span>. It follows that the PCM contains m (m + 1 being the number of response categories) threshold parameters, and each threshold parameter marks a category intersection <span class="citation">(<a href="references.html#ref-Masters1982" role="doc-biblioref">Masters 1982</a>)</span>. Threshold sometimes refers to “step difficulty” or “step parameter” and illustrates the point on the latent trait continuum (e.g., spiritual abuse) where a response in category k becomes more likely than a response in category k – 1 (de Ayala, 2009). The PCM provides scores for items, persons, and step parameters on a logit scale. We begin by loading the <code>mirt</code> library and estimating the model on the data from the 66 SHAS items. This model constrains the slopes to 1 and freely estimates the variance parameters.</p>
+<table>
+<caption><span id="tab:pcm-items">Table 5: </span>Partial Credit Model - Item Parameters - Items with Category Threshold Reversals</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">a</th>
+<th align="right">b1</th>
+<th align="right">b2</th>
+<th align="right">b3</th>
+<th align="right">b4</th>
+<th align="right">deltab1b2</th>
+<th align="right">deltab2b3</th>
+<th align="right">deltab3b4</th>
+<th align="right">avg</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>EQ41 - Denied opportunities to serve because of my sexual orientation</td>
+<td align="right">1</td>
+<td align="right">3.87</td>
+<td align="right">0.61</td>
+<td align="right">1.45</td>
+<td align="right">1.09</td>
+<td align="right">-3.26</td>
+<td align="right">0.85</td>
+<td align="right">-0.37</td>
+<td align="right">-0.93</td>
+</tr>
+<tr class="even">
+<td>EQ17 - Treated as less than b/c my sexual orientation</td>
+<td align="right">1</td>
+<td align="right">3.94</td>
+<td align="right">0.32</td>
+<td align="right">1.18</td>
+<td align="right">1.20</td>
+<td align="right">-3.62</td>
+<td align="right">0.86</td>
+<td align="right">0.02</td>
+<td align="right">-0.91</td>
+</tr>
+<tr class="odd">
+<td>EQ46 - Treated as less than because of my skin color</td>
+<td align="right">1</td>
+<td align="right">3.89</td>
+<td align="right">1.22</td>
+<td align="right">2.69</td>
+<td align="right">2.41</td>
+<td align="right">-2.67</td>
+<td align="right">1.47</td>
+<td align="right">-0.27</td>
+<td align="right">-0.49</td>
+</tr>
+<tr class="even">
+<td>EQ27 - Denied opportunities to serve b/c of my gender</td>
+<td align="right">1</td>
+<td align="right">1.62</td>
+<td align="right">0.37</td>
+<td align="right">1.08</td>
+<td align="right">1.17</td>
+<td align="right">-1.26</td>
+<td align="right">0.71</td>
+<td align="right">0.10</td>
+<td align="right">-0.15</td>
+</tr>
+<tr class="odd">
+<td>EQ50 - Treated as less than because of my gender</td>
+<td align="right">1</td>
+<td align="right">1.57</td>
+<td align="right">-0.26</td>
+<td align="right">0.76</td>
+<td align="right">1.15</td>
+<td align="right">-1.83</td>
+<td align="right">1.02</td>
+<td align="right">0.38</td>
+<td align="right">-0.14</td>
+</tr>
+<tr class="even">
+<td>EQ21 - Taught I would risk Hell if left my church/group</td>
+<td align="right">1</td>
+<td align="right">1.08</td>
+<td align="right">0.39</td>
+<td align="right">0.94</td>
+<td align="right">0.74</td>
+<td align="right">-0.68</td>
+<td align="right">0.54</td>
+<td align="right">-0.19</td>
+<td align="right">-0.11</td>
+</tr>
+<tr class="odd">
+<td>EQ60 - Encouraged by leader to stay in abusive marriage</td>
+<td align="right">1</td>
+<td align="right">2.21</td>
+<td align="right">0.92</td>
+<td align="right">1.46</td>
+<td align="right">2.15</td>
+<td align="right">-1.28</td>
+<td align="right">0.53</td>
+<td align="right">0.70</td>
+<td align="right">-0.02</td>
+</tr>
+<tr class="even">
+<td>EQ26 - Pressured to forgive abuser while abuse was ongoing</td>
+<td align="right">1</td>
+<td align="right">1.40</td>
+<td align="right">0.74</td>
+<td align="right">1.01</td>
+<td align="right">1.51</td>
+<td align="right">-0.65</td>
+<td align="right">0.27</td>
+<td align="right">0.50</td>
+<td align="right">0.04</td>
+</tr>
+<tr class="odd">
+<td>EQ20 - Members pressured to give money despite financial hardship</td>
+<td align="right">1</td>
+<td align="right">0.96</td>
+<td align="right">0.34</td>
+<td align="right">0.99</td>
+<td align="right">1.23</td>
+<td align="right">-0.62</td>
+<td align="right">0.65</td>
+<td align="right">0.24</td>
+<td align="right">0.09</td>
+</tr>
+<tr class="even">
+<td>EQ10 - Asked to give up personal goals by pastor</td>
+<td align="right">1</td>
+<td align="right">1.25</td>
+<td align="right">0.67</td>
+<td align="right">1.44</td>
+<td align="right">1.77</td>
+<td align="right">-0.58</td>
+<td align="right">0.77</td>
+<td align="right">0.33</td>
+<td align="right">0.18</td>
+</tr>
+<tr class="odd">
+<td>EQ40 - Threatening Divine punishment to keep group members in line</td>
+<td align="right">1</td>
+<td align="right">0.64</td>
+<td align="right">0.20</td>
+<td align="right">1.08</td>
+<td align="right">1.17</td>
+<td align="right">-0.43</td>
+<td align="right">0.88</td>
+<td align="right">0.09</td>
+<td align="right">0.18</td>
+</tr>
+<tr class="even">
+<td>EQ65 - Cut off/shunned by more religious family members</td>
+<td align="right">1</td>
+<td align="right">1.19</td>
+<td align="right">0.79</td>
+<td align="right">1.32</td>
+<td align="right">1.81</td>
+<td align="right">-0.40</td>
+<td align="right">0.53</td>
+<td align="right">0.49</td>
+<td align="right">0.21</td>
+</tr>
+<tr class="odd">
+<td>EQ57 - Developing mental/physical ailments from conforming to group/leader’s expectation</td>
+<td align="right">1</td>
+<td align="right">0.81</td>
+<td align="right">0.30</td>
+<td align="right">1.05</td>
+<td align="right">1.51</td>
+<td align="right">-0.51</td>
+<td align="right">0.74</td>
+<td align="right">0.46</td>
+<td align="right">0.23</td>
+</tr>
+<tr class="even">
+<td>EQ47 - Medical care being postponed/withheld for religious reasons</td>
+<td align="right">1</td>
+<td align="right">1.55</td>
+<td align="right">1.25</td>
+<td align="right">2.51</td>
+<td align="right">2.25</td>
+<td align="right">-0.31</td>
+<td align="right">1.26</td>
+<td align="right">-0.26</td>
+<td align="right">0.23</td>
+</tr>
+<tr class="odd">
+<td>EQ22 - Expected to follow pastor/leader rules re: dating/marriage/sex</td>
+<td align="right">1</td>
+<td align="right">-0.41</td>
+<td align="right">-0.59</td>
+<td align="right">-0.29</td>
+<td align="right">0.33</td>
+<td align="right">-0.18</td>
+<td align="right">0.30</td>
+<td align="right">0.62</td>
+<td align="right">0.25</td>
+</tr>
+<tr class="even">
+<td>IQ76 - Feeling I wasted years of my life in a church/set of beliefs</td>
+<td align="right">1</td>
+<td align="right">-0.04</td>
+<td align="right">-0.21</td>
+<td align="right">0.53</td>
+<td align="right">0.72</td>
+<td align="right">-0.17</td>
+<td align="right">0.74</td>
+<td align="right">0.19</td>
+<td align="right">0.25</td>
+</tr>
+<tr class="odd">
+<td>IQ72 - Feeling as if God harmed me directly</td>
+<td align="right">1</td>
+<td align="right">1.35</td>
+<td align="right">0.88</td>
+<td align="right">2.15</td>
+<td align="right">2.11</td>
+<td align="right">-0.46</td>
+<td align="right">1.26</td>
+<td align="right">-0.03</td>
+<td align="right">0.25</td>
+</tr>
+<tr class="even">
+<td>EQ39 - Made to feel shame over natural sexual desires (not actions)</td>
+<td align="right">1</td>
+<td align="right">-0.19</td>
+<td align="right">-0.61</td>
+<td align="right">0.25</td>
+<td align="right">0.63</td>
+<td align="right">-0.42</td>
+<td align="right">0.86</td>
+<td align="right">0.38</td>
+<td align="right">0.27</td>
+</tr>
+<tr class="odd">
+<td>EQ24 - Expected to consult pastor/leader before making non-religious decisions</td>
+<td align="right">1</td>
+<td align="right">1.10</td>
+<td align="right">0.47</td>
+<td align="right">1.55</td>
+<td align="right">1.98</td>
+<td align="right">-0.63</td>
+<td align="right">1.07</td>
+<td align="right">0.44</td>
+<td align="right">0.29</td>
+</tr>
+<tr class="even">
+<td>EQ7 - Pastor speaking on God’s behalf</td>
+<td align="right">1</td>
+<td align="right">0.20</td>
+<td align="right">0.11</td>
+<td align="right">0.73</td>
+<td align="right">1.09</td>
+<td align="right">-0.10</td>
+<td align="right">0.62</td>
+<td align="right">0.36</td>
+<td align="right">0.30</td>
+</tr>
+<tr class="odd">
+<td>EQ61 - Developmentally-inappropriate/anxious end times descriptions taught to young children</td>
+<td align="right">1</td>
+<td align="right">-0.02</td>
+<td align="right">-0.20</td>
+<td align="right">0.45</td>
+<td align="right">0.91</td>
+<td align="right">-0.18</td>
+<td align="right">0.65</td>
+<td align="right">0.46</td>
+<td align="right">0.31</td>
+</tr>
+<tr class="even">
+<td>EQ51 - Extreme pressure to be pastor/missionary/spiritual leader</td>
+<td align="right">1</td>
+<td align="right">0.41</td>
+<td align="right">0.35</td>
+<td align="right">0.82</td>
+<td align="right">1.37</td>
+<td align="right">-0.06</td>
+<td align="right">0.47</td>
+<td align="right">0.55</td>
+<td align="right">0.32</td>
+</tr>
+<tr class="odd">
+<td>EQ30 - Deterred from seeking mental health treatment/counseling/medication</td>
+<td align="right">1</td>
+<td align="right">0.85</td>
+<td align="right">0.40</td>
+<td align="right">1.21</td>
+<td align="right">1.89</td>
+<td align="right">-0.46</td>
+<td align="right">0.82</td>
+<td align="right">0.68</td>
+<td align="right">0.35</td>
+</tr>
+<tr class="even">
+<td>EQ53 - Scripture used to justify abusive parent-child behavior</td>
+<td align="right">1</td>
+<td align="right">0.33</td>
+<td align="right">0.18</td>
+<td align="right">0.98</td>
+<td align="right">1.39</td>
+<td align="right">-0.15</td>
+<td align="right">0.80</td>
+<td align="right">0.41</td>
+<td align="right">0.35</td>
+</tr>
+<tr class="odd">
+<td>EQ55 - Hearing cultural references in sermons unfamiliar to my race/eth. subculture</td>
+<td align="right">1</td>
+<td align="right">1.32</td>
+<td align="right">1.20</td>
+<td align="right">1.94</td>
+<td align="right">2.41</td>
+<td align="right">-0.12</td>
+<td align="right">0.74</td>
+<td align="right">0.47</td>
+<td align="right">0.36</td>
+</tr>
+<tr class="even">
+<td>IQ68 - Anxiety attacks triggered by religious stimuli</td>
+<td align="right">1</td>
+<td align="right">0.83</td>
+<td align="right">0.29</td>
+<td align="right">1.32</td>
+<td align="right">1.98</td>
+<td align="right">-0.54</td>
+<td align="right">1.02</td>
+<td align="right">0.67</td>
+<td align="right">0.38</td>
+</tr>
+<tr class="odd">
+<td>EQ52 - Blamed for harm I suffered rather than blaming who harmed me</td>
+<td align="right">1</td>
+<td align="right">0.69</td>
+<td align="right">0.55</td>
+<td align="right">1.04</td>
+<td align="right">1.93</td>
+<td align="right">-0.14</td>
+<td align="right">0.49</td>
+<td align="right">0.89</td>
+<td align="right">0.41</td>
+</tr>
+<tr class="even">
+<td>EQ19 - Behavior excessively monitored by pastor/group</td>
+<td align="right">1</td>
+<td align="right">0.41</td>
+<td align="right">0.19</td>
+<td align="right">0.90</td>
+<td align="right">1.67</td>
+<td align="right">-0.22</td>
+<td align="right">0.71</td>
+<td align="right">0.76</td>
+<td align="right">0.42</td>
+</tr>
+<tr class="odd">
+<td>EQ66 - Others treated as less than due to their sexual orientation</td>
+<td align="right">1</td>
+<td align="right">-0.62</td>
+<td align="right">-0.86</td>
+<td align="right">-0.01</td>
+<td align="right">0.66</td>
+<td align="right">-0.24</td>
+<td align="right">0.85</td>
+<td align="right">0.68</td>
+<td align="right">0.43</td>
+</tr>
+<tr class="even">
+<td>IQ81 - Nightmares about my negative religious experiences</td>
+<td align="right">1</td>
+<td align="right">0.91</td>
+<td align="right">0.86</td>
+<td align="right">2.00</td>
+<td align="right">2.23</td>
+<td align="right">-0.05</td>
+<td align="right">1.14</td>
+<td align="right">0.23</td>
+<td align="right">0.44</td>
+</tr>
+<tr class="odd">
+<td>EQ54 - Being explicitly taught to distrust my intuitions</td>
+<td align="right">1</td>
+<td align="right">-0.39</td>
+<td align="right">-0.49</td>
+<td align="right">0.53</td>
+<td align="right">0.93</td>
+<td align="right">-0.10</td>
+<td align="right">1.02</td>
+<td align="right">0.40</td>
+<td align="right">0.44</td>
+</tr>
+<tr class="even">
+<td>EQ62 - Scripture used to justify physical violence</td>
+<td align="right">1</td>
+<td align="right">0.52</td>
+<td align="right">0.20</td>
+<td align="right">1.37</td>
+<td align="right">1.89</td>
+<td align="right">-0.32</td>
+<td align="right">1.17</td>
+<td align="right">0.52</td>
+<td align="right">0.46</td>
+</tr>
+<tr class="odd">
+<td>EQ23 - Prayer replacing needed medical interventions</td>
+<td align="right">1</td>
+<td align="right">0.74</td>
+<td align="right">0.65</td>
+<td align="right">1.60</td>
+<td align="right">2.15</td>
+<td align="right">-0.08</td>
+<td align="right">0.94</td>
+<td align="right">0.55</td>
+<td align="right">0.47</td>
+</tr>
+<tr class="even">
+<td>EQ58 - Terror/horror used to motivate religious decisions</td>
+<td align="right">1</td>
+<td align="right">0.01</td>
+<td align="right">-0.15</td>
+<td align="right">0.94</td>
+<td align="right">1.43</td>
+<td align="right">-0.16</td>
+<td align="right">1.08</td>
+<td align="right">0.49</td>
+<td align="right">0.47</td>
+</tr>
+<tr class="odd">
+<td>EQ38 - Unrealistic demands placed on my moral/religious behavior</td>
+<td align="right">1</td>
+<td align="right">-0.49</td>
+<td align="right">-0.49</td>
+<td align="right">0.49</td>
+<td align="right">0.94</td>
+<td align="right">0.00</td>
+<td align="right">0.99</td>
+<td align="right">0.44</td>
+<td align="right">0.47</td>
+</tr>
+<tr class="even">
+<td>EQ29 - Feeling special when in pastor’s good graces; otherwise ignored</td>
+<td align="right">1</td>
+<td align="right">0.09</td>
+<td align="right">0.03</td>
+<td align="right">0.88</td>
+<td align="right">1.52</td>
+<td align="right">-0.06</td>
+<td align="right">0.85</td>
+<td align="right">0.65</td>
+<td align="right">0.48</td>
+</tr>
+<tr class="odd">
+<td>EQ34 - Scripture used to justify physical punishment/severe discipline</td>
+<td align="right">1</td>
+<td align="right">0.07</td>
+<td align="right">0.04</td>
+<td align="right">0.93</td>
+<td align="right">1.52</td>
+<td align="right">-0.03</td>
+<td align="right">0.89</td>
+<td align="right">0.59</td>
+<td align="right">0.48</td>
+</tr>
+<tr class="even">
+<td>EQ35 - Taught to distrust my emotions</td>
+<td align="right">1</td>
+<td align="right">-0.65</td>
+<td align="right">-0.71</td>
+<td align="right">0.28</td>
+<td align="right">0.80</td>
+<td align="right">-0.06</td>
+<td align="right">0.99</td>
+<td align="right">0.52</td>
+<td align="right">0.48</td>
+</tr>
+<tr class="odd">
+<td>EQ18 - Church/pastor discourage critical thinking</td>
+<td align="right">1</td>
+<td align="right">-0.19</td>
+<td align="right">-0.38</td>
+<td align="right">0.68</td>
+<td align="right">1.29</td>
+<td align="right">-0.19</td>
+<td align="right">1.06</td>
+<td align="right">0.60</td>
+<td align="right">0.49</td>
+</tr>
+<tr class="even">
+<td>EQ44 - Love/acceptance offered only for high spiritual/moral performance</td>
+<td align="right">1</td>
+<td align="right">-0.03</td>
+<td align="right">-0.18</td>
+<td align="right">0.67</td>
+<td align="right">1.53</td>
+<td align="right">-0.15</td>
+<td align="right">0.85</td>
+<td align="right">0.86</td>
+<td align="right">0.52</td>
+</tr>
+<tr class="odd">
+<td>EQ56 - Being made to feel I was crazy/weird for doubts/questions</td>
+<td align="right">1</td>
+<td align="right">-0.22</td>
+<td align="right">-0.26</td>
+<td align="right">0.53</td>
+<td align="right">1.45</td>
+<td align="right">-0.04</td>
+<td align="right">0.80</td>
+<td align="right">0.91</td>
+<td align="right">0.56</td>
+</tr>
+<tr class="even">
+<td>EQ32 - Feeling unable to express unhappiness</td>
+<td align="right">1</td>
+<td align="right">-0.35</td>
+<td align="right">-0.53</td>
+<td align="right">0.65</td>
+<td align="right">1.52</td>
+<td align="right">-0.18</td>
+<td align="right">1.18</td>
+<td align="right">0.87</td>
+<td align="right">0.62</td>
+</tr>
+</tbody>
+</table>
+<p>Table <a href="item-analysis-in-irt.html#tab:pcm-items">5</a> reports the item parameters estimated by the PCM. Once again, column (a) reports the discrimination parameter fixed as “1” for all items on the premise that the items discriminate examinees equally well. The subsequent columns (b1 to b4) report the estimated thresholds (or step parameters) for each item. Because the SHAS items all have five response categories, the PCM estimates four threshold parameters (b1 to b4) for each item. These represent the change in lifetime exposure to spiritual abuse represented by choosing between two response categories, such as, for example, “Once or twice” over “Never.” Unlike the Rating Scale Model (RSM) which estimated the same thresholds for all items and allowed the items to vary only by overall difficulty, the PCM allows the thresholds to vary <span class="citation">(<a href="references.html#ref-EmbretsonReise2000" role="doc-biblioref">Embretson and Reise 2000</a>)</span>. The important analytic question, therefore, is which items have ordered thresholds and which have “reversals.” A reversal between two category thresholds suggests that one might not be contributing reliable information and might be collapsed. Most of the SHAS items (43 out of 66) had reversals, and these items with reversals are shown in Table <a href="item-analysis-in-irt.html#tab:pcm-items">5</a>. On each of these items, examinees who had experienced more overall lifetime spiritual abuse were more likely to report “Never” than “Once or twice”.</p>
+<p>Again, plots of the option characteristic curves help convey this information visually. The following plots illustrate three items with very different sets of curves. The first item illustrates the intended pattern of ordered thresholds. The second and third items show pronounced reversals.</p>
+<div class="figure"><span style="display:block;" id="fig:pcm-a"></span>
+<img src="_main_files/figure-html/pcm-a-1.png" alt="Option Characteristic Curve for Item 42 - Seeing others shamed/shunned by pastor/leader/group" width="672" />
+<p class="caption">
+Figure 5: Option Characteristic Curve for Item 42 - Seeing others shamed/shunned by pastor/leader/group
+</p>
+</div>
+<p>Figure <a href="item-analysis-in-irt.html#fig:pcm-a">5</a> shows the intended pattern of responses. Examinees who had experienced less lifetime exposure to spiritual abuse were most likely to select P1: “Never.” Those who had experienced a little more were more likely to select P2: “Once or twice.” And so on. On this item the response categories functioned as intended to sort examinees on the basis of lifetime exposure to spiritual abuse.</p>
+<p><img src="_main_files/figure-html/pcm-b-1.png" width="672" />
+Figure <a href="#fig:pcm-b"><strong>??</strong></a> shows an item with reversals. the intended pattern of responses. Examinees who had experienced less lifetime exposure to spiritual abuse were most likely to select P1: “Never.” Those who had experienced a little more were more likely to select P2: “Once or twice.” And so on. On this item the response categories functioned as intended to sort examinees on the basis of lifetime exposure to spiritual abuse.</p>
+<p><img src="_main_files/figure-html/pcm-c-1.png" width="672" /></p>
+<p>Fit statistics gauge the extent to which the observed pattern of item responses fit the IRT model (Rasch, partial credit, etc.). They do this by means of chi-square statistics which examine the cumulative difference the observed pattern of item responses and the pattern of item respones that the model would expect. Two fit statistics commonly used in IRT modesl are the infit mean square (MNSQ) and the outfit mean square (MNSQ) <span class="citation">(<a href="references.html#ref-BondFox2015" role="doc-biblioref">Bond and Fox 2015</a>)</span>. The infit statistic places greater emphasis on unexpected responses that are close to the examinees and item location. The outfit is sensitive to unexpected responses that are far from the location. The expected value of infit or outfit for each item is 1.0, with a range of acceptable values ranging from 0.5 to 1.5. Values outside these boundaries indicate a lack of fit between items and the model.</p>
+<table>
+<caption><span id="tab:pcm-item-fit">Table 6: </span>Partial Credit Model (PCM) - Misfitting Items</caption>
+<thead>
+<tr class="header">
+<th align="left">item</th>
+<th align="right">outfit</th>
+<th align="right">z.outfit</th>
+<th align="right">infit</th>
+<th align="right">z.infit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">EQ17 - Treated as less than b/c my sexual orientation</td>
+<td align="right">2.79</td>
+<td align="right">6.96</td>
+<td align="right">1.55</td>
+<td align="right">9.54</td>
+</tr>
+<tr class="even">
+<td align="left">EQ27 - Denied opportunities to serve b/c of my gender</td>
+<td align="right">2.68</td>
+<td align="right">17.94</td>
+<td align="right">1.50</td>
+<td align="right">15.02</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ41 - Denied opportunities to serve because of my sexual orientation</td>
+<td align="right">6.62</td>
+<td align="right">14.95</td>
+<td align="right">1.52</td>
+<td align="right">8.04</td>
+</tr>
+<tr class="even">
+<td align="left">EQ46 - Treated as less than because of my skin color</td>
+<td align="right">3.25</td>
+<td align="right">8.33</td>
+<td align="right">1.42</td>
+<td align="right">4.34</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ50 - Treated as less than because of my gender</td>
+<td align="right">1.95</td>
+<td align="right">12.41</td>
+<td align="right">1.51</td>
+<td align="right">16.63</td>
+</tr>
+<tr class="even">
+<td align="left">EQ55 - Hearing cultural references in sermons unfamiliar to my race/eth. subculture</td>
+<td align="right">2.82</td>
+<td align="right">22.06</td>
+<td align="right">1.58</td>
+<td align="right">14.70</td>
+</tr>
+</tbody>
+</table>
+<p>This information suggests a decent fit of the PCM to the SHAS item response data. All but six of the 66 items had infit and outfit statistics within the acceptable range from 0.5 to 1.5. Statistics for these six misfitting items are presented here in Table <a href="item-analysis-in-irt.html#tab:pcm-item-fit">6</a>. The large outfit values mean the observed patterns of responses to these items differed substantially from the patterns of responses expected by the PCM. These items capture the experiences of women, people of color, and LGBTQ persons.</p>
+<pre><code>            M2   df p      RMSEA    RMSEA_5   RMSEA_95     SRMSR     TLI
+stats 51392.82 2144 0 0.08782602 0.08715423 0.08847002 0.1170549 0.96122
+            CFI
+stats 0.9612381</code></pre>
+<p>The obtained RMSEA value = .088 (95% CI[.088, .089]) and SRMSR value = .118 suggest that data do not fit the model reasonably very well using suggested cutoff values of RMSEA &lt;= .06 and SRMSR &lt;= .08 as suggested guidelines for assessing fit. The CFI = .961 exceeded the recommended .95 threshold.</p>
+</div>
+<div id="generalized-partial-credit-model-gpcm" class="section level2 hasAnchor">
+<h2>Generalized Partial Credit Model (GPCM)<a href="item-analysis-in-irt.html#generalized-partial-credit-model-gpcm" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The third model, the Generalized Partial Credit Model (GPCM) is an extension of the Partial Credit Model. The extension is that the GPCM allows the item discrimination parameters to vary.</p>
+<table>
+<caption><span id="tab:gpcm-items">Table 7: </span>Generalized Partial Credit Model Item Parameters</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left">a</th>
+<th align="center">b1</th>
+<th align="center">b2</th>
+<th align="center">b3</th>
+<th align="center">b4</th>
+<th align="center">deltab1b2</th>
+<th align="center">deltab2b3</th>
+<th align="center">deltab3b4</th>
+<th align="center">avg</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>EQ41 - Denied opportunities to serve because of my sexual orientation</td>
+<td align="left">0.38</td>
+<td align="center">9.58</td>
+<td align="center">-0.14</td>
+<td align="center">1.41</td>
+<td align="center">-0.11</td>
+<td align="center">-9.72</td>
+<td align="center">1.55</td>
+<td align="center">-1.52</td>
+<td align="center">-3.23</td>
+</tr>
+<tr class="even">
+<td>EQ46 - Treated as less than because of my skin color</td>
+<td align="left">0.31</td>
+<td align="center">11.48</td>
+<td align="center">1.12</td>
+<td align="center">4.65</td>
+<td align="center">2.63</td>
+<td align="center">-10.36</td>
+<td align="center">3.53</td>
+<td align="center">-2.02</td>
+<td align="center">-2.95</td>
+</tr>
+<tr class="odd">
+<td>EQ17 - Treated as less than b/c my sexual orientation</td>
+<td align="left">0.42</td>
+<td align="center">8.95</td>
+<td align="center">-0.67</td>
+<td align="center">0.82</td>
+<td align="center">0.43</td>
+<td align="center">-9.62</td>
+<td align="center">1.49</td>
+<td align="center">-0.39</td>
+<td align="center">-2.84</td>
+</tr>
+<tr class="even">
+<td>EQ27 - Denied opportunities to serve b/c of my gender</td>
+<td align="left">0.47</td>
+<td align="center">3.55</td>
+<td align="center">0.07</td>
+<td align="center">1.10</td>
+<td align="center">0.91</td>
+<td align="center">-3.48</td>
+<td align="center">1.04</td>
+<td align="center">-0.19</td>
+<td align="center">-0.88</td>
+</tr>
+<tr class="odd">
+<td>EQ50 - Treated as less than because of my gender</td>
+<td align="left">0.51</td>
+<td align="center">3.34</td>
+<td align="center">-0.94</td>
+<td align="center">0.64</td>
+<td align="center">1.02</td>
+<td align="center">-4.28</td>
+<td align="center">1.58</td>
+<td align="center">0.39</td>
+<td align="center">-0.77</td>
+</tr>
+<tr class="even">
+<td>EQ60 - Encouraged by leader to stay in abusive marriage</td>
+<td align="left">0.69</td>
+<td align="center">3.05</td>
+<td align="center">0.84</td>
+<td align="center">1.42</td>
+<td align="center">2.28</td>
+<td align="center">-2.21</td>
+<td align="center">0.58</td>
+<td align="center">0.87</td>
+<td align="center">-0.25</td>
+</tr>
+<tr class="odd">
+<td>EQ21 - Taught I would risk Hell if left my church/group</td>
+<td align="left">0.96</td>
+<td align="center">1.13</td>
+<td align="center">0.33</td>
+<td align="center">0.86</td>
+<td align="center">0.65</td>
+<td align="center">-0.80</td>
+<td align="center">0.53</td>
+<td align="center">-0.21</td>
+<td align="center">-0.16</td>
+</tr>
+<tr class="even">
+<td>EQ55 - Hearing cultural references in sermons unfamiliar to my race/eth. subculture</td>
+<td align="left">0.31</td>
+<td align="center">4.06</td>
+<td align="center">2.05</td>
+<td align="center">3.38</td>
+<td align="center">3.94</td>
+<td align="center">-2.00</td>
+<td align="center">1.33</td>
+<td align="center">0.56</td>
+<td align="center">-0.04</td>
+</tr>
+<tr class="odd">
+<td>EQ26 - Pressured to forgive abuser while abuse was ongoing</td>
+<td align="left">1.02</td>
+<td align="center">1.35</td>
+<td align="center">0.67</td>
+<td align="center">0.93</td>
+<td align="center">1.45</td>
+<td align="center">-0.68</td>
+<td align="center">0.26</td>
+<td align="center">0.52</td>
+<td align="center">0.03</td>
+</tr>
+<tr class="even">
+<td>EQ20 - Members pressured to give money despite financial hardship</td>
+<td align="left">1.02</td>
+<td align="center">0.94</td>
+<td align="center">0.28</td>
+<td align="center">0.91</td>
+<td align="center">1.16</td>
+<td align="center">-0.65</td>
+<td align="center">0.63</td>
+<td align="center">0.25</td>
+<td align="center">0.07</td>
+</tr>
+<tr class="odd">
+<td>EQ65 - Cut off/shunned by more religious family members</td>
+<td align="left">0.93</td>
+<td align="center">1.26</td>
+<td align="center">0.72</td>
+<td align="center">1.25</td>
+<td align="center">1.77</td>
+<td align="center">-0.54</td>
+<td align="center">0.53</td>
+<td align="center">0.52</td>
+<td align="center">0.17</td>
+</tr>
+<tr class="even">
+<td>EQ10 - Asked to give up personal goals by pastor</td>
+<td align="left">1.06</td>
+<td align="center">1.16</td>
+<td align="center">0.60</td>
+<td align="center">1.35</td>
+<td align="center">1.71</td>
+<td align="center">-0.56</td>
+<td align="center">0.74</td>
+<td align="center">0.36</td>
+<td align="center">0.18</td>
+</tr>
+<tr class="odd">
+<td>EQ22 - Expected to follow pastor/leader rules re: dating/marriage/sex</td>
+<td align="left">0.97</td>
+<td align="center">-0.30</td>
+<td align="center">-0.58</td>
+<td align="center">-0.34</td>
+<td align="center">0.26</td>
+<td align="center">-0.28</td>
+<td align="center">0.25</td>
+<td align="center">0.59</td>
+<td align="center">0.19</td>
+</tr>
+<tr class="even">
+<td>IQ72 - Feeling as if God harmed me directly</td>
+<td align="left">0.87</td>
+<td align="center">1.51</td>
+<td align="center">0.81</td>
+<td align="center">2.19</td>
+<td align="center">2.13</td>
+<td align="center">-0.70</td>
+<td align="center">1.38</td>
+<td align="center">-0.06</td>
+<td align="center">0.21</td>
+</tr>
+<tr class="odd">
+<td>EQ51 - Extreme pressure to be pastor/missionary/spiritual leader</td>
+<td align="left">0.76</td>
+<td align="center">0.69</td>
+<td align="center">0.30</td>
+<td align="center">0.74</td>
+<td align="center">1.34</td>
+<td align="center">-0.39</td>
+<td align="center">0.44</td>
+<td align="center">0.60</td>
+<td align="center">0.22</td>
+</tr>
+<tr class="even">
+<td>EQ7 - Pastor speaking on God’s behalf</td>
+<td align="left">0.87</td>
+<td align="center">0.34</td>
+<td align="center">0.05</td>
+<td align="center">0.66</td>
+<td align="center">1.01</td>
+<td align="center">-0.29</td>
+<td align="center">0.61</td>
+<td align="center">0.35</td>
+<td align="center">0.22</td>
+</tr>
+<tr class="odd">
+<td>EQ47 - Medical care being postponed/withheld for religious reasons</td>
+<td align="left">0.98</td>
+<td align="center">1.55</td>
+<td align="center">1.17</td>
+<td align="center">2.46</td>
+<td align="center">2.25</td>
+<td align="center">-0.38</td>
+<td align="center">1.29</td>
+<td align="center">-0.21</td>
+<td align="center">0.23</td>
+</tr>
+<tr class="even">
+<td>EQ40 - Threatening Divine punishment to keep group members in line</td>
+<td align="left">1.37</td>
+<td align="center">0.38</td>
+<td align="center">0.20</td>
+<td align="center">0.94</td>
+<td align="center">1.13</td>
+<td align="center">-0.18</td>
+<td align="center">0.73</td>
+<td align="center">0.19</td>
+<td align="center">0.25</td>
+</tr>
+<tr class="odd">
+<td>EQ39 - Made to feel shame over natural sexual desires (not actions)</td>
+<td align="left">1.08</td>
+<td align="center">-0.17</td>
+<td align="center">-0.59</td>
+<td align="center">0.21</td>
+<td align="center">0.57</td>
+<td align="center">-0.41</td>
+<td align="center">0.79</td>
+<td align="center">0.37</td>
+<td align="center">0.25</td>
+</tr>
+<tr class="even">
+<td>IQ76 - Feeling I wasted years of my life in a church/set of beliefs</td>
+<td align="left">1.18</td>
+<td align="center">-0.10</td>
+<td align="center">-0.20</td>
+<td align="center">0.46</td>
+<td align="center">0.69</td>
+<td align="center">-0.10</td>
+<td align="center">0.66</td>
+<td align="center">0.22</td>
+<td align="center">0.26</td>
+</tr>
+<tr class="odd">
+<td>EQ57 - Developing mental/physical ailments from conforming to group/leader’s expectation</td>
+<td align="left">1.26</td>
+<td align="center">0.60</td>
+<td align="center">0.28</td>
+<td align="center">0.94</td>
+<td align="center">1.41</td>
+<td align="center">-0.32</td>
+<td align="center">0.66</td>
+<td align="center">0.47</td>
+<td align="center">0.27</td>
+</tr>
+<tr class="even">
+<td>EQ61 - Developmentally-inappropriate/anxious end times descriptions taught to young children</td>
+<td align="left">1.03</td>
+<td align="center">0.01</td>
+<td align="center">-0.22</td>
+<td align="center">0.39</td>
+<td align="center">0.84</td>
+<td align="center">-0.23</td>
+<td align="center">0.61</td>
+<td align="center">0.45</td>
+<td align="center">0.28</td>
+</tr>
+<tr class="odd">
+<td>EQ24 - Expected to consult pastor/leader before making non-religious decisions</td>
+<td align="left">1.14</td>
+<td align="center">0.94</td>
+<td align="center">0.43</td>
+<td align="center">1.41</td>
+<td align="center">1.88</td>
+<td align="center">-0.51</td>
+<td align="center">0.98</td>
+<td align="center">0.46</td>
+<td align="center">0.31</td>
+</tr>
+<tr class="even">
+<td>EQ45 - Developmentally-inappropriate/anxious Hell/Satan/demons taught to young children</td>
+<td align="left">1.07</td>
+<td align="center">-0.14</td>
+<td align="center">-0.13</td>
+<td align="center">0.47</td>
+<td align="center">0.85</td>
+<td align="center">0.01</td>
+<td align="center">0.59</td>
+<td align="center">0.39</td>
+<td align="center">0.33</td>
+</tr>
+<tr class="odd">
+<td>EQ53 - Scripture used to justify abusive parent-child behavior</td>
+<td align="left">1.25</td>
+<td align="center">0.20</td>
+<td align="center">0.16</td>
+<td align="center">0.87</td>
+<td align="center">1.30</td>
+<td align="center">-0.04</td>
+<td align="center">0.71</td>
+<td align="center">0.42</td>
+<td align="center">0.37</td>
+</tr>
+<tr class="even">
+<td>EQ30 - Deterred from seeking mental health treatment/counseling/medication</td>
+<td align="left">1.23</td>
+<td align="center">0.65</td>
+<td align="center">0.36</td>
+<td align="center">1.10</td>
+<td align="center">1.75</td>
+<td align="center">-0.29</td>
+<td align="center">0.73</td>
+<td align="center">0.65</td>
+<td align="center">0.37</td>
+</tr>
+<tr class="odd">
+<td>IQ68 - Anxiety attacks triggered by religious stimuli</td>
+<td align="left">1.12</td>
+<td align="center">0.72</td>
+<td align="center">0.26</td>
+<td align="center">1.21</td>
+<td align="center">1.87</td>
+<td align="center">-0.46</td>
+<td align="center">0.95</td>
+<td align="center">0.66</td>
+<td align="center">0.38</td>
+</tr>
+<tr class="even">
+<td>EQ16 - Church/community abandoning me in difficult time</td>
+<td align="left">1.11</td>
+<td align="center">0.41</td>
+<td align="center">0.51</td>
+<td align="center">1.04</td>
+<td align="center">1.56</td>
+<td align="center">0.11</td>
+<td align="center">0.53</td>
+<td align="center">0.52</td>
+<td align="center">0.38</td>
+</tr>
+<tr class="odd">
+<td>EQ66 - Others treated as less than due to their sexual orientation</td>
+<td align="left">1.08</td>
+<td align="center">-0.57</td>
+<td align="center">-0.81</td>
+<td align="center">-0.04</td>
+<td align="center">0.61</td>
+<td align="center">-0.24</td>
+<td align="center">0.78</td>
+<td align="center">0.65</td>
+<td align="center">0.39</td>
+</tr>
+<tr class="even">
+<td>EQ62 - Scripture used to justify physical violence</td>
+<td align="left">1.01</td>
+<td align="center">0.52</td>
+<td align="center">0.15</td>
+<td align="center">1.29</td>
+<td align="center">1.82</td>
+<td align="center">-0.37</td>
+<td align="center">1.15</td>
+<td align="center">0.53</td>
+<td align="center">0.44</td>
+</tr>
+<tr class="odd">
+<td>EQ19 - Behavior excessively monitored by pastor/group</td>
+<td align="left">1.43</td>
+<td align="center">0.18</td>
+<td align="center">0.19</td>
+<td align="center">0.81</td>
+<td align="center">1.49</td>
+<td align="center">0.00</td>
+<td align="center">0.62</td>
+<td align="center">0.69</td>
+<td align="center">0.44</td>
+</tr>
+<tr class="even">
+<td>EQ34 - Scripture used to justify physical punishment/severe discipline</td>
+<td align="left">0.91</td>
+<td align="center">0.16</td>
+<td align="center">-0.02</td>
+<td align="center">0.88</td>
+<td align="center">1.48</td>
+<td align="center">-0.18</td>
+<td align="center">0.90</td>
+<td align="center">0.60</td>
+<td align="center">0.44</td>
+</tr>
+<tr class="odd">
+<td>EQ52 - Blamed for harm I suffered rather than blaming who harmed me</td>
+<td align="left">1.58</td>
+<td align="center">0.36</td>
+<td align="center">0.48</td>
+<td align="center">0.94</td>
+<td align="center">1.69</td>
+<td align="center">0.12</td>
+<td align="center">0.45</td>
+<td align="center">0.75</td>
+<td align="center">0.44</td>
+</tr>
+<tr class="even">
+<td>EQ31 - Shunned/ignored by pastor/church/group</td>
+<td align="left">1.00</td>
+<td align="center">0.48</td>
+<td align="center">0.57</td>
+<td align="center">1.43</td>
+<td align="center">1.81</td>
+<td align="center">0.09</td>
+<td align="center">0.86</td>
+<td align="center">0.38</td>
+<td align="center">0.44</td>
+</tr>
+<tr class="odd">
+<td>EQ54 - Being explicitly taught to distrust my intuitions</td>
+<td align="left">1.32</td>
+<td align="center">-0.46</td>
+<td align="center">-0.41</td>
+<td align="center">0.45</td>
+<td align="center">0.88</td>
+<td align="center">0.05</td>
+<td align="center">0.87</td>
+<td align="center">0.42</td>
+<td align="center">0.44</td>
+</tr>
+<tr class="even">
+<td>EQ29 - Feeling special when in pastor’s good graces; otherwise ignored</td>
+<td align="left">1.01</td>
+<td align="center">0.11</td>
+<td align="center">-0.01</td>
+<td align="center">0.81</td>
+<td align="center">1.45</td>
+<td align="center">-0.12</td>
+<td align="center">0.82</td>
+<td align="center">0.65</td>
+<td align="center">0.45</td>
+</tr>
+<tr class="odd">
+<td>IQ70 - Feeling betrayed by God</td>
+<td align="left">0.71</td>
+<td align="center">0.55</td>
+<td align="center">0.47</td>
+<td align="center">1.71</td>
+<td align="center">1.90</td>
+<td align="center">-0.09</td>
+<td align="center">1.25</td>
+<td align="center">0.19</td>
+<td align="center">0.45</td>
+</tr>
+<tr class="even">
+<td>IQ79 - Distrust of God</td>
+<td align="left">0.76</td>
+<td align="center">0.11</td>
+<td align="center">0.04</td>
+<td align="center">1.41</td>
+<td align="center">1.46</td>
+<td align="center">-0.07</td>
+<td align="center">1.37</td>
+<td align="center">0.04</td>
+<td align="center">0.45</td>
+</tr>
+<tr class="odd">
+<td>EQ23 - Prayer replacing needed medical interventions</td>
+<td align="left">1.06</td>
+<td align="center">0.68</td>
+<td align="center">0.58</td>
+<td align="center">1.49</td>
+<td align="center">2.07</td>
+<td align="center">-0.10</td>
+<td align="center">0.91</td>
+<td align="center">0.57</td>
+<td align="center">0.46</td>
+</tr>
+<tr class="even">
+<td>EQ58 - Terror/horror used to motivate religious decisions</td>
+<td align="left">1.21</td>
+<td align="center">-0.07</td>
+<td align="center">-0.13</td>
+<td align="center">0.83</td>
+<td align="center">1.32</td>
+<td align="center">-0.06</td>
+<td align="center">0.96</td>
+<td align="center">0.49</td>
+<td align="center">0.46</td>
+</tr>
+<tr class="odd">
+<td>EQ35 - Taught to distrust my emotions</td>
+<td align="left">1.19</td>
+<td align="center">-0.64</td>
+<td align="center">-0.64</td>
+<td align="center">0.24</td>
+<td align="center">0.75</td>
+<td align="center">0.00</td>
+<td align="center">0.88</td>
+<td align="center">0.51</td>
+<td align="center">0.46</td>
+</tr>
+<tr class="even">
+<td>IQ81 - Nightmares about my negative religious experiences</td>
+<td align="left">1.25</td>
+<td align="center">0.71</td>
+<td align="center">0.77</td>
+<td align="center">1.77</td>
+<td align="center">2.10</td>
+<td align="center">0.06</td>
+<td align="center">1.00</td>
+<td align="center">0.33</td>
+<td align="center">0.46</td>
+</tr>
+<tr class="odd">
+<td>EQ64 - Witnessing women pressured to stay in unfaithful/abusive marriages</td>
+<td align="left">1.17</td>
+<td align="center">0.09</td>
+<td align="center">0.39</td>
+<td align="center">1.05</td>
+<td align="center">1.51</td>
+<td align="center">0.30</td>
+<td align="center">0.66</td>
+<td align="center">0.46</td>
+<td align="center">0.47</td>
+</tr>
+<tr class="even">
+<td>IQ73 - Self-hatred or self-loathing</td>
+<td align="left">0.87</td>
+<td align="center">0.02</td>
+<td align="center">-0.06</td>
+<td align="center">1.01</td>
+<td align="center">1.47</td>
+<td align="center">-0.09</td>
+<td align="center">1.07</td>
+<td align="center">0.46</td>
+<td align="center">0.48</td>
+</tr>
+<tr class="odd">
+<td>EQ49 - Leadership/group protecting and elevating abusive individuals</td>
+<td align="left">1.34</td>
+<td align="center">0.25</td>
+<td align="center">0.49</td>
+<td align="center">1.05</td>
+<td align="center">1.72</td>
+<td align="center">0.24</td>
+<td align="center">0.56</td>
+<td align="center">0.67</td>
+<td align="center">0.49</td>
+</tr>
+<tr class="even">
+<td>IQ82 - Having trouble navigating life outside my church/community</td>
+<td align="left">0.86</td>
+<td align="center">0.27</td>
+<td align="center">0.14</td>
+<td align="center">1.56</td>
+<td align="center">1.77</td>
+<td align="center">-0.13</td>
+<td align="center">1.42</td>
+<td align="center">0.21</td>
+<td align="center">0.50</td>
+</tr>
+<tr class="odd">
+<td>EQ18 - Church/pastor discourage critical thinking</td>
+<td align="left">1.52</td>
+<td align="center">-0.34</td>
+<td align="center">-0.27</td>
+<td align="center">0.58</td>
+<td align="center">1.16</td>
+<td align="center">0.07</td>
+<td align="center">0.85</td>
+<td align="center">0.57</td>
+<td align="center">0.50</td>
+</tr>
+<tr class="even">
+<td>EQ38 - Unrealistic demands placed on my moral/religious behavior</td>
+<td align="left">1.76</td>
+<td align="center">-0.61</td>
+<td align="center">-0.35</td>
+<td align="center">0.41</td>
+<td align="center">0.89</td>
+<td align="center">0.26</td>
+<td align="center">0.76</td>
+<td align="center">0.48</td>
+<td align="center">0.50</td>
+</tr>
+<tr class="odd">
+<td>EQ37 - Made to feel less spiritually mature than pastor/leadership</td>
+<td align="left">1.35</td>
+<td align="center">-0.58</td>
+<td align="center">-0.38</td>
+<td align="center">0.40</td>
+<td align="center">0.95</td>
+<td align="center">0.20</td>
+<td align="center">0.78</td>
+<td align="center">0.55</td>
+<td align="center">0.51</td>
+</tr>
+<tr class="even">
+<td>EQ43 - Shamed by pastor/group for poor spiritual/moral performance</td>
+<td align="left">1.53</td>
+<td align="center">0.23</td>
+<td align="center">0.49</td>
+<td align="center">1.24</td>
+<td align="center">1.79</td>
+<td align="center">0.26</td>
+<td align="center">0.74</td>
+<td align="center">0.56</td>
+<td align="center">0.52</td>
+</tr>
+<tr class="odd">
+<td>EQ44 - Love/acceptance offered only for high spiritual/moral performance</td>
+<td align="left">1.72</td>
+<td align="center">-0.25</td>
+<td align="center">-0.09</td>
+<td align="center">0.60</td>
+<td align="center">1.32</td>
+<td align="center">0.16</td>
+<td align="center">0.68</td>
+<td align="center">0.72</td>
+<td align="center">0.52</td>
+</tr>
+<tr class="even">
+<td>EQ11 - Disagree w/pastor portrayed as evil</td>
+<td align="left">1.49</td>
+<td align="center">-0.22</td>
+<td align="center">0.15</td>
+<td align="center">0.64</td>
+<td align="center">1.35</td>
+<td align="center">0.37</td>
+<td align="center">0.49</td>
+<td align="center">0.71</td>
+<td align="center">0.52</td>
+</tr>
+<tr class="odd">
+<td>IQ71 - Avoiding religious activities/settings to reduce distressing feelings</td>
+<td align="left">1.24</td>
+<td align="center">-0.70</td>
+<td align="center">-0.43</td>
+<td align="center">0.41</td>
+<td align="center">0.90</td>
+<td align="center">0.27</td>
+<td align="center">0.84</td>
+<td align="center">0.49</td>
+<td align="center">0.53</td>
+</tr>
+<tr class="even">
+<td>EQ59 - Pastor/group blame victim for their abuse</td>
+<td align="left">1.59</td>
+<td align="center">0.11</td>
+<td align="center">0.38</td>
+<td align="center">1.03</td>
+<td align="center">1.74</td>
+<td align="center">0.27</td>
+<td align="center">0.64</td>
+<td align="center">0.72</td>
+<td align="center">0.55</td>
+</tr>
+<tr class="odd">
+<td>EQ56 - Being made to feel I was crazy/weird for doubts/questions</td>
+<td align="left">1.93</td>
+<td align="center">-0.43</td>
+<td align="center">-0.15</td>
+<td align="center">0.49</td>
+<td align="center">1.22</td>
+<td align="center">0.28</td>
+<td align="center">0.64</td>
+<td align="center">0.73</td>
+<td align="center">0.55</td>
+</tr>
+<tr class="even">
+<td>EQ28 - Leadershi/group protecting abusive individuals</td>
+<td align="left">1.32</td>
+<td align="center">-0.03</td>
+<td align="center">0.42</td>
+<td align="center">0.96</td>
+<td align="center">1.66</td>
+<td align="center">0.45</td>
+<td align="center">0.54</td>
+<td align="center">0.70</td>
+<td align="center">0.56</td>
+</tr>
+<tr class="odd">
+<td>EQ63 - Shamed by pastor/group for raising questions or concerns</td>
+<td align="left">1.61</td>
+<td align="center">-0.14</td>
+<td align="center">0.28</td>
+<td align="center">0.99</td>
+<td align="center">1.62</td>
+<td align="center">0.43</td>
+<td align="center">0.71</td>
+<td align="center">0.63</td>
+<td align="center">0.59</td>
+</tr>
+<tr class="even">
+<td>EQ32 - Feeling unable to express unhappiness</td>
+<td align="left">1.26</td>
+<td align="center">-0.40</td>
+<td align="center">-0.45</td>
+<td align="center">0.57</td>
+<td align="center">1.37</td>
+<td align="center">-0.05</td>
+<td align="center">1.02</td>
+<td align="center">0.80</td>
+<td align="center">0.59</td>
+</tr>
+<tr class="odd">
+<td>EQ36 - Mental/physical problems interpreted as spiritual/moral weakness</td>
+<td align="left">1.46</td>
+<td align="center">-0.57</td>
+<td align="center">-0.19</td>
+<td align="center">0.51</td>
+<td align="center">1.25</td>
+<td align="center">0.38</td>
+<td align="center">0.70</td>
+<td align="center">0.74</td>
+<td align="center">0.61</td>
+</tr>
+<tr class="even">
+<td>IQ74 - Sadness over the loss of my faith/religious community</td>
+<td align="left">0.77</td>
+<td align="center">-0.36</td>
+<td align="center">-0.56</td>
+<td align="center">0.71</td>
+<td align="center">1.57</td>
+<td align="center">-0.20</td>
+<td align="center">1.27</td>
+<td align="center">0.85</td>
+<td align="center">0.64</td>
+</tr>
+<tr class="odd">
+<td>IQ78 - A lack of self-worth</td>
+<td align="left">0.96</td>
+<td align="center">-0.47</td>
+<td align="center">-0.37</td>
+<td align="center">0.66</td>
+<td align="center">1.46</td>
+<td align="center">0.10</td>
+<td align="center">1.03</td>
+<td align="center">0.80</td>
+<td align="center">0.64</td>
+</tr>
+<tr class="even">
+<td>EQ25 - Feeling unable to raise questions and issues</td>
+<td align="left">1.54</td>
+<td align="center">-0.99</td>
+<td align="center">-0.66</td>
+<td align="center">0.13</td>
+<td align="center">0.95</td>
+<td align="center">0.32</td>
+<td align="center">0.80</td>
+<td align="center">0.81</td>
+<td align="center">0.64</td>
+</tr>
+<tr class="odd">
+<td>EQ42 - Seeing others shamed/shunned by pastor/leader/group</td>
+<td align="left">1.58</td>
+<td align="center">-0.61</td>
+<td align="center">0.02</td>
+<td align="center">0.79</td>
+<td align="center">1.49</td>
+<td align="center">0.63</td>
+<td align="center">0.77</td>
+<td align="center">0.70</td>
+<td align="center">0.70</td>
+</tr>
+<tr class="even">
+<td>IQ77 - Anger upon reflecting on negative religious experiences</td>
+<td align="left">1.65</td>
+<td align="center">-1.05</td>
+<td align="center">-0.48</td>
+<td align="center">0.28</td>
+<td align="center">1.13</td>
+<td align="center">0.58</td>
+<td align="center">0.76</td>
+<td align="center">0.85</td>
+<td align="center">0.73</td>
+</tr>
+<tr class="odd">
+<td>IQ80 - Feeling isolated</td>
+<td align="left">1.12</td>
+<td align="center">-1.10</td>
+<td align="center">-0.68</td>
+<td align="center">0.34</td>
+<td align="center">1.41</td>
+<td align="center">0.42</td>
+<td align="center">1.02</td>
+<td align="center">1.07</td>
+<td align="center">0.84</td>
+</tr>
+<tr class="even">
+<td>IQ69 - Lack of spiritual direction/purpose</td>
+<td align="left">0.77</td>
+<td align="center">-1.30</td>
+<td align="center">-0.82</td>
+<td align="center">0.73</td>
+<td align="center">1.46</td>
+<td align="center">0.48</td>
+<td align="center">1.55</td>
+<td align="center">0.73</td>
+<td align="center">0.92</td>
+</tr>
+</tbody>
+</table>
+<p>Table <a href="item-analysis-in-irt.html#tab:gpcm-items">7</a> reports the item parameters estimated by the GPCM. Now the (a) reports the discrimination parameters which vary by item. These parameters suggest that the items vary considerably in how well they discriminate between examinees who have been exposed to more or less spiritual abuse.</p>
+<p>In Table <a href="item-analysis-in-irt.html#tab:gpcm-items">7</a>, the items are sorted by the average difference between thresholds (or step parameters). Most of the items have reversals of the first two response categories (“Never” and “Once or Twice”), and some of these step parameters have very large values.</p>
+<p>Again, plots of the option characteristic curves help convey this information visually. The following plots illustrate three items with very different sets of curves. The first item illustrates the intended pattern of ordered thresholds. The second and third items show pronounced reversals.</p>
+<div class="figure"><span style="display:block;" id="fig:gpcm-a"></span>
+<img src="_main_files/figure-html/gpcm-a-1.png" alt="Option Characteristic Curve for Item 41: Denied opportunities to serve because of my sexual orientation" width="672" />
+<p class="caption">
+Figure 6: Option Characteristic Curve for Item 41: Denied opportunities to serve because of my sexual orientation
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:gpcm-b"></span>
+<img src="_main_files/figure-html/gpcm-b-1.png" alt="Option Characteristic Curve for Item 42 - Seeing others shamed/shunned by pastor/leader/group" width="672" />
+<p class="caption">
+Figure 7: Option Characteristic Curve for Item 42 - Seeing others shamed/shunned by pastor/leader/group
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:gpcm-c"></span>
+<img src="_main_files/figure-html/gpcm-c-1.png" alt="Option Characteristic Curve for Item 63 - Shamed by pastor/group for raising questions or concerns" width="672" />
+<p class="caption">
+Figure 8: Option Characteristic Curve for Item 63 - Shamed by pastor/group for raising questions or concerns
+</p>
+</div>
+<p>Figure <a href="item-analysis-in-irt.html#fig:gpcm-c">8</a>, for Item 63 - “Shamed by pastor/group for raising questions or concerns” shows the intended pattern of responses. Examinees who had experienced less lifetime exposure to spiritual abuse were most likely to select P1: “Never.” Those who had experienced a little more were more likely to select P2: “Once or twice.” And so on. On this item the response categories functioned as intended to sort examinees on the basis of lifetime exposure to spiritual abuse.</p>
+<p>Fit statistics gauge the extent to which the observed pattern of item responses fit the IRT model (Rasch, partial credit, etc.). They do this by means of chi-square statistics which examine the cumulative difference the observed pattern of item responses and the pattern of item respones that the model would expect. Two fit statistics commonly used in IRT modesl are the infit mean square (MNSQ) and the outfit mean square (MNSQ) <span class="citation">(<a href="references.html#ref-BondFox2015" role="doc-biblioref">Bond and Fox 2015</a>)</span>. The infit statistic places greater emphasis on unexpected responses that are close to the examinees and item location. The outfit is sensitive to unexpected responses that are far from the location. The expected value of infit or outfit for each item is 1.0, with a range of acceptable values ranging from 0.5 to 1.5. Values outside these boundaries indicate a lack of fit between items and the model.</p>
+<table>
+<caption><span id="tab:gpcm-item-fit">Table 8: </span>Generalized Partial Credit Model (GPCM) Item Fit Statistics</caption>
+<thead>
+<tr class="header">
+<th align="left">item</th>
+<th align="center">outfit</th>
+<th align="center">z.outfit</th>
+<th align="center">infit</th>
+<th align="center">z.infit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">EQ52 - Blamed for harm I suffered rather than blaming who harmed me</td>
+<td align="center">0.95</td>
+<td align="center">-0.81</td>
+<td align="center">0.96</td>
+<td align="center">-1.48</td>
+</tr>
+<tr class="even">
+<td align="left">EQ26 - Pressured to forgive abuser while abuse was ongoing</td>
+<td align="center">1.24</td>
+<td align="center">3.86</td>
+<td align="center">0.96</td>
+<td align="center">-1.33</td>
+</tr>
+<tr class="odd">
+<td align="left">IQ77 - Anger upon reflecting on negative religious experiences</td>
+<td align="center">0.96</td>
+<td align="center">-1.51</td>
+<td align="center">0.97</td>
+<td align="center">-1.30</td>
+</tr>
+<tr class="even">
+<td align="left">EQ25 - Feeling unable to raise questions and issues</td>
+<td align="center">0.95</td>
+<td align="center">-1.62</td>
+<td align="center">0.97</td>
+<td align="center">-1.24</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ44 - Love/acceptance offered only for high spiritual/moral performance</td>
+<td align="center">0.99</td>
+<td align="center">-0.21</td>
+<td align="center">0.97</td>
+<td align="center">-1.17</td>
+</tr>
+<tr class="even">
+<td align="left">EQ11 - Disagree w/pastor portrayed as evil</td>
+<td align="center">0.98</td>
+<td align="center">-0.50</td>
+<td align="center">0.97</td>
+<td align="center">-1.17</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ43 - Shamed by pastor/group for poor spiritual/moral performance</td>
+<td align="center">0.97</td>
+<td align="center">-0.69</td>
+<td align="center">0.97</td>
+<td align="center">-1.07</td>
+</tr>
+<tr class="even">
+<td align="left">EQ59 - Pastor/group blame victim for their abuse</td>
+<td align="center">0.93</td>
+<td align="center">-1.39</td>
+<td align="center">0.97</td>
+<td align="center">-1.02</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ56 - Being made to feel I was crazy/weird for doubts/questions</td>
+<td align="center">0.95</td>
+<td align="center">-1.19</td>
+<td align="center">0.97</td>
+<td align="center">-1.04</td>
+</tr>
+<tr class="even">
+<td align="left">EQ35 - Taught to distrust my emotions</td>
+<td align="center">1.06</td>
+<td align="center">2.16</td>
+<td align="center">0.97</td>
+<td align="center">-1.07</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ16 - Church/community abandoning me in difficult time</td>
+<td align="center">0.96</td>
+<td align="center">-1.05</td>
+<td align="center">0.98</td>
+<td align="center">-0.93</td>
+</tr>
+<tr class="even">
+<td align="left">EQ28 - Leadershi/group protecting abusive individuals</td>
+<td align="center">0.97</td>
+<td align="center">-0.71</td>
+<td align="center">0.98</td>
+<td align="center">-0.92</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ38 - Unrealistic demands placed on my moral/religious behavior</td>
+<td align="center">0.93</td>
+<td align="center">-1.84</td>
+<td align="center">0.98</td>
+<td align="center">-0.92</td>
+</tr>
+<tr class="even">
+<td align="left">EQ36 - Mental/physical problems interpreted as spiritual/moral weakness</td>
+<td align="center">0.96</td>
+<td align="center">-1.14</td>
+<td align="center">0.98</td>
+<td align="center">-0.93</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ42 - Seeing others shamed/shunned by pastor/leader/group</td>
+<td align="center">0.95</td>
+<td align="center">-1.54</td>
+<td align="center">0.98</td>
+<td align="center">-0.92</td>
+</tr>
+<tr class="even">
+<td align="left">EQ37 - Made to feel less spiritually mature than pastor/leadership</td>
+<td align="center">0.97</td>
+<td align="center">-0.84</td>
+<td align="center">0.98</td>
+<td align="center">-0.92</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ54 - Being explicitly taught to distrust my intuitions</td>
+<td align="center">0.99</td>
+<td align="center">-0.15</td>
+<td align="center">0.98</td>
+<td align="center">-0.81</td>
+</tr>
+<tr class="even">
+<td align="left">EQ64 - Witnessing women pressured to stay in unfaithful/abusive marriages</td>
+<td align="center">0.97</td>
+<td align="center">-0.87</td>
+<td align="center">0.98</td>
+<td align="center">-0.79</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ18 - Church/pastor discourage critical thinking</td>
+<td align="center">0.96</td>
+<td align="center">-1.16</td>
+<td align="center">0.98</td>
+<td align="center">-0.78</td>
+</tr>
+<tr class="even">
+<td align="left">IQ71 - Avoiding religious activities/settings to reduce distressing feelings</td>
+<td align="center">0.97</td>
+<td align="center">-1.08</td>
+<td align="center">0.98</td>
+<td align="center">-0.78</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ63 - Shamed by pastor/group for raising questions or concerns</td>
+<td align="center">0.93</td>
+<td align="center">-1.78</td>
+<td align="center">0.98</td>
+<td align="center">-0.68</td>
+</tr>
+<tr class="even">
+<td align="left">EQ49 - Leadership/group protecting and elevating abusive individuals</td>
+<td align="center">0.96</td>
+<td align="center">-1.00</td>
+<td align="center">0.98</td>
+<td align="center">-0.66</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ31 - Shunned/ignored by pastor/church/group</td>
+<td align="center">0.96</td>
+<td align="center">-1.14</td>
+<td align="center">0.98</td>
+<td align="center">-0.67</td>
+</tr>
+<tr class="even">
+<td align="left">IQ80 - Feeling isolated</td>
+<td align="center">0.98</td>
+<td align="center">-0.74</td>
+<td align="center">0.98</td>
+<td align="center">-0.66</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ7 - Pastor speaking on God’s behalf</td>
+<td align="center">1.05</td>
+<td align="center">1.67</td>
+<td align="center">0.98</td>
+<td align="center">-0.68</td>
+</tr>
+<tr class="even">
+<td align="left">EQ29 - Feeling special when in pastor’s good graces; otherwise ignored</td>
+<td align="center">0.97</td>
+<td align="center">-0.98</td>
+<td align="center">0.98</td>
+<td align="center">-0.65</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ66 - Others treated as less than due to their sexual orientation</td>
+<td align="center">1.03</td>
+<td align="center">1.00</td>
+<td align="center">0.99</td>
+<td align="center">-0.54</td>
+</tr>
+<tr class="even">
+<td align="left">EQ21 - Taught I would risk Hell if left my church/group</td>
+<td align="center">1.07</td>
+<td align="center">1.41</td>
+<td align="center">0.99</td>
+<td align="center">-0.51</td>
+</tr>
+<tr class="odd">
+<td align="left">IQ76 - Feeling I wasted years of my life in a church/set of beliefs</td>
+<td align="center">1.01</td>
+<td align="center">0.20</td>
+<td align="center">0.99</td>
+<td align="center">-0.53</td>
+</tr>
+<tr class="even">
+<td align="left">EQ32 - Feeling unable to express unhappiness</td>
+<td align="center">0.98</td>
+<td align="center">-0.65</td>
+<td align="center">0.99</td>
+<td align="center">-0.52</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ27 - Denied opportunities to serve b/c of my gender</td>
+<td align="center">1.01</td>
+<td align="center">0.20</td>
+<td align="center">0.99</td>
+<td align="center">-0.48</td>
+</tr>
+<tr class="even">
+<td align="left">EQ65 - Cut off/shunned by more religious family members</td>
+<td align="center">1.02</td>
+<td align="center">0.48</td>
+<td align="center">0.99</td>
+<td align="center">-0.41</td>
+</tr>
+<tr class="odd">
+<td align="left">IQ74 - Sadness over the loss of my faith/religious community</td>
+<td align="center">0.99</td>
+<td align="center">-0.33</td>
+<td align="center">0.99</td>
+<td align="center">-0.50</td>
+</tr>
+<tr class="even">
+<td align="left">EQ19 - Behavior excessively monitored by pastor/group</td>
+<td align="center">0.95</td>
+<td align="center">-1.21</td>
+<td align="center">0.99</td>
+<td align="center">-0.38</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ30 - Deterred from seeking mental health treatment/counseling/medication</td>
+<td align="center">0.96</td>
+<td align="center">-0.83</td>
+<td align="center">0.99</td>
+<td align="center">-0.36</td>
+</tr>
+<tr class="even">
+<td align="left">EQ58 - Terror/horror used to motivate religious decisions</td>
+<td align="center">0.95</td>
+<td align="center">-1.51</td>
+<td align="center">0.99</td>
+<td align="center">-0.36</td>
+</tr>
+<tr class="odd">
+<td align="left">IQ69 - Lack of spiritual direction/purpose</td>
+<td align="center">0.99</td>
+<td align="center">-0.35</td>
+<td align="center">0.99</td>
+<td align="center">-0.37</td>
+</tr>
+<tr class="even">
+<td align="left">EQ50 - Treated as less than because of my gender</td>
+<td align="center">0.93</td>
+<td align="center">-2.02</td>
+<td align="center">0.99</td>
+<td align="center">-0.37</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ40 - Threatening Divine punishment to keep group members in line</td>
+<td align="center">0.96</td>
+<td align="center">-0.76</td>
+<td align="center">0.99</td>
+<td align="center">-0.29</td>
+</tr>
+<tr class="even">
+<td align="left">EQ53 - Scripture used to justify abusive parent-child behavior</td>
+<td align="center">0.94</td>
+<td align="center">-1.47</td>
+<td align="center">0.99</td>
+<td align="center">-0.30</td>
+</tr>
+<tr class="odd">
+<td align="left">IQ78 - A lack of self-worth</td>
+<td align="center">0.98</td>
+<td align="center">-0.63</td>
+<td align="center">0.99</td>
+<td align="center">-0.30</td>
+</tr>
+<tr class="even">
+<td align="left">EQ39 - Made to feel shame over natural sexual desires (not actions)</td>
+<td align="center">1.00</td>
+<td align="center">-0.09</td>
+<td align="center">0.99</td>
+<td align="center">-0.28</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ20 - Members pressured to give money despite financial hardship</td>
+<td align="center">0.94</td>
+<td align="center">-1.37</td>
+<td align="center">0.99</td>
+<td align="center">-0.22</td>
+</tr>
+<tr class="even">
+<td align="left">EQ24 - Expected to consult pastor/leader before making non-religious decisions</td>
+<td align="center">0.98</td>
+<td align="center">-0.39</td>
+<td align="center">0.99</td>
+<td align="center">-0.18</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ45 - Developmentally-inappropriate/anxious Hell/Satan/demons taught to young children</td>
+<td align="center">0.98</td>
+<td align="center">-0.54</td>
+<td align="center">0.99</td>
+<td align="center">-0.21</td>
+</tr>
+<tr class="even">
+<td align="left">IQ79 - Distrust of God</td>
+<td align="center">0.98</td>
+<td align="center">-0.88</td>
+<td align="center">1.00</td>
+<td align="center">-0.20</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ61 - Developmentally-inappropriate/anxious end times descriptions taught to young children</td>
+<td align="center">0.98</td>
+<td align="center">-0.49</td>
+<td align="center">1.00</td>
+<td align="center">-0.17</td>
+</tr>
+<tr class="even">
+<td align="left">EQ34 - Scripture used to justify physical punishment/severe discipline</td>
+<td align="center">0.98</td>
+<td align="center">-0.56</td>
+<td align="center">1.00</td>
+<td align="center">-0.12</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ55 - Hearing cultural references in sermons unfamiliar to my race/eth. subculture</td>
+<td align="center">0.99</td>
+<td align="center">-0.22</td>
+<td align="center">1.00</td>
+<td align="center">-0.05</td>
+</tr>
+<tr class="even">
+<td align="left">EQ57 - Developing mental/physical ailments from conforming to group/leader’s expectation</td>
+<td align="center">0.90</td>
+<td align="center">-2.01</td>
+<td align="center">1.00</td>
+<td align="center">-0.03</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ41 - Denied opportunities to serve because of my sexual orientation</td>
+<td align="center">1.08</td>
+<td align="center">0.87</td>
+<td align="center">1.00</td>
+<td align="center">0.03</td>
+</tr>
+<tr class="even">
+<td align="left">IQ73 - Self-hatred or self-loathing</td>
+<td align="center">0.96</td>
+<td align="center">-1.23</td>
+<td align="center">1.00</td>
+<td align="center">0.11</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ10 - Asked to give up personal goals by pastor</td>
+<td align="center">0.96</td>
+<td align="center">-0.67</td>
+<td align="center">1.00</td>
+<td align="center">0.10</td>
+</tr>
+<tr class="even">
+<td align="left">EQ51 - Extreme pressure to be pastor/missionary/spiritual leader</td>
+<td align="center">0.98</td>
+<td align="center">-0.62</td>
+<td align="center">1.00</td>
+<td align="center">0.12</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ60 - Encouraged by leader to stay in abusive marriage</td>
+<td align="center">0.91</td>
+<td align="center">-1.40</td>
+<td align="center">1.00</td>
+<td align="center">0.10</td>
+</tr>
+<tr class="even">
+<td align="left">EQ46 - Treated as less than because of my skin color</td>
+<td align="center">0.96</td>
+<td align="center">-0.31</td>
+<td align="center">1.01</td>
+<td align="center">0.08</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ62 - Scripture used to justify physical violence</td>
+<td align="center">0.93</td>
+<td align="center">-1.88</td>
+<td align="center">1.01</td>
+<td align="center">0.24</td>
+</tr>
+<tr class="even">
+<td align="left">IQ68 - Anxiety attacks triggered by religious stimuli</td>
+<td align="center">0.93</td>
+<td align="center">-1.49</td>
+<td align="center">1.01</td>
+<td align="center">0.25</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ22 - Expected to follow pastor/leader rules re: dating/marriage/sex</td>
+<td align="center">1.00</td>
+<td align="center">0.04</td>
+<td align="center">1.01</td>
+<td align="center">0.32</td>
+</tr>
+<tr class="even">
+<td align="left">IQ70 - Feeling betrayed by God</td>
+<td align="center">0.96</td>
+<td align="center">-1.39</td>
+<td align="center">1.01</td>
+<td align="center">0.35</td>
+</tr>
+<tr class="odd">
+<td align="left">IQ82 - Having trouble navigating life outside my church/community</td>
+<td align="center">0.95</td>
+<td align="center">-1.62</td>
+<td align="center">1.01</td>
+<td align="center">0.56</td>
+</tr>
+<tr class="even">
+<td align="left">EQ23 - Prayer replacing needed medical interventions</td>
+<td align="center">0.94</td>
+<td align="center">-1.39</td>
+<td align="center">1.02</td>
+<td align="center">0.68</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ17 - Treated as less than b/c my sexual orientation</td>
+<td align="center">0.85</td>
+<td align="center">-1.70</td>
+<td align="center">1.02</td>
+<td align="center">0.40</td>
+</tr>
+<tr class="even">
+<td align="left">IQ81 - Nightmares about my negative religious experiences</td>
+<td align="center">0.93</td>
+<td align="center">-1.47</td>
+<td align="center">1.03</td>
+<td align="center">0.87</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ47 - Medical care being postponed/withheld for religious reasons</td>
+<td align="center">0.94</td>
+<td align="center">-1.09</td>
+<td align="center">1.03</td>
+<td align="center">0.78</td>
+</tr>
+<tr class="even">
+<td align="left">IQ72 - Feeling as if God harmed me directly</td>
+<td align="center">0.92</td>
+<td align="center">-1.60</td>
+<td align="center">1.03</td>
+<td align="center">0.93</td>
+</tr>
+</tbody>
+</table>
+<p>Interestingly, these fit statistics suggest a good fit of the GPCM. None of the items have fit statistics beyond the acceptable range from 0.5 to 1.5.</p>
+<table>
+<caption><span id="tab:gpcm-fit">Table 9: </span>GPCM Model Fit</caption>
+<colgroup>
+<col width="8%" />
+<col width="14%" />
+<col width="8%" />
+<col width="4%" />
+<col width="9%" />
+<col width="12%" />
+<col width="14%" />
+<col width="9%" />
+<col width="9%" />
+<col width="8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center">M2</th>
+<th align="center">df</th>
+<th align="center">p</th>
+<th align="center">RMSEA</th>
+<th align="center">RMSEA_5</th>
+<th align="center">RMSEA_95</th>
+<th align="center">SRMSR</th>
+<th align="center">TLI</th>
+<th align="center">CFI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">stats</td>
+<td align="center">39937.34</td>
+<td align="center">2079</td>
+<td align="center">0</td>
+<td align="center">0.078</td>
+<td align="center">0.078</td>
+<td align="center">0.079</td>
+<td align="center">0.064</td>
+<td align="center">0.969</td>
+<td align="center">0.97</td>
+</tr>
+</tbody>
+</table>
+<p>Model fit statistics are reported in Table <a href="item-analysis-in-irt.html#tab:gpcm-fit">9</a>. The obtained RMSEA value = .078 (95% CI[.078, .079]) and SRMSR value = .064 suggest that data do not fit the model reasonably very well using suggested cutoff values of RMSEA &lt;= .06 and SRMSR &lt;= .08 as suggested guidelines for assessing fit. The CFI = .97 exceeded the recommended .95 threshold.</p>
+</div>
+<div id="graded-response-model" class="section level2 hasAnchor">
+<h2>Graded Response Model<a href="item-analysis-in-irt.html#graded-response-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The fourth model is the Graded Response Model ().</p>
+<table>
+<caption><span id="tab:grm-items">Table 10: </span>Graded Response Model Item Parameters</caption>
+<colgroup>
+<col width="73%" />
+<col width="4%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center">a</th>
+<th align="center">b1</th>
+<th align="center">b2</th>
+<th align="center">b3</th>
+<th align="center">b4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">EQ55 - Hearing cultural references in sermons unfamiliar to my race/eth. subculture</td>
+<td align="center">0.52</td>
+<td align="center">1.25</td>
+<td align="center">3.23</td>
+<td align="center">5.48</td>
+<td align="center">8.12</td>
+</tr>
+<tr class="even">
+<td align="left">EQ46 - Treated as less than because of my skin color</td>
+<td align="center">0.54</td>
+<td align="center">5.36</td>
+<td align="center">6.59</td>
+<td align="center">8.82</td>
+<td align="center">10.71</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ41 - Denied opportunities to serve because of my sexual orientation</td>
+<td align="center">0.92</td>
+<td align="center">2.61</td>
+<td align="center">2.93</td>
+<td align="center">3.47</td>
+<td align="center">4.09</td>
+</tr>
+<tr class="even">
+<td align="left">EQ27 - Denied opportunities to serve b/c of my gender</td>
+<td align="center">1.04</td>
+<td align="center">0.46</td>
+<td align="center">1.01</td>
+<td align="center">1.77</td>
+<td align="center">2.67</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ17 - Treated as less than b/c my sexual orientation</td>
+<td align="center">1.04</td>
+<td align="center">2.18</td>
+<td align="center">2.40</td>
+<td align="center">2.84</td>
+<td align="center">3.49</td>
+</tr>
+<tr class="even">
+<td align="left">EQ50 - Treated as less than because of my gender</td>
+<td align="center">1.17</td>
+<td align="center">0.03</td>
+<td align="center">0.38</td>
+<td align="center">1.11</td>
+<td align="center">2.10</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ60 - Encouraged by leader to stay in abusive marriage</td>
+<td align="center">1.26</td>
+<td align="center">1.12</td>
+<td align="center">1.69</td>
+<td align="center">2.42</td>
+<td align="center">3.48</td>
+</tr>
+<tr class="even">
+<td align="left">IQ70 - Feeling betrayed by God</td>
+<td align="center">1.29</td>
+<td align="center">-0.35</td>
+<td align="center">0.63</td>
+<td align="center">1.75</td>
+<td align="center">2.82</td>
+</tr>
+<tr class="odd">
+<td align="left">IQ69 - Lack of spiritual direction/purpose</td>
+<td align="center">1.38</td>
+<td align="center">-1.82</td>
+<td align="center">-0.68</td>
+<td align="center">0.63</td>
+<td align="center">1.83</td>
+</tr>
+<tr class="even">
+<td align="left">IQ79 - Distrust of God</td>
+<td align="center">1.41</td>
+<td align="center">-0.69</td>
+<td align="center">0.20</td>
+<td align="center">1.29</td>
+<td align="center">2.23</td>
+</tr>
+<tr class="odd">
+<td align="left">IQ74 - Sadness over the loss of my faith/religious community</td>
+<td align="center">1.44</td>
+<td align="center">-1.18</td>
+<td align="center">-0.32</td>
+<td align="center">0.76</td>
+<td align="center">1.89</td>
+</tr>
+<tr class="even">
+<td align="left">IQ72 - Feeling as if God harmed me directly</td>
+<td align="center">1.46</td>
+<td align="center">0.54</td>
+<td align="center">1.31</td>
+<td align="center">2.37</td>
+<td align="center">3.28</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ47 - Medical care being postponed/withheld for religious reasons</td>
+<td align="center">1.48</td>
+<td align="center">0.79</td>
+<td align="center">1.66</td>
+<td align="center">2.79</td>
+<td align="center">3.66</td>
+</tr>
+<tr class="even">
+<td align="left">IQ82 - Having trouble navigating life outside my church/community</td>
+<td align="center">1.51</td>
+<td align="center">-0.47</td>
+<td align="center">0.39</td>
+<td align="center">1.49</td>
+<td align="center">2.44</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ51 - Extreme pressure to be pastor/missionary/spiritual leader</td>
+<td align="center">1.55</td>
+<td align="center">-0.36</td>
+<td align="center">0.32</td>
+<td align="center">1.03</td>
+<td align="center">1.92</td>
+</tr>
+<tr class="even">
+<td align="left">IQ73 - Self-hatred or self-loathing</td>
+<td align="center">1.58</td>
+<td align="center">-0.70</td>
+<td align="center">0.10</td>
+<td align="center">1.03</td>
+<td align="center">1.97</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ31 - Shunned/ignored by pastor/church/group</td>
+<td align="center">1.64</td>
+<td align="center">-0.15</td>
+<td align="center">0.68</td>
+<td align="center">1.59</td>
+<td align="center">2.49</td>
+</tr>
+<tr class="even">
+<td align="left">EQ65 - Cut off/shunned by more religious family members</td>
+<td align="center">1.66</td>
+<td align="center">0.30</td>
+<td align="center">0.94</td>
+<td align="center">1.63</td>
+<td align="center">2.47</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ34 - Scripture used to justify physical punishment/severe discipline</td>
+<td align="center">1.71</td>
+<td align="center">-0.58</td>
+<td align="center">0.12</td>
+<td align="center">0.95</td>
+<td align="center">1.88</td>
+</tr>
+<tr class="even">
+<td align="left">IQ78 - A lack of self-worth</td>
+<td align="center">1.72</td>
+<td align="center">-1.06</td>
+<td align="center">-0.26</td>
+<td align="center">0.69</td>
+<td align="center">1.72</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ23 - Prayer replacing needed medical interventions</td>
+<td align="center">1.74</td>
+<td align="center">0.03</td>
+<td align="center">0.80</td>
+<td align="center">1.68</td>
+<td align="center">2.61</td>
+</tr>
+<tr class="even">
+<td align="left">EQ62 - Scripture used to justify physical violence</td>
+<td align="center">1.76</td>
+<td align="center">-0.24</td>
+<td align="center">0.42</td>
+<td align="center">1.33</td>
+<td align="center">2.27</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ7 - Pastor speaking on God’s behalf</td>
+<td align="center">1.77</td>
+<td align="center">-0.52</td>
+<td align="center">0.11</td>
+<td align="center">0.77</td>
+<td align="center">1.55</td>
+</tr>
+<tr class="even">
+<td align="left">EQ29 - Feeling special when in pastor’s good graces; otherwise ignored</td>
+<td align="center">1.83</td>
+<td align="center">-0.58</td>
+<td align="center">0.09</td>
+<td align="center">0.89</td>
+<td align="center">1.80</td>
+</tr>
+<tr class="odd">
+<td align="left">IQ80 - Feeling isolated</td>
+<td align="center">1.84</td>
+<td align="center">-1.50</td>
+<td align="center">-0.62</td>
+<td align="center">0.39</td>
+<td align="center">1.54</td>
+</tr>
+<tr class="even">
+<td align="left">EQ16 - Church/community abandoning me in difficult time</td>
+<td align="center">1.86</td>
+<td align="center">-0.19</td>
+<td align="center">0.54</td>
+<td align="center">1.26</td>
+<td align="center">2.08</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ10 - Asked to give up personal goals by pastor</td>
+<td align="center">1.87</td>
+<td align="center">0.31</td>
+<td align="center">0.88</td>
+<td align="center">1.57</td>
+<td align="center">2.33</td>
+</tr>
+<tr class="even">
+<td align="left">EQ20 - Members pressured to give money despite financial hardship</td>
+<td align="center">1.92</td>
+<td align="center">-0.01</td>
+<td align="center">0.50</td>
+<td align="center">1.09</td>
+<td align="center">1.76</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ26 - Pressured to forgive abuser while abuse was ongoing</td>
+<td align="center">1.94</td>
+<td align="center">0.34</td>
+<td align="center">0.84</td>
+<td align="center">1.34</td>
+<td align="center">2.03</td>
+</tr>
+<tr class="even">
+<td align="left">IQ68 - Anxiety attacks triggered by religious stimuli</td>
+<td align="center">1.94</td>
+<td align="center">-0.02</td>
+<td align="center">0.56</td>
+<td align="center">1.34</td>
+<td align="center">2.23</td>
+</tr>
+<tr class="odd">
+<td align="left">IQ81 - Nightmares about my negative religious experiences</td>
+<td align="center">1.94</td>
+<td align="center">0.22</td>
+<td align="center">0.99</td>
+<td align="center">1.90</td>
+<td align="center">2.72</td>
+</tr>
+<tr class="even">
+<td align="left">EQ64 - Witnessing women pressured to stay in unfaithful/abusive marriages</td>
+<td align="center">1.95</td>
+<td align="center">-0.38</td>
+<td align="center">0.38</td>
+<td align="center">1.15</td>
+<td align="center">1.96</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ24 - Expected to consult pastor/leader before making non-religious decisions</td>
+<td align="center">1.96</td>
+<td align="center">0.19</td>
+<td align="center">0.76</td>
+<td align="center">1.53</td>
+<td align="center">2.34</td>
+</tr>
+<tr class="even">
+<td align="left">EQ21 - Taught I would risk Hell if left my church/group</td>
+<td align="center">1.98</td>
+<td align="center">0.04</td>
+<td align="center">0.50</td>
+<td align="center">0.99</td>
+<td align="center">1.50</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ61 - Developmentally-inappropriate/anxious end times descriptions taught to young children</td>
+<td align="center">2.00</td>
+<td align="center">-0.72</td>
+<td align="center">-0.16</td>
+<td align="center">0.48</td>
+<td align="center">1.24</td>
+</tr>
+<tr class="even">
+<td align="left">EQ22 - Expected to follow pastor/leader rules re: dating/marriage/sex</td>
+<td align="center">2.01</td>
+<td align="center">-1.12</td>
+<td align="center">-0.63</td>
+<td align="center">-0.10</td>
+<td align="center">0.69</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ45 - Developmentally-inappropriate/anxious Hell/Satan/demons taught to young children</td>
+<td align="center">2.03</td>
+<td align="center">-0.75</td>
+<td align="center">-0.13</td>
+<td align="center">0.52</td>
+<td align="center">1.26</td>
+</tr>
+<tr class="even">
+<td align="left">EQ66 - Others treated as less than due to their sexual orientation</td>
+<td align="center">2.06</td>
+<td align="center">-1.25</td>
+<td align="center">-0.71</td>
+<td align="center">0.02</td>
+<td align="center">0.90</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ39 - Made to feel shame over natural sexual desires (not actions)</td>
+<td align="center">2.08</td>
+<td align="center">-0.95</td>
+<td align="center">-0.45</td>
+<td align="center">0.22</td>
+<td align="center">0.97</td>
+</tr>
+<tr class="even">
+<td align="left">EQ58 - Terror/horror used to motivate religious decisions</td>
+<td align="center">2.09</td>
+<td align="center">-0.62</td>
+<td align="center">0.00</td>
+<td align="center">0.82</td>
+<td align="center">1.65</td>
+</tr>
+<tr class="odd">
+<td align="left">IQ71 - Avoiding religious activities/settings to reduce distressing feelings</td>
+<td align="center">2.10</td>
+<td align="center">-1.11</td>
+<td align="center">-0.40</td>
+<td align="center">0.40</td>
+<td align="center">1.21</td>
+</tr>
+<tr class="even">
+<td align="left">EQ30 - Deterred from seeking mental health treatment/counseling/medication</td>
+<td align="center">2.11</td>
+<td align="center">0.00</td>
+<td align="center">0.56</td>
+<td align="center">1.25</td>
+<td align="center">2.09</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ28 - Leadershi/group protecting abusive individuals</td>
+<td align="center">2.12</td>
+<td align="center">-0.41</td>
+<td align="center">0.37</td>
+<td align="center">1.10</td>
+<td align="center">1.98</td>
+</tr>
+<tr class="even">
+<td align="left">EQ32 - Feeling unable to express unhappiness</td>
+<td align="center">2.14</td>
+<td align="center">-0.92</td>
+<td align="center">-0.30</td>
+<td align="center">0.57</td>
+<td align="center">1.54</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ49 - Leadership/group protecting and elevating abusive individuals</td>
+<td align="center">2.15</td>
+<td align="center">-0.19</td>
+<td align="center">0.51</td>
+<td align="center">1.22</td>
+<td align="center">2.06</td>
+</tr>
+<tr class="even">
+<td align="left">EQ35 - Taught to distrust my emotions</td>
+<td align="center">2.16</td>
+<td align="center">-1.14</td>
+<td align="center">-0.54</td>
+<td align="center">0.23</td>
+<td align="center">1.05</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ53 - Scripture used to justify abusive parent-child behavior</td>
+<td align="center">2.16</td>
+<td align="center">-0.36</td>
+<td align="center">0.24</td>
+<td align="center">0.93</td>
+<td align="center">1.66</td>
+</tr>
+<tr class="even">
+<td align="left">IQ76 - Feeling I wasted years of my life in a church/set of beliefs</td>
+<td align="center">2.18</td>
+<td align="center">-0.70</td>
+<td align="center">-0.13</td>
+<td align="center">0.49</td>
+<td align="center">1.13</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ57 - Developing mental/physical ailments from conforming to group/leader’s expectation</td>
+<td align="center">2.20</td>
+<td align="center">-0.07</td>
+<td align="center">0.45</td>
+<td align="center">1.08</td>
+<td align="center">1.79</td>
+</tr>
+<tr class="even">
+<td align="left">EQ37 - Made to feel less spiritually mature than pastor/leadership</td>
+<td align="center">2.29</td>
+<td align="center">-0.99</td>
+<td align="center">-0.36</td>
+<td align="center">0.40</td>
+<td align="center">1.21</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ54 - Being explicitly taught to distrust my intuitions</td>
+<td align="center">2.30</td>
+<td align="center">-0.90</td>
+<td align="center">-0.31</td>
+<td align="center">0.43</td>
+<td align="center">1.18</td>
+</tr>
+<tr class="even">
+<td align="left">EQ43 - Shamed by pastor/group for poor spiritual/moral performance</td>
+<td align="center">2.31</td>
+<td align="center">-0.14</td>
+<td align="center">0.56</td>
+<td align="center">1.34</td>
+<td align="center">2.15</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ25 - Feeling unable to raise questions and issues</td>
+<td align="center">2.36</td>
+<td align="center">-1.32</td>
+<td align="center">-0.64</td>
+<td align="center">0.18</td>
+<td align="center">1.11</td>
+</tr>
+<tr class="even">
+<td align="left">EQ36 - Mental/physical problems interpreted as spiritual/moral weakness</td>
+<td align="center">2.37</td>
+<td align="center">-0.90</td>
+<td align="center">-0.22</td>
+<td align="center">0.55</td>
+<td align="center">1.44</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ19 - Behavior excessively monitored by pastor/group</td>
+<td align="center">2.39</td>
+<td align="center">-0.30</td>
+<td align="center">0.27</td>
+<td align="center">0.92</td>
+<td align="center">1.72</td>
+</tr>
+<tr class="even">
+<td align="left">EQ42 - Seeing others shamed/shunned by pastor/leader/group</td>
+<td align="center">2.40</td>
+<td align="center">-0.84</td>
+<td align="center">-0.02</td>
+<td align="center">0.82</td>
+<td align="center">1.70</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ11 - Disagree w/pastor portrayed as evil</td>
+<td align="center">2.40</td>
+<td align="center">-0.57</td>
+<td align="center">0.10</td>
+<td align="center">0.75</td>
+<td align="center">1.57</td>
+</tr>
+<tr class="even">
+<td align="left">EQ40 - Threatening Divine punishment to keep group members in line</td>
+<td align="center">2.41</td>
+<td align="center">-0.18</td>
+<td align="center">0.34</td>
+<td align="center">0.95</td>
+<td align="center">1.55</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ59 - Pastor/group blame victim for their abuse</td>
+<td align="center">2.41</td>
+<td align="center">-0.25</td>
+<td align="center">0.41</td>
+<td align="center">1.14</td>
+<td align="center">2.00</td>
+</tr>
+<tr class="even">
+<td align="left">EQ63 - Shamed by pastor/group for raising questions or concerns</td>
+<td align="center">2.42</td>
+<td align="center">-0.44</td>
+<td align="center">0.30</td>
+<td align="center">1.07</td>
+<td align="center">1.88</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ52 - Blamed for harm I suffered rather than blaming who harmed me</td>
+<td align="center">2.44</td>
+<td align="center">-0.07</td>
+<td align="center">0.52</td>
+<td align="center">1.14</td>
+<td align="center">1.95</td>
+</tr>
+<tr class="even">
+<td align="left">IQ77 - Anger upon reflecting on negative religious experiences</td>
+<td align="center">2.47</td>
+<td align="center">-1.27</td>
+<td align="center">-0.51</td>
+<td align="center">0.32</td>
+<td align="center">1.27</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ18 - Church/pastor discourage critical thinking</td>
+<td align="center">2.50</td>
+<td align="center">-0.75</td>
+<td align="center">-0.18</td>
+<td align="center">0.59</td>
+<td align="center">1.37</td>
+</tr>
+<tr class="even">
+<td align="left">EQ44 - Love/acceptance offered only for high spiritual/moral performance</td>
+<td align="center">2.71</td>
+<td align="center">-0.60</td>
+<td align="center">-0.04</td>
+<td align="center">0.66</td>
+<td align="center">1.48</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ38 - Unrealistic demands placed on my moral/religious behavior</td>
+<td align="center">2.75</td>
+<td align="center">-0.91</td>
+<td align="center">-0.33</td>
+<td align="center">0.39</td>
+<td align="center">1.11</td>
+</tr>
+<tr class="even">
+<td align="left">EQ56 - Being made to feel I was crazy/weird for doubts/questions</td>
+<td align="center">2.91</td>
+<td align="center">-0.71</td>
+<td align="center">-0.13</td>
+<td align="center">0.54</td>
+<td align="center">1.36</td>
+</tr>
+</tbody>
+</table>
+<p>Again, plots of the option characteristic curves help convey this information visually. The following plots illustrate three items with very different sets of curves. The first item illustrates the intended pattern of ordered thresholds. The second and third items show pronounced reversals.</p>
+<div class="figure"><span style="display:block;" id="fig:grm-a"></span>
+<img src="_main_files/figure-html/grm-a-1.png" alt="Option Characteristic Curve for Item 42 - Seeing others shamed/shunned by pastor/leader/group" width="672" />
+<p class="caption">
+Figure 9: Option Characteristic Curve for Item 42 - Seeing others shamed/shunned by pastor/leader/group
+</p>
+</div>
+<p><img src="_main_files/figure-html/grm-b-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/grm-c-1.png" width="672" /></p>
+<table>
+<caption><span id="tab:grm-item-fit">Table 11: </span>Graded Response Model (GRM) Item Fit Statistics</caption>
+<thead>
+<tr class="header">
+<th align="left">item</th>
+<th align="center">outfit</th>
+<th align="center">z.outfit</th>
+<th align="center">infit</th>
+<th align="center">z.infit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">EQ60 - Encouraged by leader to stay in abusive marriage</td>
+<td align="center">0.74</td>
+<td align="center">-3.59</td>
+<td align="center">0.91</td>
+<td align="center">-2.31</td>
+</tr>
+<tr class="even">
+<td align="left">EQ17 - Treated as less than b/c my sexual orientation</td>
+<td align="center">0.77</td>
+<td align="center">-2.72</td>
+<td align="center">0.97</td>
+<td align="center">-0.57</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ47 - Medical care being postponed/withheld for religious reasons</td>
+<td align="center">0.81</td>
+<td align="center">-2.30</td>
+<td align="center">0.95</td>
+<td align="center">-1.17</td>
+</tr>
+<tr class="even">
+<td align="left">IQ72 - Feeling as if God harmed me directly</td>
+<td align="center">0.84</td>
+<td align="center">-2.38</td>
+<td align="center">0.97</td>
+<td align="center">-0.78</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ57 - Developing mental/physical ailments from conforming to group/leader’s expectation</td>
+<td align="center">0.85</td>
+<td align="center">-1.75</td>
+<td align="center">0.97</td>
+<td align="center">-1.16</td>
+</tr>
+<tr class="even">
+<td align="left">EQ20 - Members pressured to give money despite financial hardship</td>
+<td align="center">0.86</td>
+<td align="center">-1.97</td>
+<td align="center">0.95</td>
+<td align="center">-1.63</td>
+</tr>
+<tr class="odd">
+<td align="left">IQ81 - Nightmares about my negative religious experiences</td>
+<td align="center">0.87</td>
+<td align="center">-1.49</td>
+<td align="center">0.99</td>
+<td align="center">-0.41</td>
+</tr>
+<tr class="even">
+<td align="left">EQ10 - Asked to give up personal goals by pastor</td>
+<td align="center">0.87</td>
+<td align="center">-1.48</td>
+<td align="center">0.96</td>
+<td align="center">-1.39</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ59 - Pastor/group blame victim for their abuse</td>
+<td align="center">0.87</td>
+<td align="center">-1.48</td>
+<td align="center">0.95</td>
+<td align="center">-1.80</td>
+</tr>
+<tr class="even">
+<td align="left">EQ23 - Prayer replacing needed medical interventions</td>
+<td align="center">0.88</td>
+<td align="center">-2.01</td>
+<td align="center">0.97</td>
+<td align="center">-0.92</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ52 - Blamed for harm I suffered rather than blaming who harmed me</td>
+<td align="center">0.88</td>
+<td align="center">-1.17</td>
+<td align="center">0.92</td>
+<td align="center">-2.61</td>
+</tr>
+<tr class="even">
+<td align="left">EQ16 - Church/community abandoning me in difficult time</td>
+<td align="center">0.88</td>
+<td align="center">-2.05</td>
+<td align="center">0.94</td>
+<td align="center">-2.17</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ31 - Shunned/ignored by pastor/church/group</td>
+<td align="center">0.88</td>
+<td align="center">-2.36</td>
+<td align="center">0.94</td>
+<td align="center">-1.95</td>
+</tr>
+<tr class="even">
+<td align="left">EQ50 - Treated as less than because of my gender</td>
+<td align="center">0.89</td>
+<td align="center">-3.52</td>
+<td align="center">0.96</td>
+<td align="center">-1.84</td>
+</tr>
+<tr class="odd">
+<td align="left">IQ68 - Anxiety attacks triggered by religious stimuli</td>
+<td align="center">0.89</td>
+<td align="center">-1.60</td>
+<td align="center">0.98</td>
+<td align="center">-0.63</td>
+</tr>
+<tr class="even">
+<td align="left">EQ62 - Scripture used to justify physical violence</td>
+<td align="center">0.89</td>
+<td align="center">-2.23</td>
+<td align="center">0.98</td>
+<td align="center">-0.74</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ46 - Treated as less than because of my skin color</td>
+<td align="center">0.89</td>
+<td align="center">-0.92</td>
+<td align="center">1.00</td>
+<td align="center">-0.01</td>
+</tr>
+<tr class="even">
+<td align="left">EQ63 - Shamed by pastor/group for raising questions or concerns</td>
+<td align="center">0.89</td>
+<td align="center">-1.53</td>
+<td align="center">0.96</td>
+<td align="center">-1.43</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ49 - Leadership/group protecting and elevating abusive individuals</td>
+<td align="center">0.90</td>
+<td align="center">-1.40</td>
+<td align="center">0.95</td>
+<td align="center">-1.55</td>
+</tr>
+<tr class="even">
+<td align="left">EQ43 - Shamed by pastor/group for poor spiritual/moral performance</td>
+<td align="center">0.90</td>
+<td align="center">-1.11</td>
+<td align="center">0.94</td>
+<td align="center">-1.96</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ30 - Deterred from seeking mental health treatment/counseling/medication</td>
+<td align="center">0.90</td>
+<td align="center">-1.15</td>
+<td align="center">0.96</td>
+<td align="center">-1.43</td>
+</tr>
+<tr class="even">
+<td align="left">EQ53 - Scripture used to justify abusive parent-child behavior</td>
+<td align="center">0.90</td>
+<td align="center">-1.53</td>
+<td align="center">0.97</td>
+<td align="center">-1.04</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ19 - Behavior excessively monitored by pastor/group</td>
+<td align="center">0.90</td>
+<td align="center">-1.18</td>
+<td align="center">0.97</td>
+<td align="center">-0.92</td>
+</tr>
+<tr class="even">
+<td align="left">EQ64 - Witnessing women pressured to stay in unfaithful/abusive marriages</td>
+<td align="center">0.91</td>
+<td align="center">-1.71</td>
+<td align="center">0.95</td>
+<td align="center">-1.77</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ41 - Denied opportunities to serve because of my sexual orientation</td>
+<td align="center">0.91</td>
+<td align="center">-0.98</td>
+<td align="center">0.97</td>
+<td align="center">-0.54</td>
+</tr>
+<tr class="even">
+<td align="left">EQ40 - Threatening Divine punishment to keep group members in line</td>
+<td align="center">0.91</td>
+<td align="center">-0.91</td>
+<td align="center">0.96</td>
+<td align="center">-1.32</td>
+</tr>
+<tr class="odd">
+<td align="left">IQ70 - Feeling betrayed by God</td>
+<td align="center">0.91</td>
+<td align="center">-2.41</td>
+<td align="center">0.98</td>
+<td align="center">-0.86</td>
+</tr>
+<tr class="even">
+<td align="left">EQ65 - Cut off/shunned by more religious family members</td>
+<td align="center">0.91</td>
+<td align="center">-1.18</td>
+<td align="center">0.94</td>
+<td align="center">-1.89</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ24 - Expected to consult pastor/leader before making non-religious decisions</td>
+<td align="center">0.91</td>
+<td align="center">-0.95</td>
+<td align="center">0.96</td>
+<td align="center">-1.33</td>
+</tr>
+<tr class="even">
+<td align="left">EQ38 - Unrealistic demands placed on my moral/religious behavior</td>
+<td align="center">0.92</td>
+<td align="center">-1.39</td>
+<td align="center">0.95</td>
+<td align="center">-1.57</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ58 - Terror/horror used to motivate religious decisions</td>
+<td align="center">0.92</td>
+<td align="center">-1.77</td>
+<td align="center">0.97</td>
+<td align="center">-1.02</td>
+</tr>
+<tr class="even">
+<td align="left">EQ25 - Feeling unable to raise questions and issues</td>
+<td align="center">0.92</td>
+<td align="center">-2.10</td>
+<td align="center">0.94</td>
+<td align="center">-2.09</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ27 - Denied opportunities to serve b/c of my gender</td>
+<td align="center">0.92</td>
+<td align="center">-2.03</td>
+<td align="center">0.95</td>
+<td align="center">-1.75</td>
+</tr>
+<tr class="even">
+<td align="left">IQ82 - Having trouble navigating life outside my church/community</td>
+<td align="center">0.92</td>
+<td align="center">-2.11</td>
+<td align="center">0.99</td>
+<td align="center">-0.34</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ56 - Being made to feel I was crazy/weird for doubts/questions</td>
+<td align="center">0.92</td>
+<td align="center">-0.98</td>
+<td align="center">0.95</td>
+<td align="center">-1.63</td>
+</tr>
+<tr class="even">
+<td align="left">EQ28 - Leadershi/group protecting abusive individuals</td>
+<td align="center">0.93</td>
+<td align="center">-1.20</td>
+<td align="center">0.96</td>
+<td align="center">-1.55</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ11 - Disagree w/pastor portrayed as evil</td>
+<td align="center">0.93</td>
+<td align="center">-1.08</td>
+<td align="center">0.94</td>
+<td align="center">-1.97</td>
+</tr>
+<tr class="even">
+<td align="left">EQ55 - Hearing cultural references in sermons unfamiliar to my race/eth. subculture</td>
+<td align="center">0.93</td>
+<td align="center">-1.68</td>
+<td align="center">0.97</td>
+<td align="center">-0.71</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ36 - Mental/physical problems interpreted as spiritual/moral weakness</td>
+<td align="center">0.94</td>
+<td align="center">-1.36</td>
+<td align="center">0.97</td>
+<td align="center">-1.09</td>
+</tr>
+<tr class="even">
+<td align="left">EQ42 - Seeing others shamed/shunned by pastor/leader/group</td>
+<td align="center">0.94</td>
+<td align="center">-1.32</td>
+<td align="center">0.97</td>
+<td align="center">-1.04</td>
+</tr>
+<tr class="odd">
+<td align="left">IQ73 - Self-hatred or self-loathing</td>
+<td align="center">0.94</td>
+<td align="center">-1.76</td>
+<td align="center">0.98</td>
+<td align="center">-0.61</td>
+</tr>
+<tr class="even">
+<td align="left">IQ77 - Anger upon reflecting on negative religious experiences</td>
+<td align="center">0.94</td>
+<td align="center">-1.51</td>
+<td align="center">0.95</td>
+<td align="center">-1.60</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ18 - Church/pastor discourage critical thinking</td>
+<td align="center">0.94</td>
+<td align="center">-1.00</td>
+<td align="center">0.97</td>
+<td align="center">-0.88</td>
+</tr>
+<tr class="even">
+<td align="left">EQ37 - Made to feel less spiritually mature than pastor/leadership</td>
+<td align="center">0.95</td>
+<td align="center">-1.22</td>
+<td align="center">0.96</td>
+<td align="center">-1.31</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ51 - Extreme pressure to be pastor/missionary/spiritual leader</td>
+<td align="center">0.95</td>
+<td align="center">-1.25</td>
+<td align="center">0.99</td>
+<td align="center">-0.20</td>
+</tr>
+<tr class="even">
+<td align="left">IQ71 - Avoiding religious activities/settings to reduce distressing feelings</td>
+<td align="center">0.95</td>
+<td align="center">-1.31</td>
+<td align="center">0.96</td>
+<td align="center">-1.35</td>
+</tr>
+<tr class="odd">
+<td align="left">IQ79 - Distrust of God</td>
+<td align="center">0.95</td>
+<td align="center">-1.52</td>
+<td align="center">0.98</td>
+<td align="center">-0.73</td>
+</tr>
+<tr class="even">
+<td align="left">EQ34 - Scripture used to justify physical punishment/severe discipline</td>
+<td align="center">0.95</td>
+<td align="center">-1.23</td>
+<td align="center">0.98</td>
+<td align="center">-0.67</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ22 - Expected to follow pastor/leader rules re: dating/marriage/sex</td>
+<td align="center">0.95</td>
+<td align="center">-1.02</td>
+<td align="center">0.98</td>
+<td align="center">-0.57</td>
+</tr>
+<tr class="even">
+<td align="left">EQ29 - Feeling special when in pastor’s good graces; otherwise ignored</td>
+<td align="center">0.95</td>
+<td align="center">-1.13</td>
+<td align="center">0.97</td>
+<td align="center">-1.09</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ44 - Love/acceptance offered only for high spiritual/moral performance</td>
+<td align="center">0.95</td>
+<td align="center">-0.62</td>
+<td align="center">0.96</td>
+<td align="center">-1.52</td>
+</tr>
+<tr class="even">
+<td align="left">EQ32 - Feeling unable to express unhappiness</td>
+<td align="center">0.96</td>
+<td align="center">-0.99</td>
+<td align="center">0.98</td>
+<td align="center">-0.73</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ45 - Developmentally-inappropriate/anxious Hell/Satan/demons taught to young children</td>
+<td align="center">0.96</td>
+<td align="center">-0.84</td>
+<td align="center">0.98</td>
+<td align="center">-0.68</td>
+</tr>
+<tr class="even">
+<td align="left">EQ61 - Developmentally-inappropriate/anxious end times descriptions taught to young children</td>
+<td align="center">0.97</td>
+<td align="center">-0.74</td>
+<td align="center">0.98</td>
+<td align="center">-0.57</td>
+</tr>
+<tr class="odd">
+<td align="left">IQ78 - A lack of self-worth</td>
+<td align="center">0.98</td>
+<td align="center">-0.69</td>
+<td align="center">0.99</td>
+<td align="center">-0.50</td>
+</tr>
+<tr class="even">
+<td align="left">IQ80 - Feeling isolated</td>
+<td align="center">0.98</td>
+<td align="center">-0.62</td>
+<td align="center">0.98</td>
+<td align="center">-0.76</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ54 - Being explicitly taught to distrust my intuitions</td>
+<td align="center">0.98</td>
+<td align="center">-0.36</td>
+<td align="center">0.97</td>
+<td align="center">-1.08</td>
+</tr>
+<tr class="even">
+<td align="left">EQ39 - Made to feel shame over natural sexual desires (not actions)</td>
+<td align="center">1.00</td>
+<td align="center">0.05</td>
+<td align="center">0.99</td>
+<td align="center">-0.34</td>
+</tr>
+<tr class="odd">
+<td align="left">IQ69 - Lack of spiritual direction/purpose</td>
+<td align="center">1.00</td>
+<td align="center">0.08</td>
+<td align="center">1.00</td>
+<td align="center">-0.05</td>
+</tr>
+<tr class="even">
+<td align="left">IQ74 - Sadness over the loss of my faith/religious community</td>
+<td align="center">1.01</td>
+<td align="center">0.31</td>
+<td align="center">0.99</td>
+<td align="center">-0.25</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ21 - Taught I would risk Hell if left my church/group</td>
+<td align="center">1.02</td>
+<td align="center">0.27</td>
+<td align="center">0.96</td>
+<td align="center">-1.49</td>
+</tr>
+<tr class="even">
+<td align="left">IQ76 - Feeling I wasted years of my life in a church/set of beliefs</td>
+<td align="center">1.04</td>
+<td align="center">0.86</td>
+<td align="center">0.97</td>
+<td align="center">-1.01</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ7 - Pastor speaking on God’s behalf</td>
+<td align="center">1.05</td>
+<td align="center">1.18</td>
+<td align="center">0.98</td>
+<td align="center">-0.62</td>
+</tr>
+<tr class="even">
+<td align="left">EQ66 - Others treated as less than due to their sexual orientation</td>
+<td align="center">1.15</td>
+<td align="center">3.48</td>
+<td align="center">0.99</td>
+<td align="center">-0.49</td>
+</tr>
+<tr class="odd">
+<td align="left">EQ26 - Pressured to forgive abuser while abuse was ongoing</td>
+<td align="center">1.20</td>
+<td align="center">1.84</td>
+<td align="center">0.93</td>
+<td align="center">-2.29</td>
+</tr>
+<tr class="even">
+<td align="left">EQ35 - Taught to distrust my emotions</td>
+<td align="center">1.25</td>
+<td align="center">5.75</td>
+<td align="center">0.97</td>
+<td align="center">-1.19</td>
+</tr>
+</tbody>
+</table>
+<p>The items fit.</p>
+<p>The obtained RMSEA value = .079 (95% CI[.078, .080]) and SRMSR value = .051 suggest that data do not fit the model reasonably very well using suggested cutoff values of RMSEA &lt;= .06 and SRMSR &lt;= .08 as suggested guidelines for assessing fit. The CFI = .97 exceeded the recommended .95 threshold.</p>
+<table style="width:100%;">
+<caption><span id="tab:grm-fit">Table 12: </span>GRM Model Fit</caption>
+<colgroup>
+<col width="8%" />
+<col width="12%" />
+<col width="8%" />
+<col width="4%" />
+<col width="10%" />
+<col width="12%" />
+<col width="14%" />
+<col width="10%" />
+<col width="10%" />
+<col width="8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">M2</th>
+<th align="center">df</th>
+<th align="center">p</th>
+<th align="center">RMSEA</th>
+<th align="center">RMSEA_5</th>
+<th align="center">RMSEA_95</th>
+<th align="center">SRMSR</th>
+<th align="center">TLI</th>
+<th align="center">CFI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">stats</td>
+<td align="left">40543.38</td>
+<td align="center">2079</td>
+<td align="center">0</td>
+<td align="center">0.079</td>
+<td align="center">0.078</td>
+<td align="center">0.079</td>
+<td align="center">0.051</td>
+<td align="center">0.969</td>
+<td align="center">0.97</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-preparation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="reliability.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/05-ItemAnalysis.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

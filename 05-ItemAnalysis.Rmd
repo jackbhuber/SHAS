@@ -1,12 +1,5 @@
-# Item Analysis
-In this chapter, we examine the technical quality of the items that Dan piloted for the SHAS. Here we address questions like the following:
-
-- Which items, if any, are too "easy"? What is the impact of this?
-- Which items, if any, are too "difficult"? What is the impact of this?
-- Which items, if any, correlate weakly with others (and therefore might need to be refined or excluded from scaling?
-- Which items, if any, have too many response categories which might be profitably collapsed?
-
-We begin by defining item analysis and discussing its importance. Then we document our item analyses from an item response theory (IRT) framework. We conclude by summarizing what we learn from these analyses to help us refine these 66 items and possibly develop better ones in the future.
+# Item Analysis in IRT
+In this chapter, we examine the technical quality of the SHAS items within the framework of item response theory. We begin by introducing IRT and discussing its advantages. Then we document our IRT item analyses. We conclude by summarizing what we learn from these analyses to help us refine these 66 items and possibly develop better ones in the future.
 
 ```{r, include=FALSE, echo=FALSE}
 knitr::opts_chunk$set(comment = "", warning = FALSE, echo = FALSE,  message = FALSE, tidy.opts=list(width.cutoff=60), tidy = TRUE)
@@ -48,6 +41,13 @@ In what follows, we conduct item analyses through a comparison of several differ
 
 ```{r child='_PartialCreditModel.Rmd'}
 ```
+
+```{r child='_GeneralizedPartialCreditModel.Rmd'}
+```
+
+```{r child='_GradedResponseModel.Rmd'}
+```
+
 
 
 
