@@ -68,7 +68,8 @@ Fit statistics gauge the extent to which the observed pattern of item responses 
 ```{r pcm-item-fits}
 # ITEM FIT
 ifit <- mirt::itemfit(results.pcm, 'infit')
-i <- as.data.frame(itemfit(results.pcm, 'infit'))
+# i <- as.data.frame(itemfit(results.pcm, 'infit'))
+i <- as.data.frame(ifit)
 misfits <- subset(i, outfit > 1.5 | outfit < 0.5 | infit > 1.5 | infit < 0.5)
 ```
 

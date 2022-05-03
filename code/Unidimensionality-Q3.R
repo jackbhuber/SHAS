@@ -11,3 +11,5 @@ image( 1:I, 1:I, mod.q3$q3.matrix, col=gray( 1 - (0:32)/32),
        xlab="Item", ylab="Item")
 abline(v=c(53,66)) # borders for testlets
 abline(h=c(53,66))
+
+rm(list=ls())

@@ -58,7 +58,8 @@ Figure \@ref(fig:rsm-item-diff) is a histogram of the distribution of item diffi
 ```{r rsm-item-fits}
 # ITEM FIT
 ifit <- mirt::itemfit(results.rsm, 'infit')
-i <- as.data.frame(itemfit(results.rsm, 'infit'))
+# i <- as.data.frame(ifititemfit(results.rsm, 'infit'))
+i <- as.data.frame(ifit)
 misfits <- subset(i, outfit > 1.5 | outfit < 0.5 | infit > 1.5 | infit < 0.5)
 ```
 

@@ -65,8 +65,9 @@ direct.label(c, 'top.points')
 ```{r grm-item-fits}
 # ITEM FIT
 ifit <- mirt::itemfit(results.grm, 'infit')
-i2 <- as.data.frame(itemfit(results.grm, 'infit'))
-i2 <- i2[order(i2$outfit),]
+# i <- as.data.frame(itemfit(results.grm, 'infit'))
+i <- as.data.frame(ifit)
+i2 <- i[order(i$outfit),]
 # misfits <- subset(i2, outfit > 1.5 | outfit < 0.5 | infit > 1.5 | infit < 0.5)
 ```
 
