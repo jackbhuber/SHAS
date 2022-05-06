@@ -1,0 +1,33 @@
+## Model Comparison
+
+```{r irt-models-table}
+library(plyr)
+rsm.model.fit <- read.csv("data/rsm.model.fit.csv")
+pcm.model.fit <- read.csv("data/pcm.model.fit.csv")
+gpcm.model.fit <- read.csv("data/gpcm.model.fit.csv")
+grm.model.fit <- read.csv("data/grm.model.fit.csv")
+irt.models.table <- plyr::rbind.fill(rsm.model.fit,pcm.model.fit,gpcm.model.fit,grm.model.fit)
+irt.models.table %>%
+  kable(digits = 3, align = "ccccc", caption = 'IRT Model Fit Statistics', row.names = FALSE) %>%
+  kable_styling(bootstrap_options = "condensed", font_size = 12, fixed_thead = T)
+```
+
+Table \@ref(tab:irt-models-table) presents the model fit statistics in one place.
+
+```{r irt-models-anova}
+load("data/results.rsm.RData")
+load("data/results.pcm.RData")
+load("data/results.gpcm.RData")
+load("data/results.grm.RData")
+
+# ANOVA
+anova(results.rsm, results.pcm, results.gpcm, results.grm) %>%
+  kable(digits = 3, align = "cccccccc", caption = "Comparison of IRT Model Fit") %>%
+  kable_styling(bootstrap_options = "condensed", font_size = 12, fixed_thead = T)
+```
+
+Table \@ref(tab:irt-models-anova) reports the results of an analysis of variance on the four models estimated.
+
+```{r}
+rm(list=ls())
+```

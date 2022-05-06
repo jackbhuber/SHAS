@@ -1,91 +1,67 @@
 ## Partial Credit Model (PCM)
 
-The second model we consider is the Partial Credit Model (PCM) [@Masters1982]. This is a polytomous item response model belonging to the Rasch family. This means that it extends the Rasch model, which is based on dichotomous item responses (1=correct, 0=incorrect), by considering the probability of choosing from among several response options such as those typically presented in Likert scales of agreement. The number of response categories in each item may vary [@EmbretsonReise2000]. It follows that the PCM contains m (m + 1 being the number of response categories) threshold parameters, and each threshold parameter marks a category intersection [@Masters1982]. Threshold sometimes refers to “step difficulty” or “step parameter” and illustrates the point on the latent trait continuum (e.g., spiritual abuse) where a response in category k becomes more likely than a response in category k – 1 (de Ayala, 2009). The PCM provides scores for items, persons, and step parameters on a logit scale. We begin by loading the `mirt` library and estimating the model on the data from the 66 SHAS items. This model constrains the slopes to 1 and freely estimates the variance parameters.
+The second model the Partial Credit Model (PCM) [@Masters1982]. Like the Rating Scale Model, the PCM is also a Rasch model for polytomous items. It constrains the discrimination parameter to 1 and allows the category thresholds to vary.
 
 ```{r pcm-run}
 # ESTIMATE PCM MODEL
-library(stats4)
-library(lattice)
+# library(stats4)
+# library(lattice)
 library(mirt)
 items <- read.csv("data/items_l.csv")
 source("code/ApplyItemLabels.R")
-model.pcm <- 'SPIRITUAL ABUSE PARTIAL CREDIT MODEL = 1-66'
-results.pcm <- mirt(data=items, model=model.pcm, itemtype="Rasch", verbose=FALSE) # estimate model
+model.pcm <- 'PARTIAL CREDIT MODEL = 1-66'
+results.pcm <- mirt(data=items, model=model.pcm, itemtype="Rasch", verbose=FALSE)
 ```
 
-```{r}
+```{r pcm-item-stats}
 # GET ITEM PARAMETERS
 coef.pcm <- coef(results.pcm, IRTpars=TRUE, simplify=TRUE) # save coefficients
-items.pcm <- as.data.frame(coef.pcm$items) # item parameters as data frame
-items.pcm$deltab1b2 <- items.pcm$b2 - items.pcm$b1 # look for reversals b1 to b2
-items.pcm$deltab2b3 <- items.pcm$b3 - items.pcm$b2 # look for reversals b2 to b3
-items.pcm$deltab3b4 <- items.pcm$b4 - items.pcm$b3 # look for reversals b3 to b4
-items.pcm$avg <- rowMeans(items.pcm[ ,6:8])
-rv <- subset(items.pcm, deltab1b2 < 0 | deltab2b3 < 0 | deltab3b4 <0) # subset items with reversals
-rv <- rv[order(rv$avg),]
+item.pars.pcm <- as.data.frame(coef.pcm$items) # item parameters as data frame
 
-# rv2 <- subset(rv, select = -c(deltab1b2:deltab3b4))
-
+# ITEM FIT
+item.fits.pcm <- as.data.frame(mirt::itemfit(results.pcm, 'infit'))
+item.fits.pcm <- item.fits.pcm[,-1]
+items.tbl.pcm <- cbind(item.pars.pcm,item.fits.pcm)
 ```
 
-```{r pcm-items}
-knitr::kable(rv, digits = 2, "simple", caption = 'Partial Credit Model - Item Parameters - Items with Category Threshold Reversals')
+```{r pcm-item-tbl}
+library(kableExtra)
+items.tbl.pcm %>%
+  kbl(digits=2, align = "lccccccccc", caption = 'Partial Credit Model Item Parameters and Fit Statistics') %>%
+  kable_styling(bootstrap_options = "condensed", font_size = 12, fixed_thead = T)
 ```
 
-Table \@ref(tab:pcm-items) reports the item parameters estimated by the PCM. Once again, column (a) reports the discrimination parameter fixed as “1” for all items on the premise that the items discriminate examinees equally well. The subsequent columns (b1 to b4) report the estimated thresholds (or step parameters) for each item. Because the SHAS items all have five response categories, the PCM estimates four threshold parameters (b1 to b4) for each item. These represent the change in lifetime exposure to spiritual abuse represented by choosing between two response categories, such as, for example, "Once or twice" over "Never." Unlike the Rating Scale Model (RSM) which estimated the same thresholds for all items and allowed the items to vary only by overall difficulty, the PCM allows the thresholds to vary [@EmbretsonReise2000]. The important analytic question, therefore, is which items have ordered thresholds and which have "reversals." A reversal between two category thresholds suggests that one might not be contributing reliable information and might be collapsed. Most of the SHAS items (43 out of 66) had reversals, and these items with reversals are shown in Table \@ref(tab:pcm-items). On each of these items, examinees who had experienced more overall lifetime spiritual abuse were more likely to report "Never" than "Once or twice".
+Table \@ref(tab:pcm-item-tbl) reports the item parameters estimated by the PCM. Once again, column (a) reports the discrimination parameter fixed as “1” for all items on the premise that the items discriminate examinees equally well. The subsequent columns (b1 to b4) report the estimated thresholds (or step parameters) for each item. Because the SHAS items all have five response categories, the PCM estimates four threshold parameters (b1 to b4) for each item. These represent the change in lifetime exposure to spiritual abuse represented by choosing between two response categories, such as, for example, "Once or twice" over "Never." Unlike the Rating Scale Model (RSM) which estimated the same thresholds for all items and allowed the items to vary only by overall difficulty, the PCM allows the thresholds to vary [@EmbretsonReise2000]. The important analytic question, therefore, is which items have ordered thresholds and which have "reversals." A reversal between two category thresholds suggests that one might not be contributing reliable information and might be collapsed. Most of the SHAS items (43 out of 66) had reversals, and these items with reversals are shown in Table \@ref(tab:pcm-item-tbl). On each of these items, examinees who had experienced more overall lifetime spiritual abuse were more likely to report "Never" than "Once or twice".
 
 Again, plots of the option characteristic curves help convey this information visually. The following plots illustrate three items with very different sets of curves. The first item illustrates the intended pattern of ordered thresholds. The second and third items show pronounced reversals. 
 
-```{r pcm-a, fig.cap='Option Characteristic Curve for Item 42 - Seeing others shamed/shunned by pastor/leader/group'}
+```{r pcm-item-plot, fig.cap='Option Characteristic Curves'}
 # PCM ITEM PLOTS
 library(directlabels)
-a <- plot(results.pcm, type = 'trace', which.items = 29,
+a <- plot(results.pcm, type = 'trace', which.items = c(29,28,9),
      main = "", par.settings = simpleTheme(lty=1:4,lwd=2),
      auto.key=list(points=FALSE,lines=TRUE, columns=4))
 direct.label(a, 'top.points')
 ```
-Figure \@ref(fig:pcm-a) shows the intended pattern of responses. Examinees who had experienced less lifetime exposure to spiritual abuse were most likely to select P1: "Never." Those who had experienced a little more were more likely to select P2: "Once or twice." And so on. On this item the response categories functioned as intended to sort examinees on the basis of lifetime exposure to spiritual abuse.
-
-```{r pcm-b}
-# PCM ITEM PLOTS
-b <- plot(results.pcm, type = 'trace', which.items = 28,
-     main = "", par.settings = simpleTheme(lty=1:4,lwd=2),
-     auto.key=list(points=FALSE,lines=TRUE, columns=4))
-direct.label(b, 'top.points')
-```
-Figure \@ref(fig:pcm-b) shows an item with reversals. the intended pattern of responses. Examinees who had experienced less lifetime exposure to spiritual abuse were most likely to select P1: "Never." Those who had experienced a little more were more likely to select P2: "Once or twice." And so on. On this item the response categories functioned as intended to sort examinees on the basis of lifetime exposure to spiritual abuse.
-
-```{r pcm-c}
-# PCM ITEM PLOTS
-c <- plot(results.pcm, type = 'trace', which.items = 9,
-     main = "", par.settings = simpleTheme(lty=1:4,lwd=2),
-     auto.key=list(points=FALSE,lines=TRUE, columns=4))
-direct.label(c, 'top.points')
-```
+Figure \@ref(fig:pcm-item-plot) shows the intended pattern of responses. Examinees who had experienced less lifetime exposure to spiritual abuse were most likely to select P1: "Never." Those who had experienced a little more were more likely to select P2: "Once or twice." And so on. On this item the response categories functioned as intended to sort examinees on the basis of lifetime exposure to spiritual abuse. The plots for the second and third items show items with reversals. the intended pattern of responses. Examinees who had experienced less lifetime exposure to spiritual abuse were most likely to select P1: "Never." Those who had experienced a little more were more likely to select P2: "Once or twice." And so on. On this item the response categories functioned as intended to sort examinees on the basis of lifetime exposure to spiritual abuse.
 
 Fit statistics gauge the extent to which the observed pattern of item responses fit the IRT model (Rasch, partial credit, etc.). They do this by means of chi-square statistics which examine the cumulative difference the observed pattern of item responses and the pattern of item respones that the model would expect. Two fit statistics commonly used in IRT modesl are the infit mean square (MNSQ) and the outfit mean square (MNSQ) [@BondFox2015]. The infit statistic places greater emphasis on unexpected responses that are close to the examinees and item location. The outfit is sensitive to unexpected responses that are far from the location. The expected value of infit or outfit for each item is 1.0, with a range of acceptable values ranging from 0.5 to 1.5. Values outside these boundaries indicate a lack of fit between items and the model.
 
-```{r pcm-item-fits}
-# ITEM FIT
-ifit <- mirt::itemfit(results.pcm, 'infit')
-# i <- as.data.frame(itemfit(results.pcm, 'infit'))
-i <- as.data.frame(ifit)
-misfits <- subset(i, outfit > 1.5 | outfit < 0.5 | infit > 1.5 | infit < 0.5)
-```
+Item fit statistics, shown in the final four columns of Table  \@ref(tab:pcm-item-tbl), suggest a decent fit between the SHAS items and the PCM. All but six of the 66 items had infit and outfit statistics within the acceptable range from 0.5 to 1.5. 
 
-```{r pcm-item-fit}
-knitr::kable(misfits, digits = 2, "simple", caption = 'Partial Credit Model (PCM) - Misfitting Items', row.names = FALSE)
-```
-
-This information suggests a decent fit of the PCM to the SHAS item response data. All but six of the 66 items had infit and outfit statistics within the acceptable range from 0.5 to 1.5. Statistics for these six misfitting items are presented here in Table \@ref(tab:pcm-item-fit). The large outfit values mean the observed patterns of responses to these items differed substantially from the patterns of responses expected by the PCM. These items capture the experiences of women, people of color, and LGBTQ persons.
-
-```{r pcm-fit, fig.cap='PCM Model Fit'}
+```{r pcm-model-fit}
 # MODEL FIT
-M2(results.pcm, type = "C2", calcNULL = FALSE)
+pcm.model.fit <- as.data.frame(M2(results.pcm, type = "C2", calcNULL = FALSE)) 
+row.names(pcm.model.fit)[row.names(pcm.model.fit) == "stats"] <- "PCM"
+pcm.model.fit %>%
+  kbl(digits = 3, align = "cccccccccc", caption = "Partial Credit Model Fit Statistics") %>%
+  kable_styling(bootstrap_options = "condensed", font_size = 12, fixed_thead = T)
 ```
 
 The obtained RMSEA value = .088 (95% CI[.088, .089]) and SRMSR value = .118 suggest that data do not fit the model reasonably very well using suggested cutoff values of RMSEA <= .06 and SRMSR <= .08 as suggested guidelines for assessing fit. The CFI = .961 exceeded the recommended .95 threshold.
 
 ```{r}
+save(results.pcm, file = "data/results.pcm.RData")
+write.csv(pcm.model.fit,"data/pcm.model.fit.csv")
 rm(list=ls())
 ```

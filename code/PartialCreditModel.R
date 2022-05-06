@@ -116,6 +116,18 @@ i <- as.data.frame(itemfit(results.pcm, na.rm = TRUE, 'infit')) # save item fit 
 misfits <- subset(i, outfit > 1.5 | outfit < 0.5 | infit > 1.5 | infit < 0.5) # subset the item fit data to find the misfitting items
 misfits
 
+ifit <- mirt::itemfit(results.pcm, 'infit')
+# i <- as.data.frame(itemfit(results.pcm, 'infit'))
+i <- as.data.frame(ifit)
+misfits <- subset(i, outfit > 1.5 | outfit < 0.5 | infit > 1.5 | infit < 0.5)
+
+knitr::kable(misfits, digits = 2, "simple", caption = 'Partial Credit Model (PCM) - Misfitting Items', row.names = FALSE)
+
+
+
+
+
+
 # PCM MODEL FIT
 itemplot(results.pcm, 1, type = 'score')
 empirical_plot(items, c(1,2,3,4), main = 'Empirical Plots') # multiple items

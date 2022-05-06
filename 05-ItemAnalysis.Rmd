@@ -8,18 +8,25 @@ knitr::opts_knit$set(verbose = FALSE)
 
 ```{r}
 # LOAD PACKAGES
+library(knitr)
+library(mirt)
 library(lattice)
+library(stats4)
 library(survival)
-library(Formula)
-library(ggplot2)
-library(Hmisc) # for item statistics
-library(psych) # for psychometric analysis
-library(psychTools) # for psychometric analysis
-library(CTT) # for classical test theory stats
-library(pastecs) # for item statistics
-library(ltm) # for point-biserial correlations
-library(corrplot) # for correlation plot
-library(knitr) # how RMarkdown compiles all the code into documents
+# library(Formula)
+# library(ggplot2)
+# library(Hmisc) # for item statistics
+# library(psych) # for psychometric analysis
+# library(psychTools) # for psychometric analysis
+# library(CTT) # for classical test theory stats
+# library(pastecs) # for item statistics
+# library(ltm) # for point-biserial correlations
+# library(corrplot) # for correlation plot
+# library(knitr) # how RMarkdown compiles all the code into documents
+
+items <- read.csv("data/items_l.csv")
+source("code/ApplyItemLabels.R")
+
 ```
 
 ## Item response theory
@@ -48,12 +55,5 @@ In what follows, we conduct item analyses through a comparison of several differ
 ```{r child='_GradedResponseModel.Rmd'}
 ```
 
-## Model Comparison
-
-```{r irt-comp}
-source("code/CompareModels.R")
+```{r child='_ModelComparison.Rmd'}
 ```
-
-This final table compares IRT models.
-
-

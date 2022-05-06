@@ -39,3 +39,7 @@ ifit <- mirt::itemfit(results.rsm, na.rm=TRUE, 'infit')
 i <- as.data.frame(itemfit(results.rsm, na.rm = TRUE, 'infit'))
 misfits <- subset(i, outfit > 1.5 | outfit < 0.5 | infit > 1.5 | infit < 0.5)
 knitr::kable(misfits, digits = 2, caption = "Rating Scale Model (RSM) - Misfitting Items", row.names = FALSE, "simple")
+
+```{r rsm-item-fit}
+knitr::kable(misfits, digits = 2, align = "lcccc", caption = "Rating Scale Model (RSM) - Misfitting Items", row.names = FALSE, "simple")
+```
