@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.4.7)  2 MAY 2022 19:48
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.4.7)  5 MAY 2022 17:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -850,38 +850,50 @@ Chapter 6.
 [15
 
 ]
+
+Package natbib Warning: Citation `ReiseEtAl2013' on page 16 undefined on input 
+line 451.
+
+
+Package natbib Warning: Citation `ReiseEtAl2013' on page 16 undefined on input 
+line 451.
+
+
+Package natbib Warning: Citation `ReiseEtAl2013' on page 16 undefined on input 
+line 458.
+
+[16]
 File: _main_files/figure-latex/uni-pcar-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/uni-pcar-1.pdf>
-[16]
 File: _main_files/figure-latex/q3-plot-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/q3-plot-1.pdf>
-[17]
-Overfull \hbox (252.6501pt too wide) in alignment at lines 508--513
+[17] [18]
+Overfull \hbox (252.6501pt too wide) in alignment at lines 524--529
  [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (252.6501pt too wide) in alignment at lines 513--517
+Overfull \hbox (252.6501pt too wide) in alignment at lines 529--533
  [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (252.6501pt too wide) in alignment at lines 517--538
+Overfull \hbox (252.6501pt too wide) in alignment at lines 533--554
  [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (252.6501pt too wide) in alignment at lines 538--558
- [] [] [] [] [] [] [] 
- []
-
-[18]
-Overfull \hbox (252.6501pt too wide) in alignment at lines 558--578
+Overfull \hbox (252.6501pt too wide) in alignment at lines 554--574
  [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (252.6501pt too wide) in alignment at lines 578--585
+Overfull \hbox (252.6501pt too wide) in alignment at lines 574--594
+ [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (252.6501pt too wide) in alignment at lines 594--601
  [] [] [] [] [] [] [] 
  []
 
@@ -894,57 +906,57 @@ File: _main_files/figure-latex/rsm-b-1.pdf Graphic file (type pdf)
 File: _main_files/figure-latex/rsm-item-diff-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/rsm-item-diff-1.pdf>
 [21]
-Overfull \hbox (173.07011pt too wide) in alignment at lines 607--612
+Overfull \hbox (173.07011pt too wide) in alignment at lines 623--628
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (173.07011pt too wide) in alignment at lines 612--616
+Overfull \hbox (173.07011pt too wide) in alignment at lines 628--632
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (173.07011pt too wide) in alignment at lines 616--624
+Overfull \hbox (173.07011pt too wide) in alignment at lines 632--640
  [] [] [] [] [] 
  []
 
 [22]
-Overfull \hbox (19.76016pt too wide) in alignment at lines 630--635
+Overfull \hbox (19.76016pt too wide) in alignment at lines 646--651
  [] [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (19.76016pt too wide) in alignment at lines 635--639
+Overfull \hbox (19.76016pt too wide) in alignment at lines 651--655
  [] [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (19.76016pt too wide) in alignment at lines 639--642
+Overfull \hbox (19.76016pt too wide) in alignment at lines 655--658
  [] [] [] [] [] [] [] [] [] 
  []
 
 [23]
-Overfull \hbox (418.68018pt too wide) in alignment at lines 653--658
+Overfull \hbox (418.68018pt too wide) in alignment at lines 669--674
  [] [] [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (418.68018pt too wide) in alignment at lines 658--662
+Overfull \hbox (418.68018pt too wide) in alignment at lines 674--678
  [] [] [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (418.68018pt too wide) in alignment at lines 662--683
+Overfull \hbox (418.68018pt too wide) in alignment at lines 678--699
  [] [] [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (418.68018pt too wide) in alignment at lines 683--703
+Overfull \hbox (418.68018pt too wide) in alignment at lines 699--719
  [] [] [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (418.68018pt too wide) in alignment at lines 703--706
+Overfull \hbox (418.68018pt too wide) in alignment at lines 719--722
  [] [] [] [] [] [] [] [] [] [] 
  []
 
@@ -952,71 +964,71 @@ Overfull \hbox (418.68018pt too wide) in alignment at lines 703--706
 File: _main_files/figure-latex/pcm-a-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/pcm-a-1.pdf>
 
-LaTeX Warning: Reference `fig:pcm-a' on page 25 undefined on input line 713.
+LaTeX Warning: Reference `fig:pcm-a' on page 25 undefined on input line 729.
 
 [25]
 File: _main_files/figure-latex/pcm-b-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/pcm-b-1.pdf>
 
-LaTeX Warning: Reference `fig:pcm-b' on page 26 undefined on input line 716.
+LaTeX Warning: Reference `fig:pcm-b' on page 26 undefined on input line 732.
 
 [26]
 File: _main_files/figure-latex/pcm-c-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/pcm-c-1.pdf>
 
-Overfull \hbox (173.07011pt too wide) in alignment at lines 722--727
+Overfull \hbox (173.07011pt too wide) in alignment at lines 738--743
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (173.07011pt too wide) in alignment at lines 727--731
+Overfull \hbox (173.07011pt too wide) in alignment at lines 743--747
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (173.07011pt too wide) in alignment at lines 731--739
+Overfull \hbox (173.07011pt too wide) in alignment at lines 747--755
  [] [] [] [] [] 
  []
 
 [27]
-Overfull \hbox (33.0pt too wide) in paragraph at lines 748--748
+Overfull \hbox (33.0pt too wide) in paragraph at lines 764--764
 []            \TU/lmtt/m/n/10 M2   df p      RMSEA    RMSEA_5   RMSEA_95     SR
 MSR     TLI[] 
  []
 
 
-Overfull \hbox (33.0pt too wide) in paragraph at lines 748--748
+Overfull \hbox (33.0pt too wide) in paragraph at lines 764--764
 []\TU/lmtt/m/n/10 stats 51392.82 2144 0 0.08782602 0.08715423 0.08847002 0.1170
 549 0.96122[] 
  []
 
 
-Overfull \hbox (436.46017pt too wide) in alignment at lines 757--762
+Overfull \hbox (436.46017pt too wide) in alignment at lines 773--778
  [] [] [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (436.46017pt too wide) in alignment at lines 762--766
+Overfull \hbox (436.46017pt too wide) in alignment at lines 778--782
  [] [] [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (436.46017pt too wide) in alignment at lines 766--787
+Overfull \hbox (436.46017pt too wide) in alignment at lines 782--803
  [] [] [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (436.46017pt too wide) in alignment at lines 787--807
+Overfull \hbox (436.46017pt too wide) in alignment at lines 803--823
  [] [] [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (436.46017pt too wide) in alignment at lines 807--827
+Overfull \hbox (436.46017pt too wide) in alignment at lines 823--843
  [] [] [] [] [] [] [] [] [] [] 
  []
 
 [28]
-Overfull \hbox (436.46017pt too wide) in alignment at lines 827--834
+Overfull \hbox (436.46017pt too wide) in alignment at lines 843--850
  [] [] [] [] [] [] [] [] [] [] 
  []
 
@@ -1026,7 +1038,7 @@ File: _main_files/figure-latex/gpcm-a-1.pdf Graphic file (type pdf)
 File: _main_files/figure-latex/gpcm-b-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/gpcm-b-1.pdf>
 
-Underfull \hbox (badness 1881) in paragraph at lines 851--851
+Underfull \hbox (badness 1881) in paragraph at lines 867--867
 []\TU/lmr/m/n/10 Figure 6.5: [][]Option Characteristic Curve for Item 42 - Seei
 ng others
  []
@@ -1034,52 +1046,52 @@ ng others
 File: _main_files/figure-latex/gpcm-c-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/gpcm-c-1.pdf>
 [30] [31]
-Overfull \hbox (220.91006pt too wide) in alignment at lines 864--869
+Overfull \hbox (220.91006pt too wide) in alignment at lines 880--885
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (220.91006pt too wide) in alignment at lines 869--873
+Overfull \hbox (220.91006pt too wide) in alignment at lines 885--889
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (220.91006pt too wide) in alignment at lines 873--894
+Overfull \hbox (220.91006pt too wide) in alignment at lines 889--910
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (220.91006pt too wide) in alignment at lines 894--914
+Overfull \hbox (220.91006pt too wide) in alignment at lines 910--930
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (220.91006pt too wide) in alignment at lines 914--934
+Overfull \hbox (220.91006pt too wide) in alignment at lines 930--950
  [] [] [] [] [] 
  []
 
 [32]
-Overfull \hbox (220.91006pt too wide) in alignment at lines 934--941
+Overfull \hbox (220.91006pt too wide) in alignment at lines 950--957
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (77.37012pt too wide) in paragraph at lines 949--956
+Overfull \hbox (77.37012pt too wide) in paragraph at lines 965--972
  [][] 
  []
 
 [33]
-Overfull \hbox (252.98006pt too wide) in paragraph at lines 969--1106
+Overfull \hbox (252.98006pt too wide) in paragraph at lines 985--1122
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 309.8496pt on input line 1106.
+LaTeX Warning: Float too large for page by 309.8496pt on input line 1122.
 
 File: _main_files/figure-latex/grm-a-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/grm-a-1.pdf>
 
-Underfull \hbox (badness 1881) in paragraph at lines 1113--1113
+Underfull \hbox (badness 1881) in paragraph at lines 1129--1129
 []\TU/lmr/m/n/10 Figure 6.7: [][]Option Characteristic Curve for Item 42 - Seei
 ng others
  []
@@ -1090,37 +1102,37 @@ File: _main_files/figure-latex/grm-b-1.pdf Graphic file (type pdf)
 File: _main_files/figure-latex/grm-c-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/grm-c-1.pdf>
 
-Overfull \hbox (220.91006pt too wide) in alignment at lines 1120--1125
+Overfull \hbox (220.91006pt too wide) in alignment at lines 1136--1141
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (220.91006pt too wide) in alignment at lines 1125--1129
+Overfull \hbox (220.91006pt too wide) in alignment at lines 1141--1145
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (220.91006pt too wide) in alignment at lines 1129--1150
+Overfull \hbox (220.91006pt too wide) in alignment at lines 1145--1166
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (220.91006pt too wide) in alignment at lines 1150--1170
+Overfull \hbox (220.91006pt too wide) in alignment at lines 1166--1186
  [] [] [] [] [] 
  []
 
 [36]
-Overfull \hbox (220.91006pt too wide) in alignment at lines 1170--1190
+Overfull \hbox (220.91006pt too wide) in alignment at lines 1186--1206
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (220.91006pt too wide) in alignment at lines 1190--1197
+Overfull \hbox (220.91006pt too wide) in alignment at lines 1206--1213
  [] [] [] [] [] 
  []
 
 [37]
-Overfull \hbox (77.37012pt too wide) in paragraph at lines 1207--1214
+Overfull \hbox (77.37012pt too wide) in paragraph at lines 1223--1230
  [][] 
  []
 
@@ -1151,21 +1163,24 @@ Chapter 9.
 ] [48
 
 ])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1366.
+
+Package natbib Warning: There were undefined citations.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1387.
 [49]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1366.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1387.
 (./_main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1366.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1366.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1387.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1387.
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 19333 strings out of 479418
- 343509 string characters out of 5884586
- 812180 words of memory out of 5000000
- 36550 multiletter control sequences out of 15000+600000
+ 19335 strings out of 479418
+ 343533 string characters out of 5884586
+ 812224 words of memory out of 5000000
+ 36552 multiletter control sequences out of 15000+600000
  538805 words of font info for 79 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  58i,8n,118p,1406b,515s stack positions out of 5000i,500n,10000p,200000b,80000s

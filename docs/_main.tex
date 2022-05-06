@@ -448,12 +448,28 @@ In what follows, we conduct item analyses through a comparison of several differ
 \hypertarget{irt-model-assumptions}{%
 \subsection{IRT Model Assumptions}\label{irt-model-assumptions}}
 
-IRT makes two assumptions of the data. The first is unidimensionality of the latent trait. Is the trait one dimension? This is important for the SHAS because the questionnaire explicitly distinguished between items measuring external events and internal states. The second assumption is local independence \citep{EmbretsonReise2000}. This means that, once the latent variable has been accounted for, any set of items should not share any meaningful correlation (Edwards, Houts, \& Cai, 2018).
+IRT models make two assumptions of the data. The first is unidimensionality of the data. This is the assumption that ``a single common latent variable accounts for all the common variance among the items'' \citep{ReiseEtAl2013}. The SHAS items were multidimensional by design. The construct of spiritual harm and abuse is not conceptually narrow, and Dan wrote two distinct sets of items -- external events and internal states -- to cover the breadth of this construct. The exploratory factor analyses found a handful of factors in the SHAS items. A unidimensional IRT model can be fit to multidimensional data \citep{ReiseEtAl2013}. We need evidence of a strong common trait.
+
+The second assumption is local independence \citep{EmbretsonReise2000}. This means that, once the latent variable has been accounted for, any set of items should not share any meaningful correlation (Edwards, Houts, \& Cai, 2018).
 
 \hypertarget{unidimensionality}{%
 \subsubsection{Unidimensionality}\label{unidimensionality}}
 
-To verify the assumption of unidimensionality we conducted three analyses. First we confirmed the factor structure using confirmatory factor analysis (CFA). Then we determined the proportion of variance in the observed item responses due to the Rasch model. Finally, we conducted Rasch Principal Component Analysis of Residuals (PCAR) (Smith, 2002).
+Following \citet{ReiseEtAl2013}, we conducted several analyses:
+
+\begin{itemize}
+\tightlist
+\item
+  inspection of eigenvalues from principal component or factor analysis (e.g., how large is the ratio of the first to second eigenvalue?),
+\item
+  determining dimensionality through parallel analysis
+\item
+  compared the fit of a one-factor confirmatory model against benchmarks (e.g., comparative fit index \textgreater{} .90)
+\item
+  inspected residuals after fitting a unidimensional IRT model
+\end{itemize}
+
+First we confirmed the factor structure using confirmatory factor analysis (CFA). Then we determined the proportion of variance in the observed item responses due to the Rasch model. Finally, we conducted Rasch Principal Component Analysis of Residuals (PCAR) (Smith, 2002).
 
 \textbf{Factor structure}.
 
@@ -1212,6 +1228,11 @@ stats & 40543.38 & 2079 & 0 & 0.079 & 0.078 & 0.079 & 0.051 & 0.969 & 0.97\\
 \hline
 \end{tabular}
 \end{table}
+
+\hypertarget{model-comparison}{%
+\section{Model Comparison}\label{model-comparison}}
+
+This final table compares IRT models.
 
 \hypertarget{reliability}{%
 \chapter{Reliability}\label{reliability}}

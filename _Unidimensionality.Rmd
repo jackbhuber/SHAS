@@ -2,8 +2,6 @@
 
 IRT models make two assumptions of the data. The first is unidimensionality of the data. This is the assumption that "a single common latent variable accounts for all the common variance among the items" [@ReiseEtAl2013].  The SHAS items were multidimensional by design. The construct of spiritual harm and abuse is not conceptually narrow, and Dan wrote two distinct sets of items -- external events and internal states -- to cover the breadth of this construct. The exploratory factor analyses found a handful of factors in the SHAS items. A unidimensional IRT model can be fit to multidimensional data [@ReiseEtAl2013]. We need evidence of a strong common trait.
 
-This is important for the SHAS because the questionnaire explicitly distinguished between items measuring external events and internal states.
-
 The second assumption is local independence [@EmbretsonReise2000]. This means that, once the latent variable has been accounted for, any set of items should not share any meaningful correlation (Edwards, Houts, & Cai, 2018).
 
 #### Unidimensionality
