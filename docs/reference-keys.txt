@@ -2,7 +2,6 @@ fig:vim-plots
 tab:mcar
 fig:uni-pcar
 fig:q3-plot
-tab:rsm-item-tbl
 fig:rsm-item-hist
 tab:rsm-model-fit
 tab:pcm-item-tbl

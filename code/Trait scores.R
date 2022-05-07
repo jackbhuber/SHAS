@@ -1,6 +1,7 @@
 ### Trait scores
 
 ```{r}
+library(mirt)
 # attach factor scores
 # pcmscores <- fscores(results.pcm)
 # gpcmscores <- fscores(results.gpcm)

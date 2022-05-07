@@ -1,12 +1,22 @@
-# Classical Item Analysis
+## Classical Item Analysis
 
-```{r describe, fig.cap='Item Statistics'}
+```{r}
+# LOAD DATA
+items <- read.csv("data/items_l.csv")
+source("code/ApplyItemLabels.R")
+```
+
+
+```{r describe}
 # DESCRIBE DATA
 # options(digits=2)
-# describe(items)
+library(kableExtra)
+items.tbl <- as.data.frame(psych::describe(items))
+items.tbl %>%
+  kbl(digits=2, align = "ccccccccccccc", caption = 'Classical Item Statistics') %>%
+  kable_styling(bootstrap_options = "condensed", font_size = 14, fixed_thead = T)
 
-# this doesn't work
-# knitr::kable(itm_stats, caption = "Items Statistics", booktabs = TRUE, digits=2)
+items.tbl[ , 4:9] <- list(NULL) # delete columns (such as median, range, etc.)
 
 # A POSSIBLE BAR PLOT OF ITEM STATISTICS
 # barplot(item_stats$nbr.val, main="Complete Cases", horiz=TRUE, col='red')
@@ -15,9 +25,27 @@
 ```
 
 
-```{r ext-pbis, fig.cap='Item Total Correlations for External Events Items'}
+```{r ext-pbis}
 # DESCRIPTIVES
-ltm::descript(items)
+library(ltm)
+i <- ltm::descript(items)
+items.tbl2 <- as.data.frame(i[["perc"]]) # extract category response frequencies
+items.tbl2 %>%
+  kbl(digits=2, align = "ccccc", caption = 'Category Frequencies') %>%
+  kable_styling(bootstrap_options = "condensed", font_size = 14, fixed_thead = T)
+names(items.tbl2) <- c('1' = "Never", '2' = "Once or twice", '3' = "Sometimes", '4' = "Often", '5' = "All the time")
+
+
+
+library(formattable)
+formattable(items.tbl2, align = "ccccc", digits = 2, list(area(col = 1:5) ~ color_tile("transparent", "blue")))
+
+
+
+
+
+
+
 ```
 
 

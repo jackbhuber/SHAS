@@ -33,7 +33,7 @@ source("code/Unidimensionality-PCAR.R")
 
 The second analysis of PCAR examines the correlations among residuals. The premise is that once the Rasch model has been estimated, the correlations among the residuals should be minimal. Linacre () suggests that contrasts with eigenvalues of 2.0 or below can be considered noise. In Figure \@ref(fig:uni-pcar), our PCAR analysis found three contrasts that rose above that 2.0 threshold.
 
-```{r child='_LocalIndependence.Rmd'}
+```{r child='_IRT_LocalIndependence.Rmd'}
 ```
 
 **Summary**

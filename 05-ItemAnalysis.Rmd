@@ -40,20 +40,20 @@ Item response theory (IRT) is an established framework for empirically evaluatin
 
 In what follows, we conduct item analyses through a comparison of several different IRT models: the Rating Scale Model (RSM), the Partial Credit Model (PCM), the Generalized Partial Credit Model (GPCM).
 
-```{r child='_Unidimensionality.Rmd'}
+```{r child='_IRT_Unidimensionality.Rmd'}
 ```
 
-```{r child='_RatingScaleModel.Rmd'}
+```{r child='_IRT_RatingScaleModel.Rmd'}
 ```
 
-```{r child='_PartialCreditModel.Rmd'}
+```{r child='_IRT_PartialCreditModel.Rmd'}
 ```
 
-```{r child='_GeneralizedPartialCreditModel.Rmd'}
+```{r child='_IRT_GeneralizedPartialCreditModel.Rmd'}
 ```
 
-```{r child='_GradedResponseModel.Rmd'}
+```{r child='_IRT_GradedResponseModel.Rmd'}
 ```
 
-```{r child='_ModelComparison.Rmd'}
+```{r child='_IRT_ModelComparison.Rmd'}
 ```
