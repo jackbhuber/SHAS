@@ -23,6 +23,7 @@ item.fits.rsm <- as.data.frame(mirt::itemfit(results.rsm, 'infit'))
 # i <- as.data.frame(ifit)
 item.fits.rsm <- item.fits.rsm[,-1]
 items.tbl.rsm <- cbind(item.pars.rsm,item.fits.rsm)
+
 ```
 
 ```{r rsm-item-tbl}
@@ -30,7 +31,6 @@ library(kableExtra)
 items.tbl.rsm %>%
   kbl(digits=2, align = "lcccccc", caption = 'Rating Scale Model Item Parameters and Fit Statistics') %>%
   kable_styling(bootstrap_options = "condensed", font_size = 12, fixed_thead = T)
-
 
 # library(formattable)
 # formattable(items.tbl.rsm, align = c("l",rep("c", NCOL(items.tbl.rsm) - 1)), 
