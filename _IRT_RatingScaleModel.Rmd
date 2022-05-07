@@ -26,17 +26,17 @@ items.tbl.rsm <- cbind(item.pars.rsm,item.fits.rsm)
 ```
 
 ```{r rsm-item-tbl}
-# library(kableExtra)
-# items.tbl.rsm %>%
-#   kbl(digits=2, align = "lcccccc", caption = 'Rating Scale Model Item Parameters and Fit Statistics') %>%
-#   kable_styling(bootstrap_options = "condensed", font_size = 12, fixed_thead = T)
+library(kableExtra)
+items.tbl.rsm %>%
+  kbl(digits=2, align = "lcccccc", caption = 'Rating Scale Model Item Parameters and Fit Statistics') %>%
+  kable_styling(bootstrap_options = "condensed", font_size = 12, fixed_thead = T)
 
 
-library(formattable)
-formattable(items.tbl.rsm, align = c("l",rep("c", NCOL(items.tbl.rsm) - 1)), 
-            list(c = color_tile("transparent", "green"), 
-                 outfit = color_tile("transparent", "red"),
-                 infit = color_tile("transparent", "red")), digits = 2)
+# library(formattable)
+# formattable(items.tbl.rsm, align = c("l",rep("c", NCOL(items.tbl.rsm) - 1)), 
+#             list(c = color_tile("transparent", "green"), 
+#                  outfit = color_tile("transparent", "red"),
+#                  infit = color_tile("transparent", "red")), digits = 2)
 ```
 
 Table \@ref(tab:rsm-item-tbl) reports the item parameters estimated by the RSM for all 66 SHAS items. The first column shows the discrimination parameter, fixed to “1” for all items on the premise that the items discriminate equally well. The subsequent columns (b1 to b4) report the estimated thresholds (or step parameters). These values, too, are the same for all items. 
