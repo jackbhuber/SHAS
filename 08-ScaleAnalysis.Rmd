@@ -21,8 +21,10 @@ The item-person map (also known as the Wright map) is a tool for visualizing the
 ```{r wright, fig.cap='Item-Person Map: All Likert Items'}
 
 # ITEM-PERSON MAP #1: FOR ALL THE SHAS ITEMS
+library(reshape2)
+library(cowplot)
+library(mirt)
 source("code/itempersonmap.R")
-library("mirt")
 items <- read.csv("data/items.csv")
 mod <- mirt(items, 1, itemtype = "Rasch", 
             technical = list(removeEmptyRows=TRUE),

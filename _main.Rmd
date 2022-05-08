@@ -1,0 +1,427 @@
+--- 
+title: "Validity Evidence for the Spiritual Harm and Abuse Scale (SHAS)"
+author:
+  - Jack Huber, Swedish Medical Center
+  - Dan Koch, Northwest University
+date: "`r format(Sys.time(), '%B %Y')`"
+site: bookdown::bookdown_site
+documentclass: report
+bibliography: [book.bib, packages.bib]
+url: https://jackhuber.org/SHAS/
+description: |
+  This is a minimal example of using the bookdown package to write a book.
+  The HTML output format for this example is bookdown::gitbook,
+  set in the _output.yml file.
+link-citations: yes
+github-repo: https://github.com/jackbhuber/SHAS.git
+---
+# About this Project
+This is a reproducible research project for validation of the nascent Spiritual Harm and Abuse Scale (SHAS), developed by Dan Koch. It aims to function as an evolving technical report to conceptualize and document various validity studies -- and, by extension, validity evidence -- for this scale. We hope some of these validity considerations and empirical studies amount to meaningful publishable contributions to the nascent research literature in spiritual abuse and/or the literature in religion, counseling psychology, and/or psychological measurement.
+
+The project is open source, for collaboration. It is built in R using the R Studio IDE [@R-base]. No Excel, no SPSS, no Word. It is built in `bookdown` (@R-bookdown) and hosted at Github as a public repository at https://github.com/jackbhuber/SHAS. There it is served over Github Pages as a website -- https://jackhuber.org/SHAS/ -- for collaboration between Jack and Dan.
+
+## Research Questions
+
+Validation is research into the meanings and uses of scores from instruments. It can be an ongoing research agenda. Following is an initial set of questions to guide research and scale improvement of the SHAS:
+
+* **Item analysis and refinement** - Do some items have too many response categories?
+* **Data reduction** - As written and executed, which items appear to be critical (best performing) and which appear to be redundant or noisy? What might a shorter, streamlined instrument look like?
+* **Person fit** - How well does the current scale fit the population of examinees? Are there ceiling or floor effects? To what extent might the existing items under-represent the full range of abuse?
+* **Scale invariance** - Do the scales mean the same thing to different groups of examinees? To what extent do these scales (abuse constructs) vary by age, gender, and/or sexuality?
+* **Developmental pathway** - Beyond the current conceptualization of scales composed of redundant items, what might an incremental scale of abuse with diagnostic items look like?
+
+```{r, include=FALSE}
+
+knitr::opts_chunk$set(comment = "", warning = FALSE, message = FALSE, tidy.opts=list(width.cutoff=60), tidy = TRUE)
+
+knitr::opts_knit$set(verbose = FALSE)
+
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'ltm','knitr', 'psych', 'rmarkdown', 'VIM', 'mirt'
+), 'packages.bib')
+```
+
+
+<!--chapter:end:index.Rmd-->
+
+# Background of the Project
+
+## Spiritual Harm and Abuse
+
+This is where Dan can introduce and discuss spiritual harm and abuse -- his history with the topic, what it might mean in real world terms, the need for scientific study of the topic, and research to date. At a minimum he can paste in text from his extant writings and/or write new text.
+
+## The Spiritual Harm and Abuse Scale (SHAS)
+
+This might be where Dan presents the case for a clinical measure of spiritual harm and abuse and the work he has done to date to develop the SHAS. This could be a summary of his forthcoming JSSR article.
+
+## Validity Research for the SHAS
+
+This might be where I discuss what it means to conduct validity research on any instrument, and in particular the SHAS.
+
+<!--chapter:end:01-ProjectBackground.Rmd-->
+
+# Content Validity
+In this chapter, we consider the content validity of the Spiritual Harm and Abuse Scale (SHAS). We begin by defining content validity and discussing its importance. Then we document the work we did to map the domain of spiritual abuse for the purpose of developing items for piloting and operational use. We conclude by considering what scope exists for more work in this area that would improve future development of SHAS instrumentation.
+
+## About Content Validity
+The focus of content validity is "the relationship between the content of a test and the construct it is intended to measure" [@Standards]. Do they match? Does the instrument contain content that is not part of the construct? Are there parts of the content unmeasured, such that a high score still underrepresents an examinee's true level of a trait?
+
+Content validity in this case concerns the relationship between the concept of spiritual abuse and the content of the 66 items that were piloted to form the SHAS. What is spiritual abuse? What are its important parts? What counts as evidence of it? Is there more to spiritual abuse than was captured by the 66 items?
+
+## Content Specification
+"Test developers often work from a specification of the content domain. The content specification carefully describes the content in detail, often with a classification of areas of content and types of items" [@Standards]. For the purpose of piloting items, the domain of spiritual abuse included two constructs: external (abusive) events and internal states (of emotional harm).
+
+### External Events
+One domain of spiritual abuse is external abuse _events_. The focus is on something that happened, or a pattern of recurring behavior on the part of someone in a place of spiritual authority that was experienced by the examinee as abusive. The first 52 items of the SHAS were drawn from this domain of possible abusive events. To each item, an examinee was offered five response categories:
+
+1. Never
+2. Once or twice
+3. Sometimes
+4. Often
+5. Always
+
+To sum each examinee's vector of responses to these items is to accumulate evidence of abuse. In the aggregate, scores for this collection of items could range from 52 to 260. An examinee who _never_ experienced _any_ of these events would score 52. At the other extreme, an examinee who scored 260 had _always_ experienced _all_ of these events.
+
+### Internal States
+Another important domain of spiritual abuse is _internal states_. The focus is on the subjective experience of an examinee "as a result of negative experiences in church or Christian group settings." The questionnaire included 14 items asking examinees about their emotions in response to events. To each item, an examinee was offered the same five response categories as before:
+
+1. Never
+2. Once or twice
+3. Sometimes
+4. Often
+5. Always
+
+To sum each examinee's vector of responses to these items is to accumulate evidence of internal emotional _harm_. Total scores for these items could range from 14 to 70. Examinees who _never_ experienced _any_ of these unpleasant emotions would score 14, while examinees who scored 70 had _always_ experienced _all_ of the difficult emotions.
+
+### Additional Domains
+
+@ReiseWaller2009 make some interesting points about the nature of the traits addressed in clinical settings which provoke thought about the trait of spiritual abuse.
+
+## Summary
+What counts as spiritual abuse? What counts as evidence of it?
+
+<!--chapter:end:02-Content.Rmd-->
+
+# Data Collection
+
+The data were collected online from January 28, 2021 to February 27, 2021.
+
+A final total of 3,222 people responded to the survey at some level. Depending on how much data are missing, this is an impressively large sample size which will provide lots of power for most simple statistics and should for the most part satisfy the large-sample requirements of the advanced statistical procedures associated with measurement work (i.e., factor analysis, IRT).
+
+However, the data come from a convenience sample which raises some challenge of sampling bias. Dan sent the link out to [lots of people], and (if memory serves) encouraged them to send it to people _they_ knew. This would seem to bias responses toward people demographically similar to Dan: white, Millennial, west coast American, middle class, highly educated, primarily Protestant and Catholic Christian, etc. This will be more apparent upon closer inspection of the demographics of the sample.
+
+One source of examinees was people who listen to progressive Christians podcasts such as  _You Have Permission_ which Dan produced at the time of data collection. This is a known source of bias toward people who have some interest in Christianity along with at least some level of rejection of conservative/orthodox Christianity and/or political conservatism. However, this would be an appropriate group from which to invite participation if the target population is people who have experienced spiritual abuse.
+
+<!--chapter:end:03-DataCollection.Rmd-->
+
+# Data Preparation
+This chapter documents our decisions surrounding how to prepare the data for analysis. Here we get into the weeds. We begin with loading the data from the original data file. From this we select a subset of just the items to which we apply labels and recode so that they begin from 0. We deal with missing data. The chapter concludes with a final set of datasets for use in the remaining chapters.
+
+## Load data
+The data are contained in an Excel file, simply named "data.xlsx", in the "data" folder of this project. The important thing is to keep all the data in the same folder within the larger "SHAS Validity" project folder.
+
+```{r load-data, include=TRUE, echo=TRUE}
+# LOAD ORIGINAL DATA
+library(readxl) # for reading the source Excel file
+shas <- read_excel("data/data.xlsx") # load Excel file
+```
+
+## Select items
+Which items should we include for analysis? The first 13 columns in the original data file report data from several screening items that were placed at the beginning of the questionnaire. But because they are constant and not variable, they don't seem to have a place in scale development. Therefore it seems the important columns range from columns 14 to 97. The first set of items measure the **External Events** scale. These 52 items range from columns 14 to 35. The second set of items measure the **Internal States** scale, and these 14 items range from columns 66 to 79. The last set of items capture **demographic** variables, and these range from columns 80 to 97.
+
+```{r select-items}
+# SELECT ITEMS
+all <- shas[ ,14:97] # select items, dems from columns 14-79
+all <- subset(all, select = -c(Ext_Avg:Global_Avg)) # remove columns for now
+items <- all[ ,1:66]
+```
+
+## Select item clusters
+We select two subsets of the item data, one from just the External Events items and the other from the Internal States items.
+
+```{r subsets}
+ext_items <- items[ ,1:52]
+int_items <- items[ ,52:66]
+```
+
+## Dichotomized data
+Some IRT models (such as the Rasch model) and their estimation procedures in various R packages are based on dichotomous data (0=incorrect, 1=correct) rather than the polytomous data that comes from Likert scales. It is also possible that the extra categories create noise and improved SHAS items might use fewer response categories. Here we create several data sets of dichotomized SHAS items.
+
+```{r dichot}
+# DICHOTOMIZED DATA SETS
+ditems <- items
+ditems[ditems == 1] <- 0
+ditems[ditems == 2] <- 1
+ditems[ditems == 3] <- 1
+ditems[ditems == 4] <- 1
+ditems[ditems == 5] <- 1
+
+dext_items <- ditems[ ,1:52]
+dint_items <- ditems[ ,52:66]
+```
+
+## Missing data
+Missing data can be an important problem. The problem has two parts. The first is how many data are missing. Obviously the more data are missing, the larger the barrier this problem poses to analysis. The second is the mechanism of missing data. Are the missing data randomly, or is there a pattern to the missing data - like a problematic item, or a distinct group of examinees who chose not to respond? Figure \@ref(fig:vim-plots) presents two plots from the VIM package for missing data [@R-VIM]. 
+
+```{r vim-plots, fig.cap='Missing Data', message=FALSE, warning=FALSE}
+# VISUALIZE AND QUANTIFY MISSING DATA
+library(VIM)
+a <- VIM::aggr(all, plot = FALSE)
+plot(a, numbers = TRUE, prop = FALSE)
+```
+
+The first plot in Figure \@ref(fig:vim-plots) is a frequency distribution of the number of missing data entries for each item. This plot reveals very few missing data for the first set of External Events items, but nearly 200 missing entries for the second set of Internal States items and demographics. The raises two questions. The first is: Who were those examinees? We know that they responded to the first 52 items, then apparently quit the survey. Why? Was it just fatigue, or is there more to know about them? The second question is what to do with the information they actually did provide.
+
+The second plot in Figure \@ref(fig:vim-plots) illustrates the different combinations of missing entries. The blue squares represent cases with complete responses, and the red indicates missing data. The rows represent combinations of complete and missing responses. The bottom row of entirely blue squares represents complete data -- examinees who responded to all of the items. The barplot on the right axis indicates that these were the most frequent combinations. The second most frequent combination was examinees who completed all of the External Events items and then quit the survey. Beyond that, there is no apparent order or pattern to the missing data.
+
+```{r eval=FALSE, include=FALSE}
+# VISUALIZE AND QUANTIFY MISSING DATA
+# library(naniar)
+# naniar::vis_miss(all)
+```
+
+**Mechanism of missing data**. @McKnightEtAl2007 prescribe several approaches for investigating the mechanisms of missing data. An appropriate first step is to test whether the data are Missing Completely At Random (MCAR) with the use of Little's test @Little1988. This is a chi-square test of the difference between the observed pattern of missing responses and the pattern of responses that would expected if missingness were completely random. We report the results of this test in Table \@ref(tab:mcar).
+
+```{r mcar, message=FALSE, warning=FALSE}
+library(naniar)
+library(knitr)
+knitr::kable(mcar_test(all), digits = 2, caption = 'Little\'s Test of Missing Completely at Random (MCAR)')
+```
+
+The test is fairly conclusive. The p-value for the chi-square is 1, which means observed pattern of missing data do not diverge significantly from what would be expected if the data were missing completely at random.
+
+**Missing data methods**. There are several different ways to handle missing data. A common one is to _delete all cases missing any data_. This is called **listwise** deletion of data. Its primary advantages are simplicity, expedience, and analysis based on complete information. Its disadvantages are (1) disposal of the information offered by those examinees who responded to some items but not others, and (2) diminishment of the dataset, and with it, a reduction in statistical power. There are also methods of imputing values to missing responses. Here, for expedience, we use listwise deletion to create several datasets with complete data.
+
+```{r listwise, include=TRUE, warning=FALSE, tidy=TRUE}
+# LISTWISE DELETION OF MISSING DATA
+all_l <- na.omit(all) #  All items + demographics
+items_l <- na.omit(items) # All Likert items
+ext_items_l <- na.omit(ext_items) # Likert items for External Events post listwise
+int_items_l <- na.omit(int_items) # Likert items for Internal States post listwise
+ditems_l <- na.omit(ditems) # All dichotomized Likert items post listwise
+dext_items_l <- na.omit(dext_items) # Dichotomized External Events items post listwise
+dint_items_l <- na.omit(dint_items) # Dichotomized Internal States items post listwise
+```
+
+## Final datasets
+
+```{r save-data}
+# SAVE DATA FILES
+write.csv(all,"data/all.csv", row.names=FALSE)
+write.csv(items,"data/items.csv", row.names=FALSE)
+write.csv(ext_items,"data/ext_items.csv", row.names=FALSE)
+write.csv(int_items,"data/int_items.csv", row.names=FALSE)
+write.csv(all_l,"data/all_l.csv", row.names=FALSE)
+write.csv(items_l,"data/items_l.csv", row.names=FALSE)
+write.csv(ext_items_l,"data/ext_items_l.csv", row.names=FALSE)
+write.csv(int_items_l,"data/int_items_l.csv", row.names=FALSE)
+write.csv(ditems_l,"data/ditems_l.csv", row.names=FALSE)
+write.csv(dext_items_l,"data/dext_items_l.csv", row.names=FALSE)
+write.csv(dint_items_l,"data/dint_items_l.csv", row.names=FALSE)
+```
+
+```{r echo=FALSE}
+rm(list = ls())
+```
+
+
+<!--chapter:end:04-DataPrep.Rmd-->
+
+# Item Analysis in IRT
+In this chapter, we examine the technical quality of the SHAS items within the framework of item response theory. We begin by introducing IRT and discussing its advantages. Then we document our IRT item analyses. We conclude by summarizing what we learn from these analyses to help us refine these 66 items and possibly develop better ones in the future.
+
+```{r, include=FALSE, echo=FALSE}
+knitr::opts_chunk$set(comment = "", warning = FALSE, echo = FALSE,  message = FALSE, tidy.opts=list(width.cutoff=60), tidy = TRUE)
+knitr::opts_knit$set(verbose = FALSE)
+```
+
+```{r}
+# LOAD PACKAGES
+library(knitr)
+library(mirt)
+library(lattice)
+library(stats4)
+library(survival)
+# library(Formula)
+# library(ggplot2)
+# library(Hmisc) # for item statistics
+# library(psych) # for psychometric analysis
+# library(psychTools) # for psychometric analysis
+# library(CTT) # for classical test theory stats
+# library(pastecs) # for item statistics
+# library(ltm) # for point-biserial correlations
+# library(corrplot) # for correlation plot
+# library(knitr) # how RMarkdown compiles all the code into documents
+
+items <- read.csv("data/items_l.csv")
+source("code/ApplyItemLabels.R")
+
+```
+
+## Item response theory
+Item response theory (IRT) is an established framework for empirically evaluating what items measure [@EmbretsonReise2000; @WrightMasters1982]. IRT methods complement methods derived from classical test theory in several ways.
+
+1. **IRT places both examinees and items on the same interval scale**. In classical test theory, examinees differ in their scores and items differ in their means or percent of examinees selecting a response; examinees and items are on different scales. By contrast, IRT methods allow measurement of persons and items on the **_same scale_** with _equal interval properties_ of the _logit_ scale** and resulting linear measures (Wright & Stone, 1999). In IRT we can estimate _item parameters independently of the characteristics of the calibrating sample_, and we can estimate _person parameters apart from the difficulties of the items taken_ (Masters, 1982; Rasch, 1966).
+
+2. **Parameters for examinees and items derived from IRT are independent of each other**.
+
+3. **IRT gives items diagnostic value**. A core assumption of CTT is that items are _redundant_; they contribute meaningful variation to a total score but they do not occupy a distinct place on the score continuum. IRT is different. IRT does not assume that items are redundant; instead it investigates whether items make distinct contributions to the measurement of the latent trait. Whereas classical test theory measurement is principally concerned with the ratio of noise to signal in the variation contributed by an item, IRT models compute the probability of a certain response to an item given the level of the latent construct the individual possesses (i.e., spiritual abuse) and the relevant item’s difficulty of endorsement. IRT is based on the logistic model and operates on the _logit_ scale.
+
+In what follows, we conduct item analyses through a comparison of several different IRT models: the Rating Scale Model (RSM), the Partial Credit Model (PCM), the Generalized Partial Credit Model (GPCM).
+
+```{r child='_IRT_Unidimensionality.Rmd'}
+```
+
+```{r child='_IRT_RatingScaleModel.Rmd'}
+```
+
+```{r child='_IRT_PartialCreditModel.Rmd'}
+```
+
+```{r child='_IRT_GeneralizedPartialCreditModel.Rmd'}
+```
+
+```{r child='_IRT_GradedResponseModel.Rmd'}
+```
+
+```{r child='_IRT_ModelComparison.Rmd'}
+```
+
+<!--chapter:end:05-ItemAnalysis.Rmd-->
+
+# Reliability
+In this chapter, we addresses the reliability of the SHAS based on the 66 piloted items. We begin by defining reliability and discussing its importance. Then we report the results of our analyses of the reliability of the piloted SHAS items from both classical test theory (CTT) and item response theory (IRT) frameworks. Since these are cross-sectional data taken at one point in time, our work is limited to _internal consistency_ reliability which focuses on the relationships between the items at one point in time rather than relationships between items or scores between two or more time points. We conclude by considering what this information contributes to improved SHAS instrumentation.
+
+## About reliability
+Reliability is the extent to which items and their scores are consistently measuring the trait of interest. It is evidence that two examinees who provide the same responses to the same items, and by extension receive the same total scores, truly have the same level or amount of, or exposure to, the trait.
+
+## Reliability in Classical Test Theory (CTT)
+One way to think about reliability in classical test theory is the ratio of signal to noise in the observed data. Do the various item responses and scores provide a true sort of examinees on the trait, or is all this variation merely noise?
+
+The foundation of internal consistency reliability in CTT is relationships between item responses: correlations. Strong correlations among the items are evidence that the items are measuring the same construct. Thus we begin by examining correlation matrices.
+
+```{r warning=FALSE, echo=FALSE, message=FALSE}
+# LOAD PACKAGES AND DATA
+library(CTT)
+library(psych)
+library(Hmisc)
+library(corrplot)
+items <- read.csv("data/items.csv")
+ext_items <- read.csv("data/ext_items.csv")
+int_items <- read.csv("data/int_items.csv")
+ext_items_l <- read.csv("data/ext_items_l.csv")
+int_items_l <- read.csv("data/int_items_l.csv")
+items_l <- read.csv("data/items_l.csv")
+```
+
+
+```{r corrmtrx-ext, fig.cap='Correlation Matrix of External Events Items', fig.align='center'}
+# HEATMAP OF CORRELATIONS
+library(psych)
+psych::corPlot(ext_items_l, upper = FALSE)
+```
+
+Figure \@ref(fig:corrmtrx-ext) is a correlation matrix of the External Events items for the *3,174* examinees who responded to all of these items. Each cell reports the correlation coefficient between scores of the two items. All of the cells are color coded to the scale of correlations which range from 0 (indicating no relationship) to 1 (indicating a perfect linear relationship). The cells along the diagonal are all 1.0 because they represent the correlation of the item with itself. Only one half of the matrix is necessary to report all the correlations among all the items.
+
+The plot offers several interesting pieces of information. The first is that Q17--"Being treated as 'less than' because of my sexual orientation--does not quite fit. Responses to this item correlate weakly with responses to all the other items. It is possible that so few examinees experience this event that the responses vary very little, which would attenuate any correlation. Or it may be measuring something different than what the other items in this set. Similar could be said of Q27--"Being denied opportunities to serve/volunteer because of my gender."
+
+```{r corrmtrx-int, fig.cap='Correlation Matrix of Internal States Items', fig.align='center'}
+# HEATMAP OF CORRELATIONS
+psych::corPlot(int_items_l, upper = FALSE)
+```
+
+Figure \@ref(fig:corrmtrx-int) is a correlation matrix of the Internal States items for the *3,051* examinees who responded to all of these items. This plot is interesting in that most of the correlations are in the moderate (0.50) range. They are sorting examinees in a similar way, but together they do not measure exactly the same thing.
+
+```{r corrmtrx-all, fig.cap='Correlation Matrix of All 66 Likert SHAS Items', fig.align='center'}
+# HEATMAP OF CORRELATIONS
+psych::corPlot(items_l, upper = FALSE)
+```
+This final matrix, Figure \@ref(fig:corrmtrx-all), reports the correlations among all of the Likert items among the *2,979* examinees who responded to all 66 items. Note that missing data are a challenge here, as these plots require complete data.
+
+This plot offers several interesting insights. First, the preponderance of blue indicates that everything is positively correlated. This makes some sense because the items were worded and all the response categories were coded in the same direction.
+
+Second, in this plot there are too many items and correlation coefficients in one place to be distinguishable, but with the colors it is possible to see an overall pattern. This plot orders the items by their order on the questionnaire so we can see how the External Events items correlate with the Internal Events items: moderately. It is possible that these are not two different scales.
+
+Finally, we see at a glance a handful of items that correlate very weakly with all the other items. These items should be scrutinized for refinement and possible omission from the analysis.
+
+**Cronbach's coefficient alpha**.
+Arguably the most well-known statistic for estimating internal consistency reliability is Cronbach's coefficient alpha (citation). This is a measure of the average inter-item correlation (?). It is also a measure of the ratio of signal to noise (X = T + e). A ballpark cutoff value is 0.70 [@Nunnally1994].
+
+```{r alpha}
+# CRONBACH'S ALPHA
+reliability(items) # , itemal = TRUE, NA.Delete = TRUE, ml = TRUE)
+```
+
+This output is not pretty, but it does report a Cronbach's alpha of 0.98. This is a high level of internal consistency reliability.
+
+## Reliability in Item Response Theory (IRT)
+Wright and Masters (1982) developed reliability measures based on the Rasch measurement model, which have a different concept from classical test theory (e.g., Cronbach’s alpha). Reliability is estimated both for persons and items, by means of Person Separation Reliability (PSR). This is an estimate of how well this instrument can distinguish respondents on the measured variable. In parallel, Item Separation Reliability (ISR) is an indication of how well items are separated by the persons taking the test (Wright & Stone, 1999). The cutoff of separation reliabilities is > 0.80 (Bond & Fox, 2015).
+
+## Summary
+
+
+<!--chapter:end:06-Reliability.Rmd-->
+
+# Scale Analysis
+In this chapter, we examine the technical quality of the scales derived from the SHAS piloted items. Here we address questions like the following:
+
+- **Person fit** - How well does the current scale fit the population of examinees? Are there ceiling or floor effects? To what extent might the existing items under-represent the full range of abuse?
+
+- **Scale invariance** - Do the scales mean the same thing to different groups of examinees? To what extent do these scales (abuse constructs) vary by age, gender, and/or sexuality?
+
+- **Developmental pathway** - Beyond total scores, what might an incremental scale of in terms of items look like? What items might represent the most severe or most frequent forms of spiritual abuse?
+
+We begin by defining scaling and discussing the importance of scale analysis. We report the results of our scale analysis from within the item response theory (IRT) framework. We conclude by considering what this information contributes to improved SHAS instrumentation.
+
+## Person Fit
+
+## Scale Invariance
+
+## The Item-Person Map
+The item-person map (also known as the Wright map) is a tool for visualizing the results of a calibration of items and persons. The Wright map was originally developed for use in test development but it also helps illuminate the results of surveys [@bulut20215]. As @bulut20215 explains:
+
+>"The Partial Credit Model (PCM), which is an extension of the Rasch model for polytomous item responses, can be used for survey development and validation (Green & Frantom, 2002). We can analyze survey items using PCM and obtain item thresholds for each item. These thresholds indicate the magnitude of the latent trait required to select a particular response option (e.g., selecting disagree over strongly disagree). Using an item-person map, we can see thresholds for the items as well as the distribution of the latent trait for the respondents. This plot is quite useful for analyzing the alignment (or match) between the items and respondents answering the items."
+
+```{r wright, fig.cap='Item-Person Map: All Likert Items'}
+
+# ITEM-PERSON MAP #1: FOR ALL THE SHAS ITEMS
+library(reshape2)
+library(cowplot)
+library(mirt)
+source("code/itempersonmap.R")
+items <- read.csv("data/items.csv")
+mod <- mirt(items, 1, itemtype = "Rasch", 
+            technical = list(removeEmptyRows=TRUE),
+            verbose = FALSE) # estimate the Partial Credit Model
+itempersonmap(mod) # create the item-person map
+
+```
+
+Figure \@ref(fig:wright) is an item-person map of all 66 Likert SHAS items against all of the examinees. In the plot, red points indicate item thresholds for each item (three thresholds separating four response categories) and the asterisk indicates the average value of the thresholds for each item. The higher these thresholds, the more spiritual abuse the examinee has experienced. On the left-hand side of the plot, we also see the distribution of examinees along the latent trait (i.e., the construct of spiritual abuse).
+
+This plot offers several insights at a general level. First, the plot of examinees on the left suggests that the latent trait of spiritual abuse is normally distributed, with a slight negative skew. Very few examinees reported very low or very high levels of exposure to spiritual abuse; most reported a moderate to slightly higher than average level of spiritual abuse. Second, with this plot it is difficult to distinguish individual items but it does show that they tend to clusteraround this "slightly higher than average" level of spiritual abuse, with none capturing a very low level of abuse and just a handful of items measuring much higher than average levels of spiritual abuse. Three items had response categories that captured very high levels of spiritual abuse.
+
+## Information curves
+These provide important information about where along the scale of the latent trait the item or set of items provides the most reliable information. If there are too few "easy" or "difficult" items, then these extreme scores for examinees are less reliable.
+
+## Person Separation Reliability
+
+## Item Separation
+
+## Summary
+
+
+<!--chapter:end:08-ScaleAnalysis.Rmd-->
+
+# Discussion
+
+<!--chapter:end:09-FutureResearch.Rmd-->
+
+# References {-}
+
+<div id="refs"></div>
+
+
+<!--chapter:end:10-References.Rmd-->
+
