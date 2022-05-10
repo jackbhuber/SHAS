@@ -21,5 +21,3 @@ pca <- pca(std.resids, nfactors = ncol(items), rotate = "none")
 contrasts <- c(pca$values[1], pca$values[2], pca$values[3], pca$values[4], pca$values[5])
 plot(contrasts, ylab = "Eigenvalues for Contrasts", xlab = "Contrast Number", 
      main = "")
-
-rm(list=ls())

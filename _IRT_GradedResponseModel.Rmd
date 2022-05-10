@@ -1,11 +1,19 @@
+
+```{r, include=FALSE, echo=FALSE}
+knitr::opts_chunk$set(comment = "", warning = FALSE, echo = FALSE,  message = FALSE, tidy.opts=list(width.cutoff=60), tidy = TRUE)
+knitr::opts_knit$set(verbose = FALSE)
+```
+
 ## Graded Response Model
 
 The fourth and final model we consider is the Graded Response Model (). The difference here allows the discrimination parameter to vary. 
 
 ```{r grm-run}
 # ESTIMATE GRM MODEL
-# library(stats4)
-# library(lattice)
+library(knitr)
+library(kableExtra)
+library(stats4)
+library(lattice)
 library(mirt)
 items <- read.csv("data/items_l.csv")
 source("code/ApplyItemLabels.R")
@@ -13,10 +21,10 @@ model.grm <- 'GRADED RESPONSE MODEL = 1-66'
 results.grm <- mirt(data=items, model=model.grm, itemtype="graded", SE=TRUE,  technical = list(NCYCLES = 10000), verbose=FALSE) # estimate model
 ```
 
-```{r item-stats}
+```{r grm-item-stats}
 # GET ITEM PARAMETERS
-coef.grm <- coef(results.grm, IRTpars=TRUE, simplify=TRUE) # save coefficients
-item.pars.grm <- as.data.frame(coef.grm$items) # item parameters as data frame
+coef.grm <- coef(results.grm, IRTpars=TRUE, simplify=TRUE)
+item.pars.grm <- as.data.frame(coef.grm$items)
 
 # ITEM FIT
 item.fits.grm <- as.data.frame(mirt::itemfit(results.grm, 'infit'))
@@ -70,6 +78,6 @@ grm.model.fit %>%
 
 ```{r}
 save(results.grm, file = "data/results.grm.RData")
-write.csv(grm.model.fit,"data/grm.model.fit.csv")
+write.csv(grm.model.fit, "data/grm.model.fit.csv")
 rm(list = ls())
 ```

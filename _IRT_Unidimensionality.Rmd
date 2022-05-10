@@ -1,3 +1,9 @@
+
+```{r, include=FALSE, echo=FALSE}
+knitr::opts_chunk$set(comment = "", warning = FALSE, echo = FALSE,  message = FALSE, tidy.opts=list(width.cutoff=60), tidy = TRUE)
+knitr::opts_knit$set(verbose = FALSE)
+```
+
 ### IRT Model Assumptions
 
 IRT models make two assumptions of the data. The first is unidimensionality of the data. This is the assumption that "a single common latent variable accounts for all the common variance among the items" [@ReiseEtAl2013].  The SHAS items were multidimensional by design. The construct of spiritual harm and abuse is not conceptually narrow, and Dan wrote two distinct sets of items -- external events and internal states -- to cover the breadth of this construct. The exploratory factor analyses found a handful of factors in the SHAS items. A unidimensional IRT model can be fit to multidimensional data [@ReiseEtAl2013]. We need evidence of a strong common trait.
@@ -39,3 +45,7 @@ The second analysis of PCAR examines the correlations among residuals. The premi
 **Summary**
 
 These analyses offer mixed evidence of assumption satisfaction. The model explains 44% of the variance of the item responses. But we see three contrasts of the standardized residuals above the threshold of 2. In the Q3 plot we see a few strong correlations of item correlations.
+
+```{r}
+rm(list=ls())
+```

@@ -18,3 +18,4 @@ bookdown::pdf_book:
   latex_engine: xelatex
   citation_package: natbib
   keep_tex: yes
+  number_sections: FALSE

@@ -1,11 +1,19 @@
+
+```{r, include=FALSE, echo=FALSE}
+knitr::opts_chunk$set(comment = "", warning = FALSE, echo = FALSE,  message = FALSE, tidy.opts=list(width.cutoff=60), tidy = TRUE)
+knitr::opts_knit$set(verbose = FALSE)
+```
+
 ## Generalized Partial Credit Model (GPCM)
 
 The third model, the Generalized Partial Credit Model (GPCM) is an extension of the Partial Credit Model. The extension is that the GPCM allows the item discrimination parameters to vary.
 
 ```{r gpcm-run}
 # ESTIMATE GPCM MODEL
-# library(stats4)
-# library(lattice)
+library(knitr)
+library(kableExtra)
+library(stats4)
+library(lattice)
 library(mirt)
 items <- read.csv("data/items_l.csv")
 source("code/ApplyItemLabels.R")
@@ -15,8 +23,8 @@ results.gpcm <- mirt(data=items, model=model.gpcm, itemtype="gpcm", technical = 
 
 ```{r gpcm-item-stats}
 # GET ITEM PARAMETERS
-coef.gpcm <- coef(results.gpcm, IRTpars=TRUE, simplify=TRUE) # save coefficients
-item.pars.gpcm <- as.data.frame(coef.gpcm$items) # item parameters as data frame
+coef.gpcm <- coef(results.gpcm, IRTpars=TRUE, simplify=TRUE)
+item.pars.gpcm <- as.data.frame(coef.gpcm$items)
 
 # ITEM FIT
 item.fits.gpcm <- as.data.frame(mirt::itemfit(results.gpcm, 'infit'))
@@ -60,6 +68,6 @@ Model fit statistics are reported in Table \@ref(tab:gpcm-model-fit). The obtain
 
 ```{r}
 save(results.gpcm, file = "data/results.gpcm.RData")
-write.csv(gpcm.model.fit,"data/gpcm.model.fit.csv")
+write.csv(gpcm.model.fit, "data/gpcm.model.fit.csv")
 rm(list=ls())
 ```

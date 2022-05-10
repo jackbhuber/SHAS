@@ -1,11 +1,19 @@
+
+```{r, include=FALSE, echo=FALSE}
+knitr::opts_chunk$set(comment = "", warning = FALSE, echo = FALSE,  message = FALSE, tidy.opts=list(width.cutoff=60), tidy = TRUE)
+knitr::opts_knit$set(verbose = FALSE)
+```
+
 ## Partial Credit Model (PCM)
 
 The second model the Partial Credit Model (PCM) [@Masters1982]. Like the Rating Scale Model, the PCM is also a Rasch model for polytomous items. It constrains the discrimination parameter to 1 and allows the category thresholds to vary.
 
 ```{r pcm-run}
 # ESTIMATE PCM MODEL
-# library(stats4)
-# library(lattice)
+library(knitr)
+library(kableExtra)
+library(stats4)
+library(lattice)
 library(mirt)
 items <- read.csv("data/items_l.csv")
 source("code/ApplyItemLabels.R")
@@ -15,8 +23,8 @@ results.pcm <- mirt(data=items, model=model.pcm, itemtype="Rasch", verbose=FALSE
 
 ```{r pcm-item-stats}
 # GET ITEM PARAMETERS
-coef.pcm <- coef(results.pcm, IRTpars=TRUE, simplify=TRUE) # save coefficients
-item.pars.pcm <- as.data.frame(coef.pcm$items) # item parameters as data frame
+coef.pcm <- coef(results.pcm, IRTpars=TRUE, simplify=TRUE)
+item.pars.pcm <- as.data.frame(coef.pcm$items)
 
 # ITEM FIT
 item.fits.pcm <- as.data.frame(mirt::itemfit(results.pcm, 'infit'))
@@ -43,6 +51,7 @@ a <- plot(results.pcm, type = 'trace', which.items = c(29,28,9),
      auto.key=list(points=FALSE,lines=TRUE, columns=4))
 direct.label(a, 'top.points')
 ```
+
 Figure \@ref(fig:pcm-item-plot) shows the intended pattern of responses. Examinees who had experienced less lifetime exposure to spiritual abuse were most likely to select P1: "Never." Those who had experienced a little more were more likely to select P2: "Once or twice." And so on. On this item the response categories functioned as intended to sort examinees on the basis of lifetime exposure to spiritual abuse. The plots for the second and third items show items with reversals. the intended pattern of responses. Examinees who had experienced less lifetime exposure to spiritual abuse were most likely to select P1: "Never." Those who had experienced a little more were more likely to select P2: "Once or twice." And so on. On this item the response categories functioned as intended to sort examinees on the basis of lifetime exposure to spiritual abuse.
 
 Fit statistics gauge the extent to which the observed pattern of item responses fit the IRT model (Rasch, partial credit, etc.). They do this by means of chi-square statistics which examine the cumulative difference the observed pattern of item responses and the pattern of item respones that the model would expect. Two fit statistics commonly used in IRT modesl are the infit mean square (MNSQ) and the outfit mean square (MNSQ) [@BondFox2015]. The infit statistic places greater emphasis on unexpected responses that are close to the examinees and item location. The outfit is sensitive to unexpected responses that are far from the location. The expected value of infit or outfit for each item is 1.0, with a range of acceptable values ranging from 0.5 to 1.5. Values outside these boundaries indicate a lack of fit between items and the model.

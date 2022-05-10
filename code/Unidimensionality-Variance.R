@@ -42,5 +42,3 @@ knitr::kable((VO - VR)/VO)
 # contrasts <- c(pca$values[1], pca$values[2], pca$values[3], pca$values[4], pca$values[5])
 # plot(contrasts, ylab = "Eigenvalues for Contrasts", xlab = "Contrast Number", 
 #      main = "Contrasts from PCA of Standardized Residual Correlations")
-
-rm(list=ls())

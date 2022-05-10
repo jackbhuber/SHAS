@@ -1,35 +1,5 @@
-# Item Analysis in IRT
-In this chapter, we examine the technical quality of the SHAS items within the framework of item response theory. We begin by introducing IRT and discussing its advantages. Then we document our IRT item analyses. We conclude by summarizing what we learn from these analyses to help us refine these 66 items and possibly develop better ones in the future.
-
-```{r, include=FALSE, echo=FALSE}
-knitr::opts_chunk$set(comment = "", warning = FALSE, echo = FALSE,  message = FALSE, tidy.opts=list(width.cutoff=60), tidy = TRUE)
-knitr::opts_knit$set(verbose = FALSE)
-```
-
-```{r}
-# LOAD PACKAGES
-library(knitr)
-library(mirt)
-library(lattice)
-library(stats4)
-library(survival)
-# library(Formula)
-# library(ggplot2)
-# library(Hmisc) # for item statistics
-# library(psych) # for psychometric analysis
-# library(psychTools) # for psychometric analysis
-# library(CTT) # for classical test theory stats
-# library(pastecs) # for item statistics
-# library(ltm) # for point-biserial correlations
-# library(corrplot) # for correlation plot
-# library(knitr) # how RMarkdown compiles all the code into documents
-
-items <- read.csv("data/items_l.csv")
-source("code/ApplyItemLabels.R")
-
-```
-
 ## Item response theory
+
 Item response theory (IRT) is an established framework for empirically evaluating what items measure [@EmbretsonReise2000; @WrightMasters1982]. IRT methods complement methods derived from classical test theory in several ways.
 
 1. **IRT places both examinees and items on the same interval scale**. In classical test theory, examinees differ in their scores and items differ in their means or percent of examinees selecting a response; examinees and items are on different scales. By contrast, IRT methods allow measurement of persons and items on the **_same scale_** with _equal interval properties_ of the _logit_ scale** and resulting linear measures (Wright & Stone, 1999). In IRT we can estimate _item parameters independently of the characteristics of the calibrating sample_, and we can estimate _person parameters apart from the difficulties of the items taken_ (Masters, 1982; Rasch, 1966).
@@ -39,21 +9,3 @@ Item response theory (IRT) is an established framework for empirically evaluatin
 3. **IRT gives items diagnostic value**. A core assumption of CTT is that items are _redundant_; they contribute meaningful variation to a total score but they do not occupy a distinct place on the score continuum. IRT is different. IRT does not assume that items are redundant; instead it investigates whether items make distinct contributions to the measurement of the latent trait. Whereas classical test theory measurement is principally concerned with the ratio of noise to signal in the variation contributed by an item, IRT models compute the probability of a certain response to an item given the level of the latent construct the individual possesses (i.e., spiritual abuse) and the relevant item’s difficulty of endorsement. IRT is based on the logistic model and operates on the _logit_ scale.
 
 In what follows, we conduct item analyses through a comparison of several different IRT models: the Rating Scale Model (RSM), the Partial Credit Model (PCM), the Generalized Partial Credit Model (GPCM).
-
-```{r child='_IRT_Unidimensionality.Rmd'}
-```
-
-```{r child='_IRT_RatingScaleModel.Rmd'}
-```
-
-```{r child='_IRT_PartialCreditModel.Rmd'}
-```
-
-```{r child='_IRT_GeneralizedPartialCreditModel.Rmd'}
-```
-
-```{r child='_IRT_GradedResponseModel.Rmd'}
-```
-
-```{r child='_IRT_ModelComparison.Rmd'}
-```

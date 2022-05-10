@@ -21,21 +21,21 @@ The item-person map (also known as the Wright map) is a tool for visualizing the
 ```{r wright, fig.cap='Item-Person Map: All Likert Items'}
 
 # ITEM-PERSON MAP #1: FOR ALL THE SHAS ITEMS
-library(reshape2)
-library(cowplot)
-library(mirt)
-source("code/itempersonmap.R")
-items <- read.csv("data/items.csv")
-mod <- mirt(items, 1, itemtype = "Rasch", 
-            technical = list(removeEmptyRows=TRUE),
-            verbose = FALSE) # estimate the Partial Credit Model
-itempersonmap(mod) # create the item-person map
+# library(reshape2)
+# library(cowplot)
+# library(mirt)
+# source("code/itempersonmap.R")
+# items <- read.csv("data/items.csv")
+# mod <- mirt(items, 1, itemtype = "Rasch", 
+#             technical = list(removeEmptyRows=TRUE),
+#             verbose = FALSE) # estimate the Partial Credit Model
+# itempersonmap(mod) # create the item-person map
 
 ```
 
 Figure \@ref(fig:wright) is an item-person map of all 66 Likert SHAS items against all of the examinees. In the plot, red points indicate item thresholds for each item (three thresholds separating four response categories) and the asterisk indicates the average value of the thresholds for each item. The higher these thresholds, the more spiritual abuse the examinee has experienced. On the left-hand side of the plot, we also see the distribution of examinees along the latent trait (i.e., the construct of spiritual abuse).
 
-This plot offers several insights at a general level. First, the plot of examinees on the left suggests that the latent trait of spiritual abuse is normally distributed, with a slight negative skew. Very few examinees reported very low or very high levels of exposure to spiritual abuse; most reported a moderate to slightly higher than average level of spiritual abuse. Second, with this plot it is difficult to distinguish individual items but it does show that they tend to clusteraround this "slightly higher than average" level of spiritual abuse, with none capturing a very low level of abuse and just a handful of items measuring much higher than average levels of spiritual abuse. Three items had response categories that captured very high levels of spiritual abuse.
+This plot offers several insights at a general level. First, the plot of examinees on the left suggests that the latent trait of spiritual abuse is normally distributed, with a slight negative skew. Very few examinees reported very low or very high levels of exposure to spiritual abuse; most reported a moderate to slightly higher than average level of spiritual abuse. Second, with this plot it is difficult to distinguish individual items but it does show that they tend to cluster around this "slightly higher than average" level of spiritual abuse, with none capturing a very low level of abuse and just a handful of items measuring much higher than average levels of spiritual abuse. Three items had response categories that captured very high levels of spiritual abuse.
 
 ## Information curves
 These provide important information about where along the scale of the latent trait the item or set of items provides the most reliable information. If there are too few "easy" or "difficult" items, then these extreme scores for examinees are less reliable.

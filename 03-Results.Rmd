@@ -1,0 +1,37 @@
+# Results
+
+## Participant Characteristics
+
+In total, 3,222 individuals responded to the survey. Participants who returned the survey, did not opt out, and completed at least 50% of the spiritual abuse item pool were considered complete responders and included in the study (N=xxxx). Non-responders included XXXs who opted out of the survey (N=xxx), returned a blank questionnaire (N=xx), and did not return anything (N=XXX). The response rate was approximately XX%.
+
+Table 1 shows the demographic and clinical characteristics of the sample used for item analysis. Participants were mostly XXX and XXX but with sizable minority participation (i.e., XX% XXX, XX% XXX).
+
+[Table 1 Demographic and Clinical Variables for Community Sample (N=3,222)]
+
+Variable n %
+Age
+Female
+Race/ethnicity
+Hispanic/Latinx
+Married
+Education
+
+
+In this chapter, we examine the technical quality of the SHAS items within the framework of item response theory. We begin by introducing IRT and discussing its advantages. Then we document our IRT item analyses. We conclude by summarizing what we learn from these analyses to help us refine these 66 items and possibly develop better ones in the future.
+
+### Initial Item Analysis
+
+>XXX pairs of items in the polychoric correlation matrix were highly correlated (r > 0.70). After removing X items, these pairs disappeared (several items appeared in multiple pairs). We note that these pairs of items were expected because we tested several items with alternate wording. Next, we examined how individual items (or small groups of items) might separate from larger sets of items with a hierarchical item cluster plot [34]. This plot showed final clustering of a pair of items with narrow content (social support) and a single item that had poor wording and the lowest cluster loading (i.e., corrected item-total correlation). We deleted these three items, and an additional item with redundant wording, leaving XX in the item pool at this stage.
+
+## Exploratory Bifactor Analysis
+
+>We removed a total of nine items in this step, based on empirical and conceptual considerations. The bifactor models with four subfactors identified three items with low general factor loadings (< 0.50) or high specific factor loadings (> 0.50). These items focused on individual health behavior maintenance. In addition, we noticed that a single specific factor was driven by three items from the “health information use” domain, also showing high specific factor loadings and low general factor loadings, suggesting a potential for multidimensionality. They focused on independent health information use (e.g., “It is easy to find information on my own that helps me manage my symptoms”). All other items in this domain showed lower loadings on the “health information use” factor (< 0.35). We opted to remove these three items, and model three subfactors representing the remaining subdomains. This decision to shift from 4 to 3 subfactors was based not only on these empirical considerations, but on the overarching conceptual assumption that the construct of engagement is essentially collaborative, and that the multidimensionality of items addressing independent skills was inconsistent with this assumption.
+
+>In the subsequent 3-factor bifactor model, we identified three more items with general factor loadings of 0.50 or less. These items addressed resilient self-efficacy for independent self-management behaviors (e.g., “I attend all of my appointments, even when life gets busy or stressful”) and were removed based on similar empirical considerations and conceptual assumptions. The resulting 30 item set showed a high proportion of general factor variance relative to specific factor variance (item-level proportions ranging from 0.58 to 0.83), with overall indices of Omega-H as 0.79 and ECV 0.69. These values suggest sufficient levels of unidimensionality and that the items mostly reflect a single construct [36].
+
+## Bifactor Model of Final XX-Item Set
+
+## Item Response Theory Model
+
+## DIF Analysis
+

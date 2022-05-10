@@ -1,0 +1,19 @@
+
+```{r child='_AboutIRT.Rmd'}
+```
+
+```{r child='_IRT_Unidimensionality.Rmd'}
+```
+
+
+```{r child='_IRT_PartialCreditModel.Rmd'}
+```
+
+```{r child='_IRT_GeneralizedPartialCreditModel.Rmd'}
+```
+
+```{r child='_IRT_GradedResponseModel.Rmd'}
+```
+
+```{r child='_IRT_ModelComparison.Rmd'}
+```
