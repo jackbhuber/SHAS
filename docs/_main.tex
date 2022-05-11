@@ -92,6 +92,20 @@
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 \usepackage{booktabs}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -137,31 +151,29 @@ Validation is research into the meanings and uses of scores from instruments. It
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-Spiritual and religious abuse is a new construct to describe a serious problem. As \citet{KochEdstrom2022} put it:
+Spiritual and religious abuse is a new construct to describe a serious problem.
+
+As \citet{KochEdstrom2022} put it:
+
+Research to date on spiritual and religious abuse is a wild west. Taken together, R/S abuse is distinguished from other types of abuse by a religious component of one sort or another. A form of emotional and psychological abuse characterized by systemic patterns of coercion and control in religious contexts; spiritual abuse is distinguished from broad emotional abuse by its common inclusion of specifically religious elements, like the quoting of scripture or the giving of a ``divine rationale'' for mistreatment (Oakley et al, 2018). Categories: rejecting, isolating, terrorizing, ignoring, corrupting, verbally assaulting, and over-pressuring (Pearl, 1994). Three broad categories of religious abuse: abuse perpetrated by religious leaders, abuse perpetrated by a religious group or person representing a religious group, and abuse with a religious or spiritual component (Swindle, 2017). Other definitions focus on specific forms of religious or spiritual abuse, like using scripture or religious language to justify domestic abuse (Cares \& Cusick, 2012; Warford, 2014), any sexual or physically abusive act done by a clergy member (Doyle, 2006), and theologically sanctioned mistreatment of LGBTQ persons (Foster, Bowland, \& Vosler, 2015).
+
+\citet{KochEdstrom2022} define spiritual abuse as ``a type of emotional and psychological abuse perpetrated by a religious leader or group and/or with a religious or spiritual component, usually involving coercion or control.'' It is separable from other types of abuse that may co-occur or take place in a religious context or by a religious figure, like clergy sexual abuse or domestic violence excused through the quoting of scripture. A survivor of clergy sexual abuse, then, is understood for our purposes to have been abused both sexually and spiritually. The sexual abuse can be expected to have effects on the survivor similar to other instances of sexual abuse, while the spiritual abuse will likely affect whether or how they are able to practice their faith.
+
+Research points to serious negative effects of spiritual abuse (Ward, 2011; Swindle, 2017; Oakley \& Kinmond, 2014; Stevens et al.~2019). This research suggests that eligious leaders have a strong, near-parent-level potential for abusive harm, but more research is needed to support this inference. Further, trauma that takes place in a religious or spiritual setting can rob victims of religion and spirituality as a coping strategy, at least for those who exercise their religion and spirituality in in organized contexts (Panchuk, 2018). Given the broad evidential support for the role of R/S in healing from trauma, it is especially pernicious that R/S abuse takes place in religious settings of such strong potential for growth and healing. There are also concerns related to secondary trauma for clinicians working with R/S abused clients (Gubi \& Jacobs, 2009).
+
+In light of these concerns, a valid scale of spiritual harm and abuse is needed. To date one scale has been developed to measure religious or spiritual abuse \citet{Keller2016} but this instrument has not been used in any subsequent peer-reviewed research. Other scales measure various types of abuse, but not religious and spiritual abuse specifically (Kira, et al.~2008; Sanders \& Becker-Lausen, 1995; Carlson, et al.~2011; Briere \& Runtz, 1989).
+
+Such a scale may provide myriad potential benefits. Practitioners of clients whom they suspect may have been the victims of R/S abuse could administer the scale as part of their intake process, enabling them to quickly check their client's score against established, valid, and reliable norms. A reliable measurement of exposure to potential spiritual abuse and its effects can also be used extensively for research purposes, looking for relationships between spiritual abuse and any number of other psychological, health, or other measures.
+
+\citet{KochEdstrom2022} laid the foundation for a scale measuring exposure to potentially spiritually abusive experiences. They asked which types of religious and spiritual abuse most succinctly capture the phenomenon of being broadly exposed to religious and spiritual abuse. They defined the construct of spiritual harm and abuse and developed an initial item pool. They conducted EFA which revealed a handful of factors which they used to reduce the number of items and to define several subscales.
+
+This paper builds on \citet{KochEdstrom2022} and gathers additional validity evidence for the SHAS by using item response theory.
 
 \begin{quote}
-The terms ``spiritual abuse'' and ``religious abuse'' are used interchangeably by researchers. Oakley et al.~(2018) define spiritual abuse as a form of emotional and psychological abuse characterized by systemic patterns of coercion and control in religious contexts; spiritual abuse is distinguished from broad emotional abuse by its common inclusion of specifically religious elements, like the quoting of scripture or the giving of a ``divine rationale'' for mistreatment. (Much like R/S abuse, there is no consensus definition of emotional abuse, but Pearl (1994) proposed the following categories: rejecting, isolating, terrorizing, ignoring, corrupting, verbally assaulting, and overpressuring.) Swindle (2017) casts a wider net and identifies three broad categories of religious abuse: abuse perpetrated by religious leaders, abuse perpetrated by a religious group or person representing a religious group, and abuse with a religious or spiritual component. Other definitions focus on specific forms of religious or spiritual abuse, like using scripture or religious language to justify domestic abuse (Cares \& Cusick, 2012; Warford, 2014), any sexual or physically abusive act done by a clergy member (Doyle, 2006), and theologically sanctioned mistreatment of LGBTQ persons (Foster, Bowland, \& Vosler, 2015). Taken together, R/S abuse is distinguished from other types of abuse by a religious component of one sort or another. As conceived for this article, combining the approaches of Oakley, et al.~(2018) and Swindle (2017), spiritual abuse is defined as a type of emotional and psychological abuse perpetrated by a religious leader or group and/or with a religious or spiritual component, usually involving coercion or control. It is separable from other types of abuse that may co-ccur or take place in a religious context or by a religious figure, like clergy sexual abuse or domestic violence excused through the quoting of scripture. A survivor of clergy sexual abuse, then, is understood for our purposes to have been abused both sexually and spiritually. The sexual abuse can be expected to have effects on the survivor similar to other instances of sexual abuse, while the spiritual abuse will likely affect whether or how they are able to practice their faith.
+Although more commonly used with achievement tests, IRT models can also be used for both item calibration and ``ability'' estimation with rating scale instruments such as questionnaires measuring psychological or behavioral constructs. There are several advantages to using IRT models with rating scale instruments compared to other approaches such as sum scoring. Most importantly, such instruments yield data that are ordinal, not interval, making use of sum scores questionable (Smith, Conrad, Chang, \& Piazza, 2002). In Addition, IRT models provide ``sample-free measurement estimates, making it possible to estimate a person's level of the latent construct free of the distribution of the individual items and to estimate an item's difficulty level free from the distribtion of people used in the sample'' (DiStefano and Morgan, 2011, p.356). In addition, as Reeve and Masse (2004) point out, these models allow more in-depth analysis of items, examination of precision across the score continuum (as opposed to a single overall reliability coefficient) and better handling of complex measurement problems such as linking scores across alternative forms'' \citep[p.2]{Dogan2018}.
 \end{quote}
 
-\begin{quote}
-Based on the existing qualitative research, the negative effects of spiritual abuse can be very serious. Ward (2011) found evidence of persistent physical illness in multiple respondents, including major surgery, chronic hospital visits, gallstones, biliary colic of the liver, and inflamed esophagus, understood to be a result of stress-induced exhaustion from spending time in spiritually abusive environments. Swindle (2017) found that all seven of her participants reported some level of emotional trauma; psychological consequences included depression, anger, fear, feeling stuck, confusion, and decreased self-worth. One participant was shunned and banned from all church group activities when it was discovered that she was being treated with depression medication and seeing a psychiatrist (Swindle 2017). Many of the respondents in a survey by Oakley \& Kinmond (2014) reported leaders who demanded complete, unquestioning obedience; a consensus that a leader is divinely appointed to that position can leave abusers unchallenged. Abuse by religious figures appears to be quite destructive. Stevens et al.~(2019) found that college students who alleged sexual abuse by religious figures were just as symptomatic as those abused by their parents. It can be inferred from this finding that religious leaders have a strong, near-parent-level potential for abusive harm, but more research is needed to support this inference.
-\end{quote}
-
-\begin{quote}
-There are also concerns related to secondary trauma for clinicians working with R/S abused clients. In a small study of five counselors who had worked with spiritually abused clients, Gubi \& Jacobs (2009) found symptoms of secondary traumatic stress disorder and visceral traumatization, including anger, sadness, outrage, grief, cynicism, and helplessness. Encouragingly, working with these clients also profoundly deepened the counselor's relationship with God (Gubi \& Jacobs 2009). Increasing visibility and training around R/S abuse may lead to protections and benefits not only for survivors but practitioners as well.
-\end{quote}
-
-\begin{quote}
-However defined, trauma occurring in a R/S setting has the effect of reducing a victim's ability to use R/S as a coping strategy, at least for those who exercise their R/S in organized contexts (Panchuk, 2018). This may be the result of religious leaders explicitly claiming to represent God (Ward, 2011) or simply of the abuse occurring in a religious context and therefore carrying traumatic connotations for the survivor. Given the broad evidential support for the role of R/S in healing from trauma, it is especially pernicious that R/S abuse takes place in religious settings of such strong potential for growth and healing.
-\end{quote}
-
-In light of these concerns, a valid scale of spiritual harm and abuse is needed. Such a scale may provide myriad potential benefits. Practitioners of clients whom they suspect may have been the victims of R/S abuse could administer the scale as part of their intake process, enabling them to quickly check their client's score against established, valid, and reliable norms. A reliable measurement of exposure to potential spiritual abuse and its effects can also be used extensively for research purposes, looking for relationships between spiritual abuse and any number of other psychological, health, or other measures. Their research question was: ``Which types of R/S abuse most succinctly capture the phenomenon of being broadly exposed to R/S abuse?'' The hypothesis is that factor analysis will reveal \textless30 items that can reliably comprise a shorter scale for broad exposure to religious and spiritual abuse and its common effects.
-
-To date only one scale has been developed to measure religious or spiritual abuse \citet{Keller2016} and this scale has not been used in any subsequent peer-reviewed research. Other scales measure various types of abuse, but not R/S abuse specifically. The Cumulative Trauma Scale (Kira, et al.~2008) was developed to measure overall trauma amongst a Middle Eastern refugee population. The Child Abuse and Trauma Scale (Sanders \& Becker-Lausen, 1995) measures childhood and adolescent experiences. The Trauma History Screen (Carlson, et al.~2011) includes a handful of items that could be religion-related, like sexual abuse or being ``suddenly abandoned by a spouse, partner, parent, or family'' but does not ask about the cause of the abandonment. The Trauma Symptom Checklist (Briere \& Runtz, 1989) measures a respondent's current trauma levels and contains helpful subsets of trauma, but no items ask specifically about anything religious. Other trauma-related screens and scales similarly lack any specific religious component.
-
-\citet{KochEdstrom2022} laid the foundation for a scale measuring exposure to potentially spiritually abusive experiences. They defined the construct of spiritual harm and abuse and developed an initial item pool. They conducted EFA which revealed a handful of factors which they used to reduce the number of items and to define several subscales.
-
-This paper extends on \citet{KochEdstrom} by using additional psychometric evidence to gather additional evidence of validity for the nascent Spiritual Harm \& Abuse Scale (SHAS). The goal of the current study was to establish an outcome measure that reflects a patient's exposure to and damage from spiritual harm and abuse. We aimed to establish an item bank on healthcare engagement that is sufficiently unidimensional to yield a single score, is free from differential item functioning based on race, gender, or chronic condition, and maximizes parsimony and precision across the continuum of the latent construct.
+The goal of the current study was to refine the SHAS and provide an outcome measure that reflects a patient's exposure to and damage from spiritual harm and abuse. We aimed to establish an item bank on spiritual harm and abuse that is sufficiently uni-dimensional to yield a single score, is free from differential item functioning based on race, gender, and maximizes parsimony and precision across the continuum of the latent construct.
 
 \hypertarget{methods}{%
 \section{Methods}\label{methods}}
@@ -187,10 +199,6 @@ We conducted an online survey of listeners to progressive Christian podcasts. Ou
 However, the data come from a convenience sample which raises some challenge of sampling bias. Dan sent the link out to {[}lots of people{]}, and (if memory serves) encouraged them to send it to people \emph{they} knew. This would seem to bias responses toward people demographically similar to Dan: white, Millennial, west coast American, middle class, highly educated, primarily Protestant and Catholic Christian, etc. This will be more apparent upon closer inspection of the demographics of the sample.
 
 One source of examinees was people who listen to progressive Christians podcasts such as \emph{You Have Permission} which Dan produced at the time of data collection. This is a known source of bias toward people who have some interest in Christianity along with at least some level of rejection of conservative/orthodox Christianity and/or political conservatism. However, this would be an appropriate group from which to invite participation if the target population is people who have experienced spiritual abuse.
-
-Sample Characteristics
-
-Table about here.
 
 \hypertarget{measures}{%
 \subsection{Measures}\label{measures}}
@@ -234,11 +242,54 @@ All analyses were conducted in \textbf{R}, using the \textbf{psych} package {[}4
 \hypertarget{participant-characteristics}{%
 \subsection{Participant Characteristics}\label{participant-characteristics}}
 
-In total, 3,222 individuals responded to the survey. Participants who returned the survey, did not opt out, and completed at least 50\% of the spiritual abuse item pool were considered complete responders and included in the study (N=xxxx). Non-responders included XXXs who opted out of the survey (N=xxx), returned a blank questionnaire (N=xx), and did not return anything (N=XXX). The response rate was approximately XX\%.
+In total, 3,222 individuals responded to the survey. Participants who did not opt out and completed at least 50\% of the spiritual abuse item pool were considered complete responders and included in the study (N=3,219). Non-responders included those responded to less than half of the items (N=3).
 
 Table 1 shows the demographic and clinical characteristics of the sample used for item analysis. Participants were mostly XXX and XXX but with sizable minority participation (i.e., XX\% XXX, XX\% XXX).
 
-{[}Table 1 Demographic and Clinical Variables for Community Sample (N=3,222){]}
+\begin{table}
+
+\caption{\label{tab:dems-table}Demographic Variables for Community Sample (N=X,XXX)}
+\centering
+\resizebox{\linewidth}{!}{
+\fontsize{12}{14}\selectfont
+\begin{tabular}[t]{l|c|c|c|c|c|c|c|c|c|c|c|c}
+\hline
+  & n & mean & sd & median & trimmed & mad & min & max & range & skew & kurtosis & se\\
+\hline
+Age & 3056 & 38.566 & 12.269 & 36 & 37.213 & 10.378 & 16 & 88 & 72 & 0.977 & 0.589 & 0.222\\
+\hline
+Gender & 3060 & 1.674 & 0.822 & 2 & 1.586 & 0.000 & 1 & 6 & 5 & 2.668 & 10.775 & 0.015\\
+\hline
+Sexual orientation & 3064 & 1.361 & 1.013 & 1 & 1.066 & 0.000 & 1 & 6 & 5 & 3.078 & 9.041 & 0.018\\
+\hline
+Race & 3060 & 3.080 & 0.789 & 3 & 3.000 & 0.000 & 1 & 7 & 6 & 3.325 & 16.841 & 0.014\\
+\hline
+Raised in Christian home & 3061 & 1.087 & 0.282 & 1 & 1.000 & 0.000 & 1 & 2 & 1 & 2.932 & 6.596 & 0.005\\
+\hline
+Denomination of most abuse & 3047 & 5.195 & 3.330 & 5 & 4.686 & 2.965 & 1 & 17 & 16 & 1.472 & 2.195 & 0.060\\
+\hline
+Racial makeup of abusive community & 3042 & 1.153 & 0.406 & 1 & 1.044 & 0.000 & 1 & 3 & 2 & 2.691 & 6.851 & 0.007\\
+\hline
+Racial makeup of abusive group leadership & 3044 & 1.095 & 0.348 & 1 & 1.000 & 0.000 & 1 & 3 & 2 & 3.901 & 15.407 & 0.006\\
+\hline
+Gender makeup of abusive group leadership & 3048 & 1.817 & 0.792 & 2 & 1.759 & 1.483 & 1 & 5 & 4 & 0.479 & -0.784 & 0.014\\
+\hline
+Involvement in abusive group & 3054 & 5.539 & 1.988 & 7 & 5.917 & 0.000 & 1 & 7 & 6 & -1.255 & 0.238 & 0.036\\
+\hline
+Current religious identification & 3057 & 3.237 & 2.962 & 1 & 2.922 & 0.000 & 1 & 8 & 7 & 0.701 & -1.360 & 0.054\\
+\hline
+Current theological identification & 2030 & 4.487 & 1.548 & 5 & 4.536 & 1.483 & 1 & 7 & 6 & -0.298 & -0.570 & 0.034\\
+\hline
+Current view of Bible & 3054 & 2.228 & 0.539 & 2 & 2.231 & 0.000 & 1 & 3 & 2 & 0.114 & -0.235 & 0.010\\
+\hline
+Generation & 3056 & 2.426 & 0.791 & 2 & 2.350 & 0.000 & 1 & 5 & 4 & 0.756 & 0.220 & 0.014\\
+\hline
+Podcast Use & 3060 & 1.605 & 0.635 & 2 & 1.529 & 1.483 & 1 & 3 & 2 & 0.564 & -0.629 & 0.011\\
+\hline
+\end{tabular}}
+\end{table}
+
+Table \ref{tab:} reports demographic variables.
 
 Variable n \%
 Age
@@ -247,8 +298,6 @@ Race/ethnicity
 Hispanic/Latinx
 Married
 Education
-
-In this chapter, we examine the technical quality of the SHAS items within the framework of item response theory. We begin by introducing IRT and discussing its advantages. Then we document our IRT item analyses. We conclude by summarizing what we learn from these analyses to help us refine these 66 items and possibly develop better ones in the future.
 
 \hypertarget{initial-item-analysis}{%
 \subsubsection{Initial Item Analysis}\label{initial-item-analysis}}

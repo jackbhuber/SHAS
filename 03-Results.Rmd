@@ -1,12 +1,72 @@
 # Results
 
+```{r, include=FALSE, echo=FALSE}
+knitr::opts_chunk$set(comment = "", warning = FALSE, echo = FALSE,  message = FALSE, tidy.opts=list(width.cutoff=60), tidy = TRUE)
+knitr::opts_knit$set(verbose = FALSE)
+```
+
+```{r data-prep, include=TRUE, echo=FALSE}
+
+# LOAD ORIGINAL DATA
+library(readxl) # for reading the source Excel file
+shas <- read_excel("data/data.xlsx") # load Excel file
+
+# SELECT ITEMS
+all1 <- shas[ ,14:97] # select items, dems from columns 14-79
+all1 <- subset(all1, select = -c(Ext_Avg:Global_Avg)) # remove columns for now
+# items <- all[ ,1:66]
+
+# DEAL WITH MISSING DATA
+library(naniar)
+library(tidyverse)
+miss <- miss_case_summary(all1)
+miss <- miss[order(miss$case),]
+all2 <- cbind(all1, miss)
+all <- subset(all2, pct_miss <= 50)
+nonresp <- subset(all2, pct_miss > 50)
+```
+
 ## Participant Characteristics
 
-In total, 3,222 individuals responded to the survey. Participants who returned the survey, did not opt out, and completed at least 50% of the spiritual abuse item pool were considered complete responders and included in the study (N=xxxx). Non-responders included XXXs who opted out of the survey (N=xxx), returned a blank questionnaire (N=xx), and did not return anything (N=XXX). The response rate was approximately XX%.
+In total, 3,222 individuals responded to the survey. Participants who did not opt out and completed at least 50% of the spiritual abuse item pool were considered complete responders and included in the study (N=3,219). Non-responders included those responded to less than half of the items (N=3).
 
 Table 1 shows the demographic and clinical characteristics of the sample used for item analysis. Participants were mostly XXX and XXX but with sizable minority participation (i.e., XX% XXX, XX% XXX).
 
-[Table 1 Demographic and Clinical Variables for Community Sample (N=3,222)]
+```{r sample, echo=FALSE}
+# GET DEMOGRAPHIC DATA
+library(psych)
+dems <- as.data.frame(all1[,c(67:81)])
+names(dems) <- c(
+  Q84 = "Age",
+  Q85 = "Gender",
+  Q86 = "Sexual orientation",
+  Q87 = "Race",
+  Q88 = "Raised in Christian home",
+  Q89 = "Denomination of most abuse",
+  Q90 = "Racial makeup of abusive community",
+  Q91 = "Racial makeup of abusive group leadership",
+  Q92 = "Gender makeup of abusive group leadership",
+  Q95 = "Involvement in abusive group",
+  Q93 = "Current religious identification",
+  Q97 = "Current theological identification",
+  Q98 = "Current view of Bible",
+  Generation = "Generation",
+  Podcast_Usage = "Podcast Use"
+)
+dems <- as.data.frame(describe(dems))
+dems <- subset(dems[,-1])
+dems <- round(dems,3)
+# dems <- subset(dems[-c(16:18),])
+```
+
+```{r dems-table, echo=FALSE}
+library(kableExtra)
+dems %>%
+  kbl(align = "cccccccccccc", caption = "Demographic Variables for Community Sample (N=X,XXX)") %>%
+  kable_styling("condensed", latex_options = "scale_down", font_size = 12, fixed_thead = T)
+```
+
+Table \@ref(tab:) reports demographic variables.
 
 Variable n %
 Age
@@ -16,10 +76,13 @@ Hispanic/Latinx
 Married
 Education
 
-
-In this chapter, we examine the technical quality of the SHAS items within the framework of item response theory. We begin by introducing IRT and discussing its advantages. Then we document our IRT item analyses. We conclude by summarizing what we learn from these analyses to help us refine these 66 items and possibly develop better ones in the future.
-
 ### Initial Item Analysis
+
+```{r}
+# POLYCHORIC CORRELATION MATRIX
+
+```
+
 
 >XXX pairs of items in the polychoric correlation matrix were highly correlated (r > 0.70). After removing X items, these pairs disappeared (several items appeared in multiple pairs). We note that these pairs of items were expected because we tested several items with alternate wording. Next, we examined how individual items (or small groups of items) might separate from larger sets of items with a hierarchical item cluster plot [34]. This plot showed final clustering of a pair of items with narrow content (social support) and a single item that had poor wording and the lowest cluster loading (i.e., corrected item-total correlation). We deleted these three items, and an additional item with redundant wording, leaving XX in the item pool at this stage.
 
