@@ -1,0 +1,99 @@
+Having established sufficient evidence of unidimensionality to use item response theory, we estimated the Rating Scale Model (RSM) [@Andrich1978]. We chose this model because it was developed for polytomous items that share the same response categories and all of the SHAS items used the same Likert scale of frequency.
+
+```{r rsm-run}
+# ESTIMATE RSM MODEL
+library(knitr)
+library(stats4)
+library(lattice)
+library(mirt)
+all <- read.csv("data/all.csv")
+source("code/ApplyItemLabels.R")
+model.rsm <- 'RATING SCALE MODEL = 1-66'
+results.rsm <- mirt(data=all[,1:66], model=model.rsm, itemtype="rsm", verbose=FALSE)
+```
+
+```{r rsm-item-stats}
+# GET ITEM PARAMETERS
+coef.rsm <- coef(results.rsm, IRTpars=TRUE, na.rm=TRUE, simplify=TRUE)
+item.pars.rsm <- as.data.frame(coef.rsm$items)
+item.pars.rsm <- within(item.pars.rsm, rm(a1))      
+
+# ATTACH FIT STATISTICS
+item.fits.rsm <- as.data.frame(mirt::itemfit(results.rsm, 'infit'))
+item.fits.rsm <- item.fits.rsm[,-1]
+items.tbl.rsm <- cbind(item.pars.rsm,item.fits.rsm)
+items.tbl.rsm <- round(items.tbl.rsm,2)
+items.tbl.rsm <- items.tbl.rsm[order(items.tbl.rsm$c),]
+```
+
+```{r rsm-item-tbl}
+library(kableExtra)
+library(dplyr)
+items.tbl.rsm %>%
+  # mutate(
+  #   outfit = cell_spec(outfit, color = ifelse(outfit > .5 & outfit < 1.5 ,"black",c("red",bold=TRUE))),
+  #   infit = cell_spec(infit, color = ifelse(infit > .5 & infit < 1.5 , "black","red"))
+  #   ) %>%
+  kbl(escape = F, align = "rrrrrrrrr", caption = 'Estimated Item Parameters for the Rating Scale Model and Item Chi-Square Fit Statistics', booktabs = T) %>%
+  kable_styling("condensed", latex_options = "scale_down", font_size = 12, fixed_thead = T)
+```
+
+```{r rsm-item-plots, fig.cap='Category Response Curves for the Rating Scale Model'}
+# RSM ITEM PLOTS
+library(directlabels)
+a <- plot(results.rsm, type = 'trace', which.items = c(33,10),
+     main = "", par.settings = simpleTheme(lty=1:4,lwd=2),
+     auto.key=list(points=FALSE,lines=TRUE, columns=4))
+direct.label(a, 'top.points')
+```
+
+Table \@ref(tab:rsm-item-tbl) reports the item parameters and fit statistics estimated by the RSM for the 66 SHAS items. Columns b1 to b4 report the estimated thresholds (or step parameters). These values are the same for all items. Figure \@ref(fig:rsm-item-plots) shows plots of two items attempt to convey this information visually. In both plots, the horizontal axis is the scale of the latent trait -- in this case, overall lifetime exposure to spiritual abuse -- expressed in logits ranging from -6 to +6. The vertical axis is the probability of selecting a given response (such as "Always") given the examinee's position on the continuum of the latent trait (or overall level of lifetime exposure to spiritual abuse). The blue line is the probability of selecting "Never" for examinees ranging from low to high lifetime spiritual abuse. Examinees with low levels of overall spiritual abuse are most likely to select "Never". Those with high levels of overall spiritual abuse are most likely to select "Always." But examinees with more moderate or average levels of spiritual abuse are more likely to select P3 or P4, "Sometimes" or "Often", respectively. In both plots, as in the step parameters reported in Table xxx, the pattern of response categories is the same.
+
+What does vary between items, in this model, is the difficulty parameter (also called the item location). This is shown in the "c" column of Table \@ref(fig:rsm-item-plots), and the items are sorted by this value in order to compare their relative "difficulty". This parameter represents the location of the item on the logit scale of the latent trait. It represents the location of the item on the continuum of the latent trait (lifetime spiritual abuse). It raises the question: Does the item represent the "most" spiritual abuse? The least? Or somewhere in the middle?
+
+```{r rsm-item-hist, fig.cap='Distribution of Item Locations'}
+hist(item.pars.rsm$c, breaks=100, main = NULL, col="red", xlab=bquote(theta), xlim = c(-3,3))
+```
+
+Figure \@ref(fig:rsm-item-hist) is a histogram of the distribution of item difficulty parameters. The distribution is negatively skewed with most items clustered slightly above the average level of spiritual abuse and several items measuring very low levels of lifetime exposure to spiritual abuse.
+
+Item fit statistics are also reported in Table \@ref(tab:rsm-item-tbl). These show how closely the observed pattern of item responses fits the pattern of item responses predicted by the particular IRT model (Rasch, partial credit, etc.). They do this by means of chi-square statistics which examine the cumulative difference the observed pattern of item responses and the pattern of item responses that the model would expect. Two fit statistics commonly used in IRT models are the infit mean square (MNSQ) and the outfit mean square (MNSQ) [@BondFox2015]. The infit statistic places greater emphasis on unexpected responses that are close to the examinees and item location. The outfit is sensitive to unexpected responses that are far from the location. The expected value of infit or outfit for each item is 1.0, with a range of acceptable values ranging from 0.5 to 1.5. Values outside these boundaries indicate a lack of fit between items and the model. All but six of the 66 items had infit and outfit statistics within the acceptable range from 0.5 to 1.5. The large outfit values mean the observed patterns of responses to these items differed substantially from the patterns of responses expected by the PCM. These items capture the experiences of women, people of color, and LGBTQ persons.
+
+To assess the overall fit of the model to the item response data we use two statistics. The first is the Root Mean Square Error of Approximation (RMSEA). The suggested cutoff for RMSEA is .06. The second is the CFI. The suggested cutoff for the CFI is .95. Model fit statistics for the SHAS items are presented in Table \@ref(tab:rsm-model-fit). 
+
+```{r rsm-model-fit}
+# MODEL FIT
+library(kableExtra)
+rsm.model.fit <- as.data.frame(M2(results.rsm, type = "C2"))
+rsm.model.fit <- round(rsm.model.fit,3)
+row.names(rsm.model.fit)[row.names(rsm.model.fit) == "stats"] <- "RSM"
+round(rsm.model.fit,3) %>%
+  # mutate(
+  #   RMSEA = cell_spec(RMSEA, color = ifelse(RMSEA <= .06, "green","red")),
+  #   CFI = cell_spec(CFI, color = ifelse(CFI >= .95, "green","black"))
+  #   ) %>%
+  kable(escape = F, align = "cccccccc", caption = 'Model Fit Statistics for the Rating Scale Model') %>%
+  kable_styling(bootstrap_options = "condensed", latex_options = "scale_down")
+```
+
+The obtained RMSEA value = .092 (95% CI[.092, .093]) exceeds the cutoff of .06. The CFI = .953 meets the recommended .95 threshold. Together these statistics offer weak evidence that the RSM fits the SHAS items.
+
+The Rating Scale Model is an appropriate model for polytomous items such as the SHAS items that all use the same Likert scale of frequency. Of the 66 items, only six had outfit or infit statistics beyond the acceptable ranges. The CFI value of .953 offers further evidence that the Rating Scale Model fits the SHAS items.
+
+>We first ran a nominal response IRT model to examine category functioning within the items. Results indicated the lowest two categories (“Not at all true” and “A little bit true”) did not reliably distinguish engagement levels among respondents. Consequently, we collapsed these two categories in subsequent models such that three thresholds are estimated for four categories of item data (for additional detail, see Reise et al., under review).
+
+>We proceeded with estimating item parameters for our 23-item set with both a unidimensional and bifactor model. Because slopes from the two models cannot be fairly compared [43], we converted the bifactor conditional slopes into marginal slopes. The resulting marginal slopes were highly correlated with the unidimensional slopes (r = 0.86), but slightly lower on average, showing a mean slope value of 1.67 (range 1.67–2.61) compared to 1.83 (range 1.30–2.54) for the pure unidimensional solution. Given this slight difference, we decided to use the converted bifactor parameters, which have more accurate (higher) standard errors [43]. The mean location value of the final item parameter set (averaged across the three values for each item) was − 0.76 (range − 1.57 to 0.14). The lowest location value was − 2.68 and the highest was 1.25. Figure 1 shows the average location parameter across the items for the final item parameter set. This plot illustrates that item #5 (“If I didn’t think a treatment was working, I would tell my provider”) was easiest for participants to endorse, but item #6 [“It is easy to find the health care resources I need (such as classes, support groups)”] was the hardest. In other words, any given participant was more likely to rate #5 as true compared to #6.
+
+>Fig. 1. Plot of healthcare engagement measure items, ordered by average location parameter. Minimum and maximum values of the lines represent the lowest and highest value of the location parameters associated with each item. Dot size is proportional to the discrimination value. Truncated item text is shown
+
+>Fig. 2. Reliability estimates for the final 23-item set across the trait range, based on the graded response model
+
+>Figure 2 shows the marginal reliability curve across the latent trait, customarily denoted by theta, which has a population mean of 0 and population standard deviation of 1. For the x-axis of Fig. 2, we converted theta to T-scores (theta *10 + 50). This shows that the estimated reliability is 0.90 or higher ranging from T-scores of 22–65. Figure 3 shows the distribution of IRT-based scores for the current sample, using our estimated item parameters and Bayes expected a posteriori (EAP) scoring [50]. The scores mostly form a bell-like shape, with the exception of a small subset of persons with very high levels of healthcare engagement.
+
+>Fig. 3. Histogram of Bayes expected a posteriori (EAP)-based T-scores for the final 23-item set across the trait range
+
+```{r}
+save(results.rsm, file = "data/results.rsm.RData")
+write.csv(rsm.model.fit,"data/rsm.model.fit.csv")
+rm(list=ls())
+```

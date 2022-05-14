@@ -58,8 +58,6 @@ set in the _output.yml file.</p>" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 
@@ -113,9 +111,11 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i>Results</a>
 <ul>
-<li class="chapter" data-level="" data-path="results.html"><a href="results.html#participant-characteristics"><i class="fa fa-check"></i>Participant Characteristics</a>
+<li class="chapter" data-level="" data-path="results.html"><a href="results.html#participant-characteristics"><i class="fa fa-check"></i>Participant Characteristics</a></li>
+<li class="chapter" data-level="" data-path="results.html"><a href="results.html#initial-item-analysis"><i class="fa fa-check"></i>Initial Item Analysis</a>
 <ul>
-<li class="chapter" data-level="" data-path="results.html"><a href="results.html#initial-item-analysis"><i class="fa fa-check"></i>Initial Item Analysis</a></li>
+<li class="chapter" data-level="" data-path="results.html"><a href="results.html#principal-components-analysis-pca"><i class="fa fa-check"></i>Principal Components Analysis (PCA)</a></li>
+<li class="chapter" data-level="" data-path="results.html"><a href="results.html#cluster-analysis"><i class="fa fa-check"></i>Cluster Analysis</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="results.html"><a href="results.html#exploratory-bifactor-analysis"><i class="fa fa-check"></i>Exploratory Bifactor Analysis</a></li>
 <li class="chapter" data-level="" data-path="results.html"><a href="results.html#bifactor-model-of-final-xx-item-set"><i class="fa fa-check"></i>Bifactor Model of Final XX-Item Set</a></li>
@@ -161,689 +161,139 @@ div.csl-indent {
 <h1>Results<a href="results.html#results" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="participant-characteristics" class="section level2 hasAnchor">
 <h2>Participant Characteristics<a href="results.html#participant-characteristics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In total, 3,222 individuals responded to the survey. Participants who did not opt out and completed at least 50% of the spiritual abuse item pool were considered complete responders and included in the study (N=3,219). Non-responders included those responded to less than half of the items (N=3).</p>
-<p>Table 1 shows the demographic and clinical characteristics of the sample used for item analysis. Participants were mostly XXX and XXX but with sizable minority participation (i.e., XX% XXX, XX% XXX).</p>
-<table class="table table-condensed" style="font-size: 12px; margin-left: auto; margin-right: auto;">
-<caption style="font-size: initial !important;">
-<span id="tab:dems-table">Table 1: </span>Demographic Variables for Community Sample (N=X,XXX)
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-</th>
-<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
-n
-</th>
-<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
-mean
-</th>
-<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
-sd
-</th>
-<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
-median
-</th>
-<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
-trimmed
-</th>
-<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
-mad
-</th>
-<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
-min
-</th>
-<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
-max
-</th>
-<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
-range
-</th>
-<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
-skew
-</th>
-<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
-kurtosis
-</th>
-<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
-se
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Age
-</td>
-<td style="text-align:center;">
-3056
-</td>
-<td style="text-align:center;">
-38.566
-</td>
-<td style="text-align:center;">
-12.269
-</td>
-<td style="text-align:center;">
-36
-</td>
-<td style="text-align:center;">
-37.213
-</td>
-<td style="text-align:center;">
-10.378
-</td>
-<td style="text-align:center;">
-16
-</td>
-<td style="text-align:center;">
-88
-</td>
-<td style="text-align:center;">
-72
-</td>
-<td style="text-align:center;">
-0.977
-</td>
-<td style="text-align:center;">
-0.589
-</td>
-<td style="text-align:center;">
-0.222
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Gender
-</td>
-<td style="text-align:center;">
-3060
-</td>
-<td style="text-align:center;">
-1.674
-</td>
-<td style="text-align:center;">
-0.822
-</td>
-<td style="text-align:center;">
-2
-</td>
-<td style="text-align:center;">
-1.586
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-6
-</td>
-<td style="text-align:center;">
-5
-</td>
-<td style="text-align:center;">
-2.668
-</td>
-<td style="text-align:center;">
-10.775
-</td>
-<td style="text-align:center;">
-0.015
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Sexual orientation
-</td>
-<td style="text-align:center;">
-3064
-</td>
-<td style="text-align:center;">
-1.361
-</td>
-<td style="text-align:center;">
-1.013
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-1.066
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-6
-</td>
-<td style="text-align:center;">
-5
-</td>
-<td style="text-align:center;">
-3.078
-</td>
-<td style="text-align:center;">
-9.041
-</td>
-<td style="text-align:center;">
-0.018
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Race
-</td>
-<td style="text-align:center;">
-3060
-</td>
-<td style="text-align:center;">
-3.080
-</td>
-<td style="text-align:center;">
-0.789
-</td>
-<td style="text-align:center;">
-3
-</td>
-<td style="text-align:center;">
-3.000
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-7
-</td>
-<td style="text-align:center;">
-6
-</td>
-<td style="text-align:center;">
-3.325
-</td>
-<td style="text-align:center;">
-16.841
-</td>
-<td style="text-align:center;">
-0.014
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Raised in Christian home
-</td>
-<td style="text-align:center;">
-3061
-</td>
-<td style="text-align:center;">
-1.087
-</td>
-<td style="text-align:center;">
-0.282
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-1.000
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-2
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-2.932
-</td>
-<td style="text-align:center;">
-6.596
-</td>
-<td style="text-align:center;">
-0.005
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Denomination of most abuse
-</td>
-<td style="text-align:center;">
-3047
-</td>
-<td style="text-align:center;">
-5.195
-</td>
-<td style="text-align:center;">
-3.330
-</td>
-<td style="text-align:center;">
-5
-</td>
-<td style="text-align:center;">
-4.686
-</td>
-<td style="text-align:center;">
-2.965
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-17
-</td>
-<td style="text-align:center;">
-16
-</td>
-<td style="text-align:center;">
-1.472
-</td>
-<td style="text-align:center;">
-2.195
-</td>
-<td style="text-align:center;">
-0.060
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Racial makeup of abusive community
-</td>
-<td style="text-align:center;">
-3042
-</td>
-<td style="text-align:center;">
-1.153
-</td>
-<td style="text-align:center;">
-0.406
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-1.044
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-3
-</td>
-<td style="text-align:center;">
-2
-</td>
-<td style="text-align:center;">
-2.691
-</td>
-<td style="text-align:center;">
-6.851
-</td>
-<td style="text-align:center;">
-0.007
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Racial makeup of abusive group leadership
-</td>
-<td style="text-align:center;">
-3044
-</td>
-<td style="text-align:center;">
-1.095
-</td>
-<td style="text-align:center;">
-0.348
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-1.000
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-3
-</td>
-<td style="text-align:center;">
-2
-</td>
-<td style="text-align:center;">
-3.901
-</td>
-<td style="text-align:center;">
-15.407
-</td>
-<td style="text-align:center;">
-0.006
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Gender makeup of abusive group leadership
-</td>
-<td style="text-align:center;">
-3048
-</td>
-<td style="text-align:center;">
-1.817
-</td>
-<td style="text-align:center;">
-0.792
-</td>
-<td style="text-align:center;">
-2
-</td>
-<td style="text-align:center;">
-1.759
-</td>
-<td style="text-align:center;">
-1.483
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-5
-</td>
-<td style="text-align:center;">
-4
-</td>
-<td style="text-align:center;">
-0.479
-</td>
-<td style="text-align:center;">
--0.784
-</td>
-<td style="text-align:center;">
-0.014
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Involvement in abusive group
-</td>
-<td style="text-align:center;">
-3054
-</td>
-<td style="text-align:center;">
-5.539
-</td>
-<td style="text-align:center;">
-1.988
-</td>
-<td style="text-align:center;">
-7
-</td>
-<td style="text-align:center;">
-5.917
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-7
-</td>
-<td style="text-align:center;">
-6
-</td>
-<td style="text-align:center;">
--1.255
-</td>
-<td style="text-align:center;">
-0.238
-</td>
-<td style="text-align:center;">
-0.036
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Current religious identification
-</td>
-<td style="text-align:center;">
-3057
-</td>
-<td style="text-align:center;">
-3.237
-</td>
-<td style="text-align:center;">
-2.962
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-2.922
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-8
-</td>
-<td style="text-align:center;">
-7
-</td>
-<td style="text-align:center;">
-0.701
-</td>
-<td style="text-align:center;">
--1.360
-</td>
-<td style="text-align:center;">
-0.054
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Current theological identification
-</td>
-<td style="text-align:center;">
-2030
-</td>
-<td style="text-align:center;">
-4.487
-</td>
-<td style="text-align:center;">
-1.548
-</td>
-<td style="text-align:center;">
-5
-</td>
-<td style="text-align:center;">
-4.536
-</td>
-<td style="text-align:center;">
-1.483
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-7
-</td>
-<td style="text-align:center;">
-6
-</td>
-<td style="text-align:center;">
--0.298
-</td>
-<td style="text-align:center;">
--0.570
-</td>
-<td style="text-align:center;">
-0.034
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Current view of Bible
-</td>
-<td style="text-align:center;">
-3054
-</td>
-<td style="text-align:center;">
-2.228
-</td>
-<td style="text-align:center;">
-0.539
-</td>
-<td style="text-align:center;">
-2
-</td>
-<td style="text-align:center;">
-2.231
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-3
-</td>
-<td style="text-align:center;">
-2
-</td>
-<td style="text-align:center;">
-0.114
-</td>
-<td style="text-align:center;">
--0.235
-</td>
-<td style="text-align:center;">
-0.010
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Generation
-</td>
-<td style="text-align:center;">
-3056
-</td>
-<td style="text-align:center;">
-2.426
-</td>
-<td style="text-align:center;">
-0.791
-</td>
-<td style="text-align:center;">
-2
-</td>
-<td style="text-align:center;">
-2.350
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-5
-</td>
-<td style="text-align:center;">
-4
-</td>
-<td style="text-align:center;">
-0.756
-</td>
-<td style="text-align:center;">
-0.220
-</td>
-<td style="text-align:center;">
-0.014
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Podcast Use
-</td>
-<td style="text-align:center;">
-3060
-</td>
-<td style="text-align:center;">
-1.605
-</td>
-<td style="text-align:center;">
-0.635
-</td>
-<td style="text-align:center;">
-2
-</td>
-<td style="text-align:center;">
-1.529
-</td>
-<td style="text-align:center;">
-1.483
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-3
-</td>
-<td style="text-align:center;">
-2
-</td>
-<td style="text-align:center;">
-0.564
-</td>
-<td style="text-align:center;">
--0.629
-</td>
-<td style="text-align:center;">
-0.011
-</td>
-</tr>
-</tbody>
-</table>
-<p>Table <a href="#tab:"><strong>??</strong></a> reports demographic variables.</p>
-<p>Variable n %
-Age
-Female
-Race/ethnicity
-Hispanic/Latinx
-Married
-Education</p>
-<div id="initial-item-analysis" class="section level3 hasAnchor">
-<h3>Initial Item Analysis<a href="results.html#initial-item-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In total, 3,222 individuals responded to the survey. Participants who did not opt out and completed at least 50% of the spiritual abuse item pool were considered complete responders and included in the study (N=3,219). Non-responders included those who responded to less than half of the items (N=3).</p>
+<p>Table <a href="#tab:dems-table"><strong>??</strong></a> shows the demographic and clinical characteristics of the sample used for item analysis. Participants were mostly XXX and XXX but with sizable minority participation (i.e., XX% XXX, XX% XXX).</p>
+</div>
+<div id="initial-item-analysis" class="section level2 hasAnchor">
+<h2>Initial Item Analysis<a href="results.html#initial-item-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <blockquote>
-<p>XXX pairs of items in the polychoric correlation matrix were highly correlated (r &gt; 0.70). After removing X items, these pairs disappeared (several items appeared in multiple pairs). We note that these pairs of items were expected because we tested several items with alternate wording. Next, we examined how individual items (or small groups of items) might separate from larger sets of items with a hierarchical item cluster plot [34]. This plot showed final clustering of a pair of items with narrow content (social support) and a single item that had poor wording and the lowest cluster loading (i.e., corrected item-total correlation). We deleted these three items, and an additional item with redundant wording, leaving XX in the item pool at this stage.</p>
+<p>XXX pairs of items in the polychoric correlation matrix were highly correlated (r &gt; 0.70). After removing X items, these pairs disappeared (several items appeared in multiple pairs). Next, we examined how individual items (or small groups of items) might separate from larger sets of items with a hierarchical item cluster plot [34]. This plot showed final clustering of a pair of items with narrow content and a single item that had poor wording and the lowest cluster loading (i.e., corrected item-total correlation). We deleted these three items and an additional item with redundant wording, leaving XX in the item pool at this stage.</p>
 </blockquote>
+<div id="principal-components-analysis-pca" class="section level3 hasAnchor">
+<h3>Principal Components Analysis (PCA)<a href="results.html#principal-components-analysis-pca" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="cluster-analysis" class="section level3 hasAnchor">
+<h3>Cluster Analysis<a href="results.html#cluster-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
 </div>
 <div id="exploratory-bifactor-analysis" class="section level2 hasAnchor">
 <h2>Exploratory Bifactor Analysis<a href="results.html#exploratory-bifactor-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><img src="_main_files/figure-html/bifact-1.png" width="672" /></p>
+<pre><code>Omega 
+Call: omegah(m = m, nfactors = nfactors, fm = fm, key = key, flip = flip, 
+    digits = digits, title = title, sl = sl, labels = labels, 
+    plot = plot, n.obs = n.obs, rotate = rotate, Phi = Phi, option = option, 
+    covar = covar)
+Alpha:                 0.98 
+G.6:                   0.99 
+Omega Hierarchical:    0.84 
+Omega H asymptotic:    0.85 
+Omega Total            0.98 
+
+Schmid Leiman Factor loadings greater than  0.2 
+        g   F1*   F2*   F3*   h2   u2   p2
+Q7   0.62                   0.45 0.55 0.84
+Q10  0.57        0.31       0.43 0.57 0.77
+Q11  0.71  0.21  0.22       0.60 0.40 0.84
+Q16  0.62        0.38       0.57 0.43 0.68
+Q17  0.29                   0.14 0.86 0.63
+Q18  0.72  0.26             0.62 0.38 0.85
+Q19  0.69        0.25       0.57 0.43 0.84
+Q20  0.63        0.29       0.50 0.50 0.79
+Q21  0.63                   0.47 0.53 0.85
+Q22  0.65  0.26             0.51 0.49 0.83
+Q23  0.58        0.24       0.43 0.57 0.80
+Q24  0.60        0.28       0.45 0.55 0.81
+Q25  0.71  0.24             0.60 0.40 0.83
+Q26  0.59        0.43       0.53 0.47 0.65
+Q27  0.42        0.34       0.30 0.70 0.59
+Q28  0.66        0.41       0.61 0.39 0.72
+Q29  0.63        0.22       0.47 0.53 0.83
+Q30  0.64        0.25       0.50 0.50 0.83
+Q31  0.58        0.36       0.49 0.51 0.68
+Q32  0.67              0.21 0.54 0.46 0.84
+Q34  0.61  0.32             0.49 0.51 0.77
+Q35  0.69  0.28             0.58 0.42 0.81
+Q36  0.71  0.21             0.59 0.41 0.85
+Q37  0.70                   0.57 0.43 0.86
+Q38  0.75  0.27             0.67 0.33 0.84
+Q39  0.67  0.32             0.58 0.42 0.78
+Q40  0.70  0.27             0.59 0.41 0.83
+Q41  0.26        0.23       0.13 0.87 0.51
+Q42  0.71        0.29       0.60 0.40 0.83
+Q43  0.67        0.29       0.55 0.45 0.82
+Q44  0.74        0.22       0.64 0.36 0.85
+Q45  0.68  0.44             0.66 0.34 0.71
+Q46                         0.04 0.96 0.41
+Q47  0.47        0.24       0.30 0.70 0.75
+Q49  0.65        0.41       0.60 0.40 0.71
+Q50  0.47        0.33       0.34 0.66 0.66
+Q51  0.57                   0.37 0.63 0.85
+Q52  0.69        0.41       0.65 0.35 0.73
+Q53  0.68  0.28             0.57 0.43 0.81
+Q54  0.70  0.29             0.61 0.39 0.81
+Q55  0.24        0.20       0.10 0.90 0.59
+Q56  0.76  0.20             0.67 0.33 0.86
+Q57  0.65        0.23  0.25 0.54 0.46 0.79
+Q58  0.69  0.37             0.61 0.39 0.77
+Q59  0.70        0.38       0.64 0.36 0.76
+Q60  0.42        0.34       0.30 0.70 0.59
+Q61  0.68  0.44             0.65 0.35 0.71
+Q62  0.61  0.30             0.47 0.53 0.78
+Q63  0.70        0.32       0.61 0.39 0.81
+Q64  0.65        0.35       0.57 0.43 0.75
+Q65  0.55        0.33       0.41 0.59 0.73
+Q66  0.66  0.25             0.51 0.49 0.84
+Q68  0.61              0.29 0.49 0.51 0.76
+Q69  0.52              0.47 0.51 0.49 0.53
+Q70  0.50              0.47 0.48 0.52 0.52
+Q71  0.68              0.33 0.59 0.41 0.78
+Q72  0.48              0.39 0.40 0.60 0.59
+Q73  0.58              0.47 0.56 0.44 0.60
+Q74  0.54              0.36 0.43 0.57 0.68
+Q76  0.68              0.29 0.57 0.43 0.80
+Q77  0.71              0.32 0.64 0.36 0.80
+Q78  0.61              0.49 0.61 0.39 0.61
+Q79  0.55              0.43 0.48 0.52 0.62
+Q80  0.62              0.45 0.59 0.41 0.65
+Q81  0.58        0.22  0.22 0.44 0.56 0.78
+Q82  0.55              0.39 0.45 0.55 0.67
+
+With eigenvalues of:
+   g  F1*  F2*  F3* 
+25.2  2.0  3.2  2.7 
+
+general/max  7.75   max/min =   1.59
+mean percent general =  0.74    with sd =  0.1 and cv of  0.14 
+Explained Common Variance of the general factor =  0.76 
+
+The degrees of freedom are 1950  and the fit is  7.52 
+The number of observations was  3222  with Chi Square =  24034.67  with prob &lt;  0
+The root mean square of the residuals is  0.03 
+The df corrected root mean square of the residuals is  0.04
+RMSEA index =  0.059  and the 10 % confidence intervals are  0.059 0.06
+BIC =  8283.04
+
+Compare this with the adequacy of just a general factor and no group factors
+The degrees of freedom for just the general factor are 2079  and the fit is  12.2 
+The number of observations was  3222  with Chi Square =  39007.58  with prob &lt;  0
+The root mean square of the residuals is  0.08 
+The df corrected root mean square of the residuals is  0.08 
+
+RMSEA index =  0.074  and the 10 % confidence intervals are  0.074 0.075
+BIC =  22213.92 
+
+Measures of factor score adequacy             
+                                                 g  F1*  F2*  F3*
+Correlation of scores with factors            0.92 0.71 0.75 0.81
+Multiple R square of scores with factors      0.84 0.51 0.56 0.66
+Minimum correlation of factor score estimates 0.69 0.02 0.12 0.32
+
+ Total, General and Subset omega for each subset
+                                                 g  F1*  F2*  F3*
+Omega total for total scores and subscales    0.98 0.93 0.95 0.93
+Omega general for total scores and subscales  0.84 0.79 0.75 0.66
+Omega group for total scores and subscales    0.08 0.14 0.19 0.26</code></pre>
 <blockquote>
 <p>We removed a total of nine items in this step, based on empirical and conceptual considerations. The bifactor models with four subfactors identified three items with low general factor loadings (&lt; 0.50) or high specific factor loadings (&gt; 0.50). These items focused on individual health behavior maintenance. In addition, we noticed that a single specific factor was driven by three items from the “health information use” domain, also showing high specific factor loadings and low general factor loadings, suggesting a potential for multidimensionality. They focused on independent health information use (e.g., “It is easy to find information on my own that helps me manage my symptoms”). All other items in this domain showed lower loadings on the “health information use” factor (&lt; 0.35). We opted to remove these three items, and model three subfactors representing the remaining subdomains. This decision to shift from 4 to 3 subfactors was based not only on these empirical considerations, but on the overarching conceptual assumption that the construct of engagement is essentially collaborative, and that the multidimensionality of items addressing independent skills was inconsistent with this assumption.</p>
 </blockquote>
@@ -859,6 +309,7 @@ Education</p>
 </div>
 <div id="dif-analysis" class="section level2 hasAnchor">
 <h2>DIF Analysis<a href="results.html#dif-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This is where DIF goes.</p>
 
 </div>
 </div>

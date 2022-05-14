@@ -1,0 +1,424 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Validity Evidence for the Spiritual Harm and Abuse Scale (SHAS)},
+  pdfauthor={Jack Huber, Swedish Medical Center; Dan Koch, Northwest University},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+\usepackage{booktabs}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+
+\title{Validity Evidence for the Spiritual Harm and Abuse Scale (SHAS)}
+\author{Jack Huber, Swedish Medical Center \and Dan Koch, Northwest University}
+\date{May 2022}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\hypertarget{abstract}{%
+\section{Abstract}\label{abstract}}
+
+This is a reproducible research project for validation of the nascent Spiritual Harm and Abuse Scale (SHAS), developed by Dan Koch. It aims to function as an evolving technical report to conceptualize and document various validity studies -- and, by extension, validity evidence -- for this scale. We hope some of these validity considerations and empirical studies amount to meaningful publishable contributions to the nascent research literature in spiritual abuse and/or the literature in religion, counseling psychology, and/or psychological measurement.
+
+The project is open source, for collaboration. It is built in R using the R Studio IDE \citep{R-base}. No Excel, no SPSS, no Word. It is built in \texttt{bookdown} (\citet{R-bookdown}) and hosted at Github as a public repository at \url{https://github.com/jackbhuber/SHAS}. There it is served over Github Pages as a website -- \url{https://jackhuber.org/SHAS/} -- for collaboration between Jack and Dan.
+
+\textbf{Research Questions}
+
+Validation is research into the meanings and uses of scores from instruments. It can be an ongoing research agenda. Following is an initial set of questions to guide research and scale improvement of the SHAS:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Item analysis and refinement} - Do some items have too many response categories?
+\item
+  \textbf{Data reduction} - As written and executed, which items appear to be critical (best performing) and which appear to be redundant or noisy? What might a shorter, streamlined instrument look like?
+\item
+  \textbf{Person fit} - How well does the current scale fit the population of examinees? Are there ceiling or floor effects? To what extent might the existing items under-represent the full range of abuse?
+\item
+  \textbf{Scale invariance} - Do the scales mean the same thing to different groups of examinees? To what extent do these scales (abuse constructs) vary by age, gender, and/or sexuality?
+\item
+  \textbf{Developmental pathway} - Beyond the current conceptualization of scales composed of redundant items, what might an incremental scale of abuse with diagnostic items look like?
+\end{itemize}
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+Spiritual and religious abuse has been a serious problem which has begun to gain the attention of the psychological research community. \citet{KochEdstrom2022} define spiritual abuse as ``a type of emotional and psychological abuse perpetrated by a religious leader or group and/or with a religious or spiritual component, usually involving coercion or control.'' Religious and spiritual abuse is distinguished from other forms of abuse by a religious component of one sort or another. A form of emotional and psychological abuse characterized by systemic patterns of coercion and control in religious contexts; spiritual abuse is distinguished from broad emotional abuse by its common inclusion of specifically religious elements, like the quoting of scripture or the giving of a ``divine rationale'' for mistreatment (Oakley et al, 2018). Categories: rejecting, isolating, terrorizing, ignoring, corrupting, verbally assaulting, and over-pressuring (Pearl, 1994). Three broad categories of religious abuse: abuse perpetrated by religious leaders, abuse perpetrated by a religious group or person representing a religious group, and abuse with a religious or spiritual component (Swindle, 2017). Other definitions focus on specific forms of religious or spiritual abuse, like using scripture or religious language to justify domestic abuse (Cares \& Cusick, 2012; Warford, 2014), any sexual or physically abusive act done by a clergy member (Doyle, 2006), and theologically sanctioned mistreatment of LGBTQ persons (Foster, Bowland, \& Vosler, 2015).
+
+Research suggests spiritual and religious abuse has serious negative effects (Ward, 2011; Swindle, 2017; Oakley \& Kinmond, 2014; Stevens et al.~2019). Religious leaders may be on a par with parents in their potential for abusive harm. Further, trauma that takes place in a religious or spiritual setting may deprive victims of religion and spirituality as a coping strategy. There are also concerns related to secondary trauma for clinicians working with R/S abused clients (Gubi \& Jacobs, 2009).
+
+In light of these concerns, a valid scale of spiritual harm and abuse is needed. Practitioners treating clients whom they suspect have been victims of religious and spiritual abuse need an instrument for clinical use. Clinicians could use such a tool as part of the intake process, to evaluate their client's score in light of established norms. Researchers need a reliable measurement of exposure to potential spiritual abuse and its effects for research purposes, looking for relationships between spiritual abuse and any number of other psychological, health, or other measures.
+
+Drawing from a recent unpublished scale of religious and abuse \citep{Keller2016} and other scales of abuse (Kira, et al.~2008; Sanders \& Becker-Lausen, 1995; Carlson, et al.~2011; Briere \& Runtz, 1989), \citet{KochEdstrom2022} developed the Spiritual Harm \& Abuse Scale (SHAS). Asking which types of religious and spiritual abuse most succinctly capture the phenomenon of being broadly exposed to religious and spiritual abuse, they defined the construct of spiritual harm and abuse and developed an initial item pool. Their study of the factor structure revealed a handful of factors which they used to reduce the number of items and to define several subscales.
+
+In this paper, we build on \citet{KochEdstrom2022} to further validate the SHAS by using item response theory (IRT). \citet{Dogan2018} describes several applications of IRT for measurement scales such as SHAS based on Likert item rating scales:
+
+\begin{quote}
+There are several advantages to using IRT models with rating scale instruments compared to other approaches such as sum scoring. Most importantly, such instruments yield data that are ordinal, not interval, making use of sum scores questionable (Smith, Conrad, Chang, \& Piazza, 2002). In addition, IRT models provide ``sample-free measurement estimates, making it possible to estimate a person's level of the latent construct free of the distribution of the individual items and to estimate an item's difficulty level free from the distribtion of people used in the sample'' (DiStefano and Morgan, 2011, p.356). In addition, as Reeve and Masse (2004) point out, these models allow more in-depth analysis of items, examination of precision across the score continuum (as opposed to a single overall reliability coefficient) and better handling of complex measurement problems such as linking scores across alternative forms'' (p.2).
+\end{quote}
+
+The goal of this study was to enhance the SHAS with several of these features of IRT. Provided that the items were sufficiently unidimensional, we aimed to express the SHAS as a single interval-level outcome measure of a patient's lifetime exposure to, and damage from, spiritual harm and abuse. Because in IRT the scale describes items as well as persons, we aimed to further develop the potential diagnostic value of the SHAS items by illustrating how they individually assign real-world meaning to locations on the scale as well how they cluster with other items to measure some parts of the scale with more precision than others. Such a scale also lays the foundation to further develop the SHAS by identifying anchor items that can calibrate with pilot items on future forms. Finally, we aimed to establish a SHAS score that is free of differential item functioning based on race, gender, and other demographic variables, and maximizes parsimony and precision across the continuum of the latent construct.
+
+\hypertarget{methods}{%
+\section{Methods}\label{methods}}
+
+\hypertarget{item-pool-development}{%
+\subsection{Item Pool Development}\label{item-pool-development}}
+
+\citet{KochEdstrom2022} developed an initial pool of items to measure spiritual harm and abuse. The authors validated the construct of spiritual harm and abuse through literature review (Kvarfordt, 2010; Nobakht \& Dale, 2018; Oakley \& Kinmond, 2014; Rodríguez-Carballeira, et al.~2015; Swindle, 2017; Ward, 2011, Winell, n.d.) and interviews with survivors of religious and spiritual abuse. These interviews revealed an array of specific examples of potential abuse not described in the published literature such as abuse inflicted by narcissistic persons, financial coercion, developmentally inappropriate children's teachings, pressure to stay in physically abusive marriages, neglect of needed medical care, sexual discrimination, and shunning/shaming, among others. The authors generated items by drawing from publicly available measures of similar constructs and by writing new items to maximize construct coverage. Each item they adapted to measure either a potentially spiritually abusive event (inflicting emotional abuse by a religious leader or group and/or with a religious or spiritual component, usually involving coercion or control) or a theorized effect of spiritual abuse, based on the reports of self-described survivors of spiritual abuse in the qualitative literature. In developing items, the authors sought to balance construct coverage with alternate wording and efficiency for participants. They wanted to cover as much of the domain as possible in a survey that could be completed in 15 minutes.
+
+\hypertarget{participants-and-procedures}{%
+\subsection{Participants and Procedures}\label{participants-and-procedures}}
+
+Participants in the initial SHAS validation study were adults who responded to an online survey. To qualify for the survey, participants had to be at least 18 years of age and they had to have identified themselves as Christian in the past \citep{KochEdstrom2022}. Koch promoted the survey through various podcast feeds (in audio form during a podcast episode), email lists, Facebook groups, and other online groups associated with progressive Christian podcasts based in the United States. Listeners/readers were encouraged to invite others to take part in the survey, so long as they satisfied the above criteria. Koch also posted the link on his own social media accounts with a similar encouragement to invite others who satisfied the study criteria. The sampling priority was to reach the largest, most inclusive, community sample. Participants were consented before beginning the survey. The study was approved by the IRB at Northwest University. Data collection began on January 28, 2021 and concluded on February 27, 2021.
+
+\hypertarget{measures}{%
+\subsection{Measures}\label{measures}}
+
+\textbf{Spiritual Harm and Abuse items}
+
+The final survey instrument included a total of 66 prompts separated into two distinct categories \citep{KochEdstrom2022}. The first section, External Events, included 52 prompts about potentially abusive experiences. Prompts in this section measured prevalence by asking ``How often have you experienced the above in a church or Christian group setting?'' (5-point Likert scale: never, once or twice, sometimes, often, all the time). The large number of prompts in this first section were presented in a randomized order so that all prompts would receive responses by approximately the same number of participants even if many participants did not complete all of the prompts in this section. The second section, Internal States, included 14 prompts about personal feelings resulting from the abusive experiences described in the first section. Prompts in this section measured prevalence by asking ``At any point, how often have you experienced the above as a result of negative religious experiences?'' (5-point Likert scale: never, once or twice, sometimes, often, all the time).
+
+\hypertarget{data-analysis}{%
+\subsection{Data Analysis}\label{data-analysis}}
+
+Their initial validation of the SHAS, \citet{KochEdstrom2022} studied the dimensionality of the items. The authors used exploratory factor analysis (EFA) to probe the factor structure of the items. In these analyses, the items loaded onto X inter-related factors. This helped the authors distill items and identify several subscales for potential future use by clinicians and researchers.
+
+In this study, we focused on the commonality of the items. Item response theory models make two assumptions: that a single latent trait explains responses to items (unidimensionality) and that, after controlling for this latent trait, items should be weakly correlated (local independence) \citep{EmbretsonReise2000, ReiseWaller2009, ReiseEtAl2013}. The SHAS items were multidimensional by design. The construct of spiritual harm and abuse is not conceptually narrow, and Koch wrote two distinct item sets to cover the breadth of this construct. However, a unidimensional IRT model can be fit to multidimensional data \citep{ReiseEtAl2013}. In this study we hypothesized a general factor of spiritual violence as the cause of common variance across the 66 SHAS items. This made the common variance across domains our primary interest rather than the comprehensive coverage of each subdomain that would produce separate scales or subscales.
+
+Therefore, we sought evidence of unidimensionality and local dependence in order to calibrate a common scale and avail to the SHAS the useful applications provided by item response theory.
+
+\begin{quote}
+We assumed an effect-indicator model from the beginning of the analysis. The analysis strategy therefore also targeted removal of smaller, extraneous factors in an effort to identify a sufficiently unidimensional set of items that could form a single scale. Different theoretical assumptions such as creating an inventory of abuse and damage could be consistent with a causal-indicator model where items are selected to maximize the unique content represented by each subdomain. While there is benefit to each approach, the latter would have contributed to proliferation of similar constructs in the field, overemphasized each subdomain's independence, increased respondent burden, and would have had relatively limited utility in clinical settings due to the need to reliably assess and interpret multiple domains and scores.
+\end{quote}
+
+We began by examining classical item-level statistics, polychoric correlations, and hierarchical cluster analysis to identify poorly functioning items. Next, we conducted iterative exploratory bifactor analyses using the psych package in R. We started by selecting two subfactors corresponding to the two hypothesized domains of the construct. We evaluated dimensionality based on general factor saturation and computed Omega-Hierarchical (Omega-H), where values \textgreater{} 0.70 suggest sufficient unidimensionality for IRT modeling \citep{ReiseEtAl2013}. We also calculated explained common variance (ECV), the relative strength of a general factor compared to group factors, targeting ECV values \textgreater{} 0.60 as a tentative benchmark \citep{ReiseEtAl2013}.
+
+To illustrate the structure of our final set of items prior to IRT analyses, we ran a confirmatory bifactor model corresponding to the final structure determined by exploratory factor analyses. For this final model, we report Omega-H, ECV, Comparative Fit Index (CFI), the Tucker Lewis Index (TLI), and the root-mean-square error of approximation (RMSEA). Next, we estimated IRT parameters using the graded response model (GRM) as well as the corresponding IRT-based bifactor model with X subfactors. We did this with the understanding that unidimensional parameters might still be distorted by subfactors evident in a bifactor model. Therefore, we applied a procedure to convert conditional general factor slopes into marginal slopes, using formulas 10 and 11 provided in a didactic article by Toland et al.~{[}43{]}, citing detailed work on these procedures {[}44{]}. Once in marginal form, the slopes and location parameters from the bifactor model can be fairly compared to unidimensional models, and may be scored ``as if'' they were from unidimensional models.
+
+Differential item functioning (DIF) analysis compared race (Black/African-American vs.~White), age (65 and above vs below 65), etc. We applied logistic ordinal regression with IRT scoring, commonly used in the development of PROMIS instruments {[}45{]}. We used the Chi-squared likelihood-ratio statistic as the initial DIF detection criteria (alpha \textless{} 0.01), and a cut-off of McFadden pseudo R2Δ ≥ 0.02 in model comparisons to determine substantial DIF, a reasonable threshold used in the development of self-reported health outcomes {[}46{]}.
+
+All analyses were conducted in \textbf{R} \citep{R-base}, using the \textbf{psych} package \citep{R-psych} and \textbf{lavaan} \citep{R-lavaan} for factor analyses, \textbf{mirt} \citep{R-mirt} for IRT analyses and \textbf{lordif} \citep{R-lordif} for DIF analyses.
+
+\hypertarget{results}{%
+\section{Results}\label{results}}
+
+\hypertarget{participant-characteristics}{%
+\subsection{Participant Characteristics}\label{participant-characteristics}}
+
+In total, 3,222 individuals responded to the survey. Participants who did not opt out and completed at least 50\% of the spiritual abuse item pool were considered complete responders and included in the study (N=3,219). Non-responders included those who responded to less than half of the items (N=3).
+
+Table \ref{tab:dems-table} shows the demographic and clinical characteristics of the sample used for item analysis. Participants were mostly XXX and XXX but with sizable minority participation (i.e., XX\% XXX, XX\% XXX).
+
+\hypertarget{initial-item-analysis}{%
+\subsection{Initial Item Analysis}\label{initial-item-analysis}}
+
+\begin{quote}
+XXX pairs of items in the polychoric correlation matrix were highly correlated (r \textgreater{} 0.70). After removing X items, these pairs disappeared (several items appeared in multiple pairs). Next, we examined how individual items (or small groups of items) might separate from larger sets of items with a hierarchical item cluster plot {[}34{]}. This plot showed final clustering of a pair of items with narrow content and a single item that had poor wording and the lowest cluster loading (i.e., corrected item-total correlation). We deleted these three items and an additional item with redundant wording, leaving XX in the item pool at this stage.
+\end{quote}
+
+\hypertarget{principal-components-analysis-pca}{%
+\subsubsection{Principal Components Analysis (PCA)}\label{principal-components-analysis-pca}}
+
+\hypertarget{cluster-analysis}{%
+\subsubsection{Cluster Analysis}\label{cluster-analysis}}
+
+\hypertarget{exploratory-bifactor-analysis}{%
+\subsection{Exploratory Bifactor Analysis}\label{exploratory-bifactor-analysis}}
+
+\includegraphics{_main_files/figure-latex/bifact-1.pdf}
+
+\begin{verbatim}
+Omega 
+Call: omegah(m = m, nfactors = nfactors, fm = fm, key = key, flip = flip, 
+    digits = digits, title = title, sl = sl, labels = labels, 
+    plot = plot, n.obs = n.obs, rotate = rotate, Phi = Phi, option = option, 
+    covar = covar)
+Alpha:                 0.98 
+G.6:                   0.99 
+Omega Hierarchical:    0.84 
+Omega H asymptotic:    0.85 
+Omega Total            0.98 
+
+Schmid Leiman Factor loadings greater than  0.2 
+        g   F1*   F2*   F3*   h2   u2   p2
+Q7   0.62                   0.45 0.55 0.84
+Q10  0.57        0.31       0.43 0.57 0.77
+Q11  0.71  0.21  0.22       0.60 0.40 0.84
+Q16  0.62        0.38       0.57 0.43 0.68
+Q17  0.29                   0.14 0.86 0.63
+Q18  0.72  0.26             0.62 0.38 0.85
+Q19  0.69        0.25       0.57 0.43 0.84
+Q20  0.63        0.29       0.50 0.50 0.79
+Q21  0.63                   0.47 0.53 0.85
+Q22  0.65  0.26             0.51 0.49 0.83
+Q23  0.58        0.24       0.43 0.57 0.80
+Q24  0.60        0.28       0.45 0.55 0.81
+Q25  0.71  0.24             0.60 0.40 0.83
+Q26  0.59        0.43       0.53 0.47 0.65
+Q27  0.42        0.34       0.30 0.70 0.59
+Q28  0.66        0.41       0.61 0.39 0.72
+Q29  0.63        0.22       0.47 0.53 0.83
+Q30  0.64        0.25       0.50 0.50 0.83
+Q31  0.58        0.36       0.49 0.51 0.68
+Q32  0.67              0.21 0.54 0.46 0.84
+Q34  0.61  0.32             0.49 0.51 0.77
+Q35  0.69  0.28             0.58 0.42 0.81
+Q36  0.71  0.21             0.59 0.41 0.85
+Q37  0.70                   0.57 0.43 0.86
+Q38  0.75  0.27             0.67 0.33 0.84
+Q39  0.67  0.32             0.58 0.42 0.78
+Q40  0.70  0.27             0.59 0.41 0.83
+Q41  0.26        0.23       0.13 0.87 0.51
+Q42  0.71        0.29       0.60 0.40 0.83
+Q43  0.67        0.29       0.55 0.45 0.82
+Q44  0.74        0.22       0.64 0.36 0.85
+Q45  0.68  0.44             0.66 0.34 0.71
+Q46                         0.04 0.96 0.41
+Q47  0.47        0.24       0.30 0.70 0.75
+Q49  0.65        0.41       0.60 0.40 0.71
+Q50  0.47        0.33       0.34 0.66 0.66
+Q51  0.57                   0.37 0.63 0.85
+Q52  0.69        0.41       0.65 0.35 0.73
+Q53  0.68  0.28             0.57 0.43 0.81
+Q54  0.70  0.29             0.61 0.39 0.81
+Q55  0.24        0.20       0.10 0.90 0.59
+Q56  0.76  0.20             0.67 0.33 0.86
+Q57  0.65        0.23  0.25 0.54 0.46 0.79
+Q58  0.69  0.37             0.61 0.39 0.77
+Q59  0.70        0.38       0.64 0.36 0.76
+Q60  0.42        0.34       0.30 0.70 0.59
+Q61  0.68  0.44             0.65 0.35 0.71
+Q62  0.61  0.30             0.47 0.53 0.78
+Q63  0.70        0.32       0.61 0.39 0.81
+Q64  0.65        0.35       0.57 0.43 0.75
+Q65  0.55        0.33       0.41 0.59 0.73
+Q66  0.66  0.25             0.51 0.49 0.84
+Q68  0.61              0.29 0.49 0.51 0.76
+Q69  0.52              0.47 0.51 0.49 0.53
+Q70  0.50              0.47 0.48 0.52 0.52
+Q71  0.68              0.33 0.59 0.41 0.78
+Q72  0.48              0.39 0.40 0.60 0.59
+Q73  0.58              0.47 0.56 0.44 0.60
+Q74  0.54              0.36 0.43 0.57 0.68
+Q76  0.68              0.29 0.57 0.43 0.80
+Q77  0.71              0.32 0.64 0.36 0.80
+Q78  0.61              0.49 0.61 0.39 0.61
+Q79  0.55              0.43 0.48 0.52 0.62
+Q80  0.62              0.45 0.59 0.41 0.65
+Q81  0.58        0.22  0.22 0.44 0.56 0.78
+Q82  0.55              0.39 0.45 0.55 0.67
+
+With eigenvalues of:
+   g  F1*  F2*  F3* 
+25.2  2.0  3.2  2.7 
+
+general/max  7.75   max/min =   1.59
+mean percent general =  0.74    with sd =  0.1 and cv of  0.14 
+Explained Common Variance of the general factor =  0.76 
+
+The degrees of freedom are 1950  and the fit is  7.52 
+The number of observations was  3222  with Chi Square =  24034.67  with prob <  0
+The root mean square of the residuals is  0.03 
+The df corrected root mean square of the residuals is  0.04
+RMSEA index =  0.059  and the 10 % confidence intervals are  0.059 0.06
+BIC =  8283.04
+
+Compare this with the adequacy of just a general factor and no group factors
+The degrees of freedom for just the general factor are 2079  and the fit is  12.2 
+The number of observations was  3222  with Chi Square =  39007.58  with prob <  0
+The root mean square of the residuals is  0.08 
+The df corrected root mean square of the residuals is  0.08 
+
+RMSEA index =  0.074  and the 10 % confidence intervals are  0.074 0.075
+BIC =  22213.92 
+
+Measures of factor score adequacy             
+                                                 g  F1*  F2*  F3*
+Correlation of scores with factors            0.92 0.71 0.75 0.81
+Multiple R square of scores with factors      0.84 0.51 0.56 0.66
+Minimum correlation of factor score estimates 0.69 0.02 0.12 0.32
+
+ Total, General and Subset omega for each subset
+                                                 g  F1*  F2*  F3*
+Omega total for total scores and subscales    0.98 0.93 0.95 0.93
+Omega general for total scores and subscales  0.84 0.79 0.75 0.66
+Omega group for total scores and subscales    0.08 0.14 0.19 0.26
+\end{verbatim}
+
+\begin{quote}
+We removed a total of nine items in this step, based on empirical and conceptual considerations. The bifactor models with four subfactors identified three items with low general factor loadings (\textless{} 0.50) or high specific factor loadings (\textgreater{} 0.50). These items focused on individual health behavior maintenance. In addition, we noticed that a single specific factor was driven by three items from the ``health information use'' domain, also showing high specific factor loadings and low general factor loadings, suggesting a potential for multidimensionality. They focused on independent health information use (e.g., ``It is easy to find information on my own that helps me manage my symptoms''). All other items in this domain showed lower loadings on the ``health information use'' factor (\textless{} 0.35). We opted to remove these three items, and model three subfactors representing the remaining subdomains. This decision to shift from 4 to 3 subfactors was based not only on these empirical considerations, but on the overarching conceptual assumption that the construct of engagement is essentially collaborative, and that the multidimensionality of items addressing independent skills was inconsistent with this assumption.
+\end{quote}
+
+\begin{quote}
+In the subsequent 3-factor bifactor model, we identified three more items with general factor loadings of 0.50 or less. These items addressed resilient self-efficacy for independent self-management behaviors (e.g., ``I attend all of my appointments, even when life gets busy or stressful'') and were removed based on similar empirical considerations and conceptual assumptions. The resulting 30 item set showed a high proportion of general factor variance relative to specific factor variance (item-level proportions ranging from 0.58 to 0.83), with overall indices of Omega-H as 0.79 and ECV 0.69. These values suggest sufficient levels of unidimensionality and that the items mostly reflect a single construct {[}36{]}.
+\end{quote}
+
+\hypertarget{bifactor-model-of-final-xx-item-set}{%
+\subsection{Bifactor Model of Final XX-Item Set}\label{bifactor-model-of-final-xx-item-set}}
+
+\hypertarget{item-response-theory-model}{%
+\subsection{Item Response Theory Model}\label{item-response-theory-model}}
+
+\hypertarget{dif-analysis}{%
+\subsection{DIF Analysis}\label{dif-analysis}}
+
+This is where DIF goes.
+
+\hypertarget{discussion}{%
+\section{Discussion}\label{discussion}}
+
+\hypertarget{data-availability}{%
+\section{Data Availability}\label{data-availability}}
+
+\begin{quote}
+Data will be made available in accordance with xxx. Within one year of publication of manuscripts addressing the aims of the grant, investigators will make a deidentified, anonymized dataset available to the public.
+\end{quote}
+
+\hypertarget{code-availability}{%
+\section{Code Availability}\label{code-availability}}
+
+Code for the analyses presented in this paper will be made available upon request.
+
+\hypertarget{references}{%
+\section*{References}\label{references}}
+\addcontentsline{toc}{section}{References}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{0}{0}
+\end{CSLReferences}
+
+\hypertarget{acknowledgments}{%
+\section{Acknowledgments}\label{acknowledgments}}
+
+This manuscript was not supported by grant funding. The views expressed in this article are those of the authors and do not necessarily reflect the position or policy of the Swedish Medical Center or Northwest University.
+
+\hypertarget{funding}{%
+\section{Funding}\label{funding}}
+
+This research was not supported by grant funding.
+
+\hypertarget{author-information}{%
+\section{Author Information}\label{author-information}}
+
+\hypertarget{affiliations}{%
+\subsection{Affiliations}\label{affiliations}}
+
+\textbf{Department of Pharmacy, Swedish Medical Center, Seattle, USA}
+
+Jack Huber
+
+\textbf{Department of Psychology, Northwest University, Kirkland, USA}
+
+Dan Koch
+
+\hypertarget{corresponding-author}{%
+\subsection{Corresponding Author}\label{corresponding-author}}
+
+Correspondence to \href{mailto:jack.bernard.huber@gmail.com}{Jack Huber}.
+
+\hypertarget{ethics-declarations}{%
+\section{Ethics Declarations}\label{ethics-declarations}}
+
+\hypertarget{conflict-of-interest}{%
+\subsection{Conflict of Interest}\label{conflict-of-interest}}
+
+The authors declare no conflict of interest.
+
+  \bibliography{book.bib,packages.bib}
+
+\end{document}

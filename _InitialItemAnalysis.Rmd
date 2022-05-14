@@ -1,0 +1,52 @@
+```{r eval=FALSE, echo=FALSE}
+# INITIAL ITEM ANALYSIS
+```
+
+```{r}
+# CLASSICAL ITEM STATISTICS
+```
+
+```{r}
+# POLYCHORIC CORRELATION MATRIX
+```
+
+>XXX pairs of items in the polychoric correlation matrix were highly correlated (r > 0.70). After removing X items, these pairs disappeared (several items appeared in multiple pairs). Next, we examined how individual items (or small groups of items) might separate from larger sets of items with a hierarchical item cluster plot [34]. This plot showed final clustering of a pair of items with narrow content and a single item that had poor wording and the lowest cluster loading (i.e., corrected item-total correlation). We deleted these three items and an additional item with redundant wording, leaving XX in the item pool at this stage.
+
+### Principal Components Analysis (PCA)
+
+```{r pca-run}
+library(lavaan)
+library(psych)
+library(psychTools)
+all <- read.csv("data/all.csv")
+
+# PRINCIPAL COMPONENTS ANALYSIS
+# fit <- princomp(all[,1:66], cor=TRUE)
+```
+
+```{r}
+# REPORT PCA
+# summary(fit) # print variance accounted for
+# loadings(fit) # pc loadings
+# plot(fit,type="lines") # scree plot
+# fit$scores # the principal components
+# biplot(fit)
+
+
+# psych::principal(all[,1:66])
+
+```
+
+### Cluster Analysis
+
+```{r iclust-run}
+# CLUSTER ANALYSIS
+# ic <- psych::iclust(all[1:66])
+# print(ic)
+# psych::iclust(r.mat = all[,1:66])
+# 
+# r.poly <- polychoric(all[,1:66],correct=0) 
+# ic.poly <- iclust(r.poly$rho,title="ICLUST using polychoric correlations")
+# iclust.diagram(ic.poly)
+# print(ic,cut=.3)
+```

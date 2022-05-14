@@ -1,0 +1,15 @@
+# ANALYSES
+
+# FIND POORLY FUNCTIONING ITEMS
+# classical item analysis
+# polychoric correlations
+# hierarchical cluster analysis
+
+# exploratory bifactor analysis (psych package)
+
+# DIMENSIONALITY
+# general factor saturation and compute Omega-Hierarchical (Omega-H) where values > 0.7 suggest sufficient unidimensionality for IRT modeling.
+
+# calculate explained common variance (ECV), the relative strength of a general factor compared to group factors, targeting ECV > 0.60 as a benchmark.
+
+# confirmatory factor analysis (report Omega-H, ECV, CFI, TLI, RMSEA)

@@ -2,21 +2,20 @@
 
 ```{r}
 # LOAD DATA
-items <- read.csv("data/items_l.csv")
-source("code/ApplyItemLabels.R")
+all <- read.csv("data/all.csv")
+source("code/ApplyAllLabels.R")
 ```
 
 
 ```{r describe}
 # DESCRIBE DATA
-# options(digits=2)
 library(kableExtra)
-items.tbl <- as.data.frame(psych::describe(items))
-items.tbl %>%
-  kbl(digits=2, align = "ccccccccccccc", caption = 'Classical Item Statistics') %>%
-  kable_styling(bootstrap_options = "condensed", font_size = 14, fixed_thead = T)
+items.tbl <- as.data.frame(psych::describe(all[,1:66]))
+items.tbl <- subset(items.tbl, select = -c(vars, trimmed, median, mad, min, max, range))
 
-items.tbl[ , 4:9] <- list(NULL) # delete columns (such as median, range, etc.)
+round(items.tbl,2) %>%
+  kbl(align = "ccccccccccccc", caption = 'Classical Item Statistics') %>%
+  kable_styling(bootstrap_options = "condensed", font_size = 14, fixed_thead = T)
 
 # A POSSIBLE BAR PLOT OF ITEM STATISTICS
 # barplot(item_stats$nbr.val, main="Complete Cases", horiz=TRUE, col='red')
@@ -28,40 +27,29 @@ items.tbl[ , 4:9] <- list(NULL) # delete columns (such as median, range, etc.)
 ```{r ext-pbis}
 # DESCRIPTIVES
 library(ltm)
-i <- ltm::descript(items)
+i <- ltm::descript(all[,1:66])
 items.tbl2 <- as.data.frame(i[["perc"]]) # extract category response frequencies
+names(items.tbl2) <- c('1' = "Never", '2' = "Once or twice", '3' = "Sometimes", '4' = "Often", '5' = "All the time")
 items.tbl2 %>%
   kbl(digits=2, align = "ccccc", caption = 'Category Frequencies') %>%
   kable_styling(bootstrap_options = "condensed", font_size = 14, fixed_thead = T)
-names(items.tbl2) <- c('1' = "Never", '2' = "Once or twice", '3' = "Sometimes", '4' = "Often", '5' = "All the time")
 
-
-
-library(formattable)
-formattable(items.tbl2, align = "ccccc", digits = 2, list(area(col = 1:5) ~ color_tile("transparent", "blue")))
-
-
-
-
-
-
-
+# library(formattable)
+# formattable(items.tbl2, align = "ccccc", digits = 2, list(area(col = 1:5) ~ color_tile("transparent", "blue")))
 ```
-
-
 
 ```{r item-analysis}
 # CLASSICAL ITEM ANALYSIS
-
-# CTT::itemAnalysis(items, itemReport=TRUE, NA.Delete=TRUE, rBisML=FALSE, hardFlag, easyFlag, pBisFlag, bisFlag, flagStyle = c("X",""))
-
-CTT::itemAnalysis(items, itemReport=TRUE, NA.Delete=TRUE, rBisML=FALSE, flagStyle = c("X",""))
+# library(CTT)
+# CTT::itemAnalysis(all[,1:66], itemReport=TRUE, NA.Delete=TRUE, rBisML=FALSE, easyFlag, pBisFlag, bisFlag, flagStyle = c("X",""))
+# CTT::itemAnalysis(all[,1:66], itemReport=TRUE, NA.Delete=TRUE, rBisML=FALSE, flagStyle = c("X",""))
 ```
 
 ```{r}
 # MORE ITEM STATISTICS
 library(pastecs)
-item_stats <- pastecs::stat.desc(items) # use the stat.desc() to render data frame of item stats
+item_stats <- pastecs::stat.desc(items.tbl) # use the stat.desc() to render data frame of item stats
+item_stats
 item_stats <- t(item_stats) # transpose the data frame
 item_stats <- data.frame(item_stats)
 item_stats[order(item_stats$mean), ] # order by mean
