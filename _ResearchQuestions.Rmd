@@ -1,0 +1,9 @@
+**Research Questions**
+
+Validation is research into the meanings and uses of scores from instruments. It can be an ongoing research agenda. Following is an initial set of questions to guide research and scale improvement of the SHAS:
+
+* **Item analysis and refinement** - Do some items have too many response categories?
+* **Data reduction** - As written and executed, which items appear to be critical (best performing) and which appear to be redundant or noisy? What might a shorter, streamlined instrument look like?
+* **Person fit** - How well does the current scale fit the population of examinees? Are there ceiling or floor effects? To what extent might the existing items under-represent the full range of abuse?
+* **Scale invariance** - Do the scales mean the same thing to different groups of examinees? To what extent do these scales (abuse constructs) vary by age, gender, and/or sexuality?
+* **Developmental pathway** - Beyond the current conceptualization of scales composed of redundant items, what might an incremental scale of abuse with diagnostic items look like?
