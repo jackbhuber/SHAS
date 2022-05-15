@@ -1,9 +1,9 @@
 Differential item functioning (DIF), simply put, examines how an item functions for different groups.
 
 ```{r}
-library(lordif)
-all <- read.csv("data/all.csv")
-items <- all[,1:66]
+# library(lordif)
+# all <- read.csv("data/all.csv")
+# items <- all[,1:66]
 
 
 ```

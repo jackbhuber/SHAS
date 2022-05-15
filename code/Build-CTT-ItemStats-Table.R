@@ -1,17 +1,10 @@
-
-```{r}
 # LOAD DATA
 all <- read.csv("data/all.csv")
 all <- all[,-1]
 source("code/ApplyAllLabels.R")
-library(kableExtra)
 library(psych)
 library(ltm)
-library(dplyr)
-library(formattable)
-```
 
-```{r CTT-item-stats}
 # DESCRIPTIVES
 descriptives <- as.data.frame(psych::describe(all[,1:66]))
 descriptives <- subset(descriptives, select = -c(vars, trimmed, se, median, mad, min, max, range))
@@ -30,18 +23,6 @@ names(item.totals) <- c('a[["item.stats"]][["raw.r"]]'= "Item-total correlation"
 item.table <- cbind(catfreqs, descriptives, item.totals)
 item.table$flag <- with(item.table, ifelse(item.table$skew > 2 | item.table$skew < -2 | item.table$kurtosis < -7 | item.table$kurtosis > 7 | item.table$'Item-total correlation' < .5, "*", ""))
 item.table2 <- item.table[order(item.table$mean),]
-```
 
-```{r CTT-item-table}
-
-item.table2 %>%
-  kbl(booktabs = T, digits=2, align = "ccccccccc", caption = 'SHAS Classical Item Statistics') %>%
-  kable_styling(font_size = 14, fixed_thead = T, full_width = T) %>%
-  add_header_above(c(" " = 1, "Category Response Proportions" = 5, " " = 7))
-
-# A POSSIBLE BAR PLOT OF ITEM STATISTICS
-# barplot(item_stats$nbr.val, main="Complete Cases", horiz=TRUE, col='red')
-# barplot(item_stats$nbr.val, main="Complete Cases", horiz=FALSE, col='red', ylim = c(0,8000),names.arg=labs)
-
-```
-Table \@ref{tab:CTT-item-table} reports a series of classical statistics for the 66 SHAS items. The items are sorted by their mean. Six items are flagged due to extreme values of skew^[less than -2 or greater than +2] or kurtosis^[less than -6 or greater than +6] and item-total correlations below 0.50. wCategory response proportions show that most people responded "Never" to these items.
+# CLEAN UP
+rm(all,descriptives,catfreqs,a,item.totals,item.table)

@@ -1,35 +1,10 @@
-
-```{r, include=FALSE, echo=FALSE}
-knitr::opts_chunk$set(comment = "", warning = FALSE, echo = FALSE,  message = FALSE, tidy.opts=list(width.cutoff=60), tidy = TRUE)
-knitr::opts_knit$set(verbose = FALSE)
-```
-
 # Results
-
-```{r data-prep, include=TRUE, echo=FALSE}
-
-# LOAD ORIGINAL DATA
-library(readxl) # for reading the source Excel file
-shas <- read_excel("data/data.xlsx") # load Excel file
-
-# SELECT ITEMS
-all <- shas[ ,14:97] # select items, dems from columns 14-79
-all <- subset(all, select = -c(Ext_Avg:Global_Avg)) # remove columns for now
-write.csv(all,"data/all.csv")
-rm(shas,all)
-```
-
-## Participant Characteristics
 
 ```{r, child = "_ParticipantCharacteristics.Rmd"}
 ```
 
-## Initial Item Analysis
-
 ```{r, child = "_InitialItemAnalysis.Rmd"}
 ```
-
-## Exploratory Bifactor Analysis
 
 ```{r, child = "_Dimensionality_ExploratoryBifactor.Rmd"}
 ```
@@ -37,9 +12,6 @@ rm(shas,all)
 ## Bifactor Model of Final XX-Item Set
 
 ## Item Response Theory Model
-
-```{r}
-```
 
 ## DIF Analysis
 

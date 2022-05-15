@@ -1,40 +1,97 @@
-```{r eval=FALSE, echo=FALSE}
-# INITIAL ITEM ANALYSIS
+## Initial Item Analysis
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(comment = "", echo=FALSE, warning = FALSE, message = FALSE, tidy.opts=list(width.cutoff=60), tidy = TRUE)
+knitr::opts_knit$set(verbose = FALSE)
 ```
 
-```{r}
-# CLASSICAL ITEM STATISTICS
+### Classical Item Statistics
+
+Table \@ref(tab:CTT-item-table) reports classical statistics for the 66 SHAS items. The items are sorted by their mean. Six items are flagged due to extreme values of skew (less than -2 or greater than +2) or kurtosis (less than -7 or greater than +7) and item-total correlations below 0.50. Category response proportions show that most people responded "Never" to these items. These items are important to the extent that they capture the experience of people of color, women, and people who are LGBTQ. But as items they function poorly.
+
+```{r CTT-item-stats, echo=FALSE}
+# RUN CTT STATS, BUILD ITEM TABLE
+source("code/Build-CTT-ItemStats-Table.R")
 ```
 
-```{r}
+```{r CTT-item-table, echo=FALSE}
+
+# RENDER CTT ITEM STATS TABLE
+library(dplyr)
+library(kableExtra)
+
+# item.table2 %>%
+#   kbl(digits=2, align = "ccccccccc", caption = 'SHAS Classical Item Statistics') %>%
+#   kable_styling(font_size = 14, fixed_thead = T, full_width = T) 
+
+# A POSSIBLE BAR PLOT OF ITEM STATISTICS
+# barplot(item_stats$nbr.val, main="Complete Cases", horiz=TRUE, col='red')
+# barplot(item_stats$nbr.val, main="Complete Cases", horiz=FALSE, col='red', ylim = c(0,8000),names.arg=labs)
+
+```
+
+### Polychoric Correlations
+
+```{r polycor, echo=FALSE}
 # POLYCHORIC CORRELATION MATRIX
+# library(psych)
+# all <- read.csv("data/all.csv")
+# all <- all[,-1]
+# mixedcor(all[,1:66])
+# psych::corPlot(poly, upper = FALSE)
 ```
 
->XXX pairs of items in the polychoric correlation matrix were highly correlated (r > 0.70). After removing X items, these pairs disappeared (several items appeared in multiple pairs). Next, we examined how individual items (or small groups of items) might separate from larger sets of items with a hierarchical item cluster plot [34]. This plot showed final clustering of a pair of items with narrow content and a single item that had poor wording and the lowest cluster loading (i.e., corrected item-total correlation). We deleted these three items and an additional item with redundant wording, leaving XX in the item pool at this stage.
+>XXX pairs of items in the polychoric correlation matrix were highly correlated (r > 0.70). After removing X items, these pairs disappeared (several items appeared in multiple pairs).
+
+>Next, we examined how individual items (or small groups of items) might separate from larger sets of items with a hierarchical item cluster plot [34]. This plot showed final clustering of a pair of items with narrow content and a single item that had poor wording and the lowest cluster loading (i.e., corrected item-total correlation). We deleted these three items and an additional item with redundant wording, leaving XX in the item pool at this stage.
+
+### Exploratory Factor Analysis
+
+@KochEdstrom2022 conducted Kaiser-Meyer-Olkin (KMO) tests on the 61 items to determine the degree of shared variance between the items. The KMO was .987, well above the .5 threshold required to proceed. 
+
+@KochEdstrom2022 conducted alpha factoring with Varimax rotation on the 61 items. Alpha Factoring is most appropriate when variables are not assumed to be definitive but rather are a group of variables out of a larger set of possible variables (Rovai et al., 2014). Considering that the 61 remaining prompts were taken from scant qualitative research, anecdotes, and personal experience, many other variables might have also been included to measure and describe the concept of spiritual abuse. Best practices, in this case, include running both Varimax and Promax rotations, rather than making a priori assumptions about the degree of correlation between the underlying factors of the concept being studied (Tinsley & Tinsley, 1987). Each rotation produced nearly identical results, and the Varimax results are presented in full in Table 2.  
+
+[Table of factor loadings]
+
+>Factors with an Eigenvalue of 1 or greater were retained (see all Eigenvalues in Appendix C). This resulted in 6 total factors, explaining 62% of variance cumulatively. Each factor was examined based on the items that loaded most strongly and labeled as followed:
+ - Maintaining the System
+ - Internal Distress
+ - Embracing Violence
+ - Controlling Leadership
+ - Harmful God-image
+ - Gender Discrimination
+
+>While factor titles for 1, 3, 4, and 6 describe the type of potentially abusive external events that victims may experience, the title of factor 2, “Internal Distress,” describes internal states that often result from spiritual abuse. Item 5, “Harmful God-image,” also describes personal feelings relating to God as a villain in a person’s story. Items measuring racial and sexual discrimination and medical care were removed earlier due to low mean scores. Although discrimination based on race or sexual orientation is just as pernicious as gender discrimination, the items’ low mean scores make a mathematical argument for inclusion on the final scale more difficult since it is naturally less common across the entire population than gender discrimination. Inclusion in a critical items section of the final instrument allows for the assessment of discrimination on the basis of race or sexual orientation. Another item, “Being deterred from seeking mental health treatment,” is clinically important and is therefore included as a “Critical Item”.
+Individual items were then sorted by factor loadings, with only items loading at .42 or higher (Varimax rotation) per factor being retained. Because the final scale is intended primarily for use in clinical settings, perceived clinical relevance was additionally considered when choosing which items to include on the final scale while being sure to maintain high reliability scores. Factor-specific reliability analyses were performed repeatedly, removing one or two items at a time, to reduce the number of items needed per factor. Descriptive statistics for each factor and the full 27-item scale are below in Table 3. 
+
+>Each factor is significantly correlated with each of the other factors, although to varying degrees. It would be expected that each would be correlated to some degree with each other since each factor is theoretically within the larger umbrella of spiritual abuse and its effects. Correlations for all factors are presented in Table 6.
 
 ### Principal Components Analysis (PCA)
 
-```{r pca-run}
-library(lavaan)
-library(psych)
-library(psychTools)
-all <- read.csv("data/all.csv")
+Table X reports the results of our principals components analysis.
 
-# PRINCIPAL COMPONENTS ANALYSIS
-# fit <- princomp(all[,1:66], cor=TRUE)
+```{r pca-run}
+# # LOAD DATA
+# all <- read.csv("data/all.csv")
+# all <- all[,-1]
+# source("code/ApplyAllLabels.R")
+# # princomp(all[,1:66], cor = TRUE)
+# pca.results <- psych::principal(all[,1:66],residuals = TRUE,cor = "poly")
 ```
 
-```{r}
+```{r pca-table}
 # REPORT PCA
+# summary(pca.results)
+# print(pca.results)
+# plot(pca.results,type=lines)
 # summary(fit) # print variance accounted for
 # loadings(fit) # pc loadings
+
 # plot(fit,type="lines") # scree plot
 # fit$scores # the principal components
 # biplot(fit)
 
-
 # psych::principal(all[,1:66])
-
 ```
 
 ### Cluster Analysis

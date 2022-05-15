@@ -92,6 +92,20 @@
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 \usepackage{booktabs}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -177,12 +191,54 @@ Almost all participants (N = 3,064) answered demographics items, and the results
 \hypertarget{initial-item-analysis}{%
 \subsection{Initial Item Analysis}\label{initial-item-analysis}}
 
+\hypertarget{classical-item-statistics}{%
+\subsubsection{Classical Item Statistics}\label{classical-item-statistics}}
+
+Table \ref{tab:CTT-item-table} reports classical statistics for the 66 SHAS items. The items are sorted by their mean. Six items are flagged due to extreme values of skew (less than -2 or greater than +2) or kurtosis (less than -7 or greater than +7) and item-total correlations below 0.50. Category response proportions show that most people responded ``Never'' to these items. These items are important to the extent that they capture the experience of people of color, women, and people who are LGBTQ. But as items they function poorly.
+
+\hypertarget{polychoric-correlations}{%
+\subsubsection{Polychoric Correlations}\label{polychoric-correlations}}
+
 \begin{quote}
-XXX pairs of items in the polychoric correlation matrix were highly correlated (r \textgreater{} 0.70). After removing X items, these pairs disappeared (several items appeared in multiple pairs). Next, we examined how individual items (or small groups of items) might separate from larger sets of items with a hierarchical item cluster plot {[}34{]}. This plot showed final clustering of a pair of items with narrow content and a single item that had poor wording and the lowest cluster loading (i.e., corrected item-total correlation). We deleted these three items and an additional item with redundant wording, leaving XX in the item pool at this stage.
+XXX pairs of items in the polychoric correlation matrix were highly correlated (r \textgreater{} 0.70). After removing X items, these pairs disappeared (several items appeared in multiple pairs).
+\end{quote}
+
+\begin{quote}
+Next, we examined how individual items (or small groups of items) might separate from larger sets of items with a hierarchical item cluster plot {[}34{]}. This plot showed final clustering of a pair of items with narrow content and a single item that had poor wording and the lowest cluster loading (i.e., corrected item-total correlation). We deleted these three items and an additional item with redundant wording, leaving XX in the item pool at this stage.
+\end{quote}
+
+\hypertarget{exploratory-factor-analysis}{%
+\subsubsection{Exploratory Factor Analysis}\label{exploratory-factor-analysis}}
+
+\citet{KochEdstrom2022} conducted Kaiser-Meyer-Olkin (KMO) tests on the 61 items to determine the degree of shared variance between the items. The KMO was .987, well above the .5 threshold required to proceed.
+
+\citet{KochEdstrom2022} conducted alpha factoring with Varimax rotation on the 61 items. Alpha Factoring is most appropriate when variables are not assumed to be definitive but rather are a group of variables out of a larger set of possible variables (Rovai et al., 2014). Considering that the 61 remaining prompts were taken from scant qualitative research, anecdotes, and personal experience, many other variables might have also been included to measure and describe the concept of spiritual abuse. Best practices, in this case, include running both Varimax and Promax rotations, rather than making a priori assumptions about the degree of correlation between the underlying factors of the concept being studied (Tinsley \& Tinsley, 1987). Each rotation produced nearly identical results, and the Varimax results are presented in full in Table 2.
+
+{[}Table of factor loadings{]}
+
+\begin{quote}
+Factors with an Eigenvalue of 1 or greater were retained (see all Eigenvalues in Appendix C). This resulted in 6 total factors, explaining 62\% of variance cumulatively. Each factor was examined based on the items that loaded most strongly and labeled as followed:
+- Maintaining the System
+- Internal Distress
+- Embracing Violence
+- Controlling Leadership
+- Harmful God-image
+- Gender Discrimination
+\end{quote}
+
+\begin{quote}
+While factor titles for 1, 3, 4, and 6 describe the type of potentially abusive external events that victims may experience, the title of factor 2, ``Internal Distress,'' describes internal states that often result from spiritual abuse. Item 5, ``Harmful God-image,'' also describes personal feelings relating to God as a villain in a person's story. Items measuring racial and sexual discrimination and medical care were removed earlier due to low mean scores. Although discrimination based on race or sexual orientation is just as pernicious as gender discrimination, the items' low mean scores make a mathematical argument for inclusion on the final scale more difficult since it is naturally less common across the entire population than gender discrimination. Inclusion in a critical items section of the final instrument allows for the assessment of discrimination on the basis of race or sexual orientation. Another item, ``Being deterred from seeking mental health treatment,'' is clinically important and is therefore included as a ``Critical Item''.
+Individual items were then sorted by factor loadings, with only items loading at .42 or higher (Varimax rotation) per factor being retained. Because the final scale is intended primarily for use in clinical settings, perceived clinical relevance was additionally considered when choosing which items to include on the final scale while being sure to maintain high reliability scores. Factor-specific reliability analyses were performed repeatedly, removing one or two items at a time, to reduce the number of items needed per factor. Descriptive statistics for each factor and the full 27-item scale are below in Table 3.
+\end{quote}
+
+\begin{quote}
+Each factor is significantly correlated with each of the other factors, although to varying degrees. It would be expected that each would be correlated to some degree with each other since each factor is theoretically within the larger umbrella of spiritual abuse and its effects. Correlations for all factors are presented in Table 6.
 \end{quote}
 
 \hypertarget{principal-components-analysis-pca}{%
 \subsubsection{Principal Components Analysis (PCA)}\label{principal-components-analysis-pca}}
+
+Table X reports the results of our principals components analysis.
 
 \hypertarget{cluster-analysis}{%
 \subsubsection{Cluster Analysis}\label{cluster-analysis}}
@@ -198,114 +254,114 @@ Call: omegah(m = m, nfactors = nfactors, fm = fm, key = key, flip = flip,
     covar = covar)
 Alpha:                 0.98 
 G.6:                   0.99 
-Omega Hierarchical:    0.83 
-Omega H asymptotic:    0.85 
+Omega Hierarchical:    0.82 
+Omega H asymptotic:    0.84 
 Omega Total            0.98 
 
 Schmid Leiman Factor loadings greater than  0.2 
-        g   F1*   F2*   h2   u2   p2
-X-               0.23 0.09 0.91 0.24
-Q7   0.61  0.25       0.45 0.55 0.84
-Q10  0.57  0.31       0.43 0.57 0.77
-Q11  0.71  0.28       0.60 0.40 0.84
-Q16  0.63  0.32       0.50 0.50 0.79
-Q17  0.30             0.11 0.89 0.80
-Q18  0.72  0.22  0.20 0.60 0.40 0.85
-Q19  0.69  0.28       0.57 0.43 0.83
-Q20  0.62  0.34       0.49 0.51 0.77
-Q21  0.62  0.23       0.46 0.54 0.84
-Q22  0.64        0.24 0.49 0.51 0.84
-Q23  0.57  0.29       0.42 0.58 0.79
-Q24  0.60  0.30       0.45 0.55 0.79
-Q25  0.71        0.29 0.60 0.40 0.83
-Q26  0.59  0.42       0.52 0.48 0.65
-Q27  0.42  0.32       0.28 0.72 0.62
-Q28  0.65  0.41       0.60 0.40 0.71
-Q29  0.63  0.22       0.46 0.54 0.85
-Q30  0.64  0.29       0.50 0.50 0.82
-Q31  0.58  0.31       0.43 0.57 0.78
-Q32  0.68        0.24 0.54 0.46 0.85
-Q34  0.60  0.22       0.42 0.58 0.85
-Q35  0.68        0.30 0.57 0.43 0.82
-Q36  0.70  0.25       0.58 0.42 0.85
-Q37  0.69  0.22       0.57 0.43 0.85
-Q38  0.75        0.28 0.66 0.34 0.84
-Q39  0.67        0.30 0.54 0.46 0.82
-Q40  0.69  0.26       0.56 0.44 0.84
-Q41  0.26             0.11 0.89 0.65
-Q42  0.70  0.31       0.60 0.40 0.82
-Q43  0.67  0.30       0.55 0.45 0.82
-Q44  0.74  0.26       0.64 0.36 0.85
-Q45  0.67        0.27 0.53 0.47 0.84
-Q46                   0.03 0.97 0.49
-Q47  0.46  0.28       0.29 0.71 0.73
-Q49  0.65  0.41       0.59 0.41 0.71
-Q50  0.47  0.31       0.32 0.68 0.70
-Q51  0.56             0.37 0.63 0.85
-Q52  0.69  0.40       0.63 0.37 0.75
-Q53  0.67  0.28       0.53 0.47 0.83
-Q54  0.70        0.29 0.59 0.41 0.83
-Q55  0.24             0.10 0.90 0.60
-Q56  0.76  0.21  0.23 0.67 0.33 0.85
-Q57  0.66  0.21       0.51 0.49 0.85
-Q58  0.67        0.23 0.53 0.47 0.85
-Q59  0.69  0.41       0.64 0.36 0.74
-Q60  0.42  0.35       0.30 0.70 0.57
-Q61  0.66        0.26 0.52 0.48 0.84
-Q62  0.59  0.22       0.42 0.58 0.85
-Q63  0.70  0.32       0.60 0.40 0.81
-Q64  0.64  0.40       0.57 0.43 0.72
-Q65  0.55  0.33       0.41 0.59 0.74
-Q66  0.65        0.22 0.50 0.50 0.85
-Q68  0.62        0.21 0.45 0.55 0.85
-Q69  0.54        0.43 0.49 0.51 0.59
-Q70  0.52        0.33 0.38 0.62 0.71
-Q71  0.68        0.31 0.58 0.42 0.81
-Q72  0.50        0.26 0.32 0.68 0.79
-Q73  0.60        0.38 0.50 0.50 0.71
-Q74  0.56        0.32 0.41 0.59 0.75
-Q76  0.68        0.31 0.57 0.43 0.82
-Q77  0.72        0.33 0.63 0.37 0.82
-Q78  0.62        0.39 0.54 0.46 0.71
-Q79  0.56        0.35 0.44 0.56 0.73
-Q80  0.64        0.37 0.55 0.45 0.74
-Q81  0.59  0.20       0.41 0.59 0.85
+        g   F1*   F2*   F3*   h2   u2   p2
+X-         0.28 -0.22       0.15 0.85 0.15
+Q7   0.61  0.20  0.21       0.45 0.55 0.82
+Q10  0.57        0.32       0.43 0.57 0.76
+Q11  0.71  0.22  0.24       0.61 0.39 0.82
+Q16  0.62        0.37       0.56 0.44 0.69
+Q17  0.29                   0.15 0.85 0.58
+Q18  0.71  0.27             0.62 0.38 0.82
+Q19  0.69        0.26       0.57 0.43 0.83
+Q20  0.62        0.31       0.50 0.50 0.76
+Q21  0.62        0.20       0.46 0.54 0.83
+Q22  0.64  0.28             0.51 0.49 0.81
+Q23  0.58        0.25       0.43 0.57 0.78
+Q24  0.60        0.29       0.45 0.55 0.79
+Q25  0.70  0.26             0.61 0.39 0.81
+Q26  0.58        0.44       0.54 0.46 0.64
+Q27  0.41        0.36       0.31 0.69 0.55
+Q28  0.65        0.42       0.60 0.40 0.71
+Q29  0.62        0.22       0.47 0.53 0.83
+Q30  0.64        0.27       0.50 0.50 0.81
+Q31  0.58        0.35       0.48 0.52 0.70
+Q32  0.67              0.21 0.54 0.46 0.83
+Q34  0.60  0.32             0.48 0.52 0.75
+Q35  0.68  0.30             0.59 0.41 0.79
+Q36  0.70  0.22  0.21       0.59 0.41 0.83
+Q37  0.69  0.20             0.57 0.43 0.84
+Q38  0.74  0.28             0.67 0.33 0.82
+Q39  0.66  0.33             0.58 0.42 0.77
+Q40  0.69  0.27  0.20       0.58 0.42 0.81
+Q41  0.26        0.24       0.14 0.86 0.47
+Q42  0.70        0.29       0.60 0.40 0.82
+Q43  0.67        0.30       0.55 0.45 0.81
+Q44  0.73        0.23       0.64 0.36 0.84
+Q45  0.67  0.44             0.64 0.36 0.70
+Q46                         0.04 0.96 0.41
+Q47  0.46        0.26       0.30 0.70 0.73
+Q49  0.65        0.42       0.60 0.40 0.70
+Q50  0.47        0.35       0.35 0.65 0.62
+Q51  0.56                   0.38 0.62 0.84
+Q52  0.68        0.42       0.65 0.35 0.72
+Q53  0.67  0.27  0.21       0.57 0.43 0.79
+Q54  0.70  0.32             0.62 0.38 0.79
+Q55  0.24        0.20       0.10 0.90 0.59
+Q56  0.75  0.22             0.67 0.33 0.84
+Q57  0.65        0.23  0.25 0.54 0.46 0.79
+Q58  0.68  0.37             0.60 0.40 0.76
+Q59  0.69        0.39       0.64 0.36 0.74
+Q60  0.42        0.35       0.30 0.70 0.58
+Q61  0.67  0.44             0.64 0.36 0.69
+Q62  0.60  0.30             0.47 0.53 0.76
+Q63  0.70        0.32       0.60 0.40 0.80
+Q64  0.64        0.37       0.57 0.43 0.72
+Q65  0.55        0.34       0.42 0.58 0.72
+Q66  0.65  0.26             0.51 0.49 0.82
+Q68  0.61              0.29 0.49 0.51 0.76
+Q69  0.52              0.46 0.51 0.49 0.54
+Q70  0.51              0.49 0.50 0.50 0.51
+Q71  0.68              0.33 0.59 0.41 0.78
+Q72  0.49              0.40 0.41 0.59 0.58
+Q73  0.58              0.47 0.56 0.44 0.61
+Q74  0.55              0.34 0.42 0.58 0.70
+Q76  0.68              0.29 0.57 0.43 0.80
+Q77  0.71              0.32 0.64 0.36 0.79
+Q78  0.61              0.48 0.60 0.40 0.62
+Q79  0.55              0.44 0.49 0.51 0.61
+Q80  0.63              0.43 0.58 0.42 0.67
+Q81  0.58        0.22  0.21 0.44 0.56 0.78
 
 With eigenvalues of:
-   g  F1*  F2* 
-24.8  3.8  2.7 
+   g  F1*  F2*  F3* 
+24.5  2.3  3.5  2.5 
 
-general/max  6.53   max/min =   1.4
-mean percent general =  0.77    with sd =  0.1 and cv of  0.14 
-Explained Common Variance of the general factor =  0.79 
+general/max  6.91   max/min =   1.54
+mean percent general =  0.72    with sd =  0.12 and cv of  0.17 
+Explained Common Variance of the general factor =  0.75 
 
-The degrees of freedom are 2014  and the fit is  9.21 
-The number of observations was  3222  with Chi Square =  29427.03  with prob <  0
-The root mean square of the residuals is  0.04 
+The degrees of freedom are 1950  and the fit is  7.54 
+The number of observations was  3222  with Chi Square =  24088.73  with prob <  0
+The root mean square of the residuals is  0.03 
 The df corrected root mean square of the residuals is  0.04
-RMSEA index =  0.065  and the 10 % confidence intervals are  0.064 0.066
-BIC =  13158.42
+RMSEA index =  0.059  and the 10 % confidence intervals are  0.059 0.06
+BIC =  8337.11
 
 Compare this with the adequacy of just a general factor and no group factors
-The degrees of freedom for just the general factor are 2079  and the fit is  12.2 
-The number of observations was  3222  with Chi Square =  39003.96  with prob <  0
-The root mean square of the residuals is  0.08 
+The degrees of freedom for just the general factor are 2079  and the fit is  12.25 
+The number of observations was  3222  with Chi Square =  39165.93  with prob <  0
+The root mean square of the residuals is  0.09 
 The df corrected root mean square of the residuals is  0.09 
 
 RMSEA index =  0.074  and the 10 % confidence intervals are  0.074 0.075
-BIC =  22210.3 
+BIC =  22372.27 
 
 Measures of factor score adequacy             
-                                                 g   F1*   F2*
-Correlation of scores with factors            0.92  0.69  0.69
-Multiple R square of scores with factors      0.84  0.48  0.47
-Minimum correlation of factor score estimates 0.68 -0.04 -0.05
+                                                 g  F1*  F2*  F3*
+Correlation of scores with factors            0.91 0.74 0.75 0.79
+Multiple R square of scores with factors      0.83 0.55 0.56 0.63
+Minimum correlation of factor score estimates 0.66 0.11 0.11 0.26
 
  Total, General and Subset omega for each subset
-                                                 g  F1*  F2*
-Omega total for total scores and subscales    0.98 0.96 0.95
-Omega general for total scores and subscales  0.83 0.78 0.78
-Omega group for total scores and subscales    0.10 0.18 0.17
+                                                 g  F1*  F2*  F3*
+Omega total for total scores and subscales    0.98 0.92 0.95 0.92
+Omega general for total scores and subscales  0.82 0.77 0.74 0.67
+Omega group for total scores and subscales    0.08 0.16 0.21 0.25
 \end{verbatim}
 
 \begin{quote}
@@ -329,6 +385,49 @@ Differential item functioning (DIF), simply put, examines how an item functions 
 
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
+
+\begin{quote}
+The results supported the hypothesis that fewer than 30 items across fewer than 10 factors would be found to comprise a spiritual abuse scale with adequate reliability. In the end, 27 items over 6 factors were found to comprise the new Spiritual Harm \& Abuse Scale:
+- Maintaining the System
+- Internal Distress
+- Embracing Violence
+- Controlling Leadership
+- Harmful God-image
+- Gender Discrimination
+\end{quote}
+
+\begin{quote}
+There is likely to be convergent validity with the sole existing similar scale. For the Spiritual Abuse Questionnaire (SAQ), Keller (2016) found the following 4 factors: Abuse of Power, Conditionality, Spiritual Injury, and Suppression of Expression. Some overlap can be seen between the two sets of factors. For example, Spiritual Injury is indicated in both Internal Distress and Harmful God-image and Abuse of Power has face validity with both Controlling Leadership and Maintaining the System. Future research should evaluate correlations between these two scales and their subscales.
+The highest factor correlation is between Controlling Leadership and Embracing Violence (.764), which may indicate that controlling leaders are more likely to use fear and terror to motivate religious decisions and loyalty. They may also be more likely to support or tolerate violence, either real-life or biblical accounts of violence, to maintain their authority and power. More research should be done to support this conclusion, however. The next highest correlation is between Controlling Leadership and Internal Distress (.756). It may be that internal distress is caused by church communities with controlling leadership. However, the causal relationship may go the other way as well: Those who experience internal distress may rate their current or former church leadership as more authoritarian than those who do not experience such distress. Thirdly, some other cause may be responsible for elevated scores on both scales for many individuals.
+\end{quote}
+
+\begin{quote}
+Between the 6 factors and the additional ``critical items'' on the screener, all major abuse-related themes from the qualitative work of both Swindle (2017) and Ward (2011) appear to have at least one correlate on the SHAS, as shown in Table 7.
+\end{quote}
+
+\begin{quote}
+The resulting scale can be used in clinical settings to quickly check a client's exposure to spiritual abuse and possible resulting consequences. It can be administered in roughly the same amount of time as short measures like the Beck Anxiety Inventory.
+\end{quote}
+
+\begin{quote}
+The results of this research will comprise a scale and clinical screener for use by clinicians, potentially providing myriad benefits. Practitioners with clients whom they suspect may have been the victims of R/S abuse could administer the scale as part of their intake process, quickly able to check their client's score against established, valid, and reliable norms. The first section will comprise the 27 items, split into two sections. Subsection 1, focused on external events, will consist of 16 items under a heading that reads ``How often have you experienced the following in a church or Christian group setting?'' with possible answers scored 1-5 on a Likert scale: never, once or twice, sometimes, often, all the time. Subsection 2, focused on internal states, will consist of 11 items under a heading that reads ``In recent years, how often have you experienced the following as a result of negative religious experiences?'' with possible answers scored 1-5 on a Likert scale: never, once or twice, sometimes, often, all the time.
+\end{quote}
+
+\begin{quote}
+Section 2 will contain a heading ``Additionally, please check all that apply to your experience in Christian churches or groups throughout your life.'' The 11 critical items will be listed with a check box next to each. A scoring key will be included for the first section. Total scores and subscale scores for each of the six factors will be explained, with basic levels of severity indicated for a general population, based on mean and standard deviation information from this research. Clinicians will therefore be able to quickly assess how much potential spiritual abuse their client has been exposed to, as well as one or more focus areas based on subscale scores. The final screener is included as Appendix B.
+\end{quote}
+
+\begin{quote}
+Limitations and Future Research. One limitation of the SAS is that it was developed on a largely white and Protestant/former Protestant population. It is possible that major types or subthemes of spiritual abuse not captured here are more prominent in Catholic or non-white Christian settings, especially given that R/S can be such central forces in many of those groups. This would be a fruitful area of future study. Research looking at spiritual abuse among the LGBTQ+ community might also yield insights specific to that population. Future research could also distinguish normed scores of this scale for different populations and denominations.
+\end{quote}
+
+\begin{quote}
+Much additional analysis could also be done on the prevalence data contained in the survey responses. Comparisons could be made to the other existing Western quantitative spiritual abuse survey (Oakley \& Kinmond, 2014). Future research can look for correlations between exposure to R/S abuse and other religion-related measures, for example, the Religious Involvement Scale (Piedmont, et al.~2009), the Penn Inventory of Scrupulosity (Abrahamowitz et al, 2002), the Death Anxiety Scale (Templer, 1970), the Hell Anxiety Scale (Cranney, et al.~2017), and others. Comparisons can also be made with other trauma-related scales, like the Child Abuse and Trauma Scale, the Trauma History Screen, and the Cumulative Trauma Scale. Validity can also be established for both this new scale and the Spiritual Abuse Questionnaire (Keller, 2016) by correlating the two.
+\end{quote}
+
+\begin{quote}
+The final screener has the potential to both improve therapy for innumerable clients who have experienced negative religious experiences and to contribute a knowledge base for any future clinical training around working with spiritually abused clients. The scale may also contribute to future research that could be critical in understanding not only the mechanisms and experience of spiritual abuse but also perhaps the enduring power of religion, both to heal and to harm.
+\end{quote}
 
 \hypertarget{data-availability}{%
 \section{Data Availability}\label{data-availability}}

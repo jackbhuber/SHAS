@@ -1,3 +1,10 @@
+## Participant Characteristics
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(comment = "", echo = FALSE, warning = FALSE, message = FALSE, tidy.opts=list(width.cutoff=60), tidy = TRUE)
+knitr::opts_knit$set(verbose = FALSE)
+```
+
 In total, 3,222 individuals responded to the survey. Participants who did not opt out and completed at least 50% of the spiritual abuse item pool were considered complete responders and included in the study (N=3,219). Non-responders included those who responded to less than half of the items (N=3).
 
 Almost all participants (N = 3,064) answered demographics items, and the results are presented Table 1 below. Compared to the general U.S. population, the sample was largely white (86%) and Protestant (57%). The average respondent saw themselves as slightly theologically liberal (M = 4.5, range 1-7). About 4 in 5 identified as straight (82%), and most were raised in a Christian home (87%).
@@ -33,7 +40,6 @@ dems.itms = expss::apply_labels(dems.itms,
                             `Denomination of most abuse` = c("Catholic"=1, "Charismatic/Pentecostal"=2, "Baptist"=3, "Mainline"=4, "Non-denominational"=5, "Orthodox Christian"=6, "Mormon"=7, "Christian other than above"=8, "Evangelistic/Missions organization"=9, "College Christian organization"=10, "Christian Youth Organization"=11, "Christian media company"=12, "Christian school or university"=13, "Christian political/activist group"=14, "Christian aid/social services group"=15, "Local Bible study or small group"=16, "Christian group other than the above"=17),
                             `Current religious identification` = c("Protestant"=1, "Catholic"=2, "Mormon"=3, "Orthodox Christian"=4, "Other religious tradition"=5, "Atheist"=6, "Agnostic"=7, "Nothing in particular"=8)
 )
-write.csv(dems.itms,"data/dems.itms.csv")
 ```
 
 ```{r dems-describe, echo=FALSE}

@@ -1,3 +1,10 @@
+## Exploratory Bifactor Analysis
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(comment = "", echo = FALSE, warning = FALSE, message = FALSE, tidy.opts=list(width.cutoff=60), tidy = TRUE)
+knitr::opts_knit$set(verbose = FALSE)
+```
+
 ```{r eval=FALSE, echo=FALSE}
 # EXPLORATORY BIFACTOR ANALYSIS
 
@@ -11,7 +18,7 @@ all <- read.csv("data/all.csv")
 items <- all[,1:66]
 # source("code/ApplyItemLabels.R")
 library(psych)
-results.bfi <- psych::omega(items, nfactors = 2, digits = 3, plot = FALSE)
+results.bfi <- psych::omega(items, nfactors = 3, digits = 3, plot = FALSE)
 fctr.ldgs <- as.data.frame(results.bfi[["schmid"]][["sl"]])
 print(results.bfi)
 # library(kableExtra)
