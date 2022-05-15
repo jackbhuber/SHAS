@@ -105,10 +105,6 @@
 \begin{document}
 \maketitle
 
-{
-\setcounter{tocdepth}{2}
-\tableofcontents
-}
 \hypertarget{abstract}{%
 \section{Abstract}\label{abstract}}
 
@@ -156,15 +152,9 @@ The final survey instrument included a total of 66 prompts separated into two di
 \hypertarget{data-analysis}{%
 \subsection{Data Analysis}\label{data-analysis}}
 
-Their initial validation of the SHAS, \citet{KochEdstrom2022} studied the dimensionality of the items. The authors used exploratory factor analysis (EFA) to probe the factor structure of the items. In these analyses, the items loaded onto X inter-related factors. This helped the authors distill items and identify several subscales for potential future use by clinicians and researchers.
+In their initial validation of the SHAS, \citet{KochEdstrom2022} examined the dimensionality of the items. The authors used exploratory factor analysis (EFA) to determine the factor structure of the items. In these analyses, the items loaded onto X inter-related factors which helped the authors distill items and identify several subscales for potential future use by clinicians and researchers.
 
-In this study, we focused on the commonality of the items. Item response theory models make two assumptions: that a single latent trait explains responses to items (unidimensionality) and that, after controlling for this latent trait, items should be weakly correlated (local independence) \citep{EmbretsonReise2000, ReiseWaller2009, ReiseBonifayHaviland2013}. The SHAS items were multidimensional by design. The construct of spiritual harm and abuse is not conceptually narrow, and Koch wrote two distinct item sets to cover the breadth of this construct. However, a unidimensional IRT model can be fit to multidimensional data \citep{ReiseMooreHaviland2013}. In this study we hypothesized a general factor of spiritual violence as the cause of common variance across the 66 SHAS items. This made the common variance across domains our primary interest rather than the comprehensive coverage of each subdomain that would produce separate scales or subscales.
-
-Therefore, we sought evidence of unidimensionality and local dependence in order to calibrate a common scale and avail to the SHAS the useful applications provided by item response theory.
-
-\begin{quote}
-We assumed an effect-indicator model from the beginning of the analysis. The analysis strategy therefore also targeted removal of smaller, extraneous factors in an effort to identify a sufficiently unidimensional set of items that could form a single scale. Different theoretical assumptions such as creating an inventory of abuse and damage could be consistent with a causal-indicator model where items are selected to maximize the unique content represented by each subdomain. While there is benefit to each approach, the latter would have contributed to proliferation of similar constructs in the field, overemphasized each subdomain's independence, increased respondent burden, and would have had relatively limited utility in clinical settings due to the need to reliably assess and interpret multiple domains and scores.
-\end{quote}
+For this study, we shifted our focused to the commonality of the items for the purpose of item response theory. Item response theory models make two assumptions: that a single latent trait explains responses to items (unidimensionality) and that, after controlling for this latent trait, items are weakly correlated (local independence) \citep{EmbretsonReise2000, ReiseWaller2009, ReiseBonifayHaviland2013}. The SHAS items were multidimensional by design. The construct of spiritual harm and abuse is not conceptually narrow, and to cover the breadth of this construct Koch wrote two distinct item sets. However, a unidimensional IRT model can still be fit to multidimensional data \citep{ReiseMooreHaviland2013}. In this study we hypothesized a general factor of spiritual abuse as the primary source of the common variance across the 66 SHAS items. Therefore, we sought evidence of unidimensionality and local dependence in order to calibrate the items and participants to a single IRT scale.
 
 We began by examining classical item-level statistics, polychoric correlations, and hierarchical cluster analysis to identify poorly functioning items. Next, we conducted iterative exploratory bifactor analyses using the psych package in R. We started by selecting two subfactors corresponding to the two hypothesized domains of the construct. We evaluated dimensionality based on general factor saturation and computed Omega-Hierarchical (Omega-H), where values \textgreater{} 0.70 suggest sufficient unidimensionality for IRT modeling \citep{ReiseBonifayHaviland2013}. We also calculated explained common variance (ECV), the relative strength of a general factor compared to group factors, targeting ECV values \textgreater{} 0.60 as a tentative benchmark \citep{ReiseBonifayHaviland2013}.
 
@@ -182,7 +172,7 @@ All analyses were conducted in \textbf{R} \citep{R-base}, using the \textbf{psyc
 
 In total, 3,222 individuals responded to the survey. Participants who did not opt out and completed at least 50\% of the spiritual abuse item pool were considered complete responders and included in the study (N=3,219). Non-responders included those who responded to less than half of the items (N=3).
 
-Table \ref{tab:dems-table} shows the demographic and clinical characteristics of the sample used for item analysis. Participants were mostly XXX and XXX but with sizable minority participation (i.e., XX\% XXX, XX\% XXX).
+Almost all participants (N = 3,064) answered demographics items, and the results are presented Table 1 below. Compared to the general U.S. population, the sample was largely white (86\%) and Protestant (57\%). The average respondent saw themselves as slightly theologically liberal (M = 4.5, range 1-7). About 4 in 5 identified as straight (82\%), and most were raised in a Christian home (87\%).
 
 \hypertarget{initial-item-analysis}{%
 \subsection{Initial Item Analysis}\label{initial-item-analysis}}
@@ -200,8 +190,6 @@ XXX pairs of items in the polychoric correlation matrix were highly correlated (
 \hypertarget{exploratory-bifactor-analysis}{%
 \subsection{Exploratory Bifactor Analysis}\label{exploratory-bifactor-analysis}}
 
-\includegraphics{_main_files/figure-latex/bifact-1.pdf}
-
 \begin{verbatim}
 Omega 
 Call: omegah(m = m, nfactors = nfactors, fm = fm, key = key, flip = flip, 
@@ -210,118 +198,118 @@ Call: omegah(m = m, nfactors = nfactors, fm = fm, key = key, flip = flip,
     covar = covar)
 Alpha:                 0.98 
 G.6:                   0.99 
-Omega Hierarchical:    0.84 
+Omega Hierarchical:    0.83 
 Omega H asymptotic:    0.85 
 Omega Total            0.98 
 
 Schmid Leiman Factor loadings greater than  0.2 
-        g   F1*   F2*   F3*   h2   u2   p2
-Q7   0.62                   0.45 0.55 0.84
-Q10  0.57        0.31       0.43 0.57 0.77
-Q11  0.71  0.21  0.22       0.60 0.40 0.84
-Q16  0.62        0.38       0.57 0.43 0.68
-Q17  0.29                   0.14 0.86 0.63
-Q18  0.72  0.26             0.62 0.38 0.85
-Q19  0.69        0.25       0.57 0.43 0.84
-Q20  0.63        0.29       0.50 0.50 0.79
-Q21  0.63                   0.47 0.53 0.85
-Q22  0.65  0.26             0.51 0.49 0.83
-Q23  0.58        0.24       0.43 0.57 0.80
-Q24  0.60        0.28       0.45 0.55 0.81
-Q25  0.71  0.24             0.60 0.40 0.83
-Q26  0.59        0.43       0.53 0.47 0.65
-Q27  0.42        0.34       0.30 0.70 0.59
-Q28  0.66        0.41       0.61 0.39 0.72
-Q29  0.63        0.22       0.47 0.53 0.83
-Q30  0.64        0.25       0.50 0.50 0.83
-Q31  0.58        0.36       0.49 0.51 0.68
-Q32  0.67              0.21 0.54 0.46 0.84
-Q34  0.61  0.32             0.49 0.51 0.77
-Q35  0.69  0.28             0.58 0.42 0.81
-Q36  0.71  0.21             0.59 0.41 0.85
-Q37  0.70                   0.57 0.43 0.86
-Q38  0.75  0.27             0.67 0.33 0.84
-Q39  0.67  0.32             0.58 0.42 0.78
-Q40  0.70  0.27             0.59 0.41 0.83
-Q41  0.26        0.23       0.13 0.87 0.51
-Q42  0.71        0.29       0.60 0.40 0.83
-Q43  0.67        0.29       0.55 0.45 0.82
-Q44  0.74        0.22       0.64 0.36 0.85
-Q45  0.68  0.44             0.66 0.34 0.71
-Q46                         0.04 0.96 0.41
-Q47  0.47        0.24       0.30 0.70 0.75
-Q49  0.65        0.41       0.60 0.40 0.71
-Q50  0.47        0.33       0.34 0.66 0.66
-Q51  0.57                   0.37 0.63 0.85
-Q52  0.69        0.41       0.65 0.35 0.73
-Q53  0.68  0.28             0.57 0.43 0.81
-Q54  0.70  0.29             0.61 0.39 0.81
-Q55  0.24        0.20       0.10 0.90 0.59
-Q56  0.76  0.20             0.67 0.33 0.86
-Q57  0.65        0.23  0.25 0.54 0.46 0.79
-Q58  0.69  0.37             0.61 0.39 0.77
-Q59  0.70        0.38       0.64 0.36 0.76
-Q60  0.42        0.34       0.30 0.70 0.59
-Q61  0.68  0.44             0.65 0.35 0.71
-Q62  0.61  0.30             0.47 0.53 0.78
-Q63  0.70        0.32       0.61 0.39 0.81
-Q64  0.65        0.35       0.57 0.43 0.75
-Q65  0.55        0.33       0.41 0.59 0.73
-Q66  0.66  0.25             0.51 0.49 0.84
-Q68  0.61              0.29 0.49 0.51 0.76
-Q69  0.52              0.47 0.51 0.49 0.53
-Q70  0.50              0.47 0.48 0.52 0.52
-Q71  0.68              0.33 0.59 0.41 0.78
-Q72  0.48              0.39 0.40 0.60 0.59
-Q73  0.58              0.47 0.56 0.44 0.60
-Q74  0.54              0.36 0.43 0.57 0.68
-Q76  0.68              0.29 0.57 0.43 0.80
-Q77  0.71              0.32 0.64 0.36 0.80
-Q78  0.61              0.49 0.61 0.39 0.61
-Q79  0.55              0.43 0.48 0.52 0.62
-Q80  0.62              0.45 0.59 0.41 0.65
-Q81  0.58        0.22  0.22 0.44 0.56 0.78
-Q82  0.55              0.39 0.45 0.55 0.67
+        g   F1*   F2*   h2   u2   p2
+X-               0.23 0.09 0.91 0.24
+Q7   0.61  0.25       0.45 0.55 0.84
+Q10  0.57  0.31       0.43 0.57 0.77
+Q11  0.71  0.28       0.60 0.40 0.84
+Q16  0.63  0.32       0.50 0.50 0.79
+Q17  0.30             0.11 0.89 0.80
+Q18  0.72  0.22  0.20 0.60 0.40 0.85
+Q19  0.69  0.28       0.57 0.43 0.83
+Q20  0.62  0.34       0.49 0.51 0.77
+Q21  0.62  0.23       0.46 0.54 0.84
+Q22  0.64        0.24 0.49 0.51 0.84
+Q23  0.57  0.29       0.42 0.58 0.79
+Q24  0.60  0.30       0.45 0.55 0.79
+Q25  0.71        0.29 0.60 0.40 0.83
+Q26  0.59  0.42       0.52 0.48 0.65
+Q27  0.42  0.32       0.28 0.72 0.62
+Q28  0.65  0.41       0.60 0.40 0.71
+Q29  0.63  0.22       0.46 0.54 0.85
+Q30  0.64  0.29       0.50 0.50 0.82
+Q31  0.58  0.31       0.43 0.57 0.78
+Q32  0.68        0.24 0.54 0.46 0.85
+Q34  0.60  0.22       0.42 0.58 0.85
+Q35  0.68        0.30 0.57 0.43 0.82
+Q36  0.70  0.25       0.58 0.42 0.85
+Q37  0.69  0.22       0.57 0.43 0.85
+Q38  0.75        0.28 0.66 0.34 0.84
+Q39  0.67        0.30 0.54 0.46 0.82
+Q40  0.69  0.26       0.56 0.44 0.84
+Q41  0.26             0.11 0.89 0.65
+Q42  0.70  0.31       0.60 0.40 0.82
+Q43  0.67  0.30       0.55 0.45 0.82
+Q44  0.74  0.26       0.64 0.36 0.85
+Q45  0.67        0.27 0.53 0.47 0.84
+Q46                   0.03 0.97 0.49
+Q47  0.46  0.28       0.29 0.71 0.73
+Q49  0.65  0.41       0.59 0.41 0.71
+Q50  0.47  0.31       0.32 0.68 0.70
+Q51  0.56             0.37 0.63 0.85
+Q52  0.69  0.40       0.63 0.37 0.75
+Q53  0.67  0.28       0.53 0.47 0.83
+Q54  0.70        0.29 0.59 0.41 0.83
+Q55  0.24             0.10 0.90 0.60
+Q56  0.76  0.21  0.23 0.67 0.33 0.85
+Q57  0.66  0.21       0.51 0.49 0.85
+Q58  0.67        0.23 0.53 0.47 0.85
+Q59  0.69  0.41       0.64 0.36 0.74
+Q60  0.42  0.35       0.30 0.70 0.57
+Q61  0.66        0.26 0.52 0.48 0.84
+Q62  0.59  0.22       0.42 0.58 0.85
+Q63  0.70  0.32       0.60 0.40 0.81
+Q64  0.64  0.40       0.57 0.43 0.72
+Q65  0.55  0.33       0.41 0.59 0.74
+Q66  0.65        0.22 0.50 0.50 0.85
+Q68  0.62        0.21 0.45 0.55 0.85
+Q69  0.54        0.43 0.49 0.51 0.59
+Q70  0.52        0.33 0.38 0.62 0.71
+Q71  0.68        0.31 0.58 0.42 0.81
+Q72  0.50        0.26 0.32 0.68 0.79
+Q73  0.60        0.38 0.50 0.50 0.71
+Q74  0.56        0.32 0.41 0.59 0.75
+Q76  0.68        0.31 0.57 0.43 0.82
+Q77  0.72        0.33 0.63 0.37 0.82
+Q78  0.62        0.39 0.54 0.46 0.71
+Q79  0.56        0.35 0.44 0.56 0.73
+Q80  0.64        0.37 0.55 0.45 0.74
+Q81  0.59  0.20       0.41 0.59 0.85
 
 With eigenvalues of:
-   g  F1*  F2*  F3* 
-25.2  2.0  3.2  2.7 
+   g  F1*  F2* 
+24.8  3.8  2.7 
 
-general/max  7.75   max/min =   1.59
-mean percent general =  0.74    with sd =  0.1 and cv of  0.14 
-Explained Common Variance of the general factor =  0.76 
+general/max  6.53   max/min =   1.4
+mean percent general =  0.77    with sd =  0.1 and cv of  0.14 
+Explained Common Variance of the general factor =  0.79 
 
-The degrees of freedom are 1950  and the fit is  7.52 
-The number of observations was  3222  with Chi Square =  24034.67  with prob <  0
-The root mean square of the residuals is  0.03 
+The degrees of freedom are 2014  and the fit is  9.21 
+The number of observations was  3222  with Chi Square =  29427.03  with prob <  0
+The root mean square of the residuals is  0.04 
 The df corrected root mean square of the residuals is  0.04
-RMSEA index =  0.059  and the 10 % confidence intervals are  0.059 0.06
-BIC =  8283.04
+RMSEA index =  0.065  and the 10 % confidence intervals are  0.064 0.066
+BIC =  13158.42
 
 Compare this with the adequacy of just a general factor and no group factors
 The degrees of freedom for just the general factor are 2079  and the fit is  12.2 
-The number of observations was  3222  with Chi Square =  39007.58  with prob <  0
+The number of observations was  3222  with Chi Square =  39003.96  with prob <  0
 The root mean square of the residuals is  0.08 
-The df corrected root mean square of the residuals is  0.08 
+The df corrected root mean square of the residuals is  0.09 
 
 RMSEA index =  0.074  and the 10 % confidence intervals are  0.074 0.075
-BIC =  22213.92 
+BIC =  22210.3 
 
 Measures of factor score adequacy             
-                                                 g  F1*  F2*  F3*
-Correlation of scores with factors            0.92 0.71 0.75 0.81
-Multiple R square of scores with factors      0.84 0.51 0.56 0.66
-Minimum correlation of factor score estimates 0.69 0.02 0.12 0.32
+                                                 g   F1*   F2*
+Correlation of scores with factors            0.92  0.69  0.69
+Multiple R square of scores with factors      0.84  0.48  0.47
+Minimum correlation of factor score estimates 0.68 -0.04 -0.05
 
  Total, General and Subset omega for each subset
-                                                 g  F1*  F2*  F3*
-Omega total for total scores and subscales    0.98 0.93 0.95 0.93
-Omega general for total scores and subscales  0.84 0.79 0.75 0.66
-Omega group for total scores and subscales    0.08 0.14 0.19 0.26
+                                                 g  F1*  F2*
+Omega total for total scores and subscales    0.98 0.96 0.95
+Omega general for total scores and subscales  0.83 0.78 0.78
+Omega group for total scores and subscales    0.10 0.18 0.17
 \end{verbatim}
 
 \begin{quote}
-We removed a total of nine items in this step, based on empirical and conceptual considerations. The bifactor models with four subfactors identified three items with low general factor loadings (\textless{} 0.50) or high specific factor loadings (\textgreater{} 0.50). These items focused on individual health behavior maintenance. In addition, we noticed that a single specific factor was driven by three items from the ``health information use'' domain, also showing high specific factor loadings and low general factor loadings, suggesting a potential for multidimensionality. They focused on independent health information use (e.g., ``It is easy to find information on my own that helps me manage my symptoms''). All other items in this domain showed lower loadings on the ``health information use'' factor (\textless{} 0.35). We opted to remove these three items, and model three subfactors representing the remaining subdomains. This decision to shift from 4 to 3 subfactors was based not only on these empirical considerations, but on the overarching conceptual assumption that the construct of engagement is essentially collaborative, and that the multidimensionality of items addressing independent skills was inconsistent with this assumption.
+We removed X items in this step. The bifactor models with three subfactors identified 8 items with low general factor loadings (\textless{} 0.50) or high specific factor loadings (\textgreater{} 0.50). These items focused on individual health behavior maintenance. In addition, we noticed that a single specific factor was driven by three items from the ``health information use'' domain, also showing high specific factor loadings and low general factor loadings, suggesting a potential for multidimensionality. They focused on independent health information use (e.g., ``It is easy to find information on my own that helps me manage my symptoms''). All other items in this domain showed lower loadings on the ``health information use'' factor (\textless{} 0.35). We opted to remove these three items, and model three subfactors representing the remaining subdomains. This decision to shift from 4 to 3 subfactors was based not only on these empirical considerations, but on the overarching conceptual assumption that the construct of engagement is essentially collaborative, and that the multidimensionality of items addressing independent skills was inconsistent with this assumption.
 \end{quote}
 
 \begin{quote}

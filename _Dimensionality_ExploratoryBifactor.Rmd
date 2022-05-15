@@ -4,14 +4,23 @@
 # general factor saturation and compute Omega-Hierarchical (Omega-H) where values > 0.7 suggest sufficient unidimensionality for IRT modeling.
 
 # calculate explained common variance (ECV), the relative strength of a general factor compared to group factors, targeting ECV > 0.60 as a benchmark.
-
 ```
 
 ```{r bifact}
 all <- read.csv("data/all.csv")
-omega(all[,1:66])
+items <- all[,1:66]
+# source("code/ApplyItemLabels.R")
+library(psych)
+results.bfi <- psych::omega(items, nfactors = 2, digits = 3, plot = FALSE)
+fctr.ldgs <- as.data.frame(results.bfi[["schmid"]][["sl"]])
+print(results.bfi)
+# library(kableExtra)
+# fctr.ldgs <- fctr.ldgs[order(fctr.ldgs$g),]
+# fctr.ldgs %>%
+#   kable(align="cccccc",digits=3) %>%
+#   kable_styling(bootstrap_options = "condensed", font = 14, fixed_thead = TRUE)
 ```
 
->We removed a total of nine items in this step, based on empirical and conceptual considerations. The bifactor models with four subfactors identified three items with low general factor loadings (< 0.50) or high specific factor loadings (> 0.50). These items focused on individual health behavior maintenance. In addition, we noticed that a single specific factor was driven by three items from the “health information use” domain, also showing high specific factor loadings and low general factor loadings, suggesting a potential for multidimensionality. They focused on independent health information use (e.g., “It is easy to find information on my own that helps me manage my symptoms”). All other items in this domain showed lower loadings on the “health information use” factor (< 0.35). We opted to remove these three items, and model three subfactors representing the remaining subdomains. This decision to shift from 4 to 3 subfactors was based not only on these empirical considerations, but on the overarching conceptual assumption that the construct of engagement is essentially collaborative, and that the multidimensionality of items addressing independent skills was inconsistent with this assumption.
+>We removed X items in this step. The bifactor models with three subfactors identified 8 items with low general factor loadings (< 0.50) or high specific factor loadings (> 0.50). These items focused on individual health behavior maintenance. In addition, we noticed that a single specific factor was driven by three items from the “health information use” domain, also showing high specific factor loadings and low general factor loadings, suggesting a potential for multidimensionality. They focused on independent health information use (e.g., “It is easy to find information on my own that helps me manage my symptoms”). All other items in this domain showed lower loadings on the “health information use” factor (< 0.35). We opted to remove these three items, and model three subfactors representing the remaining subdomains. This decision to shift from 4 to 3 subfactors was based not only on these empirical considerations, but on the overarching conceptual assumption that the construct of engagement is essentially collaborative, and that the multidimensionality of items addressing independent skills was inconsistent with this assumption.
 
 >In the subsequent 3-factor bifactor model, we identified three more items with general factor loadings of 0.50 or less. These items addressed resilient self-efficacy for independent self-management behaviors (e.g., “I attend all of my appointments, even when life gets busy or stressful”) and were removed based on similar empirical considerations and conceptual assumptions. The resulting 30 item set showed a high proportion of general factor variance relative to specific factor variance (item-level proportions ranging from 0.58 to 0.83), with overall indices of Omega-H as 0.79 and ECV 0.69. These values suggest sufficient levels of unidimensionality and that the items mostly reflect a single construct [36].
