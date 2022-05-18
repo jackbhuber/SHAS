@@ -12,7 +12,7 @@ descriptives <- subset(descriptives, select = -c(vars, trimmed, se, median, mad,
 # CATEGORY FREQUENCIES
 catfreqs <- ltm::descript(all[,1:66])
 catfreqs <- as.data.frame(catfreqs[["perc"]])
-names(catfreqs) <- c('1' = "Never", '2' = "Once or twice", '3' = "Sometimes", '4' = "Often", '5' = "All the time")
+#names(catfreqs) <- c('1' = "Never", '2' = "Once or twice", '3' = "Sometimes", '4' = "Often", '5' = "All the time")
 
 # ITEM TOTAL CORRELATIONS
 a <- psych::alpha(all[,1:66])

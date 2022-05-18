@@ -7,11 +7,12 @@ knitr::opts_knit$set(verbose = FALSE)
 
 In total, 3,222 individuals responded to the survey. Participants who did not opt out and completed at least 50% of the spiritual abuse item pool were considered complete responders and included in the study (N=3,219). Non-responders included those who responded to less than half of the items (N=3).
 
-Almost all participants (N = 3,064) answered demographics items, and the results are presented Table 1 below. Compared to the general U.S. population, the sample was largely white (86%) and Protestant (57%). The average respondent saw themselves as slightly theologically liberal (M = 4.5, range 1-7). About 4 in 5 identified as straight (82%), and most were raised in a Christian home (87%).
+Almost all participants (N = 3,064) answered demographics items, and the results are presented Table \@ref(tab:dems-table) below. Compared to the general U.S. population, the sample was largely white (86%) and Protestant (57%). The average respondent saw themselves as slightly theologically liberal (M = 4.5, range 1-7). About 4 in 5 identified as straight (82%), and most were raised in a Christian home (87%).
 
 ```{r dems-prep, echo=FALSE}
 # GET DEMOGRAPHIC DATA
 library(psych)
+library(maditr)
 all <- read.csv("data/all.csv")
 dems.itms <- as.data.frame(all[,c(67:81)])
 names(dems.itms) <- c(
@@ -51,9 +52,10 @@ dems.tbl <- round(dems.tbl,3)
 ```
 
 ```{r dems-table, echo=FALSE}
-# source("code/DemsFrequencies.R")
-```
+library(kableExtra)
+dems.tbl %>%
+  kbl(align = "cccccccccc", digits = 2, booktabs = TRUE, caption = "Participant Characteristics") %>%
+  kable_styling(latex_options = c("scale_down","hold_position"))
 
-```{r}
-rm(list=ls())
+# source("code/DemsFrequencies.R")
 ```

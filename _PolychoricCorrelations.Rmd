@@ -1,0 +1,12 @@
+### Polychoric Correlations
+
+```{r polycor, echo=FALSE}
+# POLYCHORIC CORRELATION MATRIX
+library(psych)
+# all <- read.csv("data/all.csv")
+# all <- all[,-1]
+# mixedCor(all[,2:66])
+psych::corPlot(all[2:66], poly, upper = FALSE)
+```
+
+>XXX pairs of items in the polychoric correlation matrix were highly correlated (r > 0.70). After removing X items, these pairs disappeared (several items appeared in multiple pairs).

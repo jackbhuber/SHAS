@@ -13,6 +13,7 @@ bookdown::gitbook:
     edit: https://github.com/USERNAME/REPO/edit/BRANCH/%s
     download: ["pdf", "epub"]
 bookdown::pdf_book:
+  df_print: kable
   toc: false
   includes:
     in_header: preamble.tex

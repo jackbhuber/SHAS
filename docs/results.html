@@ -58,6 +58,8 @@ set in the _output.yml file.</p>" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 
@@ -115,10 +117,9 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="results.html"><a href="results.html#initial-item-analysis"><i class="fa fa-check"></i>Initial Item Analysis</a>
 <ul>
 <li class="chapter" data-level="" data-path="results.html"><a href="results.html#classical-item-statistics"><i class="fa fa-check"></i>Classical Item Statistics</a></li>
-<li class="chapter" data-level="" data-path="results.html"><a href="results.html#polychoric-correlations"><i class="fa fa-check"></i>Polychoric Correlations</a></li>
+<li class="chapter" data-level="" data-path="results.html"><a href="results.html#hierarchical-cluster-analysis"><i class="fa fa-check"></i>Hierarchical Cluster Analysis</a></li>
 <li class="chapter" data-level="" data-path="results.html"><a href="results.html#exploratory-factor-analysis"><i class="fa fa-check"></i>Exploratory Factor Analysis</a></li>
 <li class="chapter" data-level="" data-path="results.html"><a href="results.html#principal-components-analysis-pca"><i class="fa fa-check"></i>Principal Components Analysis (PCA)</a></li>
-<li class="chapter" data-level="" data-path="results.html"><a href="results.html#cluster-analysis"><i class="fa fa-check"></i>Cluster Analysis</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="results.html"><a href="results.html#exploratory-bifactor-analysis"><i class="fa fa-check"></i>Exploratory Bifactor Analysis</a></li>
 <li class="chapter" data-level="" data-path="results.html"><a href="results.html#bifactor-model-of-final-xx-item-set"><i class="fa fa-check"></i>Bifactor Model of Final XX-Item Set</a></li>
@@ -165,22 +166,3498 @@ div.csl-indent {
 <div id="participant-characteristics" class="section level2 hasAnchor">
 <h2>Participant Characteristics<a href="results.html#participant-characteristics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In total, 3,222 individuals responded to the survey. Participants who did not opt out and completed at least 50% of the spiritual abuse item pool were considered complete responders and included in the study (N=3,219). Non-responders included those who responded to less than half of the items (N=3).</p>
-<p>Almost all participants (N = 3,064) answered demographics items, and the results are presented Table 1 below. Compared to the general U.S. population, the sample was largely white (86%) and Protestant (57%). The average respondent saw themselves as slightly theologically liberal (M = 4.5, range 1-7). About 4 in 5 identified as straight (82%), and most were raised in a Christian home (87%).</p>
+<p>Almost all participants (N = 3,064) answered demographics items, and the results are presented Table <a href="results.html#tab:dems-table">1</a> below. Compared to the general U.S. population, the sample was largely white (86%) and Protestant (57%). The average respondent saw themselves as slightly theologically liberal (M = 4.5, range 1-7). About 4 in 5 identified as straight (82%), and most were raised in a Christian home (87%).</p>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:dems-table">Table 1: </span>Participant Characteristics
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+n
+</th>
+<th style="text-align:center;">
+mean
+</th>
+<th style="text-align:center;">
+sd
+</th>
+<th style="text-align:center;">
+median
+</th>
+<th style="text-align:center;">
+trimmed
+</th>
+<th style="text-align:center;">
+mad
+</th>
+<th style="text-align:center;">
+min
+</th>
+<th style="text-align:center;">
+max
+</th>
+<th style="text-align:center;">
+range
+</th>
+<th style="text-align:center;">
+skew
+</th>
+<th style="text-align:center;">
+kurtosis
+</th>
+<th style="text-align:center;">
+se
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Age
+</td>
+<td style="text-align:center;">
+3071
+</td>
+<td style="text-align:center;">
+2.24
+</td>
+<td style="text-align:center;">
+1.21
+</td>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+2.10
+</td>
+<td style="text-align:center;">
+1.48
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+5
+</td>
+<td style="text-align:center;">
+4
+</td>
+<td style="text-align:center;">
+0.62
+</td>
+<td style="text-align:center;">
+-0.62
+</td>
+<td style="text-align:center;">
+0.02
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gender
+</td>
+<td style="text-align:center;">
+3056
+</td>
+<td style="text-align:center;">
+38.57
+</td>
+<td style="text-align:center;">
+12.27
+</td>
+<td style="text-align:center;">
+36
+</td>
+<td style="text-align:center;">
+37.21
+</td>
+<td style="text-align:center;">
+10.38
+</td>
+<td style="text-align:center;">
+16
+</td>
+<td style="text-align:center;">
+88
+</td>
+<td style="text-align:center;">
+72
+</td>
+<td style="text-align:center;">
+0.98
+</td>
+<td style="text-align:center;">
+0.59
+</td>
+<td style="text-align:center;">
+0.22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sexual orientation
+</td>
+<td style="text-align:center;">
+3060
+</td>
+<td style="text-align:center;">
+1.67
+</td>
+<td style="text-align:center;">
+0.82
+</td>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+1.59
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+6
+</td>
+<td style="text-align:center;">
+5
+</td>
+<td style="text-align:center;">
+2.67
+</td>
+<td style="text-align:center;">
+10.78
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Race
+</td>
+<td style="text-align:center;">
+3064
+</td>
+<td style="text-align:center;">
+1.36
+</td>
+<td style="text-align:center;">
+1.01
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+1.07
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+6
+</td>
+<td style="text-align:center;">
+5
+</td>
+<td style="text-align:center;">
+3.08
+</td>
+<td style="text-align:center;">
+9.04
+</td>
+<td style="text-align:center;">
+0.02
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Raised in Christian home
+</td>
+<td style="text-align:center;">
+3060
+</td>
+<td style="text-align:center;">
+3.08
+</td>
+<td style="text-align:center;">
+0.79
+</td>
+<td style="text-align:center;">
+3
+</td>
+<td style="text-align:center;">
+3.00
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+7
+</td>
+<td style="text-align:center;">
+6
+</td>
+<td style="text-align:center;">
+3.33
+</td>
+<td style="text-align:center;">
+16.84
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Denomination of most abuse
+</td>
+<td style="text-align:center;">
+3061
+</td>
+<td style="text-align:center;">
+1.09
+</td>
+<td style="text-align:center;">
+0.28
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+1.00
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+2.93
+</td>
+<td style="text-align:center;">
+6.60
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Racial makeup of abusive community
+</td>
+<td style="text-align:center;">
+3047
+</td>
+<td style="text-align:center;">
+5.20
+</td>
+<td style="text-align:center;">
+3.33
+</td>
+<td style="text-align:center;">
+5
+</td>
+<td style="text-align:center;">
+4.69
+</td>
+<td style="text-align:center;">
+2.96
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+17
+</td>
+<td style="text-align:center;">
+16
+</td>
+<td style="text-align:center;">
+1.47
+</td>
+<td style="text-align:center;">
+2.19
+</td>
+<td style="text-align:center;">
+0.06
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Racial makeup of abusive group leadership
+</td>
+<td style="text-align:center;">
+3042
+</td>
+<td style="text-align:center;">
+1.15
+</td>
+<td style="text-align:center;">
+0.41
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+1.04
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+3
+</td>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+2.69
+</td>
+<td style="text-align:center;">
+6.85
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gender makeup of abusive group leadership
+</td>
+<td style="text-align:center;">
+3044
+</td>
+<td style="text-align:center;">
+1.09
+</td>
+<td style="text-align:center;">
+0.35
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+1.00
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+3
+</td>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+3.90
+</td>
+<td style="text-align:center;">
+15.41
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Involvement in abusive group
+</td>
+<td style="text-align:center;">
+3048
+</td>
+<td style="text-align:center;">
+1.82
+</td>
+<td style="text-align:center;">
+0.79
+</td>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+1.76
+</td>
+<td style="text-align:center;">
+1.48
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+5
+</td>
+<td style="text-align:center;">
+4
+</td>
+<td style="text-align:center;">
+0.48
+</td>
+<td style="text-align:center;">
+-0.78
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Current religious identification
+</td>
+<td style="text-align:center;">
+3054
+</td>
+<td style="text-align:center;">
+5.54
+</td>
+<td style="text-align:center;">
+1.99
+</td>
+<td style="text-align:center;">
+7
+</td>
+<td style="text-align:center;">
+5.92
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+7
+</td>
+<td style="text-align:center;">
+6
+</td>
+<td style="text-align:center;">
+-1.25
+</td>
+<td style="text-align:center;">
+0.24
+</td>
+<td style="text-align:center;">
+0.04
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Current theological identification
+</td>
+<td style="text-align:center;">
+3057
+</td>
+<td style="text-align:center;">
+3.24
+</td>
+<td style="text-align:center;">
+2.96
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+2.92
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+8
+</td>
+<td style="text-align:center;">
+7
+</td>
+<td style="text-align:center;">
+0.70
+</td>
+<td style="text-align:center;">
+-1.36
+</td>
+<td style="text-align:center;">
+0.05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Current view of Bible
+</td>
+<td style="text-align:center;">
+2030
+</td>
+<td style="text-align:center;">
+4.49
+</td>
+<td style="text-align:center;">
+1.55
+</td>
+<td style="text-align:center;">
+5
+</td>
+<td style="text-align:center;">
+4.54
+</td>
+<td style="text-align:center;">
+1.48
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+7
+</td>
+<td style="text-align:center;">
+6
+</td>
+<td style="text-align:center;">
+-0.30
+</td>
+<td style="text-align:center;">
+-0.57
+</td>
+<td style="text-align:center;">
+0.03
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Generation
+</td>
+<td style="text-align:center;">
+3054
+</td>
+<td style="text-align:center;">
+2.23
+</td>
+<td style="text-align:center;">
+0.54
+</td>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+2.23
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+3
+</td>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+0.11
+</td>
+<td style="text-align:center;">
+-0.23
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Podcast Use
+</td>
+<td style="text-align:center;">
+3056
+</td>
+<td style="text-align:center;">
+2.43
+</td>
+<td style="text-align:center;">
+0.79
+</td>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+2.35
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+5
+</td>
+<td style="text-align:center;">
+4
+</td>
+<td style="text-align:center;">
+0.76
+</td>
+<td style="text-align:center;">
+0.22
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="initial-item-analysis" class="section level2 hasAnchor">
 <h2>Initial Item Analysis<a href="results.html#initial-item-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="classical-item-statistics" class="section level3 hasAnchor">
 <h3>Classical Item Statistics<a href="results.html#classical-item-statistics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Table <a href="#tab:CTT-item-table"><strong>??</strong></a> reports classical statistics for the 66 SHAS items. The items are sorted by their mean. Six items are flagged due to extreme values of skew (less than -2 or greater than +2) or kurtosis (less than -7 or greater than +7) and item-total correlations below 0.50. Category response proportions show that most people responded “Never” to these items. These items are important to the extent that they capture the experience of people of color, women, and people who are LGBTQ. But as items they function poorly.</p>
+<p>Table <a href="results.html#tab:CTT-item-table">2</a> reports classical statistics for the 66 SHAS items. The items are sorted by their mean. Six items are flagged due to extreme values of skew (less than -2 or greater than +2) or kurtosis (less than -7 or greater than +7) and item-total correlations below 0.50. Category response proportions show that most people responded “Never” to these items. These items are important to the extent that they capture the experience of people of color, women, and people who are LGBTQ. But as items they function poorly.</p>
+<table class="table" style="font-size: 7px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:CTT-item-table">Table 2: </span>Classical Item Statistics for the SHAS Items
+</caption>
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="5">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Category response proportion
 </div>
-<div id="polychoric-correlations" class="section level3 hasAnchor">
-<h3>Polychoric Correlations<a href="results.html#polychoric-correlations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<blockquote>
-<p>XXX pairs of items in the polychoric correlation matrix were highly correlated (r &gt; 0.70). After removing X items, these pairs disappeared (several items appeared in multiple pairs).</p>
-</blockquote>
-<blockquote>
-<p>Next, we examined how individual items (or small groups of items) might separate from larger sets of items with a hierarchical item cluster plot [34]. This plot showed final clustering of a pair of items with narrow content and a single item that had poor wording and the lowest cluster loading (i.e., corrected item-total correlation). We deleted these three items and an additional item with redundant wording, leaving XX in the item pool at this stage.</p>
-</blockquote>
+</th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="7">
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+1
+</th>
+<th style="text-align:center;">
+2
+</th>
+<th style="text-align:center;">
+3
+</th>
+<th style="text-align:center;">
+4
+</th>
+<th style="text-align:center;">
+5
+</th>
+<th style="text-align:center;">
+n
+</th>
+<th style="text-align:center;">
+mean
+</th>
+<th style="text-align:center;">
+sd
+</th>
+<th style="text-align:center;">
+skew
+</th>
+<th style="text-align:center;">
+kurtosis
+</th>
+<th style="text-align:center;">
+Item-total correlation
+</th>
+<th style="text-align:center;">
+flag
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ46 - Treated as less than because of my skin color
+</td>
+<td style="text-align:center;">
+0.94
+</td>
+<td style="text-align:center;">
+0.03
+</td>
+<td style="text-align:center;">
+0.02
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+3211
+</td>
+<td style="text-align:center;">
+1.11
+</td>
+<td style="text-align:center;">
+0.48
+</td>
+<td style="text-align:center;">
+5.15
+</td>
+<td style="text-align:center;">
+28.93
+</td>
+<td style="text-align:center;">
+0.16
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ41 - Denied opportunities to serve because of my sexual orientation
+</td>
+<td style="text-align:center;">
+0.89
+</td>
+<td style="text-align:center;">
+0.02
+</td>
+<td style="text-align:center;">
+0.03
+</td>
+<td style="text-align:center;">
+0.02
+</td>
+<td style="text-align:center;">
+0.03
+</td>
+<td style="text-align:center;">
+3211
+</td>
+<td style="text-align:center;">
+1.27
+</td>
+<td style="text-align:center;">
+0.88
+</td>
+<td style="text-align:center;">
+3.30
+</td>
+<td style="text-align:center;">
+9.87
+</td>
+<td style="text-align:center;">
+0.31
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ17 - Treated as less than b/c my sexual orientation
+</td>
+<td style="text-align:center;">
+0.88
+</td>
+<td style="text-align:center;">
+0.02
+</td>
+<td style="text-align:center;">
+0.03
+</td>
+<td style="text-align:center;">
+0.03
+</td>
+<td style="text-align:center;">
+0.04
+</td>
+<td style="text-align:center;">
+3208
+</td>
+<td style="text-align:center;">
+1.34
+</td>
+<td style="text-align:center;">
+0.97
+</td>
+<td style="text-align:center;">
+2.87
+</td>
+<td style="text-align:center;">
+6.96
+</td>
+<td style="text-align:center;">
+0.35
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ47 - Medical care being postponed/withheld for religious reasons
+</td>
+<td style="text-align:center;">
+0.70
+</td>
+<td style="text-align:center;">
+0.17
+</td>
+<td style="text-align:center;">
+0.09
+</td>
+<td style="text-align:center;">
+0.02
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+3218
+</td>
+<td style="text-align:center;">
+1.48
+</td>
+<td style="text-align:center;">
+0.86
+</td>
+<td style="text-align:center;">
+1.93
+</td>
+<td style="text-align:center;">
+3.40
+</td>
+<td style="text-align:center;">
+0.52
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ60 - Encouraged by leader to stay in abusive marriage
+</td>
+<td style="text-align:center;">
+0.76
+</td>
+<td style="text-align:center;">
+0.09
+</td>
+<td style="text-align:center;">
+0.07
+</td>
+<td style="text-align:center;">
+0.05
+</td>
+<td style="text-align:center;">
+0.02
+</td>
+<td style="text-align:center;">
+3214
+</td>
+<td style="text-align:center;">
+1.49
+</td>
+<td style="text-align:center;">
+0.99
+</td>
+<td style="text-align:center;">
+2.05
+</td>
+<td style="text-align:center;">
+3.22
+</td>
+<td style="text-align:center;">
+0.48
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ55 - Hearing cultural references in sermons unfamiliar to my race/eth. subculture
+</td>
+<td style="text-align:center;">
+0.66
+</td>
+<td style="text-align:center;">
+0.18
+</td>
+<td style="text-align:center;">
+0.11
+</td>
+<td style="text-align:center;">
+0.04
+</td>
+<td style="text-align:center;">
+0.02
+</td>
+<td style="text-align:center;">
+3205
+</td>
+<td style="text-align:center;">
+1.58
+</td>
+<td style="text-align:center;">
+0.95
+</td>
+<td style="text-align:center;">
+1.66
+</td>
+<td style="text-align:center;">
+2.12
+</td>
+<td style="text-align:center;">
+0.28
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+IQ72 - Feeling as if God harmed me directly
+</td>
+<td style="text-align:center;">
+0.64
+</td>
+<td style="text-align:center;">
+0.17
+</td>
+<td style="text-align:center;">
+0.13
+</td>
+<td style="text-align:center;">
+0.04
+</td>
+<td style="text-align:center;">
+0.02
+</td>
+<td style="text-align:center;">
+3070
+</td>
+<td style="text-align:center;">
+1.64
+</td>
+<td style="text-align:center;">
+0.99
+</td>
+<td style="text-align:center;">
+1.52
+</td>
+<td style="text-align:center;">
+1.55
+</td>
+<td style="text-align:center;">
+0.54
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+IQ81 - Nightmares about my negative religious experiences
+</td>
+<td style="text-align:center;">
+0.56
+</td>
+<td style="text-align:center;">
+0.21
+</td>
+<td style="text-align:center;">
+0.15
+</td>
+<td style="text-align:center;">
+0.06
+</td>
+<td style="text-align:center;">
+0.02
+</td>
+<td style="text-align:center;">
+3073
+</td>
+<td style="text-align:center;">
+1.77
+</td>
+<td style="text-align:center;">
+1.04
+</td>
+<td style="text-align:center;">
+1.23
+</td>
+<td style="text-align:center;">
+0.66
+</td>
+<td style="text-align:center;">
+0.65
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ65 - Cut off/shunned by more religious family members
+</td>
+<td style="text-align:center;">
+0.59
+</td>
+<td style="text-align:center;">
+0.16
+</td>
+<td style="text-align:center;">
+0.13
+</td>
+<td style="text-align:center;">
+0.08
+</td>
+<td style="text-align:center;">
+0.04
+</td>
+<td style="text-align:center;">
+3220
+</td>
+<td style="text-align:center;">
+1.82
+</td>
+<td style="text-align:center;">
+1.18
+</td>
+<td style="text-align:center;">
+1.27
+</td>
+<td style="text-align:center;">
+0.48
+</td>
+<td style="text-align:center;">
+0.61
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ10 - Asked to give up personal goals by pastor
+</td>
+<td style="text-align:center;">
+0.59
+</td>
+<td style="text-align:center;">
+0.16
+</td>
+<td style="text-align:center;">
+0.13
+</td>
+<td style="text-align:center;">
+0.08
+</td>
+<td style="text-align:center;">
+0.04
+</td>
+<td style="text-align:center;">
+3220
+</td>
+<td style="text-align:center;">
+1.83
+</td>
+<td style="text-align:center;">
+1.18
+</td>
+<td style="text-align:center;">
+1.25
+</td>
+<td style="text-align:center;">
+0.44
+</td>
+<td style="text-align:center;">
+0.64
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ26 - Pressured to forgive abuser while abuse was ongoing
+</td>
+<td style="text-align:center;">
+0.60
+</td>
+<td style="text-align:center;">
+0.14
+</td>
+<td style="text-align:center;">
+0.11
+</td>
+<td style="text-align:center;">
+0.09
+</td>
+<td style="text-align:center;">
+0.06
+</td>
+<td style="text-align:center;">
+3212
+</td>
+<td style="text-align:center;">
+1.87
+</td>
+<td style="text-align:center;">
+1.27
+</td>
+<td style="text-align:center;">
+1.24
+</td>
+<td style="text-align:center;">
+0.21
+</td>
+<td style="text-align:center;">
+0.66
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ24 - Expected to consult pastor/leader before making non-religious decisions
+</td>
+<td style="text-align:center;">
+0.56
+</td>
+<td style="text-align:center;">
+0.16
+</td>
+<td style="text-align:center;">
+0.16
+</td>
+<td style="text-align:center;">
+0.08
+</td>
+<td style="text-align:center;">
+0.04
+</td>
+<td style="text-align:center;">
+3221
+</td>
+<td style="text-align:center;">
+1.89
+</td>
+<td style="text-align:center;">
+1.18
+</td>
+<td style="text-align:center;">
+1.10
+</td>
+<td style="text-align:center;">
+0.07
+</td>
+<td style="text-align:center;">
+0.66
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ23 - Prayer replacing needed medical interventions
+</td>
+<td style="text-align:center;">
+0.51
+</td>
+<td style="text-align:center;">
+0.21
+</td>
+<td style="text-align:center;">
+0.17
+</td>
+<td style="text-align:center;">
+0.08
+</td>
+<td style="text-align:center;">
+0.03
+</td>
+<td style="text-align:center;">
+3219
+</td>
+<td style="text-align:center;">
+1.92
+</td>
+<td style="text-align:center;">
+1.13
+</td>
+<td style="text-align:center;">
+1.02
+</td>
+<td style="text-align:center;">
+0.02
+</td>
+<td style="text-align:center;">
+0.64
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ27 - Denied opportunities to serve b/c of my gender
+</td>
+<td style="text-align:center;">
+0.60
+</td>
+<td style="text-align:center;">
+0.11
+</td>
+<td style="text-align:center;">
+0.12
+</td>
+<td style="text-align:center;">
+0.09
+</td>
+<td style="text-align:center;">
+0.08
+</td>
+<td style="text-align:center;">
+3217
+</td>
+<td style="text-align:center;">
+1.94
+</td>
+<td style="text-align:center;">
+1.35
+</td>
+<td style="text-align:center;">
+1.14
+</td>
+<td style="text-align:center;">
+-0.13
+</td>
+<td style="text-align:center;">
+0.48
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ31 - Shunned/ignored by pastor/church/group
+</td>
+<td style="text-align:center;">
+0.46
+</td>
+<td style="text-align:center;">
+0.22
+</td>
+<td style="text-align:center;">
+0.18
+</td>
+<td style="text-align:center;">
+0.09
+</td>
+<td style="text-align:center;">
+0.05
+</td>
+<td style="text-align:center;">
+3217
+</td>
+<td style="text-align:center;">
+2.03
+</td>
+<td style="text-align:center;">
+1.19
+</td>
+<td style="text-align:center;">
+0.92
+</td>
+<td style="text-align:center;">
+-0.20
+</td>
+<td style="text-align:center;">
+0.64
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ30 - Deterred from seeking mental health treatment/counseling/medication
+</td>
+<td style="text-align:center;">
+0.50
+</td>
+<td style="text-align:center;">
+0.17
+</td>
+<td style="text-align:center;">
+0.17
+</td>
+<td style="text-align:center;">
+0.11
+</td>
+<td style="text-align:center;">
+0.05
+</td>
+<td style="text-align:center;">
+3219
+</td>
+<td style="text-align:center;">
+2.04
+</td>
+<td style="text-align:center;">
+1.25
+</td>
+<td style="text-align:center;">
+0.88
+</td>
+<td style="text-align:center;">
+-0.46
+</td>
+<td style="text-align:center;">
+0.70
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ43 - Shamed by pastor/group for poor spiritual/moral performance
+</td>
+<td style="text-align:center;">
+0.46
+</td>
+<td style="text-align:center;">
+0.22
+</td>
+<td style="text-align:center;">
+0.18
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.04
+</td>
+<td style="text-align:center;">
+3217
+</td>
+<td style="text-align:center;">
+2.04
+</td>
+<td style="text-align:center;">
+1.18
+</td>
+<td style="text-align:center;">
+0.86
+</td>
+<td style="text-align:center;">
+-0.31
+</td>
+<td style="text-align:center;">
+0.73
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+IQ68 - Anxiety attacks triggered by religious stimuli
+</td>
+<td style="text-align:center;">
+0.49
+</td>
+<td style="text-align:center;">
+0.17
+</td>
+<td style="text-align:center;">
+0.19
+</td>
+<td style="text-align:center;">
+0.11
+</td>
+<td style="text-align:center;">
+0.05
+</td>
+<td style="text-align:center;">
+3073
+</td>
+<td style="text-align:center;">
+2.06
+</td>
+<td style="text-align:center;">
+1.23
+</td>
+<td style="text-align:center;">
+0.83
+</td>
+<td style="text-align:center;">
+-0.51
+</td>
+<td style="text-align:center;">
+0.68
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ52 - Blamed for harm I suffered rather than blaming who harmed me
+</td>
+<td style="text-align:center;">
+0.48
+</td>
+<td style="text-align:center;">
+0.19
+</td>
+<td style="text-align:center;">
+0.16
+</td>
+<td style="text-align:center;">
+0.12
+</td>
+<td style="text-align:center;">
+0.05
+</td>
+<td style="text-align:center;">
+3217
+</td>
+<td style="text-align:center;">
+2.08
+</td>
+<td style="text-align:center;">
+1.26
+</td>
+<td style="text-align:center;">
+0.85
+</td>
+<td style="text-align:center;">
+-0.52
+</td>
+<td style="text-align:center;">
+0.76
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+IQ70 - Feeling betrayed by God
+</td>
+<td style="text-align:center;">
+0.42
+</td>
+<td style="text-align:center;">
+0.24
+</td>
+<td style="text-align:center;">
+0.21
+</td>
+<td style="text-align:center;">
+0.09
+</td>
+<td style="text-align:center;">
+0.05
+</td>
+<td style="text-align:center;">
+3069
+</td>
+<td style="text-align:center;">
+2.11
+</td>
+<td style="text-align:center;">
+1.18
+</td>
+<td style="text-align:center;">
+0.79
+</td>
+<td style="text-align:center;">
+-0.36
+</td>
+<td style="text-align:center;">
+0.56
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ49 - Leadership/group protecting and elevating abusive individuals
+</td>
+<td style="text-align:center;">
+0.44
+</td>
+<td style="text-align:center;">
+0.22
+</td>
+<td style="text-align:center;">
+0.18
+</td>
+<td style="text-align:center;">
+0.11
+</td>
+<td style="text-align:center;">
+0.05
+</td>
+<td style="text-align:center;">
+3213
+</td>
+<td style="text-align:center;">
+2.12
+</td>
+<td style="text-align:center;">
+1.23
+</td>
+<td style="text-align:center;">
+0.79
+</td>
+<td style="text-align:center;">
+-0.50
+</td>
+<td style="text-align:center;">
+0.72
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ16 - Church/community abandoning me in difficult time
+</td>
+<td style="text-align:center;">
+0.45
+</td>
+<td style="text-align:center;">
+0.21
+</td>
+<td style="text-align:center;">
+0.17
+</td>
+<td style="text-align:center;">
+0.11
+</td>
+<td style="text-align:center;">
+0.06
+</td>
+<td style="text-align:center;">
+3217
+</td>
+<td style="text-align:center;">
+2.13
+</td>
+<td style="text-align:center;">
+1.27
+</td>
+<td style="text-align:center;">
+0.83
+</td>
+<td style="text-align:center;">
+-0.50
+</td>
+<td style="text-align:center;">
+0.69
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ57 - Developing mental/physical ailments from conforming to group/leader’s expectation
+</td>
+<td style="text-align:center;">
+0.48
+</td>
+<td style="text-align:center;">
+0.16
+</td>
+<td style="text-align:center;">
+0.16
+</td>
+<td style="text-align:center;">
+0.12
+</td>
+<td style="text-align:center;">
+0.07
+</td>
+<td style="text-align:center;">
+3219
+</td>
+<td style="text-align:center;">
+2.15
+</td>
+<td style="text-align:center;">
+1.33
+</td>
+<td style="text-align:center;">
+0.78
+</td>
+<td style="text-align:center;">
+-0.70
+</td>
+<td style="text-align:center;">
+0.72
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ20 - Members pressured to give money despite financial hardship
+</td>
+<td style="text-align:center;">
+0.50
+</td>
+<td style="text-align:center;">
+0.15
+</td>
+<td style="text-align:center;">
+0.15
+</td>
+<td style="text-align:center;">
+0.11
+</td>
+<td style="text-align:center;">
+0.09
+</td>
+<td style="text-align:center;">
+3217
+</td>
+<td style="text-align:center;">
+2.16
+</td>
+<td style="text-align:center;">
+1.39
+</td>
+<td style="text-align:center;">
+0.82
+</td>
+<td style="text-align:center;">
+-0.71
+</td>
+<td style="text-align:center;">
+0.68
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ62 - Scripture used to justify physical violence
+</td>
+<td style="text-align:center;">
+0.43
+</td>
+<td style="text-align:center;">
+0.19
+</td>
+<td style="text-align:center;">
+0.21
+</td>
+<td style="text-align:center;">
+0.11
+</td>
+<td style="text-align:center;">
+0.05
+</td>
+<td style="text-align:center;">
+3220
+</td>
+<td style="text-align:center;">
+2.16
+</td>
+<td style="text-align:center;">
+1.24
+</td>
+<td style="text-align:center;">
+0.69
+</td>
+<td style="text-align:center;">
+-0.67
+</td>
+<td style="text-align:center;">
+0.65
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ59 - Pastor/group blame victim for their abuse
+</td>
+<td style="text-align:center;">
+0.42
+</td>
+<td style="text-align:center;">
+0.21
+</td>
+<td style="text-align:center;">
+0.19
+</td>
+<td style="text-align:center;">
+0.12
+</td>
+<td style="text-align:center;">
+0.05
+</td>
+<td style="text-align:center;">
+3217
+</td>
+<td style="text-align:center;">
+2.16
+</td>
+<td style="text-align:center;">
+1.23
+</td>
+<td style="text-align:center;">
+0.70
+</td>
+<td style="text-align:center;">
+-0.65
+</td>
+<td style="text-align:center;">
+0.76
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ21 - Taught I would risk Hell if left my church/group
+</td>
+<td style="text-align:center;">
+0.51
+</td>
+<td style="text-align:center;">
+0.13
+</td>
+<td style="text-align:center;">
+0.13
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.13
+</td>
+<td style="text-align:center;">
+3218
+</td>
+<td style="text-align:center;">
+2.20
+</td>
+<td style="text-align:center;">
+1.47
+</td>
+<td style="text-align:center;">
+0.81
+</td>
+<td style="text-align:center;">
+-0.83
+</td>
+<td style="text-align:center;">
+0.69
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ50 - Treated as less than because of my gender
+</td>
+<td style="text-align:center;">
+0.52
+</td>
+<td style="text-align:center;">
+0.08
+</td>
+<td style="text-align:center;">
+0.15
+</td>
+<td style="text-align:center;">
+0.13
+</td>
+<td style="text-align:center;">
+0.11
+</td>
+<td style="text-align:center;">
+3219
+</td>
+<td style="text-align:center;">
+2.23
+</td>
+<td style="text-align:center;">
+1.47
+</td>
+<td style="text-align:center;">
+0.70
+</td>
+<td style="text-align:center;">
+-1.04
+</td>
+<td style="text-align:center;">
+0.54
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+IQ82 - Having trouble navigating life outside my church/community
+</td>
+<td style="text-align:center;">
+0.38
+</td>
+<td style="text-align:center;">
+0.23
+</td>
+<td style="text-align:center;">
+0.24
+</td>
+<td style="text-align:center;">
+0.11
+</td>
+<td style="text-align:center;">
+0.05
+</td>
+<td style="text-align:center;">
+3071
+</td>
+<td style="text-align:center;">
+2.24
+</td>
+<td style="text-align:center;">
+1.21
+</td>
+<td style="text-align:center;">
+0.62
+</td>
+<td style="text-align:center;">
+-0.62
+</td>
+<td style="text-align:center;">
+0.61
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ64 - Witnessing women pressured to stay in unfaithful/abusive marriages
+</td>
+<td style="text-align:center;">
+0.39
+</td>
+<td style="text-align:center;">
+0.23
+</td>
+<td style="text-align:center;">
+0.19
+</td>
+<td style="text-align:center;">
+0.12
+</td>
+<td style="text-align:center;">
+0.07
+</td>
+<td style="text-align:center;">
+3220
+</td>
+<td style="text-align:center;">
+2.26
+</td>
+<td style="text-align:center;">
+1.27
+</td>
+<td style="text-align:center;">
+0.67
+</td>
+<td style="text-align:center;">
+-0.70
+</td>
+<td style="text-align:center;">
+0.71
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ28 - Leadershi/group protecting abusive individuals
+</td>
+<td style="text-align:center;">
+0.37
+</td>
+<td style="text-align:center;">
+0.24
+</td>
+<td style="text-align:center;">
+0.19
+</td>
+<td style="text-align:center;">
+0.13
+</td>
+<td style="text-align:center;">
+0.06
+</td>
+<td style="text-align:center;">
+3216
+</td>
+<td style="text-align:center;">
+2.26
+</td>
+<td style="text-align:center;">
+1.25
+</td>
+<td style="text-align:center;">
+0.63
+</td>
+<td style="text-align:center;">
+-0.73
+</td>
+<td style="text-align:center;">
+0.72
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ40 - Threatening Divine punishment to keep group members in line
+</td>
+<td style="text-align:center;">
+0.44
+</td>
+<td style="text-align:center;">
+0.17
+</td>
+<td style="text-align:center;">
+0.18
+</td>
+<td style="text-align:center;">
+0.12
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+3220
+</td>
+<td style="text-align:center;">
+2.28
+</td>
+<td style="text-align:center;">
+1.39
+</td>
+<td style="text-align:center;">
+0.67
+</td>
+<td style="text-align:center;">
+-0.88
+</td>
+<td style="text-align:center;">
+0.75
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ63 - Shamed by pastor/group for raising questions or concerns
+</td>
+<td style="text-align:center;">
+0.36
+</td>
+<td style="text-align:center;">
+0.23
+</td>
+<td style="text-align:center;">
+0.22
+</td>
+<td style="text-align:center;">
+0.13
+</td>
+<td style="text-align:center;">
+0.06
+</td>
+<td style="text-align:center;">
+3217
+</td>
+<td style="text-align:center;">
+2.30
+</td>
+<td style="text-align:center;">
+1.25
+</td>
+<td style="text-align:center;">
+0.58
+</td>
+<td style="text-align:center;">
+-0.77
+</td>
+<td style="text-align:center;">
+0.77
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ19 - Behavior excessively monitored by pastor/group
+</td>
+<td style="text-align:center;">
+0.40
+</td>
+<td style="text-align:center;">
+0.18
+</td>
+<td style="text-align:center;">
+0.19
+</td>
+<td style="text-align:center;">
+0.15
+</td>
+<td style="text-align:center;">
+0.08
+</td>
+<td style="text-align:center;">
+3219
+</td>
+<td style="text-align:center;">
+2.32
+</td>
+<td style="text-align:center;">
+1.33
+</td>
+<td style="text-align:center;">
+0.56
+</td>
+<td style="text-align:center;">
+-0.96
+</td>
+<td style="text-align:center;">
+0.75
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ51 - Extreme pressure to be pastor/missionary/spiritual leader
+</td>
+<td style="text-align:center;">
+0.41
+</td>
+<td style="text-align:center;">
+0.19
+</td>
+<td style="text-align:center;">
+0.17
+</td>
+<td style="text-align:center;">
+0.14
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+3216
+</td>
+<td style="text-align:center;">
+2.33
+</td>
+<td style="text-align:center;">
+1.38
+</td>
+<td style="text-align:center;">
+0.59
+</td>
+<td style="text-align:center;">
+-0.98
+</td>
+<td style="text-align:center;">
+0.62
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ53 - Scripture used to justify abusive parent-child behavior
+</td>
+<td style="text-align:center;">
+0.39
+</td>
+<td style="text-align:center;">
+0.19
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+<td style="text-align:center;">
+0.14
+</td>
+<td style="text-align:center;">
+0.09
+</td>
+<td style="text-align:center;">
+3218
+</td>
+<td style="text-align:center;">
+2.36
+</td>
+<td style="text-align:center;">
+1.35
+</td>
+<td style="text-align:center;">
+0.55
+</td>
+<td style="text-align:center;">
+-0.97
+</td>
+<td style="text-align:center;">
+0.73
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+IQ79 - Distrust of God
+</td>
+<td style="text-align:center;">
+0.33
+</td>
+<td style="text-align:center;">
+0.23
+</td>
+<td style="text-align:center;">
+0.24
+</td>
+<td style="text-align:center;">
+0.12
+</td>
+<td style="text-align:center;">
+0.08
+</td>
+<td style="text-align:center;">
+3068
+</td>
+<td style="text-align:center;">
+2.40
+</td>
+<td style="text-align:center;">
+1.27
+</td>
+<td style="text-align:center;">
+0.50
+</td>
+<td style="text-align:center;">
+-0.81
+</td>
+<td style="text-align:center;">
+0.61
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ34 - Scripture used to justify physical punishment/severe discipline
+</td>
+<td style="text-align:center;">
+0.34
+</td>
+<td style="text-align:center;">
+0.19
+</td>
+<td style="text-align:center;">
+0.22
+</td>
+<td style="text-align:center;">
+0.16
+</td>
+<td style="text-align:center;">
+0.09
+</td>
+<td style="text-align:center;">
+3219
+</td>
+<td style="text-align:center;">
+2.46
+</td>
+<td style="text-align:center;">
+1.33
+</td>
+<td style="text-align:center;">
+0.42
+</td>
+<td style="text-align:center;">
+-1.05
+</td>
+<td style="text-align:center;">
+0.65
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ29 - Feeling special when in pastor’s good graces; otherwise ignored
+</td>
+<td style="text-align:center;">
+0.34
+</td>
+<td style="text-align:center;">
+0.19
+</td>
+<td style="text-align:center;">
+0.22
+</td>
+<td style="text-align:center;">
+0.16
+</td>
+<td style="text-align:center;">
+0.09
+</td>
+<td style="text-align:center;">
+3213
+</td>
+<td style="text-align:center;">
+2.47
+</td>
+<td style="text-align:center;">
+1.34
+</td>
+<td style="text-align:center;">
+0.40
+</td>
+<td style="text-align:center;">
+-1.08
+</td>
+<td style="text-align:center;">
+0.69
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+IQ73 - Self-hatred or self-loathing
+</td>
+<td style="text-align:center;">
+0.31
+</td>
+<td style="text-align:center;">
+0.21
+</td>
+<td style="text-align:center;">
+0.24
+</td>
+<td style="text-align:center;">
+0.15
+</td>
+<td style="text-align:center;">
+0.09
+</td>
+<td style="text-align:center;">
+3072
+</td>
+<td style="text-align:center;">
+2.50
+</td>
+<td style="text-align:center;">
+1.31
+</td>
+<td style="text-align:center;">
+0.38
+</td>
+<td style="text-align:center;">
+-1.00
+</td>
+<td style="text-align:center;">
+0.64
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ11 - Disagree w/pastor portrayed as evil
+</td>
+<td style="text-align:center;">
+0.32
+</td>
+<td style="text-align:center;">
+0.21
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+<td style="text-align:center;">
+0.17
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+3216
+</td>
+<td style="text-align:center;">
+2.52
+</td>
+<td style="text-align:center;">
+1.35
+</td>
+<td style="text-align:center;">
+0.38
+</td>
+<td style="text-align:center;">
+-1.12
+</td>
+<td style="text-align:center;">
+0.77
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ58 - Terror/horror used to motivate religious decisions
+</td>
+<td style="text-align:center;">
+0.32
+</td>
+<td style="text-align:center;">
+0.18
+</td>
+<td style="text-align:center;">
+0.24
+</td>
+<td style="text-align:center;">
+0.16
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+3220
+</td>
+<td style="text-align:center;">
+2.53
+</td>
+<td style="text-align:center;">
+1.34
+</td>
+<td style="text-align:center;">
+0.34
+</td>
+<td style="text-align:center;">
+-1.09
+</td>
+<td style="text-align:center;">
+0.73
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ7 - Pastor speaking on God’s behalf
+</td>
+<td style="text-align:center;">
+0.35
+</td>
+<td style="text-align:center;">
+0.18
+</td>
+<td style="text-align:center;">
+0.19
+</td>
+<td style="text-align:center;">
+0.16
+</td>
+<td style="text-align:center;">
+0.13
+</td>
+<td style="text-align:center;">
+3215
+</td>
+<td style="text-align:center;">
+2.54
+</td>
+<td style="text-align:center;">
+1.43
+</td>
+<td style="text-align:center;">
+0.39
+</td>
+<td style="text-align:center;">
+-1.21
+</td>
+<td style="text-align:center;">
+0.67
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ42 - Seeing others shamed/shunned by pastor/leader/group
+</td>
+<td style="text-align:center;">
+0.25
+</td>
+<td style="text-align:center;">
+0.24
+</td>
+<td style="text-align:center;">
+0.26
+</td>
+<td style="text-align:center;">
+0.17
+</td>
+<td style="text-align:center;">
+0.08
+</td>
+<td style="text-align:center;">
+3215
+</td>
+<td style="text-align:center;">
+2.60
+</td>
+<td style="text-align:center;">
+1.25
+</td>
+<td style="text-align:center;">
+0.28
+</td>
+<td style="text-align:center;">
+-0.96
+</td>
+<td style="text-align:center;">
+0.77
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ44 - Love/acceptance offered only for high spiritual/moral performance
+</td>
+<td style="text-align:center;">
+0.30
+</td>
+<td style="text-align:center;">
+0.18
+</td>
+<td style="text-align:center;">
+0.23
+</td>
+<td style="text-align:center;">
+0.19
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+3217
+</td>
+<td style="text-align:center;">
+2.61
+</td>
+<td style="text-align:center;">
+1.35
+</td>
+<td style="text-align:center;">
+0.24
+</td>
+<td style="text-align:center;">
+-1.20
+</td>
+<td style="text-align:center;">
+0.80
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ56 - Being made to feel I was crazy/weird for doubts/questions
+</td>
+<td style="text-align:center;">
+0.27
+</td>
+<td style="text-align:center;">
+0.17
+</td>
+<td style="text-align:center;">
+0.23
+</td>
+<td style="text-align:center;">
+0.21
+</td>
+<td style="text-align:center;">
+0.12
+</td>
+<td style="text-align:center;">
+3217
+</td>
+<td style="text-align:center;">
+2.72
+</td>
+<td style="text-align:center;">
+1.37
+</td>
+<td style="text-align:center;">
+0.14
+</td>
+<td style="text-align:center;">
+-1.24
+</td>
+<td style="text-align:center;">
+0.82
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ18 - Church/pastor discourage critical thinking
+</td>
+<td style="text-align:center;">
+0.27
+</td>
+<td style="text-align:center;">
+0.17
+</td>
+<td style="text-align:center;">
+0.24
+</td>
+<td style="text-align:center;">
+0.19
+</td>
+<td style="text-align:center;">
+0.13
+</td>
+<td style="text-align:center;">
+3220
+</td>
+<td style="text-align:center;">
+2.75
+</td>
+<td style="text-align:center;">
+1.37
+</td>
+<td style="text-align:center;">
+0.14
+</td>
+<td style="text-align:center;">
+-1.21
+</td>
+<td style="text-align:center;">
+0.77
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ45 - Developmentally-inappropriate/anxious Hell/Satan/demons taught to young children
+</td>
+<td style="text-align:center;">
+0.29
+</td>
+<td style="text-align:center;">
+0.17
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+<td style="text-align:center;">
+0.18
+</td>
+<td style="text-align:center;">
+0.16
+</td>
+<td style="text-align:center;">
+3219
+</td>
+<td style="text-align:center;">
+2.76
+</td>
+<td style="text-align:center;">
+1.45
+</td>
+<td style="text-align:center;">
+0.18
+</td>
+<td style="text-align:center;">
+-1.33
+</td>
+<td style="text-align:center;">
+0.72
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+IQ78 - A lack of self-worth
+</td>
+<td style="text-align:center;">
+0.23
+</td>
+<td style="text-align:center;">
+0.19
+</td>
+<td style="text-align:center;">
+0.27
+</td>
+<td style="text-align:center;">
+0.21
+</td>
+<td style="text-align:center;">
+0.11
+</td>
+<td style="text-align:center;">
+3071
+</td>
+<td style="text-align:center;">
+2.77
+</td>
+<td style="text-align:center;">
+1.30
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+-1.09
+</td>
+<td style="text-align:center;">
+0.67
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ36 - Mental/physical problems interpreted as spiritual/moral weakness
+</td>
+<td style="text-align:center;">
+0.24
+</td>
+<td style="text-align:center;">
+0.19
+</td>
+<td style="text-align:center;">
+0.24
+</td>
+<td style="text-align:center;">
+0.21
+</td>
+<td style="text-align:center;">
+0.12
+</td>
+<td style="text-align:center;">
+3216
+</td>
+<td style="text-align:center;">
+2.78
+</td>
+<td style="text-align:center;">
+1.34
+</td>
+<td style="text-align:center;">
+0.11
+</td>
+<td style="text-align:center;">
+-1.17
+</td>
+<td style="text-align:center;">
+0.77
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ61 - Developmentally-inappropriate/anxious end times descriptions taught to young children
+</td>
+<td style="text-align:center;">
+0.30
+</td>
+<td style="text-align:center;">
+0.15
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+<td style="text-align:center;">
+0.19
+</td>
+<td style="text-align:center;">
+0.17
+</td>
+<td style="text-align:center;">
+3219
+</td>
+<td style="text-align:center;">
+2.78
+</td>
+<td style="text-align:center;">
+1.47
+</td>
+<td style="text-align:center;">
+0.14
+</td>
+<td style="text-align:center;">
+-1.37
+</td>
+<td style="text-align:center;">
+0.72
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ32 - Feeling unable to express unhappiness
+</td>
+<td style="text-align:center;">
+0.24
+</td>
+<td style="text-align:center;">
+0.16
+</td>
+<td style="text-align:center;">
+0.27
+</td>
+<td style="text-align:center;">
+0.21
+</td>
+<td style="text-align:center;">
+0.11
+</td>
+<td style="text-align:center;">
+3219
+</td>
+<td style="text-align:center;">
+2.79
+</td>
+<td style="text-align:center;">
+1.32
+</td>
+<td style="text-align:center;">
+0.05
+</td>
+<td style="text-align:center;">
+-1.14
+</td>
+<td style="text-align:center;">
+0.73
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+IQ74 - Sadness over the loss of my faith/religious community
+</td>
+<td style="text-align:center;">
+0.22
+</td>
+<td style="text-align:center;">
+0.19
+</td>
+<td style="text-align:center;">
+0.27
+</td>
+<td style="text-align:center;">
+0.21
+</td>
+<td style="text-align:center;">
+0.11
+</td>
+<td style="text-align:center;">
+3071
+</td>
+<td style="text-align:center;">
+2.79
+</td>
+<td style="text-align:center;">
+1.29
+</td>
+<td style="text-align:center;">
+0.07
+</td>
+<td style="text-align:center;">
+-1.08
+</td>
+<td style="text-align:center;">
+0.60
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+IQ76 - Feeling I wasted years of my life in a church/set of beliefs
+</td>
+<td style="text-align:center;">
+0.28
+</td>
+<td style="text-align:center;">
+0.16
+</td>
+<td style="text-align:center;">
+0.19
+</td>
+<td style="text-align:center;">
+0.18
+</td>
+<td style="text-align:center;">
+0.19
+</td>
+<td style="text-align:center;">
+3072
+</td>
+<td style="text-align:center;">
+2.83
+</td>
+<td style="text-align:center;">
+1.48
+</td>
+<td style="text-align:center;">
+0.12
+</td>
+<td style="text-align:center;">
+-1.39
+</td>
+<td style="text-align:center;">
+0.74
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ54 - Being explicitly taught to distrust my intuitions
+</td>
+<td style="text-align:center;">
+0.23
+</td>
+<td style="text-align:center;">
+0.16
+</td>
+<td style="text-align:center;">
+0.24
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+<td style="text-align:center;">
+0.17
+</td>
+<td style="text-align:center;">
+3217
+</td>
+<td style="text-align:center;">
+2.92
+</td>
+<td style="text-align:center;">
+1.40
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+-1.26
+</td>
+<td style="text-align:center;">
+0.75
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ37 - Made to feel less spiritually mature than pastor/leadership
+</td>
+<td style="text-align:center;">
+0.22
+</td>
+<td style="text-align:center;">
+0.17
+</td>
+<td style="text-align:center;">
+0.24
+</td>
+<td style="text-align:center;">
+0.21
+</td>
+<td style="text-align:center;">
+0.16
+</td>
+<td style="text-align:center;">
+3221
+</td>
+<td style="text-align:center;">
+2.94
+</td>
+<td style="text-align:center;">
+1.38
+</td>
+<td style="text-align:center;">
+-0.01
+</td>
+<td style="text-align:center;">
+-1.22
+</td>
+<td style="text-align:center;">
+0.75
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ38 - Unrealistic demands placed on my moral/religious behavior
+</td>
+<td style="text-align:center;">
+0.22
+</td>
+<td style="text-align:center;">
+0.16
+</td>
+<td style="text-align:center;">
+0.24
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+<td style="text-align:center;">
+0.18
+</td>
+<td style="text-align:center;">
+3217
+</td>
+<td style="text-align:center;">
+2.95
+</td>
+<td style="text-align:center;">
+1.40
+</td>
+<td style="text-align:center;">
+-0.01
+</td>
+<td style="text-align:center;">
+-1.26
+</td>
+<td style="text-align:center;">
+0.80
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+IQ71 - Avoiding religious activities/settings to reduce distressing feelings
+</td>
+<td style="text-align:center;">
+0.19
+</td>
+<td style="text-align:center;">
+0.17
+</td>
+<td style="text-align:center;">
+0.24
+</td>
+<td style="text-align:center;">
+0.22
+</td>
+<td style="text-align:center;">
+0.17
+</td>
+<td style="text-align:center;">
+3074
+</td>
+<td style="text-align:center;">
+3.01
+</td>
+<td style="text-align:center;">
+1.36
+</td>
+<td style="text-align:center;">
+-0.06
+</td>
+<td style="text-align:center;">
+-1.19
+</td>
+<td style="text-align:center;">
+0.74
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+IQ69 - Lack of spiritual direction/purpose
+</td>
+<td style="text-align:center;">
+0.13
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+<td style="text-align:center;">
+0.32
+</td>
+<td style="text-align:center;">
+0.23
+</td>
+<td style="text-align:center;">
+0.12
+</td>
+<td style="text-align:center;">
+3071
+</td>
+<td style="text-align:center;">
+3.01
+</td>
+<td style="text-align:center;">
+1.20
+</td>
+<td style="text-align:center;">
+-0.06
+</td>
+<td style="text-align:center;">
+-0.83
+</td>
+<td style="text-align:center;">
+0.57
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ39 - Made to feel shame over natural sexual desires (not actions)
+</td>
+<td style="text-align:center;">
+0.24
+</td>
+<td style="text-align:center;">
+0.13
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+<td style="text-align:center;">
+0.21
+</td>
+<td style="text-align:center;">
+0.22
+</td>
+<td style="text-align:center;">
+3219
+</td>
+<td style="text-align:center;">
+3.05
+</td>
+<td style="text-align:center;">
+1.48
+</td>
+<td style="text-align:center;">
+-0.12
+</td>
+<td style="text-align:center;">
+-1.37
+</td>
+<td style="text-align:center;">
+0.72
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+IQ80 - Feeling isolated
+</td>
+<td style="text-align:center;">
+0.14
+</td>
+<td style="text-align:center;">
+0.18
+</td>
+<td style="text-align:center;">
+0.29
+</td>
+<td style="text-align:center;">
+0.27
+</td>
+<td style="text-align:center;">
+0.13
+</td>
+<td style="text-align:center;">
+3070
+</td>
+<td style="text-align:center;">
+3.07
+</td>
+<td style="text-align:center;">
+1.23
+</td>
+<td style="text-align:center;">
+-0.17
+</td>
+<td style="text-align:center;">
+-0.91
+</td>
+<td style="text-align:center;">
+0.68
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+IQ77 - Anger upon reflecting on negative religious experiences
+</td>
+<td style="text-align:center;">
+0.15
+</td>
+<td style="text-align:center;">
+0.18
+</td>
+<td style="text-align:center;">
+0.26
+</td>
+<td style="text-align:center;">
+0.26
+</td>
+<td style="text-align:center;">
+0.15
+</td>
+<td style="text-align:center;">
+3075
+</td>
+<td style="text-align:center;">
+3.08
+</td>
+<td style="text-align:center;">
+1.28
+</td>
+<td style="text-align:center;">
+-0.16
+</td>
+<td style="text-align:center;">
+-1.02
+</td>
+<td style="text-align:center;">
+0.77
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ35 - Taught to distrust my emotions
+</td>
+<td style="text-align:center;">
+0.19
+</td>
+<td style="text-align:center;">
+0.14
+</td>
+<td style="text-align:center;">
+0.23
+</td>
+<td style="text-align:center;">
+0.23
+</td>
+<td style="text-align:center;">
+0.21
+</td>
+<td style="text-align:center;">
+3217
+</td>
+<td style="text-align:center;">
+3.12
+</td>
+<td style="text-align:center;">
+1.39
+</td>
+<td style="text-align:center;">
+-0.18
+</td>
+<td style="text-align:center;">
+-1.20
+</td>
+<td style="text-align:center;">
+0.74
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ25 - Feeling unable to raise questions and issues
+</td>
+<td style="text-align:center;">
+0.15
+</td>
+<td style="text-align:center;">
+0.15
+</td>
+<td style="text-align:center;">
+0.25
+</td>
+<td style="text-align:center;">
+0.27
+</td>
+<td style="text-align:center;">
+0.18
+</td>
+<td style="text-align:center;">
+3217
+</td>
+<td style="text-align:center;">
+3.18
+</td>
+<td style="text-align:center;">
+1.32
+</td>
+<td style="text-align:center;">
+-0.26
+</td>
+<td style="text-align:center;">
+-1.04
+</td>
+<td style="text-align:center;">
+0.76
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ66 - Others treated as less than due to their sexual orientation
+</td>
+<td style="text-align:center;">
+0.18
+</td>
+<td style="text-align:center;">
+0.12
+</td>
+<td style="text-align:center;">
+0.21
+</td>
+<td style="text-align:center;">
+0.25
+</td>
+<td style="text-align:center;">
+0.24
+</td>
+<td style="text-align:center;">
+3216
+</td>
+<td style="text-align:center;">
+3.27
+</td>
+<td style="text-align:center;">
+1.41
+</td>
+<td style="text-align:center;">
+-0.34
+</td>
+<td style="text-align:center;">
+-1.15
+</td>
+<td style="text-align:center;">
+0.71
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 2cm; ">
+EQ22 - Expected to follow pastor/leader rules re: dating/marriage/sex
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+<td style="text-align:center;">
+0.11
+</td>
+<td style="text-align:center;">
+0.15
+</td>
+<td style="text-align:center;">
+0.24
+</td>
+<td style="text-align:center;">
+0.30
+</td>
+<td style="text-align:center;">
+3218
+</td>
+<td style="text-align:center;">
+3.33
+</td>
+<td style="text-align:center;">
+1.49
+</td>
+<td style="text-align:center;">
+-0.39
+</td>
+<td style="text-align:center;">
+-1.28
+</td>
+<td style="text-align:center;">
+0.70
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<div id="hierarchical-cluster-analysis" class="section level3 hasAnchor">
+<h3>Hierarchical Cluster Analysis<a href="results.html#hierarchical-cluster-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Next, we examined how individual items (or small groups of items) might separate from larger sets of items with a hierarchical item cluster plot [34]. Figure <a href="#fig:iclust-plot"><strong>??</strong></a> showed final clustering of a pair of items with narrow content and a single item that had poor wording and the lowest cluster loading (i.e., corrected item-total correlation). We deleted these three items and an additional item with redundant wording, leaving XX in the item pool at this stage.</p>
+<div class="figure"><span style="display:block;" id="fig:iclust-plot-1"></span>
+<img src="_main_files/figure-html/iclust-plot-1.png" alt="Hierarchical Cluster Plot of the SHAS Items" width="672" />
+<p class="caption">
+Figure 1: Hierarchical Cluster Plot of the SHAS Items
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:iclust-plot-2"></span>
+<img src="_main_files/figure-html/iclust-plot-2.png" alt="Hierarchical Cluster Plot of the SHAS Items" width="672" />
+<p class="caption">
+Figure 2: Hierarchical Cluster Plot of the SHAS Items
+</p>
+</div>
+<pre><code>ICLUST (Item Cluster Analysis)
+Call: iclust(r.mat = r.poly$rho, title = &quot;&quot;)
+
+Purified Alpha:
+[1] 0.99
+
+G6* reliability:
+[1] 1
+
+Original Beta:
+[1] 0.41
+
+Cluster size:
+[1] 65
+
+Item by Cluster Structure matrix:
+    [,1]
+Q7  0.71
+Q10 0.71
+Q11 0.80
+Q16 0.74
+Q17 0.52
+Q18 0.81
+Q19 0.79
+Q20 0.74
+Q21 0.74
+Q22 0.76
+Q23 0.70
+Q24 0.73
+Q25 0.80
+Q26 0.74
+Q27 0.54
+Q28 0.77
+Q29 0.72
+Q30 0.76
+Q31 0.69
+Q32 0.76
+Q34 0.69
+Q35 0.77
+Q36 0.80
+Q37 0.79
+Q38 0.84
+Q39 0.76
+Q40 0.80
+Q41 0.47
+Q42 0.80
+Q43 0.78
+Q44 0.83
+Q45 0.75
+Q46 0.29
+Q47 0.63
+Q49 0.77
+Q50 0.59
+Q51 0.65
+Q52 0.81
+Q53 0.77
+Q54 0.79
+Q55 0.33
+Q56 0.85
+Q57 0.77
+Q58 0.76
+Q59 0.80
+Q60 0.58
+Q61 0.75
+Q62 0.69
+Q63 0.81
+Q64 0.75
+Q65 0.68
+Q66 0.76
+Q68 0.73
+Q69 0.59
+Q70 0.60
+Q71 0.77
+Q72 0.64
+Q73 0.67
+Q74 0.62
+Q76 0.77
+Q77 0.81
+Q78 0.70
+Q79 0.63
+Q80 0.71
+Q81 0.72
+
+With eigenvalues of:
+[1] 34
+
+Purified scale intercorrelations
+ reliabilities on diagonal
+ correlations corrected for attenuation above diagonal: 
+     [,1]
+[1,] 0.99
+
+Cluster fit =  0.98   Pattern fit =  0.99  RMSR =  0.06 </code></pre>
 </div>
 <div id="exploratory-factor-analysis" class="section level3 hasAnchor">
 <h3>Exploratory Factor Analysis<a href="results.html#exploratory-factor-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -207,9 +3684,6 @@ Individual items were then sorted by factor loadings, with only items loading at
 <div id="principal-components-analysis-pca" class="section level3 hasAnchor">
 <h3>Principal Components Analysis (PCA)<a href="results.html#principal-components-analysis-pca" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Table X reports the results of our principals components analysis.</p>
-</div>
-<div id="cluster-analysis" class="section level3 hasAnchor">
-<h3>Cluster Analysis<a href="results.html#cluster-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
 </div>
 <div id="exploratory-bifactor-analysis" class="section level2 hasAnchor">

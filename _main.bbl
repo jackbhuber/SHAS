@@ -1,0 +1,95 @@
+\begin{thebibliography}{13}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Chalmers(2022)]{R-mirt}
+Phil Chalmers.
+\newblock \emph{mirt: Multidimensional Item Response Theory}, 2022.
+\newblock URL \url{https://CRAN.R-project.org/package=mirt}.
+\newblock R package version 1.36.1.
+
+\bibitem[Choi et~al.(2016)Choi, with contributions~from Laura E.~Gibbons, and
+  Crane]{R-lordif}
+Seung~W. Choi, with contributions~from Laura E.~Gibbons, and Paul~K. Crane.
+\newblock \emph{lordif: Logistic Ordinal Regression Differential Item
+  Functioning using IRT}, 2016.
+\newblock URL \url{https://CRAN.R-project.org/package=lordif}.
+\newblock R package version 0.3-3.
+
+\bibitem[Dogan(2018)]{Dogan2018}
+Enis Dogan.
+\newblock An application of the partial credit irt model in identifying
+  benchmarks for polytomous rating scale instruments.
+\newblock \emph{Practical Assessment, Research \& Evaluation}, 23\penalty0
+  (7):\penalty0 1--10, 2018.
+
+\bibitem[Embretson and Reise(2000)]{EmbretsonReise2000}
+Susan~E. Embretson and Steven~P. Reise.
+\newblock \emph{Item Response Theory for Psychologists}.
+\newblock Lawrence Erlbaum Associates, Mahwah, New Jerey, 2000.
+\newblock ISBN 0-8058-2819-2.
+
+\bibitem[Keller(2016)]{Keller2016}
+K.~H. Keller.
+\newblock \emph{Development of a Spiritual Abuse Questionnaire}.
+\newblock PhD thesis, Texas Woman's University, 2016.
+
+\bibitem[Koch and Edstrom(2022)]{KochEdstrom2022}
+Dan Koch and Leihua Edstrom.
+\newblock Development of the spiritual harm and abuse scale.
+\newblock \emph{Journal for the Scientific Study of Religion}, 2022.
+
+\bibitem[{R Core Team}(2022)]{R-base}
+{R Core Team}.
+\newblock \emph{R: A Language and Environment for Statistical Computing}.
+\newblock R Foundation for Statistical Computing, Vienna, Austria, 2022.
+\newblock URL \url{https://www.R-project.org/}.
+
+\bibitem[Reise and Waller(2009)]{ReiseWaller2009}
+Steven~P. Reise and Niels~G. Waller.
+\newblock Item response theory and clinical measurement.
+\newblock \emph{Annual Review of Clinical Psychology}, 5:\penalty0 27--48,
+  2009.
+\newblock \doi{10.1146/annurev.clinpsy.032408.153553}.
+
+\bibitem[Reise et~al.(2013{\natexlab{a}})Reise, Bonifay, and
+  Haviland]{ReiseBonifayHaviland2013}
+Steven~P. Reise, Wes~E. Bonifay, and Mark~G. Haviland.
+\newblock Scoring and modeling psychological measures in the presence of
+  multidimensionality.
+\newblock \emph{Journal of Personality Assessment}, 95\penalty0 (2):\penalty0
+  129--140, 2013{\natexlab{a}}.
+\newblock \doi{10.1080/00223891.2012.725437}.
+
+\bibitem[Reise et~al.(2013{\natexlab{b}})Reise, Moore, and
+  Haviland]{ReiseMooreHaviland2013}
+Steven~P. Reise, Tyler~M. Moore, and Mark~G. Haviland.
+\newblock \emph{Applying Unidimensional Item Response Theory Models to
+  Psychological Data}, pages 101--119.
+\newblock 2013{\natexlab{b}}.
+
+\bibitem[Revelle(2022)]{R-psych}
+William Revelle.
+\newblock \emph{psych: Procedures for Psychological, Psychometric, and
+  Personality Research}, 2022.
+\newblock URL \url{https://personality-project.org/r/psych/
+  https://personality-project.org/r/psych-manual.pdf}.
+\newblock R package version 2.2.3.
+
+\bibitem[Rosseel et~al.(2022)Rosseel, Jorgensen, and Rockwood]{R-lavaan}
+Yves Rosseel, Terrence~D. Jorgensen, and Nicholas Rockwood.
+\newblock \emph{lavaan: Latent Variable Analysis}, 2022.
+\newblock URL \url{https://lavaan.ugent.be}.
+\newblock R package version 0.6-11.
+
+\bibitem[Thomas(2019)]{Thomas2019}
+Michael~L. Thomas.
+\newblock Advances in applications of item response theory to clinical
+  assessment.
+\newblock \emph{Psychological Assessment}, 31\penalty0 (12):\penalty0
+  1442--1455, 2019.
+
+\end{thebibliography}

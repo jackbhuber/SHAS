@@ -11,18 +11,19 @@ Table \@ref(tab:CTT-item-table) reports classical statistics for the 66 SHAS ite
 
 ```{r CTT-item-stats, echo=FALSE}
 # RUN CTT STATS, BUILD ITEM TABLE
+rm(list=ls())
 source("code/Build-CTT-ItemStats-Table.R")
 ```
 
 ```{r CTT-item-table, echo=FALSE}
 
 # RENDER CTT ITEM STATS TABLE
-library(dplyr)
 library(kableExtra)
-
-# item.table2 %>%
-#   kbl(digits=2, align = "ccccccccc", caption = 'SHAS Classical Item Statistics') %>%
-#   kable_styling(font_size = 14, fixed_thead = T, full_width = T) 
+item.table2 %>%
+   kbl(digits=2, align = "ccccccccc", longtable = T, booktabs = T, caption = 'Classical Item Statistics for the SHAS Items') %>%
+   kable_styling(latex_options = c("repeat_header"), font_size = 7) %>%
+   add_header_above(c(" ", "Category response proportion" = 5, " " = 7)) %>%
+   column_spec(1, width="2cm")
 
 # A POSSIBLE BAR PLOT OF ITEM STATISTICS
 # barplot(item_stats$nbr.val, main="Complete Cases", horiz=TRUE, col='red')
@@ -30,20 +31,22 @@ library(kableExtra)
 
 ```
 
-### Polychoric Correlations
+### Hierarchical Cluster Analysis
 
-```{r polycor, echo=FALSE}
-# POLYCHORIC CORRELATION MATRIX
-# library(psych)
-# all <- read.csv("data/all.csv")
-# all <- all[,-1]
-# mixedcor(all[,1:66])
-# psych::corPlot(poly, upper = FALSE)
+Next, we examined how individual items (or small groups of items) might separate from larger sets of items with a hierarchical item cluster plot [34]. Figure \@ref(fig:iclust-plot) showed final clustering of a pair of items with narrow content and a single item that had poor wording and the lowest cluster loading (i.e., corrected item-total correlation). We deleted these three items and an additional item with redundant wording, leaving XX in the item pool at this stage.
+
+```{r iclust-run}
+# CLUSTER ANALYSIS
+all <- read.csv("data/all.csv")
+r.poly <- polychoric(all[2:66],correct=0)
 ```
 
->XXX pairs of items in the polychoric correlation matrix were highly correlated (r > 0.70). After removing X items, these pairs disappeared (several items appeared in multiple pairs).
-
->Next, we examined how individual items (or small groups of items) might separate from larger sets of items with a hierarchical item cluster plot [34]. This plot showed final clustering of a pair of items with narrow content and a single item that had poor wording and the lowest cluster loading (i.e., corrected item-total correlation). We deleted these three items and an additional item with redundant wording, leaving XX in the item pool at this stage.
+```{r iclust-plot, fig.cap="Hierarchical Cluster Plot of the SHAS Items"}
+iclust(r.poly$rho, title ="")
+#ic.poly <- iclust(r.poly$rho, title ="")
+# iclust.diagram(ic.poly)
+# print(ic.poly,cut=.3)
+```
 
 ### Exploratory Factor Analysis
 
@@ -92,18 +95,4 @@ Table X reports the results of our principals components analysis.
 # biplot(fit)
 
 # psych::principal(all[,1:66])
-```
-
-### Cluster Analysis
-
-```{r iclust-run}
-# CLUSTER ANALYSIS
-# ic <- psych::iclust(all[1:66])
-# print(ic)
-# psych::iclust(r.mat = all[,1:66])
-# 
-# r.poly <- polychoric(all[,1:66],correct=0) 
-# ic.poly <- iclust(r.poly$rho,title="ICLUST using polychoric correlations")
-# iclust.diagram(ic.poly)
-# print(ic,cut=.3)
 ```
