@@ -1,0 +1,17 @@
+### Hierarchical Cluster Analysis
+
+The next analysis in our search for poorly functioning items was hierarchical cluster analysis (citation). This procedure found one large cluster that included all of the items. All of the items loaded onto this cluster with a loading of at least 0.50.
+
+```{r iclust, fig.cap="Hierarchical Cluster Plot of the SHAS Items"}
+# HIERARCHICAL CLUSTER ANALYSIS
+library(psych)
+items2 <- read.csv("data/items2.csv")
+items2 <- items2[,-1]
+r.poly <- polychoric(items2,correct=0)
+ic.poly <- iclust(r.poly$rho, title ="")
+print(ic.poly,cut=.3)
+```
+
+```{r}
+rm(list=ls())
+```

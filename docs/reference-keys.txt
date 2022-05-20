@@ -1,4 +1,4 @@
 tab:dems-table
 tab:CTT-item-table
-fig:iclust-plot-1
-fig:iclust-plot-2
+fig:uni-pcar
+fig:q3-plot

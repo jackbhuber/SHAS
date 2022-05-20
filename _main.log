@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.4.7)  17 MAY 2022 21:43
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.4.7)  19 MAY 2022 21:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -959,120 +959,118 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Overfull \hbox (2.6575pt too wide) in paragraph at lines 269--269
+Overfull \hbox (2.6575pt too wide) in paragraph at lines 266--266
 \TU/lmr/m/n/7 Shunned/ignored 
  []
 
 
-Overfull \hbox (4.0435pt too wide) in paragraph at lines 269--269
+Overfull \hbox (4.0435pt too wide) in paragraph at lines 266--266
 \TU/lmr/m/n/7 tor/church/group|  
  []
 
 
-Overfull \hbox (42.6625pt too wide) in paragraph at lines 271--271
+Overfull \hbox (42.6625pt too wide) in paragraph at lines 268--268
 \TU/lmr/m/n/7 ment/counseling/medication|  
  []
 
 [4]
-Overfull \hbox (10.9525pt too wide) in paragraph at lines 278--278
+Overfull \hbox (10.9525pt too wide) in paragraph at lines 275--275
 \TU/lmr/m/n/7 Church/community 
  []
 
 
-Overfull \hbox (8.5795pt too wide) in paragraph at lines 286--286
+Overfull \hbox (8.5795pt too wide) in paragraph at lines 283--283
 \TU/lmr/m/n/7 church/community|  
  []
 
 
-Overfull \hbox (27.4445pt too wide) in paragraph at lines 293--293
+Overfull \hbox (27.4445pt too wide) in paragraph at lines 290--290
 \TU/lmr/m/n/7 tor/missionary/spiritual 
  []
 
 [5]
-Overfull \hbox (1.7895pt too wide) in paragraph at lines 304--304
+Overfull \hbox (1.7895pt too wide) in paragraph at lines 301--301
 \TU/lmr/m/n/7 shamed/shunned 
  []
 
 
-Overfull \hbox (2.10449pt too wide) in paragraph at lines 304--304
+Overfull \hbox (2.10449pt too wide) in paragraph at lines 301--301
 \TU/lmr/m/n/7 tor/leader/group|  
  []
 
 
-Overfull \hbox (1.0265pt too wide) in paragraph at lines 305--305
+Overfull \hbox (1.0265pt too wide) in paragraph at lines 302--302
 \TU/lmr/m/n/7 Love/acceptance 
  []
 
 
-Overfull \hbox (2.9025pt too wide) in paragraph at lines 307--307
+Overfull \hbox (2.9025pt too wide) in paragraph at lines 304--304
 \TU/lmr/m/n/7 doubts/questions|  
  []
 
 
-Overfull \hbox (3.7215pt too wide) in paragraph at lines 309--309
+Overfull \hbox (3.7215pt too wide) in paragraph at lines 306--306
 \TU/lmr/m/n/7 Developmentally- 
  []
 
 
-Overfull \hbox (20.5705pt too wide) in paragraph at lines 309--309
+Overfull \hbox (20.5705pt too wide) in paragraph at lines 306--306
 \TU/lmr/m/n/7 inappropriate/anxious 
  []
 
 
-Overfull \hbox (11.0785pt too wide) in paragraph at lines 309--309
+Overfull \hbox (11.0785pt too wide) in paragraph at lines 306--306
 \TU/lmr/m/n/7 Hell/Satan/demons 
  []
 
 
-Overfull \hbox (3.7215pt too wide) in paragraph at lines 313--313
+Overfull \hbox (3.7215pt too wide) in paragraph at lines 310--310
 \TU/lmr/m/n/7 Developmentally- 
  []
 
 
-Overfull \hbox (20.5705pt too wide) in paragraph at lines 313--313
+Overfull \hbox (20.5705pt too wide) in paragraph at lines 310--310
 \TU/lmr/m/n/7 inappropriate/anxious 
  []
 
 [6] [7]
-Overfull \hbox (3.2315pt too wide) in paragraph at lines 331--331
+Overfull \hbox (3.2315pt too wide) in paragraph at lines 328--328
 \TU/lmr/m/n/7 ing/marriage/sex|  
  []
 
 [8] [9]
 
-LaTeX Warning: Reference `fig:iclust-plot' on page 10 undefined on input line 3
-38.
+Package natbib Warning: Citation `ReiseEtAl2013' on page 10 undefined on input 
+line 335.
 
-File: _main_files/figure-latex/iclust-plot-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/iclust-plot-1.pdf>
-File: _main_files/figure-latex/iclust-plot-2.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/iclust-plot-2.pdf>
+File: _main_files/figure-latex/pca-run-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/pca-run-1.pdf>
+[10]
+File: _main_files/figure-latex/uni-pcar-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/uni-pcar-1.pdf>
+File: _main_files/figure-latex/q3-plot-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/q3-plot-1.pdf>
+[11] [12] [13] [14] [15] [16] (./_main.bbl [17])
 
-Underfull \hbox (badness 10000) in paragraph at lines 340--341
-[][]
- []
+Package natbib Warning: There were undefined citations.
 
-[10] [11] [12] [13] [14] [15] [16] [17] (./_main.bbl [18])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 716.
-[19]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 716.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 637.
+[18]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 637.
 (./_main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 716.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 716.
-
-LaTeX Warning: There were undefined references.
-
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 637.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 637.
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 20433 strings out of 479418
- 356377 string characters out of 5884586
- 859113 words of memory out of 5000000
- 37620 multiletter control sequences out of 15000+600000
+ 20437 strings out of 479418
+ 356502 string characters out of 5884586
+ 859124 words of memory out of 5000000
+ 37623 multiletter control sequences out of 15000+600000
  538879 words of font info for 76 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  59i,10n,118p,1710b,510s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on _main.pdf (19 pages).
+Output written on _main.pdf (18 pages).

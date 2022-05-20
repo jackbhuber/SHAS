@@ -1,0 +1,27 @@
+### Principal Components Analysis (PCA)
+
+Table X reports the results of our principals components analysis.
+
+```{r pca-run}
+# # LOAD DATA
+# all <- read.csv("data/all.csv")
+# all <- all[,-1]
+# source("code/ApplyAllLabels.R")
+# # princomp(all[,1:66], cor = TRUE)
+# pca.results <- psych::principal(all[,1:66],residuals = TRUE,cor = "poly")
+```
+
+```{r pca-table}
+# REPORT PCA
+# summary(pca.results)
+# print(pca.results)
+# plot(pca.results,type=lines)
+# summary(fit) # print variance accounted for
+# loadings(fit) # pc loadings
+
+# plot(fit,type="lines") # scree plot
+# fit$scores # the principal components
+# biplot(fit)
+
+# psych::principal(all[,1:66])
+```

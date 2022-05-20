@@ -1,16 +1,9 @@
+## IRT Dimensionality Assumptions
 
 ```{r, include=FALSE, echo=FALSE}
 knitr::opts_chunk$set(comment = "", warning = FALSE, echo = FALSE,  message = FALSE, tidy.opts=list(width.cutoff=60), tidy = TRUE)
 knitr::opts_knit$set(verbose = FALSE)
 ```
-
-### IRT Model Assumptions
-
-IRT models make two assumptions of the data. The first is unidimensionality of the data. This is the assumption that "a single common latent variable accounts for all the common variance among the items" [@ReiseEtAl2013].  The SHAS items were multidimensional by design. The construct of spiritual harm and abuse is not conceptually narrow, and Dan wrote two distinct sets of items -- external events and internal states -- to cover the breadth of this construct. The exploratory factor analyses found a handful of factors in the SHAS items. A unidimensional IRT model can be fit to multidimensional data [@ReiseEtAl2013]. We need evidence of a strong common trait.
-
-The second assumption is local independence [@EmbretsonReise2000]. This means that, once the latent variable has been accounted for, any set of items should not share any meaningful correlation (Edwards, Houts, & Cai, 2018).
-
-#### Unidimensionality
 
 Following @ReiseEtAl2013, we conducted several analyses:
 
@@ -21,31 +14,148 @@ Following @ReiseEtAl2013, we conducted several analyses:
 
 First we confirmed the factor structure using confirmatory factor analysis (CFA). Then we determined the proportion of variance in the observed item responses due to the Rasch model. Finally, we conducted Rasch Principal Component Analysis of Residuals (PCAR) (Smith, 2002).
 
-**Factor structure**.
+### Eigenvalues
 
-**Proportion of variance**.
+```{r pca-run, echo=FALSE}
+# PRINICIPAL COMPONENTS ANALYSIS
+# pca <- principal(items2)
+# summary(pca)
 
-```{r uni-variance}
-source("code/Unidimensionality-Variance.R")
+# Principal Components Analysis
+library(psych)
+items2 <- read.csv("data/items2.csv")
+items2 <- items2[,-1]
+items2 <- items2[complete.cases(items2),]
+pca <- princomp(items2, cor=TRUE)
+# print(pca)
+# summary(pca) # print variance accounted for
+# loadings(pca) # pc loadings
+plot(pca,type="lines") # scree plot
+# pca$scores # the principal components
+# biplot(pca)
 ```
-
-Reckase suggests that the unidimensionality assumption is safely met if the Rasch model explains 20% of the variance in the data. According to this analysis, the Rasch model explains 44% of the variance in the SHAS item data. Thus we have some evidence of unidimensionality with which to proceed to further Rasch modeling.
-
-**Principal Component Analysis of Residuals (PCAR)**
-
-```{r uni-pcar, fig.cap='Contrasts from PCA of Standardized Residual Correlations'}
-source("code/Unidimensionality-PCAR.R")
-```
-
-The second analysis of PCAR examines the correlations among residuals. The premise is that once the Rasch model has been estimated, the correlations among the residuals should be minimal. Linacre () suggests that contrasts with eigenvalues of 2.0 or below can be considered noise. In Figure \@ref(fig:uni-pcar), our PCAR analysis found three contrasts that rose above that 2.0 threshold.
-
-```{r child='_IRT_LocalIndependence.Rmd'}
-```
-
-**Summary**
-
-These analyses offer mixed evidence of assumption satisfaction. The model explains 44% of the variance of the item responses. But we see three contrasts of the standardized residuals above the threshold of 2. In the Q3 plot we see a few strong correlations of item correlations.
 
 ```{r}
+# CONFIRMATORY FACTOR ANALYSIS
+# items2 <- read.csv("data/items2.csv")
+# items2 <- items2[,1]
+# library(lavaan)
+
+#one factor three items, default marker method
+# m1a  <- ' f  =~ q03 + q04 + q05'
+# onefac3items_a <- cfa(m1a, data=dat) 
+# summary(onefac3items_a) 
+
+# Model with one common factor
+# abuse.factor <- ' #start of model
+
+# latent variable definitions (common factors)
+  # wellbeing =~ NA*sense.peace + 
+  #           NA*sense.wonder +
+  #           NA*sense.gratitude +
+  #           NA*sense.purpose
+  
+# latent variable variances
+  # wellbeing ~~ 1*wellbeing
+
+# latent variable covariances
+# latent variable means
+
+# manifest variable variances (uniquenesses)
+  # sense.peace ~~ sense.peace
+  # sense.wonder ~~ sense.wonder
+  # sense.gratitude ~~ sense.gratitude
+  # sense.purpose ~~ sense.purpose
+            
+# manifest variable covariances (uniquenesses)
+
+# manifest variable means 
+  # sense.peace ~ 1
+  # sense.wonder ~ 1
+  # sense.gratitude ~ 1
+  # sense.purpose ~ 1
+ # end of model
+
+# CFA1 <- lavaan(wb_1factor, data=items2, estimator = "MLM") # estimate model
+# summary(CFA1, standardized=TRUE, fit.measures=TRUE)
+
+```
+
+**Proportion of variance**. In this analysis, we estimated a Rasch model on dichotomized responses to the 59 SHAS items and saved the residuals of the person parameters. We calculated the variance in the observed item responses and the variance of the residuals, then proportion of variance explained by the Rasch model. This value was .23. Reckase (citation) suggests that the unidimensionality assumption is safely met if the Rasch model explains 20% of the variance in the data. Thus we have some evidence of unidimensionality with which to proceed to further IRT modeling.
+
+```{r uni-variance, echo=FALSE}
+
+# 1- PREP DATA
+library(psych)
+library(eRm)
+items2 <- read.csv("data/items2.csv") # NO MISSING DATA
+items2 <- items2[,-1]
+# source("code/ApplyItemLabels.R") # apply variable labels
+items2 <- items2-1 # subtract 1 from all responses to rescale from 0-4
+items2[items2 == 2] <- 0
+items2[items2 == 3] <- 1
+items2[items2 == 4] <- 1
+items2 <- items2[complete.cases(items2), ]
+
+# 2 - ESTIMATE THE MODEL
+results <- RM(items2)
+# summary(results)
+
+# 3 - GET RESIDUALS
+person.locs <- person.parameter(results) # person parameters
+model.prob <- pmat(person.locs) # model-predicted probabilities for a correct response for each examinee on each item
+responses.without.extremes <- person.locs$X.ex # modified response matrix of no extreme values
+resids <- responses.without.extremes - model.prob # residuals = difference between observed responses and model predictions
+
+# 4 - CALCULATE PROPORTION OF VARIANCE FROM RASCH MODEL
+## Variance of the observations: VO
+observations.vector <- as.vector(responses.without.extremes)
+VO <- var(observations.vector)
+
+## Variance of the residuals: VR
+residuals.vector <- as.vector(resids)
+VR <- var(residuals.vector)
+
+## Raw variance explained by Rasch measures: (VO - VR)/VO
+#library(knitr)
+#knitr::kable((VO - VR)/VO)
+(VO - VR)/VO
+
+```
+
+**Principal Component Analysis of Residuals (PCAR)**. Next we examined the principal components of the correlations among residuals. The premise is that once the Rasch model has been estimated, the correlations among the residuals should be minimal. Linacre () suggests that contrasts with eigenvalues of 2.0 or below can be considered noise. In Figure \@ref(fig:uni-pcar), our PCAR analysis found only one contrasts that rose above that 2.0 threshold.
+
+```{r uni-pcar, fig.cap='Contrasts from PCA of Standardized Residual Correlations', echo=FALSE}
+# PCA OF RESIDUAL CORRELATIONS
+item.fit <- itemfit(person.locs)
+std.resids <- item.fit$st.res
+pca <- pca(std.resids, nfactors = ncol(items2), rotate = "none")
+contrasts <- c(pca$values[1], pca$values[2], pca$values[3], pca$values[4], pca$values[5])
+plot(contrasts, ylab = "Eigenvalues for Contrasts", xlab = "Contrast Number")
+```
+
+**Q3**. In our check of the assumption of local independence, we calculated the Q3 statistic (Yen, 1984). This statistic examines the correlations among item residuals, the premise being that the latent trait should account for so much common variance in the item responses that any net correlations among the items should be weak. The Q3 statistic index criteria are that the raw residual correlation between pairs of items should never exceed 0.10 (Marais & Andrich, 2008). Of the 1,711 item pairs, the mean correlation was -0.017 with a standard deviation of 0.035. Thus, most of the residual correlations were very weak.
+
+Figure \@ref(fig:q3-plot) plots the matrix of correlations between item residuals. Each square depicts a correlation. The squares are shaded in grey with the lightest shade indicating the weakest correlations. As hoped, the vast majority of squares are very light, indicating weak correlations among the item residuals.
+
+```{r q3, echo=FALSE}
+# Q3 STATISTIC
+library(sirt)
+# items <- read.csv("data/ditems_l.csv") # grab the data
+mod <- sirt::rasch.mml2(items2, progress = FALSE) # estimate the Rasch model
+mod.wle <- sirt::wle.rasch(dat=items2, b=mod$item$b) # estimate WLEs
+mod.q3 <- sirt::Q3(dat=items2, theta=mod.wle$theta, b=mod$item$b) # estimate Q3
+```
+
+```{r q3-plot, fig.cap='Correlations matrix of Item Residuals', echo=FALSE}
+# plot Q3 statistics
+I <- ncol(items2)
+image( 1:I, 1:I, mod.q3$q3.matrix, col=grey( 1 - (0:32)/32),
+       xlab="Item", ylab="Item")
+# abline(v=c(53,66)) # borders for testlets
+# abline(h=c(53,66))
+```
+
+```{r, echo=FALSE}
 rm(list=ls())
 ```

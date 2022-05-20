@@ -3,15 +3,17 @@
 # 1- PREP DATA
 library(psych)
 library(eRm)
-items <- read.csv("data/items_l.csv") # NO MISSING DATA
-source("code/ApplyItemLabels.R") # apply variable labels
-items <- items-1 # subtract 1 from all responses to rescale from 0-4
-items[items == 2] <- 0
-items[items == 3] <- 1
-items[items == 4] <- 1
+items2 <- read.csv("data/items2.csv") # NO MISSING DATA
+items2 <- items2[,-1]
+# source("code/ApplyItemLabels.R") # apply variable labels
+items2 <- items2-1 # subtract 1 from all responses to rescale from 0-4
+items2[items2 == 2] <- 0
+items2[items2 == 3] <- 1
+items2[items2 == 4] <- 1
+items2 <- items2[complete.cases(items2), ]
 
 # 2 - ESTIMATE THE MODEL
-results <- RM(items)
+results <- RM(items2)
 # summary(results)
 
 # 3 - GET RESIDUALS
@@ -32,8 +34,9 @@ VR <- var(residuals.vector)
 ## Raw variance explained by Rasch measures: (VO - VR)/VO
 library(knitr)
 knitr::kable((VO - VR)/VO)
+(VO - VR)/VO
 
-# This came out to .444 which exceeds threshold of 20%
+# This came out to .23 which exceeds threshold of 20%
 
 # 5 - PCA OF RESIDUAL CORRELATIONS
 # item.fit <- itemfit(person.locs)

@@ -226,10 +226,7 @@ Podcast Use & 3056 & 2.43 & 0.79 & 2 & 2.35 & 0.00 & 1 & 5 & 4 & 0.76 & 0.22 & 0
 \hypertarget{initial-item-analysis}{%
 \subsection{Initial Item Analysis}\label{initial-item-analysis}}
 
-\hypertarget{classical-item-statistics}{%
-\subsubsection{Classical Item Statistics}\label{classical-item-statistics}}
-
-Table \ref{tab:CTT-item-table} reports classical statistics for the 66 SHAS items. The items are sorted by their mean. Six items are flagged due to extreme values of skew (less than -2 or greater than +2) or kurtosis (less than -7 or greater than +7) and item-total correlations below 0.50. Category response proportions show that most people responded ``Never'' to these items. These items are important to the extent that they capture the experience of people of color, women, and people who are LGBTQ. But as items they function poorly.
+In Table \ref{tab:CTT-item-table} we report classical statistics for the 66 SHAS items. We sorted the items by their mean. We flagged six items -- EQ41, EQ46, EQ17, EQ55, EQ60, and EQ27 -- due to extreme values of skew (less than -2 or greater than +2) or kurtosis (less than -7 or greater than +7) and item-total correlations below 0.50. Category response proportions show that most people responded ``Never'' to these items. Thus these items do not apply to the vast majority of people in this population. We removed them from the item pool.
 
 \begingroup\fontsize{7}{9}\selectfont
 
@@ -332,141 +329,65 @@ EQ22 - Expected to follow pastor/leader rules re: dating/marriage/sex & 0.20 & 0
 \end{longtable}
 \endgroup{}
 
-\hypertarget{hierarchical-cluster-analysis}{%
-\subsubsection{Hierarchical Cluster Analysis}\label{hierarchical-cluster-analysis}}
+\hypertarget{irt-dimensionality-assumptions}{%
+\subsection{IRT Dimensionality Assumptions}\label{irt-dimensionality-assumptions}}
 
-Next, we examined how individual items (or small groups of items) might separate from larger sets of items with a hierarchical item cluster plot {[}34{]}. Figure \ref{fig:iclust-plot} showed final clustering of a pair of items with narrow content and a single item that had poor wording and the lowest cluster loading (i.e., corrected item-total correlation). We deleted these three items and an additional item with redundant wording, leaving XX in the item pool at this stage.
+Following \citet{ReiseEtAl2013}, we conducted several analyses:
 
-\includegraphics{_main_files/figure-latex/iclust-plot-1.pdf} \includegraphics{_main_files/figure-latex/iclust-plot-2.pdf}
+\begin{itemize}
+\tightlist
+\item
+  inspection of eigenvalues from principal component or factor analysis (e.g., how large is the ratio of the first to second eigenvalue?),
+\item
+  determining dimensionality through parallel analysis
+\item
+  compared the fit of a one-factor confirmatory model against benchmarks (e.g., comparative fit index \textgreater{} .90)
+\item
+  inspected residuals after fitting a unidimensional IRT model
+\end{itemize}
+
+First we confirmed the factor structure using confirmatory factor analysis (CFA). Then we determined the proportion of variance in the observed item responses due to the Rasch model. Finally, we conducted Rasch Principal Component Analysis of Residuals (PCAR) (Smith, 2002).
+
+\hypertarget{eigenvalues}{%
+\subsubsection{Eigenvalues}\label{eigenvalues}}
+
+\includegraphics{_main_files/figure-latex/pca-run-1.pdf}
+
+\textbf{Proportion of variance}. In this analysis, we estimated a Rasch model on dichotomized responses to the 59 SHAS items and saved the residuals of the person parameters. We calculated the variance in the observed item responses and the variance of the residuals, then proportion of variance explained by the Rasch model. This value was .23. Reckase (citation) suggests that the unidimensionality assumption is safely met if the Rasch model explains 20\% of the variance in the data. Thus we have some evidence of unidimensionality with which to proceed to further IRT modeling.
 
 \begin{verbatim}
-ICLUST (Item Cluster Analysis)
-Call: iclust(r.mat = r.poly$rho, title = "")
-
-Purified Alpha:
-[1] 0.99
-
-G6* reliability:
-[1] 1
-
-Original Beta:
-[1] 0.41
-
-Cluster size:
-[1] 65
-
-Item by Cluster Structure matrix:
-    [,1]
-Q7  0.71
-Q10 0.71
-Q11 0.80
-Q16 0.74
-Q17 0.52
-Q18 0.81
-Q19 0.79
-Q20 0.74
-Q21 0.74
-Q22 0.76
-Q23 0.70
-Q24 0.73
-Q25 0.80
-Q26 0.74
-Q27 0.54
-Q28 0.77
-Q29 0.72
-Q30 0.76
-Q31 0.69
-Q32 0.76
-Q34 0.69
-Q35 0.77
-Q36 0.80
-Q37 0.79
-Q38 0.84
-Q39 0.76
-Q40 0.80
-Q41 0.47
-Q42 0.80
-Q43 0.78
-Q44 0.83
-Q45 0.75
-Q46 0.29
-Q47 0.63
-Q49 0.77
-Q50 0.59
-Q51 0.65
-Q52 0.81
-Q53 0.77
-Q54 0.79
-Q55 0.33
-Q56 0.85
-Q57 0.77
-Q58 0.76
-Q59 0.80
-Q60 0.58
-Q61 0.75
-Q62 0.69
-Q63 0.81
-Q64 0.75
-Q65 0.68
-Q66 0.76
-Q68 0.73
-Q69 0.59
-Q70 0.60
-Q71 0.77
-Q72 0.64
-Q73 0.67
-Q74 0.62
-Q76 0.77
-Q77 0.81
-Q78 0.70
-Q79 0.63
-Q80 0.71
-Q81 0.72
-
-With eigenvalues of:
-[1] 34
-
-Purified scale intercorrelations
- reliabilities on diagonal
- correlations corrected for attenuation above diagonal: 
-     [,1]
-[1,] 0.99
-
-Cluster fit =  0.98   Pattern fit =  0.99  RMSR =  0.06 
+[1] 0.2311528
 \end{verbatim}
 
-\hypertarget{exploratory-factor-analysis}{%
-\subsubsection{Exploratory Factor Analysis}\label{exploratory-factor-analysis}}
+\textbf{Principal Component Analysis of Residuals (PCAR)}. Next we examined the principal components of the correlations among residuals. The premise is that once the Rasch model has been estimated, the correlations among the residuals should be minimal. Linacre () suggests that contrasts with eigenvalues of 2.0 or below can be considered noise. In Figure \ref{fig:uni-pcar}, our PCAR analysis found only one contrasts that rose above that 2.0 threshold.
 
-\citet{KochEdstrom2022} conducted Kaiser-Meyer-Olkin (KMO) tests on the 61 items to determine the degree of shared variance between the items. The KMO was .987, well above the .5 threshold required to proceed.
+\begin{figure}
+\centering
+\includegraphics{_main_files/figure-latex/uni-pcar-1.pdf}
+\caption{\label{fig:uni-pcar}Contrasts from PCA of Standardized Residual Correlations}
+\end{figure}
 
-\citet{KochEdstrom2022} conducted alpha factoring with Varimax rotation on the 61 items. Alpha Factoring is most appropriate when variables are not assumed to be definitive but rather are a group of variables out of a larger set of possible variables (Rovai et al., 2014). Considering that the 61 remaining prompts were taken from scant qualitative research, anecdotes, and personal experience, many other variables might have also been included to measure and describe the concept of spiritual abuse. Best practices, in this case, include running both Varimax and Promax rotations, rather than making a priori assumptions about the degree of correlation between the underlying factors of the concept being studied (Tinsley \& Tinsley, 1987). Each rotation produced nearly identical results, and the Varimax results are presented in full in Table 2.
+\textbf{Q3}. In our check of the assumption of local independence, we calculated the Q3 statistic (Yen, 1984). This statistic examines the correlations among item residuals, the premise being that the latent trait should account for so much common variance in the item responses that any net correlations among the items should be weak. The Q3 statistic index criteria are that the raw residual correlation between pairs of items should never exceed 0.10 (Marais \& Andrich, 2008). Of the 1,711 item pairs, the mean correlation was -0.017 with a standard deviation of 0.035. Thus, most of the residual correlations were very weak.
 
-{[}Table of factor loadings{]}
+Figure \ref{fig:q3-plot} plots the matrix of correlations between item residuals. Each square depicts a correlation. The squares are shaded in grey with the lightest shade indicating the weakest correlations. As hoped, the vast majority of squares are very light, indicating weak correlations among the item residuals.
 
-\begin{quote}
-Factors with an Eigenvalue of 1 or greater were retained (see all Eigenvalues in Appendix C). This resulted in 6 total factors, explaining 62\% of variance cumulatively. Each factor was examined based on the items that loaded most strongly and labeled as followed:
-- Maintaining the System
-- Internal Distress
-- Embracing Violence
-- Controlling Leadership
-- Harmful God-image
-- Gender Discrimination
-\end{quote}
+\begin{verbatim}
+WLE Reliability= 0.916 
+\end{verbatim}
 
-\begin{quote}
-While factor titles for 1, 3, 4, and 6 describe the type of potentially abusive external events that victims may experience, the title of factor 2, ``Internal Distress,'' describes internal states that often result from spiritual abuse. Item 5, ``Harmful God-image,'' also describes personal feelings relating to God as a villain in a person's story. Items measuring racial and sexual discrimination and medical care were removed earlier due to low mean scores. Although discrimination based on race or sexual orientation is just as pernicious as gender discrimination, the items' low mean scores make a mathematical argument for inclusion on the final scale more difficult since it is naturally less common across the entire population than gender discrimination. Inclusion in a critical items section of the final instrument allows for the assessment of discrimination on the basis of race or sexual orientation. Another item, ``Being deterred from seeking mental health treatment,'' is clinically important and is therefore included as a ``Critical Item''.
-Individual items were then sorted by factor loadings, with only items loading at .42 or higher (Varimax rotation) per factor being retained. Because the final scale is intended primarily for use in clinical settings, perceived clinical relevance was additionally considered when choosing which items to include on the final scale while being sure to maintain high reliability scores. Factor-specific reliability analyses were performed repeatedly, removing one or two items at a time, to reduce the number of items needed per factor. Descriptive statistics for each factor and the full 27-item scale are below in Table 3.
-\end{quote}
+\begin{verbatim}
+Yen's Q3 Statistic based on an estimated theta score 
+*** 59 Items | 1711 item pairs
+*** Q3 Descriptives
+     M     SD    Min    10%    25%    50%    75%    90%    Max 
+-0.017  0.035 -0.109 -0.054 -0.040 -0.020 -0.001  0.023  0.255 
+\end{verbatim}
 
-\begin{quote}
-Each factor is significantly correlated with each of the other factors, although to varying degrees. It would be expected that each would be correlated to some degree with each other since each factor is theoretically within the larger umbrella of spiritual abuse and its effects. Correlations for all factors are presented in Table 6.
-\end{quote}
-
-\hypertarget{principal-components-analysis-pca}{%
-\subsubsection{Principal Components Analysis (PCA)}\label{principal-components-analysis-pca}}
-
-Table X reports the results of our principals components analysis.
+\begin{figure}
+\centering
+\includegraphics{_main_files/figure-latex/q3-plot-1.pdf}
+\caption{\label{fig:q3-plot}Correlations matrix of Item Residuals}
+\end{figure}
 
 \hypertarget{exploratory-bifactor-analysis}{%
 \subsection{Exploratory Bifactor Analysis}\label{exploratory-bifactor-analysis}}
