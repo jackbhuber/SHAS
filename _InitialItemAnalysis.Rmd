@@ -37,7 +37,3 @@ items2 <- items2[,-c(5,15,28,33,41,47)]
 write.csv(items2,"data/items2.csv")
 rm(list=ls())
 ```
-
-
-
-

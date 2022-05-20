@@ -9,11 +9,6 @@
 ```{r, child = "_IRT_Unidimensionality.Rmd"}
 ```
 
-```{r, child = "_Dimensionality_ExploratoryBifactor.Rmd"}
-```
-
-## Bifactor Model of Final XX-Item Set
-
 ## Item Response Theory Model
 
 ## DIF Analysis

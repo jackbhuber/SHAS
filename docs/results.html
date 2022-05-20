@@ -115,12 +115,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="" data-path="results.html"><a href="results.html#participant-characteristics"><i class="fa fa-check"></i>Participant Characteristics</a></li>
 <li class="chapter" data-level="" data-path="results.html"><a href="results.html#initial-item-analysis"><i class="fa fa-check"></i>Initial Item Analysis</a></li>
-<li class="chapter" data-level="" data-path="results.html"><a href="results.html#irt-dimensionality-assumptions"><i class="fa fa-check"></i>IRT Dimensionality Assumptions</a>
-<ul>
-<li class="chapter" data-level="" data-path="results.html"><a href="results.html#eigenvalues"><i class="fa fa-check"></i>Eigenvalues</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="results.html"><a href="results.html#exploratory-bifactor-analysis"><i class="fa fa-check"></i>Exploratory Bifactor Analysis</a></li>
-<li class="chapter" data-level="" data-path="results.html"><a href="results.html#bifactor-model-of-final-xx-item-set"><i class="fa fa-check"></i>Bifactor Model of Final XX-Item Set</a></li>
+<li class="chapter" data-level="" data-path="results.html"><a href="results.html#unidimensionality-and-local-independence"><i class="fa fa-check"></i>Unidimensionality and Local Independence</a></li>
 <li class="chapter" data-level="" data-path="results.html"><a href="results.html#item-response-theory-model"><i class="fa fa-check"></i>Item Response Theory Model</a></li>
 <li class="chapter" data-level="" data-path="results.html"><a href="results.html#dif-analysis"><i class="fa fa-check"></i>DIF Analysis</a></li>
 </ul></li>
@@ -3546,30 +3541,23 @@ EQ22 - Expected to follow pastor/leader rules re: dating/marriage/sex
 </ul></li>
 </ul>
 </div>
-<div id="irt-dimensionality-assumptions" class="section level2 hasAnchor">
-<h2>IRT Dimensionality Assumptions<a href="results.html#irt-dimensionality-assumptions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Following <span class="citation">(<a href="#ref-ReiseEtAl2013" role="doc-biblioref"><strong>ReiseEtAl2013?</strong></a>)</span>, we conducted several analyses:</p>
-<ul>
-<li>inspection of eigenvalues from principal component or factor analysis (e.g., how large is the ratio of the first to second eigenvalue?),</li>
-<li>determining dimensionality through parallel analysis</li>
-<li>compared the fit of a one-factor confirmatory model against benchmarks (e.g., comparative fit index &gt; .90)</li>
-<li>inspected residuals after fitting a unidimensional IRT model</li>
-</ul>
-<p>First we confirmed the factor structure using confirmatory factor analysis (CFA). Then we determined the proportion of variance in the observed item responses due to the Rasch model. Finally, we conducted Rasch Principal Component Analysis of Residuals (PCAR) (Smith, 2002).</p>
-<div id="eigenvalues" class="section level3 hasAnchor">
-<h3>Eigenvalues<a href="results.html#eigenvalues" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="unidimensionality-and-local-independence" class="section level2 hasAnchor">
+<h2>Unidimensionality and Local Independence<a href="results.html#unidimensionality-and-local-independence" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Principal Components</strong>. We first analyzed the principal components in the SHAS items. Like factor analysis, component analysis attempts to summarize the common variance in items by identifying a smaller set of latent sources of covariation. Principal components analysis differs from factor analysis by treating all of the common variance among the items as the total variance to be explained [verify this].</p>
 <p><img src="_main_files/figure-html/pca-run-1.png" width="672" /></p>
-<p><strong>Proportion of variance</strong>. In this analysis, we estimated a Rasch model on dichotomized responses to the 59 SHAS items and saved the residuals of the person parameters. We calculated the variance in the observed item responses and the variance of the residuals, then proportion of variance explained by the Rasch model. This value was .23. Reckase (citation) suggests that the unidimensionality assumption is safely met if the Rasch model explains 20% of the variance in the data. Thus we have some evidence of unidimensionality with which to proceed to further IRT modeling.</p>
+<p>As shown in the scree plot, the first component was large, accounting for 48% of the variance. The second, third, and fourth components accounted for 4%, 3%, and 2% of the variance, respectively. The ratio of the eigenvalue of the first (largest) component to that of the second is approximately 13.</p>
+<p><strong>Proportion of variance</strong>. We estimated a unidimensional Rasch model on dichotomized responses to the 59 SHAS items and saved the residuals of the person parameters. We calculated the variance in the observed item responses and the variance of the residuals.</p>
 <pre><code>[1] 0.2311528</code></pre>
-<p><strong>Principal Component Analysis of Residuals (PCAR)</strong>. Next we examined the principal components of the correlations among residuals. The premise is that once the Rasch model has been estimated, the correlations among the residuals should be minimal. Linacre () suggests that contrasts with eigenvalues of 2.0 or below can be considered noise. In Figure <a href="results.html#fig:uni-pcar">1</a>, our PCAR analysis found only one contrasts that rose above that 2.0 threshold.</p>
+<p>The proportion of variance explained by the Rasch model was .23. If the unidimensionalty assumption is safely met if the Rasch model explains 20% of the variance in the data (Reckase), then the SHAS data meet this criterion.</p>
+<p><strong>Principal Component Analysis of Residuals (PCAR)</strong>. We examined the principal components of the correlations among residuals of the Rasch analysis. The premise is that once the Rasch model has been estimated, correlations among the item residuals should be minimal. Linacre () suggests that contrasts with eigenvalues of 2.0 or below can be considered noise.</p>
 <div class="figure"><span style="display:block;" id="fig:uni-pcar"></span>
 <img src="_main_files/figure-html/uni-pcar-1.png" alt="Contrasts from PCA of Standardized Residual Correlations" width="672" />
 <p class="caption">
 Figure 1: Contrasts from PCA of Standardized Residual Correlations
 </p>
 </div>
-<p><strong>Q3</strong>. In our check of the assumption of local independence, we calculated the Q3 statistic (Yen, 1984). This statistic examines the correlations among item residuals, the premise being that the latent trait should account for so much common variance in the item responses that any net correlations among the items should be weak. The Q3 statistic index criteria are that the raw residual correlation between pairs of items should never exceed 0.10 (Marais &amp; Andrich, 2008). Of the 1,711 item pairs, the mean correlation was -0.017 with a standard deviation of 0.035. Thus, most of the residual correlations were very weak.</p>
-<p>Figure <a href="results.html#fig:q3-plot">2</a> plots the matrix of correlations between item residuals. Each square depicts a correlation. The squares are shaded in grey with the lightest shade indicating the weakest correlations. As hoped, the vast majority of squares are very light, indicating weak correlations among the item residuals.</p>
+<p>In Figure <a href="results.html#fig:uni-pcar">1</a>, our PCAR analysis found only one contrast that rose above that 2.0 threshold.</p>
+<p><strong>Q3</strong>. Finally, we calculated the Q3 statistic (Yen, 1984). This statistic examines the correlations among item residuals, the premise being that the latent trait should account for so much common variance in the item responses that any net correlations among the items should be weak. The Q3 statistic index criteria are that the raw residual correlation between pairs of items should never exceed 0.10 (Marais &amp; Andrich, 2008). Of the 1,711 item pairs, the mean correlation was -0.017 with a standard deviation of 0.035. Thus, most of the residual correlations among items were very weak.</p>
 <pre><code>
 WLE Reliability= 0.916 </code></pre>
 <pre><code>Yen&#39;s Q3 Statistic based on an estimated theta score 
@@ -3578,139 +3566,12 @@ WLE Reliability= 0.916 </code></pre>
      M     SD    Min    10%    25%    50%    75%    90%    Max 
 -0.017  0.035 -0.109 -0.054 -0.040 -0.020 -0.001  0.023  0.255 </code></pre>
 <div class="figure"><span style="display:block;" id="fig:q3-plot"></span>
-<img src="_main_files/figure-html/q3-plot-1.png" alt="Correlations matrix of Item Residuals" width="672" />
+<img src="_main_files/figure-html/q3-plot-1.png" alt="Matrix of Correlations of Item Residuals" width="672" />
 <p class="caption">
-Figure 2: Correlations matrix of Item Residuals
+Figure 2: Matrix of Correlations of Item Residuals
 </p>
 </div>
-</div>
-</div>
-<div id="exploratory-bifactor-analysis" class="section level2 hasAnchor">
-<h2>Exploratory Bifactor Analysis<a href="results.html#exploratory-bifactor-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<pre><code>Omega 
-Call: omegah(m = m, nfactors = nfactors, fm = fm, key = key, flip = flip, 
-    digits = digits, title = title, sl = sl, labels = labels, 
-    plot = plot, n.obs = n.obs, rotate = rotate, Phi = Phi, option = option, 
-    covar = covar)
-Alpha:                 0.98 
-G.6:                   0.99 
-Omega Hierarchical:    0.82 
-Omega H asymptotic:    0.84 
-Omega Total            0.98 
-
-Schmid Leiman Factor loadings greater than  0.2 
-        g   F1*   F2*   F3*   h2   u2   p2
-X-         0.28 -0.22       0.15 0.85 0.15
-Q7   0.61  0.20  0.21       0.45 0.55 0.82
-Q10  0.57        0.32       0.43 0.57 0.76
-Q11  0.71  0.22  0.24       0.61 0.39 0.82
-Q16  0.62        0.37       0.56 0.44 0.69
-Q17  0.29                   0.15 0.85 0.58
-Q18  0.71  0.27             0.62 0.38 0.82
-Q19  0.69        0.26       0.57 0.43 0.83
-Q20  0.62        0.31       0.50 0.50 0.76
-Q21  0.62        0.20       0.46 0.54 0.83
-Q22  0.64  0.28             0.51 0.49 0.81
-Q23  0.58        0.25       0.43 0.57 0.78
-Q24  0.60        0.29       0.45 0.55 0.79
-Q25  0.70  0.26             0.61 0.39 0.81
-Q26  0.58        0.44       0.54 0.46 0.64
-Q27  0.41        0.36       0.31 0.69 0.55
-Q28  0.65        0.42       0.60 0.40 0.71
-Q29  0.62        0.22       0.47 0.53 0.83
-Q30  0.64        0.27       0.50 0.50 0.81
-Q31  0.58        0.35       0.48 0.52 0.70
-Q32  0.67              0.21 0.54 0.46 0.83
-Q34  0.60  0.32             0.48 0.52 0.75
-Q35  0.68  0.30             0.59 0.41 0.79
-Q36  0.70  0.22  0.21       0.59 0.41 0.83
-Q37  0.69  0.20             0.57 0.43 0.84
-Q38  0.74  0.28             0.67 0.33 0.82
-Q39  0.66  0.33             0.58 0.42 0.77
-Q40  0.69  0.27  0.20       0.58 0.42 0.81
-Q41  0.26        0.24       0.14 0.86 0.47
-Q42  0.70        0.29       0.60 0.40 0.82
-Q43  0.67        0.30       0.55 0.45 0.81
-Q44  0.73        0.23       0.64 0.36 0.84
-Q45  0.67  0.44             0.64 0.36 0.70
-Q46                         0.04 0.96 0.41
-Q47  0.46        0.26       0.30 0.70 0.73
-Q49  0.65        0.42       0.60 0.40 0.70
-Q50  0.47        0.35       0.35 0.65 0.62
-Q51  0.56                   0.38 0.62 0.84
-Q52  0.68        0.42       0.65 0.35 0.72
-Q53  0.67  0.27  0.21       0.57 0.43 0.79
-Q54  0.70  0.32             0.62 0.38 0.79
-Q55  0.24        0.20       0.10 0.90 0.59
-Q56  0.75  0.22             0.67 0.33 0.84
-Q57  0.65        0.23  0.25 0.54 0.46 0.79
-Q58  0.68  0.37             0.60 0.40 0.76
-Q59  0.69        0.39       0.64 0.36 0.74
-Q60  0.42        0.35       0.30 0.70 0.58
-Q61  0.67  0.44             0.64 0.36 0.69
-Q62  0.60  0.30             0.47 0.53 0.76
-Q63  0.70        0.32       0.60 0.40 0.80
-Q64  0.64        0.37       0.57 0.43 0.72
-Q65  0.55        0.34       0.42 0.58 0.72
-Q66  0.65  0.26             0.51 0.49 0.82
-Q68  0.61              0.29 0.49 0.51 0.76
-Q69  0.52              0.46 0.51 0.49 0.54
-Q70  0.51              0.49 0.50 0.50 0.51
-Q71  0.68              0.33 0.59 0.41 0.78
-Q72  0.49              0.40 0.41 0.59 0.58
-Q73  0.58              0.47 0.56 0.44 0.61
-Q74  0.55              0.34 0.42 0.58 0.70
-Q76  0.68              0.29 0.57 0.43 0.80
-Q77  0.71              0.32 0.64 0.36 0.79
-Q78  0.61              0.48 0.60 0.40 0.62
-Q79  0.55              0.44 0.49 0.51 0.61
-Q80  0.63              0.43 0.58 0.42 0.67
-Q81  0.58        0.22  0.21 0.44 0.56 0.78
-
-With eigenvalues of:
-   g  F1*  F2*  F3* 
-24.5  2.3  3.5  2.5 
-
-general/max  6.91   max/min =   1.54
-mean percent general =  0.72    with sd =  0.12 and cv of  0.17 
-Explained Common Variance of the general factor =  0.75 
-
-The degrees of freedom are 1950  and the fit is  7.54 
-The number of observations was  3222  with Chi Square =  24088.73  with prob &lt;  0
-The root mean square of the residuals is  0.03 
-The df corrected root mean square of the residuals is  0.04
-RMSEA index =  0.059  and the 10 % confidence intervals are  0.059 0.06
-BIC =  8337.11
-
-Compare this with the adequacy of just a general factor and no group factors
-The degrees of freedom for just the general factor are 2079  and the fit is  12.25 
-The number of observations was  3222  with Chi Square =  39165.93  with prob &lt;  0
-The root mean square of the residuals is  0.09 
-The df corrected root mean square of the residuals is  0.09 
-
-RMSEA index =  0.074  and the 10 % confidence intervals are  0.074 0.075
-BIC =  22372.27 
-
-Measures of factor score adequacy             
-                                                 g  F1*  F2*  F3*
-Correlation of scores with factors            0.91 0.74 0.75 0.79
-Multiple R square of scores with factors      0.83 0.55 0.56 0.63
-Minimum correlation of factor score estimates 0.66 0.11 0.11 0.26
-
- Total, General and Subset omega for each subset
-                                                 g  F1*  F2*  F3*
-Omega total for total scores and subscales    0.98 0.92 0.95 0.92
-Omega general for total scores and subscales  0.82 0.77 0.74 0.67
-Omega group for total scores and subscales    0.08 0.16 0.21 0.25</code></pre>
-<blockquote>
-<p>We removed X items in this step. The bifactor models with three subfactors identified 8 items with low general factor loadings (&lt; 0.50) or high specific factor loadings (&gt; 0.50). These items focused on individual health behavior maintenance. In addition, we noticed that a single specific factor was driven by three items from the “health information use” domain, also showing high specific factor loadings and low general factor loadings, suggesting a potential for multidimensionality. They focused on independent health information use (e.g., “It is easy to find information on my own that helps me manage my symptoms”). All other items in this domain showed lower loadings on the “health information use” factor (&lt; 0.35). We opted to remove these three items, and model three subfactors representing the remaining subdomains. This decision to shift from 4 to 3 subfactors was based not only on these empirical considerations, but on the overarching conceptual assumption that the construct of engagement is essentially collaborative, and that the multidimensionality of items addressing independent skills was inconsistent with this assumption.</p>
-</blockquote>
-<blockquote>
-<p>In the subsequent 3-factor bifactor model, we identified three more items with general factor loadings of 0.50 or less. These items addressed resilient self-efficacy for independent self-management behaviors (e.g., “I attend all of my appointments, even when life gets busy or stressful”) and were removed based on similar empirical considerations and conceptual assumptions. The resulting 30 item set showed a high proportion of general factor variance relative to specific factor variance (item-level proportions ranging from 0.58 to 0.83), with overall indices of Omega-H as 0.79 and ECV 0.69. These values suggest sufficient levels of unidimensionality and that the items mostly reflect a single construct [36].</p>
-</blockquote>
-</div>
-<div id="bifactor-model-of-final-xx-item-set" class="section level2 hasAnchor">
-<h2>Bifactor Model of Final XX-Item Set<a href="results.html#bifactor-model-of-final-xx-item-set" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Figure <a href="results.html#fig:q3-plot">2</a> plots the matrix of correlations between item residuals. Each square depicts a correlation. The squares are shaded in grey with the lightest shade indicating the weakest correlations. As hoped, the vast majority of squares are very light, indicating weak correlations among the item residuals.</p>
 </div>
 <div id="item-response-theory-model" class="section level2 hasAnchor">
 <h2>Item Response Theory Model<a href="results.html#item-response-theory-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
