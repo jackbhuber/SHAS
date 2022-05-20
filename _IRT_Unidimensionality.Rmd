@@ -15,7 +15,7 @@ items2 <- items2[complete.cases(items2),]
 
 **Principal Components**. We first analyzed the principal components in the SHAS items. Like factor analysis, component analysis attempts to summarize the common variance in items by identifying a smaller set of latent sources of covariation. Principal components analysis differs from factor analysis by treating all of the common variance among the items as the total variance to be explained [verify this].
 
-```{r pca-run}
+```{r pca-run, fig.cap='Principal Components Analysis'}
 # PRINICIPAL COMPONENTS ANALYSIS
 
 # pca <- principal(items2)
@@ -25,12 +25,13 @@ pca <- princomp(items2, cor=TRUE)
 # print(pca)
 # summary(pca) # print variance accounted for
 # loadings(pca) # pc loadings
-plot(pca,type="lines") # scree plot
+plot(pca,type="lines", main="") # scree plot
 # pca$scores # the principal components
 # biplot(pca)
 
 # fa.parallel(items2)
 ```
+
 
 As shown in the scree plot, the first component was large, accounting for 48% of the variance. The second, third, and fourth components accounted for 4%, 3%, and 2% of the variance, respectively. The ratio of the eigenvalue of the first (largest) component to that of the second is approximately 13.
 

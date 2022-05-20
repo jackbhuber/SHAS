@@ -26,5 +26,5 @@ knitr::opts_knit$set(verbose = FALSE)
 
 # automatically create a bib database for R packages
 knitr::write_bib(c(
-  .packages(),'bookdown','lavaan','ltm','knitr','lordif','mirt','psych','rmarkdown', 'VIM'), 'packages.bib')
+  .packages(),'bookdown','eRm','lavaan','ltm','knitr','lordif','mirt','psych','rmarkdown','VIM'), 'packages.bib')
 ```

@@ -1,4 +1,5 @@
 tab:dems-table
 tab:CTT-item-table
+fig:pca-run
 fig:uni-pcar
 fig:q3-plot

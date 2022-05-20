@@ -5,45 +5,45 @@ The style file: plainnat.bst
 Database file #1: book.bib
 Database file #2: packages.bib
 Warning--empty publisher in ReiseMooreHaviland2013
-You've used 13 entries,
+You've used 14 entries,
             2773 wiz_defined-function locations,
-            686 strings with 7294 characters,
-and the built_in function-call counts, 5029 in all, are:
-= -- 458
-> -- 243
+            693 strings with 7451 characters,
+and the built_in function-call counts, 5434 in all, are:
+= -- 494
+> -- 273
 < -- 10
-+ -- 86
-- -- 72
-* -- 377
-:= -- 800
-add.period$ -- 47
-call.type$ -- 13
-change.case$ -- 55
-chr.to.int$ -- 12
-cite$ -- 27
-duplicate$ -- 254
-empty$ -- 418
-format.name$ -- 91
-if$ -- 1040
++ -- 96
+- -- 81
+* -- 413
+:= -- 866
+add.period$ -- 51
+call.type$ -- 14
+change.case$ -- 60
+chr.to.int$ -- 13
+cite$ -- 29
+duplicate$ -- 272
+empty$ -- 444
+format.name$ -- 101
+if$ -- 1120
 int.to.chr$ -- 2
 int.to.str$ -- 1
 missing$ -- 9
-newline$ -- 81
-num.names$ -- 52
-pop$ -- 112
+newline$ -- 87
+num.names$ -- 56
+pop$ -- 121
 preamble$ -- 1
-purify$ -- 50
+purify$ -- 55
 quote$ -- 0
-skip$ -- 189
+skip$ -- 204
 stack$ -- 0
-substring$ -- 133
-swap$ -- 29
+substring$ -- 135
+swap$ -- 31
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 133
+type$ -- 144
 warning$ -- 1
-while$ -- 46
+while$ -- 49
 width$ -- 0
-write$ -- 186
+write$ -- 200
 (There was 1 warning)

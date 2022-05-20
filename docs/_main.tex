@@ -157,10 +157,14 @@ The goal of this study was to use IRT to enhance the SHAS in several ways. Provi
 
 Participants in the initial SHAS validation study were adults who responded to an online survey. To qualify for the survey, participants had to be at least 18 years of age and to have identified themselves as Christian in the past \citep{KochEdstrom2022}.
 
-Sampling was by convenience. Koch promoted the survey through various podcast feeds (in audio form during a podcast episode), e-mail lists, Facebook groups, and other online groups associated with progressive Christian podcasts based in the United States. Listeners/readers were encouraged to invite others who satisfied the criteria to take part in the survey. Koch also posted the link on his own social media accounts with a similar encouragement to invite others who satisfied the study criteria. The sampling priority was to reach the largest, most inclusive, community sample. Participants were consented before beginning the survey. The study was approved by the IRB at Northwest University. Data collection began on January 28, 2021 and concluded on February 27, 2021.
+The second author used snowball sampling to recruit participants to the study. He promoted the survey through various podcast feeds (in audio form during a podcast episode), e-mail lists, Facebook groups, and other online groups associated with progressive Christian podcasts based in the United States. Listeners/readers were encouraged to invite others who satisfied the criteria to take part in the survey. The second author also posted the link on his own social media accounts with a similar encouragement to invite others who satisfied the study criteria. The sampling priority was to reach the largest, most inclusive, community sample. Participants were consented before beginning the survey. The study was approved by the IRB at Northwest University. Data collection began on January 28, 2021 and concluded on February 27, 2021.
 
 \hypertarget{measures}{%
 \subsection{Measures}\label{measures}}
+
+\textbf{Demographics}
+
+Demographic variables included gender, sexual orientation, race, raised in a Christian home, denomination, current religious identity, age, and theological self-description.
 
 \textbf{Spiritual Harm and Abuse items}
 
@@ -177,9 +181,11 @@ For this study, we focused on the commonality of the items in order to use item 
 
 We began by examining classical item statistics (skew, kurtosis, item-total correlation) to identify poorly functioning items. Then we conducted several analyses of dimensionality in search of sufficient evidence of unidimensionality and local independence. We conducted principal components analysis to compare the eigenvalues of the largest and second largest components. We estimated a Rasch model and calculated the proportion of variance in the data it explained. This we followed with a Principal Components Analysis of Residuals (PCAR) to gauge the importance of components in the residuals. We concluded by estimating the Q3 matrix of correlations among item residuals.
 
+\begin{quote}
 Differential item functioning (DIF) analysis compared race (Black/African-American vs.~White), age (65 and above vs below 65), etc. We applied logistic ordinal regression with IRT scoring, commonly used in the development of PROMIS instruments {[}45{]}. We used the Chi-squared likelihood-ratio statistic as the initial DIF detection criteria (alpha \textless{} 0.01), and a cut-off of McFadden pseudo R2Δ ≥ 0.02 in model comparisons to determine substantial DIF, a reasonable threshold used in the development of self-reported health outcomes {[}46{]}.
+\end{quote}
 
-All analyses were conducted in \textbf{R} \citep{R-base}, using the \textbf{psych} package \citep{R-psych} and \textbf{lavaan} \citep{R-lavaan} for factor analyses, \textbf{mirt} \citep{R-mirt} for IRT analyses and \textbf{lordif} \citep{R-lordif} for DIF analyses.
+We conducted all analyses in \textbf{R} \citep{R-base}, using the \textbf{psych} package \citep{R-psych} and \textbf{lavaan} \citep{R-lavaan} for factor analyses, \textbf{eRm} \citep{R-eRm} and \textbf{mirt} \citep{R-mirt} for IRT analyses, and \textbf{lordif} \citep{R-lordif} for DIF analyses.
 
 \hypertarget{results}{%
 \section{Results}\label{results}}
@@ -330,9 +336,13 @@ EQ22 - Expected to follow pastor/leader rules re: dating/marriage/sex & 0.20 & 0
 \hypertarget{unidimensionality-and-local-independence}{%
 \subsection{Unidimensionality and Local Independence}\label{unidimensionality-and-local-independence}}
 
-\textbf{Principal Components}. We first analyzed the principal components in the SHAS items. Like factor analysis, component analysis attempts to summarize the common variance in items by identifying a smaller set of latent sources of covariation. Principal components analysis differs from factor analysis by treating all of the common variance among the items as the total variance to be explained {[}verify this{]}. We used the \emph{princomp} function in the \texttt{psych} package on the 59 items.
+\textbf{Principal Components}. We first analyzed the principal components in the SHAS items. Like factor analysis, component analysis attempts to summarize the common variance in items by identifying a smaller set of latent sources of covariation. Principal components analysis differs from factor analysis by treating all of the common variance among the items as the total variance to be explained {[}verify this{]}.
 
+\begin{figure}
+\centering
 \includegraphics{_main_files/figure-latex/pca-run-1.pdf}
+\caption{\label{fig:pca-run}Principal Components Analysis}
+\end{figure}
 
 As shown in the scree plot, the first component was large, accounting for 48\% of the variance. The second, third, and fourth components accounted for 4\%, 3\%, and 2\% of the variance, respectively. The ratio of the eigenvalue of the first (largest) component to that of the second is approximately 13.
 
@@ -371,7 +381,7 @@ Yen's Q3 Statistic based on an estimated theta score
 \begin{figure}
 \centering
 \includegraphics{_main_files/figure-latex/q3-plot-1.pdf}
-\caption{\label{fig:q3-plot}Correlations matrix of Item Residuals}
+\caption{\label{fig:q3-plot}Matrix of Correlations of Item Residuals}
 \end{figure}
 
 Figure \ref{fig:q3-plot} plots the matrix of correlations between item residuals. Each square depicts a correlation. The squares are shaded in grey with the lightest shade indicating the weakest correlations. As hoped, the vast majority of squares are very light, indicating weak correlations among the item residuals.
@@ -379,8 +389,8 @@ Figure \ref{fig:q3-plot} plots the matrix of correlations between item residuals
 \hypertarget{item-response-theory-model}{%
 \subsection{Item Response Theory Model}\label{item-response-theory-model}}
 
-\hypertarget{dif-analysis}{%
-\subsection{DIF Analysis}\label{dif-analysis}}
+\hypertarget{differential-item-functioning-dif-analysis}{%
+\subsection{Differential Item Functioning (DIF) Analysis}\label{differential-item-functioning-dif-analysis}}
 
 Differential item functioning (DIF), simply put, examines how an item functions for different groups.
 

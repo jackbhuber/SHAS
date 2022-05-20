@@ -11,7 +11,7 @@
 
 ## Item Response Theory Model
 
-## DIF Analysis
+## Differential Item Functioning (DIF) Analysis
 
 ```{r, child = "_DIF.Rmd"}
 ```

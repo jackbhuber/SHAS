@@ -117,7 +117,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="results.html"><a href="results.html#initial-item-analysis"><i class="fa fa-check"></i>Initial Item Analysis</a></li>
 <li class="chapter" data-level="" data-path="results.html"><a href="results.html#unidimensionality-and-local-independence"><i class="fa fa-check"></i>Unidimensionality and Local Independence</a></li>
 <li class="chapter" data-level="" data-path="results.html"><a href="results.html#item-response-theory-model"><i class="fa fa-check"></i>Item Response Theory Model</a></li>
-<li class="chapter" data-level="" data-path="results.html"><a href="results.html#dif-analysis"><i class="fa fa-check"></i>DIF Analysis</a></li>
+<li class="chapter" data-level="" data-path="results.html"><a href="results.html#differential-item-functioning-dif-analysis"><i class="fa fa-check"></i>Differential Item Functioning (DIF) Analysis</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i>Discussion</a></li>
 <li class="chapter" data-level="" data-path="data-availability.html"><a href="data-availability.html"><i class="fa fa-check"></i>Data Availability</a></li>
@@ -3544,7 +3544,12 @@ EQ22 - Expected to follow pastor/leader rules re: dating/marriage/sex
 <div id="unidimensionality-and-local-independence" class="section level2 hasAnchor">
 <h2>Unidimensionality and Local Independence<a href="results.html#unidimensionality-and-local-independence" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>Principal Components</strong>. We first analyzed the principal components in the SHAS items. Like factor analysis, component analysis attempts to summarize the common variance in items by identifying a smaller set of latent sources of covariation. Principal components analysis differs from factor analysis by treating all of the common variance among the items as the total variance to be explained [verify this].</p>
-<p><img src="_main_files/figure-html/pca-run-1.png" width="672" /></p>
+<div class="figure"><span style="display:block;" id="fig:pca-run"></span>
+<img src="_main_files/figure-html/pca-run-1.png" alt="Principal Components Analysis" width="672" />
+<p class="caption">
+Figure 1: Principal Components Analysis
+</p>
+</div>
 <p>As shown in the scree plot, the first component was large, accounting for 48% of the variance. The second, third, and fourth components accounted for 4%, 3%, and 2% of the variance, respectively. The ratio of the eigenvalue of the first (largest) component to that of the second is approximately 13.</p>
 <p><strong>Proportion of variance</strong>. We estimated a unidimensional Rasch model on dichotomized responses to the 59 SHAS items and saved the residuals of the person parameters. We calculated the variance in the observed item responses and the variance of the residuals.</p>
 <pre><code>[1] 0.2311528</code></pre>
@@ -3553,10 +3558,10 @@ EQ22 - Expected to follow pastor/leader rules re: dating/marriage/sex
 <div class="figure"><span style="display:block;" id="fig:uni-pcar"></span>
 <img src="_main_files/figure-html/uni-pcar-1.png" alt="Contrasts from PCA of Standardized Residual Correlations" width="672" />
 <p class="caption">
-Figure 1: Contrasts from PCA of Standardized Residual Correlations
+Figure 2: Contrasts from PCA of Standardized Residual Correlations
 </p>
 </div>
-<p>In Figure <a href="results.html#fig:uni-pcar">1</a>, our PCAR analysis found only one contrast that rose above that 2.0 threshold.</p>
+<p>In Figure <a href="results.html#fig:uni-pcar">2</a>, our PCAR analysis found only one contrast that rose above that 2.0 threshold.</p>
 <p><strong>Q3</strong>. Finally, we calculated the Q3 statistic (Yen, 1984). This statistic examines the correlations among item residuals, the premise being that the latent trait should account for so much common variance in the item responses that any net correlations among the items should be weak. The Q3 statistic index criteria are that the raw residual correlation between pairs of items should never exceed 0.10 (Marais &amp; Andrich, 2008). Of the 1,711 item pairs, the mean correlation was -0.017 with a standard deviation of 0.035. Thus, most of the residual correlations among items were very weak.</p>
 <pre><code>
 WLE Reliability= 0.916 </code></pre>
@@ -3568,16 +3573,16 @@ WLE Reliability= 0.916 </code></pre>
 <div class="figure"><span style="display:block;" id="fig:q3-plot"></span>
 <img src="_main_files/figure-html/q3-plot-1.png" alt="Matrix of Correlations of Item Residuals" width="672" />
 <p class="caption">
-Figure 2: Matrix of Correlations of Item Residuals
+Figure 3: Matrix of Correlations of Item Residuals
 </p>
 </div>
-<p>Figure <a href="results.html#fig:q3-plot">2</a> plots the matrix of correlations between item residuals. Each square depicts a correlation. The squares are shaded in grey with the lightest shade indicating the weakest correlations. As hoped, the vast majority of squares are very light, indicating weak correlations among the item residuals.</p>
+<p>Figure <a href="results.html#fig:q3-plot">3</a> plots the matrix of correlations between item residuals. Each square depicts a correlation. The squares are shaded in grey with the lightest shade indicating the weakest correlations. As hoped, the vast majority of squares are very light, indicating weak correlations among the item residuals.</p>
 </div>
 <div id="item-response-theory-model" class="section level2 hasAnchor">
 <h2>Item Response Theory Model<a href="results.html#item-response-theory-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="dif-analysis" class="section level2 hasAnchor">
-<h2>DIF Analysis<a href="results.html#dif-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="differential-item-functioning-dif-analysis" class="section level2 hasAnchor">
+<h2>Differential Item Functioning (DIF) Analysis<a href="results.html#differential-item-functioning-dif-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Differential item functioning (DIF), simply put, examines how an item functions for different groups.</p>
 
 </div>

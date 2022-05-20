@@ -1,4 +1,4 @@
-\begin{thebibliography}{13}
+\begin{thebibliography}{14}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -41,6 +41,12 @@ K.~H. Keller.
 Dan Koch and Leihua Edstrom.
 \newblock Development of the spiritual harm and abuse scale.
 \newblock \emph{Journal for the Scientific Study of Religion}, 2022.
+
+\bibitem[Mair et~al.(2021)Mair, Hatzinger, and Maier]{R-eRm}
+Patrick Mair, Reinhold Hatzinger, and Marco~J. Maier.
+\newblock \emph{eRm: Extended Rasch Modeling}, 2021.
+\newblock URL \url{https://CRAN.R-project.org/package=eRm}.
+\newblock R package version 1.0-2.
 
 \bibitem[{R Core Team}(2022)]{R-base}
 {R Core Team}.

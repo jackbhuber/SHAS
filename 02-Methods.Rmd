@@ -8,9 +8,13 @@
 
 Participants in the initial SHAS validation study were adults who responded to an online survey. To qualify for the survey, participants had to be at least 18 years of age and to have identified themselves as Christian in the past [@KochEdstrom2022].
 
-Sampling was by convenience. Koch promoted the survey through various podcast feeds (in audio form during a podcast episode), e-mail lists, Facebook groups, and other online groups associated with progressive Christian podcasts based in the United States. Listeners/readers were encouraged to invite others who satisfied the criteria to take part in the survey. Koch also posted the link on his own social media accounts with a similar encouragement to invite others who satisfied the study criteria. The sampling priority was to reach the largest, most inclusive, community sample. Participants were consented before beginning the survey. The study was approved by the IRB at Northwest University. Data collection began on January 28, 2021 and concluded on February 27, 2021.
+The second author used snowball sampling to recruit participants to the study. He promoted the survey through various podcast feeds (in audio form during a podcast episode), e-mail lists, Facebook groups, and other online groups associated with progressive Christian podcasts based in the United States. Listeners/readers were encouraged to invite others who satisfied the criteria to take part in the survey. The second author also posted the link on his own social media accounts with a similar encouragement to invite others who satisfied the study criteria. The sampling priority was to reach the largest, most inclusive, community sample. Participants were consented before beginning the survey. The study was approved by the IRB at Northwest University. Data collection began on January 28, 2021 and concluded on February 27, 2021.
 
 ## Measures
+
+**Demographics**
+
+Demographic variables included gender, sexual orientation, race, raised in a Christian home, denomination, current religious identity, age, and theological self-description.
 
 **Spiritual Harm and Abuse items**
 
@@ -26,6 +30,6 @@ For this study, we focused on the commonality of the items in order to use item 
 
 We began by examining classical item statistics (skew, kurtosis, item-total correlation) to identify poorly functioning items. Then we conducted several analyses of dimensionality in search of sufficient evidence of unidimensionality and local independence. We conducted principal components analysis to compare the eigenvalues of the largest and second largest components. We estimated a Rasch model and calculated the proportion of variance in the data it explained. This we followed with a Principal Components Analysis of Residuals (PCAR) to gauge the importance of components in the residuals. We concluded by estimating the Q3 matrix of correlations among item residuals. 
 
-Differential item functioning (DIF) analysis compared race (Black/African-American vs. White), age (65 and above vs below 65), etc. We applied logistic ordinal regression with IRT scoring, commonly used in the development of PROMIS instruments [45]. We used the Chi-squared likelihood-ratio statistic as the initial DIF detection criteria (alpha < 0.01), and a cut-off of McFadden pseudo R2Δ ≥ 0.02 in model comparisons to determine substantial DIF, a reasonable threshold used in the development of self-reported health outcomes [46].
+>Differential item functioning (DIF) analysis compared race (Black/African-American vs. White), age (65 and above vs below 65), etc. We applied logistic ordinal regression with IRT scoring, commonly used in the development of PROMIS instruments [45]. We used the Chi-squared likelihood-ratio statistic as the initial DIF detection criteria (alpha < 0.01), and a cut-off of McFadden pseudo R2Δ ≥ 0.02 in model comparisons to determine substantial DIF, a reasonable threshold used in the development of self-reported health outcomes [46].
 
-All analyses were conducted in **R** [@R-base], using the **psych** package [@R-psych] and **lavaan** [@R-lavaan] for factor analyses, **mirt** [@R-mirt] for IRT analyses and **lordif** [@R-lordif] for DIF analyses.
+We conducted all analyses in **R** [@R-base], using the **psych** package [@R-psych] and **lavaan** [@R-lavaan] for factor analyses, **eRm** [@R-eRm] and **mirt** [@R-mirt] for IRT analyses, and **lordif** [@R-lordif] for DIF analyses.
