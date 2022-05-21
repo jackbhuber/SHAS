@@ -9,9 +9,8 @@
 ```{r, child = "_IRT_Unidimensionality.Rmd"}
 ```
 
-## Item Response Theory Model
-
-## Differential Item Functioning (DIF) Analysis
+```{r, child = "_IRT_RatingScaleModel.Rmd"}
+```
 
 ```{r, child = "_DIF.Rmd"}
 ```

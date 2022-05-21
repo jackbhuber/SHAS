@@ -1,3 +1,5 @@
+## DIF Analysis
+
 Differential item functioning (DIF), simply put, examines how an item functions for different groups.
 
 ```{r}

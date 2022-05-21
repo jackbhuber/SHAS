@@ -230,7 +230,7 @@ Podcast Use & 3056 & 2.43 & 0.79 & 2 & 2.35 & 0.00 & 1 & 5 & 4 & 0.76 & 0.22 & 0
 \hypertarget{initial-item-analysis}{%
 \subsection{Initial Item Analysis}\label{initial-item-analysis}}
 
-In Table \ref{tab:CTT-item-table} we report classical statistics for the 66 SHAS items. We sorted the items by their mean. We flagged six items -- EQ41, EQ46, EQ17, EQ55, EQ60, and EQ27 -- due to extreme values of skew (less than -2 or greater than +2) or kurtosis (less than -7 or greater than +7) and item-total correlations below 0.50. Category response proportions show that most people responded ``Never'' to these items. Thus these items do not apply to the vast majority of people in this population. We removed them from the item pool.
+In Table \ref{tab:CTT-item-table} we report classical statistics for the 66 SHAS items. We sorted the items by their mean. We flagged six items -- EQ17, EQ27, EQ41, EQ46, EQ55, EQ60 -- due to extreme values of skew (less than -2 or greater than +2) or kurtosis (less than -7 or greater than +7) and item-total correlations below 0.50. Category response proportions show that most people responded ``Never'' to these items. Thus these items do not apply to the vast majority of people in this population. We removed them from the item pool.
 
 \begingroup\fontsize{7}{9}\selectfont
 
@@ -349,7 +349,7 @@ As shown in the scree plot, the first component was large, accounting for 48\% o
 \textbf{Proportion of variance}. We estimated a unidimensional Rasch model on dichotomized responses to the 59 SHAS items and saved the residuals of the person parameters. We calculated the variance in the observed item responses and the variance of the residuals.
 
 \begin{verbatim}
-[1] 0.2311528
+[1] 0.2264541
 \end{verbatim}
 
 The proportion of variance explained by the Rasch model was .23. If the unidimensionalty assumption is safely met if the Rasch model explains 20\% of the variance in the data (Reckase), then the SHAS data meet this criterion.
@@ -367,15 +367,15 @@ In Figure \ref{fig:uni-pcar}, our PCAR analysis found only one contrast that ros
 \textbf{Q3}. Finally, we calculated the Q3 statistic (Yen, 1984). This statistic examines the correlations among item residuals, the premise being that the latent trait should account for so much common variance in the item responses that any net correlations among the items should be weak. The Q3 statistic index criteria are that the raw residual correlation between pairs of items should never exceed 0.10 (Marais \& Andrich, 2008). Of the 1,711 item pairs, the mean correlation was -0.017 with a standard deviation of 0.035. Thus, most of the residual correlations among items were very weak.
 
 \begin{verbatim}
-WLE Reliability= 0.916 
+WLE Reliability= 0.918 
 \end{verbatim}
 
 \begin{verbatim}
 Yen's Q3 Statistic based on an estimated theta score 
-*** 59 Items | 1711 item pairs
+*** 60 Items | 1770 item pairs
 *** Q3 Descriptives
      M     SD    Min    10%    25%    50%    75%    90%    Max 
--0.017  0.035 -0.109 -0.054 -0.040 -0.020 -0.001  0.023  0.255 
+-0.017  0.036 -0.109 -0.055 -0.040 -0.020 -0.001  0.025  0.321 
 \end{verbatim}
 
 \begin{figure}
@@ -386,11 +386,158 @@ Yen's Q3 Statistic based on an estimated theta score
 
 Figure \ref{fig:q3-plot} plots the matrix of correlations between item residuals. Each square depicts a correlation. The squares are shaded in grey with the lightest shade indicating the weakest correlations. As hoped, the vast majority of squares are very light, indicating weak correlations among the item residuals.
 
-\hypertarget{item-response-theory-model}{%
-\subsection{Item Response Theory Model}\label{item-response-theory-model}}
+\hypertarget{item-response-theory-irt-analysis}{%
+\subsection{Item Response Theory (IRT) Analysis}\label{item-response-theory-irt-analysis}}
 
-\hypertarget{differential-item-functioning-dif-analysis}{%
-\subsection{Differential Item Functioning (DIF) Analysis}\label{differential-item-functioning-dif-analysis}}
+We used the Rasch Rating Scale Model (RSM) \citep{Andrich1978} to examine the SHAS item pool. The RSM is an extension of the Rasch model (designed for dichotomous items) for use with polytomous items based on rating scales such as Likert scales of agreement \citep{EmbretsonReise2000}. Rasch models, like all IRT models, combine (or ``calibrate'') information from items with information from persons to arrive at a common scale for measuring both an item's and a person's level of a latent trait, in this case, spiritual abuse. Because IRT was developed to measure student achievement, IRT statistics for both items and person tend to use language of ``ability'' and ``difficulty.'' For our purpose to measure a psychological trait like exposure to abuse, we chose instead to adopt language of ``severity.'' We will use person parameters and scale scores to represent participants' severity of abuse, and we will describe item ``difficulty'' parameters as ``severity'' parameters.
+
+The Rasch model estimates the probability of a person choosing among several response options (i.e.~Never, Once or twice, etc.) given the item's severity of the item and the person's severity of the latent trait (spiritual abuse). The increase in severity involved in choosing from between two response categories is called a ``step parameter''. The RSM assumes that all items use the same rating scale. As a Rasch model, it assumes that all items discriminate equally well and thus fixes the discrimination parameter to 1. The model also fixes the step parameters of all the items on the premise that the response categories are the same for all items. What the RSM frees to vary are the item severity parameters. Thus the focus of the RSM is the differences in item severities. If all of these assumptions are true -- that the items and their rating scales differentiate persons equally well and differ only in overall severity -- then the observed pattern of item responses will closely match the pattern of items responses expected by the RSM and the model will fit.
+
+Table \ref{tab:rsm-item-tbl} reports the item parameters and fit statistics estimated by the RSM for all 60 SHAS items. The first four columns, b1 to b4, report the estimated thresholds (or step parameters) for each item. These represent the average increase in severity associated with choosing the next response category on the scale, such as between ``Never'' and ``Once or twice''. In the RSM, these step parameters are fixed to be the same across all items, the premise being that the rating scale distinguishes between victims of more or less spiritual abuse equally well across items.
+
+If the rating scale functions as intended, the step parameters should increase. The first, b1, should be the lowest, b2 the next highest, and so on. When this does not happen - that is, when a step parameter is smaller than one before - this is called a step reversal. In Table \ref{tab:rsm-item-tbl}, b2 is smaller than b1, suggesting that the increase in severity of choosing ``Sometimes'' over ``Once or twice'' is negative.
+
+Items do vary by the severity of spiritual abuse they represent. This value, the severity parameter, is column c.~On this value we sorted the items to compare of their relative severity.
+
+\begingroup\fontsize{7}{9}\selectfont
+
+\begin{longtable}[t]{>{\raggedright\arraybackslash}p{2cm}rrrrrrrrrr}
+\caption{\label{tab:rsm-item-tbl}Estimated Item Parameters for the Rating Scale Model and Item Chi-Square Fit Statistics}\\
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{5}{c}{Item Parameters} & \multicolumn{5}{c}{Fit Statistics} \\
+\cmidrule(l{3pt}r{3pt}){2-6} \cmidrule(l{3pt}r{3pt}){7-11}
+  & b1 & b2 & b3 & b4 & c & outfit & z.outfit & infit & z.infit & flag\\
+\midrule
+\endfirsthead
+\caption[]{\label{tab:rsm-item-tbl}Estimated Item Parameters for the Rating Scale Model and Item Chi-Square Fit Statistics \textit{(continued)}}\\
+\toprule
+  & b1 & b2 & b3 & b4 & c & outfit & z.outfit & infit & z.infit & flag\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+EQ47 - Medical care being postponed/withheld for religious reasons & 0.03 & -0.08 & 0.83 & 1.47 & -1.47 & 1.04 & 0.72 & 1.11 & 2.92 & \\
+IQ72 - Feeling as if God harmed me directly & 0.03 & -0.08 & 0.83 & 1.47 & -1.17 & 1.07 & 1.37 & 1.17 & 5.06 & \\
+IQ81 - Nightmares about my negative religious experiences & 0.03 & -0.08 & 0.83 & 1.47 & -0.96 & 0.83 & -3.65 & 0.92 & -2.91 & \\
+EQ10 - Asked to give up personal goals by pastor & 0.03 & -0.08 & 0.83 & 1.47 & -0.86 & 1.04 & 0.81 & 1.15 & 4.96 & \\
+EQ65 - Cut off/shunned by more religious family members & 0.03 & -0.08 & 0.83 & 1.47 & -0.86 & 1.22 & 4.40 & 1.22 & 7.19 & \\
+\addlinespace
+EQ26 - Pressured to forgive abuser while abuse was ongoing & 0.03 & -0.08 & 0.83 & 1.47 & -0.80 & 1.30 & 6.20 & 1.25 & 8.11 & \\
+EQ24 - Expected to consult pastor/leader before making non-religious decisions & 0.03 & -0.08 & 0.83 & 1.47 & -0.78 & 0.97 & -0.68 & 1.03 & 1.23 & \\
+EQ23 - Prayer replacing needed medical interventions & 0.03 & -0.08 & 0.83 & 1.47 & -0.73 & 0.97 & -0.66 & 1.03 & 1.12 & \\
+EQ31 - Shunned/ignored by pastor/church/group & 0.03 & -0.08 & 0.83 & 1.47 & -0.59 & 1.05 & 1.17 & 1.03 & 1.09 & \\
+EQ30 - Deterred from seeking mental health treatment/counseling/medication & 0.03 & -0.08 & 0.83 & 1.47 & -0.56 & 0.90 & -2.55 & 0.98 & -0.78 & \\
+\addlinespace
+EQ43 - Shamed by pastor/group for poor spiritual/moral performance & 0.03 & -0.08 & 0.83 & 1.47 & -0.56 & 0.75 & -6.84 & 0.78 & -8.75 & \\
+IQ68 - Anxiety attacks triggered by religious stimuli & 0.03 & -0.08 & 0.83 & 1.47 & -0.56 & 0.94 & -1.61 & 1.02 & 0.78 & \\
+EQ52 - Blamed for harm I suffered rather than blaming who harmed me & 0.03 & -0.08 & 0.83 & 1.47 & -0.52 & 0.76 & -6.71 & 0.84 & -6.40 & \\
+IQ70 - Feeling betrayed by God & 0.03 & -0.08 & 0.83 & 1.47 & -0.49 & 1.30 & 6.90 & 1.22 & 7.73 & \\
+EQ49 - Leadership/group protecting and elevating abusive individuals & 0.03 & -0.08 & 0.83 & 1.47 & -0.47 & 0.84 & -4.35 & 0.88 & -4.60 & \\
+\addlinespace
+EQ16 - Church/community abandoning me in difficult time & 0.03 & -0.08 & 0.83 & 1.47 & -0.45 & 0.97 & -0.81 & 1.01 & 0.34 & \\
+EQ20 - Members pressured to give money despite financial hardship & 0.03 & -0.08 & 0.83 & 1.47 & -0.43 & 1.08 & 2.12 & 1.22 & 7.86 & \\
+EQ57 - Developing mental/physical ailments from conforming to group/leader’s expectation & 0.03 & -0.08 & 0.83 & 1.47 & -0.42 & 0.89 & -3.03 & 1.02 & 0.90 & \\
+EQ62 - Scripture used to justify physical violence & 0.03 & -0.08 & 0.83 & 1.47 & -0.42 & 1.00 & -0.09 & 1.05 & 1.87 & \\
+EQ59 - Pastor/group blame victim for their abuse & 0.03 & -0.08 & 0.83 & 1.47 & -0.41 & 0.72 & -8.36 & 0.77 & -9.69 & \\
+\addlinespace
+EQ21 - Taught I would risk Hell if left my church/group & 0.03 & -0.08 & 0.83 & 1.47 & -0.38 & 1.27 & 6.57 & 1.35 & 12.00 & \\
+IQ82 - Having trouble navigating life outside my church/community & 0.03 & -0.08 & 0.83 & 1.47 & -0.34 & 1.09 & 2.31 & 1.10 & 3.69 & \\
+EQ50 - Treated as less than because of my gender & 0.03 & -0.08 & 0.83 & 1.47 & -0.33 & 1.86 & 18.72 & 1.86 & 26.82 & *\\
+EQ28 - Leadershi/group protecting abusive individuals & 0.03 & -0.08 & 0.83 & 1.47 & -0.31 & 0.85 & -4.24 & 0.86 & -5.90 & \\
+EQ64 - Witnessing women pressured to stay in unfaithful/abusive marriages & 0.03 & -0.08 & 0.83 & 1.47 & -0.31 & 0.94 & -1.75 & 0.94 & -2.33 & \\
+\addlinespace
+EQ40 - Threatening Divine punishment to keep group members in line & 0.03 & -0.08 & 0.83 & 1.47 & -0.29 & 0.88 & -3.56 & 0.97 & -1.01 & \\
+EQ63 - Shamed by pastor/group for raising questions or concerns & 0.03 & -0.08 & 0.83 & 1.47 & -0.25 & 0.70 & -9.32 & 0.74 & -11.22 & \\
+EQ19 - Behavior excessively monitored by pastor/group & 0.03 & -0.08 & 0.83 & 1.47 & -0.23 & 0.81 & -5.62 & 0.88 & -4.83 & \\
+EQ51 - Extreme pressure to be pastor/missionary/spiritual leader & 0.03 & -0.08 & 0.83 & 1.47 & -0.22 & 1.33 & 8.52 & 1.34 & 11.98 & \\
+EQ53 - Scripture used to justify abusive parent-child behavior & 0.03 & -0.08 & 0.83 & 1.47 & -0.19 & 0.89 & -3.28 & 0.96 & -1.56 & \\
+\addlinespace
+IQ79 - Distrust of God & 0.03 & -0.08 & 0.83 & 1.47 & -0.17 & 1.26 & 7.03 & 1.16 & 5.97 & \\
+EQ34 - Scripture used to justify physical punishment/severe discipline & 0.03 & -0.08 & 0.83 & 1.47 & -0.08 & 1.14 & 4.08 & 1.12 & 4.53 & \\
+EQ29 - Feeling special when in pastor’s good graces; otherwise ignored & 0.03 & -0.08 & 0.83 & 1.47 & -0.06 & 1.03 & 1.00 & 1.04 & 1.43 & \\
+IQ73 - Self-hatred or self-loathing & 0.03 & -0.08 & 0.83 & 1.47 & -0.05 & 1.11 & 3.07 & 1.11 & 4.13 & \\
+EQ11 - Disagree w/pastor portrayed as evil & 0.03 & -0.08 & 0.83 & 1.47 & -0.01 & 0.79 & -7.03 & 0.81 & -8.14 & \\
+\addlinespace
+EQ7 - Pastor speaking on God's behalf & 0.03 & -0.08 & 0.83 & 1.47 & 0.00 & 1.31 & 8.59 & 1.22 & 8.27 & \\
+EQ58 - Terror/horror used to motivate religious decisions & 0.03 & -0.08 & 0.83 & 1.47 & 0.02 & 0.88 & -3.93 & 0.91 & -3.61 & \\
+EQ42 - Seeing others shamed/shunned by pastor/leader/group & 0.03 & -0.08 & 0.83 & 1.47 & 0.06 & 0.70 & -10.33 & 0.70 & -13.67 & \\
+EQ44 - Love/acceptance offered only for high spiritual/moral performance & 0.03 & -0.08 & 0.83 & 1.47 & 0.09 & 0.70 & -10.46 & 0.72 & -12.45 & \\
+EQ56 - Being made to feel I was crazy/weird for doubts/questions & 0.03 & -0.08 & 0.83 & 1.47 & 0.22 & 0.64 & -13.35 & 0.67 & -15.15 & \\
+\addlinespace
+EQ18 - Church/pastor discourage critical thinking & 0.03 & -0.08 & 0.83 & 1.47 & 0.23 & 0.77 & -7.98 & 0.79 & -8.97 & \\
+EQ45 - Developmentally-inappropriate/anxious Hell/Satan/demons taught to young children & 0.03 & -0.08 & 0.83 & 1.47 & 0.25 & 1.03 & 0.84 & 1.06 & 2.38 & \\
+IQ78 - A lack of self-worth & 0.03 & -0.08 & 0.83 & 1.47 & 0.25 & 1.02 & 0.71 & 0.98 & -0.70 & \\
+EQ36 - Mental/physical problems interpreted as spiritual/moral weakness & 0.03 & -0.08 & 0.83 & 1.47 & 0.27 & 0.77 & -8.24 & 0.77 & -9.91 & \\
+IQ74 - Sadness over the loss of my faith/religious community & 0.03 & -0.08 & 0.83 & 1.47 & 0.27 & 1.27 & 7.99 & 1.14 & 5.25 & \\
+\addlinespace
+EQ61 - Developmentally-inappropriate/anxious end times descriptions taught to young children & 0.03 & -0.08 & 0.83 & 1.47 & 0.28 & 1.07 & 2.23 & 1.11 & 4.24 & \\
+EQ32 - Feeling unable to express unhappiness & 0.03 & -0.08 & 0.83 & 1.47 & 0.29 & 0.85 & -5.22 & 0.84 & -6.80 & \\
+IQ76 - Feeling I wasted years of my life in a church/set of beliefs & 0.03 & -0.08 & 0.83 & 1.47 & 0.30 & 0.99 & -0.27 & 1.03 & 1.10 & \\
+EQ54 - Being explicitly taught to distrust my intuitions & 0.03 & -0.08 & 0.83 & 1.47 & 0.42 & 0.88 & -4.17 & 0.87 & -5.35 & \\
+EQ37 - Made to feel less spiritually mature than pastor/leadership & 0.03 & -0.08 & 0.83 & 1.47 & 0.44 & 0.84 & -5.70 & 0.85 & -6.48 & \\
+\addlinespace
+EQ38 - Unrealistic demands placed on my moral/religious behavior & 0.03 & -0.08 & 0.83 & 1.47 & 0.45 & 0.68 & -12.00 & 0.71 & -12.83 & \\
+IQ69 - Lack of spiritual direction/purpose & 0.03 & -0.08 & 0.83 & 1.47 & 0.50 & 1.24 & 7.66 & 1.07 & 2.73 & \\
+IQ71 - Avoiding religious activities/settings to reduce distressing feelings & 0.03 & -0.08 & 0.83 & 1.47 & 0.50 & 0.87 & -4.76 & 0.87 & -5.42 & \\
+IQ80 - Feeling isolated & 0.03 & -0.08 & 0.83 & 1.47 & 0.56 & 0.89 & -3.87 & 0.83 & -7.15 & \\
+EQ39 - Made to feel shame over natural sexual desires (not actions) & 0.03 & -0.08 & 0.83 & 1.47 & 0.57 & 1.06 & 1.92 & 1.08 & 3.04 & \\
+\addlinespace
+IQ77 - Anger upon reflecting on negative religious experiences & 0.03 & -0.08 & 0.83 & 1.47 & 0.58 & 0.66 & -13.06 & 0.65 & -16.07 & \\
+EQ35 - Taught to distrust my emotions & 0.03 & -0.08 & 0.83 & 1.47 & 0.64 & 1.00 & -0.16 & 0.91 & -3.57 & \\
+EQ25 - Feeling unable to raise questions and issues & 0.03 & -0.08 & 0.83 & 1.47 & 0.72 & 0.72 & -10.57 & 0.72 & -12.15 & \\
+EQ66 - Others treated as less than due to their sexual orientation & 0.03 & -0.08 & 0.83 & 1.47 & 0.81 & 1.04 & 1.51 & 1.01 & 0.43 & \\
+EQ22 - Expected to follow pastor/leader rules re: dating/marriage/sex & 0.03 & -0.08 & 0.83 & 1.47 & 0.86 & 1.14 & 4.52 & 1.20 & 7.42 & \\*
+\end{longtable}
+\endgroup{}
+
+To convey this information visually, Figure \ref{fig:rsm-item-plots} shows plots of two items. In both, the horizontal axis is the scale of the latent trait (spiritual abuse), expressed in logits ranging from -6 to +6. The vertical axis is the probability of selecting a given response (i.e., ``Always'') given the person's overall level of spiritual abuse. The blue line is the probability of selecting ``Never'' for persons ranging from less to more severe spiritual abuse. Persons with less severe spiritual abuse are most likely to select ``Never'' while those with more severe abuse are most likely to select ``Always.'' Between these two extremes are persons with more moderate or average spiritual abuse. These persons are more likely to select P3 or P4, ``Sometimes'' or ``Often'', respectively. In both plots, the curves are identical, indicating the same patterns of category response. But the placement of the curves on the horizontal axis convey the difference in severity of the two items.
+
+The plots point out the step reversal between ``Never'' and ``Once or twice'' mentioned above. Persons reporting the least severe spiritual abuse were most likely to report ``Never'' to this prompt of medical care being postponed or withheld for religious reasons. Persons farther along the scale, reporting more average spiritual abuse, should be more likely to report ``Once or twice'' but were still more likely to report ``Never''. This finding suggests the ``Never'' and ``Once or twice'' categories might be collapsed.
+
+\begin{figure}
+\centering
+\includegraphics{_main_files/figure-latex/rsm-item-plot-a-1.pdf}
+\caption{\label{fig:rsm-item-plot-a}Category Response Curves for the Rating Scale Model}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{_main_files/figure-latex/rsm-item-plot-b-1.pdf}
+\caption{\label{fig:rsm-item-plot-b}Category Response Curves for the Rating Scale Model}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{_main_files/figure-latex/rsm-item-hist-1.pdf}
+\caption{\label{fig:rsm-item-hist}Distribution of Item Severity Parameters}
+\end{figure}
+
+Figure \ref{fig:rsm-item-hist} is a graph of the distribution of item severity parameters. The distribution is negatively skewed; most items are clustered slightly above the average level of spiritual abuse and several items measuring very low levels of lifetime exposure to spiritual abuse.
+
+Item fit statistics are also reported in Table \ref{tab:rsm-item-tbl}. These show how closely the observed pattern of item responses fits the pattern of item responses predicted by the particular IRT model (Rasch, partial credit, etc.). They do this by means of chi-square statistics which examine the cumulative difference the observed pattern of item responses and the pattern of item responses that the model would expect. Two fit statistics commonly used in IRT models are the infit mean square (MNSQ) and the outfit mean square (MNSQ) \citep{BondFox2015}. The infit statistic places greater emphasis on unexpected responses that are close to the examinees and item location. The outfit is sensitive to unexpected responses that are far from the location. The expected value of infit or outfit for each item is 1.0, with a range of acceptable values ranging from 0.5 to 1.5. Values outside these boundaries indicate a lack of fit between items and the model. All but six of the 66 items had infit and outfit statistics within the acceptable range from 0.5 to 1.5. The large outfit values mean the observed patterns of responses to these items differed substantially from the patterns of responses expected by the PCM. These items capture the experiences of women, people of color, and LGBTQ persons.
+
+To assess the overall fit of the model to the item response data we use two statistics. The first is the Root Mean Square Error of Approximation (RMSEA). The suggested cutoff for RMSEA is .06. The second is the CFI. The suggested cutoff for the CFI is .95. Model fit statistics for the SHAS items are presented in Table \ref{tab:rsm-model-fit}.
+
+\begin{table}
+
+\caption{\label{tab:rsm-model-fit}Model Fit Statistics for the Rating Scale Model}
+\centering
+\resizebox{\linewidth}{!}{
+\begin{tabular}[t]{lcccccccc}
+\toprule
+  & M2 & df & p & RMSEA & RMSEA\_5 & RMSEA\_95 & TLI & CFI\\
+\midrule
+RSM & 48771.39 & 1946 & 0 & 0.09 & 0.089 & 0.09 & 0.965 & 0.962\\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+The obtained RMSEA value of .09 (95\% CI{[}.092, .093{]}) exceeds the cutoff of .06. The CFI of .953 meets the recommended .95 threshold. Together these statistics evidence that the RSM fits the SHAS items.
+
+\hypertarget{dif-analysis}{%
+\subsection{DIF Analysis}\label{dif-analysis}}
 
 Differential item functioning (DIF), simply put, examines how an item functions for different groups.
 

@@ -86,13 +86,13 @@ As shown in the scree plot, the first component was large, accounting for 48% of
 ```{r uni-variance}
 
 # 1- PREP DATA
-items2 <- items2-1 # subtract 1 from all responses to rescale from 0-4
-items2[items2 == 2] <- 0
-items2[items2 == 3] <- 1
-items2[items2 == 4] <- 1
+items3 <- items2-1 # subtract 1 from all responses to rescale from 0-4
+items3[items3 == 2] <- 0
+items3[items3 == 3] <- 1
+items3[items3 == 4] <- 1
 
 # 2 - ESTIMATE THE MODEL
-results <- RM(items2)
+results <- RM(items3)
 # summary(results)
 
 # 3 - GET RESIDUALS
@@ -125,7 +125,7 @@ The proportion of variance explained by the Rasch model was .23. If the unidimen
 # PCA OF RESIDUAL CORRELATIONS
 item.fit <- itemfit(person.locs)
 std.resids <- item.fit$st.res
-pca <- pca(std.resids, nfactors = ncol(items2), rotate = "none")
+pca <- pca(std.resids, nfactors = ncol(items3), rotate = "none")
 contrasts <- c(pca$values[1], pca$values[2], pca$values[3], pca$values[4], pca$values[5])
 plot(contrasts, ylab = "Eigenvalues for Contrasts", xlab = "Contrast Number")
 ```
@@ -137,15 +137,14 @@ In Figure \@ref(fig:uni-pcar), our PCAR analysis found only one contrast that ro
 ```{r q3}
 # Q3 STATISTIC
 library(sirt)
-# items <- read.csv("data/ditems_l.csv") # grab the data
-mod <- sirt::rasch.mml2(items2, progress = FALSE) # estimate the Rasch model
-mod.wle <- sirt::wle.rasch(dat=items2, b=mod$item$b) # estimate WLEs
-mod.q3 <- sirt::Q3(dat=items2, theta=mod.wle$theta, b=mod$item$b) # estimate Q3
+mod <- sirt::rasch.mml2(items3, progress = FALSE) # estimate the Rasch model
+mod.wle <- sirt::wle.rasch(dat=items3, b=mod$item$b) # estimate WLEs
+mod.q3 <- sirt::Q3(dat=items3, theta=mod.wle$theta, b=mod$item$b) # estimate Q3
 ```
 
 ```{r q3-plot, fig.cap='Matrix of Correlations of Item Residuals'}
 # plot Q3 statistics
-I <- ncol(items2)
+I <- ncol(items3)
 image( 1:I, 1:I, mod.q3$q3.matrix, col=grey( 1 - (0:32)/32),
        xlab="Item", ylab="Item")
 # abline(v=c(53,66)) # borders for testlets

@@ -5,12 +5,40 @@ knitr::opts_chunk$set(comment = "", echo=FALSE, warning = FALSE, message = FALSE
 knitr::opts_knit$set(verbose = FALSE)
 ```
 
-In Table \@ref(tab:CTT-item-table) we report classical statistics for the 66 SHAS items. We sorted the items by their mean. We flagged six items -- EQ41, EQ46, EQ17, EQ55, EQ60, and EQ27 -- due to extreme values of skew (less than -2 or greater than +2) or kurtosis (less than -7 or greater than +7) and item-total correlations below 0.50. Category response proportions show that most people responded "Never" to these items. Thus these items do not apply to the vast majority of people in this population. We removed them from the item pool. 
+In Table \@ref(tab:CTT-item-table) we report classical statistics for the 66 SHAS items. We sorted the items by their mean. We flagged six items -- EQ17, EQ27, EQ41, EQ46, EQ55, EQ60 -- due to extreme values of skew (less than -2 or greater than +2) or kurtosis (less than -7 or greater than +7) and item-total correlations below 0.50. Category response proportions show that most people responded "Never" to these items. Thus these items do not apply to the vast majority of people in this population. We removed them from the item pool. 
 
 ```{r CTT-item-stats, echo=FALSE}
 # RUN CTT STATS, BUILD ITEM TABLE
 rm(list=ls())
-source("code/Build-CTT-ItemStats-Table.R")
+
+# LOAD DATA
+all <- read.csv("data/all.csv")
+all <- all[,-1]
+source("code/ApplyAllLabels.R")
+library(psych)
+library(ltm)
+
+# DESCRIPTIVES
+descriptives <- as.data.frame(psych::describe(all[,1:66]))
+descriptives <- subset(descriptives, select = -c(vars, trimmed, se, median, mad, min, max, range))
+
+# CATEGORY FREQUENCIES
+catfreqs <- ltm::descript(all[,1:66])
+catfreqs <- as.data.frame(catfreqs[["perc"]])
+#names(catfreqs) <- c('1' = "Never", '2' = "Once or twice", '3' = "Sometimes", '4' = "Often", '5' = "All the time")
+
+# ITEM TOTAL CORRELATIONS
+a <- psych::alpha(all[,1:66])
+item.totals <- as.data.frame(a[["item.stats"]][["raw.r"]])
+names(item.totals) <- c('a[["item.stats"]][["raw.r"]]'= "Item-total correlation")
+
+# BUILD TABLE
+item.table <- cbind(catfreqs, descriptives, item.totals)
+item.table$flag <- with(item.table, ifelse(item.table$skew > 2 | item.table$skew < -2 | item.table$kurtosis < -7 | item.table$kurtosis > 7 | item.table$'Item-total correlation' < .5, "*", ""))
+item.table2 <- item.table[order(item.table$mean),]
+
+# CLEAN UP
+rm(all,descriptives,catfreqs,a,item.totals,item.table)
 ```
 
 ```{r CTT-item-table, echo=FALSE}
@@ -32,8 +60,9 @@ item.table2 %>%
 ```{r}
 # SAVE NEW ITEM FILE
 all <- read.csv("data/all.csv")
-items2 <- all[ ,2:66]
-items2 <- items2[,-c(5,15,28,33,41,47)]
+items2 <- all[ ,1:67]
+items2 <- items2[,-1]
+items2 <- items2[,-c(5,15,28,33,41,46)]
 write.csv(items2,"data/items2.csv")
 rm(list=ls())
 ```

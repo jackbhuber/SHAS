@@ -1,24 +1,66 @@
 ## Model Comparison
 
+```{r}
+library(mirt)
+items2 <- read.csv("data/items2.csv")
+items2 <- items2[,-1]
+items2 <- items2[complete.cases(items2),]
+```
+
+
+```{r}
+# RATING SCALE MODEL
+model.rsm <- 'RATING SCALE MODEL = 1-59'
+results.rsm <- mirt(data=items2, model=model.rsm, itemtype="rsm", verbose=FALSE)
+rsm.model.fit <- as.data.frame(M2(results.rsm, type = "C2"))
+rsm.model.fit <- round(rsm.model.fit,3)
+row.names(rsm.model.fit)[row.names(rsm.model.fit) == "stats"] <- "RSM"
+```
+
+```{r}
+# PARTIAL CREDIT MODEL
+model.pcm <- 'PARTIAL CREDIT MODEL = 1-59'
+results.pcm <- mirt(data=items2, model=model.pcm, itemtype="Rasch", verbose=FALSE)
+pcm.model.fit <- as.data.frame(M2(results.pcm, type = "C2", calcNULL = FALSE)) 
+row.names(pcm.model.fit)[row.names(pcm.model.fit) == "stats"] <- "PCM"
+```
+
+```{r}
+# GENERALIZED PARTIAL CREDIT MODEL
+model.gpcm <- 'GENERALIZED PARTIAL CREDIT MODEL = 1-59'
+results.gpcm <- mirt(data=items2, model=model.gpcm, itemtype="gpcm", technical = list(NCYCLES = 10000), verbose=FALSE) # estimate model
+gpcm.model.fit <- as.data.frame(M2(results.gpcm, type = "C2", calcNULL = FALSE))
+row.names(gpcm.model.fit)[row.names(gpcm.model.fit) == "stats"] <- "GPCM"
+```
+
+```{r}
+# GRADED RESPONSE MODEL
+model.grm <- 'GRADED RESPONSE MODEL = 1-59'
+results.grm <- mirt(data=items2, model=model.grm, itemtype="graded", SE=TRUE,  technical = list(NCYCLES = 10000), verbose=FALSE) # estimate model
+grm.model.fit <- as.data.frame(M2(results.grm, type = "C2", calcNULL = FALSE))
+row.names(grm.model.fit)[row.names(grm.model.fit) == "stats"] <- "GRM"
+```
+
 ```{r irt-models-table}
 library(plyr)
-rsm.model.fit <- read.csv("data/rsm.model.fit.csv")
-pcm.model.fit <- read.csv("data/pcm.model.fit.csv")
-gpcm.model.fit <- read.csv("data/gpcm.model.fit.csv")
-grm.model.fit <- read.csv("data/grm.model.fit.csv")
+library(kableExtra)
+# rsm.model.fit <- read.csv("data/rsm.model.fit.csv")
+# pcm.model.fit <- read.csv("data/pcm.model.fit.csv")
+# gpcm.model.fit <- read.csv("data/gpcm.model.fit.csv")
+# grm.model.fit <- read.csv("data/grm.model.fit.csv")
 irt.models.table <- plyr::rbind.fill(rsm.model.fit,pcm.model.fit,gpcm.model.fit,grm.model.fit)
 irt.models.table %>%
   kable(digits = 3, align = "ccccc", caption = 'IRT Model Fit Statistics', row.names = FALSE) %>%
   kable_styling(bootstrap_options = "condensed", font_size = 12, fixed_thead = T)
 ```
 
-Table \@ref(tab:irt-models-table) presents the model fit statistics in one place.
+Table \@ref(tab:irt-models-table) presents the model fit statistics in one place.  The obtained RMSEA value = .053 (95% CI[.043, .063]) and SRMSR value = .031 suggest that data fit the model reasonably well using suggested cutoff values of RMSEA <= .06 and SRMSR <= .08 as suggested guidelines for assessing fit. The CFI = .945 was just below a recommended .95 threshold (although it would be .95 rounded).
 
 ```{r irt-models-anova}
-load("data/results.rsm.RData")
-load("data/results.pcm.RData")
-load("data/results.gpcm.RData")
-load("data/results.grm.RData")
+# load("data/results.rsm.RData")
+# load("data/results.pcm.RData")
+# load("data/results.gpcm.RData")
+# load("data/results.grm.RData")
 
 # ANOVA
 anova(results.rsm, results.pcm, results.gpcm, results.grm) %>%
