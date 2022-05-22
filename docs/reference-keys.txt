@@ -5,6 +5,4 @@ fig:uni-pcar
 fig:q3-plot
 tab:rsm-item-tbl
 fig:rsm-item-plot-a
-fig:rsm-item-plot-b
 fig:rsm-item-hist
-tab:rsm-model-fit

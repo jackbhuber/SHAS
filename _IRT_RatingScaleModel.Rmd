@@ -63,25 +63,11 @@ The plots point out the step reversal between "Never" and "Once or twice" mentio
 ```{r rsm-item-plot-a, fig.cap='Category Response Curves for the Rating Scale Model'}
 # RSM ITEM PLOTS
 library(directlabels)
-a <- plot(results.rsm, type = 'trace', which.items = 30,
+a <- plot(results.rsm, type = 'trace', which.items = c(30,9),
      main = "", par.settings = simpleTheme(lty=1:4,lwd=2),
      auto.key=list(points=FALSE,lines=TRUE, columns=4))
 direct.label(a, 'top.points')
 ```
-
-```{r rsm-item-plot-b, fig.cap='Category Response Curves for the Rating Scale Model'}
-# RSM ITEM PLOTS
-library(directlabels)
-b <- plot(results.rsm, type = 'trace', which.items = 9,
-     main = "", par.settings = simpleTheme(lty=1:4,lwd=2),
-     auto.key=list(points=FALSE,lines=TRUE, columns=4))
-direct.label(b, 'top.points')
-```
-
-
-
-
-
 
 ```{r rsm-item-hist, fig.cap='Distribution of Item Severity Parameters'}
 # hist(item.pars.rsm$c, breaks=20, main = NULL, col="red", xlab=bquote(theta), xlim = c(-2,2))
@@ -102,19 +88,19 @@ To assess the overall fit of the model to the item response data we use two stat
 
 ```{r rsm-model-fit}
 # MODEL FIT
-library(kableExtra)
-rsm.model.fit <- as.data.frame(M2(results.rsm, type = "C2"))
-rsm.model.fit <- round(rsm.model.fit,3)
-row.names(rsm.model.fit)[row.names(rsm.model.fit) == "stats"] <- "RSM"
-round(rsm.model.fit,3) %>%
-  kable(align = "cccccccc", booktabs = T, caption = 'Model Fit Statistics for the Rating Scale Model') %>%
-  kable_styling(latex_options = "scale_down")
+# library(kableExtra)
+# rsm.model.fit <- as.data.frame(M2(results.rsm, type = "C2"))
+# rsm.model.fit <- round(rsm.model.fit,3)
+# row.names(rsm.model.fit)[row.names(rsm.model.fit) == "stats"] <- "RSM"
+# round(rsm.model.fit,3) %>%
+#   kable(align = "cccccccc", booktabs = T, caption = 'Model Fit Statistics for the Rating Scale Model') %>%
+#   kable_styling(latex_options = "scale_down")
 ```
 
 The obtained RMSEA value of .09 (95% CI[.092, .093]) exceeds the cutoff of .06. The CFI of .953 meets the recommended .95 threshold. Together these statistics evidence that the RSM fits the SHAS items.
 
 ```{r}
-save(results.rsm, file = "data/results.rsm.RData")
-write.csv(rsm.model.fit,"data/rsm.model.fit.csv")
+# save(results.rsm, file = "data/results.rsm.RData")
+# write.csv(rsm.model.fit,"data/rsm.model.fit.csv")
 rm(list=ls())
 ```

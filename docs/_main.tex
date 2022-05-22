@@ -504,12 +504,6 @@ The plots point out the step reversal between ``Never'' and ``Once or twice'' me
 
 \begin{figure}
 \centering
-\includegraphics{_main_files/figure-latex/rsm-item-plot-b-1.pdf}
-\caption{\label{fig:rsm-item-plot-b}Category Response Curves for the Rating Scale Model}
-\end{figure}
-
-\begin{figure}
-\centering
 \includegraphics{_main_files/figure-latex/rsm-item-hist-1.pdf}
 \caption{\label{fig:rsm-item-hist}Distribution of Item Severity Parameters}
 \end{figure}
@@ -519,20 +513,6 @@ Figure \ref{fig:rsm-item-hist} is a graph of the distribution of item severity p
 Item fit statistics are also reported in Table \ref{tab:rsm-item-tbl}. These show how closely the observed pattern of item responses fits the pattern of item responses predicted by the particular IRT model (Rasch, partial credit, etc.). They do this by means of chi-square statistics which examine the cumulative difference the observed pattern of item responses and the pattern of item responses that the model would expect. Two fit statistics commonly used in IRT models are the infit mean square (MNSQ) and the outfit mean square (MNSQ) \citep{BondFox2015}. The infit statistic places greater emphasis on unexpected responses that are close to the examinees and item location. The outfit is sensitive to unexpected responses that are far from the location. The expected value of infit or outfit for each item is 1.0, with a range of acceptable values ranging from 0.5 to 1.5. Values outside these boundaries indicate a lack of fit between items and the model. All but six of the 66 items had infit and outfit statistics within the acceptable range from 0.5 to 1.5. The large outfit values mean the observed patterns of responses to these items differed substantially from the patterns of responses expected by the PCM. These items capture the experiences of women, people of color, and LGBTQ persons.
 
 To assess the overall fit of the model to the item response data we use two statistics. The first is the Root Mean Square Error of Approximation (RMSEA). The suggested cutoff for RMSEA is .06. The second is the CFI. The suggested cutoff for the CFI is .95. Model fit statistics for the SHAS items are presented in Table \ref{tab:rsm-model-fit}.
-
-\begin{table}
-
-\caption{\label{tab:rsm-model-fit}Model Fit Statistics for the Rating Scale Model}
-\centering
-\resizebox{\linewidth}{!}{
-\begin{tabular}[t]{lcccccccc}
-\toprule
-  & M2 & df & p & RMSEA & RMSEA\_5 & RMSEA\_95 & TLI & CFI\\
-\midrule
-RSM & 48771.39 & 1946 & 0 & 0.09 & 0.089 & 0.09 & 0.965 & 0.962\\
-\bottomrule
-\end{tabular}}
-\end{table}
 
 The obtained RMSEA value of .09 (95\% CI{[}.092, .093{]}) exceeds the cutoff of .06. The CFI of .953 meets the recommended .95 threshold. Together these statistics evidence that the RSM fits the SHAS items.
 
@@ -597,14 +577,6 @@ Data will be made available in accordance with xxx. Within one year of publicati
 
 Code for the analyses presented in this paper will be made available upon request.
 
-\hypertarget{references}{%
-\section*{References}\label{references}}
-\addcontentsline{toc}{section}{References}
-
-\hypertarget{refs}{}
-\begin{CSLReferences}{0}{0}
-\end{CSLReferences}
-
 \hypertarget{acknowledgments}{%
 \section{Acknowledgments}\label{acknowledgments}}
 
@@ -641,6 +613,14 @@ Correspondence to \href{mailto:jack.bernard.huber@gmail.com}{Jack Huber}.
 \subsection{Conflict of Interest}\label{conflict-of-interest}}
 
 The authors declare no conflict of interest.
+
+\hypertarget{references}{%
+\section*{References}\label{references}}
+\addcontentsline{toc}{section}{References}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{0}{0}
+\end{CSLReferences}
 
   \bibliography{book.bib,packages.bib}
 
