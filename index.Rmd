@@ -1,5 +1,5 @@
 --- 
-title: "Validity Evidence for the Spiritual Harm and Abuse Scale (SHAS)"
+title: "Validation of the Spiritual Harm and Abuse Scale with the Rasch Measurement Model"
 author:
   - Jack Huber, Swedish Medical Center
   - Dan Koch, Northwest University
@@ -27,5 +27,5 @@ knitr::opts_knit$set(verbose = FALSE)
 
 # automatically create a bib database for R packages
 knitr::write_bib(c(
-  .packages(),'bookdown','eRm','lavaan','ltm','knitr','lordif','mirt','psych','rmarkdown','VIM'), 'packages.bib')
+  .packages(),'bookdown','eRm','lavaan','ltm','knitr','lordif','mirt','psych','rmarkdown','sirt','TAM','VIM'), 'packages.bib')
 ```

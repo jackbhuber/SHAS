@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.4.7)  21 MAY 2022 21:37
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.4.7)  29 MAY 2022 09:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -554,12 +554,6 @@ LaTeX Warning: Label `tab:rsm-item-tbl' multiply defined.
 
 LaTeX Warning: Label `tab:rsm-item-tbl' multiply defined.
 
-
-LaTeX Warning: Label `tab:rsm-item-tbl' multiply defined.
-
-
-LaTeX Warning: Label `tab:rsm-item-tbl' multiply defined.
-
 )
 \openout1 = `_main.aux'.
 
@@ -967,7 +961,10 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 (Font)              scaled to size 6.99925pt on input line 227.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 (Font)              scaled to size 4.99947pt on input line 227.
-[4]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
 Overfull \hbox (2.6575pt too wide) in paragraph at lines 270--270
 \TU/lmr/m/n/7 Shunned/ignored 
  []
@@ -997,7 +994,7 @@ Overfull \hbox (27.4445pt too wide) in paragraph at lines 294--294
 \TU/lmr/m/n/7 tor/missionary/spiritual 
  []
 
-[5]
+[4] [5]
 Overfull \hbox (1.7895pt too wide) in paragraph at lines 305--305
 \TU/lmr/m/n/7 shamed/shunned 
  []
@@ -1042,120 +1039,89 @@ Overfull \hbox (20.5705pt too wide) in paragraph at lines 314--314
 \TU/lmr/m/n/7 inappropriate/anxious 
  []
 
-[6] [7]
+[6]
 Overfull \hbox (3.2315pt too wide) in paragraph at lines 332--332
 \TU/lmr/m/n/7 ing/marriage/sex|  
  []
 
-[8] [9]
+[7] [8]
 File: _main_files/figure-latex/pca-run-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/pca-run-1.pdf>
-[10]
+[9]
 File: _main_files/figure-latex/uni-pcar-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/uni-pcar-1.pdf>
 File: _main_files/figure-latex/q3-plot-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/q3-plot-1.pdf>
-[11]
-Overfull \hbox (2.6575pt too wide) in paragraph at lines 430--430
-\TU/lmr/m/n/7 Shunned/ignored 
- []
+[10] [11]
 
-
-Overfull \hbox (4.0435pt too wide) in paragraph at lines 430--430
-\TU/lmr/m/n/7 tor/church/group|  
- []
-
-
-Overfull \hbox (42.6625pt too wide) in paragraph at lines 431--431
-\TU/lmr/m/n/7 ment/counseling/medication|  
- []
-
-
-Overfull \hbox (10.9525pt too wide) in paragraph at lines 439--439
-\TU/lmr/m/n/7 Church/community 
- []
+LaTeX Warning: Reference `fig:rsm-more-plots' on page 12 undefined on input lin
+e 398.
 
 [12]
-Overfull \hbox (8.5795pt too wide) in paragraph at lines 446--446
-\TU/lmr/m/n/7 church/community|  
- []
+File: _main_files/figure-latex/rsm-more-plots-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/rsm-more-plots-1.pdf>
+File: _main_files/figure-latex/rsm-more-plots-2.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/rsm-more-plots-2.pdf>
 
-
-Overfull \hbox (27.4445pt too wide) in paragraph at lines 454--454
-\TU/lmr/m/n/7 tor/missionary/spiritual 
- []
-
-
-Overfull \hbox (1.7895pt too wide) in paragraph at lines 465--465
-\TU/lmr/m/n/7 shamed/shunned 
- []
-
-
-Overfull \hbox (2.10449pt too wide) in paragraph at lines 465--465
-\TU/lmr/m/n/7 tor/leader/group|  
- []
-
-
-Overfull \hbox (1.0265pt too wide) in paragraph at lines 466--466
-\TU/lmr/m/n/7 Love/acceptance 
- []
-
-
-Overfull \hbox (2.9025pt too wide) in paragraph at lines 467--467
-\TU/lmr/m/n/7 doubts/questions|  
+Underfull \hbox (badness 10000) in paragraph at lines 414--415
+[][]
  []
 
 [13]
-Overfull \hbox (3.7215pt too wide) in paragraph at lines 470--470
-\TU/lmr/m/n/7 Developmentally- 
+Overfull \hbox (9.5353pt too wide) in alignment at lines 426--433
+ [] [] [] [] [] 
  []
 
 
-Overfull \hbox (20.5705pt too wide) in paragraph at lines 470--470
-\TU/lmr/m/n/7 inappropriate/anxious 
+Overfull \hbox (9.5353pt too wide) in alignment at lines 433--438
+ [] [] [] [] [] 
  []
 
 
-Overfull \hbox (11.0785pt too wide) in paragraph at lines 470--470
-\TU/lmr/m/n/7 Hell/Satan/demons 
+Overfull \hbox (9.5353pt too wide) in alignment at lines 438--440
+ [] [] [] [] [] 
  []
 
 
-Overfull \hbox (3.7215pt too wide) in paragraph at lines 475--475
-\TU/lmr/m/n/7 Developmentally- 
+Overfull \hbox (9.5353pt too wide) in alignment at lines 440--442
+ [] [] [] [] [] 
  []
 
 
-Overfull \hbox (20.5705pt too wide) in paragraph at lines 475--475
-\TU/lmr/m/n/7 inappropriate/anxious 
+Overfull \hbox (9.5353pt too wide) in alignment at lines 442--466
+ [] [] [] [] [] 
  []
 
 
-Overfull \hbox (3.2315pt too wide) in paragraph at lines 491--491
-\TU/lmr/m/n/7 ing/marriage/sex|  
+Overfull \hbox (9.5353pt too wide) in alignment at lines 466--490
+ [] [] [] [] [] 
  []
 
-[14] [15] [16]
+[14]
+Overfull \hbox (9.5353pt too wide) in alignment at lines 490--514
+ [] [] [] [] [] 
+ []
 
-LaTeX Warning: Reference `fig:rsm-item-plots' on page 17 undefined on input lin
-e 495.
 
-File: _main_files/figure-latex/rsm-item-plot-a-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/rsm-item-plot-a-1.pdf>
-File: _main_files/figure-latex/rsm-item-hist-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/rsm-item-hist-1.pdf>
-[17] [18]
+Overfull \hbox (9.5353pt too wide) in alignment at lines 514--514
+ [] [] [] [] [] 
+ []
 
-LaTeX Warning: Reference `tab:rsm-model-fit' on page 19 undefined on input line
- 515.
+[15]
+Missing character: There is no χ in font [lmroman10-regular]:mapping=tex-text;!
+File: _main_files/figure-latex/rsm-wrightmap-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/rsm-wrightmap-1.pdf>
 
-[19] [20] (./_main.bbl [21])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 627.
-[22]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 627.
+LaTeX Warning: Reference `tab:rsm-model-fit' on page 16 undefined on input line
+ 532.
+
+[16] [17] [18] (./_main.bbl [19])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 644.
+[20]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 644.
 (./_main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 627.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 627.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 644.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 644.
 
 LaTeX Warning: There were undefined references.
 
@@ -1164,12 +1130,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 20458 strings out of 479418
- 357230 string characters out of 5884586
- 850845 words of memory out of 5000000
- 37642 multiletter control sequences out of 15000+600000
+ 20469 strings out of 479418
+ 357578 string characters out of 5884586
+ 864797 words of memory out of 5000000
+ 37652 multiletter control sequences out of 15000+600000
  538879 words of font info for 76 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  59i,10n,118p,1710b,473s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on _main.pdf (22 pages).
+Output written on _main.pdf (20 pages).

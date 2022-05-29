@@ -117,7 +117,7 @@ VR <- var(residuals.vector)
 
 ```
 
-The proportion of variance explained by the Rasch model was .23. If the unidimensionalty assumption is safely met if the Rasch model explains 20% of the variance in the data (Reckase), then the SHAS data meet this criterion.
+The proportion of variance explained by the Rasch model was .23. If the unidimensionalty assumption is safely met if the Rasch model explains 20% of the variance in the data [@Reckase1979], then the SHAS data meet this criterion.
 
 **Principal Component Analysis of Residuals (PCAR)**. We examined the principal components of the correlations among residuals of the Rasch analysis. The premise is that once the Rasch model has been estimated, correlations among the item residuals should be minimal. Linacre () suggests that contrasts with eigenvalues of 2.0 or below can be considered noise. 
 
