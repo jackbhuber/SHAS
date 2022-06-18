@@ -17,18 +17,6 @@ Chalmers, P. (2022).
 \newblock {\em mirt: Multidimensional Item Response Theory}.
 \newblock R package version 1.36.1.
 
-\bibitem[Choi et~al., 2016]{R-lordif}
-Choi, S.~W., with contributions~from Laura E.~Gibbons, and Crane, P.~K. (2016).
-\newblock {\em lordif: Logistic Ordinal Regression Differential Item
-  Functioning using IRT}.
-\newblock R package version 0.3-3.
-
-\bibitem[Dogan, 2018]{Dogan2018}
-Dogan, E. (2018).
-\newblock An application of the partial credit irt model in identifying
-  benchmarks for polytomous rating scale instruments.
-\newblock {\em Practical Assessment, Research \& Evaluation}, 23(7):1--10.
-
 \bibitem[Embretson and Reise, 2000]{EmbretsonReise2000}
 Embretson, S.~E. and Reise, S.~P. (2000).
 \newblock {\em Item Response Theory for Psychologists}.
@@ -87,17 +75,6 @@ Reise, S.~P. and Waller, N.~G. (2009).
 Revelle, W. (2022).
 \newblock {\em psych: Procedures for Psychological, Psychometric, and
   Personality Research}.
-\newblock R package version 2.2.3.
-
-\bibitem[Rosseel et~al., 2022]{R-lavaan}
-Rosseel, Y., Jorgensen, T.~D., and Rockwood, N. (2022).
-\newblock {\em lavaan: Latent Variable Analysis}.
-\newblock R package version 0.6-11.
-
-\bibitem[Thomas, 2019]{Thomas2019}
-Thomas, M.~L. (2019).
-\newblock Advances in applications of item response theory to clinical
-  assessment.
-\newblock {\em Psychological Assessment}, 31(12):1442--1455.
+\newblock R package version 2.2.5.
 
 \end{thebibliography}

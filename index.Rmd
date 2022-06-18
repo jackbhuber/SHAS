@@ -1,5 +1,5 @@
 --- 
-title: "Validation of the Spiritual Harm and Abuse Scale with the Rasch Measurement Model"
+title: "Validation of the Spiritual Harm and Abuse Scale with the Rasch Rating Scale Model"
 author:
   - Jack Huber, Swedish Medical Center
   - Dan Koch, Northwest University
@@ -17,7 +17,7 @@ link-citations: yes
 github-repo: https://github.com/jackbhuber/SHAS.git
 ---
 # Abstract
-Spiritual harm and abuse has been a serious problem that has begun to gain the attention of the clinical and psychological research community. Some research has documented lasting emotional and psychological damage to victims of spiritual abuse. A valid scale of spiritual and religious abuse is needed, and the nascent Spiritual Harm and Abuse Scale (SHAS) has potential to meet this need. @KochEdstrom2022 developed an item pool and conducted an initial validation study of the SHAS which established the multidimensional structure of the item pool. This study builds on @KochEdstrom2022 to further validate the SHAS by using item response theory (IRT). We aimed to express the SHAS as a single interval-level outcome measure of severity of spiritual harm and abuse. Finally, we aimed to establish a SHAS score that is free of differential item functioning based on race, gender, and other demographic variables, and maximizes parsimony and precision across the continuum of the latent construct.
+Spiritual harm and abuse has been a serious problem that has begun to gain the attention of the clinical and psychological research community. Some research has documented lasting emotional and psychological damage to victims of spiritual abuse. A valid scale of spiritual and religious abuse is needed, and the nascent Spiritual Harm and Abuse Scale (SHAS) has potential to meet this need. @KochEdstrom2022 developed an item pool and conducted an initial validation study of the SHAS which established the multidimensional structure of the item pool. This study builds on @KochEdstrom2022 to further validate the SHAS by using the Rasch Rating Scale Model.
 
 ```{r, include=FALSE}
 

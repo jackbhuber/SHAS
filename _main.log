@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.4.7)  29 MAY 2022 09:31
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.4.7)  18 JUN 2022 09:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -551,9 +551,6 @@ LaTeX Warning: Label `tab:CTT-item-table' multiply defined.
 
 LaTeX Warning: Label `tab:rsm-item-tbl' multiply defined.
 
-
-LaTeX Warning: Label `tab:rsm-item-tbl' multiply defined.
-
 )
 \openout1 = `_main.aux'.
 
@@ -943,182 +940,193 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 ) [1
 
-] [2] [3]
+] [2]
 Missing character: There is no ≥ in font [lmroman10-regular]:mapping=tex-text;!
+[3]
+
+Package natbib Warning: Citation `R-lavaan' on page 4 undefined on input line 1
+84.
+
+
+Package natbib Warning: Citation `R-lordif' on page 4 undefined on input line 1
+84.
+
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 229.
+(Font)              scaled to size 7.0pt on input line 223.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 229.
+(Font)              scaled to size 5.0pt on input line 223.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.00092pt on input line 229.
+(Font)              scaled to size 10.00092pt on input line 223.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.00064pt on input line 229.
+(Font)              scaled to size 7.00064pt on input line 223.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.00046pt on input line 229.
+(Font)              scaled to size 5.00046pt on input line 223.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 9.99893pt on input line 229.
+(Font)              scaled to size 9.99893pt on input line 223.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.99925pt on input line 229.
+(Font)              scaled to size 6.99925pt on input line 223.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.99947pt on input line 229.
-[4]
-Overfull \hbox (2.6575pt too wide) in paragraph at lines 272--272
+(Font)              scaled to size 4.99947pt on input line 223.
+
+Overfull \hbox (2.6575pt too wide) in paragraph at lines 266--266
 \TU/lmr/m/n/7 Shunned/ignored 
  []
 
 
-Overfull \hbox (4.0435pt too wide) in paragraph at lines 272--272
+Overfull \hbox (4.0435pt too wide) in paragraph at lines 266--266
 \TU/lmr/m/n/7 tor/church/group|  
  []
 
 
-Overfull \hbox (42.6625pt too wide) in paragraph at lines 274--274
+Overfull \hbox (42.6625pt too wide) in paragraph at lines 268--268
 \TU/lmr/m/n/7 ment/counseling/medication|  
  []
 
 
-Overfull \hbox (10.9525pt too wide) in paragraph at lines 281--281
+Overfull \hbox (10.9525pt too wide) in paragraph at lines 275--275
 \TU/lmr/m/n/7 Church/community 
  []
 
 
-Overfull \hbox (8.5795pt too wide) in paragraph at lines 289--289
+Overfull \hbox (8.5795pt too wide) in paragraph at lines 283--283
 \TU/lmr/m/n/7 church/community|  
  []
 
 
-Overfull \hbox (27.4445pt too wide) in paragraph at lines 296--296
+Overfull \hbox (27.4445pt too wide) in paragraph at lines 290--290
 \TU/lmr/m/n/7 tor/missionary/spiritual 
  []
 
-[5]
-Overfull \hbox (1.7895pt too wide) in paragraph at lines 307--307
+[4] [5]
+Overfull \hbox (1.7895pt too wide) in paragraph at lines 301--301
 \TU/lmr/m/n/7 shamed/shunned 
  []
 
 
-Overfull \hbox (2.10449pt too wide) in paragraph at lines 307--307
+Overfull \hbox (2.10449pt too wide) in paragraph at lines 301--301
 \TU/lmr/m/n/7 tor/leader/group|  
  []
 
 
-Overfull \hbox (1.0265pt too wide) in paragraph at lines 308--308
+Overfull \hbox (1.0265pt too wide) in paragraph at lines 302--302
 \TU/lmr/m/n/7 Love/acceptance 
  []
 
 
-Overfull \hbox (2.9025pt too wide) in paragraph at lines 310--310
+Overfull \hbox (2.9025pt too wide) in paragraph at lines 304--304
 \TU/lmr/m/n/7 doubts/questions|  
  []
 
 
-Overfull \hbox (3.7215pt too wide) in paragraph at lines 312--312
+Overfull \hbox (3.7215pt too wide) in paragraph at lines 306--306
 \TU/lmr/m/n/7 Developmentally- 
  []
 
 
-Overfull \hbox (20.5705pt too wide) in paragraph at lines 312--312
+Overfull \hbox (20.5705pt too wide) in paragraph at lines 306--306
 \TU/lmr/m/n/7 inappropriate/anxious 
  []
 
 
-Overfull \hbox (11.0785pt too wide) in paragraph at lines 312--312
+Overfull \hbox (11.0785pt too wide) in paragraph at lines 306--306
 \TU/lmr/m/n/7 Hell/Satan/demons 
  []
 
 
-Overfull \hbox (3.7215pt too wide) in paragraph at lines 316--316
+Overfull \hbox (3.7215pt too wide) in paragraph at lines 310--310
 \TU/lmr/m/n/7 Developmentally- 
  []
 
 
-Overfull \hbox (20.5705pt too wide) in paragraph at lines 316--316
+Overfull \hbox (20.5705pt too wide) in paragraph at lines 310--310
 \TU/lmr/m/n/7 inappropriate/anxious 
  []
 
-[6] [7]
-Overfull \hbox (3.2315pt too wide) in paragraph at lines 334--334
+[6]
+Overfull \hbox (3.2315pt too wide) in paragraph at lines 328--328
 \TU/lmr/m/n/7 ing/marriage/sex|  
  []
 
-[8] [9]
+[7] [8]
 File: _main_files/figure-latex/pca-run-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/pca-run-1.pdf>
-[10]
+[9]
 File: _main_files/figure-latex/uni-pcar-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/uni-pcar-1.pdf>
 File: _main_files/figure-latex/q3-plot-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/q3-plot-1.pdf>
-[11]
+[10] [11]
 
 LaTeX Warning: Reference `fig:rsm-more-plots' on page 12 undefined on input lin
-e 400.
+e 394.
 
-[12]
 File: _main_files/figure-latex/rsm-more-plots-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/rsm-more-plots-1.pdf>
 File: _main_files/figure-latex/rsm-more-plots-2.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/rsm-more-plots-2.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 416--417
+Underfull \hbox (badness 10000) in paragraph at lines 410--411
 [][]
  []
 
-[13]
-Overfull \hbox (9.5353pt too wide) in alignment at lines 428--435
+[12] [13]
+Overfull \hbox (9.5353pt too wide) in alignment at lines 422--429
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (9.5353pt too wide) in alignment at lines 435--440
+Overfull \hbox (9.5353pt too wide) in alignment at lines 429--434
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (9.5353pt too wide) in alignment at lines 440--442
+Overfull \hbox (9.5353pt too wide) in alignment at lines 434--436
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (9.5353pt too wide) in alignment at lines 442--444
+Overfull \hbox (9.5353pt too wide) in alignment at lines 436--438
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (9.5353pt too wide) in alignment at lines 444--468
+Overfull \hbox (9.5353pt too wide) in alignment at lines 438--462
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (9.5353pt too wide) in alignment at lines 468--492
+Overfull \hbox (9.5353pt too wide) in alignment at lines 462--486
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (9.5353pt too wide) in alignment at lines 486--510
  [] [] [] [] [] 
  []
 
 [14]
-Overfull \hbox (9.5353pt too wide) in alignment at lines 492--516
+Overfull \hbox (9.5353pt too wide) in alignment at lines 510--510
  [] [] [] [] [] 
  []
 
-
-Overfull \hbox (9.5353pt too wide) in alignment at lines 516--516
- [] [] [] [] [] 
- []
-
-[15]
 Missing character: There is no χ in font [lmroman10-regular]:mapping=tex-text;!
 File: _main_files/figure-latex/rsm-wrightmap-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/rsm-wrightmap-1.pdf>
+[15]
 
 LaTeX Warning: Reference `tab:rsm-model-fit' on page 16 undefined on input line
- 534.
+ 528.
 
-[16] [17] [18] (./_main.bbl [19])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 646.
-[20]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 646.
+[16] [17] (./_main.bbl [18])
+
+Package natbib Warning: There were undefined citations.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 640.
+[19]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 640.
 (./_main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 646.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 646.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 640.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 640.
 
 LaTeX Warning: There were undefined references.
 
@@ -1127,12 +1135,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 20469 strings out of 479418
- 357578 string characters out of 5884586
- 851114 words of memory out of 5000000
- 37652 multiletter control sequences out of 15000+600000
+ 20457 strings out of 479418
+ 357377 string characters out of 5884586
+ 859334 words of memory out of 5000000
+ 37640 multiletter control sequences out of 15000+600000
  538879 words of font info for 76 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 59i,10n,118p,1710b,473s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 59i,10n,118p,1552b,473s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on _main.pdf (20 pages).
+Output written on _main.pdf (19 pages).

@@ -4,46 +4,48 @@ The top-level auxiliary file: _main.aux
 The style file: apalike.bst
 Database file #1: book.bib
 Database file #2: packages.bib
+Warning--I didn't find a database entry for "R-lavaan"
+Warning--I didn't find a database entry for "R-lordif"
 Warning--empty publisher in ReiseMooreHaviland2013
-You've used 18 entries,
+You've used 14 entries,
             1935 wiz_defined-function locations,
-            594 strings with 6565 characters,
-and the built_in function-call counts, 6056 in all, are:
-= -- 584
-> -- 205
-< -- 14
-+ -- 69
-- -- 64
-* -- 469
-:= -- 1085
-add.period$ -- 55
-call.type$ -- 18
-change.case$ -- 111
-chr.to.int$ -- 17
-cite$ -- 19
-duplicate$ -- 253
-empty$ -- 444
-format.name$ -- 90
-if$ -- 1175
+            570 strings with 5931 characters,
+and the built_in function-call counts, 4697 in all, are:
+= -- 455
+> -- 155
+< -- 12
++ -- 51
+- -- 48
+* -- 356
+:= -- 842
+add.period$ -- 43
+call.type$ -- 14
+change.case$ -- 85
+chr.to.int$ -- 13
+cite$ -- 15
+duplicate$ -- 199
+empty$ -- 345
+format.name$ -- 70
+if$ -- 915
 int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 15
-newline$ -- 94
-num.names$ -- 54
-pop$ -- 106
+missing$ -- 13
+newline$ -- 74
+num.names$ -- 42
+pop$ -- 84
 preamble$ -- 1
-purify$ -- 122
+purify$ -- 94
 quote$ -- 0
-skip$ -- 197
+skip$ -- 155
 stack$ -- 0
-substring$ -- 381
-swap$ -- 33
+substring$ -- 292
+swap$ -- 27
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 100
+type$ -- 76
 warning$ -- 1
-while$ -- 45
+while$ -- 35
 width$ -- 0
-write$ -- 232
-(There was 1 warning)
+write$ -- 182
+(There were 3 warnings)
