@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.4.7)  20 JUN 2022 16:05
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.4.7)  20 JUN 2022 20:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1110,9 +1110,9 @@ Overfull \hbox (9.5353pt too wide) in alignment at lines 510--510
  []
 
 Missing character: There is no χ in font [lmroman10-regular]:mapping=tex-text;!
+[15]
 File: _main_files/figure-latex/rsm-wrightmap-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/rsm-wrightmap-1.pdf>
-[15]
 
 LaTeX Warning: Reference `tab:rsm-model-fit' on page 16 undefined on input line
  528.
