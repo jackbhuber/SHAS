@@ -83,9 +83,9 @@ Revelle, W. (2022).
   Personality Research}.
 \newblock R package version 2.2.5.
 
-\bibitem[Rosseel et~al., 2022]{R-lavaan}
-Rosseel, Y., Jorgensen, T.~D., and Rockwood, N. (2022).
-\newblock {\em lavaan: Latent Variable Analysis}.
-\newblock R package version 0.6-11.
+\bibitem[Robitzsch et~al., 2022]{R-TAM}
+Robitzsch, A., Kiefer, T., and Wu, M. (2022).
+\newblock {\em TAM: Test Analysis Modules}.
+\newblock R package version 4.0-16.
 
 \end{thebibliography}

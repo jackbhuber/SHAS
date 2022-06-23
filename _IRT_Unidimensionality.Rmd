@@ -33,7 +33,7 @@ plot(pca,type="lines", main="") # scree plot
 ```
 
 
-As shown in the scree plot, the first component was large, accounting for 48% of the variance. The second, third, and fourth components accounted for 4%, 3%, and 2% of the variance, respectively. The ratio of the eigenvalue of the first (largest) component to that of the second is approximately 13.
+As shown in the scree plot, the first component was large, accounting for nearly 30% of the variance. The second, third, and fourth components accounted for 4%, 3%, and 2% of the variance, respectively. The ratio of the eigenvalue of the first (largest) component to that of the second is approximately 13.
 
 ```{r}
 # CONFIRMATORY FACTOR ANALYSIS
