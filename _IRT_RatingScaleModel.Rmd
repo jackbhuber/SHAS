@@ -5,9 +5,9 @@ knitr::opts_chunk$set(comment = "", warning = FALSE, echo = FALSE,  message = FA
 knitr::opts_knit$set(verbose = FALSE)
 ```
 
-We used the Rasch Rating Scale Model (RSM) [@Andrich1978] to examine the SHAS item pool. The RSM is a Rasch model [@Rasch1960]. Like all IRT models, Rasch models combine (or "calibrate") information from items with information from persons to arrive at a common scale for measuring both an item's and a person's level of a latent trait, in this case, spiritual abuse. This scale is expressed in logits. Whereas the Rasch model was designed for use with dichotomous items (0=incorrect response, 1=correct response), the RSM is an extension for use with polytomous items based on rating scales such as Likert scales of agreement [@EmbretsonReise2000]. 
+We used the Rasch Rating Scale Model (RSM) [@Andrich1978] to examine the SHAS item pool. The RSM is a Rasch model [@Rasch1960] that combines (or "calibrates") information from items with information from persons to arrive at a common scale for measuring both an item's and a person's level of a latent trait, in this case, severity of spiritual abuse. This scale is expressed in logits (log odds units). Whereas the Rasch model was designed for use with dichotomous items (0 = incorrect response, 1 = correct response), the RSM is an extension for use with polytomous items based on rating scales such as Likert scales of agreement [@EmbretsonReise2000]. 
 
-Because IRT was developed to measure student achievement, IRT statistics for both items and person tend to use language of "ability" and "difficulty." For our purpose to measure a psychological trait like exposure to spiritual abuse, we chose instead to adopt language of "severity." We used person parameters and scale scores to represent participants' severity of abuse and to describe item parameters as severity parameters.
+We also use different language from conventional IRT analyses. Because IRT was developed to measure student achievement, IRT statistics for both items and persons tend to use language of "ability" and "difficulty." For our purpose to measure a psychological trait such as the experience of spiritual abuse, we chose instead to adopt language of "severity." We used person parameters and scale scores to represent participants' severity of abuse and to describe item parameters as severity parameters.
 
 ```{r rsm-prep}
 
@@ -30,7 +30,7 @@ items <- items - 1
 # items <- items[complete.cases(items2),]
 # items2 <- items2 - 1
 items2 <- items
-source("code/ApplyItemLabels2.R")
+source("code/ApplyItemLabels2.R") # items2 gets labels, items doesn't
 ```
 
 ```{r rsm-run}
@@ -40,11 +40,11 @@ mod_rsm2 <- TAM::tam.mml(items2, irtmodel = "RSM", verbose = FALSE)
 # summary(rs_model)
 ```
 
-The RSM model estimates the probability of a person choosing among several response options (i.e. Never, Once or twice) given two values: the level of severity represented by the item, and the person's severity of the latent trait (spiritual abuse). The increase in severity involved in choosing between two response categories is called a "step parameter". The RSM assumes that all items use the same rating scale and that these same response categories distinguish persons equally well for each item. For these reasons the RSM estimates the same step parameters for all the items. 
+The RSM model estimates the probability of a person choosing among several response options (i.e. Never, Once or twice) given two values: the severity of abuse represented by the item, and the person's severity of the latent trait (spiritual abuse). The increase in severity involved in choosing between two response categories is called a "step parameter". The RSM assumes that all items use the same rating scale and that these same response categories distinguish persons equally well for each item. For these reasons the RSM estimates the same step parameters for all the items. 
 
-To convey this information visually, Figure \@ref(fig:rsm-more-plots) shows plots of two items. In both, the horizontal axis is the scale of the latent trait (spiritual abuse), expressed in logits ranging from -2 to +2. The vertical axis is the probability of selecting a given response (i.e., "Always") given the person's overall level of spiritual abuse. The blue line is the probability of selecting Category 1 ("Never") for persons with less severe spiritual abuse. Persons with less severe spiritual abuse are most likely to select "Never" while those with more severe abuse are most likely to select "Always." Between these two extremes are persons with more moderate or average spiritual abuse. These persons are more likely to Categories 3 or4, "Sometimes" or "Often", respectively. Both plots show curves that display identical step parameters.
+To convey this information visually, Figure \@ref(fig:rsm-more-plots) shows plots of two items. In both, the horizontal axis is the scale of spiritual abuse expressed in logits ranging from -2 to +2. The vertical axis is the probability of selecting a given response (i.e., "Always") given the person's overall severity of spiritual abuse. The blue line is the probability of selecting Category 1 ("Never") for persons with less severe spiritual abuse. Persons with less severe spiritual abuse are most likely to select "Never" while those with more severe abuse are most likely to select "Always." Between these two extremes are persons with more moderate or average spiritual abuse. These persons are more likely to Categories 3 or 4, "Sometimes" or "Often", respectively. Both plots show curves that display identical step parameters.
 
-The plots point out the step reversal between "Never" and "Once or twice" mentioned above. Persons reporting the least severe spiritual abuse were most likely to report "Never" to this prompt of medical care being postponed or withheld for religious reasons. Persons farther along the scale, reporting more average spiritual abuse, should be more likely to report "Once or twice" but were still more likely to report "Never". This finding suggests the "Never" and "Once or twice" categories might be collapsed.
+The plots point out a step reversal between "Never" and "Once or twice". Persons reporting the least severe spiritual abuse were most likely to report "Never" to this prompt of medical care being postponed or withheld for religious reasons. Persons farther along the scale who have experienced "average" average spiritual abuse should be more likely to report "Once or twice" but were still more likely to report "Never". This finding suggests the "Never" and "Once or twice" categories might be collapsed.
 
 ```{r rsm-exp-item-plots}
 # plot(mod_rsm,ask=FALSE) # expected response curves
@@ -52,7 +52,7 @@ The plots point out the step reversal between "Never" and "Once or twice" mentio
 
 ```{r rsm-more-plots}
 # graphics.off()
-plot(mod_rsm2, type = "items", items = c(9,30), export = F, verbose = FALSE, message = FALSE)
+plot(mod_rsm2, type = "items", items = c(9,30), export = F, verbose = FALSE, message = FALSE, progress = FALSE)
 ```
 
 ```{r}
@@ -72,32 +72,48 @@ plot(mod_rsm2, type = "items", items = c(9,30), export = F, verbose = FALSE, mes
 # rs_threshold # This provides the detail logit location for each categories for each rater.
 ```
 
-**Item Parameters and Fit Statistics**. We report RSM item parameters and fit statistics for the SHAS items in Table \@ref(tab:rsm-item-tbl). The first column reports the severity parameters, and we have sorted the items by the severity parameter to facilitate comparison between items.
+**Item Parameters and Fit Statistics**. Table \@ref(tab:rsm-item-tbl) reports item parameters and fit statistics for the SHAS items. The first column, xsi, reports the severity parameter of the item, and we have sorted the items by this value from least to most severe to facilitate comparison between items.
 
 ```{r rsm-run-item-stats}
 
 # SEVERITY PARAMETERS
 xsi_rsm <- mod_rsm2$xsi
 xsi_rsm <- as.data.frame(xsi_rsm)
+xsi_rsm <- xsi_rsm[(1:60), ]
 
 # delta_tau_pcm <- mod_pcm$item_irt
 
 # FIT STATISTICS
-fit_rsm <- tam.fit(mod_rsm2)
+fit_rsm <- tam.fit(mod_rsm2, progress =  FALSE)
 fit_rsm <- as.data.frame(fit_rsm[["itemfit"]])
-fit_rsm <- fit_rsm[,-c(1,3,4,5,7,8,9)]
+fit_rsm <- fit_rsm[(1:60),-c(1,3,4,5,7,8,9)]
+
+# SCREENING ITEMS
+screening <- c("*","","","*","","*","","","*","","*","","*","*","","","*","","*","","","","","","","","","","*","","","*","*","*","","","","","*","","","*","","","","","","*","*","*","*","*","*","","*","*","*","*","","*")
+
+# SUBSCALES
+subscale <- c('controlling leadership',"","",'maintain system',"",'controlling leadership',
+  "","",'controlling leadership',"",'controlling leadership',"",'maintain system','maintain system',
+  "","",'maintain system',"",'spiritual violence',"","","","","","","","","",'spiritual violence',
+  "","",'gender discrimination','controlling leadership','maintain system',"","","","",
+  'spiritual violence',"","",'spiritual violence',"","","","","",'internal distress',
+  'harmful God-image','internal distress','harmful God-image','internal distress','internal distress',
+  "",'internal distress','internal distress','harmful God-image','internal distress',"",
+  'internal distress')
 
 # BUILD ITEMS TABLE
-items.tbl.rsm <- cbind(xsi_rsm, fit_rsm)
+items.tbl.rsm <- cbind(screening, subscale, xsi_rsm, fit_rsm)
 # items.tbl.rsm <- items.tbl.rsm[,-2]
-items.tbl.rsm <- round(items.tbl.rsm,2)
+# items.tbl.rsm <- round(items.tbl.rsm,2)
 # items.tbl.rsm$flag <- with(items.tbl.rsm, ifelse(items.tbl.rsm$Infit > 1.5 | items.tbl.rsm$Infit < 0.5 | items.tbl.rsm$Outfit < 0.5 | items.tbl.rsm$Outfit > 1.5, "*", ""))
 items.tbl.rsm <- items.tbl.rsm[order(items.tbl.rsm$xsi),]
-remove <- c("Cat1","Cat2","Cat3","Cat4")
-items.tbl.rsm <- items.tbl.rsm[!(row.names(items.tbl.rsm) %in% remove),]
+# remove <- c("Cat1","Cat2","Cat3","Cat4")
+# items.tbl.rsm <- items.tbl.rsm[!(row.names(items.tbl.rsm) %in% remove),]
 ```
 
-Table \@ref(tab:rsm-item-tbl) also reports fit statistics for the items. These statistics reflect how closely the observed pattern of item responses fits the pattern of item responses predicted by the particular IRT model (Rasch, partial credit, etc.). They do this by means of chi-square statistics which examine the cumulative difference the observed pattern of item responses and the pattern of item responses that the model would expect. Two fit statistics commonly used in IRT models are the infit mean square (MNSQ) and the outfit mean square (MNSQ) [@BondFox2015]. The infit statistic places greater emphasis on unexpected responses that are close to the examinees and item location. The outfit is sensitive to unexpected responses that are far from the location. The expected value of infit or outfit for each item is 1.0, with a range of acceptable values ranging from 0.5 to 1.5. Values outside these boundaries indicate a lack of fit between items and the model. All but one of the 66 items had infit and outfit statistics within the acceptable range.
+Table \@ref(tab:rsm-item-tbl) also reports fit statistics for the items. These statistics reflect how closely the observed patterns of item responses fit the patterns of item responses predicted by the RSM. These fit statistics are chi-square statistics which examine the cumulative difference the observed pattern of item responses and the pattern of item responses that the model would expect.
+
+Two fit statistics commonly used in IRT models are the infit mean square and the outfit mean square [@BondFox2015]. The infit statistic places greater emphasis on unexpected responses that are close to the persons and item location. The outfit is sensitive to unexpected responses that are far from the location. The expected value of infit or outfit for each item is 1.0, with a range of acceptable values ranging from 0.5 to 1.5. Values outside these boundaries indicate a lack of fit between items and the model. All but one of the 60 items had infit and outfit statistics within the acceptable range.
 
 ```{r rsm-item-tbl}
 # PRINT ITEMS TABLE
@@ -106,7 +122,7 @@ library(dplyr)
 items.tbl.rsm %>%
   kbl(align = "cccc", longtable = T, booktabs = T, caption = 'Estimated Item Parameters for the Rating Scale Model and Item Chi-Square Fit Statistics') %>%
   kable_styling(latex_options = "repeat_header") %>%
-  add_header_above(c(" ", "Item Parameters" = 2, "Fit Statistics" = 2))  %>%
+  add_header_above(c(" " = 3, "Item Parameters" = 2, "Fit Statistics" = 2))  %>%
   column_spec(1, width="11cm")
 ```
 
@@ -125,52 +141,39 @@ items.tbl.rsm %>%
 
 ```{r rsm-item-hist, fig.cap='Distribution of Item Severity Parameters'}
 
-# delta_tau_rsm <- mod_rsm$item_irt
-# delta_tau_r <- delta_tau_rsm %>%
-#   mutate(d1 = beta + tau.Cat1,
-#          d2 = beta + tau.Cat2,
-#          d3 = beta + tau.Cat3,
-#          d4 = beta + tau.Cat4) %>% 
-#   select(item, beta, d1, d2, d3, d4) %>% 
-#   mutate(beta_diff = beta) %>% 
-#   pivot_longer(cols = c(beta, d1, d2, d3, d4), names_to = "Parameter" ) %>% 
-#   mutate(type_delta = as.factor(if_else(Parameter == "beta", "beta", "delta"))) %>% 
-#   arrange(beta_diff)
+# all
+all <- items.tbl.rsm$xsi
+screen <- subset(items.tbl.rsm$xsi, items.tbl.rsm$screening == '*')
+control <- subset(items.tbl.rsm$xsi, items.tbl.rsm$subscale == 'controlling leadership')
+maintain <- subset(items.tbl.rsm$xsi, items.tbl.rsm$subscale == 'maintain system')
+distress <- subset(items.tbl.rsm$xsi, items.tbl.rsm$subscale == 'internal distress')
+violence <- subset(items.tbl.rsm$xsi, items.tbl.rsm$subscale == 'spiritual violence')
+god <- subset(items.tbl.rsm$xsi, items.tbl.rsm$subscale == 'harmful God-image')
+x <- list("Controlling leadership"=control,
+          "Maintain system"=maintain,
+          "Internal distress"=distress,
+          "Spiritual violence"=violence,
+          "Harmful God-image"=god,
+          "Screening items"=screen,
+          "All items"=all)
 
-# delta_tau_r
-
-# library(ggplot2)
-# pcmp <- ggplot(delta_tau_r, aes(x = reorder(item, beta_diff),  # ordering difficulties by beta
-#                         y = value, #what's on the y-axis
-#                         group = item, # the line segments need to "know" where to connect
-#                         fill=type_delta, # what to fill on
-#                         shape = type_delta, # only some shapes are fillable
-#                         )) + 
-#   geom_point(size = 2)+ # making points a little big
-#   theme_bw() + 
-#   scale_fill_manual(values = c("black", "white")) + #have to do this manually - so, two fill colors
-#   scale_shape_manual(values = c(21, 21)) + # http://www.cookbook-r.com/Graphs/Shapes_and_line_types/
-#   geom_line(aes(x=item, y=value)) + # add the lines
-#   coord_flip() + #flip so the x-axis is on the y axist
-#   ggtitle("Plot item difficulties in delta_tau for the PCM") +
-#   xlab("Item") +
-#   ylab("Difficulties in logits")
-# 
-# pcmp
-
-
-
-# hist(item.pars.rsm$c, breaks=20, main = NULL, col="red", xlab=bquote(theta), xlim = c(-2,2))
-
-# boxplot(item.pars.rsm$c, horizontal = TRUE)
-# stripchart(item.pars.rsm$c, add = TRUE, frame = FALSE, pch = 19, method = "jitter",
-#           col = 4, main = "method = 'stack'", xlim = c(-1.5, 2), xlab = "theta")
-
-# stripchart(item.pars.rsm$c, frame = FALSE, pch = 19, method = "jitter",
-         #  col = 4, main = "", xlim = c(-2, 2), xlab = "severity of spiritual abuse")
+stripchart(x,
+main="",
+xlab="Severity of Spiritual Abuse",
+# ylab="Item set",
+method="jitter",
+jitter = 0.25,
+col=c("navy","pink","blue","green","orange","red","grey"),
+pch=18,
+xlim = c(-.5,2),
+cex.lab = .7,
+cex.axis = .7,
+las = 2
+)
+# abline(v=0)
 ```
 
-**Reliability**. The RSM expresses internal consistency reliability as a Rasch person separation. Based on Table X, the SHAS has a high Rasch person separation reliability of .963, indicating that the estimated RSM scale discriminated well between persons with varying severity of spiritual abuse.
+**Reliability**. The RSM expresses internal consistency reliability as Rasch person separation. Based on Table X, the SHAS has a high Rasch person separation reliability value of .963, indicating that the estimated RSM scale discriminated well between persons with varying severity of spiritual abuse.
 
 The SHAS also has a high Rasch item separation reliability with Rel = .XX, χ2 (XX) = XXXX.X, p < .XX, implying that the items have a good spread in terms of item ordering and hierarchy.
 
@@ -178,19 +181,13 @@ The SHAS also has a high Rasch item separation reliability with Rel = .XX, χ2 (
 
 # ITEM SEPARATION RELIABILITY
 items3 <- items[complete.cases(items),] 
-# 1. Get Item scores
-ItemScores <- colSums(items3)
-# 2. Get Item SD
-ItemSD <- apply(items3,2,sd)
-# 3. Calculate the se of the Item
-ItemSE <- ItemSD/sqrt(length(ItemSD)) 
-# 4. Compute the Observed Variance (also known as Total Person Variability or Squared Standard Deviation)
-SSD.ItemScores <- var(ItemScores)
-# 5. Compute the Mean Square Measurement error (also known as Model Error variance)
-Item.MSE <- sum((ItemSE)^2) / length(ItemSE) 
-# 6. Compute the Item Separation Reliability
+ItemScores <- colSums(items3) # 1. Get Item scores
+ItemSD <- apply(items3,2,sd) # 2. Get Item SD
+ItemSE <- ItemSD/sqrt(length(ItemSD)) # 3. Calculate the se of the Item
+SSD.ItemScores <- var(ItemScores) # 4. Compute the Observed Variance (also known as Total Person Variability or Squared Standard Deviation)
+Item.MSE <- sum((ItemSE)^2) / length(ItemSE) # 5. Compute the Mean Square Measurement error (also known as Model Error variance)
 item.separation.reliability <- (SSD.ItemScores-Item.MSE) / SSD.ItemScores 
-round(item.separation.reliability,2)
+round(item.separation.reliability,2) # 6. Compute the Item Separation Reliability
 
 
 # library(eRm)
@@ -202,12 +199,17 @@ round(item.separation.reliability,2)
 # summary(res)
 ```
 
-**Item-Person Map**.
+**Item-Person Map**. Figure \@ref(fig:rsm-wrightmap) displays an item-person map (also called a "Wright map") that shows the item severities of the SHAS items and the person severities for each person who completed the survey. All these severities are estimated in logits (log odds units) as the unit of measures. This means the higher the logit value for an item is, the less likely it was for a person to endorse that particular item. On the other hand, higher logit values for each person indicate more severe spiritual abuse. On the variable map, the mean item severity is constrained to be 0.00 with person severities being relative to that mean item severity While column 1 shows the latent continuum in terms of logit values as the unit of measurement underlying the SHAS, columns 2 and 3 represent the severities of the people and the items.
+
+Figure \@ref(fig:rsm-wrightmap) shows good overlap between the person trait and item severity as evidenced by the match between the mean of the person severity (M = − 0.58) and the mean of the item severity (M = 0.00). This suggests that the majority of the items were appropriate for the sample. While person severity measures range from 2.13 logits to − 5.41 logits (M = − 0.58, SD = 0.79, N = 952), the item severities range from 1.14 logits to − 1.08 logits (M = 0.00, SD= 0.47, N = 45). The item representing the most severe spiritual abuse for participants is Item 9, "I feel ... XXX" with the severity at 1.14 logits (also reported in Appendix Table 2). By contrast the item representing the least severe spiritual abuse is item 10, "I would ... ", with − 1.08 logits.
+
+Regarding the variable map, the SHAS appears to have a few limitations. First, the SHAS has a lack of items that provide information about students who are located at the very high end of the continuum, above 1.14 logits, and those who are placed on the very low end of the continuum, particularly below − 0.85 logits. Hence, the SHAS seems to be not targeted at identifying people who have very high and low severity of spiritual abuse. Second, in terms of the distributions of items with respect to their underlying factors (see Fig. 1 and Appendix Table 2), most of the items are spread sufficiently between 1.14 logits and − 1.08 logits except the items which belong to use of mathematics in daily life, represented by seven items (i.e., items 9, 15, 17, 26, 29, 38, 45). That five of these seven items (i.e., items 9, 15, 17, 26, 29) are located at the high end of the continuum indicates that these items are the most difficult items for students to agree with. This, in turn, suggests that these items do not provide information about students with low or moderate levels of math anxiety related to the use of mathematics in daily life on the high end of the continuum. Third, in terms of the redundancy of the items that provide the exact same information, item 17 and item 26, represented by the use of mathematics in daily life; item 6 and item 37, represented by apprehension of math lessons; and item 21 and item 44, represented by test and evaluation anxiety, have the same mean ratings, item difficulties, and standard errors as within pairs (see Appendix Table 2). Therefore, item 17, item 37, and item 21, which have slightly worse fit statistics (Infit and Outfit), can be released from the scale to shorten the length of the scale’s administration.
 
 ```{r rsm-wrightmap, fig.cap="Item-Person Map"}
 # WRIGHT MAP
 # tthresh.poly <- tam.threshold(mod_rsm)
-IRT.WrightMap(mod_rsm, thr.sym.cex=0.5, show.thr.lab=FALSE, main="") 
+IRT.WrightMap(mod_rsm, dim.names = "", dim.color = 'red', item.side = itemModern, label.items.rows = 1, label.items.srt = 90, thr.sym.cex=0.4, show.thr.lab=FALSE, label.items.cex = 0.4, min.logit.pad = 0.25, max.logit.pad = 0.25, item.prop = .8, vertLines = TRUE, main="") 
+
 # IRT.WrightMap(mod_rsm, show.thr.lab=FALSE)
 # wrightMap(mod_rsm, tthresh.poly)
 ```
@@ -215,8 +217,9 @@ IRT.WrightMap(mod_rsm, thr.sym.cex=0.5, show.thr.lab=FALSE, main="")
 **Model-Data Fit**. To assess the overall fit of the model to the item response data we use two statistics. The first is the Root Mean Square Error of Approximation (RMSEA). The suggested cutoff for RMSEA is .06. The second is the CFI. The suggested cutoff for the CFI is .95. Model fit statistics for the SHAS items are presented in Table \@ref(tab:rsm-model-fit). 
 
 ```{r rsm-model-fit}
+# tam.fit(mod_rsm)
+logLik(mod_rsm) 
 
-# logLik(mod1)
 
 ```
 

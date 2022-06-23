@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.4.7)  21 JUN 2022 11:17
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.4.7)  22 JUN 2022 16:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1062,60 +1062,63 @@ Underfull \hbox (badness 10000) in paragraph at lines 410--411
  []
 
 [12] [13]
-Overfull \hbox (9.5353pt too wide) in alignment at lines 422--429
- [] [] [] [] [] 
+Overfull \hbox (236.32529pt too wide) in alignment at lines 418--425
+ [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (9.5353pt too wide) in alignment at lines 429--434
- [] [] [] [] [] 
+Overfull \hbox (236.32529pt too wide) in alignment at lines 425--430
+ [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (9.5353pt too wide) in alignment at lines 434--436
- [] [] [] [] [] 
+Overfull \hbox (236.32529pt too wide) in alignment at lines 430--432
+ [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (9.5353pt too wide) in alignment at lines 436--438
- [] [] [] [] [] 
+Overfull \hbox (236.32529pt too wide) in alignment at lines 432--434
+ [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (9.5353pt too wide) in alignment at lines 438--462
- [] [] [] [] [] 
+Overfull \hbox (236.32529pt too wide) in alignment at lines 434--458
+ [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (9.5353pt too wide) in alignment at lines 462--486
- [] [] [] [] [] 
+Overfull \hbox (236.32529pt too wide) in alignment at lines 458--482
+ [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (9.5353pt too wide) in alignment at lines 486--510
- [] [] [] [] [] 
+Overfull \hbox (236.32529pt too wide) in alignment at lines 482--506
+ [] [] [] [] [] [] [] 
  []
 
 [14]
-Overfull \hbox (9.5353pt too wide) in alignment at lines 510--510
- [] [] [] [] [] 
+Overfull \hbox (236.32529pt too wide) in alignment at lines 506--506
+ [] [] [] [] [] [] [] 
  []
 
+File: _main_files/figure-latex/rsm-item-hist-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/rsm-item-hist-1.pdf>
 Missing character: There is no χ in font [lmroman10-regular]:mapping=tex-text;!
+[15]
 File: _main_files/figure-latex/rsm-wrightmap-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/rsm-wrightmap-1.pdf>
-[15]
+[16]
 
-LaTeX Warning: Reference `tab:rsm-model-fit' on page 16 undefined on input line
- 528.
+LaTeX Warning: Reference `tab:rsm-model-fit' on page 17 undefined on input line
+ 534.
 
-[16] [17] (./_main.bbl [18])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 614.
-[19]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 614.
+[17] [18] (./_main.bbl [19])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 624.
+[20]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 624.
 (./_main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 614.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 614.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 624.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 624.
 
 LaTeX Warning: There were undefined references.
 
@@ -1124,12 +1127,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 20465 strings out of 479418
- 357515 string characters out of 5884586
- 859866 words of memory out of 5000000
- 37648 multiletter control sequences out of 15000+600000
+ 20472 strings out of 479418
+ 357801 string characters out of 5884586
+ 859950 words of memory out of 5000000
+ 37654 multiletter control sequences out of 15000+600000
  538879 words of font info for 76 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  59i,10n,118p,2358b,473s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on _main.pdf (19 pages).
+Output written on _main.pdf (20 pages).
