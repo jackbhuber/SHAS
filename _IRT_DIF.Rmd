@@ -29,7 +29,7 @@ source("code/ApplyItemLabels2.R") # items2 gets labels, items doesn't
 
 ```{r dif-run}
 
-age.DIF <- lordif(items2)
+# age.DIF <- lordif(items2)
 ```
 
 In this analysis, we examined the degree to which there was evidence of uniform differential item functioning (DIF) between two subgroups of participants (group 1 and group 2).

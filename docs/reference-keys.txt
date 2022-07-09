@@ -1,8 +1,0 @@
-tab:dems-table
-tab:CTT-item-table
-fig:pca-run
-fig:uni-pcar
-fig:q3-plot
-tab:rsm-item-tbl
-fig:rsm-item-hist
-fig:rsm-wrightmap
