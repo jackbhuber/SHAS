@@ -1,0 +1,67 @@
+## DIF Analysis
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(comment = "", warning = FALSE, echo = FALSE,  message = FALSE, tidy.opts=list(width.cutoff=60), tidy = TRUE)
+knitr::opts_knit$set(verbose = FALSE)
+```
+
+Differential item functioning (DIF), simply put, examines how an item functions for different groups.
+
+```{r dif-prep}
+
+# LOAD PACKAGES
+library(tidyverse)
+library(dplyr)
+library(tidyr)
+library(knitr)
+library(kableExtra)
+library(lordif)
+
+# PREP DATA
+items <- read.csv("data/items2.csv")
+items <- items[,-1]
+items <- items - 1
+# items <- items[complete.cases(items2),]
+# items2 <- items2 - 1
+items2 <- items
+source("code/ApplyItemLabels2.R") # items2 gets labels, items doesn't
+```
+
+```{r dif-run}
+
+age.DIF <- lordif(items2)
+```
+
+In this analysis, we examined the degree to which there was evidence of uniform differential item functioning (DIF) between two subgroups of participants (group 1 and group 2).
+
+As a first step in the analysis, we examined item severity estimates and standard errors specific to each subgroup using the Rating Scale Model @Andrich1978. We estimated item severity for the two subgroups using a combined analysis of both subgroups and then estimating the group-specific item severities Group-specific item severities and standard errors are shown in Table X.
+
+To examine the differences in item severity between subgroups, we calculated standardized differences following Wright and Masters (1982) as follows:
+
+[equation]
+
+where  
+z
+  is the standardized difference, d1 is the item severity specific to Subgroup 1, d2 is the item severity specific to Subgroup 2,  
+s
+e
+2
+1
+  is the standard error of the item severity specific to Subgroup 1, and  
+s
+e
+2
+2
+  is the standard error of the item severity specific to Subgroup 2. Using the formulation of the z statistic, higher values of z indicate higher item locations (more-severe to endorse) for Subgroup 1 compared to Subgroup 2.
+
+Figure X shows a plot of the z-statistics for the four items; these values are also presented numerically in Table X. In the figure, the x-axis shows the item identification numbers, and the y-axis shows the value of the z-statistic. Boundaries at +2 and -2 are indicated using dashed horizontal lines to highlight statistically significant differences in item severity between subgroups. Examination of these results indicates that the items were not significantly different in severity between the two subgroups. In addition, there were both positive and negative z statistics, indicating that although the differences in item severity were not significant, there were some items that were easier to endorse for Subgroup 1 and others that were easier to endorse for Subgroup 2.
+
+Figure 1: Plot of Standardized Differences for Items between Subgroups
+
+To further explore the differences in item severity between the two subgroups, Figure 2 shows a scatterplot of the item locations between the two subgroups. In the plot, the item severity for Subgroup 1 is shown on the x-axis, and the item severity for Subgroup 2 is shown on the y-axis. Individual items are indicated using open circle plotting symbols. A solid identity line is included to highlight deviations from invariant item severities between the two groups: Points that fall below this line indicate that items were easier to endorse (lower item measures) for Subgroup 2, and points that fall above the line indicate that items were easier to endorse (lower item measures) for Subgroup 1. Dashed lines are also included to indicate a 95% confidence interval for the difference between the item measures, following Luppescu (1995).
+
+Figure 2: Scatterplot of Subgroup-Specific Item Severities
+
+Finally, Figure 3 is a bar plot that illustrates the direction and magnitude of the differences in item severities between subgroups. In the plot, each bar represents the difference in severity between subgroups for an individual item, ordered by the item sequence in the survey. Bars that point to the left of the plot indicate that the item was easier to endorse for Subgroup 1, and bars that point to the right of the plot indicate that the item was easier to endorse for Subgroup 2. Dashed vertical lines are plotted that show values of +0.5 and -0.5 logits as an indicator of substantial differences in item severity between subgroups.
+
+Figure 3: Bar Plot of Differences In Item Severity Between Subgroups

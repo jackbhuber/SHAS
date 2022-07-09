@@ -12,5 +12,5 @@
 ```{r, child = "_IRT_RatingScaleModel.Rmd"}
 ```
 
-```{r, child = "_DIF.Rmd"}
+```{r, child = "_IRT_DIF.Rmd"}
 ```
