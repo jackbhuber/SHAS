@@ -5,7 +5,7 @@ knitr::opts_chunk$set(comment = "", warning = FALSE, echo = FALSE,  message = FA
 knitr::opts_knit$set(verbose = FALSE)
 ```
 
-Differential item functioning (DIF), simply put, examines how an item functions for different groups.
+Differential item functioning (DIF), simply put, examines how an item functions for different groups. We conducted (DIF) analysis of the items to examine item bias by gender, and age, and race. [We applied logistic ordinal regression with IRT scoring. We used the Chi-squared likelihood-ratio statistic as the initial DIF detection criteria (alpha < 0.01), and a cut-off of McFadden pseudo R2Δ ≥ 0.02 in model comparisons to determine substantial DIF, a reasonable threshold used in the development of self-reported health outcomes.
 
 ```{r dif-prep}
 
